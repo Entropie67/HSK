@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第4课 子路背米</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+
+        :root {
+            --primary: #5b21b6;
+            --primary-light: #7c3aed;
+            --accent: #e74c3c;
+            --accent-soft: #f1948a;
+            --gold: #f39c12;
+            --gold-light: #fdebd0;
+            --bg: #fafbfc;
+            --card: #ffffff;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #e8ecf1;
+            --success: #27ae60;
+            --wrong: #e74c3c;
+            --gradient-water: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-hero: linear-gradient(135deg, #4a1a0a 0%, #7b341e 30%, #c0392b 70%, #e74c3c 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; scroll-behavior: smooth; }
+
+        .hero { background: var(--gradient-hero); color: white; padding: 80px 20px 60px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom; background-size: cover; opacity: 0.3; }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .hero .lesson-badge { display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); padding: 6px 20px; border-radius: 30px; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 20px; }
+        .hero h1 { font-family: 'Noto Serif SC', serif; font-size: 3.5rem; font-weight: 900; margin-bottom: 8px; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+        .hero .subtitle { font-size: 1.3rem; opacity: 0.9; font-weight: 300; margin-bottom: 30px; }
+
+        .sticky-nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 20px; box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+        .nav-inner::-webkit-scrollbar { display: none; }
+        .nav-inner a { padding: 14px 18px; text-decoration: none; color: var(--text-light); font-size: 0.9rem; font-weight: 500; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; }
+        .nav-inner a:hover, .nav-inner a.active { color: var(--primary); border-bottom-color: var(--primary-light); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 50px 0; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header h2 { font-family: 'Noto Serif SC', serif; font-size: 2rem; color: var(--primary); margin-bottom: 6px; }
+        .section-header .section-sub { color: var(--text-light); font-size: 0.95rem; }
+        .section-divider { width: 60px; height: 3px; background: var(--gradient-water); margin: 12px auto 0; border-radius: 2px; }
+
+        .card { background: var(--card); border-radius: 16px; padding: 30px; box-shadow: 0 2px 20px rgba(0,0,0,0.04); border: 1px solid var(--border); margin-bottom: 24px; }
+        .card h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 16px; }
+
+        .text-block { background: var(--card); border-radius: 16px; padding: 35px; box-shadow: 0 2px 20px rgba(0,0,0,0.04); border: 1px solid var(--border); font-family: 'Noto Serif SC', serif; font-size: 1.1rem; line-height: 2.2; }
+        .text-block p { text-indent: 2em; margin-bottom: 16px; }
+
+        .vocab-controls { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+        .vocab-controls button { padding: 8px 20px; border: 2px solid var(--border); background: white; border-radius: 25px; cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; color: var(--text); }
+        .vocab-controls button.active, .vocab-controls button:hover { border-color: var(--primary-light); background: var(--primary-light); color: white; }
+
+        .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+        .vocab-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+        .vocab-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); border-color: var(--primary-light); }
+        .vocab-card .vocab-num { position: absolute; top: 8px; right: 12px; font-size: 0.75rem; color: var(--text-light); opacity: 0.5; }
+        .vocab-card .hanzi { font-family: 'Noto Serif SC', serif; font-size: 1.6rem; font-weight: 700; color: var(--primary); }
+        .vocab-card .pinyin { color: var(--accent); font-size: 0.9rem; margin: 4px 0; }
+        .vocab-card .pos { display: inline-block; background: var(--gold-light); color: var(--gold); font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 6px; }
+        .vocab-card .meaning { color: var(--text); font-size: 0.9rem; margin-top: 6px; }
+        .vocab-card .meaning-hidden { display: none; }
+        .vocab-card.revealed .meaning-hidden { display: block; }
+        .vocab-card.revealed .meaning-placeholder { display: none; }
+        .meaning-placeholder { color: var(--text-light); font-size: 0.85rem; font-style: italic; margin-top: 6px; }
+
+        .proper-nouns-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+        .pn-card { display: flex; align-items: center; gap: 14px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+        .pn-hanzi { font-family: 'Noto Serif SC', serif; font-size: 1.4rem; font-weight: 700; color: var(--primary); min-width: 55px; }
+        .pn-info .pn-pinyin { color: var(--accent); font-size: 0.85rem; }
+        .pn-info .pn-meaning { font-size: 0.9rem; }
+
+        .flashcard-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
+        .flashcard-container { perspective: 1000px; width: 380px; height: 260px; max-width: 100%; }
+        .flashcard { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }
+        .flashcard.flipped { transform: rotateY(180deg); }
+        .flashcard-front, .flashcard-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; text-align: center; }
+        .flashcard-front { background: linear-gradient(135deg, #7b341e, #c0392b); color: white; box-shadow: 0 10px 40px rgba(123,52,30,0.3); }
+        .flashcard-front .fc-hanzi { font-family: 'Noto Serif SC', serif; font-size: 3rem; font-weight: 900; margin-bottom: 10px; }
+        .flashcard-front .fc-pinyin { font-size: 1.1rem; opacity: 0.8; }
+        .flashcard-front .fc-hint { font-size: 0.8rem; opacity: 0.5; margin-top: 20px; }
+        .flashcard-back { background: white; border: 2px solid var(--primary-light); transform: rotateY(180deg); box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .flashcard-back .fc-meaning { font-size: 1.3rem; color: var(--primary); font-weight: 600; }
+        .flashcard-back .fc-pos { background: var(--gold-light); color: var(--gold); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-top: 10px; }
+        .fc-controls { display: flex; gap: 12px; }
+        .fc-controls button { padding: 10px 28px; border-radius: 25px; border: none; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; }
+        .fc-btn-prev, .fc-btn-next { background: var(--primary-light); color: white; }
+        .fc-btn-prev:hover, .fc-btn-next:hover { background: var(--primary); }
+        .fc-btn-shuffle { background: white; border: 2px solid var(--border) !important; color: var(--text); }
+        .fc-counter { color: var(--text-light); font-size: 0.9rem; }
+
+        .grammar-card { background: var(--card); border-radius: 16px; border: 1px solid var(--border); margin-bottom: 20px; overflow: hidden; }
+        .grammar-header { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 18px 24px; display: flex; align-items: center; gap: 14px; }
+        .grammar-header .grammar-num { background: rgba(255,255,255,0.2); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+        .grammar-header .grammar-title { font-family: 'Noto Serif SC', serif; font-size: 1.5rem; font-weight: 700; }
+        .grammar-header .grammar-pinyin { font-size: 0.9rem; opacity: 0.8; }
+        .grammar-body { padding: 24px; }
+        .grammar-rule { background: #f0f7ff; border-left: 4px solid var(--primary-light); padding: 14px 18px; border-radius: 0 10px 10px 0; margin-bottom: 20px; font-size: 0.95rem; color: var(--primary); }
+        .grammar-example { padding: 12px 0; border-bottom: 1px solid var(--border); }
+        .grammar-example:last-child { border-bottom: none; }
+        .grammar-example .ex-cn { font-size: 1.05rem; margin-bottom: 4px; }
+        .grammar-example .ex-note { color: var(--text-light); font-size: 0.85rem; }
+        .grammar-example .ex-highlight { color: var(--accent); font-weight: 600; }
+
+        .comparison-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+        .comparison-table th { background: var(--primary); color: white; padding: 14px 18px; font-weight: 600; text-align: center; }
+        .comparison-table td { padding: 14px 18px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.95rem; }
+        .comparison-table tr:last-child td { border-bottom: none; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .comparison-table .label-cell { background: #f0f4f8; font-weight: 600; color: var(--primary); text-align: center; width: 60px; }
+
+        .colloc-section { margin-bottom: 24px; }
+        .colloc-label { display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; color: white; margin-bottom: 12px; }
+        .colloc-label.verb { background: #e74c3c; }
+        .colloc-label.attr { background: #f39c12; }
+        .colloc-label.adv { background: #27ae60; }
+        .colloc-label.comp { background: #8e44ad; }
+        .colloc-label.mw { background: #7c3aed; }
+        .colloc-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+        .colloc-row:last-child { border-bottom: none; }
+        .colloc-word { font-weight: 600; color: var(--primary); min-width: 80px; font-size: 1.1rem; }
+        .colloc-plus { color: var(--text-light); font-weight: 700; }
+        .colloc-partners { display: flex; flex-wrap: wrap; gap: 6px; }
+        .colloc-tag { background: #f0f4f8; padding: 4px 12px; border-radius: 15px; font-size: 0.85rem; }
+
+        .tab-bar { display: flex; gap: 4px; background: #f0f4f8; padding: 4px; border-radius: 12px; margin-bottom: 20px; }
+        .tab-btn { flex: 1; padding: 10px; border: none; background: transparent; border-radius: 10px; cursor: pointer; font-size: 0.9rem; font-weight: 500; color: var(--text-light); transition: all 0.2s; }
+        .tab-btn.active { background: white; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .quiz-score-bar { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .score-display { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .score-bar-visual { flex: 1; margin: 0 20px; height: 10px; background: var(--border); border-radius: 5px; overflow: hidden; }
+        .score-bar-fill { height: 100%; background: var(--gradient-water); border-radius: 5px; transition: width 0.5s ease; width: 0%; }
+        .quiz-reset-btn { padding: 8px 20px; background: var(--primary-light); color: white; border: none; border-radius: 20px; cursor: pointer; font-size: 0.85rem; font-weight: 600; }
+
+        .quiz-question { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 16px; transition: all 0.3s; }
+        .quiz-question.correct { border-color: var(--success); background: #f0fdf4; }
+        .quiz-question.wrong { border-color: var(--wrong); background: #fef2f2; }
+        .quiz-q-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: var(--primary-light); color: white; border-radius: 50%; font-size: 0.8rem; font-weight: 700; margin-right: 10px; }
+        .quiz-q-text { font-size: 1.05rem; margin-bottom: 14px; }
+        .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .quiz-option { padding: 12px 16px; border: 2px solid var(--border); border-radius: 10px; cursor: pointer; transition: all 0.2s; font-size: 0.95rem; text-align: center; background: white; }
+        .quiz-option:hover { border-color: var(--primary-light); background: #f0f7ff; }
+        .quiz-option.selected-correct { border-color: var(--success); background: #dcfce7; color: var(--success); font-weight: 600; }
+        .quiz-option.selected-wrong { border-color: var(--wrong); background: #fecaca; color: var(--wrong); font-weight: 600; }
+        .quiz-option.disabled { pointer-events: none; opacity: 0.7; }
+        .quiz-explanation { display: none; margin-top: 12px; padding: 12px 16px; background: #fffbeb; border-radius: 10px; font-size: 0.9rem; color: #92400e; border: 1px solid #fde68a; }
+
+        .fill-blank { display: inline-block; min-width: 80px; border-bottom: 2px dashed var(--primary-light); padding: 2px 8px; margin: 0 4px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .fill-blank:hover { background: #f0f7ff; }
+        .fill-options { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; justify-content: center; }
+        .fill-chip { padding: 8px 18px; background: white; border: 2px solid var(--border); border-radius: 25px; cursor: pointer; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; }
+        .fill-chip:hover { border-color: var(--primary-light); background: #f0f7ff; }
+        .fill-chip.used { opacity: 0.4; pointer-events: none; }
+        .fill-chip.placed { background: var(--primary-light); color: white; border-color: var(--primary-light); }
+
+        .app-box { background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 1px solid #bae6fd; border-radius: 16px; padding: 30px; margin-bottom: 20px; }
+        .app-box h4 { color: var(--primary); font-size: 1.1rem; margin-bottom: 12px; }
+        .discussion-q { padding: 10px 0; border-bottom: 1px solid rgba(186,230,253,0.5); font-size: 0.95rem; }
+        .discussion-q:last-child { border-bottom: none; }
+
+        .back-to-top { position: fixed; bottom: 20px; right: 24px; width: 42px; height: 42px; border-radius: 50%; background: white; border: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.08); cursor: pointer; display: none; align-items: center; justify-content: center; z-index: 49; font-size: 1.1rem; transition: all 0.2s; }
+        .back-to-top:hover { transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.4rem; }
+            .vocab-grid { grid-template-columns: 1fr; }
+            .quiz-options { grid-template-columns: 1fr; }
+            .flashcard-container { width: 100%; height: 240px; }
+            .proper-nouns-grid { grid-template-columns: 1fr; }
+            .quiz-score-bar { flex-direction: column; gap: 10px; text-align: center; }
+            .score-bar-visual { width: 100%; margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
+        <h1>子路背米</h1>
+        <p class="subtitle">Zilu Carrying Rice - Lesson 4</p>
+    </div>
+</header>
+
+<nav class="sticky-nav">
+    <div class="nav-inner">
+        <a href="#text">课文 Texte</a>
+        <a href="#vocab">生词 Vocabulaire</a>
+        <a href="#flashcards">卡片 Flashcards</a>
+        <a href="#grammar">语法 Grammaire</a>
+        <a href="#analysis">辨析 Analyse</a>
+        <a href="#collocation">搭配 Collocations</a>
+        <a href="#quiz-section">测验 Quiz</a>
+        <a href="#fill-quiz">填空 Exercices</a>
+        <a href="#application">运用 Application</a>
+    </div>
+</nav>
+
+<main class="container">
+
+<!-- TEXT -->
+<section id="text">
+    <div class="section-header">
+        <h2>课文 - Texte</h2>
+        <p class="section-sub">子路背米 (711 caracteres)</p>
+        <div class="section-divider"></div>
+    </div>
+    <div class="text-block">
+        <p>从前，大概在距今两千五百多年前的春秋时期，有一个人叫子路，他是孔子最年长的学生。流传至今的"百里背米"讲的就是他孝敬父母的故事。</p>
+        <p>子路的父母都是农民。由于连年的战争，家里生活非常困难。一天，子路从外面回来，听到父母在屋里说话："活了大半辈子了，别说鱼肉，只要能饱饱地吃上一顿米饭，也就满足啦！"子路听了，心里觉得十分惭愧。他暗下决心："一定要让父母吃上米饭，不能再委屈他们了！"</p>
+        <p>子路打听到百里之外有个有钱人，家里缺干活儿的人，决定去试一试。那家主人见他身体结实，就留下了他。子路干起活来十分勤奋，主人很喜欢这个小伙子。半年后，当子路要回家时，发现主人给的银子比他应该得到的多了许多，子路老老实实地告诉了主人。主人笑着说："孩子，工钱没算错，你做事勤快，这是我给你加的奖金。"</p>
+        <p>谢过主人，子路高兴地上路了。路过镇上，他买了一袋米、一块肉、两条鱼，背在后背上。天气非常寒冷，雪地很滑，子路不小心滑了一下，背上的米袋差点儿被甩出去。他顶着大雪往前走，扶着米袋的双手冻得不行，就停下来暖暖，再继续赶路。终于到家了，见到父母，子路把给他们买的东西及剩下的工钱都交给了他们。一家人高高兴兴地生火做饭，饱饱地吃了顿团圆饭。</p>
+        <p>后来子路的父母去世了，他也南下到了楚国。楚国国君觉得他很有本领，是个人才，就留他做了官，并给他很优厚的待遇。但他并没有因为物质条件好而感到欢喜，反而常常诚恳地说："多么希望父母能和我一起过好日子！我现在有了一点儿成就，可他们已经不在了，即使再想背米百里去孝敬双亲，也不可能了。"</p>
+        <p>中国古代有句话叫"百善孝为先"，意思是说，孝顺父母是各种美德中占第一位的。子路为了让父母吃到较好的食物，不怕辛苦，这种做法确实值得我们学习。</p>
+    </div>
+</section>
+
+<!-- VOCABULARY -->
+<section id="vocab">
+    <div class="section-header">
+        <h2>生词 - Vocabulaire</h2>
+        <p class="section-sub">40 mots + 4 noms propres - Cliquez pour reveler la traduction</p>
+        <div class="section-divider"></div>
+    </div>
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (40)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout reveler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+
+    <h3 style="margin: 30px 0 16px; color: var(--primary); font-size: 1.2rem;">专有名词 - Noms propres</h3>
+    <div class="proper-nouns-grid">
+        <div class="pn-card"><div class="pn-hanzi">子路</div><div class="pn-info"><div class="pn-pinyin">Zilu</div><div class="pn-meaning">Zilu, disciple de Confucius</div></div></div>
+        <div class="pn-card"><div class="pn-hanzi">春秋</div><div class="pn-info"><div class="pn-pinyin">Chunqiu</div><div class="pn-meaning">Printemps et Automnes (770-476 av. J.-C.)</div></div></div>
+        <div class="pn-card"><div class="pn-hanzi">孔子</div><div class="pn-info"><div class="pn-pinyin">Kongzi</div><div class="pn-meaning">Confucius, penseur et educateur</div></div></div>
+        <div class="pn-card"><div class="pn-hanzi">楚国</div><div class="pn-info"><div class="pn-pinyin">Chuguo</div><div class="pn-meaning">Royaume de Chu</div></div></div>
+    </div>
+</section>
+
+<!-- FLASHCARDS -->
+<section id="flashcards">
+    <div class="section-header">
+        <h2>卡片 - Flashcards</h2>
+        <p class="section-sub">Cliquez pour retourner la carte</p>
+        <div class="section-divider"></div>
+    </div>
+    <div class="flashcard-area">
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">40</span></div>
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front">
+                    <div class="fc-hanzi" id="fcHanzi">背</div>
+                    <div class="fc-pinyin" id="fcPinyin">bei</div>
+                    <div class="fc-hint">cliquez pour voir la traduction</div>
+                </div>
+                <div class="flashcard-back">
+                    <div class="fc-meaning" id="fcMeaning">porter sur le dos</div>
+                    <div class="fc-pos" id="fcPos">v.</div>
+                </div>
+            </div>
+        </div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+        </div>
+    </div>
+</section>
+
+<!-- GRAMMAR -->
+<section id="grammar">
+    <div class="section-header">
+        <h2>语法 - Grammaire</h2>
+        <p class="section-sub">4 points de grammaire essentiels</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="grammar-card">
+        <div class="grammar-header"><div class="grammar-num">1</div><div><div class="grammar-title">至今</div><div class="grammar-pinyin">zhijin</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Adverbe :</strong> "jusqu'a present". Souvent en debut de proposition ou avant le verbe. Forme des expressions : 从古至今, 流传至今.</div>
+            <div class="grammar-example"><div class="ex-cn">我在北京出生、长大，<span class="ex-highlight">至今</span>还没离开过呢。</div><div class="ex-note">Je suis ne a Pekin et n'en suis jamais parti jusqu'a present.</div></div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">流传至今</span>的"百里背米"讲的就是他孝敬父母的故事。</div><div class="ex-note">L'histoire "porter du riz sur 100 li", transmise jusqu'a nos jours...</div></div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">至今</span>，很多国家并没有规定什么才是健康食品。</div><div class="ex-note">Jusqu'a present, beaucoup de pays n'ont pas defini...</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card">
+        <div class="grammar-header"><div class="grammar-num">2</div><div><div class="grammar-title">顶</div><div class="grammar-pinyin">ding</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Nom :</strong> sommet. <strong>Verbe :</strong> 1) action de la tete 2) braver, affronter. <strong>Classificateur :</strong> pour chapeaux, parapluies.</div>
+            <div class="grammar-example"><div class="ex-cn">请把手举过头<span class="ex-highlight">顶</span>。</div><div class="ex-note">Nom : levez les mains au-dessus de la tete.</div></div>
+            <div class="grammar-example"><div class="ex-cn">他<span class="ex-highlight">顶</span>着大雪往前走。</div><div class="ex-note">Verbe : Il avancait en bravant la neige.</div></div>
+            <div class="grammar-example"><div class="ex-cn">我这<span class="ex-highlight">顶</span>新帽子怎么样？</div><div class="ex-note">Classificateur : Comment trouvez-vous ce chapeau ?</div></div>
+            <div class="grammar-example"><div class="ex-cn">您为什么要<span class="ex-highlight">顶</span>着压力来做这件事呢？</div><div class="ex-note">Verbe : Pourquoi faites-vous cela sous pression ?</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card">
+        <div class="grammar-header"><div class="grammar-num">3</div><div><div class="grammar-title">……得+不行</div><div class="grammar-pinyin">de buxing</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Structure :</strong> Exprime un degre intense. Equivalent a 得很 / 得不得了. Indique que quelque chose est "terriblement, extremement".</div>
+            <div class="grammar-example"><div class="ex-cn">他顶着大雪往前走，扶着米袋的双手冻<span class="ex-highlight">得不行</span>。</div><div class="ex-note">Ses mains etaient gelee au point de ne plus tenir.</div></div>
+            <div class="grammar-example"><div class="ex-cn">这个地方这么热闹，孩子们高兴<span class="ex-highlight">得不得了</span>！</div><div class="ex-note">Les enfants etaient extremement contents !</div></div>
+            <div class="grammar-example"><div class="ex-cn">他心里烦<span class="ex-highlight">得很</span>，自言自语地抱怨。</div><div class="ex-note">Il etait tres agace et se plaignait a lui-meme.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card">
+        <div class="grammar-header"><div class="grammar-num">4</div><div><div class="grammar-title">反而</div><div class="grammar-pinyin">fan'er</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Adverbe :</strong> "au contraire", entre deux propositions, indique le contraire de ce qu'on attendait.</div>
+            <div class="grammar-example"><div class="ex-cn">这样不但不能提高他们的阅读能力，<span class="ex-highlight">反而</span>有可能降低他们的阅读兴趣。</div><div class="ex-note">Non seulement cela n'ameliore pas... mais au contraire cela peut reduire...</div></div>
+            <div class="grammar-example"><div class="ex-cn">但他并没有因为物质条件好而感到欢喜，<span class="ex-highlight">反而</span>常常诚恳地说……</div><div class="ex-note">Mais il n'etait pas content des conditions materielles, au contraire il disait souvent...</div></div>
+            <div class="grammar-example"><div class="ex-cn">大城市的生活虽然很精彩，但一辈子生活在农村的父母<span class="ex-highlight">反而</span>会不适应。</div><div class="ex-note">Meme si la grande ville est passionnante, les parents de la campagne au contraire ne s'y habitueraient pas.</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- WORD ANALYSIS -->
+<section id="analysis">
+    <div class="section-header">
+        <h2>词语辨析 - Analyse comparative</h2>
+        <p class="section-sub">满足 vs 满意</p>
+        <div class="section-divider"></div>
+    </div>
+    <div class="card">
+        <table class="comparison-table">
+            <thead><tr><th></th><th>满足 (manzu)</th><th>满意 (manyi)</th></tr></thead>
+            <tbody>
+                <tr><td class="label-cell">Points communs</td><td colspan="2" style="text-align:center;">Verbes. Signifient tous deux "etre satisfait, comble".<br>Ex : 我对现在的生活感到非常<strong>满足/满意</strong>。</td></tr>
+                <tr><td class="label-cell" rowspan="3">Differences</td>
+                    <td>1. Souligne qu'on n'a plus de demande.<br><em>只要能饱饱地吃上一顿米饭，也就满足啦！</em></td>
+                    <td>1. Souligne que cela correspond a ses attentes.<br><em>老师说她对我这次的作业非常满意。</em></td></tr>
+                <tr><td>2. Ne peut generalement pas etre utilise comme attribut ou adverbe.</td>
+                    <td>2. Peut etre attribut ou adverbe.<br><em>他找到了一份满意的工作。</em></td></tr>
+                <tr><td>3. Se combine avec 需要, 要求, 条件, 愿望.<br><em>这个我不想要，它不能满足我们的需要。</em></td>
+                    <td>3. Se combine rarement avec un objet direct.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- COLLOCATIONS -->
+<section id="collocation">
+    <div class="section-header">
+        <h2>词语搭配 - Collocations</h2>
+        <p class="section-sub">Combinaisons essentielles de la lecon</p>
+        <div class="section-divider"></div>
+    </div>
+    <div class="card">
+        <div class="colloc-section">
+            <div class="colloc-label verb">动词 + 宾语</div>
+            <div class="colloc-row"><span class="colloc-word">下/有/表(示)</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">决心</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">占</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">一半</span><span class="colloc-tag">多数</span><span class="colloc-tag">百分之八十</span><span class="colloc-tag">座位</span><span class="colloc-tag">便宜</span></div></div>
+        </div>
+        <div class="colloc-section">
+            <div class="colloc-label attr">定语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">诚恳的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">态度</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">美味的/精美的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">食物</span></div></div>
+        </div>
+        <div class="colloc-section">
+            <div class="colloc-label adv">状语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">委屈地</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">说</span><span class="colloc-tag">哭</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">勤奋(地)</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">学习</span><span class="colloc-tag">工作</span><span class="colloc-tag">干活儿</span></div></div>
+        </div>
+        <div class="colloc-section">
+            <div class="colloc-label comp">中心语 + 补语</div>
+            <div class="colloc-row"><span class="colloc-word">背</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">起来</span><span class="colloc-tag">在……</span><span class="colloc-tag">不动</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">流传</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">至今</span><span class="colloc-tag">到……</span><span class="colloc-tag">了一千年</span></div></div>
+        </div>
+        <div class="colloc-section">
+            <div class="colloc-label mw">动词 + 数量词</div>
+            <div class="colloc-row"><span class="colloc-word">扶</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">一下</span><span class="colloc-tag">一把</span></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz-section">
+    <div class="section-header">
+        <h2>测验 - Quiz</h2>
+        <p class="section-sub">Testez vos connaissances</p>
+        <div class="section-divider"></div>
+    </div>
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+    </div>
+    <div class="tab-content active" id="vocab-quiz">
+        <div class="quiz-score-bar"><div class="score-display" id="vocabScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button></div>
+        <div id="vocabQuizContainer"></div>
+    </div>
+    <div class="tab-content" id="grammar-quiz">
+        <div class="quiz-score-bar"><div class="score-display" id="grammarScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button></div>
+        <div id="grammarQuizContainer"></div>
+    </div>
+    <div class="tab-content" id="comprehension-quiz">
+        <div class="quiz-score-bar"><div class="score-display" id="compScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button></div>
+        <div id="compQuizContainer"></div>
+    </div>
+</section>
+
+<!-- FILL-IN -->
+<section id="fill-quiz">
+    <div class="section-header">
+        <h2>填空练习 - Exercices a trous</h2>
+        <p class="section-sub">Choisissez le mot correct</p>
+        <div class="section-divider"></div>
+    </div>
+    <div class="card" id="fillExercise">
+        <h3>Choisissez parmi : 扶、占、从前、本领、决心、委屈</h3>
+        <div class="fill-options" id="fillOptions">
+            <span class="fill-chip" data-word="从前" onclick="selectFillWord(this)">从前</span>
+            <span class="fill-chip" data-word="占" onclick="selectFillWord(this)">占</span>
+            <span class="fill-chip" data-word="委屈" onclick="selectFillWord(this)">委屈</span>
+            <span class="fill-chip" data-word="本领" onclick="selectFillWord(this)">本领</span>
+            <span class="fill-chip" data-word="扶" onclick="selectFillWord(this)">扶</span>
+            <span class="fill-chip" data-word="决心" onclick="selectFillWord(this)">决心</span>
+        </div>
+        <div style="margin-top: 24px;">
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">1</span><span class="fill-blank" data-answer="从前" onclick="placeFillWord(this)">___</span>有个人叫乐广，他有个好朋友，一有空儿就到他家来聊天儿。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">2</span>你去教室自习的时候，帮我<span class="fill-blank" data-answer="占" onclick="placeFillWord(this)">___</span>个座位，好吗？</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">3</span>请您先在这儿<span class="fill-blank" data-answer="委屈" onclick="placeFillWord(this)">___</span>一晚，明天我们就给您换个好的房间。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">4</span>邻居家有一条<span class="fill-blank" data-answer="本领" onclick="placeFillWord(this)">___</span>高强的小狗，能看门，能送报，还能买菜。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">5</span>他把那位老爷爷<span class="fill-blank" data-answer="扶" onclick="placeFillWord(this)">___</span>过了马路。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">6</span>我下<span class="fill-blank" data-answer="决心" onclick="placeFillWord(this)">___</span>从明天开始早睡早起，每天锻炼身体。</div>
+        </div>
+        <div style="text-align:center; margin-top:16px;">
+            <button onclick="checkFillAnswers()" style="padding:10px 30px; background:var(--primary-light); color:white; border:none; border-radius:25px; cursor:pointer; font-size:0.95rem; font-weight:600;">Verifier</button>
+            <button onclick="resetFill()" style="padding:10px 30px; background:white; border:2px solid var(--border); border-radius:25px; cursor:pointer; font-size:0.95rem; margin-left:10px;">Recommencer</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Choisissez la bonne reponse</h3>
+        <div id="choiceQuizContainer"></div>
+    </div>
+</section>
+
+<!-- APPLICATION -->
+<section id="application">
+    <div class="section-header">
+        <h2>运用 - Application</h2>
+        <p class="section-sub">Contexte et discussion</p>
+        <div class="section-divider"></div>
+    </div>
+    <div class="app-box">
+        <h4>背景分析 - Contexte</h4>
+        <p style="line-height:2;">"孝"是中国儒家 (Rujia, Confucianism) 文化中一个重要的内容。孔子在《论语》中就提到"孝悌 (filial piety and fraternal duty)"，认为人应该孝顺父母、爱兄弟。子路是个很孝顺的人，为了让父母过上更好的生活，他不怕辛苦，不怕寒冷。你愿意像他一样孝顺父母吗？</p>
+    </div>
+    <div class="app-box">
+        <h4>话题讨论 - Discussion : 什么是孝顺？</h4>
+        <div class="discussion-q">1. 中国人说的"孝"是什么意思？<br><em>Que signifie la "piete filiale" pour les Chinois ?</em></div>
+        <div class="discussion-q">2. 你认为应该如何去关爱你的父母？<br><em>Comment pensez-vous qu'on devrait prendre soin de ses parents ?</em></div>
+        <div class="discussion-q">3. 如果有一天，你的父母身体不好了，需要有人照顾时，你会怎么做？<br><em>Si un jour vos parents tombaient malades, que feriez-vous ?</em></div>
+    </div>
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'ecriture</h4>
+        <p>请以"从《子路背米》想到的"为题，谈一谈你对这个故事和对"孝"的看法。尽量用上本课所学的生词，字数不少于100字。</p>
+        <p style="color:var(--text-light); font-size:0.9rem; margin-top:8px;"><em>Ecrivez un paragraphe sur vos reflexions inspirees par l'histoire de Zilu, en utilisant le vocabulaire de la lecon. Min 100 caracteres.</em></p>
+    </div>
+</section>
+
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+
+<footer style="text-align:center; padding:40px 20px; color:var(--text-light); font-size:0.85rem; border-top:1px solid var(--border); margin-top:40px;">
+    HSK 5 Standard Course - Lesson 4 - 子路背米
+</footer>
+
+<script>
+const vocabData = [
+    {id:1, hanzi:"背", pinyin:"bei", pos:"v.", meaning:"porter sur le dos", cat:"verb"},
+    {id:2, hanzi:"从前", pinyin:"congqian", pos:"n.", meaning:"autrefois, dans le passe", cat:"other"},
+    {id:3, hanzi:"时期", pinyin:"shiqi", pos:"n.", meaning:"periode, epoque", cat:"noun"},
+    {id:4, hanzi:"流传", pinyin:"liuchuan", pos:"v.", meaning:"se repandre, transmettre", cat:"verb"},
+    {id:5, hanzi:"至今", pinyin:"zhijin", pos:"adv.", meaning:"jusqu'a present", cat:"other"},
+    {id:6, hanzi:"孝敬", pinyin:"xiaojing", pos:"v.", meaning:"honorer ses parents", cat:"verb"},
+    {id:7, hanzi:"农民", pinyin:"nongmin", pos:"n.", meaning:"paysan, agriculteur", cat:"noun"},
+    {id:8, hanzi:"战争", pinyin:"zhanzheng", pos:"n.", meaning:"guerre", cat:"noun"},
+    {id:9, hanzi:"满足", pinyin:"manzu", pos:"v.", meaning:"etre satisfait", cat:"verb"},
+    {id:10, hanzi:"惭愧", pinyin:"cankui", pos:"adj.", meaning:"honteux, gene", cat:"adj"},
+    {id:11, hanzi:"决心", pinyin:"juexin", pos:"v./n.", meaning:"se decider; determination", cat:"verb"},
+    {id:12, hanzi:"委屈", pinyin:"weiqu", pos:"v./adj.", meaning:"faire du tort; injustement traite", cat:"verb"},
+    {id:13, hanzi:"打听", pinyin:"dating", pos:"v.", meaning:"se renseigner", cat:"verb"},
+    {id:14, hanzi:"主人", pinyin:"zhuren", pos:"n.", meaning:"maitre, proprietaire", cat:"noun"},
+    {id:15, hanzi:"结实", pinyin:"jieshi", pos:"adj.", meaning:"solide, robuste", cat:"adj"},
+    {id:16, hanzi:"勤奋", pinyin:"qinfen", pos:"adj.", meaning:"assidu, diligent", cat:"adj"},
+    {id:17, hanzi:"银(子)", pinyin:"yin(zi)", pos:"n.", meaning:"argent (metal)", cat:"noun"},
+    {id:18, hanzi:"老实", pinyin:"laoshi", pos:"adj.", meaning:"honnete, franc", cat:"adj"},
+    {id:19, hanzi:"镇", pinyin:"zhen", pos:"n.", meaning:"bourg, petite ville", cat:"noun"},
+    {id:20, hanzi:"后背", pinyin:"houbei", pos:"n.", meaning:"dos (du corps)", cat:"noun"},
+    {id:21, hanzi:"滑", pinyin:"hua", pos:"adj./v.", meaning:"glissant; glisser", cat:"adj"},
+    {id:22, hanzi:"甩", pinyin:"shuai", pos:"v.", meaning:"lancer, projeter", cat:"verb"},
+    {id:23, hanzi:"顶", pinyin:"ding", pos:"v.", meaning:"braver, affronter", cat:"verb"},
+    {id:24, hanzi:"扶", pinyin:"fu", pos:"v.", meaning:"soutenir, tenir", cat:"verb"},
+    {id:25, hanzi:"不行", pinyin:"buxing", pos:"v.", meaning:"terriblement (degre)", cat:"other"},
+    {id:26, hanzi:"团圆", pinyin:"tuanyuan", pos:"v.", meaning:"se retrouver en famille", cat:"verb"},
+    {id:27, hanzi:"去世", pinyin:"qushi", pos:"v.", meaning:"deceder, mourir", cat:"verb"},
+    {id:28, hanzi:"国君", pinyin:"guojun", pos:"n.", meaning:"roi, souverain", cat:"noun"},
+    {id:29, hanzi:"本领", pinyin:"benling", pos:"n.", meaning:"competence, capacite", cat:"noun"},
+    {id:30, hanzi:"人才", pinyin:"rencai", pos:"n.", meaning:"personne de talent", cat:"noun"},
+    {id:31, hanzi:"官", pinyin:"guan", pos:"n.", meaning:"fonctionnaire", cat:"noun"},
+    {id:32, hanzi:"物质", pinyin:"wuzhi", pos:"n.", meaning:"materiel, matiere", cat:"noun"},
+    {id:33, hanzi:"反而", pinyin:"fan'er", pos:"adv.", meaning:"au contraire", cat:"other"},
+    {id:34, hanzi:"诚恳", pinyin:"chengken", pos:"adj.", meaning:"sincere, earnest", cat:"adj"},
+    {id:35, hanzi:"成就", pinyin:"chengjiu", pos:"n.", meaning:"reussite, accomplissement", cat:"noun"},
+    {id:36, hanzi:"古代", pinyin:"gudai", pos:"n.", meaning:"antiquite", cat:"noun"},
+    {id:37, hanzi:"孝顺", pinyin:"xiaoshun", pos:"v./adj.", meaning:"etre pieux envers ses parents", cat:"verb"},
+    {id:38, hanzi:"美德", pinyin:"meide", pos:"n.", meaning:"vertu", cat:"noun"},
+    {id:39, hanzi:"占", pinyin:"zhan", pos:"v.", meaning:"occuper, prendre", cat:"verb"},
+    {id:40, hanzi:"食物", pinyin:"shiwu", pos:"n.", meaning:"nourriture, aliment", cat:"noun"}
+];
+
+function renderVocab(filter='all') {
+    const grid = document.getElementById('vocabGrid');
+    const filtered = filter==='all' ? vocabData : vocabData.filter(v=>v.cat===filter);
+    grid.innerHTML = filtered.map(v=>`<div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')"><span class="vocab-num">#${v.id}</span><div class="hanzi">${v.hanzi}</div><div class="pinyin">${v.pinyin}</div><span class="pos">${v.pos}</span><div class="meaning-placeholder">Cliquez pour voir...</div><div class="meaning-hidden">${v.meaning}</div></div>`).join('');
+}
+function filterVocab(cat){document.querySelectorAll('.vocab-controls button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderVocab(cat);}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function hideAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('revealed'));}
+
+let fcIndex=0, fcOrder=[...Array(vocabData.length).keys()];
+function updateFlashcard(){const v=vocabData[fcOrder[fcIndex]];document.getElementById('fcHanzi').textContent=v.hanzi;document.getElementById('fcPinyin').textContent=v.pinyin;document.getElementById('fcMeaning').textContent=v.meaning;document.getElementById('fcPos').textContent=v.pos;document.getElementById('fcCurrent').textContent=fcIndex+1;document.getElementById('fcTotal').textContent=fcOrder.length;document.getElementById('flashcard').classList.remove('flipped');}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%fcOrder.length;updateFlashcard();}
+function prevCard(){fcIndex=(fcIndex-1+fcOrder.length)%fcOrder.length;updateFlashcard();}
+function shuffleCards(){for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}fcIndex=0;updateFlashcard();}
+
+const vocabQuizData=[
+    {q:"背 (bei) signifie :",options:["Pousser","Porter sur le dos","Tirer","Lancer"],correct:1},
+    {q:"Quel mot signifie 'se renseigner' ?",options:["打听","打工","打算","打扮"],correct:0},
+    {q:"惭愧 veut dire :",options:["Content","Fier","Honteux","Curieux"],correct:2},
+    {q:"勤奋 est un adjectif qui signifie :",options:["Paresseux","Diligent, assidu","Faible","Triste"],correct:1},
+    {q:"Comment dit-on 'deceder' ?",options:["去世","出世","来世","入世"],correct:0},
+    {q:"物质 signifie :",options:["Spirituel","Materiel","Emotionnel","Intellectuel"],correct:1},
+    {q:"Quel mot signifie 'vertu' ?",options:["美丽","美德","美好","美味"],correct:1},
+    {q:"诚恳 veut dire :",options:["Malhonnete","Sincere","Timide","Fier"],correct:1},
+    {q:"Que signifie 团圆 ?",options:["Se separer","Se retrouver en famille","Se disputer","Se marier"],correct:1},
+    {q:"滑 signifie :",options:["Sec","Glissant","Chaud","Dur"],correct:1}
+];
+
+const grammarQuizData=[
+    {q:"至今 signifie :",options:["Depuis toujours","Jusqu'a present","Autrefois","Dans le futur"],correct:1},
+    {q:"Dans '顶着大雪', 顶 signifie :",options:["Sommet","Chapeau","Braver, affronter","Pousser avec la tete"],correct:2},
+    {q:"'冻得不行' exprime :",options:["Un degre intense","Un refus","Une possibilite","Un souhait"],correct:0},
+    {q:"反而 est utilise pour :",options:["Ajouter une information","Exprimer le contraire de ce qu'on attend","Poser une question","Exprimer un souhait"],correct:1},
+    {q:"'这顶帽子' - 顶 est utilise comme :",options:["Verbe","Nom","Classificateur","Adverbe"],correct:2},
+    {q:"'流传至今' signifie :",options:["Se repandre partout","Transmis jusqu'a nos jours","Disparu depuis longtemps","Recemment decouvert"],correct:1},
+    {q:"Completez : 他不但没有帮忙，___ 添了更多麻烦。",options:["而且","反而","然而","从而"],correct:1},
+    {q:"'高兴得不得了' exprime :",options:["Un peu content","Pas du tout content","Extremement content","Normalement content"],correct:2}
+];
+
+const compQuizData=[
+    {q:"A quelle epoque vivait Zi Lu ?",options:["Dynastie Tang","Dynastie Han","Periode des Printemps et Automnes","Dynastie Ming"],correct:2},
+    {q:"Quel etait le lien entre Zi Lu et Confucius ?",options:["Son fils","Son plus vieux disciple","Son frere","Son maitre"],correct:1},
+    {q:"Pourquoi la famille de Zi Lu etait-elle pauvre ?",options:["A cause d'inondations","A cause de guerres continues","A cause de maladies","A cause d'impots"],correct:1},
+    {q:"Que souhaitaient les parents de Zi Lu ?",options:["De la viande","Un repas de riz","De l'argent","Une maison neuve"],correct:1},
+    {q:"Combien de temps Zi Lu a-t-il travaille chez le maitre ?",options:["3 mois","6 mois","1 an","2 ans"],correct:1},
+    {q:"Pourquoi le maitre lui a donne plus d'argent ?",options:["Par erreur","Comme bonus pour son travail assidu","Par pitie","Parce que Zi Lu l'a demande"],correct:1},
+    {q:"Qu'est devenu Zi Lu plus tard au Royaume de Chu ?",options:["Soldat","Fonctionnaire","Commercant","Professeur"],correct:1},
+    {q:"Que signifie '百善孝为先' ?",options:["Les 100 vertus sont egales","La piete filiale est la premiere de toutes les vertus","Il faut etre bon 100 fois","Les parents ont toujours raison"],correct:1}
+];
+
+function renderQuiz(data,containerId,prefix){const c=document.getElementById(containerId);c.innerHTML=data.map((q,i)=>`<div class="quiz-question" id="${prefix}-q${i}"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options">${q.options.map((opt,j)=>`<div class="quiz-option" onclick="answerQuiz('${prefix}',${i},${j})">${opt}</div>`).join('')}</div><div class="quiz-explanation" id="${prefix}-exp${i}"></div></div>`).join('');}
+
+const quizState={vocab:{score:0,answered:0,total:10},grammar:{score:0,answered:0,total:8},comp:{score:0,answered:0,total:8}};
+function getQuizData(p){if(p==='vocab')return vocabQuizData;if(p==='grammar')return grammarQuizData;return compQuizData;}
+function answerQuiz(prefix,qIdx,optIdx){const data=getQuizData(prefix);const qEl=document.getElementById(`${prefix}-q${qIdx}`);if(qEl.classList.contains('correct')||qEl.classList.contains('wrong'))return;const options=qEl.querySelectorAll('.quiz-option');const correct=data[qIdx].correct;options.forEach((o,i)=>{o.classList.add('disabled');if(i===correct)o.classList.add('selected-correct');if(i===optIdx&&i!==correct)o.classList.add('selected-wrong');});if(optIdx===correct){qEl.classList.add('correct');quizState[prefix].score++;}else{qEl.classList.add('wrong');}quizState[prefix].answered++;updateScore(prefix);}
+function updateScore(p){const s=quizState[p];document.getElementById(`${p}Score`).textContent=`${s.score} / ${s.total}`;document.getElementById(`${p}ScoreBar`).style.width=`${(s.score/s.total)*100}%`;}
+function resetQuiz(p){quizState[p]={score:0,answered:0,total:quizState[p].total};updateScore(p);const cid=p==='vocab'?'vocabQuizContainer':p==='grammar'?'grammarQuizContainer':'compQuizContainer';renderQuiz(getQuizData(p),cid,p);}
+function switchQuizTab(tabId){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById(tabId).classList.add('active');}
+
+let selectedFillWord=null;
+function selectFillWord(el){document.querySelectorAll('.fill-chip').forEach(c=>c.classList.remove('placed'));el.classList.add('placed');selectedFillWord=el.dataset.word;}
+function placeFillWord(blank){if(!selectedFillWord)return;blank.textContent=selectedFillWord;blank.dataset.placed=selectedFillWord;document.querySelectorAll('.fill-chip').forEach(c=>{if(c.dataset.word===selectedFillWord)c.classList.add('used');c.classList.remove('placed');});selectedFillWord=null;}
+function checkFillAnswers(){document.querySelectorAll('.fill-blank').forEach(b=>{const p=b.dataset.placed,a=b.dataset.answer;if(p===a){b.style.borderColor='var(--success)';b.style.background='#dcfce7';b.style.color='var(--success)';b.style.fontWeight='600';}else{b.style.borderColor='var(--wrong)';b.style.background='#fecaca';b.style.color='var(--wrong)';b.title=`Reponse : ${a}`;}});}
+function resetFill(){document.querySelectorAll('.fill-blank').forEach(b=>{b.textContent='___';b.dataset.placed='';b.style.borderColor='';b.style.background='';b.style.color='';b.style.fontWeight='';b.title='';});document.querySelectorAll('.fill-chip').forEach(c=>{c.classList.remove('used','placed');});selectedFillWord=null;}
+
+const choiceQuizData=[
+    {q:"昨天打不到车，是他___着我去的医院。",a:"背",b:"后背",correct:"背",explain:"背 comme verbe = porter sur le dos"},
+    {q:"我跟爸爸妈妈说好了，会在10点___回家。",a:"从前",b:"以前",correct:"以前",explain:"以前 pour un moment passe specifique"},
+    {q:"这是在警察局，你给我___点！别乱动！",a:"老实",b:"诚实",correct:"老实",explain:"老实 = docile/tranquille dans ce contexte"},
+    {q:"他没有接受那份优厚的待遇，___辞职了。",a:"而且",b:"反而",correct:"反而",explain:"反而 = au contraire (resultat inattendu)"}
+];
+function renderChoiceQuiz(){const c=document.getElementById('choiceQuizContainer');c.innerHTML=choiceQuizData.map((q,i)=>`<div class="quiz-question" id="choice-q${i}" style="margin-bottom:12px;"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options" style="grid-template-columns:1fr 1fr;"><div class="quiz-option" onclick="answerChoice(${i},'${q.a}')">${q.a}</div><div class="quiz-option" onclick="answerChoice(${i},'${q.b}')">${q.b}</div></div><div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div></div>`).join('');}
+function answerChoice(idx,answer){const qEl=document.getElementById(`choice-q${idx}`);if(qEl.classList.contains('correct')||qEl.classList.contains('wrong'))return;const data=choiceQuizData[idx];const options=qEl.querySelectorAll('.quiz-option');options.forEach(o=>{o.classList.add('disabled');if(o.textContent===data.correct)o.classList.add('selected-correct');if(o.textContent===answer&&answer!==data.correct)o.classList.add('selected-wrong');});qEl.classList.add(answer===data.correct?'correct':'wrong');document.getElementById(`choice-exp${idx}`).style.display='block';}
+
+window.addEventListener('scroll',()=>{const sections=document.querySelectorAll('section');const navLinks=document.querySelectorAll('.nav-inner a');let current='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)current=s.id;});navLinks.forEach(l=>{l.classList.toggle('active',l.getAttribute('href')===`#${current}`);});document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
+
+document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+</script>
+</body>
+</html>

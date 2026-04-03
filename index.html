@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK 5 - 刘老师的中文课</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+
+        :root {
+            --primary: #5b21b6;
+            --primary-light: #7c3aed;
+            --accent: #e74c3c;
+            --gold: #f39c12;
+            --gold-light: #fef5e7;
+            --bg: #f5f7fa;
+            --card: #ffffff;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #e8ecf1;
+            --success: #27ae60;
+            --gradient-hero: linear-gradient(135deg, #1e0a3c 0%, #5b21b6 40%, #7c3aed 100%);
+            --gradient-water: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 60px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--bg);
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+
+        .hero-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-avatar {
+            flex-shrink: 0;
+        }
+
+        .hero-avatar img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 20%;
+            border: 4px solid rgba(255,255,255,0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .hero-text h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 4px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero-text .hero-sub {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        .hero-text .hero-welcome {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+        }
+
+        /* ===== LEVEL SELECTOR ===== */
+        .level-section {
+            max-width: 1000px;
+            margin: -20px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .level-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .level-tab {
+            padding: 12px 32px;
+            border-radius: 30px;
+            border: 2px solid var(--border);
+            background: var(--card);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: all 0.3s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .level-tab:hover {
+            border-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .level-tab.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(26,82,118,0.3);
+        }
+
+        .level-tab.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-area {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title .title-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ===== BOOK SELECTOR ===== */
+        .book-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .book-tab {
+            padding: 8px 20px;
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: all 0.2s;
+        }
+
+        .book-tab:hover { border-color: var(--primary-light); color: var(--primary); }
+        .book-tab.active { background: var(--primary-light); border-color: var(--primary-light); color: white; }
+
+        /* ===== LESSON GRID ===== */
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 14px;
+        }
+
+        .lesson-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .lesson-card .lesson-num {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+            background: var(--primary-light);
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lesson-card .lesson-title-cn {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.4;
+        }
+
+        .lesson-card .lesson-title-en {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        .lesson-card .lesson-status {
+            margin-top: auto;
+            padding-top: 8px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .status-badge.ready {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-badge.coming {
+            background: #f3f4f6;
+            color: #9ca3af;
+        }
+
+        .lesson-card.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .lesson-card.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* ===== EXAM CARD ===== */
+        .exam-section {
+            margin-top: 40px;
+        }
+
+        .exam-card {
+            background: linear-gradient(135deg, #fef5e7, #fdebd0);
+            border: 2px solid #f5cba7;
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .exam-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(243,156,18,0.15);
+        }
+
+        .exam-card.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .exam-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold), #e67e22);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            color: white;
+            box-shadow: 0 4px 15px rgba(243,156,18,0.3);
+        }
+
+        .exam-info h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .exam-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* ===== STATS BAR ===== */
+        .stats-bar {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 24px;
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-card .stat-num {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 24px;
+            }
+            .hero-avatar img { width: 130px; height: 130px; }
+            .hero-text h1 { font-size: 2rem; }
+            .hero-text .hero-welcome { margin: 0 auto; }
+            .lesson-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+            .lesson-card { padding: 14px; }
+            .exam-card { flex-direction: column; text-align: center; }
+            .stats-bar { gap: 10px; }
+            .stat-card { padding: 12px 16px; }
+            .level-tabs { flex-wrap: wrap; }
+        }
+
+        @media (max-width: 480px) {
+            .lesson-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-inner">
+        <div class="hero-avatar">
+            <img src="images/liu.png" alt="刘老师">
+        </div>
+        <div class="hero-text">
+            <div class="hero-badge">CHINESE STUDY HUB</div>
+            <h1>刘老师的中文课</h1>
+            <p class="hero-sub">Les cours de chinois de Professeur Liu</p>
+            <p class="hero-welcome">Bienvenue ! Choisissez votre niveau HSK et la lecon que vous souhaitez etudier. Chaque lecon contient le texte, le vocabulaire avec flashcards, la grammaire, des quiz interactifs et des exercices.</p>
+        </div>
+    </div>
+</header>
+
+<!-- LEVEL SELECTOR -->
+<div class="level-section">
+    <div class="level-tabs">
+        <div class="level-tab disabled">HSK 1</div>
+        <div class="level-tab disabled">HSK 2</div>
+        <div class="level-tab disabled">HSK 3</div>
+        <div class="level-tab disabled">HSK 4</div>
+        <div class="level-tab active" onclick="selectLevel(5)">HSK 5</div>
+        <div class="level-tab disabled">HSK 6</div>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content-area" id="contentArea">
+
+    <!-- Stats -->
+    <div class="stats-bar">
+        <div class="stat-card">
+            <div class="stat-num">36</div>
+            <div class="stat-label">Lecons au total</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">7</div>
+            <div class="stat-label">Lecons disponibles</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">2500+</div>
+            <div class="stat-label">Mots de vocabulaire</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">上册 + 下册</div>
+            <div class="stat-label">2 volumes</div>
+        </div>
+    </div>
+
+    <!-- Book Tabs -->
+    <div class="section-title">
+        课文列表 <span style="font-size:0.9rem; font-weight:400; color:var(--text-light);">Liste des lecons</span>
+        <span class="title-line"></span>
+    </div>
+
+    <div class="book-tabs">
+        <div class="book-tab active" onclick="switchBook('shang')">上册 Livre 1 (L1-18)</div>
+        <div class="book-tab" onclick="switchBook('xia')">下册 Livre 2 (L19-36)</div>
+    </div>
+
+    <!-- Lesson Grid: Book 1 -->
+    <div class="lesson-grid" id="bookShang">
+    </div>
+
+    <!-- Lesson Grid: Book 2 -->
+    <div class="lesson-grid" id="bookXia" style="display:none;">
+    </div>
+
+    <!-- Exam Section -->
+    <div class="exam-section">
+        <div class="section-title">
+            模拟考试 <span style="font-size:0.9rem; font-weight:400; color:var(--text-light);">Examen blanc</span>
+            <span class="title-line"></span>
+        </div>
+
+        <a class="exam-card disabled" href="#">
+            <div class="exam-icon">考</div>
+            <div class="exam-info">
+                <h3>HSK 5 模拟考试</h3>
+                <p>Examen blanc complet HSK 5 - Ecoute, lecture, ecriture (bientot disponible)</p>
+            </div>
+        </a>
+    </div>
+</div>
+
+<footer>
+    刘老师的中文课 - HSK Standard Course - Chinese Study Hub
+</footer>
+
+<script>
+// ===== LESSON DATA =====
+const lessonsBook1 = [
+    { num: 1, cn: "爱的细节", en: "Details of Love", ready: true },
+    { num: 2, cn: "留串钥匙给父母", en: "Leave a Set of Keys for Parents", ready: true },
+    { num: 3, cn: "人生有选择，一切可改变", en: "Life Has Choices, Everything Can Change", ready: true },
+    { num: 4, cn: "子路背米", en: "Zilu Carrying Rice", ready: true },
+    { num: 5, cn: "济南的泉水", en: "Spring Water in Ji'nan", ready: true },
+    { num: 6, cn: "除夕的由来", en: "The Origin of New Year's Eve", ready: true },
+    { num: 7, cn: "命运掌握在自己手中", en: "Destiny Is in Your Own Hands" },
+    { num: 8, cn: "不可忽视的细节", en: "Details That Cannot Be Ignored" },
+    { num: 9, cn: "别样的北京", en: "A Different Beijing" },
+    { num: 10, cn: "争论的奇迹", en: "The Miracle of Debate", ready: true },
+    { num: 11, cn: "一杯温开水", en: "A Cup of Warm Water" },
+    { num: 12, cn: "多彩的民间艺术", en: "Colorful Folk Arts" },
+    { num: 13, cn: "永不放弃", en: "Never Give Up" },
+    { num: 14, cn: "令人伤脑筋的垃圾", en: "Troublesome Garbage" },
+    { num: 15, cn: "学会控制情绪", en: "Learn to Control Emotions" },
+    { num: 16, cn: "体重与健康", en: "Weight and Health" },
+    { num: 17, cn: "缺点也是优点", en: "Flaws Are Also Strengths" },
+    { num: 18, cn: "科技改变生活", en: "Technology Changes Life" },
+];
+
+const lessonsBook2 = [
+    { num: 19, cn: "打工还是创业", en: "Work for Others or Start a Business" },
+    { num: 20, cn: "出路", en: "A Way Out" },
+    { num: 21, cn: "交流的重要性", en: "The Importance of Communication" },
+    { num: 22, cn: "信任", en: "Trust" },
+    { num: 23, cn: "赞美的力量", en: "The Power of Praise" },
+    { num: 24, cn: "创意改变生活", en: "Creativity Changes Life" },
+    { num: 25, cn: "最美是百合", en: "Lilies Are the Most Beautiful" },
+    { num: 26, cn: "减压", en: "Reducing Stress" },
+    { num: 27, cn: "人与自然", en: "Man and Nature" },
+    { num: 28, cn: "网络改变世界", en: "The Internet Changes the World" },
+    { num: 29, cn: "学无止境", en: "Learning Has No End" },
+    { num: 30, cn: "四大发明", en: "The Four Great Inventions" },
+    { num: 31, cn: "社交礼仪", en: "Social Etiquette" },
+    { num: 32, cn: "中国的传统节日", en: "Traditional Chinese Festivals" },
+    { num: 33, cn: "乐观与悲观", en: "Optimism and Pessimism" },
+    { num: 34, cn: "成功的秘诀", en: "The Secret of Success" },
+    { num: 35, cn: "旅行的意义", en: "The Meaning of Travel" },
+    { num: 36, cn: "环保从我做起", en: "Environmental Protection Starts with Me" },
+];
+
+function renderLessons(lessons, containerId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = lessons.map(l => {
+        const isReady = l.ready === true;
+        const href = isReady ? `lessons/lesson${l.num}.html` : '#';
+        const disabledClass = isReady ? '' : 'disabled';
+        const statusHtml = isReady
+            ? '<span class="status-badge ready">DISPONIBLE</span>'
+            : '<span class="status-badge coming">A VENIR</span>';
+
+        return `
+            <a class="lesson-card ${disabledClass}" href="${href}">
+                <div class="lesson-num">${l.num}</div>
+                <div class="lesson-title-cn">${l.cn}</div>
+                <div class="lesson-title-en">${l.en}</div>
+                <div class="lesson-status">${statusHtml}</div>
+            </a>
+        `;
+    }).join('');
+}
+
+function switchBook(book) {
+    document.querySelectorAll('.book-tab').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+
+    if (book === 'shang') {
+        document.getElementById('bookShang').style.display = 'grid';
+        document.getElementById('bookXia').style.display = 'none';
+    } else {
+        document.getElementById('bookShang').style.display = 'none';
+        document.getElementById('bookXia').style.display = 'grid';
+    }
+}
+
+function selectLevel(level) {
+    // For now only HSK5 is active
+    document.querySelectorAll('.level-tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+    renderLessons(lessonsBook1, 'bookShang');
+    renderLessons(lessonsBook2, 'bookXia');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第6课 除夕的由来</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+        :root{--primary:#5b21b6;--primary-light:#7c3aed;--accent:#e74c3c;--gold:#f39c12;--gold-light:#fdebd0;--bg:#fafbfc;--card:#fff;--text:#2c3e50;--text-light:#7f8c8d;--border:#e8ecf1;--success:#27ae60;--wrong:#e74c3c;--gradient-water:linear-gradient(135deg,#667eea 0%,#764ba2 100%);--gradient-hero:linear-gradient(135deg,#7b0000 0%,#c0392b 30%,#e74c3c 70%,#f1948a 100%);}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;scroll-behavior:smooth;}
+        .hero{background:var(--gradient-hero);color:#fff;padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;background-size:cover;opacity:.3;}
+        .hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+        .hero .lesson-badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:6px 20px;border-radius:30px;font-size:.9rem;letter-spacing:2px;margin-bottom:20px;}
+        .hero h1{font-family:'Noto Serif SC',serif;font-size:3.5rem;font-weight:900;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+        .hero .subtitle{font-size:1.3rem;opacity:.9;font-weight:300;margin-bottom:30px;}
+        .hero .deco{font-size:2rem;letter-spacing:8px;opacity:.6;}
+        .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+        .nav-inner::-webkit-scrollbar{display:none;}
+        .nav-inner a{padding:14px 18px;text-decoration:none;color:var(--text-light);font-size:.9rem;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+        .nav-inner a:hover,.nav-inner a.active{color:var(--primary);border-bottom-color:var(--primary-light);}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+        section{padding:50px 0;}
+        .section-header{text-align:center;margin-bottom:40px;}
+        .section-header h2{font-family:'Noto Serif SC',serif;font-size:2rem;color:var(--primary);margin-bottom:6px;}
+        .section-header .section-sub{color:var(--text-light);font-size:.95rem;}
+        .section-divider{width:60px;height:3px;background:var(--gradient-water);margin:12px auto 0;border-radius:2px;}
+        .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);margin-bottom:24px;}
+        .card h3{font-size:1.2rem;color:var(--primary);margin-bottom:16px;}
+        .text-block{background:var(--card);border-radius:16px;padding:35px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);font-family:'Noto Serif SC',serif;font-size:1.1rem;line-height:2.2;}
+        .text-block p{text-indent:2em;margin-bottom:16px;}
+        .vocab-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
+        .vocab-controls button{padding:8px 20px;border:2px solid var(--border);background:#fff;border-radius:25px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s;color:var(--text);}
+        .vocab-controls button.active,.vocab-controls button:hover{border-color:var(--primary-light);background:var(--primary-light);color:#fff;}
+        .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .vocab-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .3s;position:relative;}
+        .vocab-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.08);border-color:var(--primary-light);}
+        .vocab-card .vocab-num{position:absolute;top:8px;right:12px;font-size:.75rem;color:var(--text-light);opacity:.5;}
+        .vocab-card .hanzi{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;color:var(--primary);}
+        .vocab-card .pinyin{color:var(--accent);font-size:.9rem;margin:4px 0;}
+        .vocab-card .pos{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;}
+        .vocab-card .meaning-hidden{display:none;}
+        .vocab-card.revealed .meaning-hidden{display:block;}
+        .vocab-card.revealed .meaning-placeholder{display:none;}
+        .meaning-placeholder{color:var(--text-light);font-size:.85rem;font-style:italic;margin-top:6px;}
+        .proper-nouns-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .pn-card{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;}
+        .pn-hanzi{font-family:'Noto Serif SC',serif;font-size:1.2rem;font-weight:700;color:var(--primary);min-width:50px;}
+        .pn-info .pn-pinyin{color:var(--accent);font-size:.85rem;}
+        .pn-info .pn-meaning{font-size:.9rem;}
+        .flashcard-area{display:flex;flex-direction:column;align-items:center;gap:20px;padding:20px 0;}
+        .flashcard-container{perspective:1000px;width:380px;height:260px;max-width:100%;}
+        .flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);cursor:pointer;}
+        .flashcard.flipped{transform:rotateY(180deg);}
+        .flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;}
+        .flashcard-front{background:linear-gradient(135deg,#7b0000,#c0392b);color:#fff;box-shadow:0 10px 40px rgba(192,57,43,.3);}
+        .flashcard-front .fc-hanzi{font-family:'Noto Serif SC',serif;font-size:3rem;font-weight:900;margin-bottom:10px;}
+        .flashcard-front .fc-pinyin{font-size:1.1rem;opacity:.8;}
+        .flashcard-front .fc-hint{font-size:.8rem;opacity:.5;margin-top:20px;}
+        .flashcard-back{background:#fff;border:2px solid var(--primary-light);transform:rotateY(180deg);box-shadow:0 10px 40px rgba(0,0,0,.1);}
+        .flashcard-back .fc-meaning{font-size:1.3rem;color:var(--primary);font-weight:600;}
+        .flashcard-back .fc-pos{background:var(--gold-light);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-top:10px;}
+        .fc-controls{display:flex;gap:12px;}
+        .fc-controls button{padding:10px 28px;border-radius:25px;border:none;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;}
+        .fc-btn-prev,.fc-btn-next{background:var(--primary-light);color:#fff;}
+        .fc-btn-prev:hover,.fc-btn-next:hover{background:var(--primary);}
+        .fc-btn-shuffle{background:#fff;border:2px solid var(--border)!important;color:var(--text);}
+        .fc-counter{color:var(--text-light);font-size:.9rem;}
+        .grammar-card{background:var(--card);border-radius:16px;border:1px solid var(--border);margin-bottom:20px;overflow:hidden;}
+        .grammar-header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;}
+        .grammar-header .grammar-num{background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+        .grammar-header .grammar-title{font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;}
+        .grammar-header .grammar-pinyin{font-size:.9rem;opacity:.8;}
+        .grammar-body{padding:24px;}
+        .grammar-rule{background:#f0f7ff;border-left:4px solid var(--primary-light);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:20px;font-size:.95rem;color:var(--primary);}
+        .grammar-example{padding:12px 0;border-bottom:1px solid var(--border);}
+        .grammar-example:last-child{border-bottom:none;}
+        .grammar-example .ex-cn{font-size:1.05rem;margin-bottom:4px;}
+        .grammar-example .ex-note{color:var(--text-light);font-size:.85rem;}
+        .grammar-example .ex-highlight{color:var(--accent);font-weight:600;}
+        .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+        .comparison-table th{background:var(--primary);color:#fff;padding:14px 18px;font-weight:600;text-align:center;}
+        .comparison-table td{padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top;font-size:.95rem;}
+        .comparison-table tr:last-child td{border-bottom:none;}
+        .comparison-table tr:nth-child(even){background:#f8fafc;}
+        .comparison-table .label-cell{background:#f0f4f8;font-weight:600;color:var(--primary);text-align:center;width:60px;}
+        .colloc-section{margin-bottom:24px;}
+        .colloc-label{display:inline-block;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:12px;}
+        .colloc-label.verb{background:#e74c3c;}.colloc-label.attr{background:#f39c12;}.colloc-label.adv{background:#27ae60;}.colloc-label.comp{background:#8e44ad;}
+        .colloc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+        .colloc-row:last-child{border-bottom:none;}
+        .colloc-word{font-weight:600;color:var(--primary);min-width:100px;font-size:1.1rem;}
+        .colloc-plus{color:var(--text-light);font-weight:700;}
+        .colloc-partners{display:flex;flex-wrap:wrap;gap:6px;}
+        .colloc-tag{background:#f0f4f8;padding:4px 12px;border-radius:15px;font-size:.85rem;}
+        .tab-bar{display:flex;gap:4px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:20px;}
+        .tab-btn{flex:1;padding:10px;border:none;background:transparent;border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--text-light);transition:all .2s;}
+        .tab-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+        .tab-content{display:none;}.tab-content.active{display:block;}
+        .quiz-score-bar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+        .score-display{font-size:1.5rem;font-weight:700;color:var(--primary);}
+        .score-bar-visual{flex:1;margin:0 20px;height:10px;background:var(--border);border-radius:5px;overflow:hidden;}
+        .score-bar-fill{height:100%;background:var(--gradient-water);border-radius:5px;transition:width .5s ease;width:0%;}
+        .quiz-reset-btn{padding:8px 20px;background:var(--primary-light);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;}
+        .quiz-question{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;transition:all .3s;}
+        .quiz-question.correct{border-color:var(--success);background:#f0fdf4;}
+        .quiz-question.wrong{border-color:var(--wrong);background:#fef2f2;}
+        .quiz-q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--primary-light);color:#fff;border-radius:50%;font-size:.8rem;font-weight:700;margin-right:10px;}
+        .quiz-q-text{font-size:1.05rem;margin-bottom:14px;}
+        .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .quiz-option{padding:12px 16px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.95rem;text-align:center;background:#fff;}
+        .quiz-option:hover{border-color:var(--primary-light);background:#f0f7ff;}
+        .quiz-option.selected-correct{border-color:var(--success);background:#dcfce7;color:var(--success);font-weight:600;}
+        .quiz-option.selected-wrong{border-color:var(--wrong);background:#fecaca;color:var(--wrong);font-weight:600;}
+        .quiz-option.disabled{pointer-events:none;opacity:.7;}
+        .quiz-explanation{display:none;margin-top:12px;padding:12px 16px;background:#fffbeb;border-radius:10px;font-size:.9rem;color:#92400e;border:1px solid #fde68a;}
+        .fill-blank{display:inline-block;min-width:80px;border-bottom:2px dashed var(--primary-light);padding:2px 8px;margin:0 4px;text-align:center;cursor:pointer;transition:all .2s;}
+        .fill-blank:hover{background:#f0f7ff;}
+        .fill-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center;}
+        .fill-chip{padding:8px 18px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s;}
+        .fill-chip:hover{border-color:var(--primary-light);background:#f0f7ff;}
+        .fill-chip.used{opacity:.4;pointer-events:none;}
+        .fill-chip.placed{background:var(--primary-light);color:#fff;border-color:var(--primary-light);}
+        .app-box{background:linear-gradient(135deg,#fff5f5,#fee2e2);border:1px solid #fca5a5;border-radius:16px;padding:30px;margin-bottom:20px;}
+        .app-box h4{color:var(--primary);font-size:1.1rem;margin-bottom:12px;}
+        .discussion-q{padding:10px 0;border-bottom:1px solid rgba(252,165,165,.5);font-size:.95rem;}
+        .discussion-q:last-child{border-bottom:none;}
+        .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
+        @media(max-width:768px){.hero h1{font-size:2.4rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.proper-nouns-grid{grid-template-columns:1fr;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}}
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
+        <h1>除夕的由来</h1>
+        <p class="subtitle">The Origin of New Year's Eve - Lesson 6</p>
+        <div class="deco">🧨 🏮 🎆 🐉</div>
+    </div>
+</header>
+
+<nav class="sticky-nav"><div class="nav-inner">
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+</div></nav>
+
+<main class="container">
+
+<section id="text">
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">除夕的由来 (671 caracteres)</p><div class="section-divider"></div></div>
+    <div class="text-block">
+        <p>在中国，人们把农历十二月三十日这一年中的最后一天叫作除夕，这一天，全家人会一起吃年夜饭，守岁。但是，人们为什么要把年三十叫作除夕呢？</p>
+        <p>传说在很久以前，有个叫作"夕"的怪物，经常出来伤害百姓，百姓对其恨之入骨，但是又十分无奈。当时有个英雄叫作七郎，他英俊高大，力大无比。七郎还有一条狗，这条狗非常勇敢，无论咬住什么都不会松口。</p>
+        <p>一天，七郎从外边回来，看到邻居家女孩的外公坐在路边哭，于是上前询问，一问才知道，原来天真可爱的女孩被"夕"吃掉了。七郎暗暗下定决心一定要杀死"夕"，替百姓除掉这个制造灾害的东西。于是七郎带着他的狗出发了，他到处打听"夕"的消息，但是一直找不到它。</p>
+        <p>这样过了差不多一年，这天正好是大年三十，七郎来到了一个热闹的城镇。这一年来，七郎虽然没有找到"夕"，但是了解到很多关于"夕"的情况：它一般在太阳落山后出来害人，到天亮前又会逃得连影子都找不着了；此外，它还特别害怕响声。于是七郎告诉这里的百姓，"夕"说不定晚上要出来伤害大家，让大家今晚熬夜等着，一见到"夕"就赶紧敲打东西，大家一起把"夕"杀掉。</p>
+        <p>太阳很快落山了，到了晚上，"夕"果然出来了。它想吃一户人家的姑娘，被这家人发现了，于是他们立刻敲响了家中的锅和盆子，跟着整个镇子都响了起来。"夕"吓得什么似的，急忙往外逃。七郎的狗追上了"夕"，并死死地咬住了它。七郎跑上前去，一箭射死了"夕"。</p>
+        <p>除掉"夕"以后，百姓纷纷对七郎表达谢意。由于这一天很有意义，于是人们就在每年的年三十这天晚上，仍然像那天一样整晚不睡觉，敲打出响声。就这样一代代传下来，形成了除夕夜守岁、放鞭炮的风俗。</p>
+    </div>
+</section>
+
+<section id="vocab">
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">41 mots + 2 noms propres - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (41)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout reveler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+    <h3 style="margin:30px 0 16px;color:var(--primary);font-size:1.2rem;">专有名词 - Noms propres</h3>
+    <div class="proper-nouns-grid">
+        <div class="pn-card"><div class="pn-hanzi">夕</div><div class="pn-info"><div class="pn-pinyin">Xi</div><div class="pn-meaning">Xi, nom d'un monstre legendaire</div></div></div>
+        <div class="pn-card"><div class="pn-hanzi">七郎</div><div class="pn-info"><div class="pn-pinyin">Qilang</div><div class="pn-meaning">Qilang, nom d'un heros legendaire</div></div></div>
+    </div>
+</section>
+
+<section id="flashcards">
+    <div class="section-header"><h2>卡片 - Flashcards</h2><p class="section-sub">Cliquez pour retourner la carte</p><div class="section-divider"></div></div>
+    <div class="flashcard-area">
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">41</span></div>
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front"><div class="fc-hanzi" id="fcHanzi">除夕</div><div class="fc-pinyin" id="fcPinyin">chuxi</div><div class="fc-hint">cliquez pour voir la traduction</div></div>
+                <div class="flashcard-back"><div class="fc-meaning" id="fcMeaning">reveillon du Nouvel An chinois</div><div class="fc-pos" id="fcPos">n.</div></div>
+            </div>
+        </div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+        </div>
+    </div>
+</section>
+
+<section id="grammar">
+    <div class="section-header"><h2>语法 - Grammaire</h2><p class="section-sub">4 points de grammaire essentiels</p><div class="section-divider"></div></div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">1</div><div><div class="grammar-title">替</div><div class="grammar-pinyin">ti</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Verbe :</strong> "remplacer, se substituer a". <strong>Preposition :</strong> "pour, au nom de" (= 给、为).</div>
+            <div class="grammar-example"><div class="ex-cn">见了外公，你<span class="ex-highlight">替</span>我向他问好。</div><div class="ex-note">Quand tu verras grand-pere, salue-le de ma part. (prep. = "pour moi")</div></div>
+            <div class="grammar-example"><div class="ex-cn">刘老师今天有点儿事来不了了，你能<span class="ex-highlight">替替</span>他吗？</div><div class="ex-note">M. Liu ne peut pas venir, peux-tu le remplacer ? (verbe = "remplacer")</div></div>
+            <div class="grammar-example"><div class="ex-cn">七郎暗暗下定决心一定要杀死"夕"，<span class="ex-highlight">替</span>百姓除掉这个制造灾害的东西。</div><div class="ex-note">Qilang decida secretement de tuer Xi, pour debarrasser le peuple de ce fleau. (prep.)</div></div>
+            <div class="grammar-example"><div class="ex-cn">李阳要去留学了，我们都<span class="ex-highlight">替</span>他高兴。</div><div class="ex-note">Li Yang va etudier a l'etranger, nous sommes tous contents pour lui. (prep.)</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">2</div><div><div class="grammar-title">说不定</div><div class="grammar-pinyin">shuobuding</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Verbe :</strong> "ne pas pouvoir dire avec certitude". <strong>Adverbe :</strong> "peut-etre, il se pourrait que" (forte probabilite estimee).</div>
+            <div class="grammar-example"><div class="ex-cn">这事儿经理已经同意了，只是出发的时间还<span class="ex-highlight">说不定</span>。</div><div class="ex-note">Le directeur a accepte, mais l'heure de depart n'est pas encore fixee. (verbe)</div></div>
+            <div class="grammar-example"><div class="ex-cn">周末他起得晚，这会儿<span class="ex-highlight">说不定</span>还在睡觉呢。</div><div class="ex-note">Le week-end il se leve tard, en ce moment il dort peut-etre encore. (adverbe)</div></div>
+            <div class="grammar-example"><div class="ex-cn">别随随便便就说放弃，<span class="ex-highlight">说不定</span>下次就成功了。</div><div class="ex-note">Ne renonce pas si facilement, peut-etre que la prochaine fois tu reussiras. (adverbe)</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">3</div><div><div class="grammar-title">似的</div><div class="grammar-pinyin">shide</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Particule :</strong> "像/跟/好像……似的" = comme, semblable a. "……得什么似的" = tellement que... (exageration).</div>
+            <div class="grammar-example"><div class="ex-cn">消息一出来，询问情况的电话雪片<span class="ex-highlight">似的</span>纷纷打来。</div><div class="ex-note">Des que la nouvelle est sortie, les appels sont arrives comme des flocons de neige.</div></div>
+            <div class="grammar-example"><div class="ex-cn">我不敢相信这是真的，好像做梦<span class="ex-highlight">似的</span>。</div><div class="ex-note">Je n'arrive pas a y croire, comme si je revais.</div></div>
+            <div class="grammar-example"><div class="ex-cn">"夕"吓得什么<span class="ex-highlight">似的</span>，急忙往外逃。</div><div class="ex-note">"Xi" etait effraye au plus haut point et s'est enfui precipitamment.</div></div>
+            <div class="grammar-example"><div class="ex-cn">刘方背着重重的电脑包挤地铁，下班回到家累得什么<span class="ex-highlight">似的</span>。</div><div class="ex-note">Liu Fang portait un sac lourd dans le metro, en rentrant il etait epuise au possible.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">4</div><div><div class="grammar-title">纷纷</div><div class="grammar-pinyin">fenfen</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Adjectif :</strong> "动/形 + 纷纷" = nombreux et desordonne (paroles, choses qui tombent). <strong>Adverbe :</strong> "纷纷 + verbe" = l'un apres l'autre, en masse.</div>
+            <div class="grammar-example"><div class="ex-cn">秋风刮起，落叶<span class="ex-highlight">纷纷</span>。</div><div class="ex-note">Le vent d'automne souffle, les feuilles tombent en tourbillonnant. (adjectif)</div></div>
+            <div class="grammar-example"><div class="ex-cn">事后，人们议论<span class="ex-highlight">纷纷</span>。</div><div class="ex-note">Apres l'evenement, les gens discutaient dans tous les sens. (adjectif)</div></div>
+            <div class="grammar-example"><div class="ex-cn">除掉"夕"以后，百姓<span class="ex-highlight">纷纷</span>对七郎表达谢意。</div><div class="ex-note">Apres avoir elimine Xi, le peuple exprima sa gratitude les uns apres les autres. (adverbe)</div></div>
+            <div class="grammar-example"><div class="ex-cn">要下雨了，路上的人<span class="ex-highlight">纷纷</span>往家里跑。</div><div class="ex-note">Il va pleuvoir, les gens dans la rue courent tous chez eux. (adverbe)</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="analysis">
+    <div class="section-header"><h2>词语辨析 - Analyse comparative</h2><p class="section-sub">打听 vs 询问</p><div class="section-divider"></div></div>
+    <div class="card">
+        <table class="comparison-table">
+            <thead><tr><th></th><th>打听 (dating)</th><th>询问 (xunwen)</th></tr></thead>
+            <tbody>
+                <tr><td class="label-cell">Points communs</td><td colspan="2" style="text-align:center;">Verbes. Signifient tous deux "demander, s'informer". Ex : 他打听/询问了老人的身体和生活情况。</td></tr>
+                <tr><td class="label-cell" rowspan="3">Differences</td>
+                    <td>1. Plutot oral, familier.<br><em>我跟您打听一下，附近有邮局吗？</em></td>
+                    <td>1. Plutot ecrit, formel.<br><em>他仔细地询问了公司近年来的发展情况。</em></td></tr>
+                <tr><td>2. Chercher des informations. Peut etre suivi du complement de resultat "到".<br><em>我到处打听也没打听到这家公司。</em></td>
+                    <td>2. Ne prend pas "到". Peut aussi signifier "demander l'avis".<br><em>他打电话询问刘教授对论文的意见。</em></td></tr>
+                <tr><td>3. Ne peut pas prendre d'objet de personne, ni etre utilise comme nom.</td>
+                    <td>3. Peut prendre un objet de personne + peut s'employer comme nom.<br><em>警察询问了当天见过他的邻居。</em><br><em>他详细地回答了病人的询问。</em></td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="collocation">
+    <div class="section-header"><h2>词语搭配 - Collocations</h2><p class="section-sub">Combinaisons essentielles</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="colloc-section"><div class="colloc-label verb">动词 + 宾语</div>
+            <div class="colloc-row"><span class="colloc-word">制造</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">飞机</span><span class="colloc-tag">机会</span><span class="colloc-tag">战争</span><span class="colloc-tag">难题</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">表达</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">思想</span><span class="colloc-tag">决心</span><span class="colloc-tag">心情</span><span class="colloc-tag">感受</span><span class="colloc-tag">意见</span><span class="colloc-tag">看法</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label attr">定语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">天真的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">孩子</span><span class="colloc-tag">性格</span><span class="colloc-tag">想法</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">整个</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">房间</span><span class="colloc-tag">社会</span><span class="colloc-tag">计划</span><span class="colloc-tag">夏天</span><span class="colloc-tag">过程</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label adv">状语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">仔细地 / 关心地 / 急忙 / 纷纷</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">询问</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">准确地 / 生动地 / 形象地</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">表达</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label comp">中心语 + 补语</div>
+            <div class="colloc-row"><span class="colloc-word">除</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">掉</span><span class="colloc-tag">去</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">吓 / 急 / 恨 / 羡慕 / 后悔</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">得什么似的</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="quiz-section">
+    <div class="section-header"><h2>测验 - Quiz</h2><p class="section-sub">Testez vos connaissances</p><div class="section-divider"></div></div>
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+    </div>
+    <div class="tab-content active" id="vocab-quiz"><div class="quiz-score-bar"><div class="score-display" id="vocabScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button></div><div id="vocabQuizContainer"></div></div>
+    <div class="tab-content" id="grammar-quiz"><div class="quiz-score-bar"><div class="score-display" id="grammarScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button></div><div id="grammarQuizContainer"></div></div>
+    <div class="tab-content" id="comprehension-quiz"><div class="quiz-score-bar"><div class="score-display" id="compScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button></div><div id="compQuizContainer"></div></div>
+</section>
+
+<section id="fill-quiz">
+    <div class="section-header"><h2>填空练习 - Exercices a trous</h2><p class="section-sub">Choisissez le mot correct</p><div class="section-divider"></div></div>
+    <div class="card" id="fillExercise">
+        <h3>Choisissez parmi : 赶紧、无奈、制造、果然、伤害、此外</h3>
+        <div class="fill-options" id="fillOptions">
+            <span class="fill-chip" data-word="果然" onclick="selectFillWord(this)">果然</span>
+            <span class="fill-chip" data-word="制造" onclick="selectFillWord(this)">制造</span>
+            <span class="fill-chip" data-word="无奈" onclick="selectFillWord(this)">无奈</span>
+            <span class="fill-chip" data-word="此外" onclick="selectFillWord(this)">此外</span>
+            <span class="fill-chip" data-word="赶紧" onclick="selectFillWord(this)">赶紧</span>
+            <span class="fill-chip" data-word="伤害" onclick="selectFillWord(this)">伤害</span>
+        </div>
+        <div style="margin-top:24px;">
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">1</span>还真让你说对了，他<span class="fill-blank" data-answer="果然" onclick="placeFillWord(this)">___</span>还不知道这件事。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">2</span>两岁的果果是我们家最能<span class="fill-blank" data-answer="制造" onclick="placeFillWord(this)">___</span>麻烦的人。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">3</span>姑娘脸上表现出很<span class="fill-blank" data-answer="无奈" onclick="placeFillWord(this)">___</span>的样子。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">4</span>他喜欢音乐、电影、运动，<span class="fill-blank" data-answer="此外" onclick="placeFillWord(this)">___</span>还喜欢旅行。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">5</span>不用送了，<span class="fill-blank" data-answer="赶紧" onclick="placeFillWord(this)">___</span>回去吧，家里还有别的客人呢。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">6</span>经常熬夜对身体的<span class="fill-blank" data-answer="伤害" onclick="placeFillWord(this)">___</span>极大。</div>
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+            <button onclick="checkFillAnswers()" style="padding:10px 30px;background:var(--primary-light);color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:.95rem;font-weight:600;">Verifier</button>
+            <button onclick="resetFill()" style="padding:10px 30px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.95rem;margin-left:10px;">Recommencer</button>
+        </div>
+    </div>
+    <div class="card"><h3>Choisissez la bonne reponse</h3><div id="choiceQuizContainer"></div></div>
+</section>
+
+<section id="application">
+    <div class="section-header"><h2>运用 - Application</h2><p class="section-sub">Contexte et discussion</p><div class="section-divider"></div></div>
+    <div class="app-box">
+        <h4>背景分析 - Contexte</h4>
+        <p style="line-height:2;">每个国家都有自己的传统节日，新年应该是最热闹的节日之一了。中国人过年时有很多风俗习惯和庆祝活动。亲朋好友要互相拜年，家家户户都要贴春联（chunlian, couplets de la Fete du Printemps），放鞭炮，包饺子，逛庙会（miaohuì, foire du temple），看舞龙、舞狮子。另外，大人们也忘不了给孩子红包，这个红包还有一个特别的名字叫"压岁钱"。</p>
+    </div>
+    <div class="app-box">
+        <h4>话题讨论 - Discussion : 我知道的有关中国新年的风俗习惯</h4>
+        <div class="discussion-q">1. 有关春节的风俗习惯，你比较了解的是什么？<br><em>Parmi les coutumes du Nouvel An chinois, lesquelles connaissez-vous le mieux ?</em></div>
+        <div class="discussion-q">2. 你是怎么知道这些情况的？你感兴趣的地方（或原因）是什么？<br><em>Comment avez-vous decouvert ces traditions ? Qu'est-ce qui vous interesse le plus ?</em></div>
+        <div class="discussion-q">3. 如果你能在中国过春节的话，你最想做的是什么？<br><em>Si vous pouviez feter le Nouvel An en Chine, que voudriez-vous faire le plus ?</em></div>
+    </div>
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'ecriture</h4>
+        <p>请以"我眼中的中国春节"为题写一段话，介绍一下你对中国春节的了解和看法。尽量用本课所学的生词，字数不少于100字。</p>
+    </div>
+</section>
+
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+<footer style="text-align:center;padding:40px 20px;color:var(--text-light);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px;">HSK 5 Standard Course - Lesson 6 - 除夕的由来</footer>
+
+<script>
+const vocabData=[
+    {id:1,hanzi:"除夕",pinyin:"chuxi",pos:"n.",meaning:"reveillon du Nouvel An chinois",cat:"noun"},
+    {id:2,hanzi:"由来",pinyin:"youlai",pos:"n.",meaning:"origine, provenance",cat:"noun"},
+    {id:3,hanzi:"农历",pinyin:"nongli",pos:"n.",meaning:"calendrier lunaire",cat:"noun"},
+    {id:4,hanzi:"守岁",pinyin:"shousui",pos:"v.",meaning:"veiller toute la nuit du Nouvel An",cat:"verb"},
+    {id:5,hanzi:"怪物",pinyin:"guaiwu",pos:"n.",meaning:"monstre, creature",cat:"noun"},
+    {id:6,hanzi:"伤害",pinyin:"shanghai",pos:"v.",meaning:"blesser, nuire",cat:"verb"},
+    {id:7,hanzi:"恨",pinyin:"hen",pos:"v.",meaning:"detester, hair",cat:"verb"},
+    {id:8,hanzi:"骨(头)",pinyin:"gu(tou)",pos:"n.",meaning:"os",cat:"noun"},
+    {id:9,hanzi:"无奈",pinyin:"wunai",pos:"v.",meaning:"etre impuissant, ne rien pouvoir faire",cat:"verb"},
+    {id:10,hanzi:"英雄",pinyin:"yingxiong",pos:"n.",meaning:"heros",cat:"noun"},
+    {id:11,hanzi:"英俊",pinyin:"yingjun",pos:"adj.",meaning:"beau, seduisant (homme)",cat:"adj"},
+    {id:12,hanzi:"咬",pinyin:"yao",pos:"v.",meaning:"mordre",cat:"verb"},
+    {id:13,hanzi:"外公",pinyin:"waigong",pos:"n.",meaning:"grand-pere maternel",cat:"noun"},
+    {id:14,hanzi:"询问",pinyin:"xunwen",pos:"v.",meaning:"interroger, demander (formel)",cat:"verb"},
+    {id:15,hanzi:"天真",pinyin:"tianzhen",pos:"adj.",meaning:"naif, innocent",cat:"adj"},
+    {id:16,hanzi:"杀",pinyin:"sha",pos:"v.",meaning:"tuer",cat:"verb"},
+    {id:17,hanzi:"(代)替",pinyin:"(dai)ti",pos:"prep./v.",meaning:"pour, au nom de ; remplacer",cat:"verb"},
+    {id:18,hanzi:"除",pinyin:"chu",pos:"v.",meaning:"eliminer, supprimer",cat:"verb"},
+    {id:19,hanzi:"制造",pinyin:"zhizao",pos:"v.",meaning:"fabriquer, creer",cat:"verb"},
+    {id:20,hanzi:"灾害",pinyin:"zaihai",pos:"n.",meaning:"catastrophe, calamite",cat:"noun"},
+    {id:21,hanzi:"逃",pinyin:"tao",pos:"v.",meaning:"s'enfuir, s'echapper",cat:"verb"},
+    {id:22,hanzi:"影子",pinyin:"yingzi",pos:"n.",meaning:"ombre, silhouette",cat:"noun"},
+    {id:23,hanzi:"此外",pinyin:"ciwai",pos:"conj.",meaning:"de plus, en outre",cat:"other"},
+    {id:24,hanzi:"说不定",pinyin:"shuobuding",pos:"adv.",meaning:"peut-etre, il se pourrait que",cat:"other"},
+    {id:25,hanzi:"熬夜",pinyin:"ao ye",pos:"v.",meaning:"veiller tard, faire une nuit blanche",cat:"verb"},
+    {id:26,hanzi:"赶紧",pinyin:"ganjin",pos:"adv.",meaning:"vite, immediatement",cat:"other"},
+    {id:27,hanzi:"果然",pinyin:"guoran",pos:"adv.",meaning:"comme prevu, effectivement",cat:"other"},
+    {id:28,hanzi:"姑娘",pinyin:"guniang",pos:"n.",meaning:"jeune fille",cat:"noun"},
+    {id:29,hanzi:"锅",pinyin:"guo",pos:"n.",meaning:"marmite, poele",cat:"noun"},
+    {id:30,hanzi:"盆(子)",pinyin:"pen(zi)",pos:"n.",meaning:"cuvette, bassine",cat:"noun"},
+    {id:31,hanzi:"整个",pinyin:"zhengge",pos:"adj.",meaning:"entier, tout",cat:"adj"},
+    {id:32,hanzi:"吓",pinyin:"xia",pos:"v.",meaning:"effrayer, faire peur",cat:"verb"},
+    {id:33,hanzi:"似的",pinyin:"shide",pos:"part.",meaning:"comme, semblable a",cat:"other"},
+    {id:34,hanzi:"追",pinyin:"zhui",pos:"v.",meaning:"poursuivre, courir apres",cat:"verb"},
+    {id:35,hanzi:"箭",pinyin:"jian",pos:"n.",meaning:"fleche",cat:"noun"},
+    {id:36,hanzi:"射(击)",pinyin:"she(ji)",pos:"v.",meaning:"tirer (une fleche), viser",cat:"verb"},
+    {id:37,hanzi:"纷纷",pinyin:"fenfen",pos:"adv.",meaning:"l'un apres l'autre, en masse",cat:"other"},
+    {id:38,hanzi:"表达",pinyin:"biaofa",pos:"v.",meaning:"exprimer, formuler",cat:"verb"},
+    {id:39,hanzi:"意义",pinyin:"yiyi",pos:"n.",meaning:"signification, importance",cat:"noun"},
+    {id:40,hanzi:"鞭炮",pinyin:"bianpao",pos:"n.",meaning:"petards, feux d'artifice",cat:"noun"},
+    {id:41,hanzi:"风俗",pinyin:"fengsu",pos:"n.",meaning:"coutume, tradition",cat:"noun"}
+];
+
+function renderVocab(filter='all'){const g=document.getElementById('vocabGrid');const f=filter==='all'?vocabData:vocabData.filter(v=>v.cat===filter);g.innerHTML=f.map(v=>`<div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')"><span class="vocab-num">#${v.id}</span><div class="hanzi">${v.hanzi}</div><div class="pinyin">${v.pinyin}</div><span class="pos">${v.pos}</span><div class="meaning-placeholder">Cliquez pour voir...</div><div class="meaning-hidden" style="font-size:.9rem;margin-top:6px;">${v.meaning}</div></div>`).join('');}
+function filterVocab(c){document.querySelectorAll('.vocab-controls button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderVocab(c);}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function hideAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('revealed'));}
+
+let fcIndex=0,fcOrder=[...Array(vocabData.length).keys()];
+function updateFlashcard(){const v=vocabData[fcOrder[fcIndex]];document.getElementById('fcHanzi').textContent=v.hanzi;document.getElementById('fcPinyin').textContent=v.pinyin;document.getElementById('fcMeaning').textContent=v.meaning;document.getElementById('fcPos').textContent=v.pos;document.getElementById('fcCurrent').textContent=fcIndex+1;document.getElementById('fcTotal').textContent=fcOrder.length;document.getElementById('flashcard').classList.remove('flipped');}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%fcOrder.length;updateFlashcard();}
+function prevCard(){fcIndex=(fcIndex-1+fcOrder.length)%fcOrder.length;updateFlashcard();}
+function shuffleCards(){for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}fcIndex=0;updateFlashcard();}
+
+const vocabQuizData=[
+    {q:"除夕 signifie :",options:["Noel","Reveillon du Nouvel An chinois","Fete des lanternes","Fete de la lune"],correct:1},
+    {q:"Quel mot signifie 'monstre' ?",options:["英雄","怪物","影子","骨头"],correct:1},
+    {q:"伤害 veut dire :",options:["Proteger","Aider","Blesser, nuire","Soigner"],correct:2},
+    {q:"Comment dit-on 'fleche' en chinois ?",options:["箭","刀","锅","棍"],correct:0},
+    {q:"无奈 exprime :",options:["La joie","La colere","L'impuissance, le desespoir","La fatigue"],correct:2},
+    {q:"Quel mot signifie 'coutume, tradition' ?",options:["意义","风俗","灾害","由来"],correct:1},
+    {q:"果然 signifie :",options:["Soudainement","Peut-etre","Comme prevu, effectivement","Rarement"],correct:2},
+    {q:"制造 veut dire :",options:["Detruire","Fabriquer, creer","Acheter","Vendre"],correct:1},
+    {q:"Que signifie 追 ?",options:["Fuir","Mordre","Poursuivre, courir apres","Tirer"],correct:2},
+    {q:"鞭炮 signifie :",options:["Tambour","Petards","Lanterne","Drapeau"],correct:1}
+];
+
+const grammarQuizData=[
+    {q:"Dans '替百姓除掉灾害', 替 est utilise comme :",options:["Verbe = remplacer","Preposition = pour, au nom de","Adverbe","Nom"],correct:1},
+    {q:"说不定 comme adverbe exprime :",options:["La certitude","L'impossibilite","La probabilite, le 'peut-etre'","Le refus"],correct:2},
+    {q:"Dans '吓得什么似的', 似的 exprime :",options:["La comparaison simple","L'exageration (tellement que...)","La negation","Le doute"],correct:1},
+    {q:"纷纷 comme adverbe signifie :",options:["Lentement","L'un apres l'autre, en masse","Silencieusement","Rarement"],correct:1},
+    {q:"Completez : 周末他起得晚，___还在睡觉呢。",options:["果然","说不定","此外","赶紧"],correct:1},
+    {q:"Quelle phrase utilise 替 comme verbe (remplacer) ?",options:["我替你高兴","你能替替他吗？","替百姓除掉灾害","替我向他问好"],correct:1},
+    {q:"'落叶纷纷' - 纷纷 est ici :",options:["Adverbe","Adjectif (nombreux et desordonne)","Verbe","Nom"],correct:1},
+    {q:"好像做梦似的 signifie :",options:["Il fait un cauchemar","Comme dans un reve","Il ne reve jamais","Il va s'endormir"],correct:1}
+];
+
+const compQuizData=[
+    {q:"Qu'est-ce que 除夕 ?",options:["Le 1er jour du calendrier lunaire","Le dernier jour de l'annee lunaire","Un festival d'ete","L'anniversaire de Confucius"],correct:1},
+    {q:"Qui est '夕' dans la legende ?",options:["Un heros","Un empereur","Un monstre","Un dieu"],correct:2},
+    {q:"Quel est le talent special du chien de Qilang ?",options:["Il court tres vite","Il ne lache jamais sa prise quand il mord","Il peut voler","Il retrouve toute trace"],correct:1},
+    {q:"Comment Qilang a-t-il appris l'existence de Xi ?",options:["Par un livre","En voyant le grand-pere d'une fille pleurer","Par un reve","Par un messager du roi"],correct:1},
+    {q:"De quoi Xi a-t-il peur ?",options:["De l'eau","Du feu","Des bruits forts","De la lumiere"],correct:2},
+    {q:"Comment les villageois ont-ils fait du bruit ?",options:["Avec des tambours","En frappant des marmites et des bassines","En criant","Avec des trompettes"],correct:1},
+    {q:"Comment Qilang a-t-il tue Xi ?",options:["Avec une epee","Avec une fleche","Avec un baton","Avec ses poings"],correct:1},
+    {q:"Quelle tradition est nee de cette legende ?",options:["Manger des gateaux de lune","Veiller la nuit du Nouvel An et tirer des petards","Lancer des lanternes","Porter du rouge"],correct:1}
+];
+
+function renderQuiz(data,cid,prefix){document.getElementById(cid).innerHTML=data.map((q,i)=>`<div class="quiz-question" id="${prefix}-q${i}"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options">${q.options.map((o,j)=>`<div class="quiz-option" onclick="answerQuiz('${prefix}',${i},${j})">${o}</div>`).join('')}</div></div>`).join('');}
+const quizState={vocab:{score:0,answered:0,total:10},grammar:{score:0,answered:0,total:8},comp:{score:0,answered:0,total:8}};
+function getQuizData(p){return p==='vocab'?vocabQuizData:p==='grammar'?grammarQuizData:compQuizData;}
+function answerQuiz(p,qi,oi){const d=getQuizData(p),qE=document.getElementById(`${p}-q${qi}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const opts=qE.querySelectorAll('.quiz-option'),c=d[qi].correct;opts.forEach((o,i)=>{o.classList.add('disabled');if(i===c)o.classList.add('selected-correct');if(i===oi&&i!==c)o.classList.add('selected-wrong');});qE.classList.add(oi===c?'correct':'wrong');if(oi===c)quizState[p].score++;quizState[p].answered++;updateScore(p);}
+function updateScore(p){const s=quizState[p];document.getElementById(`${p}Score`).textContent=`${s.score} / ${s.total}`;document.getElementById(`${p}ScoreBar`).style.width=`${(s.score/s.total)*100}%`;}
+function resetQuiz(p){quizState[p]={score:0,answered:0,total:quizState[p].total};updateScore(p);renderQuiz(getQuizData(p),p==='vocab'?'vocabQuizContainer':p==='grammar'?'grammarQuizContainer':'compQuizContainer',p);}
+function switchQuizTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById(t).classList.add('active');}
+
+let selectedFillWord=null;
+function selectFillWord(el){document.querySelectorAll('.fill-chip').forEach(c=>c.classList.remove('placed'));el.classList.add('placed');selectedFillWord=el.dataset.word;}
+function placeFillWord(b){if(!selectedFillWord)return;b.textContent=selectedFillWord;b.dataset.placed=selectedFillWord;document.querySelectorAll('.fill-chip').forEach(c=>{if(c.dataset.word===selectedFillWord)c.classList.add('used');c.classList.remove('placed');});selectedFillWord=null;}
+function checkFillAnswers(){document.querySelectorAll('.fill-blank').forEach(b=>{const p=b.dataset.placed,a=b.dataset.answer;if(p===a){b.style.borderColor='var(--success)';b.style.background='#dcfce7';b.style.color='var(--success)';b.style.fontWeight='600';}else{b.style.borderColor='var(--wrong)';b.style.background='#fecaca';b.style.color='var(--wrong)';b.title=`Reponse : ${a}`;}});}
+function resetFill(){document.querySelectorAll('.fill-blank').forEach(b=>{b.textContent='___';b.dataset.placed='';b.style.borderColor='';b.style.background='';b.style.color='';b.style.fontWeight='';b.title='';});document.querySelectorAll('.fill-chip').forEach(c=>{c.classList.remove('used','placed');});selectedFillWord=null;}
+
+const choiceQuizData=[
+    {q:"人的思想感情是非常丰富的，有些是无法用语言准确___的。",a:"表示",b:"表达",correct:"表达",explain:"表达 = exprimer (sentiments, idees). 表示 = indiquer, signifier."},
+    {q:"你___给他回个电话，他好像有什么急事找你。",a:"急忙",b:"赶紧",correct:"赶紧",explain:"赶紧 = vite, depeche-toi (conseil/ordre). 急忙 = precipitamment (description d'action passee)."},
+    {q:"今天是不可能了，你___安排一个时间见面吧。",a:"此外",b:"另外",correct:"另外",explain:"另外 = par ailleurs, en plus (introduit un nouveau sujet). 此外 = de plus (ajoute a ce qui precede)."},
+    {q:"明星的影响力___不一般。",a:"果然",b:"居然",correct:"果然",explain:"果然 = comme prevu, effectivement. 居然 = de maniere inattendue."},
+    {q:"向您___一件事，你知道王老板有什么兴趣爱好吗？",a:"打听",b:"询问",correct:"打听",explain:"打听 = se renseigner (oral, informel). 询问 = interroger (ecrit, formel)."},
+    {q:"她___到北京有位医生能治这个病。",a:"打听",b:"询问",correct:"打听",explain:"打听 peut etre suivi du complement de resultat '到'. 询问 ne le peut pas."}
+];
+function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').innerHTML=choiceQuizData.map((q,i)=>`<div class="quiz-question" id="choice-q${i}" style="margin-bottom:12px;"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options" style="grid-template-columns:1fr 1fr;"><div class="quiz-option" onclick="answerChoice(${i},'${q.a}')">${q.a}</div><div class="quiz-option" onclick="answerChoice(${i},'${q.b}')">${q.b}</div></div><div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div></div>`).join('');}
+function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
+
+window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
+document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+</script>
+</body>
+</html>

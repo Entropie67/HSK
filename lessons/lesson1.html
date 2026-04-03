@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第1课 爱的细节</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+
+        :root {
+            --primary: #5b21b6;
+            --primary-light: #7c3aed;
+            --accent: #e74c3c;
+            --accent-soft: #f1948a;
+            --gold: #f39c12;
+            --gold-light: #fdebd0;
+            --bg: #fafbfc;
+            --card: #ffffff;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #e8ecf1;
+            --success: #27ae60;
+            --wrong: #e74c3c;
+            --gradient-water: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-hero: linear-gradient(135deg, #1e0a3c 0%, #4c1d95 30%, #7c3aed 70%, #a78bfa 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            scroll-behavior: smooth;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+
+        .hero .lesson-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .hero .water-drops {
+            font-size: 2rem;
+            letter-spacing: 8px;
+            opacity: 0.6;
+        }
+
+        /* ===== NAV ===== */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 20px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav-inner::-webkit-scrollbar { display: none; }
+
+        .nav-inner a {
+            padding: 14px 18px;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-inner a:hover, .nav-inner a.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary-light);
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 50px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .section-header .section-sub {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-water);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h3 .icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== TEXT SECTION ===== */
+        .text-block {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1rem;
+            line-height: 2.2;
+            color: var(--text);
+            column-count: 1;
+        }
+
+        .text-block p {
+            text-indent: 2em;
+            margin-bottom: 16px;
+        }
+
+        .text-highlight {
+            background: linear-gradient(to bottom, transparent 60%, #fef9c3 60%);
+            padding: 0 2px;
+        }
+
+        .pinyin-toggle-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .pinyin-toggle-bar button {
+            background: var(--primary-light);
+            color: white;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .pinyin-toggle-bar button:hover {
+            background: var(--primary);
+        }
+
+        /* ===== VOCAB ===== */
+        .vocab-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .vocab-controls button {
+            padding: 8px 20px;
+            border: 2px solid var(--border);
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            color: var(--text);
+        }
+
+        .vocab-controls button.active,
+        .vocab-controls button:hover {
+            border-color: var(--primary-light);
+            background: var(--primary-light);
+            color: white;
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 14px;
+        }
+
+        .vocab-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vocab-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-color: var(--primary-light);
+        }
+
+        .vocab-card .vocab-num {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            opacity: 0.5;
+        }
+
+        .vocab-card .hanzi {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .vocab-card .pinyin {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin: 4px 0;
+        }
+
+        .vocab-card .pos {
+            display: inline-block;
+            background: var(--gold-light);
+            color: var(--gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 6px;
+        }
+
+        .vocab-card .meaning {
+            color: var(--text);
+            font-size: 0.9rem;
+            margin-top: 6px;
+        }
+
+        .vocab-card .meaning-hidden {
+            display: none;
+        }
+
+        .vocab-card.revealed .meaning-hidden { display: block; }
+        .vocab-card.revealed .meaning-placeholder { display: none; }
+
+        .meaning-placeholder {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        .vocab-card .star-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0.3;
+            transition: all 0.2s;
+        }
+
+        .vocab-card .star-btn:hover,
+        .vocab-card .star-btn.starred {
+            opacity: 1;
+        }
+
+        /* ===== FLASHCARD ===== */
+        .flashcard-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .flashcard-container {
+            perspective: 1000px;
+            width: 380px;
+            height: 260px;
+            max-width: 100%;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .flashcard.flipped { transform: rotateY(180deg); }
+
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .flashcard-front {
+            background: linear-gradient(135deg, #4c1d95, #7c3aed);
+            color: white;
+            box-shadow: 0 10px 40px rgba(91,33,182,0.3);
+        }
+
+        .flashcard-front .fc-hanzi {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .flashcard-front .fc-pinyin {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .flashcard-front .fc-hint {
+            font-size: 0.8rem;
+            opacity: 0.5;
+            margin-top: 20px;
+        }
+
+        .flashcard-back {
+            background: white;
+            border: 2px solid var(--primary-light);
+            transform: rotateY(180deg);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .flashcard-back .fc-meaning {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .flashcard-back .fc-pos {
+            background: var(--gold-light);
+            color: var(--gold);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .fc-controls {
+            display: flex;
+            gap: 12px;
+        }
+
+        .fc-controls button {
+            padding: 10px 28px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .fc-btn-prev, .fc-btn-next {
+            background: var(--primary-light);
+            color: white;
+        }
+
+        .fc-btn-prev:hover, .fc-btn-next:hover {
+            background: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .fc-btn-shuffle {
+            background: white;
+            border: 2px solid var(--border) !important;
+            color: var(--text);
+        }
+
+        .fc-counter {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ===== GRAMMAR ===== */
+        .grammar-card {
+            background: var(--card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .grammar-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .grammar-header .grammar-num {
+            background: rgba(255,255,255,0.2);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .grammar-header .grammar-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .grammar-header .grammar-pinyin {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .grammar-body {
+            padding: 24px;
+        }
+
+        .grammar-rule {
+            background: #f0f7ff;
+            border-left: 4px solid var(--primary-light);
+            padding: 14px 18px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: var(--primary);
+        }
+
+        .grammar-example {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .grammar-example:last-child { border-bottom: none; }
+
+        .grammar-example .ex-cn {
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .grammar-example .ex-note {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .grammar-example .ex-highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ===== WORD ANALYSIS ===== */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            padding: 14px 18px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .comparison-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table tr:last-child td { border-bottom: none; }
+
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+
+        .comparison-table .label-cell {
+            background: #f0f4f8;
+            font-weight: 600;
+            color: var(--primary);
+            text-align: center;
+            width: 60px;
+        }
+
+        /* ===== QUIZ ===== */
+        .quiz-container { margin-bottom: 30px; }
+
+        .quiz-question {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.3s;
+        }
+
+        .quiz-question.correct {
+            border-color: var(--success);
+            background: #f0fdf4;
+        }
+
+        .quiz-question.wrong {
+            border-color: var(--wrong);
+            background: #fef2f2;
+        }
+
+        .quiz-q-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--primary-light);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .quiz-q-text {
+            font-size: 1.05rem;
+            margin-bottom: 14px;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            text-align: center;
+            background: white;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary-light);
+            background: #f0f7ff;
+        }
+
+        .quiz-option.selected-correct {
+            border-color: var(--success);
+            background: #dcfce7;
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .quiz-option.selected-wrong {
+            border-color: var(--wrong);
+            background: #fecaca;
+            color: var(--wrong);
+            font-weight: 600;
+        }
+
+        .quiz-option.show-correct {
+            border-color: var(--success);
+            background: #dcfce7;
+        }
+
+        .quiz-option.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .quiz-explanation {
+            display: none;
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: #fffbeb;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+
+        .quiz-score-bar {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .score-display {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .score-bar-visual {
+            flex: 1;
+            margin: 0 20px;
+            height: 10px;
+            background: var(--border);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .score-bar-fill {
+            height: 100%;
+            background: var(--gradient-water);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        .quiz-reset-btn {
+            padding: 8px 20px;
+            background: var(--primary-light);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* ===== FILL-IN QUIZ ===== */
+        .fill-blank {
+            display: inline-block;
+            min-width: 80px;
+            border-bottom: 2px dashed var(--primary-light);
+            padding: 2px 8px;
+            margin: 0 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .fill-blank:hover { background: #f0f7ff; }
+
+        .fill-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+
+        .fill-chip {
+            padding: 8px 18px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .fill-chip:hover {
+            border-color: var(--primary-light);
+            background: #f0f7ff;
+        }
+
+        .fill-chip.used {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .fill-chip.placed {
+            background: var(--primary-light);
+            color: white;
+            border-color: var(--primary-light);
+        }
+
+        /* ===== COLLOCATION ===== */
+        .colloc-section {
+            margin-bottom: 24px;
+        }
+
+        .colloc-label {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .colloc-label.verb { background: #e74c3c; }
+        .colloc-label.attr { background: #f39c12; }
+        .colloc-label.adv { background: #27ae60; }
+        .colloc-label.comp { background: #8e44ad; }
+        .colloc-label.quant { background: #7c3aed; }
+
+        .colloc-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .colloc-row:last-child { border-bottom: none; }
+
+        .colloc-word {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 60px;
+            font-size: 1.1rem;
+        }
+
+        .colloc-plus {
+            color: var(--text-light);
+            font-weight: 700;
+        }
+
+        .colloc-partners {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .colloc-tag {
+            background: #f0f4f8;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* ===== APPLICATION ===== */
+        .app-box {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border: 1px solid #bae6fd;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .app-box h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .discussion-q {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(186,230,253,0.5);
+            font-size: 0.95rem;
+        }
+
+        .discussion-q:last-child { border-bottom: none; }
+
+        /* ===== PROGRESS ===== */
+        .progress-panel {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            display: none;
+            width: 280px;
+        }
+
+        .progress-panel.show { display: block; }
+
+        .progress-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 51;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-water);
+            color: white;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(102,126,234,0.4);
+            transition: transform 0.2s;
+        }
+
+        .progress-toggle:hover { transform: scale(1.1); }
+
+        .progress-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .progress-check {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        .progress-check.done {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.4rem; }
+            .hero .subtitle { font-size: 1rem; }
+            .vocab-grid { grid-template-columns: 1fr; }
+            .quiz-options { grid-template-columns: 1fr; }
+            .flashcard-container { width: 100%; height: 240px; }
+            .quiz-score-bar { flex-direction: column; gap: 10px; text-align: center; }
+            .score-bar-visual { width: 100%; margin: 0; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        /* ===== TABS ===== */
+        .tab-bar {
+            display: flex;
+            gap: 4px;
+            background: #f0f4f8;
+            padding: 4px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 24px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 49;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
+        <h1>爱的细节</h1>
+        <p class="subtitle">Details of Love - Lesson 1</p>
+        <div class="water-drops">~ ~ ~</div>
+    </div>
+</header>
+
+<!-- NAVIGATION -->
+<nav class="sticky-nav">
+    <div class="nav-inner">
+        <a href="#text">课文 Texte</a>
+        <a href="#vocab">生词 Vocabulaire</a>
+        <a href="#flashcards">卡片 Flashcards</a>
+        <a href="#grammar">语法 Grammaire</a>
+        <a href="#analysis">辨析 Analyse</a>
+        <a href="#collocation">搭配 Collocations</a>
+        <a href="#quiz-section">测验 Quiz</a>
+        <a href="#fill-quiz">填空 Exercices</a>
+        <a href="#application">运用 Application</a>
+    </div>
+</nav>
+
+<main class="container">
+
+<!-- ==================== TEXT ==================== -->
+<section id="text">
+    <div class="section-header">
+        <h2>课文 - Texte</h2>
+        <p class="section-sub">爱的细节 (662 caracteres)</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="text-block">
+        <p>电台要选出一对最恩爱的夫妻。对比后，有三对夫妻入围。</p>
+
+        <p>评委叫第一对夫妻说说他俩是如何恩爱的。妻子说，前几年她全身瘫痪了，医生说她站起来的可能性很小。别人都觉得她的丈夫会跟她离婚，她也想过要自杀。但丈夫一直鼓励她，为她不知找了多少家医院，并且几年如一日地照顾她，从不抱怨。在丈夫的爱护和努力下，她终于又站了起来。她的故事十分感人，评委们听了都很感动。</p>
+
+        <p>随后进来的是第二对夫妻，他俩说，十几年的婚姻生活中，他们从来没为任何事红过脸、吵过架，一直相亲相爱、相敬如宾。评委们听了暗暗点头。</p>
+
+        <p>轮到第三对夫妻了，却很长时间不见人。评委们等得有些不耐烦，就走出来看个究竟。只见第三对夫妻俩然坐在门口，男人的头靠在女人的肩膀上，睡着了。一个评委要上前喊醒那个男的，女的却伸出手指做了个小声的动作，然后小心地从包里拿出纸笔，用左手歪歪扭扭地写下一行字递给评委，而她的右肩一直让丈夫的脑袋靠着。评委们看那纸条上面写着：别出声，他昨晚没睡好。一个评委在后面续写了一句话：但是女士，我们得听你们夫妻俩的叙述啊！女人又写：那我们就不参加了。</p>
+
+        <p>大家很吃惊，这个女人为了不影响丈夫睡觉，居然放弃这次机会！但评委们还是决定先不催他们，而是再等待一段时间。</p>
+
+        <p>过了一会儿，男人醒了。评委们问他怎么那么黑。男人不好意思地笑笑说："我家住一楼，蚊子多。昨晚半夜我被蚊子叮醒了，我怕我老婆再被吵醒，所以后半夜就在为她赶蚊子。"</p>
+
+        <p>最后的结果是，电台增加了两项奖项，将第一对夫妻评为"患难与共夫妻"，将第二对夫妻评为"相敬如宾夫妻"，而真正的"最恩爱夫妻"奖，却给了第三对夫妻。</p>
+    </div>
+</section>
+
+<!-- ==================== VOCABULARY ==================== -->
+<section id="vocab">
+    <div class="section-header">
+        <h2>生词 - Vocabulaire</h2>
+        <p class="section-sub">38 mots - Cliquez pour reveler la traduction</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (38)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout reveler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+
+    <div class="vocab-grid" id="vocabGrid">
+        <!-- Generated by JS -->
+    </div>
+</section>
+
+<!-- ==================== FLASHCARDS ==================== -->
+<section id="flashcards">
+    <div class="section-header">
+        <h2>卡片 - Flashcards</h2>
+        <p class="section-sub">Cliquez pour retourner la carte</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="flashcard-area">
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">38</span></div>
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front">
+                    <div class="fc-hanzi" id="fcHanzi">细节</div>
+                    <div class="fc-pinyin" id="fcPinyin">xijie</div>
+                    <div class="fc-hint">cliquez pour voir la traduction</div>
+                </div>
+                <div class="flashcard-back">
+                    <div class="fc-meaning" id="fcMeaning">detail</div>
+                    <div class="fc-pos" id="fcPos">n.</div>
+                </div>
+            </div>
+        </div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== GRAMMAR ==================== -->
+<section id="grammar">
+    <div class="section-header">
+        <h2>语法 - Grammaire</h2>
+        <p class="section-sub">3 points de grammaire essentiels</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <!-- Grammar 1: 如何 -->
+    <div class="grammar-card">
+        <div class="grammar-header">
+            <div class="grammar-num">1</div>
+            <div>
+                <div class="grammar-title">如何</div>
+                <div class="grammar-pinyin">ruhe</div>
+            </div>
+        </div>
+        <div class="grammar-body">
+            <div class="grammar-rule">
+                <strong>Pronom interrogatif</strong>, equivalent a 怎么 mais plus formel/ecrit. Peut aussi etre utilise en fin de phrase pour demander un avis ou une situation.
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">评委叫第一对夫妻说说他俩是<span class="ex-highlight">如何</span>恩爱的。</div>
+                <div class="ex-note">Les juges demandent au premier couple comment ils s'aiment</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">最近身体<span class="ex-highlight">如何</span>？</div>
+                <div class="ex-note">Comment va votre sante recemment ? (demande d'avis/situation)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grammar 2: 靠 -->
+    <div class="grammar-card">
+        <div class="grammar-header">
+            <div class="grammar-num">2</div>
+            <div>
+                <div class="grammar-title">靠</div>
+                <div class="grammar-pinyin">kao</div>
+            </div>
+        </div>
+        <div class="grammar-body">
+            <div class="grammar-rule">
+                <strong>Verbe</strong> avec plusieurs sens : 1. S'appuyer sur (靠着/在...) 2. Compter sur, dependre de 3. Etre pres de
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">男人的头<span class="ex-highlight">靠</span>在女人的肩膀上。</div>
+                <div class="ex-note">= s'appuyer sur - La tete de l'homme repose sur l'epaule de la femme</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">在家<span class="ex-highlight">靠</span>父母，出门<span class="ex-highlight">靠</span>朋友。</div>
+                <div class="ex-note">= compter sur - A la maison on compte sur les parents, dehors sur les amis</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">我的座位是<span class="ex-highlight">靠</span>窗的座位。</div>
+                <div class="ex-note">= etre pres de - Ma place est pres de la fenetre</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grammar 3: 居然 -->
+    <div class="grammar-card">
+        <div class="grammar-header">
+            <div class="grammar-num">3</div>
+            <div>
+                <div class="grammar-title">居然</div>
+                <div class="grammar-pinyin">juran</div>
+            </div>
+        </div>
+        <div class="grammar-body">
+            <div class="grammar-rule">
+                <strong>Adverbe</strong> indiquant la surprise ou l'inattendu. Exprime que quelque chose est contraire aux attentes.
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">这么简单的题，你<span class="ex-highlight">居然</span>也不会做？</div>
+                <div class="ex-note">Un exercice si simple, et tu ne sais meme pas le faire ?</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">这个女人为了不影响丈夫睡觉，<span class="ex-highlight">居然</span>放弃这次机会！</div>
+                <div class="ex-note">Cette femme a meme renonce a cette occasion pour ne pas deranger son mari !</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== WORD ANALYSIS ==================== -->
+<section id="analysis">
+    <div class="section-header">
+        <h2>词语辨析 - Analyse comparative</h2>
+        <p class="section-sub">如何 vs 怎么</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="card">
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>如何 (ruhe)</th>
+                    <th>怎么 (zenme)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="label-cell">Points communs</td>
+                    <td colspan="2" style="text-align:center;">Pronoms interrogatifs. Tous deux servent a interroger sur la maniere/methode.</td>
+                </tr>
+                <tr>
+                    <td class="label-cell" rowspan="3">Differences</td>
+                    <td>1. Plus ecrit, plus formel.<br><em>评委叫第一对夫妻说说他俩是如何恩爱的。</em></td>
+                    <td>1. Plus oral, plus familier.<br><em>你怎么去学校？</em></td>
+                </tr>
+                <tr>
+                    <td>2. Ne peut pas interroger sur la raison.</td>
+                    <td>2. Peut interroger sur la raison.<br><em>今天怎么这么冷？</em></td>
+                </tr>
+                <tr>
+                    <td>3. Peut etre utilise en fin de phrase pour demander une situation/un avis.<br><em>最近身体如何？</em></td>
+                    <td>3. Peut etre utilise en debut de phrase pour exprimer la surprise.<br><em>怎么，你不认识我了？！</em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ==================== COLLOCATION ==================== -->
+<section id="collocation">
+    <div class="section-header">
+        <h2>词语搭配 - Collocations</h2>
+        <p class="section-sub">Combinaisons essentielles de la lecon</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="card">
+        <div class="colloc-section">
+            <div class="colloc-label verb">动词 + 宾语 (Verbe + Objet)</div>
+            <div class="colloc-row">
+                <span class="colloc-word">抱怨</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">别人</span>
+                    <span class="colloc-tag">妻子</span>
+                    <span class="colloc-tag">餐厅的菜不好吃</span>
+                </div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">爱护</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">环境</span>
+                    <span class="colloc-tag">花草树木</span>
+                    <span class="colloc-tag">公物</span>
+                    <span class="colloc-tag">学生</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="colloc-section">
+            <div class="colloc-label attr">定语 + 中心语 (Attribut + Nom)</div>
+            <div class="colloc-row">
+                <span class="colloc-word">电影/小说/生活 的</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">细节</span>
+                </div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">电台 的</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">记者</span>
+                    <span class="colloc-tag">广播</span>
+                    <span class="colloc-tag">新闻</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="colloc-section">
+            <div class="colloc-label adv">状语 + 中心语 (Adverbe + Verbe)</div>
+            <div class="colloc-row">
+                <span class="colloc-word">简单/详细 地</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">对比</span>
+                </div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">大声/兴奋地/对他</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">喊</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="colloc-section">
+            <div class="colloc-label comp">中心语 + 补语 (Verbe + Complement)</div>
+            <div class="colloc-row">
+                <span class="colloc-word">伸</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">出(来)</span>
+                    <span class="colloc-tag">进(去)</span>
+                    <span class="colloc-tag">开......</span>
+                    <span class="colloc-tag">到......</span>
+                </div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">吵</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">醒</span>
+                    <span class="colloc-tag">死了</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="colloc-section">
+            <div class="colloc-label quant">数量词 + 名词 (Classificateur)</div>
+            <div class="colloc-row">
+                <span class="colloc-word">一项</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">运动</span>
+                    <span class="colloc-tag">工作</span>
+                    <span class="colloc-tag">任务</span>
+                    <span class="colloc-tag">计划</span>
+                    <span class="colloc-tag">技术</span>
+                    <span class="colloc-tag">研究</span>
+                    <span class="colloc-tag">调查</span>
+                    <span class="colloc-tag">奖项</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== QUIZ ==================== -->
+<section id="quiz-section">
+    <div class="section-header">
+        <h2>测验 - Quiz</h2>
+        <p class="section-sub">Testez vos connaissances sur la lecon</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+    </div>
+
+    <!-- Vocab Quiz -->
+    <div class="tab-content active" id="vocab-quiz">
+        <div class="quiz-score-bar">
+            <div class="score-display" id="vocabScore">0 / 0</div>
+            <div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div>
+            <button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button>
+        </div>
+        <div id="vocabQuizContainer"></div>
+    </div>
+
+    <!-- Grammar Quiz -->
+    <div class="tab-content" id="grammar-quiz">
+        <div class="quiz-score-bar">
+            <div class="score-display" id="grammarScore">0 / 0</div>
+            <div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div>
+            <button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button>
+        </div>
+        <div id="grammarQuizContainer"></div>
+    </div>
+
+    <!-- Comprehension Quiz -->
+    <div class="tab-content" id="comprehension-quiz">
+        <div class="quiz-score-bar">
+            <div class="score-display" id="compScore">0 / 0</div>
+            <div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div>
+            <button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button>
+        </div>
+        <div id="compQuizContainer"></div>
+    </div>
+</section>
+
+<!-- ==================== FILL-IN QUIZ ==================== -->
+<section id="fill-quiz">
+    <div class="section-header">
+        <h2>填空练习 - Exercices a trous</h2>
+        <p class="section-sub">Choisissez le mot correct pour completer les phrases</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="card" id="fillExercise">
+        <h3>Choisissez parmi : 催、递、喊、项、爱护、抱怨、等待</h3>
+        <div class="fill-options" id="fillOptions">
+            <span class="fill-chip" data-word="爱护" onclick="selectFillWord(this)">爱护</span>
+            <span class="fill-chip" data-word="项" onclick="selectFillWord(this)">项</span>
+            <span class="fill-chip" data-word="等待" onclick="selectFillWord(this)">等待</span>
+            <span class="fill-chip" data-word="催" onclick="selectFillWord(this)">催</span>
+            <span class="fill-chip" data-word="递" onclick="selectFillWord(this)">递</span>
+            <span class="fill-chip" data-word="喊" onclick="selectFillWord(this)">喊</span>
+            <span class="fill-chip" data-word="抱怨" onclick="selectFillWord(this)">抱怨</span>
+        </div>
+        <div style="margin-top: 24px;">
+            <div class="quiz-question" style="margin-bottom: 12px;">
+                <span class="quiz-q-num">1</span>
+                她从小就 <span class="fill-blank" data-answer="爱护" onclick="placeFillWord(this)">___</span> 小动物。
+            </div>
+            <div class="quiz-question" style="margin-bottom: 12px;">
+                <span class="quiz-q-num">2</span>
+                关于这段对话，下面哪 <span class="fill-blank" data-answer="项" onclick="placeFillWord(this)">___</span> 是正确的？
+            </div>
+            <div class="quiz-question" style="margin-bottom: 12px;">
+                <span class="quiz-q-num">3</span>
+                请大家耐心地 <span class="fill-blank" data-answer="等待" onclick="placeFillWord(this)">___</span> 一会儿，不要 <span class="fill-blank" data-answer="催" onclick="placeFillWord(this)">___</span> 他。
+            </div>
+            <div class="quiz-question" style="margin-bottom: 12px;">
+                <span class="quiz-q-num">4</span>
+                请把那本杂志 <span class="fill-blank" data-answer="递" onclick="placeFillWord(this)">___</span> 给我。
+            </div>
+            <div class="quiz-question" style="margin-bottom: 12px;">
+                <span class="quiz-q-num">5</span>
+                火车快到的时候你 <span class="fill-blank" data-answer="喊" onclick="placeFillWord(this)">___</span> 我一声。
+            </div>
+            <div class="quiz-question" style="margin-bottom: 12px;">
+                <span class="quiz-q-num">6</span>
+                不要总是 <span class="fill-blank" data-answer="抱怨" onclick="placeFillWord(this)">___</span> 别人，要想想能不能改变自己。
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 16px;">
+            <button onclick="checkFillAnswers()" style="padding: 10px 30px; background: var(--primary-light); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 0.95rem; font-weight: 600;">Verifier les reponses</button>
+            <button onclick="resetFill()" style="padding: 10px 30px; background: white; border: 2px solid var(--border); border-radius: 25px; cursor: pointer; font-size: 0.95rem; margin-left: 10px;">Recommencer</button>
+        </div>
+    </div>
+
+    <!-- Choice quiz -->
+    <div class="card">
+        <h3>Choisissez entre : 如何 vs 怎么 / 耐心 vs 耐烦 / 吵 vs 吵架 / 居然 vs 仍然</h3>
+        <div id="choiceQuizContainer"></div>
+    </div>
+</section>
+
+<!-- ==================== APPLICATION ==================== -->
+<section id="application">
+    <div class="section-header">
+        <h2>运用 - Application</h2>
+        <p class="section-sub">Contexte et discussion</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="app-box">
+        <h4>背景分析 - Contexte</h4>
+        <p style="line-height: 2;">在这个世界上，人和人之间会有各种各样的关系，比如同学关系、同事关系、邻居关系等，而人际关系中最亲密的一种关系，应该是夫妻关系了。无论是中国人还是外国人，都很重视自己的婚姻。有人认为夫妻之间最重要的是恩爱，有人说是诚实，也有人说是关爱和理解。</p>
+    </div>
+
+    <div class="app-box">
+        <h4>话题讨论 - Discussion : 理想的夫妻关系是什么样的？</h4>
+        <div class="discussion-q">1. 本文提到的三对夫妻中，哪对夫妻给你留下的印象最深？<br><em>Parmi les trois couples mentionnes dans le texte, lequel vous a le plus marque ?</em></div>
+        <div class="discussion-q">2. 这对夫妻的什么地方让你感动？为什么？<br><em>Qu'est-ce qui vous a touche chez ce couple ? Pourquoi ?</em></div>
+        <div class="discussion-q">3. 你认为理想的夫妻关系应该是什么样的？<br><em>Selon vous, a quoi devrait ressembler une relation de couple ideale ?</em></div>
+    </div>
+
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'ecriture</h4>
+        <p>请以"理想的夫妻关系"为题写一段话。尽量用上本课所学的生词，字数不少于100字。</p>
+        <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 8px;"><em>Ecrivez un paragraphe intitule "La relation de couple ideale" en utilisant le vocabulaire de la lecon. Minimum 100 caracteres.</em></p>
+    </div>
+</section>
+
+</main>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+
+<footer style="text-align:center; padding: 40px 20px; color: var(--text-light); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 40px;">
+    HSK 5 Standard Course - Lesson 1 - 爱的细节
+</footer>
+
+<script>
+// ===== VOCABULARY DATA =====
+const vocabData = [
+    {id:1, hanzi:"细节", pinyin:"xijie", pos:"n.", meaning:"detail", meaningEn:"detail", cat:"noun"},
+    {id:2, hanzi:"电台", pinyin:"diantai", pos:"n.", meaning:"station de radio", meaningEn:"radio station", cat:"noun"},
+    {id:3, hanzi:"恩爱", pinyin:"en'ai", pos:"adj.", meaning:"amoureux (entre epoux)", meaningEn:"(of husband and wife) loving", cat:"adj"},
+    {id:4, hanzi:"对比", pinyin:"duibi", pos:"v.", meaning:"comparer, contraster", meaningEn:"to compare, to contrast", cat:"verb"},
+    {id:5, hanzi:"入围", pinyin:"ruwei", pos:"v.", meaning:"etre preselectionne", meaningEn:"to be shortlisted", cat:"verb"},
+    {id:6, hanzi:"评委", pinyin:"pingwei", pos:"n.", meaning:"juge, membre du jury", meaningEn:"judge, member of a judging panel", cat:"noun"},
+    {id:7, hanzi:"如何", pinyin:"ruhe", pos:"pron.", meaning:"comment (formel)", meaningEn:"how", cat:"other"},
+    {id:8, hanzi:"瘫痪", pinyin:"tanhuan", pos:"v.", meaning:"etre paralyse", meaningEn:"to be paralyzed", cat:"verb"},
+    {id:9, hanzi:"离婚", pinyin:"li hun", pos:"v.", meaning:"divorcer", meaningEn:"to divorce", cat:"verb"},
+    {id:10, hanzi:"自杀", pinyin:"zisha", pos:"v.", meaning:"se suicider", meaningEn:"to commit suicide", cat:"verb"},
+    {id:11, hanzi:"抱怨", pinyin:"baoyuan", pos:"v.", meaning:"se plaindre", meaningEn:"to complain", cat:"verb"},
+    {id:12, hanzi:"爱护", pinyin:"aihu", pos:"v.", meaning:"proteger, prendre soin de", meaningEn:"to take good care of", cat:"verb"},
+    {id:13, hanzi:"婚姻", pinyin:"hunyin", pos:"n.", meaning:"mariage", meaningEn:"marriage", cat:"noun"},
+    {id:14, hanzi:"吵架", pinyin:"chao jia", pos:"v.", meaning:"se disputer", meaningEn:"to quarrel", cat:"verb"},
+    {id:15, hanzi:"相敬如宾", pinyin:"xiangjing rubin", pos:"expr.", meaning:"se respecter mutuellement comme des hotes", meaningEn:"to respect each other like guests", cat:"other"},
+    {id:16, hanzi:"暗暗", pinyin:"an'an", pos:"adv.", meaning:"secretement, en soi-meme", meaningEn:"secretly, to oneself", cat:"other"},
+    {id:17, hanzi:"轮", pinyin:"lun", pos:"v.", meaning:"tour (a son tour)", meaningEn:"to take turns", cat:"verb"},
+    {id:18, hanzi:"不耐烦", pinyin:"bu naifan", pos:"adj.", meaning:"impatient", meaningEn:"impatient", cat:"adj"},
+    {id:19, hanzi:"靠", pinyin:"kao", pos:"v.", meaning:"s'appuyer contre", meaningEn:"to lean against", cat:"verb"},
+    {id:20, hanzi:"肩膀", pinyin:"jianbang", pos:"n.", meaning:"epaule", meaningEn:"shoulder", cat:"noun"},
+    {id:21, hanzi:"喊", pinyin:"han", pos:"v.", meaning:"crier, appeler", meaningEn:"to shout, to call", cat:"verb"},
+    {id:22, hanzi:"伸", pinyin:"shen", pos:"v.", meaning:"etendre, tendre", meaningEn:"to stretch, to extend", cat:"verb"},
+    {id:23, hanzi:"手指", pinyin:"shouzhi", pos:"n.", meaning:"doigt", meaningEn:"finger", cat:"noun"},
+    {id:24, hanzi:"歪歪扭扭", pinyin:"waiwainiuniu", pos:"adj.", meaning:"tordu, de travers", meaningEn:"crooked, askew", cat:"adj"},
+    {id:25, hanzi:"递", pinyin:"di", pos:"v.", meaning:"tendre, passer", meaningEn:"to hand over, to pass", cat:"verb"},
+    {id:26, hanzi:"脑袋", pinyin:"naodai", pos:"n.", meaning:"tete", meaningEn:"head", cat:"noun"},
+    {id:27, hanzi:"女士", pinyin:"nushi", pos:"n.", meaning:"madame", meaningEn:"lady, madam", cat:"noun"},
+    {id:28, hanzi:"叙述", pinyin:"xushu", pos:"v.", meaning:"raconter, narrer", meaningEn:"to narrate", cat:"verb"},
+    {id:29, hanzi:"居然", pinyin:"juran", pos:"adv.", meaning:"de maniere inattendue", meaningEn:"indicating unexpectedness", cat:"other"},
+    {id:30, hanzi:"催", pinyin:"cui", pos:"v.", meaning:"presser, insister", meaningEn:"to urge, to push", cat:"verb"},
+    {id:31, hanzi:"等待", pinyin:"dengdai", pos:"v.", meaning:"attendre", meaningEn:"to wait", cat:"verb"},
+    {id:32, hanzi:"蚊子", pinyin:"wenzi", pos:"n.", meaning:"moustique", meaningEn:"mosquito", cat:"noun"},
+    {id:33, hanzi:"半夜", pinyin:"banye", pos:"n.", meaning:"minuit", meaningEn:"midnight", cat:"noun"},
+    {id:34, hanzi:"叮", pinyin:"ding", pos:"v.", meaning:"piquer", meaningEn:"to bite, to sting", cat:"verb"},
+    {id:35, hanzi:"老婆", pinyin:"laopo", pos:"n.", meaning:"epouse (familier)", meaningEn:"wife", cat:"noun"},
+    {id:36, hanzi:"吵", pinyin:"chao", pos:"v./adj.", meaning:"faire du bruit; bruyant", meaningEn:"to make noise; noisy", cat:"verb"},
+    {id:37, hanzi:"项", pinyin:"xiang", pos:"m.", meaning:"classificateur pour elements", meaningEn:"used for itemized things", cat:"other"},
+    {id:38, hanzi:"患难与共", pinyin:"huannan yugong", pos:"expr.", meaning:"partager les epreuves", meaningEn:"to share weal and woe", cat:"other"},
+];
+
+// ===== RENDER VOCABULARY =====
+function renderVocab(filter = 'all') {
+    const grid = document.getElementById('vocabGrid');
+    const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+    grid.innerHTML = filtered.map(v => `
+        <div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')">
+            <span class="vocab-num">#${v.id}</span>
+            <div class="hanzi">${v.hanzi}</div>
+            <div class="pinyin">${v.pinyin}</div>
+            <span class="pos">${v.pos}</span>
+            <div class="meaning-placeholder">Cliquez pour voir...</div>
+            <div class="meaning-hidden">${v.meaning}</div>
+        </div>
+    `).join('');
+}
+
+function filterVocab(cat) {
+    document.querySelectorAll('.vocab-controls button').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    renderVocab(cat);
+}
+
+function revealAll() {
+    document.querySelectorAll('.vocab-card').forEach(c => c.classList.add('revealed'));
+}
+
+function hideAll() {
+    document.querySelectorAll('.vocab-card').forEach(c => c.classList.remove('revealed'));
+}
+
+// ===== FLASHCARDS =====
+let fcIndex = 0;
+let fcOrder = [...Array(vocabData.length).keys()];
+
+function updateFlashcard() {
+    const v = vocabData[fcOrder[fcIndex]];
+    document.getElementById('fcHanzi').textContent = v.hanzi;
+    document.getElementById('fcPinyin').textContent = v.pinyin;
+    document.getElementById('fcMeaning').textContent = v.meaning;
+    document.getElementById('fcPos').textContent = v.pos;
+    document.getElementById('fcCurrent').textContent = fcIndex + 1;
+    document.getElementById('fcTotal').textContent = fcOrder.length;
+    document.getElementById('flashcard').classList.remove('flipped');
+}
+
+function flipCard() {
+    document.getElementById('flashcard').classList.toggle('flipped');
+}
+
+function nextCard() {
+    fcIndex = (fcIndex + 1) % fcOrder.length;
+    updateFlashcard();
+}
+
+function prevCard() {
+    fcIndex = (fcIndex - 1 + fcOrder.length) % fcOrder.length;
+    updateFlashcard();
+}
+
+function shuffleCards() {
+    for (let i = fcOrder.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [fcOrder[i], fcOrder[j]] = [fcOrder[j], fcOrder[i]];
+    }
+    fcIndex = 0;
+    updateFlashcard();
+}
+
+// ===== QUIZ DATA =====
+const vocabQuizData = [
+    {q: "细节 signifie :", options: ["Resume", "Detail", "Resultat", "Exemple"], correct: 1},
+    {q: "Quel mot signifie 'se plaindre' ?", options: ["爱护", "抱怨", "催", "叙述"], correct: 1},
+    {q: "恩爱 veut dire :", options: ["Amical", "Amoureux (entre epoux)", "Respectueux", "Jaloux"], correct: 1},
+    {q: "瘫痪 signifie :", options: ["Etre fatigue", "Etre paralyse", "Etre malade", "Etre blesse"], correct: 1},
+    {q: "Comment dit-on 'epaule' en chinois ?", options: ["脑袋", "手指", "肩膀", "脖子"], correct: 2},
+    {q: "居然 est un adverbe qui exprime :", options: ["La certitude", "L'inattendu, la surprise", "La frequence", "La duree"], correct: 1},
+    {q: "Quel mot signifie 'tendre, passer' ?", options: ["伸", "递", "喊", "催"], correct: 1},
+    {q: "婚姻 veut dire :", options: ["Famille", "Amour", "Mariage", "Relation"], correct: 2},
+    {q: "Que signifie 蚊子 ?", options: ["Mouche", "Araignee", "Moustique", "Fourmi"], correct: 2},
+    {q: "靠 signifie :", options: ["S'appuyer contre", "Frapper", "Pousser", "Tirer"], correct: 0},
+];
+
+const grammarQuizData = [
+    {q: "如何 est equivalent a quel mot en chinois oral ?", options: ["什么", "怎么", "哪里", "为什么"], correct: 1},
+    {q: "Dans '男人的头靠在女人的肩膀上', 靠 signifie :", options: ["Compter sur", "S'appuyer sur", "Etre pres de", "Pousser"], correct: 1},
+    {q: "居然 exprime :", options: ["Une consequence logique", "Un resultat attendu", "Quelque chose d'inattendu", "Une condition"], correct: 2},
+    {q: "如何 peut etre utilise en fin de phrase pour :", options: ["Exprimer la surprise", "Demander un avis/une situation", "Exprimer la colere", "Donner un ordre"], correct: 1},
+    {q: "'在家靠父母，出门靠朋友' - 靠 signifie ici :", options: ["S'appuyer physiquement", "Compter sur, dependre de", "Etre pres de", "S'asseoir a cote de"], correct: 1},
+    {q: "Quelle phrase utilise correctement 居然 ?", options: ["他居然每天去上班。", "这么简单的题，你居然也不会做？", "我居然吃了早饭。", "她居然是我的朋友。"], correct: 1},
+];
+
+const compQuizData = [
+    {q: "Que veut selectionner la station de radio ?", options: ["Le meilleur chanteur", "Le couple le plus amoureux", "La famille la plus grande", "Le mari le plus gentil"], correct: 1},
+    {q: "Combien de couples sont preselectionnes ?", options: ["2 couples", "3 couples", "4 couples", "5 couples"], correct: 1},
+    {q: "Qu'est-il arrive a la femme du premier couple ?", options: ["Elle a perdu son travail", "Elle etait paralysee", "Elle a eu un accident de voiture", "Elle etait malade du coeur"], correct: 1},
+    {q: "Comment le deuxieme couple decrit-il leur relation ?", options: ["Ils se disputent souvent", "Ils ne se sont jamais disputes en 10+ ans", "Ils voyagent beaucoup ensemble", "Ils travaillent ensemble"], correct: 1},
+    {q: "Que fait la femme du troisieme couple quand les juges arrivent ?", options: ["Elle les salue", "Elle ecrit un mot pour ne pas reveiller son mari", "Elle part", "Elle pleure"], correct: 1},
+    {q: "Pourquoi le mari du troisieme couple n'a-t-il pas dormi ?", options: ["Il travaillait", "Il chassait les moustiques pour sa femme", "Il regardait la television", "Il preparait le concours"], correct: 1},
+    {q: "Combien de prix supplementaires la station de radio a-t-elle ajoutes ?", options: ["1 prix", "2 prix", "3 prix", "Aucun"], correct: 1},
+    {q: "Quel couple a remporte le prix du 'couple le plus amoureux' ?", options: ["Le premier couple", "Le deuxieme couple", "Le troisieme couple", "Aucun couple"], correct: 2},
+];
+
+// ===== RENDER QUIZZES =====
+function renderQuiz(data, containerId, prefix) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = data.map((q, i) => `
+        <div class="quiz-question" id="${prefix}-q${i}">
+            <div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div>
+            <div class="quiz-options">
+                ${q.options.map((opt, j) => `
+                    <div class="quiz-option" onclick="answerQuiz('${prefix}', ${i}, ${j})">${opt}</div>
+                `).join('')}
+            </div>
+            <div class="quiz-explanation" id="${prefix}-exp${i}"></div>
+        </div>
+    `).join('');
+}
+
+const quizState = { vocab: {score:0, answered:0, total:10}, grammar: {score:0, answered:0, total:6}, comp: {score:0, answered:0, total:8} };
+
+function getQuizData(prefix) {
+    if (prefix === 'vocab') return vocabQuizData;
+    if (prefix === 'grammar') return grammarQuizData;
+    return compQuizData;
+}
+
+function answerQuiz(prefix, qIdx, optIdx) {
+    const data = getQuizData(prefix);
+    const qEl = document.getElementById(`${prefix}-q${qIdx}`);
+    if (qEl.classList.contains('correct') || qEl.classList.contains('wrong')) return;
+
+    const options = qEl.querySelectorAll('.quiz-option');
+    const correct = data[qIdx].correct;
+
+    options.forEach((o, i) => {
+        o.classList.add('disabled');
+        if (i === correct) o.classList.add('selected-correct');
+        if (i === optIdx && i !== correct) o.classList.add('selected-wrong');
+    });
+
+    if (optIdx === correct) {
+        qEl.classList.add('correct');
+        quizState[prefix].score++;
+    } else {
+        qEl.classList.add('wrong');
+    }
+
+    quizState[prefix].answered++;
+    updateScore(prefix);
+}
+
+function updateScore(prefix) {
+    const s = quizState[prefix];
+    document.getElementById(`${prefix}Score`).textContent = `${s.score} / ${s.total}`;
+    document.getElementById(`${prefix}ScoreBar`).style.width = `${(s.score / s.total) * 100}%`;
+}
+
+function resetQuiz(prefix) {
+    quizState[prefix] = {score:0, answered:0, total: quizState[prefix].total};
+    updateScore(prefix);
+    const containerId = prefix === 'vocab' ? 'vocabQuizContainer' : prefix === 'grammar' ? 'grammarQuizContainer' : 'compQuizContainer';
+    renderQuiz(getQuizData(prefix), containerId, prefix);
+}
+
+function switchQuizTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+}
+
+// ===== FILL-IN EXERCISE =====
+let selectedFillWord = null;
+
+function selectFillWord(el) {
+    document.querySelectorAll('.fill-chip').forEach(c => c.classList.remove('placed'));
+    el.classList.add('placed');
+    selectedFillWord = el.dataset.word;
+}
+
+function placeFillWord(blank) {
+    if (!selectedFillWord) return;
+    blank.textContent = selectedFillWord;
+    blank.dataset.placed = selectedFillWord;
+    document.querySelectorAll('.fill-chip').forEach(c => {
+        if (c.dataset.word === selectedFillWord) c.classList.add('used');
+        c.classList.remove('placed');
+    });
+    selectedFillWord = null;
+}
+
+function checkFillAnswers() {
+    document.querySelectorAll('.fill-blank').forEach(blank => {
+        const placed = blank.dataset.placed;
+        const answer = blank.dataset.answer;
+        if (placed === answer) {
+            blank.style.borderColor = 'var(--success)';
+            blank.style.background = '#dcfce7';
+            blank.style.color = 'var(--success)';
+            blank.style.fontWeight = '600';
+        } else {
+            blank.style.borderColor = 'var(--wrong)';
+            blank.style.background = '#fecaca';
+            blank.style.color = 'var(--wrong)';
+            blank.title = `Reponse : ${answer}`;
+        }
+    });
+}
+
+function resetFill() {
+    document.querySelectorAll('.fill-blank').forEach(blank => {
+        blank.textContent = '___';
+        blank.dataset.placed = '';
+        blank.style.borderColor = '';
+        blank.style.background = '';
+        blank.style.color = '';
+        blank.style.fontWeight = '';
+        blank.title = '';
+    });
+    document.querySelectorAll('.fill-chip').forEach(c => {
+        c.classList.remove('used', 'placed');
+    });
+    selectedFillWord = null;
+}
+
+// ===== CHOICE QUIZ =====
+const choiceQuizData = [
+    {q: "你的病都好了吗？现在感觉___？", a: "如何", b: "怎么", correct: "如何", explain: "如何 en fin de phrase pour demander une situation/un avis"},
+    {q: "电视里广告太多让观众感到很不___。", a: "耐心", b: "耐烦", correct: "耐烦", explain: "不耐烦 est l'expression correcte (impatient)"},
+    {q: "这儿太___了，我们换个地方吧。", a: "吵", b: "吵架", correct: "吵", explain: "吵 comme adjectif signifie 'bruyant'"},
+    {q: "他这么年轻，没想到___是一位著名的作家。", a: "居然", b: "仍然", correct: "居然", explain: "居然 exprime la surprise face a l'inattendu"},
+];
+
+function renderChoiceQuiz() {
+    const container = document.getElementById('choiceQuizContainer');
+    container.innerHTML = choiceQuizData.map((q, i) => `
+        <div class="quiz-question" id="choice-q${i}" style="margin-bottom: 12px;">
+            <div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div>
+            <div class="quiz-options" style="grid-template-columns: 1fr 1fr;">
+                <div class="quiz-option" onclick="answerChoice(${i}, '${q.a}')">${q.a}</div>
+                <div class="quiz-option" onclick="answerChoice(${i}, '${q.b}')">${q.b}</div>
+            </div>
+            <div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div>
+        </div>
+    `).join('');
+}
+
+function answerChoice(idx, answer) {
+    const qEl = document.getElementById(`choice-q${idx}`);
+    if (qEl.classList.contains('correct') || qEl.classList.contains('wrong')) return;
+    const data = choiceQuizData[idx];
+    const options = qEl.querySelectorAll('.quiz-option');
+
+    options.forEach(o => {
+        o.classList.add('disabled');
+        if (o.textContent === data.correct) o.classList.add('selected-correct');
+        if (o.textContent === answer && answer !== data.correct) o.classList.add('selected-wrong');
+    });
+
+    qEl.classList.add(answer === data.correct ? 'correct' : 'wrong');
+    document.getElementById(`choice-exp${idx}`).style.display = 'block';
+}
+
+// ===== NAV HIGHLIGHT =====
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-inner a');
+    let current = '';
+
+    sections.forEach(section => {
+        const top = section.offsetTop - 100;
+        if (window.scrollY >= top) current = section.id;
+    });
+
+    navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+    });
+
+    // Back to top
+    document.getElementById('backToTop').style.display = window.scrollY > 500 ? 'flex' : 'none';
+});
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+    renderVocab();
+    updateFlashcard();
+    renderQuiz(vocabQuizData, 'vocabQuizContainer', 'vocab');
+    renderQuiz(grammarQuizData, 'grammarQuizContainer', 'grammar');
+    renderQuiz(compQuizData, 'compQuizContainer', 'comp');
+    renderChoiceQuiz();
+});
+</script>
+
+</body>
+</html>

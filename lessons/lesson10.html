@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第10课 争论的奇迹</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+        :root{--primary:#5b21b6;--primary-light:#7c3aed;--accent:#e74c3c;--gold:#f39c12;--gold-light:#fdebd0;--bg:#fafbfc;--card:#fff;--text:#2c3e50;--text-light:#7f8c8d;--border:#e8ecf1;--success:#27ae60;--wrong:#e74c3c;--gradient-water:linear-gradient(135deg,#667eea 0%,#764ba2 100%);--gradient-hero:linear-gradient(135deg,#1b1b2f 0%,#2d132c 30%,#6c3483 70%,#a569bd 100%);}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;scroll-behavior:smooth;}
+        .hero{background:var(--gradient-hero);color:#fff;padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;background-size:cover;opacity:.3;}
+        .hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+        .hero .lesson-badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:6px 20px;border-radius:30px;font-size:.9rem;letter-spacing:2px;margin-bottom:20px;}
+        .hero h1{font-family:'Noto Serif SC',serif;font-size:3.5rem;font-weight:900;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+        .hero .subtitle{font-size:1.3rem;opacity:.9;font-weight:300;margin-bottom:30px;}
+        .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+        .nav-inner::-webkit-scrollbar{display:none;}
+        .nav-inner a{padding:14px 18px;text-decoration:none;color:var(--text-light);font-size:.9rem;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+        .nav-inner a:hover,.nav-inner a.active{color:var(--primary);border-bottom-color:var(--primary-light);}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+        section{padding:50px 0;}
+        .section-header{text-align:center;margin-bottom:40px;}
+        .section-header h2{font-family:'Noto Serif SC',serif;font-size:2rem;color:var(--primary);margin-bottom:6px;}
+        .section-header .section-sub{color:var(--text-light);font-size:.95rem;}
+        .section-divider{width:60px;height:3px;background:var(--gradient-water);margin:12px auto 0;border-radius:2px;}
+        .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);margin-bottom:24px;}
+        .card h3{font-size:1.2rem;color:var(--primary);margin-bottom:16px;}
+        .text-block{background:var(--card);border-radius:16px;padding:35px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);font-family:'Noto Serif SC',serif;font-size:1.1rem;line-height:2.2;}
+        .text-block p{text-indent:2em;margin-bottom:16px;}
+        .vocab-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
+        .vocab-controls button{padding:8px 20px;border:2px solid var(--border);background:#fff;border-radius:25px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s;color:var(--text);}
+        .vocab-controls button.active,.vocab-controls button:hover{border-color:var(--primary-light);background:var(--primary-light);color:#fff;}
+        .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .vocab-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .3s;position:relative;}
+        .vocab-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.08);border-color:var(--primary-light);}
+        .vocab-card .vocab-num{position:absolute;top:8px;right:12px;font-size:.75rem;color:var(--text-light);opacity:.5;}
+        .vocab-card .hanzi{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;color:var(--primary);}
+        .vocab-card .pinyin{color:var(--accent);font-size:.9rem;margin:4px 0;}
+        .vocab-card .pos{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;}
+        .vocab-card .meaning-hidden{display:none;}
+        .vocab-card.revealed .meaning-hidden{display:block;}
+        .vocab-card.revealed .meaning-placeholder{display:none;}
+        .meaning-placeholder{color:var(--text-light);font-size:.85rem;font-style:italic;margin-top:6px;}
+        .proper-nouns-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .pn-card{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;}
+        .pn-hanzi{font-family:'Noto Serif SC',serif;font-size:1.2rem;font-weight:700;color:var(--primary);min-width:80px;}
+        .pn-info .pn-pinyin{color:var(--accent);font-size:.85rem;}
+        .pn-info .pn-meaning{font-size:.9rem;}
+        .flashcard-area{display:flex;flex-direction:column;align-items:center;gap:20px;padding:20px 0;}
+        .flashcard-container{perspective:1000px;width:380px;height:260px;max-width:100%;}
+        .flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);cursor:pointer;}
+        .flashcard.flipped{transform:rotateY(180deg);}
+        .flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;}
+        .flashcard-front{background:linear-gradient(135deg,#2d132c,#6c3483);color:#fff;box-shadow:0 10px 40px rgba(108,52,131,.3);}
+        .flashcard-front .fc-hanzi{font-family:'Noto Serif SC',serif;font-size:3rem;font-weight:900;margin-bottom:10px;}
+        .flashcard-front .fc-pinyin{font-size:1.1rem;opacity:.8;}
+        .flashcard-front .fc-hint{font-size:.8rem;opacity:.5;margin-top:20px;}
+        .flashcard-back{background:#fff;border:2px solid var(--primary-light);transform:rotateY(180deg);box-shadow:0 10px 40px rgba(0,0,0,.1);}
+        .flashcard-back .fc-meaning{font-size:1.3rem;color:var(--primary);font-weight:600;}
+        .flashcard-back .fc-pos{background:var(--gold-light);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-top:10px;}
+        .fc-controls{display:flex;gap:12px;}
+        .fc-controls button{padding:10px 28px;border-radius:25px;border:none;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;}
+        .fc-btn-prev,.fc-btn-next{background:var(--primary-light);color:#fff;}
+        .fc-btn-prev:hover,.fc-btn-next:hover{background:var(--primary);}
+        .fc-btn-shuffle{background:#fff;border:2px solid var(--border)!important;color:var(--text);}
+        .fc-counter{color:var(--text-light);font-size:.9rem;}
+        .grammar-card{background:var(--card);border-radius:16px;border:1px solid var(--border);margin-bottom:20px;overflow:hidden;}
+        .grammar-header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;}
+        .grammar-header .grammar-num{background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+        .grammar-header .grammar-title{font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;}
+        .grammar-header .grammar-pinyin{font-size:.9rem;opacity:.8;}
+        .grammar-body{padding:24px;}
+        .grammar-rule{background:#f0f7ff;border-left:4px solid var(--primary-light);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:20px;font-size:.95rem;color:var(--primary);}
+        .grammar-example{padding:12px 0;border-bottom:1px solid var(--border);}
+        .grammar-example:last-child{border-bottom:none;}
+        .grammar-example .ex-cn{font-size:1.05rem;margin-bottom:4px;}
+        .grammar-example .ex-note{color:var(--text-light);font-size:.85rem;}
+        .grammar-example .ex-highlight{color:var(--accent);font-weight:600;}
+        .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+        .comparison-table th{background:var(--primary);color:#fff;padding:14px 18px;font-weight:600;text-align:center;}
+        .comparison-table td{padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top;font-size:.95rem;}
+        .comparison-table tr:last-child td{border-bottom:none;}
+        .comparison-table tr:nth-child(even){background:#f8fafc;}
+        .comparison-table .label-cell{background:#f0f4f8;font-weight:600;color:var(--primary);text-align:center;width:60px;}
+        .colloc-section{margin-bottom:24px;}
+        .colloc-label{display:inline-block;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:12px;}
+        .colloc-label.verb{background:#e74c3c;}.colloc-label.attr{background:#f39c12;}.colloc-label.adv{background:#27ae60;}.colloc-label.comp{background:#8e44ad;}.colloc-label.mw{background:#7c3aed;}
+        .colloc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+        .colloc-row:last-child{border-bottom:none;}
+        .colloc-word{font-weight:600;color:var(--primary);min-width:100px;font-size:1.1rem;}
+        .colloc-plus{color:var(--text-light);font-weight:700;}
+        .colloc-partners{display:flex;flex-wrap:wrap;gap:6px;}
+        .colloc-tag{background:#f0f4f8;padding:4px 12px;border-radius:15px;font-size:.85rem;}
+        .tab-bar{display:flex;gap:4px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:20px;}
+        .tab-btn{flex:1;padding:10px;border:none;background:transparent;border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--text-light);transition:all .2s;}
+        .tab-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+        .tab-content{display:none;}.tab-content.active{display:block;}
+        .quiz-score-bar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+        .score-display{font-size:1.5rem;font-weight:700;color:var(--primary);}
+        .score-bar-visual{flex:1;margin:0 20px;height:10px;background:var(--border);border-radius:5px;overflow:hidden;}
+        .score-bar-fill{height:100%;background:var(--gradient-water);border-radius:5px;transition:width .5s ease;width:0%;}
+        .quiz-reset-btn{padding:8px 20px;background:var(--primary-light);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;}
+        .quiz-question{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;transition:all .3s;}
+        .quiz-question.correct{border-color:var(--success);background:#f0fdf4;}
+        .quiz-question.wrong{border-color:var(--wrong);background:#fef2f2;}
+        .quiz-q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--primary-light);color:#fff;border-radius:50%;font-size:.8rem;font-weight:700;margin-right:10px;}
+        .quiz-q-text{font-size:1.05rem;margin-bottom:14px;}
+        .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .quiz-option{padding:12px 16px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.95rem;text-align:center;background:#fff;}
+        .quiz-option:hover{border-color:var(--primary-light);background:#f0f7ff;}
+        .quiz-option.selected-correct{border-color:var(--success);background:#dcfce7;color:var(--success);font-weight:600;}
+        .quiz-option.selected-wrong{border-color:var(--wrong);background:#fecaca;color:var(--wrong);font-weight:600;}
+        .quiz-option.disabled{pointer-events:none;opacity:.7;}
+        .quiz-explanation{display:none;margin-top:12px;padding:12px 16px;background:#fffbeb;border-radius:10px;font-size:.9rem;color:#92400e;border:1px solid #fde68a;}
+        .fill-blank{display:inline-block;min-width:80px;border-bottom:2px dashed var(--primary-light);padding:2px 8px;margin:0 4px;text-align:center;cursor:pointer;transition:all .2s;}
+        .fill-blank:hover{background:#f0f7ff;}
+        .fill-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center;}
+        .fill-chip{padding:8px 18px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s;}
+        .fill-chip:hover{border-color:var(--primary-light);background:#f0f7ff;}
+        .fill-chip.used{opacity:.4;pointer-events:none;}
+        .fill-chip.placed{background:var(--primary-light);color:#fff;border-color:var(--primary-light);}
+        .app-box{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:1px solid #bae6fd;border-radius:16px;padding:30px;margin-bottom:20px;}
+        .app-box h4{color:var(--primary);font-size:1.1rem;margin-bottom:12px;}
+        .discussion-q{padding:10px 0;border-bottom:1px solid rgba(186,230,253,.5);font-size:.95rem;}
+        .discussion-q:last-child{border-bottom:none;}
+        .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
+        @media(max-width:768px){.hero h1{font-size:2.4rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.proper-nouns-grid{grid-template-columns:1fr;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}}
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
+        <h1>争论的奇迹</h1>
+        <p class="subtitle">Miracle of Debate - Lesson 10</p>
+    </div>
+</header>
+
+<nav class="sticky-nav"><div class="nav-inner">
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+</div></nav>
+
+<main class="container">
+
+<section id="text">
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">争论的奇迹 (560 caracteres)</p><div class="section-divider"></div></div>
+    <div class="text-block">
+        <p>1872年的一天，在美国加利福尼亚州的一个酒店里，斯坦福与科恩围绕"马奔跑时蹄子是否着地"进行了辩论。斯坦福认为，马奔跑得那么快，在跳起时四蹄应该都是不着地的；而科恩认为，马要是四蹄都不着地，那不是成了青蛙啦？</p>
+        <p>应该是始终有一蹄着地。两人各执一词，争论得脸红脖子粗，谁也说服不了谁。于是他们就请英国摄影师麦布里奇来判断，可麦布里奇也弄不清楚。不过摄影师毕竟是摄影师，主意还是有的。他们一起来到一个操场，在一条跑道的一边等距离放上24个照相机，照相机对准跑道；在跑道另一边打24个洞，分别插进24根木棍，木棍上系着细线，细线穿过跑道，接上相机快门。</p>
+        <p>一切都准备好了，麦布里奇让一匹马从跑道的一头飞奔到另一头，马一边跑，一边按顺序撞断拦路的24根细线，相机连续拍下了24张相片，相邻两张相片的差距都很小。相片显示：马奔跑时始终有一蹄着地，科恩赢了。</p>
+        <p>事后，有人无意识地快速拉动那一长串相片，"奇迹"出现了：各张相片中静止的马连成了一匹运动的马，相片"活"了。这就是电影最早的样子。</p>
+        <p>经过艰苦的试验，电影拍摄技术逐渐改进、成熟。1895年12月28日，法国人卢米埃尔兄弟在巴黎第一次向公众播放了短片《火车到站》，这一天后来成为电影产生的纪念日，兄弟俩也成为历史上最早的电影导演。</p>
+        <p>留心生活的每一瞬间，并为之争论，适时请求帮助、认真研究，或许重大发现就在你的眼前。</p>
+    </div>
+</section>
+
+<section id="vocab">
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">37 mots + 5 noms propres - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (37)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout reveler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+    <h3 style="margin:30px 0 16px;color:var(--primary);font-size:1.2rem;">专有名词 - Noms propres</h3>
+    <div class="proper-nouns-grid">
+        <div class="pn-card"><div class="pn-hanzi">加利福尼亚州</div><div class="pn-info"><div class="pn-pinyin">Jialifuniya Zhou</div><div class="pn-meaning">Californie</div></div></div>
+        <div class="pn-card"><div class="pn-hanzi">斯坦福</div><div class="pn-info"><div class="pn-pinyin">Sitanfu</div><div class="pn-meaning">Leland Stanford</div></div></div>
+        <div class="pn-card"><div class="pn-hanzi">科恩</div><div class="pn-info"><div class="pn-pinyin">Ke'en</div><div class="pn-meaning">Cohen</div></div></div>
+        <div class="pn-card"><div class="pn-hanzi">麦布里奇</div><div class="pn-info"><div class="pn-pinyin">Maibuliqí</div><div class="pn-meaning">Eadweard Muybridge</div></div></div>
+        <div class="pn-card"><div class="pn-hanzi">卢米埃尔</div><div class="pn-info"><div class="pn-pinyin">Lumi'ai'er</div><div class="pn-meaning">Lumiere (freres)</div></div></div>
+    </div>
+</section>
+
+<section id="flashcards">
+    <div class="section-header"><h2>卡片 - Flashcards</h2><p class="section-sub">Cliquez pour retourner la carte</p><div class="section-divider"></div></div>
+    <div class="flashcard-area">
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">37</span></div>
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front"><div class="fc-hanzi" id="fcHanzi">争论</div><div class="fc-pinyin" id="fcPinyin">zhenglun</div><div class="fc-hint">cliquez pour voir la traduction</div></div>
+                <div class="flashcard-back"><div class="fc-meaning" id="fcMeaning">se disputer, debattre</div><div class="fc-pos" id="fcPos">v.</div></div>
+            </div>
+        </div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+        </div>
+    </div>
+</section>
+
+<section id="grammar">
+    <div class="section-header"><h2>语法 - Grammaire</h2><p class="section-sub">3 points de grammaire essentiels</p><div class="section-divider"></div></div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">1</div><div><div class="grammar-title">毕竟</div><div class="grammar-pinyin">bijing</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Adverbe :</strong> "apres tout, en fin de compte". Sens 1 : "finalement, au bout du compte". Sens 2 : souligne la partie la plus importante/correcte, souvent avec une conclusion "c'est comme ca".</div>
+            <div class="grammar-example"><div class="ex-cn">虽然我们遇到了很多困难，但<span class="ex-highlight">毕竟</span>完成了任务。</div><div class="ex-note">Malgre les difficultes, on a quand meme termine la mission.</div></div>
+            <div class="grammar-example"><div class="ex-cn">不过摄影师<span class="ex-highlight">毕竟</span>是摄影师，主意还是有的。</div><div class="ex-note">Un photographe reste un photographe, il a quand meme des idees.</div></div>
+            <div class="grammar-example"><div class="ex-cn">他不高兴是正常的，<span class="ex-highlight">毕竟</span>没有人能在摔得头破血流的时候，还高兴得起来。</div><div class="ex-note">C'est normal qu'il soit malheureux, apres tout personne ne serait content dans cette situation.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">2</div><div><div class="grammar-title">逐渐</div><div class="grammar-pinyin">zhujian</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Adverbe :</strong> "graduellement, progressivement". Indique un changement de degre ou de quantite, petit a petit.</div>
+            <div class="grammar-example"><div class="ex-cn">食物越来越少，老人不得不<span class="ex-highlight">逐渐</span>限制猴子的食量。</div><div class="ex-note">La nourriture diminuant, le vieillard a du progressivement rationner les singes.</div></div>
+            <div class="grammar-example"><div class="ex-cn">这项运动首先在亚太地区流行，并<span class="ex-highlight">逐渐</span>受到世界各地人们的欢迎。</div><div class="ex-note">Ce sport est d'abord devenu populaire en Asie-Pacifique, puis progressivement dans le monde.</div></div>
+            <div class="grammar-example"><div class="ex-cn">经过艰苦的试验，电影拍摄技术<span class="ex-highlight">逐渐</span>改进、成熟。</div><div class="ex-note">Apres des essais difficiles, la technique cinematographique s'est progressivement amelioree.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">3</div><div><div class="grammar-title">或许</div><div class="grammar-pinyin">huoxu</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Adverbe :</strong> "peut-etre, il se peut que". Synonyme de 也许, exprime une possibilite.</div>
+            <div class="grammar-example"><div class="ex-cn">虽然以前她不支持你，但<span class="ex-highlight">或许</span>这次会有变化。</div><div class="ex-note">Meme si avant elle ne te soutenait pas, peut-etre que cette fois ca changera.</div></div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">或许</span>正是因为这一点一滴的努力，你就会走在别人的前面。</div><div class="ex-note">C'est peut-etre grace a ces efforts petit a petit que tu depasseras les autres.</div></div>
+            <div class="grammar-example"><div class="ex-cn">留心生活的每一瞬间……<span class="ex-highlight">或许</span>重大发现就在你的眼前。</div><div class="ex-note">Soyez attentif a chaque instant... peut-etre qu'une grande decouverte est devant vous.</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="analysis">
+    <div class="section-header"><h2>词语辨析 - Analyse comparative</h2><p class="section-sub">显示 vs 显得</p><div class="section-divider"></div></div>
+    <div class="card">
+        <table class="comparison-table">
+            <thead><tr><th></th><th>显示 (xianshi)</th><th>显得 (xiande)</th></tr></thead>
+            <tbody>
+                <tr><td class="label-cell">Points communs</td><td colspan="2" style="text-align:center;">Verbes. Signifient tous deux "montrer, laisser voir". Mais generalement non interchangeables.</td></tr>
+                <tr><td class="label-cell" rowspan="2">Differences</td>
+                    <td>1. Montrer une attitude, capacite ou situation.<br><em>相片显示：马奔跑时始终有一蹄着地。</em><br><em>这次活动的组织显示出了他的才能。</em></td>
+                    <td>1. Montrer une caracteristique, une apparence.<br><em>几年不见，他显得成熟多了。</em><br><em>中秋节那天，月亮显得格外明亮。</em></td></tr>
+                <tr><td>2. Se combine avec des noms ou des propositions.</td>
+                    <td>2. Se combine avec des adjectifs.</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="collocation">
+    <div class="section-header"><h2>词语搭配 - Collocations</h2><p class="section-sub">Combinaisons essentielles</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="colloc-section"><div class="colloc-label verb">动词 + 宾语</div>
+            <div class="colloc-row"><span class="colloc-word">拍</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">手</span><span class="colloc-tag">桌子</span><span class="colloc-tag">照片</span><span class="colloc-tag">电影</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">改进</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">工作</span><span class="colloc-tag">方法</span><span class="colloc-tag">态度</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label attr">定语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">艰苦(的)</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">条件</span><span class="colloc-tag">生活</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">成熟的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">瓜果</span><span class="colloc-tag">人</span><span class="colloc-tag">经验</span><span class="colloc-tag">看法</span><span class="colloc-tag">条件</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label adv">状语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">围绕(着)重点</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">进行讨论</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">始终</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">坚持</span><span class="colloc-tag">保持</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label comp">中心语 + 补语</div>
+            <div class="colloc-row"><span class="colloc-word">插</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">进(去)</span><span class="colloc-tag">到……</span><span class="colloc-tag">在……</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">拦</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">住</span><span class="colloc-tag">在……</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label mw">数量词 + 名词</div>
+            <div class="colloc-row"><span class="colloc-word">一匹</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">马</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">一场</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">争论</span><span class="colloc-tag">辩论</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="quiz-section">
+    <div class="section-header"><h2>测验 - Quiz</h2><p class="section-sub">Testez vos connaissances</p><div class="section-divider"></div></div>
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+    </div>
+    <div class="tab-content active" id="vocab-quiz"><div class="quiz-score-bar"><div class="score-display" id="vocabScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button></div><div id="vocabQuizContainer"></div></div>
+    <div class="tab-content" id="grammar-quiz"><div class="quiz-score-bar"><div class="score-display" id="grammarScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button></div><div id="grammarQuizContainer"></div></div>
+    <div class="tab-content" id="comprehension-quiz"><div class="quiz-score-bar"><div class="score-display" id="compScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button></div><div id="compQuizContainer"></div></div>
+</section>
+
+<section id="fill-quiz">
+    <div class="section-header"><h2>填空练习 - Exercices a trous</h2><p class="section-sub">Choisissez le mot correct</p><div class="section-divider"></div></div>
+    <div class="card" id="fillExercise">
+        <h3>Choisissez parmi : 插、系、拦、拍、说服、围绕</h3>
+        <div class="fill-options" id="fillOptions">
+            <span class="fill-chip" data-word="系" onclick="selectFillWord(this)">系</span>
+            <span class="fill-chip" data-word="围绕" onclick="selectFillWord(this)">围绕</span>
+            <span class="fill-chip" data-word="插" onclick="selectFillWord(this)">插</span>
+            <span class="fill-chip" data-word="拍" onclick="selectFillWord(this)">拍</span>
+            <span class="fill-chip" data-word="说服" onclick="selectFillWord(this)">说服</span>
+            <span class="fill-chip" data-word="拦" onclick="selectFillWord(this)">拦</span>
+        </div>
+        <div style="margin-top:24px;">
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">1</span>你今天<span class="fill-blank" data-answer="系" onclick="placeFillWord(this)">___</span>这条领带吧，比较正式。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">2</span>地球为什么会<span class="fill-blank" data-answer="围绕" onclick="placeFillWord(this)">___</span>太阳转，一直是科学家们很感兴趣的问题。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">3</span>如果不是他在中间<span class="fill-blank" data-answer="插" onclick="placeFillWord(this)">___</span>了一手，事情不会变成现在这样。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">4</span>这位导演<span class="fill-blank" data-answer="拍" onclick="placeFillWord(this)">___</span>过二十几部电影，得过好几项国际大奖。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">5</span>我始终没有办法<span class="fill-blank" data-answer="说服" onclick="placeFillWord(this)">___</span>他接受这个结论。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">6</span>前面不知道发生了什么事，路被<span class="fill-blank" data-answer="拦" onclick="placeFillWord(this)">___</span>住了。</div>
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+            <button onclick="checkFillAnswers()" style="padding:10px 30px;background:var(--primary-light);color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:.95rem;font-weight:600;">Verifier</button>
+            <button onclick="resetFill()" style="padding:10px 30px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.95rem;margin-left:10px;">Recommencer</button>
+        </div>
+    </div>
+    <div class="card"><h3>Choisissez la bonne reponse</h3><div id="choiceQuizContainer"></div></div>
+</section>
+
+<section id="application">
+    <div class="section-header"><h2>运用 - Application</h2><p class="section-sub">Contexte et discussion</p><div class="section-divider"></div></div>
+    <div class="app-box">
+        <h4>背景分析 - Contexte</h4>
+        <p style="line-height:2;">历史上有很多伟大的发明。例如，中国传统的"四大发明"分别是造纸术、指南针 (zhinanzhen, compass)、火药和印刷 (yinshua, printing) 术。这些发明对我们的生产和生活产生了重大的影响。有趣的是，有些发明，不是科学家专门研究出来的，而是生活当中无意间发现的，就像我们课文中介绍的电影的产生一样。</p>
+    </div>
+    <div class="app-box">
+        <h4>话题讨论 - Discussion : 日常生活中的重大发现</h4>
+        <div class="discussion-q">1. 读过课文后，你认为电影的发明最重要的原因是什么？<br><em>Apres avoir lu le texte, quel est selon vous la raison principale de l'invention du cinema ?</em></div>
+        <div class="discussion-q">2. 你还知道哪些重大发现或发明的故事？请简单介绍一下。<br><em>Connaissez-vous d'autres histoires de grandes decouvertes ou inventions ?</em></div>
+        <div class="discussion-q">3. 从你介绍的这个发现或发明中你想到了什么？<br><em>Que retenez-vous de cette decouverte ou invention ?</em></div>
+    </div>
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'ecriture</h4>
+        <p>请以"日常生活中的大发现或发明"为题，谈一谈你所了解的日常生活中的重大发明或发现。尽量用上本课所学的生词，字数不少于100字。</p>
+    </div>
+</section>
+
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+<footer style="text-align:center;padding:40px 20px;color:var(--text-light);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px;">HSK 5 Standard Course - Lesson 10 - 争论的奇迹</footer>
+
+<script>
+const vocabData=[
+    {id:1,hanzi:"争论",pinyin:"zhenglun",pos:"v.",meaning:"se disputer, debattre",cat:"verb"},
+    {id:2,hanzi:"奇迹",pinyin:"qiji",pos:"n.",meaning:"miracle, prodige",cat:"noun"},
+    {id:3,hanzi:"围绕",pinyin:"weirao",pos:"v.",meaning:"tourner autour de, centrer sur",cat:"verb"},
+    {id:4,hanzi:"奔跑",pinyin:"benpao",pos:"v.",meaning:"courir, galoper",cat:"verb"},
+    {id:5,hanzi:"蹄(子)",pinyin:"ti(zi)",pos:"n.",meaning:"sabot (de cheval)",cat:"noun"},
+    {id:6,hanzi:"辩论",pinyin:"bianlun",pos:"v.",meaning:"debattre",cat:"verb"},
+    {id:7,hanzi:"青蛙",pinyin:"qingwa",pos:"n.",meaning:"grenouille",cat:"noun"},
+    {id:8,hanzi:"啦",pinyin:"la",pos:"part.",meaning:"particule (了+啊), exclamation",cat:"other"},
+    {id:9,hanzi:"始终",pinyin:"shizhong",pos:"adv.",meaning:"du debut a la fin, toujours",cat:"other"},
+    {id:10,hanzi:"脖子",pinyin:"bozi",pos:"n.",meaning:"cou",cat:"noun"},
+    {id:11,hanzi:"说服",pinyin:"shuofu",pos:"v.",meaning:"persuader, convaincre",cat:"verb"},
+    {id:12,hanzi:"摄影师",pinyin:"sheyingshi",pos:"n.",meaning:"photographe",cat:"noun"},
+    {id:13,hanzi:"毕竟",pinyin:"bijing",pos:"adv.",meaning:"apres tout, en fin de compte",cat:"other"},
+    {id:14,hanzi:"操场",pinyin:"caochang",pos:"n.",meaning:"terrain de sport, cour",cat:"noun"},
+    {id:15,hanzi:"洞",pinyin:"dong",pos:"n.",meaning:"trou",cat:"noun"},
+    {id:16,hanzi:"插",pinyin:"cha",pos:"v.",meaning:"inserer, enfoncer",cat:"verb"},
+    {id:17,hanzi:"棍",pinyin:"gun",pos:"n.",meaning:"baton",cat:"noun"},
+    {id:18,hanzi:"系",pinyin:"ji",pos:"v.",meaning:"attacher, nouer",cat:"verb"},
+    {id:19,hanzi:"匹",pinyin:"pi",pos:"m.",meaning:"classificateur pour chevaux",cat:"other"},
+    {id:20,hanzi:"拦",pinyin:"lan",pos:"v.",meaning:"bloquer, barrer",cat:"verb"},
+    {id:21,hanzi:"拍",pinyin:"pai",pos:"v.",meaning:"photographier, filmer",cat:"verb"},
+    {id:22,hanzi:"差距",pinyin:"chaju",pos:"n.",meaning:"ecart, difference",cat:"noun"},
+    {id:23,hanzi:"显示",pinyin:"xianshi",pos:"v.",meaning:"montrer, afficher",cat:"verb"},
+    {id:24,hanzi:"意识",pinyin:"yishi",pos:"n./v.",meaning:"conscience; se rendre compte",cat:"noun"},
+    {id:25,hanzi:"艰苦",pinyin:"jianku",pos:"adj.",meaning:"ardu, difficile",cat:"adj"},
+    {id:26,hanzi:"试验",pinyin:"shiyan",pos:"n./v.",meaning:"essai, test; tester",cat:"noun"},
+    {id:27,hanzi:"逐渐",pinyin:"zhujian",pos:"adv.",meaning:"progressivement, graduellement",cat:"other"},
+    {id:28,hanzi:"改进",pinyin:"gaijin",pos:"v.",meaning:"ameliorer, perfectionner",cat:"verb"},
+    {id:29,hanzi:"成熟",pinyin:"chengshu",pos:"v./adj.",meaning:"murir; mature",cat:"adj"},
+    {id:30,hanzi:"兄弟",pinyin:"xiongdi",pos:"n.",meaning:"frere(s)",cat:"noun"},
+    {id:31,hanzi:"播放",pinyin:"bofang",pos:"v.",meaning:"diffuser, passer (video/musique)",cat:"verb"},
+    {id:32,hanzi:"纪念",pinyin:"jinian",pos:"v.",meaning:"commemorer",cat:"verb"},
+    {id:33,hanzi:"导演",pinyin:"daoyan",pos:"n./v.",meaning:"realisateur; realiser",cat:"noun"},
+    {id:34,hanzi:"瞬间",pinyin:"shunjian",pos:"n.",meaning:"instant, moment bref",cat:"noun"},
+    {id:35,hanzi:"请求",pinyin:"qingqiu",pos:"v./n.",meaning:"demander; demande, requete",cat:"verb"},
+    {id:36,hanzi:"或许",pinyin:"huoxu",pos:"adv.",meaning:"peut-etre, il se peut que",cat:"other"},
+    {id:37,hanzi:"重大",pinyin:"zhongda",pos:"adj.",meaning:"majeur, important",cat:"adj"}
+];
+
+function renderVocab(filter='all'){const g=document.getElementById('vocabGrid');const f=filter==='all'?vocabData:vocabData.filter(v=>v.cat===filter);g.innerHTML=f.map(v=>`<div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')"><span class="vocab-num">#${v.id}</span><div class="hanzi">${v.hanzi}</div><div class="pinyin">${v.pinyin}</div><span class="pos">${v.pos}</span><div class="meaning-placeholder">Cliquez pour voir...</div><div class="meaning-hidden" style="font-size:.9rem;margin-top:6px;">${v.meaning}</div></div>`).join('');}
+function filterVocab(c){document.querySelectorAll('.vocab-controls button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderVocab(c);}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function hideAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('revealed'));}
+
+let fcIndex=0,fcOrder=[...Array(vocabData.length).keys()];
+function updateFlashcard(){const v=vocabData[fcOrder[fcIndex]];document.getElementById('fcHanzi').textContent=v.hanzi;document.getElementById('fcPinyin').textContent=v.pinyin;document.getElementById('fcMeaning').textContent=v.meaning;document.getElementById('fcPos').textContent=v.pos;document.getElementById('fcCurrent').textContent=fcIndex+1;document.getElementById('fcTotal').textContent=fcOrder.length;document.getElementById('flashcard').classList.remove('flipped');}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%fcOrder.length;updateFlashcard();}
+function prevCard(){fcIndex=(fcIndex-1+fcOrder.length)%fcOrder.length;updateFlashcard();}
+function shuffleCards(){for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}fcIndex=0;updateFlashcard();}
+
+const vocabQuizData=[
+    {q:"争论 signifie :",options:["Etre d'accord","Se disputer, debattre","Expliquer","Ignorer"],correct:1},
+    {q:"Quel mot signifie 'photographe' ?",options:["导演","摄影师","记者","画家"],correct:1},
+    {q:"毕竟 veut dire :",options:["Soudain","Bientot","Apres tout","Jamais"],correct:2},
+    {q:"逐渐 est un adverbe qui signifie :",options:["Immediatement","Lentement","Progressivement","Rarement"],correct:2},
+    {q:"Comment dit-on 'grenouille' ?",options:["青蛙","蚊子","蚂蚁","龙"],correct:0},
+    {q:"操场 signifie :",options:["Cuisine","Terrain de sport","Bureau","Chambre"],correct:1},
+    {q:"Quel mot signifie 'inserer, enfoncer' ?",options:["拍","拦","插","系"],correct:2},
+    {q:"差距 veut dire :",options:["Similitude","Ecart, difference","Egalite","Proximite"],correct:1},
+    {q:"Que signifie 成熟 ?",options:["Immature","Mature, mur","Jeune","Ancien"],correct:1},
+    {q:"重大 signifie :",options:["Leger","Mineur","Majeur, important","Rapide"],correct:2}
+];
+
+const grammarQuizData=[
+    {q:"毕竟 est utilise pour :",options:["Exprimer la surprise","Souligner 'apres tout, en fin de compte'","Poser une question","Exprimer un souhait"],correct:1},
+    {q:"逐渐 indique :",options:["Un changement soudain","Un changement progressif","Aucun changement","Un changement negatif"],correct:1},
+    {q:"或许 signifie :",options:["Certainement","Jamais","Peut-etre","Toujours"],correct:2},
+    {q:"'始终保持联系' - 始终 signifie :",options:["Parfois","Du debut a la fin, toujours","Rarement","Soudain"],correct:1},
+    {q:"Quelle est la difference entre 显示 et 显得 ?",options:["Aucune difference","显示 + nom/proposition, 显得 + adjectif","显示 est oral, 显得 est ecrit","显得 + nom, 显示 + adjectif"],correct:1},
+    {q:"Completez : ___是秋天了，再热也不会像夏天那样。",options:["或许","毕竟","逐渐","始终"],correct:1},
+    {q:"Dans '他显得成熟多了', 显得 se combine avec :",options:["Un nom","Un verbe","Un adjectif","Une proposition"],correct:2},
+    {q:"'电影技术逐渐改进' - 逐渐 modifie :",options:["电影","技术","改进","成熟"],correct:2}
+];
+
+const compQuizData=[
+    {q:"En quelle annee a eu lieu le debat entre Stanford et Cohen ?",options:["1895","1872","1900","1850"],correct:1},
+    {q:"Sur quoi portait le debat ?",options:["La vitesse des chevaux","Si les sabots du cheval touchent le sol en courant","La couleur des chevaux","Le poids des chevaux"],correct:1},
+    {q:"Qui avait raison dans le debat ?",options:["Stanford (4 sabots en l'air)","Cohen (toujours un sabot au sol)","Aucun des deux","Les deux"],correct:1},
+    {q:"Qui etait Muybridge ?",options:["Un jockey","Un photographe anglais","Un veterinaire","Un peintre"],correct:1},
+    {q:"Combien d'appareils photo ont ete utilises ?",options:["12","24","36","48"],correct:1},
+    {q:"Comment le 'miracle' du cinema est-il apparu ?",options:["En projetant de la lumiere","En faisant defiler les photos rapidement","En peignant les chevaux","En utilisant un miroir"],correct:1},
+    {q:"Qui sont les freres Lumiere ?",options:["Les premiers spectateurs","Les premiers realisateurs de cinema","Les inventeurs de la photographie","Des eleveurs de chevaux"],correct:1},
+    {q:"Quelle est la morale du texte ?",options:["Il ne faut pas se disputer","Les grandes decouvertes peuvent naitre de debats et d'observation attentive","Le cinema est le plus grand art","Les chevaux sont fascinants"],correct:1}
+];
+
+function renderQuiz(data,cid,prefix){document.getElementById(cid).innerHTML=data.map((q,i)=>`<div class="quiz-question" id="${prefix}-q${i}"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options">${q.options.map((o,j)=>`<div class="quiz-option" onclick="answerQuiz('${prefix}',${i},${j})">${o}</div>`).join('')}</div></div>`).join('');}
+const quizState={vocab:{score:0,answered:0,total:10},grammar:{score:0,answered:0,total:8},comp:{score:0,answered:0,total:8}};
+function getQuizData(p){return p==='vocab'?vocabQuizData:p==='grammar'?grammarQuizData:compQuizData;}
+function answerQuiz(p,qi,oi){const d=getQuizData(p),qE=document.getElementById(`${p}-q${qi}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const opts=qE.querySelectorAll('.quiz-option'),c=d[qi].correct;opts.forEach((o,i)=>{o.classList.add('disabled');if(i===c)o.classList.add('selected-correct');if(i===oi&&i!==c)o.classList.add('selected-wrong');});qE.classList.add(oi===c?'correct':'wrong');if(oi===c)quizState[p].score++;quizState[p].answered++;updateScore(p);}
+function updateScore(p){const s=quizState[p];document.getElementById(`${p}Score`).textContent=`${s.score} / ${s.total}`;document.getElementById(`${p}ScoreBar`).style.width=`${(s.score/s.total)*100}%`;}
+function resetQuiz(p){quizState[p]={score:0,answered:0,total:quizState[p].total};updateScore(p);renderQuiz(getQuizData(p),p==='vocab'?'vocabQuizContainer':p==='grammar'?'grammarQuizContainer':'compQuizContainer',p);}
+function switchQuizTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById(t).classList.add('active');}
+
+let selectedFillWord=null;
+function selectFillWord(el){document.querySelectorAll('.fill-chip').forEach(c=>c.classList.remove('placed'));el.classList.add('placed');selectedFillWord=el.dataset.word;}
+function placeFillWord(b){if(!selectedFillWord)return;b.textContent=selectedFillWord;b.dataset.placed=selectedFillWord;document.querySelectorAll('.fill-chip').forEach(c=>{if(c.dataset.word===selectedFillWord)c.classList.add('used');c.classList.remove('placed');});selectedFillWord=null;}
+function checkFillAnswers(){document.querySelectorAll('.fill-blank').forEach(b=>{const p=b.dataset.placed,a=b.dataset.answer;if(p===a){b.style.borderColor='var(--success)';b.style.background='#dcfce7';b.style.color='var(--success)';b.style.fontWeight='600';}else{b.style.borderColor='var(--wrong)';b.style.background='#fecaca';b.style.color='var(--wrong)';b.title=`Reponse : ${a}`;}});}
+function resetFill(){document.querySelectorAll('.fill-blank').forEach(b=>{b.textContent='___';b.dataset.placed='';b.style.borderColor='';b.style.background='';b.style.color='';b.style.fontWeight='';b.title='';});document.querySelectorAll('.fill-chip').forEach(c=>{c.classList.remove('used','placed');});selectedFillWord=null;}
+
+const choiceQuizData=[
+    {q:"在昨天举行的___赛上，他的表现得到了大家的好评。",a:"争论",b:"辩论",correct:"辩论",explain:"辩论赛 = concours de debat (expression fixe)"},
+    {q:"毕业二十年以来，我们___保持着联系。",a:"始终",b:"终于",correct:"始终",explain:"始终 = tout au long, depuis le debut"},
+    {q:"我们之间还有很大的___，我要向他学习。",a:"差距",b:"距离",correct:"差距",explain:"差距 = ecart (en niveau), 距离 = distance physique"},
+    {q:"吃中餐___西餐都可以，只是我不能吃太辣的。",a:"或许",b:"或者",correct:"或者",explain:"或者 = ou (choix), 或许 = peut-etre"}
+];
+function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').innerHTML=choiceQuizData.map((q,i)=>`<div class="quiz-question" id="choice-q${i}" style="margin-bottom:12px;"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options" style="grid-template-columns:1fr 1fr;"><div class="quiz-option" onclick="answerChoice(${i},'${q.a}')">${q.a}</div><div class="quiz-option" onclick="answerChoice(${i},'${q.b}')">${q.b}</div></div><div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div></div>`).join('');}
+function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
+
+window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
+document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+</script>
+</body>
+</html>

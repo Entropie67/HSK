@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第2课 留串钥匙给父母</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+
+        :root {
+            --primary: #5b21b6;
+            --primary-light: #7c3aed;
+            --accent: #e74c3c;
+            --accent-soft: #f1948a;
+            --gold: #f39c12;
+            --gold-light: #fdebd0;
+            --bg: #fafbfc;
+            --card: #ffffff;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #e8ecf1;
+            --success: #27ae60;
+            --wrong: #e74c3c;
+            --gradient-water: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-hero: linear-gradient(135deg, #2d1b69 0%, #5b21b6 30%, #8b5cf6 70%, #c4b5fd 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            scroll-behavior: smooth;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+
+        .hero .lesson-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .hero .water-drops {
+            font-size: 2rem;
+            letter-spacing: 8px;
+            opacity: 0.6;
+        }
+
+        /* ===== NAV ===== */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 20px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav-inner::-webkit-scrollbar { display: none; }
+
+        .nav-inner a {
+            padding: 14px 18px;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-inner a:hover, .nav-inner a.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary-light);
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 50px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .section-header .section-sub {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-water);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h3 .icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== TEXT SECTION ===== */
+        .text-block {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1rem;
+            line-height: 2.2;
+            color: var(--text);
+            column-count: 1;
+        }
+
+        .text-block p {
+            text-indent: 2em;
+            margin-bottom: 16px;
+        }
+
+        .text-highlight {
+            background: linear-gradient(to bottom, transparent 60%, #fef9c3 60%);
+            padding: 0 2px;
+        }
+
+        .pinyin-toggle-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .pinyin-toggle-bar button {
+            background: var(--primary-light);
+            color: white;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .pinyin-toggle-bar button:hover {
+            background: var(--primary);
+        }
+
+        /* ===== VOCAB ===== */
+        .vocab-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .vocab-controls button {
+            padding: 8px 20px;
+            border: 2px solid var(--border);
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            color: var(--text);
+        }
+
+        .vocab-controls button.active,
+        .vocab-controls button:hover {
+            border-color: var(--primary-light);
+            background: var(--primary-light);
+            color: white;
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 14px;
+        }
+
+        .vocab-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vocab-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-color: var(--primary-light);
+        }
+
+        .vocab-card .vocab-num {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            opacity: 0.5;
+        }
+
+        .vocab-card .hanzi {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .vocab-card .pinyin {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin: 4px 0;
+        }
+
+        .vocab-card .pos {
+            display: inline-block;
+            background: var(--gold-light);
+            color: var(--gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 6px;
+        }
+
+        .vocab-card .meaning {
+            color: var(--text);
+            font-size: 0.9rem;
+            margin-top: 6px;
+        }
+
+        .vocab-card .meaning-hidden {
+            display: none;
+        }
+
+        .vocab-card.revealed .meaning-hidden { display: block; }
+        .vocab-card.revealed .meaning-placeholder { display: none; }
+
+        .meaning-placeholder {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        .vocab-card .star-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0.3;
+            transition: all 0.2s;
+        }
+
+        .vocab-card .star-btn:hover,
+        .vocab-card .star-btn.starred {
+            opacity: 1;
+        }
+
+        /* ===== FLASHCARD ===== */
+        .flashcard-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .flashcard-container {
+            perspective: 1000px;
+            width: 380px;
+            height: 260px;
+            max-width: 100%;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .flashcard.flipped { transform: rotateY(180deg); }
+
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .flashcard-front {
+            background: linear-gradient(135deg, #4c1d95, #7c3aed);
+            color: white;
+            box-shadow: 0 10px 40px rgba(91,33,182,0.3);
+        }
+
+        .flashcard-front .fc-hanzi {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .flashcard-front .fc-pinyin {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .flashcard-front .fc-hint {
+            font-size: 0.8rem;
+            opacity: 0.5;
+            margin-top: 20px;
+        }
+
+        .flashcard-back {
+            background: white;
+            border: 2px solid var(--primary-light);
+            transform: rotateY(180deg);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .flashcard-back .fc-meaning {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .flashcard-back .fc-pos {
+            background: var(--gold-light);
+            color: var(--gold);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .fc-controls {
+            display: flex;
+            gap: 12px;
+        }
+
+        .fc-controls button {
+            padding: 10px 28px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .fc-btn-prev, .fc-btn-next {
+            background: var(--primary-light);
+            color: white;
+        }
+
+        .fc-btn-prev:hover, .fc-btn-next:hover {
+            background: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .fc-btn-shuffle {
+            background: white;
+            border: 2px solid var(--border) !important;
+            color: var(--text);
+        }
+
+        .fc-counter {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ===== GRAMMAR ===== */
+        .grammar-card {
+            background: var(--card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .grammar-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .grammar-header .grammar-num {
+            background: rgba(255,255,255,0.2);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .grammar-header .grammar-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .grammar-header .grammar-pinyin {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .grammar-body {
+            padding: 24px;
+        }
+
+        .grammar-rule {
+            background: #f0f7ff;
+            border-left: 4px solid var(--primary-light);
+            padding: 14px 18px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: var(--primary);
+        }
+
+        .grammar-example {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .grammar-example:last-child { border-bottom: none; }
+
+        .grammar-example .ex-cn {
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .grammar-example .ex-note {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .grammar-example .ex-highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ===== WORD ANALYSIS ===== */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            padding: 14px 18px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .comparison-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table tr:last-child td { border-bottom: none; }
+
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+
+        .comparison-table .label-cell {
+            background: #f0f4f8;
+            font-weight: 600;
+            color: var(--primary);
+            text-align: center;
+            width: 60px;
+        }
+
+        /* ===== QUIZ ===== */
+        .quiz-container { margin-bottom: 30px; }
+
+        .quiz-question {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.3s;
+        }
+
+        .quiz-question.correct {
+            border-color: var(--success);
+            background: #f0fdf4;
+        }
+
+        .quiz-question.wrong {
+            border-color: var(--wrong);
+            background: #fef2f2;
+        }
+
+        .quiz-q-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--primary-light);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .quiz-q-text {
+            font-size: 1.05rem;
+            margin-bottom: 14px;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            text-align: center;
+            background: white;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary-light);
+            background: #f0f7ff;
+        }
+
+        .quiz-option.selected-correct {
+            border-color: var(--success);
+            background: #dcfce7;
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .quiz-option.selected-wrong {
+            border-color: var(--wrong);
+            background: #fecaca;
+            color: var(--wrong);
+            font-weight: 600;
+        }
+
+        .quiz-option.show-correct {
+            border-color: var(--success);
+            background: #dcfce7;
+        }
+
+        .quiz-option.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .quiz-explanation {
+            display: none;
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: #fffbeb;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+
+        .quiz-score-bar {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .score-display {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .score-bar-visual {
+            flex: 1;
+            margin: 0 20px;
+            height: 10px;
+            background: var(--border);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .score-bar-fill {
+            height: 100%;
+            background: var(--gradient-water);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        .quiz-reset-btn {
+            padding: 8px 20px;
+            background: var(--primary-light);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* ===== FILL-IN QUIZ ===== */
+        .fill-blank {
+            display: inline-block;
+            min-width: 80px;
+            border-bottom: 2px dashed var(--primary-light);
+            padding: 2px 8px;
+            margin: 0 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .fill-blank:hover { background: #f0f7ff; }
+
+        .fill-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+
+        .fill-chip {
+            padding: 8px 18px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .fill-chip:hover {
+            border-color: var(--primary-light);
+            background: #f0f7ff;
+        }
+
+        .fill-chip.used {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .fill-chip.placed {
+            background: var(--primary-light);
+            color: white;
+            border-color: var(--primary-light);
+        }
+
+        /* ===== COLLOCATION ===== */
+        .colloc-section {
+            margin-bottom: 24px;
+        }
+
+        .colloc-label {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .colloc-label.verb { background: #e74c3c; }
+        .colloc-label.attr { background: #f39c12; }
+        .colloc-label.adv { background: #27ae60; }
+        .colloc-label.comp { background: #8e44ad; }
+        .colloc-label.quant { background: #3498db; }
+
+        .colloc-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .colloc-row:last-child { border-bottom: none; }
+
+        .colloc-word {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 60px;
+            font-size: 1.1rem;
+        }
+
+        .colloc-plus {
+            color: var(--text-light);
+            font-weight: 700;
+        }
+
+        .colloc-partners {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .colloc-tag {
+            background: #f0f4f8;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* ===== APPLICATION ===== */
+        .app-box {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border: 1px solid #bae6fd;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .app-box h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .discussion-q {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(186,230,253,0.5);
+            font-size: 0.95rem;
+        }
+
+        .discussion-q:last-child { border-bottom: none; }
+
+        /* ===== PROGRESS ===== */
+        .progress-panel {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            display: none;
+            width: 280px;
+        }
+
+        .progress-panel.show { display: block; }
+
+        .progress-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 51;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-water);
+            color: white;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(102,126,234,0.4);
+            transition: transform 0.2s;
+        }
+
+        .progress-toggle:hover { transform: scale(1.1); }
+
+        .progress-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .progress-check {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        .progress-check.done {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.4rem; }
+            .hero .subtitle { font-size: 1rem; }
+            .vocab-grid { grid-template-columns: 1fr; }
+            .quiz-options { grid-template-columns: 1fr; }
+            .flashcard-container { width: 100%; height: 240px; }
+            .quiz-score-bar { flex-direction: column; gap: 10px; text-align: center; }
+            .score-bar-visual { width: 100%; margin: 0; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        /* ===== TABS ===== */
+        .tab-bar {
+            display: flex;
+            gap: 4px;
+            background: #f0f4f8;
+            padding: 4px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 24px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 49;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
+        <h1>留串钥匙给父母</h1>
+        <p class="subtitle">Leaving a Bunch of Keys to Our Parents - Lesson 2</p>
+        <div class="water-drops">~ ~ ~</div>
+    </div>
+</header>
+
+<!-- NAVIGATION -->
+<nav class="sticky-nav">
+    <div class="nav-inner">
+        <a href="#text">课文 Texte</a>
+        <a href="#vocab">生词 Vocabulaire</a>
+        <a href="#flashcards">卡片 Flashcards</a>
+        <a href="#grammar">语法 Grammaire</a>
+        <a href="#analysis">辨析 Analyse</a>
+        <a href="#collocation">搭配 Collocations</a>
+        <a href="#quiz-section">测验 Quiz</a>
+        <a href="#fill-quiz">填空 Exercices</a>
+        <a href="#application">运用 Application</a>
+    </div>
+</nav>
+
+<main class="container">
+
+<!-- ==================== TEXT ==================== -->
+<section id="text">
+    <div class="section-header">
+        <h2>课文 - Texte</h2>
+        <p class="section-sub">留串钥匙给父母 (593 caracteres)</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="text-block">
+        <p>父母一辈子住在农村老家，对老屋的感情，就像没断奶的孩子对母亲一样。因此长年以来，父母很少离开老屋，尽管姥姥、舅舅和姑姑都在城里，父母也坚决不在城里住。</p>
+
+        <p>去年，在我和妻子的努力下，我们终于用打工挣的钱，在县里买了一套新房。新房装修完，父母第一次走进新房时，高兴得不得了。妻子提出留一串钥匙给父母，可他们拒绝了。那天，父亲喝醉了，等他醒时，天色已晚。我和妻子强烈留父母在新房住一夜，第二天再回，但他们仍坚持坐上了最后一趟回老家的车。</p>
+
+        <p>一段时间后，我和妻子又准备去外地打工，新房只能上锁空着。临走那天，父亲从老家赶来送我们。父亲悄悄把我拉到一边说："你妈说了，你还是留一串新房的钥匙给我们，要是我和你妈什么时候想来了，就来住上几天，顺便给你们晒晒被子，打扫打扫卫生。"父亲说这话时，轻声细语，还红着脸，像个害羞的孩子。</p>
+
+        <p>转眼又是半年，我们回家时是一个深冬的夜里。下了长途车，儿子被冻得大哭。我和妻子想象着打开家门满是灰尘、冷冷清清的景象，觉得心里发寒。来到楼下，抬头一看，却发现自家亮着灯光。上了楼，开门的竟是微笑着的父母，温暖的气息立刻扑面而来：室内打扫得干干净净，暖气开着，水已温热，卧室床上的被子已铺好，厨房里飘来阵阵饭菜香......</p>
+
+        <p>父亲说："你妈昨天接到电话，知道你们今晚回来，今天来新房忙了一天了。"原来父母要我留下串钥匙，只是为了让我们回来时，能立刻感受到家的温暖！我鼻子一酸，流下了热泪......</p>
+    </div>
+</section>
+
+<!-- ==================== VOCABULARY ==================== -->
+<section id="vocab">
+    <div class="section-header">
+        <h2>生词 - Vocabulaire</h2>
+        <p class="section-sub">39 mots - Cliquez pour reveler la traduction</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (39)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout reveler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+
+    <div class="vocab-grid" id="vocabGrid">
+        <!-- Generated by JS -->
+    </div>
+</section>
+
+<!-- ==================== FLASHCARDS ==================== -->
+<section id="flashcards">
+    <div class="section-header">
+        <h2>卡片 - Flashcards</h2>
+        <p class="section-sub">Cliquez pour retourner la carte</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="flashcard-area">
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">39</span></div>
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front">
+                    <div class="fc-hanzi" id="fcHanzi">串</div>
+                    <div class="fc-pinyin" id="fcPinyin">chuan</div>
+                    <div class="fc-hint">cliquez pour voir la traduction</div>
+                </div>
+                <div class="flashcard-back">
+                    <div class="fc-meaning" id="fcMeaning">grappe, chapelet</div>
+                    <div class="fc-pos" id="fcPos">m.</div>
+                </div>
+            </div>
+        </div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== GRAMMAR ==================== -->
+<section id="grammar">
+    <div class="section-header">
+        <h2>语法 - Grammaire</h2>
+        <p class="section-sub">3 points de grammaire essentiels</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <!-- Grammar 1: 以来 -->
+    <div class="grammar-card">
+        <div class="grammar-header">
+            <div class="grammar-num">1</div>
+            <div>
+                <div class="grammar-title">以来</div>
+                <div class="grammar-pinyin">yilai</div>
+            </div>
+        </div>
+        <div class="grammar-body">
+            <div class="grammar-rule">
+                <strong>Structure :</strong> Nom + 以来<br>
+                <strong>Sens :</strong> Indique une periode du passe jusqu'au present. "depuis..."
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">因此长年<span class="ex-highlight">以来</span>，父母很少离开老屋。</div>
+                <div class="ex-note">Depuis de longues annees, les parents quittent rarement la vieille maison.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">改革开放<span class="ex-highlight">以来</span>，中国发生了巨大的变化。</div>
+                <div class="ex-note">Depuis la reforme et l'ouverture, la Chine a connu d'enormes changements.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">一直<span class="ex-highlight">以来</span>，"80后"这个词儿都含有年轻的味道。</div>
+                <div class="ex-note">Depuis toujours, le terme "generation 80" a une connotation de jeunesse.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grammar 2: 临 -->
+    <div class="grammar-card">
+        <div class="grammar-header">
+            <div class="grammar-num">2</div>
+            <div>
+                <div class="grammar-title">临</div>
+                <div class="grammar-pinyin">lin</div>
+            </div>
+        </div>
+        <div class="grammar-body">
+            <div class="grammar-rule">
+                <strong>Sens 1 :</strong> Verbe signifiant "etre pres de / face a".<br>
+                <strong>Sens 2 :</strong> Preposition "临......(时/前)" = juste avant.
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">我想买一套不<span class="ex-highlight">临</span>街的房子。</div>
+                <div class="ex-note">Je veux acheter un appartement qui ne donne pas sur la rue. (verbe : etre face a)</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn"><span class="ex-highlight">临</span>走那天，父亲从老家赶来送我们。</div>
+                <div class="ex-note">Juste avant le depart, le pere est venu de la campagne pour nous dire au revoir. (preposition)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grammar 3: 立刻 -->
+    <div class="grammar-card">
+        <div class="grammar-header">
+            <div class="grammar-num">3</div>
+            <div>
+                <div class="grammar-title">立刻</div>
+                <div class="grammar-pinyin">like</div>
+            </div>
+        </div>
+        <div class="grammar-body">
+            <div class="grammar-rule">
+                <strong>Structure :</strong> 立刻 + verbe<br>
+                <strong>Sens :</strong> Adverbe signifiant "immediatement". Souligne qu'une action suit immediatement la precedente.
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">上了楼，开门的竟是微笑着的父母，温暖的气息<span class="ex-highlight">立刻</span>扑面而来。</div>
+                <div class="ex-note">En montant, ce sont les parents souriants qui ouvrent ; la chaleur vous envahit immediatement.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">那两只羊一见到青草，就<span class="ex-highlight">立刻</span>去吃草了。</div>
+                <div class="ex-note">Les deux moutons, des qu'ils voient l'herbe, se mettent immediatement a brouter.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== WORD ANALYSIS ==================== -->
+<section id="analysis">
+    <div class="section-header">
+        <h2>词语辨析 - Analyse comparative</h2>
+        <p class="section-sub">悄悄 vs 偷偷</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="card">
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>悄悄 (qiaoqiao)</th>
+                    <th>偷偷 (toutou)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="label-cell">Points communs</td>
+                    <td colspan="2" style="text-align:center;">Adverbes. Indiquent tous deux une action faite sans etre remarque.<br>Ex : 他<strong>悄悄/偷偷</strong>地走了出去。</td>
+                </tr>
+                <tr>
+                    <td class="label-cell" rowspan="2">Differences</td>
+                    <td>Met l'accent sur le fait de faire peu de bruit.<br><em>父亲悄悄把我拉到一边说话。</em></td>
+                    <td>Met l'accent sur le fait de ne pas vouloir que les autres sachent.<br><em>他谁也没告诉，偷偷去旅行了。</em></td>
+                </tr>
+                <tr>
+                    <td>Insiste sur la discretion sonore.</td>
+                    <td>Insiste sur le caractere secret de l'action.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ==================== COLLOCATION ==================== -->
+<section id="collocation">
+    <div class="section-header">
+        <h2>词语搭配 - Collocations</h2>
+        <p class="section-sub">Combinaisons essentielles de la lecon</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="card">
+        <div class="colloc-section">
+            <div class="colloc-label verb">动词 + 宾语 (Verbe + Objet)</div>
+            <div class="colloc-row">
+                <span class="colloc-word">断</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">水</span>
+                    <span class="colloc-tag">电</span>
+                    <span class="colloc-tag">奶</span>
+                    <span class="colloc-tag">交</span>
+                    <span class="colloc-tag">联系</span>
+                </div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">晒</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">被子</span>
+                    <span class="colloc-tag">衣服</span>
+                    <span class="colloc-tag">太阳</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="colloc-section">
+            <div class="colloc-label attr">定语 + 中心语 (Attribut + Nom)</div>
+            <div class="colloc-row">
+                <span class="colloc-word">强烈的</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">阳光</span>
+                    <span class="colloc-tag">感情</span>
+                    <span class="colloc-tag">对比</span>
+                </div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">长途</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">旅行</span>
+                    <span class="colloc-tag">汽车</span>
+                    <span class="colloc-tag">电话</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="colloc-section">
+            <div class="colloc-label adv">状语 + 中心语 (Adverbe + Verbe)</div>
+            <div class="colloc-row">
+                <span class="colloc-word">一辈子</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">住在农村</span>
+                    <span class="colloc-tag">没出国</span>
+                </div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">坚决</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">反对</span>
+                    <span class="colloc-tag">改正</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="colloc-section">
+            <div class="colloc-label comp">中心语 + 补语 (Verbe + Complement)</div>
+            <div class="colloc-row">
+                <span class="colloc-word">打/挣/摔</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">断</span>
+                </div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">热得/累得/急得/兴奋得/热闹得</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">不得了</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="colloc-section">
+            <div class="colloc-label quant">数量词 + 名词 (Quantite + Nom)</div>
+            <div class="colloc-row">
+                <span class="colloc-word">一套</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">房子</span>
+                    <span class="colloc-tag">家具</span>
+                    <span class="colloc-tag">餐具</span>
+                    <span class="colloc-tag">邮票</span>
+                    <span class="colloc-tag">西服</span>
+                </div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">一阵</span>
+                <span class="colloc-plus">+</span>
+                <div class="colloc-partners">
+                    <span class="colloc-tag">风</span>
+                    <span class="colloc-tag">雨</span>
+                    <span class="colloc-tag">歌声</span>
+                    <span class="colloc-tag">香味</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== QUIZ ==================== -->
+<section id="quiz-section">
+    <div class="section-header">
+        <h2>测验 - Quiz</h2>
+        <p class="section-sub">Testez vos connaissances sur la lecon</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+    </div>
+
+    <!-- Vocab Quiz -->
+    <div class="tab-content active" id="vocab-quiz">
+        <div class="quiz-score-bar">
+            <div class="score-display" id="vocabScore">0 / 0</div>
+            <div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div>
+            <button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button>
+        </div>
+        <div id="vocabQuizContainer"></div>
+    </div>
+
+    <!-- Grammar Quiz -->
+    <div class="tab-content" id="grammar-quiz">
+        <div class="quiz-score-bar">
+            <div class="score-display" id="grammarScore">0 / 0</div>
+            <div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div>
+            <button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button>
+        </div>
+        <div id="grammarQuizContainer"></div>
+    </div>
+
+    <!-- Comprehension Quiz -->
+    <div class="tab-content" id="comprehension-quiz">
+        <div class="quiz-score-bar">
+            <div class="score-display" id="compScore">0 / 0</div>
+            <div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div>
+            <button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button>
+        </div>
+        <div id="compQuizContainer"></div>
+    </div>
+</section>
+
+<!-- ==================== FILL-IN QUIZ ==================== -->
+<section id="fill-quiz">
+    <div class="section-header">
+        <h2>填空练习 - Exercices a trous</h2>
+        <p class="section-sub">Choisissez le mot correct pour completer les phrases</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="card" id="fillExercise">
+        <h3>Choisissez parmi : 断、套、锁、挣、长途、打工、强烈、想象</h3>
+        <div class="fill-options" id="fillOptions">
+            <span class="fill-chip" data-word="套" onclick="selectFillWord(this)">套</span>
+            <span class="fill-chip" data-word="想象" onclick="selectFillWord(this)">想象</span>
+            <span class="fill-chip" data-word="长途" onclick="selectFillWord(this)">长途</span>
+            <span class="fill-chip" data-word="强烈" onclick="selectFillWord(this)">强烈</span>
+            <span class="fill-chip" data-word="锁" onclick="selectFillWord(this)">锁</span>
+            <span class="fill-chip" data-word="断" onclick="selectFillWord(this)">断</span>
+            <span class="fill-chip" data-word="打工" onclick="selectFillWord(this)">打工</span>
+            <span class="fill-chip" data-word="挣" onclick="selectFillWord(this)">挣</span>
+        </div>
+        <div style="margin-top: 24px;">
+            <div class="quiz-question" style="margin-bottom: 12px;">
+                <span class="quiz-q-num">1</span>
+                你觉得我穿这 <span class="fill-blank" data-answer="套" onclick="placeFillWord(this)">___</span> 西服去电视台参加节目怎么样？
+            </div>
+            <div class="quiz-question" style="margin-bottom: 12px;">
+                <span class="quiz-q-num">2</span>
+                我不能 <span class="fill-blank" data-answer="想象" onclick="placeFillWord(this)">___</span> 她喝醉了会是什么样子。
+            </div>
+            <div class="quiz-question" style="margin-bottom: 12px;">
+                <span class="quiz-q-num">3</span>
+                国际 <span class="fill-blank" data-answer="长途" onclick="placeFillWord(this)">___</span> 电话很贵，现在我们一般上网聊天儿。
+            </div>
+            <div class="quiz-question" style="margin-bottom: 12px;">
+                <span class="quiz-q-num">4</span>
+                因为同学们 <span class="fill-blank" data-answer="强烈" onclick="placeFillWord(this)">___</span> 要求，我们决定这个周末出去活动。
+            </div>
+            <div class="quiz-question" style="margin-bottom: 12px;">
+                <span class="quiz-q-num">5</span>
+                房门被反 <span class="fill-blank" data-answer="锁" onclick="placeFillWord(this)">___</span> 上了，他从窗户里跳出来，把腿摔 <span class="fill-blank" data-answer="断" onclick="placeFillWord(this)">___</span> 了。
+            </div>
+            <div class="quiz-question" style="margin-bottom: 12px;">
+                <span class="quiz-q-num">6</span>
+                暑假的时候我想去 <span class="fill-blank" data-answer="打工" onclick="placeFillWord(this)">___</span> 两个月， <span class="fill-blank" data-answer="挣" onclick="placeFillWord(this)">___</span> 点儿钱。
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 16px;">
+            <button onclick="checkFillAnswers()" style="padding: 10px 30px; background: var(--primary-light); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 0.95rem; font-weight: 600;">Verifier les reponses</button>
+            <button onclick="resetFill()" style="padding: 10px 30px; background: white; border: 2px solid var(--border); border-radius: 25px; cursor: pointer; font-size: 0.95rem; margin-left: 10px;">Recommencer</button>
+        </div>
+    </div>
+
+    <!-- Choice quiz -->
+    <div class="card">
+        <h3>Choisissez entre : 坚决 vs 坚持 / 立刻 vs 马上 / 冻 vs 冷 / 温暖 vs 暖和</h3>
+        <div id="choiceQuizContainer"></div>
+    </div>
+</section>
+
+<!-- ==================== APPLICATION ==================== -->
+<section id="application">
+    <div class="section-header">
+        <h2>运用 - Application</h2>
+        <p class="section-sub">Contexte et discussion</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="app-box">
+        <h4>背景分析 - Contexte</h4>
+        <p style="line-height: 2;">人们常说，父母对子女的爱是无私的、伟大的。父母对孩子的关心和照顾，不只是在孩子小的时候。即使孩子已经长大、自己已经变老，父母们也会继续为子女付出很多，只不过，爱的方式和以前不同了。</p>
+    </div>
+
+    <div class="app-box">
+        <h4>话题讨论 - Discussion : 父母对子女的爱——最无私的爱</h4>
+        <div class="discussion-q">1. 你同意"父母对子女的爱是无私和伟大的"这种说法吗？<br><em>Etes-vous d'accord avec l'idee que "l'amour des parents pour leurs enfants est desinteresse et grand" ?</em></div>
+        <div class="discussion-q">2. 你觉得课文中的这对父母一开始拒绝接受孩子新房钥匙的原因是什么？<br><em>Pourquoi pensez-vous que les parents ont d'abord refuse les cles du nouvel appartement ?</em></div>
+        <div class="discussion-q">3. 请说说你记得最清楚的父母关心你、爱你的一件事。<br><em>Racontez un souvenir marquant de l'amour et de l'attention de vos parents.</em></div>
+    </div>
+
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'ecriture</h4>
+        <p>请以"最深的爱"为题写一段话，谈谈你对课文中父母的表现有什么看法，并说说你和自己父母亲的关系。尽量用上本课所学的生词，字数不少于100字。</p>
+        <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 8px;"><em>Ecrivez un paragraphe intitule "L'amour le plus profond" en donnant votre avis sur le comportement des parents du texte et en parlant de votre relation avec vos propres parents. Utilisez le vocabulaire de la lecon. Minimum 100 caracteres.</em></p>
+    </div>
+</section>
+
+</main>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+
+<footer style="text-align:center; padding: 40px 20px; color: var(--text-light); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 40px;">
+    HSK 5 Standard Course - Lesson 2 - 留串钥匙给父母
+</footer>
+
+<script>
+// ===== VOCABULARY DATA =====
+const vocabData = [
+    {id:1, hanzi:"串", pinyin:"chuan", pos:"m.", meaning:"grappe, chapelet", meaningEn:"bunch, string", cat:"other"},
+    {id:2, hanzi:"一辈子", pinyin:"yibeizi", pos:"n.", meaning:"toute la vie", meaningEn:"all one's life", cat:"noun"},
+    {id:3, hanzi:"农村", pinyin:"nongcun", pos:"n.", meaning:"campagne", meaningEn:"countryside", cat:"noun"},
+    {id:4, hanzi:"屋(子)", pinyin:"wu(zi)", pos:"n.", meaning:"maison", meaningEn:"house", cat:"noun"},
+    {id:5, hanzi:"断", pinyin:"duan", pos:"v.", meaning:"couper, interrompre", meaningEn:"to cut off, to stop", cat:"verb"},
+    {id:6, hanzi:"以来", pinyin:"yilai", pos:"n.", meaning:"depuis", meaningEn:"since", cat:"other"},
+    {id:7, hanzi:"姥姥", pinyin:"laolao", pos:"n.", meaning:"grand-mere maternelle", meaningEn:"maternal grandma", cat:"noun"},
+    {id:8, hanzi:"舅舅", pinyin:"jiujiu", pos:"n.", meaning:"oncle maternel", meaningEn:"uncle, mother's brother", cat:"noun"},
+    {id:9, hanzi:"姑姑", pinyin:"gugu", pos:"n.", meaning:"tante paternelle", meaningEn:"aunt, father's sister", cat:"noun"},
+    {id:10, hanzi:"坚决", pinyin:"jianjue", pos:"adj.", meaning:"resolu, determine", meaningEn:"resolute, determined", cat:"adj"},
+    {id:11, hanzi:"打工", pinyin:"da gong", pos:"v.", meaning:"travailler (emploi temporaire)", meaningEn:"to work for others, temporary job", cat:"verb"},
+    {id:12, hanzi:"挣", pinyin:"zheng", pos:"v.", meaning:"gagner (argent)", meaningEn:"to earn", cat:"verb"},
+    {id:13, hanzi:"县", pinyin:"xian", pos:"n.", meaning:"district, comte", meaningEn:"county", cat:"noun"},
+    {id:14, hanzi:"套", pinyin:"tao", pos:"m.", meaning:"ensemble (classificateur)", meaningEn:"set, suite", cat:"other"},
+    {id:15, hanzi:"装修", pinyin:"zhuangxiu", pos:"v.", meaning:"renover, decorer", meaningEn:"to decorate (house)", cat:"verb"},
+    {id:16, hanzi:"不得了", pinyin:"budeliao", pos:"adj.", meaning:"extremement", meaningEn:"extremely, exceedingly", cat:"adj"},
+    {id:17, hanzi:"醉", pinyin:"zui", pos:"v.", meaning:"etre ivre", meaningEn:"to be drunk", cat:"verb"},
+    {id:18, hanzi:"强烈", pinyin:"qianglie", pos:"adj.", meaning:"fort, intense", meaningEn:"strong and vehement", cat:"adj"},
+    {id:19, hanzi:"夜", pinyin:"ye", pos:"n.", meaning:"nuit", meaningEn:"night", cat:"noun"},
+    {id:20, hanzi:"锁", pinyin:"suo", pos:"n./v.", meaning:"serrure ; fermer a cle", meaningEn:"lock; to lock up", cat:"noun"},
+    {id:21, hanzi:"临", pinyin:"lin", pos:"prep.", meaning:"juste avant", meaningEn:"about to, just before", cat:"other"},
+    {id:22, hanzi:"悄悄", pinyin:"qiaoqiao", pos:"adv.", meaning:"discretement", meaningEn:"quietly, secretly", cat:"other"},
+    {id:23, hanzi:"晒", pinyin:"shai", pos:"v.", meaning:"secher au soleil", meaningEn:"to dry in the sun", cat:"verb"},
+    {id:24, hanzi:"被子", pinyin:"beizi", pos:"n.", meaning:"couette", meaningEn:"quilt", cat:"noun"},
+    {id:25, hanzi:"长途", pinyin:"changtu", pos:"adj.", meaning:"longue distance", meaningEn:"long-distance", cat:"adj"},
+    {id:26, hanzi:"冻", pinyin:"dong", pos:"v.", meaning:"geler, avoir tres froid", meaningEn:"to freeze, to feel very cold", cat:"verb"},
+    {id:27, hanzi:"想象", pinyin:"xiangxiang", pos:"v.", meaning:"imaginer", meaningEn:"to imagine", cat:"verb"},
+    {id:28, hanzi:"灰尘", pinyin:"huichen", pos:"n.", meaning:"poussiere", meaningEn:"dust, dirt", cat:"noun"},
+    {id:29, hanzi:"亮", pinyin:"liang", pos:"adj./v.", meaning:"lumineux ; briller", meaningEn:"bright; to shine", cat:"adj"},
+    {id:30, hanzi:"微笑", pinyin:"weixiao", pos:"v./n.", meaning:"sourire", meaningEn:"to smile; smile", cat:"verb"},
+    {id:31, hanzi:"温暖", pinyin:"wennuan", pos:"adj./v.", meaning:"chaleureux ; rechauffer", meaningEn:"warm; to warm", cat:"adj"},
+    {id:32, hanzi:"立刻", pinyin:"like", pos:"adv.", meaning:"immediatement", meaningEn:"at once, immediately", cat:"other"},
+    {id:33, hanzi:"扑", pinyin:"pu", pos:"v.", meaning:"se jeter sur", meaningEn:"to pounce on, to dash at", cat:"verb"},
+    {id:34, hanzi:"卧室", pinyin:"woshi", pos:"n.", meaning:"chambre", meaningEn:"bedroom", cat:"noun"},
+    {id:35, hanzi:"铺", pinyin:"pu", pos:"v.", meaning:"etaler, derouler", meaningEn:"to spread, to unfold", cat:"verb"},
+    {id:36, hanzi:"飘", pinyin:"piao", pos:"v.", meaning:"flotter", meaningEn:"to float (in the air), to waft", cat:"verb"},
+    {id:37, hanzi:"阵", pinyin:"zhen", pos:"m.", meaning:"classificateur (bouffee)", meaningEn:"used for short period or spell", cat:"other"},
+    {id:38, hanzi:"感受", pinyin:"ganshou", pos:"v./n.", meaning:"ressentir ; sensation", meaningEn:"to feel; feeling", cat:"verb"},
+    {id:39, hanzi:"流泪", pinyin:"liu lei", pos:"v.", meaning:"verser des larmes", meaningEn:"to shed tears", cat:"verb"},
+];
+
+// ===== RENDER VOCABULARY =====
+function renderVocab(filter = 'all') {
+    const grid = document.getElementById('vocabGrid');
+    const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
+    grid.innerHTML = filtered.map(v => `
+        <div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')">
+            <span class="vocab-num">#${v.id}</span>
+            <div class="hanzi">${v.hanzi}</div>
+            <div class="pinyin">${v.pinyin}</div>
+            <span class="pos">${v.pos}</span>
+            <div class="meaning-placeholder">Cliquez pour voir...</div>
+            <div class="meaning-hidden">${v.meaning}</div>
+        </div>
+    `).join('');
+}
+
+function filterVocab(cat) {
+    document.querySelectorAll('.vocab-controls button').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    renderVocab(cat);
+}
+
+function revealAll() {
+    document.querySelectorAll('.vocab-card').forEach(c => c.classList.add('revealed'));
+}
+
+function hideAll() {
+    document.querySelectorAll('.vocab-card').forEach(c => c.classList.remove('revealed'));
+}
+
+// ===== FLASHCARDS =====
+let fcIndex = 0;
+let fcOrder = [...Array(vocabData.length).keys()];
+
+function updateFlashcard() {
+    const v = vocabData[fcOrder[fcIndex]];
+    document.getElementById('fcHanzi').textContent = v.hanzi;
+    document.getElementById('fcPinyin').textContent = v.pinyin;
+    document.getElementById('fcMeaning').textContent = v.meaning;
+    document.getElementById('fcPos').textContent = v.pos;
+    document.getElementById('fcCurrent').textContent = fcIndex + 1;
+    document.getElementById('fcTotal').textContent = fcOrder.length;
+    document.getElementById('flashcard').classList.remove('flipped');
+}
+
+function flipCard() {
+    document.getElementById('flashcard').classList.toggle('flipped');
+}
+
+function nextCard() {
+    fcIndex = (fcIndex + 1) % fcOrder.length;
+    updateFlashcard();
+}
+
+function prevCard() {
+    fcIndex = (fcIndex - 1 + fcOrder.length) % fcOrder.length;
+    updateFlashcard();
+}
+
+function shuffleCards() {
+    for (let i = fcOrder.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [fcOrder[i], fcOrder[j]] = [fcOrder[j], fcOrder[i]];
+    }
+    fcIndex = 0;
+    updateFlashcard();
+}
+
+// ===== QUIZ DATA =====
+const vocabQuizData = [
+    {q: "串 signifie :", options: ["Morceau", "Grappe, chapelet", "Ligne", "Cercle"], correct: 1},
+    {q: "Quel mot signifie 'gagner (de l'argent)' ?", options: ["打工", "挣", "装修", "锁"], correct: 1},
+    {q: "温暖 veut dire :", options: ["Froid", "Chaleureux, chaud", "Sec", "Humide"], correct: 1},
+    {q: "坚决 est un adjectif qui signifie :", options: ["Hesitant", "Resolu, determine", "Timide", "Curieux"], correct: 1},
+    {q: "Comment dit-on 'imaginer' en chinois ?", options: ["感受", "想象", "微笑", "飘"], correct: 1},
+    {q: "灰尘 signifie :", options: ["Lumiere", "Poussiere", "Fumee", "Vent"], correct: 1},
+    {q: "Quel mot signifie 'secher au soleil' ?", options: ["冻", "铺", "晒", "扑"], correct: 2},
+    {q: "悄悄 veut dire :", options: ["Bruyamment", "Discretement", "Rapidement", "Lentement"], correct: 1},
+    {q: "Que signifie 流泪 ?", options: ["Sourire", "Rire", "Verser des larmes", "Crier"], correct: 2},
+    {q: "装修 signifie :", options: ["Demolir", "Renover, decorer", "Demenager", "Construire"], correct: 1},
+];
+
+const grammarQuizData = [
+    {q: "以来 est utilise pour :", options: ["Indiquer le futur", "Indiquer une periode du passe au present", "Exprimer un souhait", "Comparer deux choses"], correct: 1},
+    {q: "Dans '临走那天', 临 signifie :", options: ["Pendant", "Juste avant", "Apres", "A cause de"], correct: 1},
+    {q: "'立刻' souligne que :", options: ["L'action est lente", "Une action suit immediatement la precedente", "L'action est repetee", "L'action est annulee"], correct: 1},
+    {q: "Completez : 改革开放___，中国发生了巨大的变化。", options: ["以后", "以来", "以前", "以上"], correct: 1},
+    {q: "Dans '我想买一套不临街的房子', 临 signifie :", options: ["Juste avant", "Etre pres de / face a", "Passer par", "Quitter"], correct: 1},
+    {q: "'立刻' est :", options: ["Un nom", "Un verbe", "Un adverbe", "Un adjectif"], correct: 2},
+    {q: "Completez : ___走的时候，他把钥匙交给了我。", options: ["立刻", "以来", "临", "悄悄"], correct: 2},
+    {q: "一直以来 signifie :", options: ["Depuis toujours", "Tout a coup", "Peut-etre", "Finalement"], correct: 0},
+];
+
+const compQuizData = [
+    {q: "Ou les parents ont-ils vecu toute leur vie ?", options: ["En ville", "A la campagne", "A l'etranger", "Dans le comte"], correct: 1},
+    {q: "Comment le fils et sa femme ont-ils achete le nouvel appartement ?", options: ["Avec un pret bancaire", "Avec l'argent gagne en travaillant", "Grace a un heritage", "Avec l'aide des parents"], correct: 1},
+    {q: "Quelle a ete la reaction des parents quand on leur a propose des cles ?", options: ["Ils ont accepte avec joie", "Ils ont refuse", "Ils etaient indifferents", "Ils se sont mis en colere"], correct: 1},
+    {q: "Que s'est-il passe le jour de la visite du nouvel appartement ?", options: ["Les parents sont partis tot", "Le pere s'est enivre et il s'est fait tard", "La mere est tombee malade", "Ils ont refuse de visiter"], correct: 1},
+    {q: "Qui a finalement demande les cles ?", options: ["Le fils", "La femme", "Le pere (de la part de la mere)", "La grand-mere"], correct: 2},
+    {q: "Que trouvent le fils et sa femme en rentrant en hiver ?", options: ["Un appartement vide et poussiereux", "Un appartement eclaire et prepare par les parents", "Des voisins qui les attendaient", "Une serrure cassee"], correct: 1},
+    {q: "Pourquoi les parents voulaient-ils une cle ?", options: ["Pour y vivre", "Pour vendre l'appartement", "Pour preparer un accueil chaleureux au retour des enfants", "Pour le louer"], correct: 2},
+    {q: "Comment le narrateur reagit-il a la fin de l'histoire ?", options: ["Il est en colere", "Il est indifferent", "Il est emu aux larmes", "Il est surpris mais calme"], correct: 2},
+];
+
+// ===== RENDER QUIZZES =====
+function renderQuiz(data, containerId, prefix) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = data.map((q, i) => `
+        <div class="quiz-question" id="${prefix}-q${i}">
+            <div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div>
+            <div class="quiz-options">
+                ${q.options.map((opt, j) => `
+                    <div class="quiz-option" onclick="answerQuiz('${prefix}', ${i}, ${j})">${opt}</div>
+                `).join('')}
+            </div>
+            <div class="quiz-explanation" id="${prefix}-exp${i}"></div>
+        </div>
+    `).join('');
+}
+
+const quizState = { vocab: {score:0, answered:0, total:10}, grammar: {score:0, answered:0, total:8}, comp: {score:0, answered:0, total:8} };
+
+function getQuizData(prefix) {
+    if (prefix === 'vocab') return vocabQuizData;
+    if (prefix === 'grammar') return grammarQuizData;
+    return compQuizData;
+}
+
+function answerQuiz(prefix, qIdx, optIdx) {
+    const data = getQuizData(prefix);
+    const qEl = document.getElementById(`${prefix}-q${qIdx}`);
+    if (qEl.classList.contains('correct') || qEl.classList.contains('wrong')) return;
+
+    const options = qEl.querySelectorAll('.quiz-option');
+    const correct = data[qIdx].correct;
+
+    options.forEach((o, i) => {
+        o.classList.add('disabled');
+        if (i === correct) o.classList.add('selected-correct');
+        if (i === optIdx && i !== correct) o.classList.add('selected-wrong');
+    });
+
+    if (optIdx === correct) {
+        qEl.classList.add('correct');
+        quizState[prefix].score++;
+    } else {
+        qEl.classList.add('wrong');
+    }
+
+    quizState[prefix].answered++;
+    updateScore(prefix);
+}
+
+function updateScore(prefix) {
+    const s = quizState[prefix];
+    document.getElementById(`${prefix}Score`).textContent = `${s.score} / ${s.total}`;
+    document.getElementById(`${prefix}ScoreBar`).style.width = `${(s.score / s.total) * 100}%`;
+}
+
+function resetQuiz(prefix) {
+    quizState[prefix] = {score:0, answered:0, total: quizState[prefix].total};
+    updateScore(prefix);
+    const containerId = prefix === 'vocab' ? 'vocabQuizContainer' : prefix === 'grammar' ? 'grammarQuizContainer' : 'compQuizContainer';
+    renderQuiz(getQuizData(prefix), containerId, prefix);
+}
+
+function switchQuizTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+}
+
+// ===== FILL-IN EXERCISE =====
+let selectedFillWord = null;
+
+function selectFillWord(el) {
+    document.querySelectorAll('.fill-chip').forEach(c => c.classList.remove('placed'));
+    el.classList.add('placed');
+    selectedFillWord = el.dataset.word;
+}
+
+function placeFillWord(blank) {
+    if (!selectedFillWord) return;
+    blank.textContent = selectedFillWord;
+    blank.dataset.placed = selectedFillWord;
+    document.querySelectorAll('.fill-chip').forEach(c => {
+        if (c.dataset.word === selectedFillWord) c.classList.add('used');
+        c.classList.remove('placed');
+    });
+    selectedFillWord = null;
+}
+
+function checkFillAnswers() {
+    document.querySelectorAll('.fill-blank').forEach(blank => {
+        const placed = blank.dataset.placed;
+        const answer = blank.dataset.answer;
+        if (placed === answer) {
+            blank.style.borderColor = 'var(--success)';
+            blank.style.background = '#dcfce7';
+            blank.style.color = 'var(--success)';
+            blank.style.fontWeight = '600';
+        } else {
+            blank.style.borderColor = 'var(--wrong)';
+            blank.style.background = '#fecaca';
+            blank.style.color = 'var(--wrong)';
+            blank.title = `Reponse : ${answer}`;
+        }
+    });
+}
+
+function resetFill() {
+    document.querySelectorAll('.fill-blank').forEach(blank => {
+        blank.textContent = '___';
+        blank.dataset.placed = '';
+        blank.style.borderColor = '';
+        blank.style.background = '';
+        blank.style.color = '';
+        blank.style.fontWeight = '';
+        blank.title = '';
+    });
+    document.querySelectorAll('.fill-chip').forEach(c => {
+        c.classList.remove('used', 'placed');
+    });
+    selectedFillWord = null;
+}
+
+// ===== CHOICE QUIZ =====
+const choiceQuizData = [
+    {q: "他的态度很___，恐怕不会改变主意了。", a: "坚决", b: "坚持", correct: "坚决", explain: "坚决 decrit une attitude resolue (adjectif)"},
+    {q: "只有一个星期了，春节___就要到了。", a: "立刻", b: "马上", correct: "马上", explain: "马上 pour un futur proche ; 立刻 souligne l'imminence apres un evenement"},
+    {q: "最近气温太低，河里的水都被___住了。", a: "冻", b: "冷", correct: "冻", explain: "冻 comme verbe signifie geler ; 冷 est un adjectif (froid)"},
+    {q: "女服务员给了我一个___的微笑。", a: "暖和", b: "温暖", correct: "温暖", explain: "温暖 peut etre utilise au sens figure (chaleureux) ; 暖和 est plus physique"},
+];
+
+function renderChoiceQuiz() {
+    const container = document.getElementById('choiceQuizContainer');
+    container.innerHTML = choiceQuizData.map((q, i) => `
+        <div class="quiz-question" id="choice-q${i}" style="margin-bottom: 12px;">
+            <div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div>
+            <div class="quiz-options" style="grid-template-columns: 1fr 1fr;">
+                <div class="quiz-option" onclick="answerChoice(${i}, '${q.a}')">${q.a}</div>
+                <div class="quiz-option" onclick="answerChoice(${i}, '${q.b}')">${q.b}</div>
+            </div>
+            <div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div>
+        </div>
+    `).join('');
+}
+
+function answerChoice(idx, answer) {
+    const qEl = document.getElementById(`choice-q${idx}`);
+    if (qEl.classList.contains('correct') || qEl.classList.contains('wrong')) return;
+    const data = choiceQuizData[idx];
+    const options = qEl.querySelectorAll('.quiz-option');
+
+    options.forEach(o => {
+        o.classList.add('disabled');
+        if (o.textContent === data.correct) o.classList.add('selected-correct');
+        if (o.textContent === answer && answer !== data.correct) o.classList.add('selected-wrong');
+    });
+
+    qEl.classList.add(answer === data.correct ? 'correct' : 'wrong');
+    document.getElementById(`choice-exp${idx}`).style.display = 'block';
+}
+
+// ===== NAV HIGHLIGHT =====
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-inner a');
+    let current = '';
+
+    sections.forEach(section => {
+        const top = section.offsetTop - 100;
+        if (window.scrollY >= top) current = section.id;
+    });
+
+    navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+    });
+
+    // Back to top
+    document.getElementById('backToTop').style.display = window.scrollY > 500 ? 'flex' : 'none';
+});
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+    renderVocab();
+    updateFlashcard();
+    renderQuiz(vocabQuizData, 'vocabQuizContainer', 'vocab');
+    renderQuiz(grammarQuizData, 'grammarQuizContainer', 'grammar');
+    renderQuiz(compQuizData, 'compQuizContainer', 'comp');
+    renderChoiceQuiz();
+});
+</script>
+
+</body>
+</html>
