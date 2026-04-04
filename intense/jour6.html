@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jour 6 &middot; Sant&eacute; et bien-&ecirc;tre &mdash; HSK 5 Intensif</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #5b21b6;
+            --primary-light: #7c3aed;
+            --primary-dark: #3b0764;
+            --accent: #c0392b;
+            --accent-soft: #e74c3c;
+            --gold: #f39c12;
+            --gold-light: #fef5e7;
+            --bg: #f5f7fa;
+            --card: #ffffff;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #e8ecf1;
+            --success: #27ae60;
+            --gradient-hero: linear-gradient(135deg, #0f0520 0%, #1e0a3c 30%, #5b21b6 70%, #7c3aed 100%);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 50px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(192,57,43,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: var(--bg);
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: #fff; }
+        .back-link svg { width: 18px; height: 18px; }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.8);
+            font-weight: 300;
+        }
+
+        .hero .day-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            padding: 6px 22px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .hero-illustration {
+            margin-top: 24px;
+        }
+        .hero-illustration img {
+            max-width: 200px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border: 3px solid rgba(255,255,255,0.15);
+        }
+
+        /* ===== RAPPEL BANNER ===== */
+        .rappel-banner {
+            max-width: 900px;
+            margin: -25px auto 24px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .rappel-banner-inner {
+            background: linear-gradient(135deg, #ede9fe 0%, #f3e8ff 100%);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 14px;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .rappel-icon {
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+
+        .rappel-text {
+            font-size: 0.92rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .rappel-text strong {
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .rappel-count {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 4px 14px;
+            border-radius: 20px;
+            flex-shrink: 0;
+        }
+
+        /* ===== TOOLBAR ===== */
+        .toolbar {
+            max-width: 900px;
+            margin: -20px auto 30px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .toolbar-inner {
+            background: var(--card);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .progress-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .progress-bar-bg {
+            width: 180px;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        .progress-count {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 0.82rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .toggle-btn:hover { border-color: var(--primary-light); color: var(--primary); }
+        .toggle-btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+        .toggle-btn svg { width: 16px; height: 16px; }
+
+        /* ===== SECTION ===== */
+        .section {
+            max-width: 900px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .section-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+            padding-left: 52px;
+        }
+
+        /* ===== WORD CARDS ===== */
+        .word-card {
+            background: var(--card);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            padding: 28px 32px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .word-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .word-card:nth-child(even) {
+            background: linear-gradient(135deg, #fefefe 0%, #faf8ff 100%);
+        }
+
+        .word-card .card-number {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            background: rgba(124,58,237,0.08);
+            border-radius: 8px;
+            padding: 3px 10px;
+        }
+
+        .word-header {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .word-hanzi {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+
+        .word-pinyin {
+            font-size: 1.05rem;
+            color: var(--primary-light);
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .word-pinyin.hidden {
+            opacity: 0;
+        }
+
+        .word-meaning {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .collocations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .colloc-tag {
+            display: inline-block;
+            background: rgba(124,58,237,0.07);
+            color: var(--primary);
+            border: 1px solid rgba(124,58,237,0.15);
+            border-radius: 20px;
+            padding: 3px 14px;
+            font-size: 0.82rem;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: 500;
+        }
+
+        .examples {
+            border-left: 3px solid var(--primary-light);
+            padding-left: 18px;
+            margin-bottom: 8px;
+        }
+
+        .example-item {
+            margin-bottom: 12px;
+        }
+        .example-item:last-child { margin-bottom: 0; }
+
+        .example-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-light);
+            margin-bottom: 2px;
+        }
+
+        .example-zh {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .example-fr {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .word-note {
+            background: var(--gold-light);
+            border-left: 3px solid var(--gold);
+            border-radius: 0 10px 10px 0;
+            padding: 10px 16px;
+            margin-top: 14px;
+            font-size: 0.85rem;
+            color: #7d6608;
+            line-height: 1.5;
+        }
+
+        .word-note strong {
+            color: #b7950b;
+        }
+
+        .satellite-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #e67e22);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 2px 10px;
+            border-radius: 6px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .mastered-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            padding: 6px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: transparent;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .mastered-btn:hover { border-color: var(--success); color: var(--success); }
+        .mastered-btn.done {
+            background: var(--success);
+            color: #fff;
+            border-color: var(--success);
+        }
+        .mastered-btn svg { width: 15px; height: 15px; }
+
+        /* ===== QUIZ ===== */
+        .quiz-card {
+            background: var(--card);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            padding: 24px 28px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: #fff;
+            border-radius: 50%;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .quiz-type {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-light);
+            margin-bottom: 8px;
+        }
+
+        .quiz-question {
+            font-size: 1.05rem;
+            font-family: 'Noto Sans SC', sans-serif;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .quiz-question .blank {
+            display: inline-block;
+            min-width: 80px;
+            border-bottom: 2px dashed var(--primary-light);
+            text-align: center;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .quiz-input {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px 16px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        .quiz-input:focus { border-color: var(--primary-light); }
+        .quiz-input.correct { border-color: var(--success); background: rgba(39,174,96,0.05); }
+        .quiz-input.wrong { border-color: var(--accent-soft); background: rgba(231,76,60,0.05); }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 18px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+        .quiz-option:hover { border-color: var(--primary-light); background: rgba(124,58,237,0.03); }
+        .quiz-option.selected { border-color: var(--primary); background: rgba(124,58,237,0.06); }
+        .quiz-option.correct-answer { border-color: var(--success); background: rgba(39,174,96,0.06); }
+        .quiz-option.wrong-answer { border-color: var(--accent-soft); background: rgba(231,76,60,0.05); }
+
+        .quiz-option .option-letter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--bg);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .quiz-match-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 10px 20px;
+            align-items: center;
+        }
+
+        .match-item {
+            padding: 10px 18px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            text-align: center;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .match-arrow {
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        .match-select {
+            padding: 10px 14px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            background: #fff;
+            cursor: pointer;
+            outline: none;
+            color: var(--text);
+        }
+        .match-select:focus { border-color: var(--primary-light); }
+
+        .quiz-check-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            padding: 10px 24px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .quiz-check-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(91,33,182,0.3); }
+
+        .quiz-feedback {
+            margin-top: 12px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            display: none;
+        }
+        .quiz-feedback.show { display: block; }
+        .quiz-feedback.correct { background: rgba(39,174,96,0.08); color: var(--success); border: 1px solid rgba(39,174,96,0.2); }
+        .quiz-feedback.wrong { background: rgba(231,76,60,0.08); color: var(--accent); border: 1px solid rgba(231,76,60,0.2); }
+
+        .quiz-translation-area {
+            width: 100%;
+            min-height: 70px;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-family: 'Noto Sans SC', sans-serif;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .quiz-translation-area:focus { border-color: var(--primary-light); }
+
+        .answer-reveal {
+            margin-top: 10px;
+            padding: 12px 16px;
+            background: rgba(124,58,237,0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(124,58,237,0.12);
+            font-size: 0.9rem;
+            display: none;
+        }
+        .answer-reveal.show { display: block; }
+        .answer-reveal .answer-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            max-width: 900px;
+            margin: 60px auto 0;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        .footer-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .footer-nav .btn-outline {
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+        .footer-nav .btn-outline:hover {
+            border-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .footer-nav .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: #fff;
+        }
+        .footer-nav .btn-primary:hover {
+            box-shadow: 0 4px 15px rgba(91,33,182,0.3);
+            transform: translateY(-1px);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2rem; }
+            .hero .subtitle { font-size: 1rem; }
+            .word-card { padding: 20px; }
+            .word-hanzi { font-size: 2rem; }
+            .toolbar-inner { flex-direction: column; align-items: flex-start; }
+            .progress-bar-bg { width: 140px; }
+            .quiz-match-grid { grid-template-columns: 1fr; gap: 8px; }
+            .match-arrow { display: none; }
+            .section-desc { padding-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+    <div class="hero-inner">
+        <a href="index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m0 0l7 7m-7-7l7-7"/></svg>
+            Retour au programme
+        </a>
+        <div class="day-badge">Apprentissage intensif</div>
+        <h1>Jour 6 &middot; &#31532;&#20845;&#22825;</h1>
+        <p class="subtitle">Sant&eacute; et bien-&ecirc;tre &mdash; 25 mots essentiels</p>
+        <div class="hero-illustration">
+            <img src="imgs/liu6.png" alt="Illustration Jour 6">
+        </div>
+    </div>
+</header>
+
+<!-- ===== RAPPEL BANNER ===== -->
+<div class="rappel-banner">
+    <div class="rappel-banner-inner">
+        <span class="rappel-icon">&#128260;</span>
+        <span class="rappel-text">Jour 6 r&eacute;utilise des <strong>mots des Jours 1 &agrave; 5</strong> dans ses exemples</span>
+        <span class="rappel-count">J1&ndash;J5 &rarr; J6</span>
+    </div>
+</div>
+
+<!-- ===== TOOLBAR ===== -->
+<div class="toolbar">
+    <div class="toolbar-inner">
+        <div class="progress-info">
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+            <span><span class="progress-count" id="progressCount">0</span> / 25 acquis</span>
+        </div>
+        <div class="toggle-group">
+            <button class="toggle-btn active" id="togglePinyin" onclick="togglePinyin()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 2v20l6-6h14a1 1 0 001-1V3a1 1 0 00-1-1H2a1 1 0 00-1 1z"/></svg>
+                Pinyin
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== MOTS DU JOUR ===== -->
+<section class="section">
+    <h2 class="section-title">
+        <span class="icon">&#x1F4D6;</span>
+        Mots du jour
+    </h2>
+    <p class="section-desc">Sant&eacute;, m&eacute;decine, bien-&ecirc;tre physique et mental. Cochez chaque mot une fois acquis.</p>
+
+    <div id="wordCards">
+
+        <!-- WORD 1 -->
+        <div class="word-card" data-index="1">
+            <span class="card-number">#1</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#30151;&#29366;</span>
+                <span class="word-pinyin">zh&egrave;ngzhu&agrave;ng</span>
+            </div>
+            <div class="word-meaning">sympt&ocirc;me</div>
+            <div class="collocations">
+                <span class="colloc-tag">出现症状</span>
+                <span class="colloc-tag">典型症状</span>
+                <span class="colloc-tag">症状明显</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">他出现了感冒的症状。</div>
+                    <div class="example-fr">Il pr&eacute;sente des sympt&ocirc;mes de rhume.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">如果症状<strong>明显</strong>，就应该<strong>及时</strong>去看医生，<strong>否则</strong>可能会更严重。</div>
+                    <div class="example-fr">Si les sympt&ocirc;mes sont manifestes, il faut consulter un m&eacute;decin &agrave; temps, sinon cela risque de s'aggraver.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 2 -->
+        <div class="word-card" data-index="2">
+            <span class="card-number">#2</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#35786;&#26029;</span>
+                <span class="word-pinyin">zh&#283;ndu&agrave;n</span>
+            </div>
+            <div class="word-meaning">diagnostiquer / diagnostic</div>
+            <div class="collocations">
+                <span class="colloc-tag">诊断结果</span>
+                <span class="colloc-tag">早期诊断</span>
+                <span class="colloc-tag">诊断准确</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">医生的诊断很准确。</div>
+                    <div class="example-fr">Le diagnostic du m&eacute;decin est tr&egrave;s pr&eacute;cis.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">只有<strong>及时</strong>诊断，才能<strong>采取</strong><strong>有效</strong>的治疗<strong>措施</strong>。</div>
+                    <div class="example-fr">Ce n'est qu'avec un diagnostic rapide qu'on peut prendre des mesures de traitement efficaces.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 3 -->
+        <div class="word-card" data-index="3">
+            <span class="card-number">#3</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#27835;&#30103;</span>
+                <span class="word-pinyin">zh&igrave;li&aacute;o</span>
+            </div>
+            <div class="word-meaning">traiter (m&eacute;dicalement) / traitement</div>
+            <div class="collocations">
+                <span class="colloc-tag">治疗方法</span>
+                <span class="colloc-tag">接受治疗</span>
+                <span class="colloc-tag">治疗效果</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">他正在接受治疗。</div>
+                    <div class="example-fr">Il est actuellement en traitement.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh"><strong>尽管</strong>治疗过程很漫长，但他始终保持<strong>乐观</strong>的态度。</div>
+                    <div class="example-fr">Bien que le traitement soit long, il garde toujours une attitude optimiste.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 4 -->
+        <div class="word-card" data-index="4">
+            <span class="card-number">#4</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#39044;&#38450;</span>
+                <span class="word-pinyin">y&ugrave;f&aacute;ng</span>
+            </div>
+            <div class="word-meaning">pr&eacute;venir / pr&eacute;vention</div>
+            <div class="collocations">
+                <span class="colloc-tag">预防疾病</span>
+                <span class="colloc-tag">预防措施</span>
+                <span class="colloc-tag">以预防为主</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">预防比治疗更重要。</div>
+                    <div class="example-fr">La pr&eacute;vention est plus importante que le traitement.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">事实<strong>证明</strong>，<strong>采取</strong><strong>合理</strong>的预防<strong>措施</strong>可以<strong>明显</strong><strong>降低</strong>生病的<strong>风险</strong>。</div>
+                    <div class="example-fr">Les faits prouvent que prendre des mesures de pr&eacute;vention raisonnables peut nettement r&eacute;duire le risque de maladie.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 5 -->
+        <div class="word-card" data-index="5">
+            <span class="card-number">#5</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#20813;&#30123;</span>
+                <span class="word-pinyin">mi&#462;ny&igrave;</span>
+            </div>
+            <div class="word-meaning">immunit&eacute; / immunitaire</div>
+            <div class="collocations">
+                <span class="colloc-tag">免疫力</span>
+                <span class="colloc-tag">免疫系统</span>
+                <span class="colloc-tag">增强免疫</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">运动可以增强免疫力。</div>
+                    <div class="example-fr">Le sport peut renforcer l'immunit&eacute;.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh"><strong>实际</strong>上，<strong>维持</strong>健康的生活方式是<strong>加强</strong>免疫力最<strong>有效</strong>的方法。</div>
+                    <div class="example-fr">En r&eacute;alit&eacute;, maintenir un mode de vie sain est la m&eacute;thode la plus efficace pour renforcer l'immunit&eacute;.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 6 -->
+        <div class="word-card" data-index="6">
+            <span class="card-number">#6</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#33829;&#20859;</span>
+                <span class="word-pinyin">y&iacute;ngy&#462;ng</span>
+            </div>
+            <div class="word-meaning">nutrition / nutritif</div>
+            <div class="collocations">
+                <span class="colloc-tag">营养均衡</span>
+                <span class="colloc-tag">营养价值</span>
+                <span class="colloc-tag">补充营养</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">这种水果的营养价值很高。</div>
+                    <div class="example-fr">Ce fruit a une haute valeur nutritive.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh"><strong>显然</strong>，<strong>合理</strong>的营养是<strong>维持</strong>健康的基础，这个<strong>道理</strong>人人都懂。</div>
+                    <div class="example-fr">De toute &eacute;vidence, une nutrition raisonnable est la base du maintien de la sant&eacute;, c'est une logique que tout le monde comprend.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 7 -->
+        <div class="word-card" data-index="7">
+            <span class="card-number">#7</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#38203;&#28860;</span>
+                <span class="word-pinyin">du&agrave;nli&agrave;n</span>
+            </div>
+            <div class="word-meaning">s'entra&icirc;ner, faire de l'exercice</div>
+            <div class="collocations">
+                <span class="colloc-tag">锻炼身体</span>
+                <span class="colloc-tag">坚持锻炼</span>
+                <span class="colloc-tag">体育锻炼</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">每天锻炼对身体很好。</div>
+                    <div class="example-fr">Faire de l'exercice chaque jour est tr&egrave;s bon pour la sant&eacute;.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh"><strong>既然</strong>你想<strong>改善</strong>健康状况，就应该坚持每天锻炼。</div>
+                    <div class="example-fr">Puisque tu veux am&eacute;liorer ton &eacute;tat de sant&eacute;, tu devrais pers&eacute;v&eacute;rer &agrave; faire de l'exercice chaque jour.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 8 -->
+        <div class="word-card" data-index="8">
+            <span class="card-number">#8</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#30130;&#21171;</span>
+                <span class="word-pinyin">p&iacute;l&aacute;o</span>
+            </div>
+            <div class="word-meaning">fatigue / fatigu&eacute;</div>
+            <div class="collocations">
+                <span class="colloc-tag">感到疲劳</span>
+                <span class="colloc-tag">过度疲劳</span>
+                <span class="colloc-tag">消除疲劳</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">工作太忙，他感到很疲劳。</div>
+                    <div class="example-fr">Le travail est trop charg&eacute;, il se sent tr&egrave;s fatigu&eacute;.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">长期的疲劳如果不<strong>及时</strong><strong>调整</strong>，<strong>往往</strong>会导致更严重的健康问题。</div>
+                    <div class="example-fr">Si la fatigue prolong&eacute;e n'est pas ajust&eacute;e &agrave; temps, elle entra&icirc;ne souvent des probl&egrave;mes de sant&eacute; plus graves.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 9 -->
+        <div class="word-card" data-index="9">
+            <span class="card-number">#9</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#24674;&#22797;</span>
+                <span class="word-pinyin">hu&#299;f&ugrave;</span>
+            </div>
+            <div class="word-meaning">r&eacute;cup&eacute;rer, se r&eacute;tablir / r&eacute;tablissement</div>
+            <div class="collocations">
+                <span class="colloc-tag">恢复健康</span>
+                <span class="colloc-tag">恢复体力</span>
+                <span class="colloc-tag">逐渐恢复</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">她的身体正在逐渐恢复。</div>
+                    <div class="example-fr">Son corps se r&eacute;tablit progressivement.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">手术后，他<strong>逐渐</strong>恢复了健康，这让家人<strong>充分</strong><strong>感受</strong>到了希望。</div>
+                    <div class="example-fr">Apr&egrave;s l'op&eacute;ration, il a progressivement recouvr&eacute; la sant&eacute;, ce qui a permis &agrave; sa famille de ressentir pleinement l'espoir.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 10 -->
+        <div class="word-card" data-index="10">
+            <span class="card-number">#10</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#24515;&#29702;</span>
+                <span class="word-pinyin">x&#299;nl&#464;</span>
+            </div>
+            <div class="word-meaning">psychologique / psychologie</div>
+            <div class="collocations">
+                <span class="colloc-tag">心理健康</span>
+                <span class="colloc-tag">心理压力</span>
+                <span class="colloc-tag">心理问题</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">心理健康和身体健康一样重要。</div>
+                    <div class="example-fr">La sant&eacute; mentale est aussi importante que la sant&eacute; physique.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">在这个<strong>竞争</strong>激烈的社会，心理问题已经成为一种<strong>相当</strong><strong>普遍</strong>的<strong>现象</strong>。</div>
+                    <div class="example-fr">Dans cette soci&eacute;t&eacute; tr&egrave;s comp&eacute;titive, les probl&egrave;mes psychologiques sont devenus un ph&eacute;nom&egrave;ne assez r&eacute;pandu.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 11 -->
+        <div class="word-card" data-index="11">
+            <span class="card-number">#11</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#21387;&#21147;</span>
+                <span class="word-pinyin">y&#257;l&igrave;</span>
+            </div>
+            <div class="word-meaning">pression, stress</div>
+            <div class="collocations">
+                <span class="colloc-tag">工作压力</span>
+                <span class="colloc-tag">承受压力</span>
+                <span class="colloc-tag">减轻压力</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">她的工作压力很大。</div>
+                    <div class="example-fr">Elle subit beaucoup de pression au travail.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh"><strong>面临</strong>巨大的压力时，<strong>有效</strong>的<strong>沟通</strong>和<strong>交流</strong>可以帮助我们<strong>克服</strong>困难。</div>
+                    <div class="example-fr">Face &agrave; une pression &eacute;norme, une communication et des &eacute;changes efficaces peuvent nous aider &agrave; surmonter les difficult&eacute;s.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 12 -->
+        <div class="word-card" data-index="12">
+            <span class="card-number">#12</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#28966;&#34385;</span>
+                <span class="word-pinyin">ji&#257;ol&#476;</span>
+            </div>
+            <div class="word-meaning">anxi&eacute;t&eacute; / anxieux</div>
+            <div class="collocations">
+                <span class="colloc-tag">感到焦虑</span>
+                <span class="colloc-tag">焦虑症</span>
+                <span class="colloc-tag">焦虑不安</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">考试前他非常焦虑。</div>
+                    <div class="example-fr">Il est tr&egrave;s anxieux avant l'examen.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">过度焦虑<strong>往往</strong>会<strong>降低</strong>工作<strong>效率</strong>，<strong>因此</strong>我们要学会<strong>调整</strong>心态。</div>
+                    <div class="example-fr">L'anxi&eacute;t&eacute; excessive diminue souvent l'efficacit&eacute; au travail, c'est pourquoi nous devons apprendre &agrave; ajuster notre &eacute;tat d'esprit.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 13 -->
+        <div class="word-card" data-index="13">
+            <span class="card-number">#13</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#22833;&#30496;</span>
+                <span class="word-pinyin">sh&#299;mi&aacute;n</span>
+            </div>
+            <div class="word-meaning">insomnie / souffrir d'insomnie</div>
+            <div class="collocations">
+                <span class="colloc-tag">严重失眠</span>
+                <span class="colloc-tag">经常失眠</span>
+                <span class="colloc-tag">治疗失眠</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">他最近经常失眠。</div>
+                    <div class="example-fr">Il souffre souvent d'insomnie ces derniers temps.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh"><strong>压力</strong>大的人<strong>往往</strong>容易失眠，<strong>不然</strong>就不会有那么多人去看心理医生了。</div>
+                    <div class="example-fr">Les personnes stress&eacute;es sont souvent sujettes &agrave; l'insomnie, sinon il n'y aurait pas autant de gens qui consultent un psychologue.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 14 -->
+        <div class="word-card" data-index="14">
+            <span class="card-number">#14</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#22343;&#34913;</span>
+                <span class="word-pinyin">j&#363;nh&eacute;ng</span>
+            </div>
+            <div class="word-meaning">&eacute;quilibr&eacute; / &eacute;quilibre</div>
+            <div class="collocations">
+                <span class="colloc-tag">营养均衡</span>
+                <span class="colloc-tag">均衡发展</span>
+                <span class="colloc-tag">保持均衡</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">饮食要注意营养均衡。</div>
+                    <div class="example-fr">Il faut veiller &agrave; l'&eacute;quilibre nutritionnel dans l'alimentation.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">保持身心的均衡发展，这是一种人生<strong>智慧</strong>。</div>
+                    <div class="example-fr">Maintenir un d&eacute;veloppement &eacute;quilibr&eacute; du corps et de l'esprit est une forme de sagesse de vie.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 15 -->
+        <div class="word-card" data-index="15">
+            <span class="card-number">#15</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#36866;&#24403;</span>
+                <span class="word-pinyin">sh&igrave;d&agrave;ng</span>
+            </div>
+            <div class="word-meaning">appropri&eacute;, convenable, mod&eacute;r&eacute;</div>
+            <div class="collocations">
+                <span class="colloc-tag">适当休息</span>
+                <span class="colloc-tag">适当运动</span>
+                <span class="colloc-tag">适当的方法</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">工作之后要适当休息。</div>
+                    <div class="example-fr">Apr&egrave;s le travail, il faut se reposer de mani&egrave;re appropri&eacute;e.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">适当的<strong>锻炼</strong>不仅能<strong>促进</strong>身体健康，还能<strong>有效</strong>减轻<strong>心理</strong><strong>压力</strong>。</div>
+                    <div class="example-fr">Un exercice mod&eacute;r&eacute; non seulement favorise la sant&eacute; physique, mais r&eacute;duit aussi efficacement le stress psychologique.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 16 -->
+        <div class="word-card" data-index="16">
+            <span class="card-number">#16</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#25106;</span>
+                <span class="word-pinyin">ji&egrave;</span>
+            </div>
+            <div class="word-meaning">arr&ecirc;ter (une mauvaise habitude), s'abstenir</div>
+            <div class="collocations">
+                <span class="colloc-tag">戒烟</span>
+                <span class="colloc-tag">戒酒</span>
+                <span class="colloc-tag">戒掉</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">医生建议他戒烟。</div>
+                    <div class="example-fr">Le m&eacute;decin lui a conseill&eacute; d'arr&ecirc;ter de fumer.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">他<strong>居然</strong>真的戒掉了二十年的烟瘾，<strong>实在</strong>令人<strong>佩服</strong>。</div>
+                    <div class="example-fr">Il a r&eacute;ellement arr&ecirc;t&eacute; de fumer apr&egrave;s vingt ans d'addiction, c'est vraiment admirable.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 17 -->
+        <div class="word-card" data-index="17">
+            <span class="card-number">#17</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#32933;&#32982;</span>
+                <span class="word-pinyin">f&eacute;ip&agrave;ng</span>
+            </div>
+            <div class="word-meaning">ob&eacute;sit&eacute; / ob&egrave;se</div>
+            <div class="collocations">
+                <span class="colloc-tag">肥胖问题</span>
+                <span class="colloc-tag">导致肥胖</span>
+                <span class="colloc-tag">肥胖率</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">肥胖会影响健康。</div>
+                    <div class="example-fr">L'ob&eacute;sit&eacute; affecte la sant&eacute;.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">不<strong>合理</strong>的<strong>消费</strong><strong>观念</strong>和饮食习惯<strong>往往</strong>是导致肥胖的重要原因。</div>
+                    <div class="example-fr">Des habitudes de consommation et d'alimentation d&eacute;raisonnables sont souvent des causes importantes d'ob&eacute;sit&eacute;.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 18 -->
+        <div class="word-card" data-index="18">
+            <span class="card-number">#18</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#20256;&#26579;</span>
+                <span class="word-pinyin">chu&aacute;nr&#462;n</span>
+            </div>
+            <div class="word-meaning">contagieux / contaminer</div>
+            <div class="collocations">
+                <span class="colloc-tag">传染病</span>
+                <span class="colloc-tag">传染性</span>
+                <span class="colloc-tag">防止传染</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">这种病有很强的传染性。</div>
+                    <div class="example-fr">Cette maladie est tr&egrave;s contagieuse.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">为了防止传染病<strong>扩大</strong>，政府必须<strong>严格</strong><strong>采取</strong><strong>预防</strong><strong>措施</strong>。</div>
+                    <div class="example-fr">Pour emp&ecirc;cher la propagation des maladies contagieuses, le gouvernement doit strictement prendre des mesures de pr&eacute;vention.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 19 -->
+        <div class="word-card" data-index="19">
+            <span class="card-number">#19</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#33647;&#29289;</span>
+                <span class="word-pinyin">y&agrave;ow&ugrave;</span>
+            </div>
+            <div class="word-meaning">m&eacute;dicament</div>
+            <div class="collocations">
+                <span class="colloc-tag">药物治疗</span>
+                <span class="colloc-tag">药物副作用</span>
+                <span class="colloc-tag">使用药物</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">这种药物的效果很好。</div>
+                    <div class="example-fr">Ce m&eacute;dicament est tr&egrave;s efficace.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">药物治疗<strong>的确</strong><strong>有效</strong>，但如果不配合<strong>适当</strong>的<strong>锻炼</strong>和<strong>营养</strong>，效果会大打折扣。</div>
+                    <div class="example-fr">Le traitement m&eacute;dicamenteux est effectivement efficace, mais sans exercice et nutrition appropri&eacute;s, l'effet sera consid&eacute;rablement r&eacute;duit.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 20 -->
+        <div class="word-card" data-index="20">
+            <span class="card-number">#20</span>
+            <div class="word-header">
+                <span class="word-hanzi">&#25163;&#26415;</span>
+                <span class="word-pinyin">sh&#466;ush&ugrave;</span>
+            </div>
+            <div class="word-meaning">op&eacute;ration chirurgicale</div>
+            <div class="collocations">
+                <span class="colloc-tag">做手术</span>
+                <span class="colloc-tag">手术成功</span>
+                <span class="colloc-tag">手术风险</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">手术很成功。</div>
+                    <div class="example-fr">L'op&eacute;ration a &eacute;t&eacute; un succ&egrave;s.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh"><strong>即使</strong>手术有一定的<strong>风险</strong>，他还是<strong>勇敢</strong>地选择了接受<strong>治疗</strong>。</div>
+                    <div class="example-fr">M&ecirc;me si l'op&eacute;ration comporte un certain risque, il a courageusement choisi d'accepter le traitement.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 21 - SATELLITE -->
+        <div class="word-card" data-index="21">
+            <span class="card-number">#21 <span class="satellite-badge">Satellite</span></span>
+            <div class="word-header">
+                <span class="word-hanzi">&#20445;&#20581;</span>
+                <span class="word-pinyin">b&#462;oji&agrave;n</span>
+            </div>
+            <div class="word-meaning">soins de sant&eacute;, hygi&egrave;ne de vie</div>
+            <div class="collocations">
+                <span class="colloc-tag">保健品</span>
+                <span class="colloc-tag">保健知识</span>
+                <span class="colloc-tag">日常保健</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">老年人要注意日常保健。</div>
+                    <div class="example-fr">Les personnes &acirc;g&eacute;es doivent veiller &agrave; leur hygi&egrave;ne de vie quotidienne.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">随着人们健康<strong>观念</strong>的改变，保健<strong>产品</strong>的<strong>市场</strong>需求<strong>逐渐</strong>增加。</div>
+                    <div class="example-fr">Avec l'&eacute;volution des mentalit&eacute;s en mati&egrave;re de sant&eacute;, la demande du march&eacute; pour les produits de sant&eacute; augmente progressivement.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 22 - SATELLITE -->
+        <div class="word-card" data-index="22">
+            <span class="card-number">#22 <span class="satellite-badge">Satellite</span></span>
+            <div class="word-header">
+                <span class="word-hanzi">&#24613;&#25937;</span>
+                <span class="word-pinyin">j&iacute;ji&ugrave;</span>
+            </div>
+            <div class="word-meaning">premiers secours</div>
+            <div class="collocations">
+                <span class="colloc-tag">急救措施</span>
+                <span class="colloc-tag">急救知识</span>
+                <span class="colloc-tag">紧急急救</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">每个人都应该学一些急救知识。</div>
+                    <div class="example-fr">Chacun devrait apprendre quelques notions de premiers secours.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh"><strong>掌握</strong>基本的急救知识非常重要，关键时刻可以挽救生命。</div>
+                    <div class="example-fr">Ma&icirc;triser les connaissances de base en premiers secours est tr&egrave;s important, cela peut sauver des vies aux moments critiques.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 23 - SATELLITE -->
+        <div class="word-card" data-index="23">
+            <span class="card-number">#23 <span class="satellite-badge">Satellite</span></span>
+            <div class="word-header">
+                <span class="word-hanzi">&#36807;&#25935;</span>
+                <span class="word-pinyin">gu&ograve;m&#464;n</span>
+            </div>
+            <div class="word-meaning">allergie / allergique</div>
+            <div class="collocations">
+                <span class="colloc-tag">过敏反应</span>
+                <span class="colloc-tag">食物过敏</span>
+                <span class="colloc-tag">过敏体质</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">她对花粉过敏。</div>
+                    <div class="example-fr">Elle est allergique au pollen.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">如果<strong>确认</strong>自己有过敏体质，就应该<strong>及时</strong>了解哪些东西可能引起<strong>症状</strong>。</div>
+                    <div class="example-fr">Si vous confirmez avoir un terrain allergique, vous devriez rapidement identifier les choses susceptibles de d&eacute;clencher des sympt&ocirc;mes.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 24 - SATELLITE -->
+        <div class="word-card" data-index="24">
+            <span class="card-number">#24 <span class="satellite-badge">Satellite</span></span>
+            <div class="word-header">
+                <span class="word-hanzi">&#21103;&#20316;&#29992;</span>
+                <span class="word-pinyin">f&ugrave;zu&ograve;y&ograve;ng</span>
+            </div>
+            <div class="word-meaning">effet secondaire</div>
+            <div class="collocations">
+                <span class="colloc-tag">药物副作用</span>
+                <span class="colloc-tag">产生副作用</span>
+                <span class="colloc-tag">副作用明显</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">这种药的副作用不大。</div>
+                    <div class="example-fr">Les effets secondaires de ce m&eacute;dicament sont mineurs.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">在<strong>分析</strong>了所有<strong>药物</strong>的副作用后，医生帮他<strong>调整</strong>了<strong>治疗</strong>方案。</div>
+                    <div class="example-fr">Apr&egrave;s avoir analys&eacute; les effets secondaires de tous les m&eacute;dicaments, le m&eacute;decin a ajust&eacute; son plan de traitement.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+        <!-- WORD 25 - SATELLITE -->
+        <div class="word-card" data-index="25">
+            <span class="card-number">#25 <span class="satellite-badge">Satellite</span></span>
+            <div class="word-header">
+                <span class="word-hanzi">&#24930;&#24615;</span>
+                <span class="word-pinyin">m&agrave;nx&igrave;ng</span>
+            </div>
+            <div class="word-meaning">chronique</div>
+            <div class="collocations">
+                <span class="colloc-tag">慢性病</span>
+                <span class="colloc-tag">慢性疲劳</span>
+                <span class="colloc-tag">慢性炎症</span>
+            </div>
+            <div class="examples">
+                <div class="example-item">
+                    <div class="example-label">Exemple simple</div>
+                    <div class="example-zh">慢性病需要长期治疗。</div>
+                    <div class="example-fr">Les maladies chroniques n&eacute;cessitent un traitement &agrave; long terme.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-label">Exemple naturel</div>
+                    <div class="example-zh">慢性病的增加<strong>反映</strong>出现代社会中人们生活方式的<strong>重大</strong>问题，<strong>因此</strong>政府<strong>加强</strong>了健康教育的<strong>推广</strong>。</div>
+                    <div class="example-fr">L'augmentation des maladies chroniques refl&egrave;te des probl&egrave;mes majeurs dans le mode de vie des soci&eacute;t&eacute;s modernes, c'est pourquoi le gouvernement a renforc&eacute; la promotion de l'&eacute;ducation sanitaire.</div>
+                </div>
+            </div>
+            <button class="mastered-btn" onclick="toggleMastered(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Acquis
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== MINI-QUIZ ===== -->
+<section class="section">
+    <h2 class="section-title">
+        <span class="icon">&#x270D;</span>
+        Mini-quiz
+    </h2>
+    <p class="section-desc">Testez vos connaissances sur les mots du jour (m&eacute;lange J1&ndash;J6).</p>
+
+    <!-- Quiz 1: Fill-in-the-blank -->
+    <div class="quiz-card" id="quiz1">
+        <div class="quiz-type">Combler les blancs</div>
+        <div style="display:flex;align-items:center;margin-bottom:12px;">
+            <span class="quiz-number">1</span>
+            <span style="font-size:0.95rem;">Compl&eacute;tez avec : 预防, 治疗, 道理</span>
+        </div>
+        <div class="quiz-question">
+            <span class="blank" id="q1blank1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 比 <span class="blank" id="q1blank2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 更重要，这是一个简单的 <span class="blank" id="q1blank3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 。
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <input type="text" class="quiz-input" id="q1input1" placeholder="1er blanc..." style="max-width:150px;">
+            <input type="text" class="quiz-input" id="q1input2" placeholder="2e blanc..." style="max-width:150px;">
+            <input type="text" class="quiz-input" id="q1input3" placeholder="3e blanc..." style="max-width:150px;">
+        </div>
+        <br>
+        <button class="quiz-check-btn" onclick="checkQuiz1()">V&eacute;rifier</button>
+        <div class="quiz-feedback" id="q1feedback"></div>
+    </div>
+
+    <!-- Quiz 2: Multiple choice -->
+    <div class="quiz-card" id="quiz2">
+        <div class="quiz-type">Choix multiple</div>
+        <div style="display:flex;align-items:center;margin-bottom:12px;">
+            <span class="quiz-number">2</span>
+            <span style="font-size:0.95rem;">Compl&eacute;tez : &laquo; 长期___会___工作___。 &raquo;</span>
+        </div>
+        <div class="quiz-options">
+            <div class="quiz-option" onclick="selectOption(this, 'quiz2')" data-value="a">
+                <span class="option-letter">a</span>
+                <span>焦虑 / 降低 / 效率</span>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this, 'quiz2')" data-value="b">
+                <span class="option-letter">b</span>
+                <span>失眠 / 维持 / 压力</span>
+            </div>
+            <div class="quiz-option" onclick="selectOption(this, 'quiz2')" data-value="c">
+                <span class="option-letter">c</span>
+                <span>疲劳 / 扩大 / 风险</span>
+            </div>
+        </div>
+        <button class="quiz-check-btn" onclick="checkQuiz2()">V&eacute;rifier</button>
+        <div class="quiz-feedback" id="q2feedback"></div>
+    </div>
+
+    <!-- Quiz 3: Fill-in-the-blank (older words) -->
+    <div class="quiz-card" id="quiz3">
+        <div class="quiz-type">Combler les blancs (mots anciens)</div>
+        <div style="display:flex;align-items:center;margin-bottom:12px;">
+            <span class="quiz-number">3</span>
+            <span style="font-size:0.95rem;">Compl&eacute;tez avec : 即使, 风险, 勇敢, 治疗</span>
+        </div>
+        <div class="quiz-question">
+            <span class="blank" id="q3blank1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 手术有一定的 <span class="blank" id="q3blank2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> ，他还是 <span class="blank" id="q3blank3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 地选择了接受 <span class="blank" id="q3blank4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 。
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <input type="text" class="quiz-input" id="q3input1" placeholder="1er blanc..." style="max-width:150px;">
+            <input type="text" class="quiz-input" id="q3input2" placeholder="2e blanc..." style="max-width:150px;">
+            <input type="text" class="quiz-input" id="q3input3" placeholder="3e blanc..." style="max-width:150px;">
+            <input type="text" class="quiz-input" id="q3input4" placeholder="4e blanc..." style="max-width:150px;">
+        </div>
+        <br>
+        <button class="quiz-check-btn" onclick="checkQuiz3()">V&eacute;rifier</button>
+        <div class="quiz-feedback" id="q3feedback"></div>
+    </div>
+
+    <!-- Quiz 4: Matching (order) -->
+    <div class="quiz-card" id="quiz4">
+        <div class="quiz-type">Association</div>
+        <div style="display:flex;align-items:center;margin-bottom:12px;">
+            <span class="quiz-number">4</span>
+            <span style="font-size:0.95rem;">Mettez dans l'ordre logique du parcours m&eacute;dical :</span>
+        </div>
+        <div class="quiz-match-grid">
+            <div class="match-item">1er</div>
+            <span class="match-arrow">&rarr;</span>
+            <select class="match-select" id="match1">
+                <option value="">Choisir...</option>
+                <option value="症状">症状</option>
+                <option value="诊断">诊断</option>
+                <option value="治疗">治疗</option>
+                <option value="预防">预防</option>
+            </select>
+
+            <div class="match-item">2e</div>
+            <span class="match-arrow">&rarr;</span>
+            <select class="match-select" id="match2">
+                <option value="">Choisir...</option>
+                <option value="症状">症状</option>
+                <option value="诊断">诊断</option>
+                <option value="治疗">治疗</option>
+                <option value="预防">预防</option>
+            </select>
+
+            <div class="match-item">3e</div>
+            <span class="match-arrow">&rarr;</span>
+            <select class="match-select" id="match3">
+                <option value="">Choisir...</option>
+                <option value="症状">症状</option>
+                <option value="诊断">诊断</option>
+                <option value="治疗">治疗</option>
+                <option value="预防">预防</option>
+            </select>
+
+            <div class="match-item">4e</div>
+            <span class="match-arrow">&rarr;</span>
+            <select class="match-select" id="match4">
+                <option value="">Choisir...</option>
+                <option value="症状">症状</option>
+                <option value="诊断">诊断</option>
+                <option value="治疗">治疗</option>
+                <option value="预防">预防</option>
+            </select>
+        </div>
+        <button class="quiz-check-btn" onclick="checkQuiz4()">V&eacute;rifier</button>
+        <div class="quiz-feedback" id="q4feedback"></div>
+    </div>
+
+    <!-- Quiz 5: Translation -->
+    <div class="quiz-card" id="quiz5">
+        <div class="quiz-type">Traduction</div>
+        <div style="display:flex;align-items:center;margin-bottom:12px;">
+            <span class="quiz-number">5</span>
+            <span style="font-size:0.95rem;">Traduisez en chinois :</span>
+        </div>
+        <div class="quiz-question" style="font-family:'Inter',sans-serif;font-style:italic;">
+            &laquo; Maintenir un mode de vie sain est effectivement la m&eacute;thode la plus efficace pour renforcer l'immunit&eacute;. &raquo;
+        </div>
+        <textarea class="quiz-translation-area" id="q5input" placeholder="&Eacute;crivez votre traduction en chinois..."></textarea>
+        <br>
+        <button class="quiz-check-btn" onclick="checkQuiz5()">Voir la r&eacute;ponse</button>
+        <div class="answer-reveal" id="q5answer">
+            <div class="answer-label">R&eacute;ponse sugg&eacute;r&eacute;e :</div>
+            <div style="font-family:'Noto Sans SC',sans-serif;font-size:1.05rem;margin-top:4px;">维持健康的生活方式的确是加强免疫力最有效的方法。</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer-nav">
+        <a href="index.html" class="btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m0 0l7 7m-7-7l7-7"/></svg>
+            Programme
+        </a>
+        <a href="jour7.html" class="btn-primary">
+            Jour 7
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m0 0l-7-7m7 7l-7 7"/></svg>
+        </a>
+    </div>
+    <p>HSK 5 &mdash; Apprentissage intensif &middot; Jour 6 sur 30</p>
+</footer>
+
+<script>
+    // ===== PINYIN TOGGLE =====
+    let pinyinVisible = true;
+
+    function togglePinyin() {
+        pinyinVisible = !pinyinVisible;
+        const btn = document.getElementById('togglePinyin');
+        const pinyins = document.querySelectorAll('.word-pinyin');
+
+        if (pinyinVisible) {
+            btn.classList.add('active');
+            pinyins.forEach(p => p.classList.remove('hidden'));
+        } else {
+            btn.classList.remove('active');
+            pinyins.forEach(p => p.classList.add('hidden'));
+        }
+    }
+
+    // ===== MASTERED / PROGRESS =====
+    let masteredCount = 0;
+    const totalWords = 25;
+
+    const savedMastered = JSON.parse(localStorage.getItem('jour6_mastered') || '{}');
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.mastered-btn').forEach(btn => {
+            const card = btn.closest('.word-card');
+            const idx = card.dataset.index;
+            if (savedMastered[idx]) {
+                btn.classList.add('done');
+                masteredCount++;
+            }
+        });
+        updateProgress();
+    });
+
+    function toggleMastered(btn) {
+        const card = btn.closest('.word-card');
+        const idx = card.dataset.index;
+
+        if (btn.classList.contains('done')) {
+            btn.classList.remove('done');
+            masteredCount--;
+            delete savedMastered[idx];
+        } else {
+            btn.classList.add('done');
+            masteredCount++;
+            savedMastered[idx] = true;
+        }
+        localStorage.setItem('jour6_mastered', JSON.stringify(savedMastered));
+        updateProgress();
+    }
+
+    function updateProgress() {
+        const pct = Math.round((masteredCount / totalWords) * 100);
+        document.getElementById('progressBar').style.width = pct + '%';
+        document.getElementById('progressCount').textContent = masteredCount;
+    }
+
+    // ===== QUIZ LOGIC =====
+
+    // Quiz 1
+    function checkQuiz1() {
+        const v1 = document.getElementById('q1input1').value.trim();
+        const v2 = document.getElementById('q1input2').value.trim();
+        const v3 = document.getElementById('q1input3').value.trim();
+        const fb = document.getElementById('q1feedback');
+
+        if (v1 === '预防' && v2 === '治疗' && v3 === '道理') {
+            document.getElementById('q1input1').classList.add('correct');
+            document.getElementById('q1input2').classList.add('correct');
+            document.getElementById('q1input3').classList.add('correct');
+            fb.className = 'quiz-feedback show correct';
+            fb.textContent = 'Correct ! 预防比治疗更重要，这是一个简单的道理。';
+        } else {
+            document.getElementById('q1input1').classList.add('wrong');
+            document.getElementById('q1input2').classList.add('wrong');
+            document.getElementById('q1input3').classList.add('wrong');
+            fb.className = 'quiz-feedback show wrong';
+            fb.textContent = 'Pas tout \u00e0 fait. R\u00e9ponse : 预防比治疗更重要，这是一个简单的道理。';
+        }
+    }
+
+    // Quiz 2
+    let quiz2Selection = '';
+    function selectOption(el, quizId) {
+        const container = el.closest('.quiz-card');
+        container.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+        el.classList.add('selected');
+        if (quizId === 'quiz2') quiz2Selection = el.dataset.value;
+    }
+
+    function checkQuiz2() {
+        const fb = document.getElementById('q2feedback');
+        const options = document.querySelectorAll('#quiz2 .quiz-option');
+
+        if (!quiz2Selection) {
+            fb.className = 'quiz-feedback show wrong';
+            fb.textContent = 'Veuillez s\u00e9lectionner une r\u00e9ponse.';
+            return;
+        }
+
+        options.forEach(o => {
+            o.classList.remove('correct-answer', 'wrong-answer');
+            if (o.dataset.value === 'a') o.classList.add('correct-answer');
+            else if (o.classList.contains('selected') && o.dataset.value !== 'a') o.classList.add('wrong-answer');
+        });
+
+        if (quiz2Selection === 'a') {
+            fb.className = 'quiz-feedback show correct';
+            fb.textContent = 'Correct ! 长期焦虑会降低工作效率。';
+        } else {
+            fb.className = 'quiz-feedback show wrong';
+            fb.textContent = 'Incorrect. La bonne r\u00e9ponse est a. 焦虑 / 降低 / 效率';
+        }
+    }
+
+    // Quiz 3
+    function checkQuiz3() {
+        const v1 = document.getElementById('q3input1').value.trim();
+        const v2 = document.getElementById('q3input2').value.trim();
+        const v3 = document.getElementById('q3input3').value.trim();
+        const v4 = document.getElementById('q3input4').value.trim();
+        const fb = document.getElementById('q3feedback');
+
+        if (v1 === '即使' && v2 === '风险' && v3 === '勇敢' && v4 === '治疗') {
+            [1,2,3,4].forEach(i => document.getElementById('q3input'+i).classList.add('correct'));
+            fb.className = 'quiz-feedback show correct';
+            fb.textContent = 'Correct ! 即使手术有一定的风险，他还是勇敢地选择了接受治疗。';
+        } else {
+            [1,2,3,4].forEach(i => document.getElementById('q3input'+i).classList.add('wrong'));
+            fb.className = 'quiz-feedback show wrong';
+            fb.textContent = 'Pas tout \u00e0 fait. R\u00e9ponse : 即使 / 风险 / 勇敢 / 治疗';
+        }
+    }
+
+    // Quiz 4
+    function checkQuiz4() {
+        const m1 = document.getElementById('match1').value;
+        const m2 = document.getElementById('match2').value;
+        const m3 = document.getElementById('match3').value;
+        const m4 = document.getElementById('match4').value;
+        const fb = document.getElementById('q4feedback');
+
+        if (!m1 || !m2 || !m3 || !m4) {
+            fb.className = 'quiz-feedback show wrong';
+            fb.textContent = 'Veuillez compl\u00e9ter toutes les associations.';
+            return;
+        }
+
+        const correct = m1 === '预防' && m2 === '症状' && m3 === '诊断' && m4 === '治疗';
+
+        if (correct) {
+            fb.className = 'quiz-feedback show correct';
+            fb.textContent = 'Parfait ! L\u2019ordre logique : 预防 \u2192 症状 \u2192 诊断 \u2192 治疗';
+        } else {
+            fb.className = 'quiz-feedback show wrong';
+            fb.textContent = 'Pas tout \u00e0 fait. L\u2019ordre logique est : 预防 \u2192 症状 \u2192 诊断 \u2192 治疗';
+        }
+    }
+
+    // Quiz 5
+    function checkQuiz5() {
+        document.getElementById('q5answer').classList.add('show');
+    }
+</script>
+
+</body>
+</html>
