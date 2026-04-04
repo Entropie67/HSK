@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jour 2 — Action et changement — HSK 5 Commando</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #5b21b6;
+            --primary-light: #7c3aed;
+            --primary-dark: #3b0764;
+            --accent: #c0392b;
+            --accent-soft: #e74c3c;
+            --gold: #f39c12;
+            --bg: #f5f7fa;
+            --card: #ffffff;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #e8ecf1;
+            --success: #27ae60;
+            --gradient-hero: linear-gradient(135deg, #0f0520 0%, #1e0a3c 30%, #5b21b6 70%, #7c3aed 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 50px 20px 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(192,57,43,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: var(--bg);
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .hero-text { flex: 1; }
+
+        .hero-img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+            flex-shrink: 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: white; }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.6rem;
+            font-weight: 900;
+            margin-bottom: 6px;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+
+        .hero .description {
+            font-size: 0.95rem;
+            opacity: 0.65;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        /* ===== RAPPEL BANNER ===== */
+        .rappel-banner {
+            max-width: 900px;
+            margin: -20px auto 24px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .rappel-inner {
+            background: linear-gradient(135deg, #ede9fe 0%, #f3e8ff 100%);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 14px;
+            padding: 14px 22px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 20px rgba(91, 33, 182, 0.08);
+        }
+
+        .rappel-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .rappel-text {
+            font-size: 0.88rem;
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        .rappel-text strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .rappel-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 6px;
+        }
+
+        .rappel-tag {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.72rem;
+            background: rgba(91, 33, 182, 0.1);
+            color: var(--primary);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        /* ===== CONTENT ===== */
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin: 40px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title .line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ===== VOCAB CARD ===== */
+        .vocab-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 30px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vocab-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(91, 33, 182, 0.08);
+        }
+
+        .vocab-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--primary-light));
+            border-radius: 4px 0 0 4px;
+        }
+
+        .vocab-card.satellite::before {
+            background: linear-gradient(180deg, var(--gold), #f1c40f);
+        }
+
+        .card-num {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-light);
+            background: var(--bg);
+            padding: 2px 10px;
+            border-radius: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .hanzi {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .pinyin {
+            font-size: 1.05rem;
+            color: var(--primary-light);
+            font-weight: 500;
+        }
+
+        .french {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        /* Collocations */
+        .collocations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .colloc-pill {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.82rem;
+            background: linear-gradient(135deg, #ede9fe, #f3e8ff);
+            color: var(--primary);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 500;
+            border: 1px solid rgba(124, 58, 237, 0.15);
+        }
+
+        /* Examples */
+        .example {
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--border);
+        }
+
+        .example.natural {
+            border-left-color: var(--primary-light);
+            background: linear-gradient(135deg, #faf5ff 0%, #f5f3ff 100%);
+        }
+
+        .example-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+
+        .example .zh {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 1.05rem;
+            color: var(--text);
+            margin-bottom: 3px;
+            line-height: 1.8;
+        }
+
+        .example .fr {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .reuse-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 6px;
+        }
+
+        .reuse-tag {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.68rem;
+            background: rgba(243, 156, 18, 0.12);
+            color: #b45309;
+            padding: 1px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .card-note {
+            margin-top: 12px;
+            font-size: 0.82rem;
+            color: var(--text-light);
+            background: #fffbeb;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border-left: 3px solid var(--gold);
+        }
+
+        /* ===== QUIZ SECTION ===== */
+        .quiz-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+        }
+
+        .quiz-section h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-item {
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-bottom: 14px;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .quiz-item:hover {
+            border-color: var(--primary-light);
+        }
+
+        .quiz-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-light);
+            margin-bottom: 8px;
+        }
+
+        .quiz-question {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 1.05rem;
+            color: var(--text);
+            margin-bottom: 8px;
+            line-height: 1.8;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .quiz-option {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.88rem;
+            padding: 6px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary-light);
+            background: #f5f3ff;
+        }
+
+        .quiz-option.selected {
+            border-color: var(--primary);
+            background: #ede9fe;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .quiz-answer {
+            display: none;
+            margin-top: 10px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .quiz-answer.correct {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .quiz-answer.shown {
+            display: block;
+        }
+
+        .quiz-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            padding: 6px 16px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: #ede9fe;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .quiz-btn:hover {
+            background: #ddd6fe;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+
+        footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        footer a:hover { text-decoration: underline; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-inner { flex-direction: column; text-align: center; gap: 20px; }
+            .hero-img { width: 120px; height: 120px; }
+            .vocab-card { padding: 22px 20px; }
+            .hanzi { font-size: 1.8rem; }
+            .quiz-section { padding: 22px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 30px 16px 55px; }
+            .hero h1 { font-size: 1.7rem; }
+            .hero-img { width: 100px; height: 100px; }
+            .card-header { gap: 8px; }
+            .collocations { gap: 6px; }
+            .rappel-inner { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <a href="index.html" class="back-link">&larr; Retour au programme</a>
+            <h1>Jour 2 &middot; 第二天</h1>
+            <p class="subtitle">Action et changement &mdash; 行动与改变</p>
+            <p class="description">25 nouveaux mots autour de l'action, du changement et de l'efficacite. Les exemples reutilisent systematiquement le vocabulaire du Jour 1.</p>
+        </div>
+        <img src="imgs/liu2.png" alt="Illustration Jour 2" class="hero-img">
+    </div>
+</header>
+
+<!-- RAPPEL J1 BANNER -->
+<div class="rappel-banner">
+    <div class="rappel-inner">
+        <span class="rappel-icon">&#x1F504;</span>
+        <div>
+            <div class="rappel-text">Jour 2 reutilise <strong>25 mots du Jour 1</strong> dans ses exemples</div>
+            <div class="rappel-tags">
+                <span class="rappel-tag">因此</span>
+                <span class="rappel-tag">即使</span>
+                <span class="rappel-tag">既然</span>
+                <span class="rappel-tag">尽管</span>
+                <span class="rappel-tag">从而</span>
+                <span class="rappel-tag">否则</span>
+                <span class="rappel-tag">不得不</span>
+                <span class="rappel-tag">显然</span>
+                <span class="rappel-tag">的确</span>
+                <span class="rappel-tag">毕竟</span>
+                <span class="rappel-tag">承认</span>
+                <span class="rappel-tag">赞成</span>
+                <span class="rappel-tag">反对</span>
+                <span class="rappel-tag">道理</span>
+                <span class="rappel-tag">现象</span>
+                <span class="rappel-tag">观念</span>
+                <span class="rappel-tag">显得</span>
+                <span class="rappel-tag">往往</span>
+                <span class="rappel-tag">实际</span>
+                <span class="rappel-tag">居然</span>
+                <span class="rappel-tag">证明</span>
+                <span class="rappel-tag">确认</span>
+                <span class="rappel-tag">何况</span>
+                <span class="rappel-tag">不然</span>
+                <span class="rappel-tag">实在</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+    <!-- SECTION: CORE (1-20) -->
+    <div class="section-title">
+        核心词汇 <span style="font-size:0.9rem; font-weight:400; color:var(--text-light);">Vocabulaire principal (1-20)</span>
+        <span class="line"></span>
+    </div>
+
+    <!-- 1. 采取 -->
+    <div class="vocab-card">
+        <span class="card-num">#1</span>
+        <div class="card-header">
+            <span class="hanzi">采取</span>
+            <span class="pinyin">cǎiqǔ</span>
+        </div>
+        <div class="french">adopter, prendre (une mesure)</div>
+        <div class="collocations">
+            <span class="colloc-pill">采取措施</span>
+            <span class="colloc-pill">采取行动</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">我们应该采取行动。</div>
+            <div class="fr">Nous devrions passer a l'action.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">既然问题这么严重，我们不得不采取新措施。</div>
+            <div class="fr">Puisque le probleme est si grave, nous sommes obliges de prendre de nouvelles mesures.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 既然</span>
+                <span class="reuse-tag">J1 不得不</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 措施 -->
+    <div class="vocab-card">
+        <span class="card-num">#2</span>
+        <div class="card-header">
+            <span class="hanzi">措施</span>
+            <span class="pinyin">cuòshī</span>
+        </div>
+        <div class="french">mesure, disposition</div>
+        <div class="collocations">
+            <span class="colloc-pill">采取措施</span>
+            <span class="colloc-pill">安全措施</span>
+            <span class="colloc-pill">有效措施</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">学校采取了很多安全措施。</div>
+            <div class="fr">L'ecole a pris beaucoup de mesures de securite.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">这些措施的确有效，交通事故明显减少了。</div>
+            <div class="fr">Ces mesures sont effectivement efficaces, les accidents de la route ont nettement diminue.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 的确</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 促进 -->
+    <div class="vocab-card">
+        <span class="card-num">#3</span>
+        <div class="card-header">
+            <span class="hanzi">促进</span>
+            <span class="pinyin">cùjìn</span>
+        </div>
+        <div class="french">promouvoir, favoriser</div>
+        <div class="collocations">
+            <span class="colloc-pill">促进发展</span>
+            <span class="colloc-pill">促进交流</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">运动能促进健康。</div>
+            <div class="fr">Le sport favorise la sante.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">这个活动促进了两国之间的文化交流，因此受到了大家的赞成。</div>
+            <div class="fr">Cette activite a favorise les echanges culturels entre les deux pays, c'est pourquoi elle a recu l'approbation de tous.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 因此</span>
+                <span class="reuse-tag">J1 赞成</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. 改善 -->
+    <div class="vocab-card">
+        <span class="card-num">#4</span>
+        <div class="card-header">
+            <span class="hanzi">改善</span>
+            <span class="pinyin">gǎishàn</span>
+        </div>
+        <div class="french">ameliorer</div>
+        <div class="collocations">
+            <span class="colloc-pill">改善环境</span>
+            <span class="colloc-pill">改善关系</span>
+            <span class="colloc-pill">改善生活</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">政府努力改善人民的生活。</div>
+            <div class="fr">Le gouvernement s'efforce d'ameliorer la vie du peuple.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">尽管改善环境需要时间，但我们不得不承认已经有了进步。</div>
+            <div class="fr">Bien qu'il faille du temps pour ameliorer l'environnement, nous devons admettre que des progres ont ete faits.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 尽管</span>
+                <span class="reuse-tag">J1 不得不</span>
+                <span class="reuse-tag">J1 承认</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. 克服 -->
+    <div class="vocab-card">
+        <span class="card-num">#5</span>
+        <div class="card-header">
+            <span class="hanzi">克服</span>
+            <span class="pinyin">kèfú</span>
+        </div>
+        <div class="french">surmonter, vaincre</div>
+        <div class="collocations">
+            <span class="colloc-pill">克服困难</span>
+            <span class="colloc-pill">克服恐惧</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">她克服了很多困难。</div>
+            <div class="fr">Elle a surmonte beaucoup de difficultes.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">毕竟每个人都会遇到困难，关键是如何克服它们。</div>
+            <div class="fr">Apres tout, tout le monde rencontre des difficultes, l'essentiel est de savoir les surmonter.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 毕竟</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. 逐渐 -->
+    <div class="vocab-card">
+        <span class="card-num">#6</span>
+        <div class="card-header">
+            <span class="hanzi">逐渐</span>
+            <span class="pinyin">zhújiàn</span>
+        </div>
+        <div class="french">progressivement, peu a peu</div>
+        <div class="collocations">
+            <span class="colloc-pill">逐渐改善</span>
+            <span class="colloc-pill">逐渐适应</span>
+            <span class="colloc-pill">逐渐增加</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">天气逐渐变暖了。</div>
+            <div class="fr">Le temps se rechauffe progressivement.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">来中国以后，他逐渐适应了这里的生活，显得越来越开心。</div>
+            <div class="fr">Depuis qu'il est arrive en Chine, il s'est progressivement adapte a la vie ici et parait de plus en plus heureux.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 显得</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. 调整 -->
+    <div class="vocab-card">
+        <span class="card-num">#7</span>
+        <div class="card-header">
+            <span class="hanzi">调整</span>
+            <span class="pinyin">tiáozhěng</span>
+        </div>
+        <div class="french">ajuster, reajuster</div>
+        <div class="collocations">
+            <span class="colloc-pill">调整计划</span>
+            <span class="colloc-pill">调整心态</span>
+            <span class="colloc-pill">调整时间</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">我需要调整一下工作时间。</div>
+            <div class="fr">J'ai besoin d'ajuster mes horaires de travail.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">显然原来的计划不合理，因此我们不得不调整方案。</div>
+            <div class="fr">De toute evidence, le plan initial n'etait pas raisonnable, nous avons donc du reajuster notre approche.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 显然</span>
+                <span class="reuse-tag">J1 因此</span>
+                <span class="reuse-tag">J1 不得不</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. 维持 -->
+    <div class="vocab-card">
+        <span class="card-num">#8</span>
+        <div class="card-header">
+            <span class="hanzi">维持</span>
+            <span class="pinyin">wéichí</span>
+        </div>
+        <div class="french">maintenir, preserver</div>
+        <div class="collocations">
+            <span class="colloc-pill">维持秩序</span>
+            <span class="colloc-pill">维持生活</span>
+            <span class="colloc-pill">维持关系</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">警察帮助维持现场秩序。</div>
+            <div class="fr">La police aide a maintenir l'ordre sur place.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">即使收入不高，他也想办法维持一家人的生活。</div>
+            <div class="fr">Meme si ses revenus ne sont pas eleves, il trouve des moyens de subvenir aux besoins de sa famille.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 即使</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. 缩短 -->
+    <div class="vocab-card">
+        <span class="card-num">#9</span>
+        <div class="card-header">
+            <span class="hanzi">缩短</span>
+            <span class="pinyin">suōduǎn</span>
+        </div>
+        <div class="french">raccourcir, reduire</div>
+        <div class="collocations">
+            <span class="colloc-pill">缩短时间</span>
+            <span class="colloc-pill">缩短距离</span>
+            <span class="colloc-pill">缩短差距</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">新的高铁缩短了旅行时间。</div>
+            <div class="fr">Le nouveau TGV a raccourci le temps de trajet.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">通过采取这些措施，我们从而大大缩短了等待的时间。</div>
+            <div class="fr">En prenant ces mesures, nous avons ainsi considerablement reduit le temps d'attente.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J2 采取</span>
+                <span class="reuse-tag">J2 措施</span>
+                <span class="reuse-tag">J1 从而</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. 扩大 -->
+    <div class="vocab-card">
+        <span class="card-num">#10</span>
+        <div class="card-header">
+            <span class="hanzi">扩大</span>
+            <span class="pinyin">kuòdà</span>
+        </div>
+        <div class="french">elargir, etendre, agrandir</div>
+        <div class="collocations">
+            <span class="colloc-pill">扩大规模</span>
+            <span class="colloc-pill">扩大影响</span>
+            <span class="colloc-pill">扩大范围</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">公司打算扩大业务范围。</div>
+            <div class="fr">L'entreprise prevoit d'elargir son champ d'activite.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">他们决定扩大招生规模，从而让更多学生有机会上大学。</div>
+            <div class="fr">Ils ont decide d'augmenter les admissions, permettant ainsi a plus d'etudiants d'acceder a l'universite.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 从而</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. 降低 -->
+    <div class="vocab-card">
+        <span class="card-num">#11</span>
+        <div class="card-header">
+            <span class="hanzi">降低</span>
+            <span class="pinyin">jiàngdī</span>
+        </div>
+        <div class="french">baisser, reduire, diminuer</div>
+        <div class="collocations">
+            <span class="colloc-pill">降低成本</span>
+            <span class="colloc-pill">降低标准</span>
+            <span class="colloc-pill">降低风险</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">工厂想办法降低成本。</div>
+            <div class="fr">L'usine cherche des moyens de reduire les couts.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">既然大家都反对降低产品质量，我们就换个办法降低成本。</div>
+            <div class="fr">Puisque tout le monde s'oppose a la baisse de qualite, trouvons un autre moyen de reduire les couts.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 既然</span>
+                <span class="reuse-tag">J1 反对</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12. 充分 -->
+    <div class="vocab-card">
+        <span class="card-num">#12</span>
+        <div class="card-header">
+            <span class="hanzi">充分</span>
+            <span class="pinyin">chōngfèn</span>
+        </div>
+        <div class="french">pleinement, suffisamment</div>
+        <div class="collocations">
+            <span class="colloc-pill">充分利用</span>
+            <span class="colloc-pill">充分准备</span>
+            <span class="colloc-pill">充分发挥</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">我们要充分利用时间。</div>
+            <div class="fr">Nous devons utiliser pleinement notre temps.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">只有充分了解实际情况，才能做出正确的决定。</div>
+            <div class="fr">Ce n'est qu'en comprenant pleinement la situation reelle qu'on peut prendre la bonne decision.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 实际</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 13. 有效 -->
+    <div class="vocab-card">
+        <span class="card-num">#13</span>
+        <div class="card-header">
+            <span class="hanzi">有效</span>
+            <span class="pinyin">yǒuxiào</span>
+        </div>
+        <div class="french">efficace</div>
+        <div class="collocations">
+            <span class="colloc-pill">有效方法</span>
+            <span class="colloc-pill">有效期</span>
+            <span class="colloc-pill">有效措施</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">这个方法很有效。</div>
+            <div class="fr">Cette methode est tres efficace.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">事实证明，这种教学方法的确非常有效。</div>
+            <div class="fr">Les faits prouvent que cette methode d'enseignement est effectivement tres efficace.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 证明</span>
+                <span class="reuse-tag">J1 的确</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 14. 明显 -->
+    <div class="vocab-card">
+        <span class="card-num">#14</span>
+        <div class="card-header">
+            <span class="hanzi">明显</span>
+            <span class="pinyin">míngxiǎn</span>
+        </div>
+        <div class="french">evident, manifeste, net</div>
+        <div class="collocations">
+            <span class="colloc-pill">明显的变化</span>
+            <span class="colloc-pill">明显提高</span>
+            <span class="colloc-pill">明显不同</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">他的中文有了明显的进步。</div>
+            <div class="fr">Son chinois a nettement progresse.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">采取新的教学方法以后，学生的成绩有了明显的提高。</div>
+            <div class="fr">Depuis l'adoption de nouvelles methodes d'enseignement, les resultats des etudiants se sont nettement ameliores.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J2 采取</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 15. 合理 -->
+    <div class="vocab-card">
+        <span class="card-num">#15</span>
+        <div class="card-header">
+            <span class="hanzi">合理</span>
+            <span class="pinyin">hélǐ</span>
+        </div>
+        <div class="french">raisonnable, rationnel</div>
+        <div class="collocations">
+            <span class="colloc-pill">合理安排</span>
+            <span class="colloc-pill">合理利用</span>
+            <span class="colloc-pill">不合理</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">你的建议很合理。</div>
+            <div class="fr">Ta suggestion est tres raisonnable.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">这个方案有道理而且合理，我赞成。</div>
+            <div class="fr">Ce plan est logique et raisonnable, je l'approuve.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 道理</span>
+                <span class="reuse-tag">J1 赞成</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 16. 相当 -->
+    <div class="vocab-card">
+        <span class="card-num">#16</span>
+        <div class="card-header">
+            <span class="hanzi">相当</span>
+            <span class="pinyin">xiāngdāng</span>
+        </div>
+        <div class="french">assez, considerablement, plutot</div>
+        <div class="collocations">
+            <span class="colloc-pill">相当不错</span>
+            <span class="colloc-pill">相当重要</span>
+            <span class="colloc-pill">相当多</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">他的中文相当不错。</div>
+            <div class="fr">Son chinois est plutot bon.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">实际上，这个现象在全世界都相当普遍。</div>
+            <div class="fr">En realite, ce phenomene est assez repandu dans le monde entier.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 实际</span>
+                <span class="reuse-tag">J1 现象</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 17. 及时 -->
+    <div class="vocab-card">
+        <span class="card-num">#17</span>
+        <div class="card-header">
+            <span class="hanzi">及时</span>
+            <span class="pinyin">jíshí</span>
+        </div>
+        <div class="french">a temps, en temps voulu, opportun</div>
+        <div class="collocations">
+            <span class="colloc-pill">及时处理</span>
+            <span class="colloc-pill">及时发现</span>
+            <span class="colloc-pill">及时纠正</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">幸好我们及时发现了问题。</div>
+            <div class="fr">Heureusement, nous avons decouvert le probleme a temps.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">否则问题会越来越严重，幸好他们及时采取了措施。</div>
+            <div class="fr">Sinon le probleme serait devenu de plus en plus grave, heureusement ils ont pris des mesures a temps.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 否则</span>
+                <span class="reuse-tag">J2 采取</span>
+                <span class="reuse-tag">J2 措施</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 18. 发挥 -->
+    <div class="vocab-card">
+        <span class="card-num">#18</span>
+        <div class="card-header">
+            <span class="hanzi">发挥</span>
+            <span class="pinyin">fāhuī</span>
+        </div>
+        <div class="french">mettre en valeur, deployer, exercer</div>
+        <div class="collocations">
+            <span class="colloc-pill">发挥作用</span>
+            <span class="colloc-pill">发挥水平</span>
+            <span class="colloc-pill">发挥优势</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">你要充分发挥自己的优势。</div>
+            <div class="fr">Tu dois pleinement mettre en valeur tes points forts.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">即使条件不好，她也能充分发挥自己的水平。</div>
+            <div class="fr">Meme si les conditions ne sont pas ideales, elle arrive a donner le meilleur d'elle-meme.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 即使</span>
+                <span class="reuse-tag">J2 充分</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 19. 推广 -->
+    <div class="vocab-card">
+        <span class="card-num">#19</span>
+        <div class="card-header">
+            <span class="hanzi">推广</span>
+            <span class="pinyin">tuīguǎng</span>
+        </div>
+        <div class="french">promouvoir, populariser, generaliser</div>
+        <div class="collocations">
+            <span class="colloc-pill">推广经验</span>
+            <span class="colloc-pill">推广技术</span>
+            <span class="colloc-pill">推广使用</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">政府在推广新能源汽车。</div>
+            <div class="fr">Le gouvernement promeut les voitures a energie nouvelle.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">这种新方法的确很有效，值得在全国推广。</div>
+            <div class="fr">Cette nouvelle methode est effectivement tres efficace, elle merite d'etre generalisee dans tout le pays.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 的确</span>
+                <span class="reuse-tag">J2 有效</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 20. 加强 -->
+    <div class="vocab-card">
+        <span class="card-num">#20</span>
+        <div class="card-header">
+            <span class="hanzi">加强</span>
+            <span class="pinyin">jiāqiáng</span>
+        </div>
+        <div class="french">renforcer, intensifier</div>
+        <div class="collocations">
+            <span class="colloc-pill">加强管理</span>
+            <span class="colloc-pill">加强合作</span>
+            <span class="colloc-pill">加强联系</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">学校决定加强安全管理。</div>
+            <div class="fr">L'ecole a decide de renforcer la gestion de la securite.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">为了改善两国关系，双方都赞成加强文化交流。</div>
+            <div class="fr">Pour ameliorer les relations entre les deux pays, les deux parties approuvent le renforcement des echanges culturels.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J2 改善</span>
+                <span class="reuse-tag">J1 赞成</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: SATELLITE (21-25) -->
+    <div class="section-title">
+        卫星词汇 <span style="font-size:0.9rem; font-weight:400; color:var(--text-light);">Vocabulaire satellite (21-25)</span>
+        <span class="line"></span>
+    </div>
+
+    <!-- 21. 严格 -->
+    <div class="vocab-card satellite">
+        <span class="card-num">#21</span>
+        <div class="card-header">
+            <span class="hanzi">严格</span>
+            <span class="pinyin">yángé</span>
+        </div>
+        <div class="french">strict, rigoureux</div>
+        <div class="collocations">
+            <span class="colloc-pill">严格要求</span>
+            <span class="colloc-pill">严格管理</span>
+            <span class="colloc-pill">严格遵守</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">我妈妈对我的学习很严格。</div>
+            <div class="fr">Ma mere est tres stricte concernant mes etudes.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">尽管老师很严格，但学生们的确进步很快。</div>
+            <div class="fr">Bien que le professeur soit strict, les etudiants progressent effectivement vite.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 尽管</span>
+                <span class="reuse-tag">J1 的确</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 22. 彻底 -->
+    <div class="vocab-card satellite">
+        <span class="card-num">#22</span>
+        <div class="card-header">
+            <span class="hanzi">彻底</span>
+            <span class="pinyin">chèdǐ</span>
+        </div>
+        <div class="french">radical, complet, a fond</div>
+        <div class="collocations">
+            <span class="colloc-pill">彻底改变</span>
+            <span class="colloc-pill">彻底解决</span>
+            <span class="colloc-pill">彻底失败</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">我们要彻底解决这个问题。</div>
+            <div class="fr">Nous devons resoudre ce probleme a fond.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">他居然彻底改变了自己的生活方式，让大家都很吃惊。</div>
+            <div class="fr">Il a radicalement change son mode de vie, contre toute attente, surprenant tout le monde.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 居然</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 23. 重大 -->
+    <div class="vocab-card satellite">
+        <span class="card-num">#23</span>
+        <div class="card-header">
+            <span class="hanzi">重大</span>
+            <span class="pinyin">zhòngdà</span>
+        </div>
+        <div class="french">majeur, important, considerable</div>
+        <div class="collocations">
+            <span class="colloc-pill">重大决定</span>
+            <span class="colloc-pill">重大事件</span>
+            <span class="colloc-pill">重大影响</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">这是一个重大的决定。</div>
+            <div class="fr">C'est une decision majeure.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">这个发现对科学研究有重大意义，因此吸引了全世界的注意。</div>
+            <div class="fr">Cette decouverte a une signification majeure pour la recherche scientifique, attirant ainsi l'attention du monde entier.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 因此</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 24. 普遍 -->
+    <div class="vocab-card satellite">
+        <span class="card-num">#24</span>
+        <div class="card-header">
+            <span class="hanzi">普遍</span>
+            <span class="pinyin">pǔbiàn</span>
+        </div>
+        <div class="french">universel, repandu, generalise</div>
+        <div class="collocations">
+            <span class="colloc-pill">普遍现象</span>
+            <span class="colloc-pill">普遍认为</span>
+            <span class="colloc-pill">普遍存在</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">这种看法很普遍。</div>
+            <div class="fr">Ce point de vue est tres repandu.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">人们往往普遍认为学外语越早越好，但实际上不一定。</div>
+            <div class="fr">On pense souvent et de maniere generale qu'il vaut mieux apprendre une langue tot, mais en realite ce n'est pas forcement le cas.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 往往</span>
+                <span class="reuse-tag">J1 实际</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 25. 频繁 -->
+    <div class="vocab-card satellite">
+        <span class="card-num">#25</span>
+        <div class="card-header">
+            <span class="hanzi">频繁</span>
+            <span class="pinyin">pínfán</span>
+        </div>
+        <div class="french">frequent</div>
+        <div class="collocations">
+            <span class="colloc-pill">频繁出现</span>
+            <span class="colloc-pill">频繁使用</span>
+            <span class="colloc-pill">频繁联系</span>
+        </div>
+        <div class="example">
+            <div class="example-label">Exemple simple</div>
+            <div class="zh">最近他出差很频繁。</div>
+            <div class="fr">Recemment, il est en deplacement professionnel tres frequemment.</div>
+        </div>
+        <div class="example natural">
+            <div class="example-label">Exemple naturel</div>
+            <div class="zh">随着人们观念的改变，国际交流变得越来越频繁。</div>
+            <div class="fr">Avec l'evolution des mentalites, les echanges internationaux deviennent de plus en plus frequents.</div>
+            <div class="reuse-tags">
+                <span class="reuse-tag">J1 观念</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MINI-QUIZ ===== -->
+    <div class="quiz-section">
+        <h2>&#x1F9E0; Mini-quiz &mdash; Jour 2</h2>
+        <p style="font-size:0.88rem; color:var(--text-light); margin-bottom:20px;">Testez vos connaissances. Cliquez sur "Voir la reponse" pour verifier.</p>
+
+        <!-- Q1 -->
+        <div class="quiz-item" id="q1">
+            <div class="quiz-label">Exercice 1 &mdash; Completer</div>
+            <div class="quiz-question">政府___了有效___来改善环境。</div>
+            <button class="quiz-btn" onclick="document.getElementById('a1').classList.toggle('shown')">Voir la reponse</button>
+            <div class="quiz-answer correct" id="a1">
+                <strong>采取, 措施</strong><br>
+                政府<strong>采取</strong>了有效<strong>措施</strong>来改善环境。<br>
+                <em>Le gouvernement a pris des mesures efficaces pour ameliorer l'environnement.</em>
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="quiz-item" id="q2">
+            <div class="quiz-label">Exercice 2 &mdash; Choix</div>
+            <div class="quiz-question">新高铁___了北京到上海的旅行时间。</div>
+            <div class="quiz-options">
+                <span class="quiz-option" onclick="this.classList.toggle('selected')">a. 扩大</span>
+                <span class="quiz-option" onclick="this.classList.toggle('selected')">b. 缩短</span>
+                <span class="quiz-option" onclick="this.classList.toggle('selected')">c. 降低</span>
+            </div>
+            <button class="quiz-btn" onclick="document.getElementById('a2').classList.toggle('shown')">Voir la reponse</button>
+            <div class="quiz-answer correct" id="a2">
+                <strong>b. 缩短</strong><br>
+                新高铁<strong>缩短</strong>了北京到上海的旅行时间。<br>
+                <em>Le nouveau TGV a raccourci le temps de trajet Pekin-Shanghai.</em><br>
+                <small style="color:#7f8c8d">Note : 扩大 = elargir, 降低 = baisser (un prix, un cout). Pour le temps, on utilise 缩短.</small>
+            </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="quiz-item" id="q3">
+            <div class="quiz-label">Exercice 3 &mdash; Completer (rappel J1)</div>
+            <div class="quiz-question">___这个方法很有效，就应该在全国___。</div>
+            <button class="quiz-btn" onclick="document.getElementById('a3').classList.toggle('shown')">Voir la reponse</button>
+            <div class="quiz-answer correct" id="a3">
+                <strong>既然, 推广</strong><br>
+                <strong>既然</strong>这个方法很有效，就应该在全国<strong>推广</strong>。<br>
+                <em>Puisque cette methode est tres efficace, elle devrait etre generalisee dans tout le pays.</em><br>
+                <small style="color:#7f8c8d">既然 (J1) + 推广 (J2) : association classique cause-consequence.</small>
+            </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="quiz-item" id="q4">
+            <div class="quiz-label">Exercice 4 &mdash; Completer</div>
+            <div class="quiz-question">他___进步很大，___成绩提高了不少。</div>
+            <button class="quiz-btn" onclick="document.getElementById('a4').classList.toggle('shown')">Voir la reponse</button>
+            <div class="quiz-answer correct" id="a4">
+                <strong>逐渐, 从而</strong><br>
+                他<strong>逐渐</strong>进步很大，<strong>从而</strong>成绩提高了不少。<br>
+                <em>Il a progressivement fait de grands progres, et ainsi ses resultats se sont beaucoup ameliores.</em>
+            </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="quiz-item" id="q5">
+            <div class="quiz-label">Exercice 5 &mdash; Traduire</div>
+            <div class="quiz-question" style="font-style:italic; color:var(--text-light);">Ces mesures sont effectivement efficaces et ont nettement ameliore la situation.</div>
+            <button class="quiz-btn" onclick="document.getElementById('a5').classList.toggle('shown')">Voir la reponse</button>
+            <div class="quiz-answer correct" id="a5">
+                <strong>这些措施的确有效，明显改善了情况。</strong><br>
+                <em>Ces mesures sont effectivement efficaces et ont nettement ameliore la situation.</em><br>
+                <small style="color:#7f8c8d">Mots utilises : 措施 (J2), 的确 (J1), 有效 (J2), 明显 (J2), 改善 (J2).</small>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <a href="index.html">&larr; Retour au programme</a> &nbsp;&middot;&nbsp;
+    <a href="jour1.html">Jour 1</a> &nbsp;&middot;&nbsp;
+    Jour 2 &nbsp;&middot;&nbsp;
+    <a href="jour3.html">Jour 3 &rarr;</a>
+    <br><br>
+    HSK 5 &mdash; Apprentissage Commando &mdash; 刘老师的中文课
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK 5 Commando — Jour 3 : Relations et emotions</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #5b21b6;
+            --primary-light: #7c3aed;
+            --primary-dark: #3b0764;
+            --accent: #c0392b;
+            --accent-soft: #e74c3c;
+            --gold: #f39c12;
+            --bg: #f5f7fa;
+            --card: #ffffff;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #e8ecf1;
+            --success: #27ae60;
+            --wrong: #e74c3c;
+            --gradient-hero: linear-gradient(135deg, #0f0520 0%, #1e0a3c 30%, #5b21b6 70%, #7c3aed 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 50px 20px 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(192,57,43,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: var(--bg);
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .hero-text { flex: 1; }
+
+        .hero-img {
+            max-width: 200px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: white; }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 6px;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+
+        .hero .description {
+            font-size: 0.95rem;
+            opacity: 0.65;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        /* ===== RAPPEL BANNER ===== */
+        .rappel-banner {
+            max-width: 900px;
+            margin: -25px auto 24px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .rappel-banner-inner {
+            background: linear-gradient(135deg, #ede9fe 0%, #f3e8ff 100%);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 14px;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .rappel-icon {
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+
+        .rappel-text {
+            font-size: 0.92rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .rappel-text strong {
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .rappel-count {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 4px 14px;
+            border-radius: 20px;
+            flex-shrink: 0;
+        }
+
+        /* ===== CONTENT ===== */
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin: 36px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title .line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ===== VOCAB CARD ===== */
+        .vocab-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .vocab-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(91, 33, 182, 0.08);
+        }
+
+        .vocab-header {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            margin-bottom: 4px;
+            flex-wrap: wrap;
+        }
+
+        .vocab-num {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: white;
+            background: var(--primary);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+            top: 4px;
+        }
+
+        .vocab-hanzi {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .vocab-pinyin {
+            font-size: 1rem;
+            color: var(--primary-light);
+            font-weight: 500;
+        }
+
+        .vocab-french {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Collocations */
+        .collocations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0 16px;
+        }
+
+        .colloc-pill {
+            background: #f3f0ff;
+            color: var(--primary);
+            font-size: 0.82rem;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 500;
+            border: 1px solid rgba(124, 58, 237, 0.12);
+        }
+
+        /* Examples */
+        .examples { margin-top: 14px; }
+
+        .example-block {
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .example-block.simple {
+            background: #f8f9fb;
+            border-left: 3px solid var(--border);
+        }
+
+        .example-block.natural {
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+            border-left: 3px solid var(--primary-light);
+        }
+
+        .example-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .example-block.simple .example-label { color: var(--text-light); }
+        .example-block.natural .example-label { color: var(--primary-light); }
+
+        .example-zh {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .example-fr {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .reuse-tag {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 8px;
+            margin-top: 4px;
+        }
+
+        /* Note */
+        .vocab-note {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .vocab-note::before {
+            content: '💡 ';
+        }
+
+        /* ===== QUIZ ===== */
+        .quiz-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 36px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+        }
+
+        .quiz-section h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-item {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            background: #fafbfc;
+            transition: border-color 0.3s;
+        }
+
+        .quiz-item.correct {
+            border-color: var(--success);
+            background: #f0fdf4;
+        }
+
+        .quiz-item.wrong {
+            border-color: var(--wrong);
+            background: #fef2f2;
+        }
+
+        .quiz-num {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .quiz-question {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .quiz-question .blank {
+            display: inline-block;
+            min-width: 60px;
+            border-bottom: 2px dashed var(--primary-light);
+            text-align: center;
+            color: var(--primary);
+            font-weight: 600;
+            padding: 0 4px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .quiz-option {
+            padding: 8px 18px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.92rem;
+            transition: all 0.2s;
+            font-family: 'Noto Sans SC', 'Inter', sans-serif;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary-light);
+            background: #f5f3ff;
+        }
+
+        .quiz-option.selected {
+            border-color: var(--primary);
+            background: #ede9fe;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .quiz-option.correct-answer {
+            border-color: var(--success);
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .quiz-option.wrong-answer {
+            border-color: var(--wrong);
+            background: #fee2e2;
+            color: var(--wrong);
+        }
+
+        .quiz-feedback {
+            display: none;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            margin-top: 8px;
+        }
+
+        .quiz-feedback.show { display: block; }
+
+        .quiz-feedback.correct {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .quiz-feedback.wrong {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .quiz-input {
+            font-family: 'Noto Sans SC', 'Inter', sans-serif;
+            font-size: 1rem;
+            padding: 8px 14px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            transition: border-color 0.2s;
+        }
+
+        .quiz-input:focus {
+            outline: none;
+            border-color: var(--primary-light);
+        }
+
+        .quiz-btn {
+            display: inline-block;
+            padding: 8px 22px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 8px;
+        }
+
+        .quiz-btn:hover { background: var(--primary-light); }
+
+        .match-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .match-col-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .match-item {
+            padding: 8px 14px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.92rem;
+            text-align: center;
+        }
+
+        .match-item:hover { border-color: var(--primary-light); }
+
+        .match-item.selected {
+            border-color: var(--primary);
+            background: #ede9fe;
+        }
+
+        .match-item.matched {
+            border-color: var(--success);
+            background: #dcfce7;
+            pointer-events: none;
+        }
+
+        /* ===== SATELLITE BADGE ===== */
+        .satellite-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 10px;
+            letter-spacing: 0.5px;
+            margin-left: 8px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-inner { flex-direction: column; text-align: center; }
+            .hero-img { max-width: 140px; }
+            .vocab-header { gap: 8px; }
+            .vocab-hanzi { font-size: 1.6rem; }
+            .vocab-card { padding: 20px; }
+            .match-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 30px 16px 50px; }
+            .vocab-card { padding: 16px; }
+            .quiz-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <a href="index.html" class="back-link">&#8592; Retour au planning</a>
+            <h1>Jour 3 &middot; 第三天</h1>
+            <p class="subtitle">Relations et emotions &mdash; 关系与情感</p>
+            <p class="description">25 mots pour exprimer les sentiments, les relations humaines et les qualites morales. Les exemples reutilisent les mots des Jours 1 et 2 pour renforcer la memorisation en spirale.</p>
+        </div>
+        <img src="imgs/liu3.png" alt="Illustration Jour 3" class="hero-img">
+    </div>
+</header>
+
+<!-- ===== RAPPEL BANNER ===== -->
+<div class="rappel-banner">
+    <div class="rappel-banner-inner">
+        <span class="rappel-icon">&#128260;</span>
+        <span class="rappel-text">Jour 3 reutilise <strong>34 mots</strong> des Jours 1 et 2 dans ses exemples</span>
+        <span class="rappel-count">J1 + J2 &#8594; J3</span>
+    </div>
+</div>
+
+<!-- ===== VOCABULARY CARDS ===== -->
+<div class="content">
+
+    <div class="section-title">
+        核心词汇 <span style="font-size:0.9rem; font-weight:400; color:var(--text-light);">Vocabulaire principal (1-20)</span>
+        <span class="line"></span>
+    </div>
+
+    <!-- ===== CARD 1 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">1</span>
+            <span class="vocab-hanzi">感受</span>
+            <span class="vocab-pinyin">g&#462;nsh&ograve;u</span>
+            <span class="vocab-french">&mdash; ressentir, eprouver / ressenti</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">感受到</span>
+            <span class="colloc-pill">深深感受</span>
+            <span class="colloc-pill">内心感受</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">我能感受到他的难过。</div>
+                <div class="example-fr">Je peux ressentir sa tristesse.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">来到这个城市以后，她<strong>逐渐</strong>感受到了人们的热情。</div>
+                <div class="example-fr">Depuis qu'elle est arrivee dans cette ville, elle a progressivement ressenti la chaleur des gens.</div>
+                <span class="reuse-tag">&#8635; J2 : 逐渐</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 2 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">2</span>
+            <span class="vocab-hanzi">体验</span>
+            <span class="vocab-pinyin">t&#464;y&agrave;n</span>
+            <span class="vocab-french">&mdash; experimenter, vivre (une experience)</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">体验生活</span>
+            <span class="colloc-pill">亲身体验</span>
+            <span class="colloc-pill">体验文化</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">你应该亲身体验一下。</div>
+                <div class="example-fr">Tu devrais en faire l'experience toi-meme.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">只有亲身体验，才能<strong>充分</strong>感受到中国文化的魅力。</div>
+                <div class="example-fr">Ce n'est qu'en vivant l'experience soi-meme qu'on peut pleinement ressentir le charme de la culture chinoise.</div>
+                <span class="reuse-tag">&#8635; J2 : 充分</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 3 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">3</span>
+            <span class="vocab-hanzi">珍惜</span>
+            <span class="vocab-pinyin">zh&#275;nx&#299;</span>
+            <span class="vocab-french">&mdash; cherir, apprecier a sa juste valeur</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">珍惜时间</span>
+            <span class="colloc-pill">珍惜机会</span>
+            <span class="colloc-pill">珍惜友谊</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">我们要珍惜时间。</div>
+                <div class="example-fr">Nous devons cherir le temps.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh"><strong>毕竟</strong>机会不多，<strong>因此</strong>我们更应该珍惜每一次学习的机会。</div>
+                <div class="example-fr">Apres tout, les occasions sont rares, c'est pourquoi nous devrions d'autant plus cherir chaque opportunite d'apprentissage.</div>
+                <span class="reuse-tag">&#8635; J1 : 毕竟, 因此</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 4 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">4</span>
+            <span class="vocab-hanzi">欣赏</span>
+            <span class="vocab-pinyin">x&#299;nsh&#462;ng</span>
+            <span class="vocab-french">&mdash; apprecier, admirer (beaute, art)</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">欣赏风景</span>
+            <span class="colloc-pill">欣赏音乐</span>
+            <span class="colloc-pill">欣赏他的才华</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">我很欣赏你的勇气。</div>
+                <div class="example-fr">J'admire ton courage.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh"><strong>尽管</strong>他的画法跟传统<strong>观念</strong>不同，很多人还是非常欣赏他的作品。</div>
+                <div class="example-fr">Bien que son style de peinture differe des conceptions traditionnelles, beaucoup apprecient tout de meme ses oeuvres.</div>
+                <span class="reuse-tag">&#8635; J1 : 尽管, 观念</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 5 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">5</span>
+            <span class="vocab-hanzi">佩服</span>
+            <span class="vocab-pinyin">p&egrave;ifu</span>
+            <span class="vocab-french">&mdash; admirer (une qualite, un talent)</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">让人佩服</span>
+            <span class="colloc-pill">非常佩服</span>
+            <span class="colloc-pill">令人佩服</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">我很佩服她的毅力。</div>
+                <div class="example-fr">J'admire sa perseverance.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">她<strong>居然</strong><strong>克服</strong>了那么多困难，<strong>实在</strong>令人佩服。</div>
+                <div class="example-fr">Elle a surmonte tant de difficultes, contre toute attente &mdash; c'est vraiment admirable.</div>
+                <span class="reuse-tag">&#8635; J1 : 居然, 实在 &middot; J2 : 克服</span>
+            </div>
+        </div>
+        <div class="vocab-note">佩服 porte sur le caractere / la volonte. 欣赏 porte davantage sur le talent / l'esthetique.</div>
+    </div>
+
+    <!-- ===== CARD 6 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">6</span>
+            <span class="vocab-hanzi">尊重</span>
+            <span class="vocab-pinyin">z&#363;nzh&ograve;ng</span>
+            <span class="vocab-french">&mdash; respecter</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">尊重别人</span>
+            <span class="colloc-pill">互相尊重</span>
+            <span class="colloc-pill">尊重意见</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">我们应该尊重每个人的意见。</div>
+                <div class="example-fr">Nous devrions respecter l'opinion de chacun.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh"><strong>即使</strong>你<strong>反对</strong>他的观点，也应该尊重他表达的权利。</div>
+                <div class="example-fr">Meme si tu t'opposes a son point de vue, tu devrais respecter son droit de s'exprimer.</div>
+                <span class="reuse-tag">&#8635; J1 : 即使, 反对</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 7 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">7</span>
+            <span class="vocab-hanzi">信任</span>
+            <span class="vocab-pinyin">x&igrave;nr&egrave;n</span>
+            <span class="vocab-french">&mdash; faire confiance, avoir confiance en</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">信任别人</span>
+            <span class="colloc-pill">互相信任</span>
+            <span class="colloc-pill">值得信任</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">朋友之间要互相信任。</div>
+                <div class="example-fr">Entre amis, il faut se faire mutuellement confiance.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh"><strong>显然</strong>，只有互相信任，合作才能<strong>维持</strong>下去。</div>
+                <div class="example-fr">De toute evidence, seule la confiance mutuelle permet de maintenir une cooperation.</div>
+                <span class="reuse-tag">&#8635; J1 : 显然 &middot; J2 : 维持</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 8 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">8</span>
+            <span class="vocab-hanzi">沟通</span>
+            <span class="vocab-pinyin">g&#333;ut&#333;ng</span>
+            <span class="vocab-french">&mdash; communiquer, dialoguer</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">沟通交流</span>
+            <span class="colloc-pill">有效沟通</span>
+            <span class="colloc-pill">缺乏沟通</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">家长要多和孩子沟通。</div>
+                <div class="example-fr">Les parents doivent davantage communiquer avec leurs enfants.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">很多矛盾的产生<strong>往往</strong>是因为缺乏<strong>有效</strong>的沟通。</div>
+                <div class="example-fr">Beaucoup de conflits naissent souvent d'un manque de communication efficace.</div>
+                <span class="reuse-tag">&#8635; J1 : 往往 &middot; J2 : 有效</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 9 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">9</span>
+            <span class="vocab-hanzi">交流</span>
+            <span class="vocab-pinyin">ji&#257;oli&uacute;</span>
+            <span class="vocab-french">&mdash; echanger, communiquer / echange</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">文化交流</span>
+            <span class="colloc-pill">交流经验</span>
+            <span class="colloc-pill">加强交流</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">两国之间的文化交流越来越<strong>频繁</strong>。</div>
+                <div class="example-fr">Les echanges culturels entre les deux pays sont de plus en plus frequents.</div>
+                <span class="reuse-tag">&#8635; J2 : 频繁</span>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh"><strong>加强</strong>国际交流可以<strong>促进</strong>不同文化之间的理解。</div>
+                <div class="example-fr">Renforcer les echanges internationaux peut favoriser la comprehension entre differentes cultures.</div>
+                <span class="reuse-tag">&#8635; J2 : 加强, 促进</span>
+            </div>
+        </div>
+        <div class="vocab-note">沟通 = dialogue pour resoudre un probleme. 交流 = echange plus large, culturel, intellectuel.</div>
+    </div>
+
+    <!-- ===== CARD 10 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">10</span>
+            <span class="vocab-hanzi">争论</span>
+            <span class="vocab-pinyin">zh&#275;ngl&ugrave;n</span>
+            <span class="vocab-french">&mdash; debattre, discuter (avec desaccord)</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">引起争论</span>
+            <span class="colloc-pill">争论不休</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">大家为这个问题争论了很久。</div>
+                <div class="example-fr">Tout le monde a debattu longtemps de cette question.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">这个话题在社会上引起了<strong>相当</strong>大的争论，<strong>赞成</strong>和<strong>反对</strong>的人都很多。</div>
+                <div class="example-fr">Ce sujet a suscite un debat considerable dans la societe, avec beaucoup de partisans et d'opposants.</div>
+                <span class="reuse-tag">&#8635; J1 : 赞成, 反对 &middot; J2 : 相当</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 11 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">11</span>
+            <span class="vocab-hanzi">矛盾</span>
+            <span class="vocab-pinyin">m&aacute;od&ugrave;n</span>
+            <span class="vocab-french">&mdash; contradiction, conflit / contradictoire</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">产生矛盾</span>
+            <span class="colloc-pill">解决矛盾</span>
+            <span class="colloc-pill">矛盾心理</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">他们之间产生了矛盾。</div>
+                <div class="example-fr">Un conflit est ne entre eux.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">这个问题<strong>的确</strong>很矛盾：既想<strong>降低</strong>成本，又想提高质量。</div>
+                <div class="example-fr">Ce probleme est effectivement contradictoire : on veut a la fois reduire les couts et ameliorer la qualite.</div>
+                <span class="reuse-tag">&#8635; J1 : 的确 &middot; J2 : 降低</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 12 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">12</span>
+            <span class="vocab-hanzi">误会</span>
+            <span class="vocab-pinyin">w&ugrave;hu&igrave;</span>
+            <span class="vocab-french">&mdash; malentendu / mal comprendre</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">产生误会</span>
+            <span class="colloc-pill">消除误会</span>
+            <span class="colloc-pill">误会了</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">这是一个误会。</div>
+                <div class="example-fr">C'est un malentendu.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">因为缺乏沟通，他们之间产生了很大的误会，但<strong>毕竟</strong>是好朋友，最后还是解决了。</div>
+                <div class="example-fr">Par manque de communication, un grand malentendu est ne entre eux, mais apres tout ce sont de bons amis, ils ont fini par le resoudre.</div>
+                <span class="reuse-tag">&#8635; J1 : 毕竟 &middot; J3 : 沟通</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 13 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">13</span>
+            <span class="vocab-hanzi">和谐</span>
+            <span class="vocab-pinyin">h&eacute;xi&eacute;</span>
+            <span class="vocab-french">&mdash; harmonieux / harmonie</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">和谐社会</span>
+            <span class="colloc-pill">和谐相处</span>
+            <span class="colloc-pill">家庭和谐</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">我们要建设和谐社会。</div>
+                <div class="example-fr">Nous devons construire une societe harmonieuse.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">为了<strong>维持</strong>和谐的工作环境，大家需要互相尊重和信任。</div>
+                <div class="example-fr">Pour maintenir un environnement de travail harmonieux, chacun doit se respecter et se faire confiance mutuellement.</div>
+                <span class="reuse-tag">&#8635; J2 : 维持 &middot; J3 : 尊重, 信任</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 14 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">14</span>
+            <span class="vocab-hanzi">相处</span>
+            <span class="vocab-pinyin">xi&#257;ngch&#468;</span>
+            <span class="vocab-french">&mdash; s'entendre avec, vivre ensemble</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">和睦相处</span>
+            <span class="colloc-pill">友好相处</span>
+            <span class="colloc-pill">相处融洽</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">他们相处得很好。</div>
+                <div class="example-fr">Ils s'entendent tres bien.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh"><strong>尽管</strong>性格不同，但只要互相<strong>尊重</strong>，就能和谐相处。</div>
+                <div class="example-fr">Bien que leurs caracteres soient differents, tant qu'ils se respectent mutuellement, ils peuvent vivre en harmonie.</div>
+                <span class="reuse-tag">&#8635; J1 : 尽管 &middot; J3 : 尊重, 和谐</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 15 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">15</span>
+            <span class="vocab-hanzi">道歉</span>
+            <span class="vocab-pinyin">d&agrave;oqi&agrave;n</span>
+            <span class="vocab-french">&mdash; s'excuser, presenter ses excuses</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">向...道歉</span>
+            <span class="colloc-pill">真诚道歉</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">你应该向她道歉。</div>
+                <div class="example-fr">Tu devrais t'excuser aupres d'elle.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh"><strong>既然</strong><strong>承认</strong>了自己的错误，就应该<strong>及时</strong>向对方道歉。</div>
+                <div class="example-fr">Puisque tu as reconnu ton erreur, tu devrais t'excuser aupres de l'autre partie en temps voulu.</div>
+                <span class="reuse-tag">&#8635; J1 : 既然, 承认 &middot; J2 : 及时</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 16 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">16</span>
+            <span class="vocab-hanzi">原谅</span>
+            <span class="vocab-pinyin">yu&aacute;nli&agrave;ng</span>
+            <span class="vocab-french">&mdash; pardonner, excuser</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">请原谅</span>
+            <span class="colloc-pill">原谅我</span>
+            <span class="colloc-pill">不可原谅</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">请你原谅我的迟到。</div>
+                <div class="example-fr">Pardonnez mon retard.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">他<strong>的确</strong>做错了，但他已经道歉了，我觉得应该原谅他。</div>
+                <div class="example-fr">Il a effectivement eu tort, mais il s'est excuse, je pense qu'il faudrait lui pardonner.</div>
+                <span class="reuse-tag">&#8635; J1 : 的确 &middot; J3 : 道歉</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 17 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">17</span>
+            <span class="vocab-hanzi">善良</span>
+            <span class="vocab-pinyin">sh&agrave;nli&aacute;ng</span>
+            <span class="vocab-french">&mdash; bienveillant, bon, gentil (nature profonde)</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">善良的人</span>
+            <span class="colloc-pill">心地善良</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">她是一个心地善良的人。</div>
+                <div class="example-fr">C'est une personne au coeur bienveillant.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">在这个社会，善良的人<strong>往往</strong>更容易被别人<strong>信任</strong>。</div>
+                <div class="example-fr">Dans cette societe, les personnes bienveillantes sont souvent plus facilement dignes de confiance.</div>
+                <span class="reuse-tag">&#8635; J1 : 往往 &middot; J3 : 信任</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 18 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">18</span>
+            <span class="vocab-hanzi">诚实</span>
+            <span class="vocab-pinyin">ch&eacute;ngsh&iacute;</span>
+            <span class="vocab-french">&mdash; honnete, sincere</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">诚实守信</span>
+            <span class="colloc-pill">为人诚实</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">做人要诚实。</div>
+                <div class="example-fr">Il faut etre honnete dans la vie.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh"><strong>显然</strong>，一个诚实的人更容易得到别人的<strong>尊重</strong>。</div>
+                <div class="example-fr">De toute evidence, une personne honnete gagne plus facilement le respect d'autrui.</div>
+                <span class="reuse-tag">&#8635; J1 : 显然 &middot; J3 : 尊重</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 19 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">19</span>
+            <span class="vocab-hanzi">谦虚</span>
+            <span class="vocab-pinyin">qi&#257;nx&#363;</span>
+            <span class="vocab-french">&mdash; modeste, humble</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">谦虚谨慎</span>
+            <span class="colloc-pill">很谦虚</span>
+            <span class="colloc-pill">谦虚的态度</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">他是一个很谦虚的人。</div>
+                <div class="example-fr">C'est une personne tres modeste.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh"><strong>即使</strong>取得了<strong>重大</strong>成就，他还是<strong>显得</strong>非常谦虚。</div>
+                <div class="example-fr">Meme apres avoir accompli des realisations majeures, il reste tres humble.</div>
+                <span class="reuse-tag">&#8635; J1 : 即使, 显得 &middot; J2 : 重大</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 20 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">20</span>
+            <span class="vocab-hanzi">自信</span>
+            <span class="vocab-pinyin">z&igrave;x&igrave;n</span>
+            <span class="vocab-french">&mdash; confiance en soi / avoir confiance en soi</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">充满自信</span>
+            <span class="colloc-pill">自信心</span>
+            <span class="colloc-pill">变得自信</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">她变得越来越自信了。</div>
+                <div class="example-fr">Elle devient de plus en plus confiante en elle.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">通过不断<strong>克服</strong>困难，她<strong>逐渐</strong>变得更加自信了。</div>
+                <div class="example-fr">En surmontant continuellement les difficultes, elle est devenue progressivement plus confiante en elle.</div>
+                <span class="reuse-tag">&#8635; J2 : 克服, 逐渐</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SATELLITE WORDS ===== -->
+    <div class="section-title">
+        卫星词汇 <span style="font-size:0.9rem; font-weight:400; color:var(--text-light);">Vocabulaire satellite (21-25)</span>
+        <span class="satellite-badge">SATELLITE</span>
+        <span class="line"></span>
+    </div>
+
+    <!-- ===== CARD 21 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">21</span>
+            <span class="vocab-hanzi">勇敢</span>
+            <span class="vocab-pinyin">y&#466;ngg&#462;n</span>
+            <span class="vocab-french">&mdash; courageux, brave</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">勇敢面对</span>
+            <span class="colloc-pill">勇敢的人</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">你要勇敢地面对困难。</div>
+                <div class="example-fr">Tu dois affronter les difficultes avec courage.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">她勇敢地<strong>承认</strong>了自己的错误，并<strong>及时</strong><strong>采取</strong><strong>措施</strong>来<strong>改善</strong>情况。</div>
+                <div class="example-fr">Elle a courageusement reconnu ses erreurs et pris des mesures a temps pour ameliorer la situation.</div>
+                <span class="reuse-tag">&#8635; J1 : 承认 &middot; J2 : 及时, 采取, 措施, 改善</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 22 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">22</span>
+            <span class="vocab-hanzi">乐观</span>
+            <span class="vocab-pinyin">l&egrave;gu&#257;n</span>
+            <span class="vocab-french">&mdash; optimiste</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">乐观的态度</span>
+            <span class="colloc-pill">保持乐观</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">保持乐观的态度很重要。</div>
+                <div class="example-fr">Il est important de garder une attitude optimiste.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh"><strong>尽管</strong>遇到了很多困难，她始终保持乐观，<strong>显得</strong><strong>充分</strong>自信。</div>
+                <div class="example-fr">Malgre les nombreuses difficultes rencontrees, elle reste toujours optimiste et parait pleine de confiance en elle.</div>
+                <span class="reuse-tag">&#8635; J1 : 尽管, 显得 &middot; J2 : 充分 &middot; J3 : 自信</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 23 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">23</span>
+            <span class="vocab-hanzi">敏感</span>
+            <span class="vocab-pinyin">m&#464;ng&#462;n</span>
+            <span class="vocab-french">&mdash; sensible</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">敏感话题</span>
+            <span class="colloc-pill">非常敏感</span>
+            <span class="colloc-pill">敏感的人</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">她是一个很敏感的人。</div>
+                <div class="example-fr">C'est une personne tres sensible.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">这是一个<strong>相当</strong>敏感的话题，讨论时要注意措辞。</div>
+                <div class="example-fr">C'est un sujet assez sensible, il faut faire attention a ses mots lors de la discussion.</div>
+                <span class="reuse-tag">&#8635; J2 : 相当</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 24 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">24</span>
+            <span class="vocab-hanzi">温柔</span>
+            <span class="vocab-pinyin">w&#275;nr&oacute;u</span>
+            <span class="vocab-french">&mdash; doux, tendre</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">温柔的声音</span>
+            <span class="colloc-pill">温柔地说</span>
+            <span class="colloc-pill">性格温柔</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">她说话的声音很温柔。</div>
+                <div class="example-fr">Elle parle d'une voix tres douce.</div>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">她对人温柔<strong>善良</strong>，<strong>因此</strong>大家都愿意和她<strong>相处</strong>。</div>
+                <div class="example-fr">Elle est douce et bienveillante envers les gens, c'est pourquoi tout le monde aime etre avec elle.</div>
+                <span class="reuse-tag">&#8635; J1 : 因此 &middot; J3 : 善良, 相处</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CARD 25 ===== -->
+    <div class="vocab-card">
+        <div class="vocab-header">
+            <span class="vocab-num">25</span>
+            <span class="vocab-hanzi">坦率</span>
+            <span class="vocab-pinyin">t&#462;nshu&agrave;i</span>
+            <span class="vocab-french">&mdash; franc, direct</span>
+        </div>
+        <div class="collocations">
+            <span class="colloc-pill">坦率地说</span>
+            <span class="colloc-pill">为人坦率</span>
+        </div>
+        <div class="examples">
+            <div class="example-block simple">
+                <div class="example-label">Exemple simple</div>
+                <div class="example-zh">坦率地说，我不<strong>赞成</strong>这个方案。</div>
+                <div class="example-fr">Franchement, je n'approuve pas ce plan.</div>
+                <span class="reuse-tag">&#8635; J1 : 赞成</span>
+            </div>
+            <div class="example-block natural">
+                <div class="example-label">Exemple naturel</div>
+                <div class="example-zh">他为人坦率<strong>诚实</strong>，有什么话就直说，从不隐瞒，这一点<strong>的确</strong>令人<strong>佩服</strong>。</div>
+                <div class="example-fr">Il est franc et honnete, il dit les choses directement sans rien cacher, ce qui est effectivement admirable.</div>
+                <span class="reuse-tag">&#8635; J1 : 的确 &middot; J3 : 诚实, 佩服</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MINI-QUIZ ===== -->
+    <div class="quiz-section">
+        <h2>&#128221; Mini-Quiz &mdash; 小测验</h2>
+        <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 20px;">5 exercices melangeant les mots des Jours 1, 2 et 3. Testez votre memoire !</p>
+
+        <!-- Quiz 1: Fill-in -->
+        <div class="quiz-item" id="q1">
+            <div class="quiz-num">Exercice 1 &mdash; Remplir les blancs</div>
+            <div class="quiz-question">朋友之间要互相 <span class="blank" id="q1b1">___</span> 和 <span class="blank" id="q1b2">___</span>。</div>
+            <div class="quiz-options">
+                <button class="quiz-option" onclick="checkQ1('信任','尊重')">信任 / 尊重</button>
+                <button class="quiz-option" onclick="checkQ1('沟通','交流')">沟通 / 交流</button>
+                <button class="quiz-option" onclick="checkQ1('欣赏','佩服')">欣赏 / 佩服</button>
+            </div>
+            <div class="quiz-feedback" id="q1fb"></div>
+        </div>
+
+        <!-- Quiz 2: Choose -->
+        <div class="quiz-item" id="q2">
+            <div class="quiz-num">Exercice 2 &mdash; Choisir la bonne paire</div>
+            <div class="quiz-question">她___克服了那么多困难，实在令人___。</div>
+            <div class="quiz-options">
+                <button class="quiz-option" onclick="checkQ2(this, 'a')">a. 居然 / 佩服</button>
+                <button class="quiz-option" onclick="checkQ2(this, 'b')">b. 显然 / 欣赏</button>
+                <button class="quiz-option" onclick="checkQ2(this, 'c')">c. 毕竟 / 赞成</button>
+            </div>
+            <div class="quiz-feedback" id="q2fb"></div>
+        </div>
+
+        <!-- Quiz 3: Match -->
+        <div class="quiz-item" id="q3">
+            <div class="quiz-num">Exercice 3 &mdash; Associer le mot au contexte</div>
+            <div class="quiz-question" style="margin-bottom:16px;">Cliquez sur un mot, puis sur le contexte correspondant.</div>
+            <div class="match-grid">
+                <div>
+                    <div class="match-col-title">Mot</div>
+                    <div class="match-item" id="m_word_1" onclick="selectMatch('word', 1)">欣赏</div>
+                    <div class="match-item" id="m_word_2" onclick="selectMatch('word', 2)" style="margin-top:8px;">佩服</div>
+                    <div class="match-item" id="m_word_3" onclick="selectMatch('word', 3)" style="margin-top:8px;">珍惜</div>
+                </div>
+                <div>
+                    <div class="match-col-title">Contexte</div>
+                    <div class="match-item" id="m_ctx_A" onclick="selectMatch('ctx', 'A')">admirer le talent artistique</div>
+                    <div class="match-item" id="m_ctx_B" onclick="selectMatch('ctx', 'B')" style="margin-top:8px;">ne pas gaspiller une opportunite</div>
+                    <div class="match-item" id="m_ctx_C" onclick="selectMatch('ctx', 'C')" style="margin-top:8px;">admirer la perseverance de qqn</div>
+                </div>
+            </div>
+            <div class="quiz-feedback" id="q3fb"></div>
+        </div>
+
+        <!-- Quiz 4: Fill-in J1+J2+J3 -->
+        <div class="quiz-item" id="q4">
+            <div class="quiz-num">Exercice 4 &mdash; Remplir avec les mots J1+J2+J3</div>
+            <div class="quiz-question">___大家意见不同，但只要有效___，就能消除___。</div>
+            <div class="quiz-options">
+                <button class="quiz-option" onclick="checkQ4(this, 'a')">a. 尽管 / 沟通 / 误会</button>
+                <button class="quiz-option" onclick="checkQ4(this, 'b')">b. 即使 / 交流 / 矛盾</button>
+                <button class="quiz-option" onclick="checkQ4(this, 'c')">c. 既然 / 争论 / 和谐</button>
+            </div>
+            <div class="quiz-feedback" id="q4fb"></div>
+        </div>
+
+        <!-- Quiz 5: Translate -->
+        <div class="quiz-item" id="q5">
+            <div class="quiz-num">Exercice 5 &mdash; Traduire</div>
+            <div class="quiz-question">Traduisez en chinois : &laquo; Meme s'il est modeste, il est evidemment tres competent. &raquo;</div>
+            <input class="quiz-input" id="q5input" type="text" placeholder="Ecrivez votre traduction ici...">
+            <br>
+            <button class="quiz-btn" onclick="checkQ5()">Verifier</button>
+            <div class="quiz-feedback" id="q5fb"></div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    HSK 5 &mdash; Apprentissage Commando &mdash; Jour 3 : Relations et emotions &mdash; 刘老师的中文课
+</footer>
+
+<script>
+    /* ===== Quiz 1 ===== */
+    function checkQ1(w1, w2) {
+        const fb = document.getElementById('q1fb');
+        const item = document.getElementById('q1');
+        if (w1 === '信任' && w2 === '尊重') {
+            document.getElementById('q1b1').textContent = '信任';
+            document.getElementById('q1b2').textContent = '尊重';
+            fb.className = 'quiz-feedback show correct';
+            fb.textContent = 'Correct ! 朋友之间要互相信任和尊重。(Entre amis, il faut se faire mutuellement confiance et se respecter.)';
+            item.classList.add('correct');
+        } else {
+            fb.className = 'quiz-feedback show wrong';
+            fb.textContent = 'Pas tout a fait. Reessayez ! Indice : confiance + respect.';
+            item.classList.add('wrong');
+            setTimeout(() => item.classList.remove('wrong'), 800);
+        }
+    }
+
+    /* ===== Quiz 2 ===== */
+    function checkQ2(btn, choice) {
+        const fb = document.getElementById('q2fb');
+        const item = document.getElementById('q2');
+        document.querySelectorAll('#q2 .quiz-option').forEach(b => b.classList.remove('selected','correct-answer','wrong-answer'));
+        if (choice === 'a') {
+            btn.classList.add('correct-answer');
+            fb.className = 'quiz-feedback show correct';
+            fb.textContent = 'Correct ! 居然 (contre toute attente) + 佩服 (admirer). Elle a surmonte tant de difficultes, c\'est vraiment admirable.';
+            item.classList.add('correct');
+        } else {
+            btn.classList.add('wrong-answer');
+            fb.className = 'quiz-feedback show wrong';
+            fb.textContent = 'Incorrect. La bonne reponse est a. 居然/佩服. 居然 exprime la surprise, 佩服 l\'admiration.';
+            item.classList.add('wrong');
+            setTimeout(() => item.classList.remove('wrong'), 800);
+        }
+    }
+
+    /* ===== Quiz 3: Match ===== */
+    let matchState = { selected: null, matches: {} };
+    const correctMatches = { 1: 'A', 2: 'C', 3: 'B' };
+
+    function selectMatch(type, id) {
+        if (type === 'word') {
+            document.querySelectorAll('[id^="m_word_"]').forEach(el => el.classList.remove('selected'));
+            document.getElementById('m_word_' + id).classList.add('selected');
+            matchState.selected = { type: 'word', id: id };
+        } else {
+            if (matchState.selected && matchState.selected.type === 'word') {
+                const wordId = matchState.selected.id;
+                const ctxId = id;
+                if (correctMatches[wordId] === ctxId) {
+                    document.getElementById('m_word_' + wordId).classList.remove('selected');
+                    document.getElementById('m_word_' + wordId).classList.add('matched');
+                    document.getElementById('m_ctx_' + ctxId).classList.add('matched');
+                    matchState.matches[wordId] = ctxId;
+                    matchState.selected = null;
+
+                    if (Object.keys(matchState.matches).length === 3) {
+                        const fb = document.getElementById('q3fb');
+                        fb.className = 'quiz-feedback show correct';
+                        fb.textContent = 'Parfait ! 欣赏 = admirer le talent/la beaute, 佩服 = admirer le caractere/la volonte, 珍惜 = cherir/ne pas gaspiller.';
+                        document.getElementById('q3').classList.add('correct');
+                    }
+                } else {
+                    document.getElementById('m_word_' + wordId).classList.remove('selected');
+                    const fb = document.getElementById('q3fb');
+                    fb.className = 'quiz-feedback show wrong';
+                    fb.textContent = 'Ce n\'est pas le bon appariement. Reessayez !';
+                    matchState.selected = null;
+                    setTimeout(() => { fb.className = 'quiz-feedback'; }, 1500);
+                }
+            }
+        }
+    }
+
+    /* ===== Quiz 4 ===== */
+    function checkQ4(btn, choice) {
+        const fb = document.getElementById('q4fb');
+        const item = document.getElementById('q4');
+        document.querySelectorAll('#q4 .quiz-option').forEach(b => b.classList.remove('selected','correct-answer','wrong-answer'));
+        if (choice === 'a') {
+            btn.classList.add('correct-answer');
+            fb.className = 'quiz-feedback show correct';
+            fb.textContent = 'Correct ! 尽管大家意见不同，但只要有效沟通，就能消除误会。(Meme si les avis different, une communication efficace suffit a dissiper les malentendus.)';
+            item.classList.add('correct');
+        } else {
+            btn.classList.add('wrong-answer');
+            fb.className = 'quiz-feedback show wrong';
+            fb.textContent = 'Pas tout a fait. La bonne reponse est a. 尽管/沟通/误会. 尽管 (bien que) + 沟通 (communiquer) + 误会 (malentendu).';
+            item.classList.add('wrong');
+            setTimeout(() => item.classList.remove('wrong'), 800);
+        }
+    }
+
+    /* ===== Quiz 5 ===== */
+    function checkQ5() {
+        const input = document.getElementById('q5input').value.trim();
+        const fb = document.getElementById('q5fb');
+        const item = document.getElementById('q5');
+        const target = '即使他很谦虚，但他显然很有能力';
+        const keywords = ['即使', '谦虚', '显然'];
+        const matched = keywords.filter(k => input.includes(k));
+
+        if (matched.length === 3) {
+            fb.className = 'quiz-feedback show correct';
+            fb.textContent = 'Excellent ! Reponse modele : 即使他很谦虚，但他显然很有能力。Vous avez utilise les 3 mots cles (即使, 谦虚, 显然).';
+            item.classList.add('correct');
+        } else if (matched.length >= 1) {
+            fb.className = 'quiz-feedback show wrong';
+            fb.textContent = 'Pas mal ! Vous avez utilise ' + matched.join(', ') + '. Il manque : ' + keywords.filter(k => !input.includes(k)).join(', ') + '. Reponse modele : 即使他很谦虚，但他显然很有能力。';
+            item.classList.add('wrong');
+            setTimeout(() => item.classList.remove('wrong'), 1200);
+        } else {
+            fb.className = 'quiz-feedback show wrong';
+            fb.textContent = 'Essayez d\'utiliser 即使 (meme si), 谦虚 (modeste), et 显然 (evidemment). Reponse modele : 即使他很谦虚，但他显然很有能力。';
+            item.classList.add('wrong');
+            setTimeout(() => item.classList.remove('wrong'), 1200);
+        }
+    }
+</script>
+
+</body>
+</html>
