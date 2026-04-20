@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第18课 抽象艺术美不美</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+        :root{--primary:#4c1d95;--primary-light:#5b21b6;--accent:#7c3aed;--gold:#6d28d9;--gold-light:#f5f3ff;--bg:#fafbfc;--card:#fff;--text:#2c3e50;--text-light:#7f8c8d;--border:#e8ecf1;--success:#27ae60;--wrong:#e74c3c;--gradient-water:linear-gradient(135deg,#4c1d95 0%,#7c3aed 100%);--gradient-hero:linear-gradient(135deg,#1e0050 0%,#4c1d95 35%,#7c3aed 70%,#a78bfa 100%);}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;scroll-behavior:smooth;}
+        .hero{background:var(--gradient-hero);color:#fff;padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;background-size:cover;opacity:.3;}
+        .hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+        .hero .lesson-badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:6px 20px;border-radius:30px;font-size:.9rem;letter-spacing:2px;margin-bottom:20px;}
+        .hero h1{font-family:'Noto Serif SC',serif;font-size:3.2rem;font-weight:900;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+        .hero .subtitle{font-size:1.3rem;opacity:.9;font-weight:300;margin-bottom:30px;}
+        .hero .deco{font-size:2rem;letter-spacing:8px;opacity:.6;}
+        .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+        .nav-inner::-webkit-scrollbar{display:none;}
+        .nav-inner a{padding:14px 18px;text-decoration:none;color:var(--text-light);font-size:.9rem;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+        .nav-inner a:hover,.nav-inner a.active{color:var(--primary);border-bottom-color:var(--primary-light);}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+        section{padding:50px 0;}
+        .section-header{text-align:center;margin-bottom:40px;}
+        .section-header h2{font-family:'Noto Serif SC',serif;font-size:2rem;color:var(--primary);margin-bottom:6px;}
+        .section-header .section-sub{color:var(--text-light);font-size:.95rem;}
+        .section-divider{width:60px;height:3px;background:var(--gradient-water);margin:12px auto 0;border-radius:2px;}
+        .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);margin-bottom:24px;}
+        .card h3{font-size:1.2rem;color:var(--primary);margin-bottom:16px;}
+        .text-block{background:var(--card);border-radius:16px;padding:35px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);font-family:'Noto Serif SC',serif;font-size:1.1rem;line-height:2.2;}
+        .text-block p{text-indent:2em;margin-bottom:16px;}
+        .vocab-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
+        .vocab-controls button{padding:8px 20px;border:2px solid var(--border);background:#fff;border-radius:25px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s;color:var(--text);}
+        .vocab-controls button.active,.vocab-controls button:hover{border-color:var(--primary-light);background:var(--primary-light);color:#fff;}
+        .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .vocab-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .3s;position:relative;}
+        .vocab-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.08);border-color:var(--primary-light);}
+        .vocab-card .vocab-num{position:absolute;top:8px;right:12px;font-size:.75rem;color:var(--text-light);opacity:.5;}
+        .vocab-card .hanzi{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;color:var(--primary);}
+        .vocab-card .pinyin{color:var(--accent);font-size:.9rem;margin:4px 0;}
+        .vocab-card .pos{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;}
+        .vocab-card .meaning-hidden{display:none;}
+        .vocab-card.revealed .meaning-hidden{display:block;}
+        .vocab-card.revealed .meaning-placeholder{display:none;}
+        .meaning-placeholder{color:var(--text-light);font-size:.85rem;font-style:italic;margin-top:6px;}
+        .art-debate{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+        .debate-card{border-radius:16px;padding:20px;border:2px solid;}
+        .debate-card.against{background:linear-gradient(135deg,#fef3c7,#fde68a);border-color:#fbbf24;}
+        .debate-card.for{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-color:#a78bfa;}
+        .debate-card h4{font-size:1rem;font-weight:700;margin-bottom:12px;}
+        .debate-card.against h4{color:#92400e;}
+        .debate-card.for h4{color:#4c1d95;}
+        .debate-point{font-size:.85rem;padding:6px 0;border-bottom:1px dashed rgba(0,0,0,.1);color:var(--text);}
+        .debate-point:last-child{border-bottom:none;}
+        .flashcard-area{display:flex;flex-direction:column;align-items:center;gap:20px;padding:20px 0;}
+        .flashcard-container{perspective:1000px;width:380px;height:260px;max-width:100%;}
+        .flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);cursor:pointer;}
+        .flashcard.flipped{transform:rotateY(180deg);}
+        .flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;}
+        .flashcard-front{background:linear-gradient(135deg,#1e0050,#7c3aed);color:#fff;box-shadow:0 10px 40px rgba(124,58,237,.3);}
+        .flashcard-front .fc-hanzi{font-family:'Noto Serif SC',serif;font-size:3rem;font-weight:900;margin-bottom:10px;}
+        .flashcard-front .fc-pinyin{font-size:1.1rem;opacity:.8;}
+        .flashcard-front .fc-hint{font-size:.8rem;opacity:.5;margin-top:20px;}
+        .flashcard-back{background:#fff;border:2px solid var(--primary-light);transform:rotateY(180deg);box-shadow:0 10px 40px rgba(0,0,0,.1);}
+        .flashcard-back .fc-meaning{font-size:1.3rem;color:var(--primary);font-weight:600;}
+        .flashcard-back .fc-pos{background:var(--gold-light);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-top:10px;}
+        .fc-controls{display:flex;gap:12px;}
+        .fc-controls button{padding:10px 28px;border-radius:25px;border:none;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;}
+        .fc-btn-prev,.fc-btn-next{background:var(--primary-light);color:#fff;}
+        .fc-btn-prev:hover,.fc-btn-next:hover{background:var(--primary);}
+        .fc-btn-shuffle{background:#fff;border:2px solid var(--border)!important;color:var(--text);}
+        .fc-counter{color:var(--text-light);font-size:.9rem;}
+        .grammar-card{background:var(--card);border-radius:16px;border:1px solid var(--border);margin-bottom:20px;overflow:hidden;}
+        .grammar-header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;}
+        .grammar-header .grammar-num{background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+        .grammar-header .grammar-title{font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;}
+        .grammar-header .grammar-pinyin{font-size:.9rem;opacity:.8;}
+        .grammar-body{padding:24px;}
+        .grammar-rule{background:var(--gold-light);border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:20px;font-size:.95rem;color:var(--primary);}
+        .grammar-example{padding:12px 0;border-bottom:1px solid var(--border);}
+        .grammar-example:last-child{border-bottom:none;}
+        .grammar-example .ex-cn{font-size:1.05rem;margin-bottom:4px;}
+        .grammar-example .ex-note{color:var(--text-light);font-size:.85rem;}
+        .grammar-example .ex-highlight{color:var(--accent);font-weight:600;}
+        .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+        .comparison-table th{background:var(--primary);color:#fff;padding:14px 18px;font-weight:600;text-align:center;}
+        .comparison-table td{padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top;font-size:.95rem;}
+        .comparison-table tr:last-child td{border-bottom:none;}
+        .comparison-table tr:nth-child(even){background:#f8fafc;}
+        .comparison-table .label-cell{background:var(--gold-light);font-weight:600;color:var(--primary);text-align:center;width:60px;}
+        .colloc-section{margin-bottom:24px;}
+        .colloc-label{display:inline-block;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:12px;}
+        .colloc-label.verb{background:#e74c3c;}.colloc-label.attr{background:#f39c12;}.colloc-label.adv{background:#27ae60;}.colloc-label.comp{background:#8e44ad;}.colloc-label.subj{background:#16a085;}
+        .colloc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+        .colloc-row:last-child{border-bottom:none;}
+        .colloc-word{font-weight:600;color:var(--primary);min-width:100px;font-size:1.1rem;}
+        .colloc-plus{color:var(--text-light);font-weight:700;}
+        .colloc-partners{display:flex;flex-wrap:wrap;gap:6px;}
+        .colloc-tag{background:#f0f4f8;padding:4px 12px;border-radius:15px;font-size:.85rem;}
+        .tab-bar{display:flex;gap:4px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:20px;}
+        .tab-btn{flex:1;padding:10px;border:none;background:transparent;border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--text-light);transition:all .2s;}
+        .tab-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+        .tab-content{display:none;}.tab-content.active{display:block;}
+        .quiz-score-bar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+        .score-display{font-size:1.5rem;font-weight:700;color:var(--primary);}
+        .score-bar-visual{flex:1;margin:0 20px;height:10px;background:var(--border);border-radius:5px;overflow:hidden;}
+        .score-bar-fill{height:100%;background:var(--gradient-water);border-radius:5px;transition:width .5s ease;width:0%;}
+        .quiz-reset-btn{padding:8px 20px;background:var(--primary-light);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;}
+        .quiz-question{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;transition:all .3s;}
+        .quiz-question.correct{border-color:var(--success);background:#f0fdf4;}
+        .quiz-question.wrong{border-color:var(--wrong);background:#fef2f2;}
+        .quiz-q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--primary-light);color:#fff;border-radius:50%;font-size:.8rem;font-weight:700;margin-right:10px;}
+        .quiz-q-text{font-size:1.05rem;margin-bottom:14px;}
+        .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .quiz-option{padding:12px 16px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.95rem;text-align:center;background:#fff;}
+        .quiz-option:hover{border-color:var(--primary-light);background:var(--gold-light);}
+        .quiz-option.selected-correct{border-color:var(--success);background:#dcfce7;color:var(--success);font-weight:600;}
+        .quiz-option.selected-wrong{border-color:var(--wrong);background:#fecaca;color:var(--wrong);font-weight:600;}
+        .quiz-option.disabled{pointer-events:none;opacity:.7;}
+        .quiz-explanation{display:none;margin-top:12px;padding:12px 16px;background:#f5f3ff;border-radius:10px;font-size:.9rem;color:#4c1d95;border:1px solid #c4b5fd;}
+        .fill-blank{display:inline-block;min-width:80px;border-bottom:2px dashed var(--primary-light);padding:2px 8px;margin:0 4px;text-align:center;cursor:pointer;transition:all .2s;}
+        .fill-blank:hover{background:var(--gold-light);}
+        .fill-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center;}
+        .fill-chip{padding:8px 18px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s;}
+        .fill-chip:hover{border-color:var(--primary-light);background:var(--gold-light);}
+        .fill-chip.used{opacity:.4;pointer-events:none;}
+        .fill-chip.placed{background:var(--primary-light);color:#fff;border-color:var(--primary-light);}
+        .app-box{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:1px solid #c4b5fd;border-radius:16px;padding:30px;margin-bottom:20px;}
+        .app-box h4{color:var(--primary);font-size:1.1rem;margin-bottom:12px;}
+        .discussion-q{padding:10px 0;border-bottom:1px solid rgba(196,181,253,.4);font-size:.95rem;}
+        .discussion-q:last-child{border-bottom:none;}
+        .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
+        @media(max-width:768px){.hero h1{font-size:2rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}.art-debate{grid-template-columns:1fr;}}
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
+        <h1>抽象艺术美不美</h1>
+        <p class="subtitle">Abstract Art: Beautiful or Not? - Lesson 18</p>
+        <div class="deco">🎨 🖼️ 🎭 ✨</div>
+    </div>
+</header>
+
+<nav class="sticky-nav"><div class="nav-inner">
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#art">艺术 Art</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+</div></nav>
+
+<main class="container">
+
+<section id="text">
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">抽象艺术美不美 — débat esthétique</p><div class="section-divider"></div></div>
+    <div class="text-block">
+        <p>抽象艺术是20世纪极其重要的艺术形式，它不像传统绘画那样描绘具体的事物，而是通过色彩、线条和形状来表达艺术家的情感与思想。然而，对于抽象艺术美不美这个问题，不同的人有着截然不同的看法。</p>
+        <p>许多人在欣赏抽象艺术时感到困惑，因为他们无法分辨画中表达的具体含义，也找不到任何可以证明其美丽的证据。他们认为，真正的艺术应该能够直观地表现现实世界中的美好事物，而那些仅仅由几何图形或颜色块组成的抽象作品，不过是艺术家的随意涂鸦。</p>
+        <p>然而，另一些人则持完全不同的观点。他们认为，艺术的价值不仅在于描绘事物的外表，更在于传递内心深处的情感。极其优秀的抽象艺术家，如康定斯基、蒙德里安等，能够通过调整颜色与线条的排列，创造出独特的视觉效果，让观看者产生强烈的情感共鸣。目前，越来越多的人开始接受并热爱抽象艺术，全球各地的抽象艺术展览也变得极其活跃。</p>
+        <p>从某种意义上说，抽象艺术对观众提出了更高的要求。其余的艺术形式，如写实主义或印象主义，相对容易理解；而抽象艺术则需要观看者有更丰富的想象力和更开放的心态。可见，抽象艺术之美不在于它描绘了什么，而在于它让我们感受到了什么。</p>
+        <p>不论你是专业艺术家还是业余爱好者，面对抽象艺术时，不妨放下对"美"的固有标准，用心去感受那些色彩与线条所传递的情感，也许你会发现，抽象艺术有着其他艺术形式无法替代的独特魅力。</p>
+    </div>
+</section>
+
+<section id="vocab">
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">40 mots - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (40)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout reveler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+</section>
+
+<section id="art">
+    <div class="section-header"><h2>艺术 - Le débat esthétique</h2><p class="section-sub">Deux points de vue sur l'art abstrait</p><div class="section-divider"></div></div>
+    <div class="art-debate">
+        <div class="debate-card against">
+            <h4>❌ 抽象艺术不美 — Arguments contre</h4>
+            <div class="debate-point">无法分辨画中的具体含义</div>
+            <div class="debate-point">找不到证明其美丽的证据</div>
+            <div class="debate-point">看起来像随意涂鸦，缺乏技巧</div>
+            <div class="debate-point">无法直观表现现实世界的美</div>
+            <div class="debate-point">普通人难以理解，门槛极高</div>
+        </div>
+        <div class="debate-card for">
+            <h4>✅ 抽象艺术有其美 — Arguments pour</h4>
+            <div class="debate-point">能传递极其深刻的内心情感</div>
+            <div class="debate-point">调整色彩与线条可创造共鸣</div>
+            <div class="debate-point">需要更丰富的想象力去欣赏</div>
+            <div class="debate-point">美在感受，不在于描绘了什么</div>
+            <div class="debate-point">独特魅力无法被其他艺术替代</div>
+        </div>
+    </div>
+    <div class="card">
+        <h3>著名抽象艺术家 — Artistes abstraits célèbres</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:8px;">
+            <div style="background:var(--gold-light);border-radius:12px;padding:16px;border:1px solid #ddd6fe;">
+                <div style="font-family:'Noto Serif SC',serif;font-size:1.1rem;font-weight:700;color:var(--primary);">康定斯基</div>
+                <div style="font-size:.8rem;color:var(--text-light);">Wassily Kandinsky (1866–1944)<br>俄国 — 抽象艺术之父</div>
+            </div>
+            <div style="background:var(--gold-light);border-radius:12px;padding:16px;border:1px solid #ddd6fe;">
+                <div style="font-family:'Noto Serif SC',serif;font-size:1.1rem;font-weight:700;color:var(--primary);">蒙德里安</div>
+                <div style="font-size:.8rem;color:var(--text-light);">Piet Mondrian (1872–1944)<br>荷兰 — 几何抽象主义</div>
+            </div>
+            <div style="background:var(--gold-light);border-radius:12px;padding:16px;border:1px solid #ddd6fe;">
+                <div style="font-family:'Noto Serif SC',serif;font-size:1.1rem;font-weight:700;color:var(--primary);">波洛克</div>
+                <div style="font-size:.8rem;color:var(--text-light);">Jackson Pollock (1912–1956)<br>美国 — 滴画法 (drip painting)</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="flashcards">
+    <div class="section-header"><h2>卡片 - Flashcards</h2><p class="section-sub">Cliquez pour retourner la carte</p><div class="section-divider"></div></div>
+    <div class="flashcard-area">
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">40</span></div>
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front"><div class="fc-hanzi" id="fcHanzi">抽象</div><div class="fc-pinyin" id="fcPinyin">chōuxiàng</div><div class="fc-hint">cliquez pour voir la traduction</div></div>
+                <div class="flashcard-back"><div class="fc-meaning" id="fcMeaning">abstrait</div><div class="fc-pos" id="fcPos">adj.</div></div>
+            </div>
+        </div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+        </div>
+    </div>
+</section>
+
+<section id="grammar">
+    <div class="section-header"><h2>语法 - Grammaire</h2><p class="section-sub">3 points de grammaire essentiels</p><div class="section-divider"></div></div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">1</div><div><div class="grammar-title">极其</div><div class="grammar-pinyin">jíqí — extrêmement (intensificateur fort, langue écrite)</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>极其</strong>, adverbe intensificateur, signifie "extrêmement, au plus haut degré". Plus fort que 非常 et 十分, et plus formel. S'emploie surtout dans la <strong>langue écrite</strong>. Ne modifie que des <strong>adjectifs ou des verbes d'état</strong> (jamais des verbes d'action). Structure : 极其 + adj./état.</div>
+            <div class="grammar-example"><div class="ex-cn">抽象艺术是20世纪<span class="ex-highlight">极其</span>重要的艺术形式。</div><div class="ex-note">(1) L'art abstrait est une forme d'art <em>extrêmement</em> importante du XXe siècle. (极其 + adjectif)</div></div>
+            <div class="grammar-example"><div class="ex-cn">全球各地的抽象艺术展览也变得<span class="ex-highlight">极其</span>活跃。</div><div class="ex-note">(2) Les expositions d'art abstrait à travers le monde sont également devenues <em>extrêmement</em> actives. (极其 + adjectif d'état)</div></div>
+            <div class="grammar-example"><div class="ex-cn">这项任务<span class="ex-highlight">极其</span>复杂，需要整个团队的共同努力才能完成。</div><div class="ex-note">(3) Cette mission est <em>extrêmement</em> complexe — il faudra l'effort conjoint de toute l'équipe pour l'accomplir.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">2</div><div><div class="grammar-title">其余</div><div class="grammar-pinyin">qíyú — le reste, les autres (d'un ensemble défini)</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>其余</strong>, pronom/adjectif, désigne "le reste, les autres membres" <strong>d'un ensemble préalablement défini et délimité</strong>. À distinguer de 其他 (d'autres, de différents — pas nécessairement du même ensemble) et 剩余 (ce qui reste matériellement). 其余的 + nom = les autres (de ce groupe).</div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">其余</span>的艺术形式，如写实主义或印象主义，相对容易理解。</div><div class="ex-note">(1) Les <em>autres</em> formes artistiques (du même domaine), comme le réalisme ou l'impressionnisme, sont relativement plus faciles à comprendre.</div></div>
+            <div class="grammar-example"><div class="ex-cn">三个方案中，第一个最好；<span class="ex-highlight">其余</span>两个都有明显的不足之处。</div><div class="ex-note">(2) Parmi les trois propositions, la première est la meilleure ; <em>les deux autres</em> (du même ensemble de trois) ont des lacunes notables.</div></div>
+            <div class="grammar-example"><div class="ex-cn">主要材料已经到位，<span class="ex-highlight">其余</span>的明天会陆续送来。</div><div class="ex-note">(3) Les matériaux principaux sont déjà en place ; <em>le reste</em> (des mêmes matériaux) arrivera progressivement demain.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">3</div><div><div class="grammar-title">可见</div><div class="grammar-pinyin">kějiàn — on peut donc voir que, il est évident que (connecteur de conclusion)</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>可见</strong>, connecteur discursif, introduit une <strong>conclusion ou une inférence</strong> tirée de ce qui précède. Équivalent de "il est donc clair que", "cela montre que", "on peut en conclure que". Souvent en début de phrase. Parfois aussi 由此可见 (c'est pourquoi l'on voit que). Très courant dans les argumentations écrites.</div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">可见</span>，抽象艺术之美不在于它描绘了什么，而在于它让我们感受到了什么。</div><div class="ex-note">(1) <em>On peut donc voir que</em> la beauté de l'art abstrait ne réside pas dans ce qu'il représente, mais dans ce qu'il nous fait ressentir.</div></div>
+            <div class="grammar-example"><div class="ex-cn">他连最基本的汉字都认不出来，<span class="ex-highlight">可见</span>他的中文水平还差得很远。</div><div class="ex-note">(2) Il ne reconnaît même pas les caractères les plus basiques — <em>il est donc évident que</em> son niveau de chinois est encore très insuffisant.</div></div>
+            <div class="grammar-example"><div class="ex-cn">由此<span class="ex-highlight">可见</span>，坚持学习是取得成功的最重要的因素之一。</div><div class="ex-note">(3) <em>C'est pourquoi l'on voit que</em> la persévérance dans l'apprentissage est l'un des facteurs les plus importants de la réussite.</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="analysis">
+    <div class="section-header"><h2>词语辨析 - Analyse comparative</h2><p class="section-sub">目前 vs 现在</p><div class="section-divider"></div></div>
+    <div class="card">
+        <table class="comparison-table">
+            <thead><tr><th></th><th>目前 (mùqián)</th><th>现在 (xiànzài)</th></tr></thead>
+            <tbody>
+                <tr><td class="label-cell">Points communs</td><td colspan="2" style="text-align:center;">Les deux expriment le temps présent et peuvent parfois s'interchanger dans des contextes formels.<br><em>如：目前/现在，越来越多的人开始接受抽象艺术。</em></td></tr>
+                <tr><td class="label-cell" rowspan="3">Differences</td>
+                    <td>1. Utilisé surtout dans la <strong>langue écrite formelle</strong> : articles, rapports, discours.<br><em>如：<u>目前</u>，全球经济形势不容乐观。</em></td>
+                    <td>1. Utilisé dans la <strong>langue parlée et écrite</strong>, plus neutre et courant.<br><em>如：你<u>现在</u>在哪里？(oral)</em></td></tr>
+                <tr>
+                    <td>2. Désigne la <strong>période actuelle</strong> dans son ensemble (étape, phase, situation en cours) — plutôt une durée.<br><em>目前来看 = de la perspective actuelle</em></td>
+                    <td>2. Peut désigner <strong>ce moment précis</strong> (maintenant, à l'instant) ou une période plus longue.<br><em>现在几点了？= Quelle heure est-il ?</em></td></tr>
+                <tr>
+                    <td>3. S'emploie souvent avec des mots de situation ou tendance : <strong>目前形势、目前阶段、目前来看</strong>. Ne s'utilise pas pour décrire une action à l'instant précis.</td>
+                    <td>3. Plus polyvalent : peut s'employer dans toute situation temporelle "présente". Peut aussi signifier "désormais, à partir de maintenant".<br><em>从<u>现在</u>开始 = à partir de maintenant</em></td></tr>
+            </tbody>
+        </table>
+        <div style="margin-top:20px;padding:14px 18px;background:#f5f3ff;border-radius:10px;font-size:.9rem;color:#4c1d95;border:1px solid #c4b5fd;">
+            <strong>Astuce :</strong> 目前 = "à l'heure actuelle" (formel, écrit, contexte de situation/tendance). 现在 = "maintenant / à présent" (polyvalent, oral et écrit). Test : si c'est dans un rapport ou article sur la situation actuelle → 目前 ; si c'est une action ou état à ce moment précis → 现在.
+        </div>
+    </div>
+</section>
+
+<section id="collocation">
+    <div class="section-header"><h2>词语搭配 - Collocations</h2><p class="section-sub">Combinaisons essentielles</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="colloc-section"><div class="colloc-label verb">动词 + 宾语</div>
+            <div class="colloc-row"><span class="colloc-word">欣赏</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">音乐</span><span class="colloc-tag">绘画</span><span class="colloc-tag">风景</span><span class="colloc-tag">表演</span><span class="colloc-tag">作品</span><span class="colloc-tag">才华</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">传递</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">情感</span><span class="colloc-tag">信息</span><span class="colloc-tag">价值观</span><span class="colloc-tag">文化</span><span class="colloc-tag">思想</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label attr">定语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">独特的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">风格</span><span class="colloc-tag">魅力</span><span class="colloc-tag">价值</span><span class="colloc-tag">个性</span><span class="colloc-tag">视角</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">固有的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">标准</span><span class="colloc-tag">观念</span><span class="colloc-tag">模式</span><span class="colloc-tag">偏见</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label adv">状语 修饰</div>
+            <div class="colloc-row"><span class="colloc-word">极其</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">重要</span><span class="colloc-tag">困难</span><span class="colloc-tag">复杂</span><span class="colloc-tag">优秀</span><span class="colloc-tag">活跃</span><span class="colloc-tag">珍贵</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">随意（地）</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">涂鸦</span><span class="colloc-tag">选择</span><span class="colloc-tag">安排</span><span class="colloc-tag">发言</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label subj">主语 + 谓语</div>
+            <div class="colloc-row"><span class="colloc-word">魅力</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">独特</span><span class="colloc-tag">无穷</span><span class="colloc-tag">无限</span><span class="colloc-tag">消失</span><span class="colloc-tag">吸引人</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">标准</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">不同</span><span class="colloc-tag">固定</span><span class="colloc-tag">改变</span><span class="colloc-tag">统一</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="quiz-section">
+    <div class="section-header"><h2>测验 - Quiz</h2><p class="section-sub">Testez vos connaissances</p><div class="section-divider"></div></div>
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+    </div>
+    <div class="tab-content active" id="vocab-quiz"><div class="quiz-score-bar"><div class="score-display" id="vocabScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button></div><div id="vocabQuizContainer"></div></div>
+    <div class="tab-content" id="grammar-quiz"><div class="quiz-score-bar"><div class="score-display" id="grammarScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button></div><div id="grammarQuizContainer"></div></div>
+    <div class="tab-content" id="comprehension-quiz"><div class="quiz-score-bar"><div class="score-display" id="compScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button></div><div id="compQuizContainer"></div></div>
+</section>
+
+<section id="fill-quiz">
+    <div class="section-header"><h2>填空练习 - Exercices a trous</h2><p class="section-sub">Choisissez le mot correct</p><div class="section-divider"></div></div>
+    <div class="card" id="fillExercise">
+        <h3>Choisissez parmi : 欣赏、证据、业余、调整、分辨、活跃</h3>
+        <div class="fill-options" id="fillOptions">
+            <span class="fill-chip" data-word="欣赏" onclick="selectFillWord(this)">欣赏</span>
+            <span class="fill-chip" data-word="证据" onclick="selectFillWord(this)">证据</span>
+            <span class="fill-chip" data-word="业余" onclick="selectFillWord(this)">业余</span>
+            <span class="fill-chip" data-word="调整" onclick="selectFillWord(this)">调整</span>
+            <span class="fill-chip" data-word="分辨" onclick="selectFillWord(this)">分辨</span>
+            <span class="fill-chip" data-word="活跃" onclick="selectFillWord(this)">活跃</span>
+        </div>
+        <div style="margin-top:24px;">
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">1</span>他是一位<span class="fill-blank" data-answer="业余" onclick="placeFillWord(this)">___</span>画家，虽然不是专业的，但他的作品极其出色。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">2</span>我非常<span class="fill-blank" data-answer="欣赏" onclick="placeFillWord(this)">___</span>这位艺术家的作品，她的色彩运用令人叹服。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">3</span>法庭需要确实的<span class="fill-blank" data-answer="证据" onclick="placeFillWord(this)">___</span>才能作出判决，不能仅凭猜测或印象。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">4</span>我们对原计划进行了适当的<span class="fill-blank" data-answer="调整" onclick="placeFillWord(this)">___</span>，以适应新的市场情况。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">5</span>这两幅画的风格极其相似，很难<span class="fill-blank" data-answer="分辨" onclick="placeFillWord(this)">___</span>哪一幅是真迹，哪一幅是复制品。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">6</span>他在课堂讨论中非常<span class="fill-blank" data-answer="活跃" onclick="placeFillWord(this)">___</span>，经常提出有趣的观点，深受老师和同学的好评。</div>
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+            <button onclick="checkFillAnswers()" style="padding:10px 30px;background:var(--primary-light);color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:.95rem;font-weight:600;">Verifier</button>
+            <button onclick="resetFill()" style="padding:10px 30px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.95rem;margin-left:10px;">Recommencer</button>
+        </div>
+    </div>
+    <div class="card"><h3>目前 ou 现在 ? Choisissez la bonne reponse</h3><div id="choiceQuizContainer"></div></div>
+</section>
+
+<section id="application">
+    <div class="section-header"><h2>运用 - Application</h2><p class="section-sub">Contexte et discussion</p><div class="section-divider"></div></div>
+    <div class="app-box">
+        <h4>背景知识 — 抽象艺术的起源与发展</h4>
+        <p style="line-height:2;">抽象艺术兴起于20世纪初，其代表人物康定斯基被公认为抽象艺术之父。他认为，艺术家应该通过色彩和线条来表达内心的精神世界，而不必拘泥于具体形象的描绘。此后，抽象艺术迅速发展，形成了多种流派：几何抽象（以蒙德里安为代表）、抽象表现主义（以波洛克为代表）等。目前，抽象艺术已成为现代艺术的重要组成部分，在全球各大博物馆和艺术展览中都占有极其重要的地位。</p>
+    </div>
+    <div class="app-box">
+        <h4>话题讨论 - 艺术与美的标准</h4>
+        <div class="discussion-q">1. 你是否欣赏抽象艺术？你认为抽象艺术美不美？请说明你的理由。<br><em>Appréciez-vous l'art abstrait ? Le trouvez-vous beau ? Justifiez votre réponse.</em></div>
+        <div class="discussion-q">2. 你认为艺术的"美"有没有客观标准？不同文化背景的人对美的理解会有哪些差异？<br><em>Selon vous, y a-t-il des critères objectifs du "beau" en art ? Comment les différences culturelles influencent-elles la perception de la beauté ?</em></div>
+        <div class="discussion-q">3. 如果你要购买一幅画挂在家里，你会选择写实主义作品还是抽象作品？为什么？<br><em>Si vous deviez acheter un tableau pour chez vous, choisiriez-vous une œuvre réaliste ou abstraite ? Pourquoi ?</em></div>
+    </div>
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'ecriture</h4>
+        <p>请以"我眼中的抽象艺术"为题，写一篇短文，谈谈你对抽象艺术的看法。请尽量使用本课词汇，字数不少于100字。</p>
+        <p style="font-style:italic;color:var(--text-light);margin-top:8px;">Redigez un texte sur "L'art abstrait tel que je le vois". Utilisez le maximum de vocabulaire de la lecon, au moins 100 caracteres.</p>
+    </div>
+</section>
+
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+<footer style="text-align:center;padding:40px 20px;color:var(--text-light);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px;">HSK 5 Standard Course - Lesson 18 - 抽象艺术美不美</footer>
+
+<script>
+const vocabData=[
+    {id:1,hanzi:"欣赏",pinyin:"xīnshǎng",pos:"v.",meaning:"apprécier, admirer, trouver beau",cat:"verb"},
+    {id:2,hanzi:"证据",pinyin:"zhèngjù",pos:"n.",meaning:"preuve, témoignage, indice",cat:"noun"},
+    {id:3,hanzi:"业余",pinyin:"yèyú",pos:"adj.",meaning:"amateur (non-professionnel), en dehors du travail",cat:"adj"},
+    {id:4,hanzi:"调整",pinyin:"tiáozhěng",pos:"v./n.",meaning:"ajuster, régler, adapter ; ajustement",cat:"verb"},
+    {id:5,hanzi:"分辨",pinyin:"fēnbiàn",pos:"v.",meaning:"distinguer, différencier, discerner",cat:"verb"},
+    {id:6,hanzi:"活跃",pinyin:"huóyuè",pos:"adj./v.",meaning:"actif, animé, vivant, dynamique ; animer",cat:"adj"},
+    {id:7,hanzi:"极其",pinyin:"jíqí",pos:"adv.",meaning:"extrêmement, au plus haut degré (langue écrite formelle)",cat:"other"},
+    {id:8,hanzi:"其余",pinyin:"qíyú",pos:"pron./adj.",meaning:"le reste, les autres (d'un ensemble défini)",cat:"other"},
+    {id:9,hanzi:"可见",pinyin:"kějiàn",pos:"conj.",meaning:"on peut donc voir que, il est évident que (connecteur de conclusion)",cat:"other"},
+    {id:10,hanzi:"目前",pinyin:"mùqián",pos:"adv./n.",meaning:"actuellement, à présent (formel, écrit)",cat:"other"},
+    {id:11,hanzi:"抽象",pinyin:"chōuxiàng",pos:"adj.",meaning:"abstrait",cat:"adj"},
+    {id:12,hanzi:"具体",pinyin:"jùtǐ",pos:"adj.",meaning:"concret, précis, spécifique",cat:"adj"},
+    {id:13,hanzi:"绘画",pinyin:"huìhuà",pos:"n.",meaning:"peinture, dessin (art)",cat:"noun"},
+    {id:14,hanzi:"线条",pinyin:"xiàntiáo",pos:"n.",meaning:"ligne, trait (artistique, graphique)",cat:"noun"},
+    {id:15,hanzi:"形状",pinyin:"xíngzhuàng",pos:"n.",meaning:"forme, figure, silhouette",cat:"noun"},
+    {id:16,hanzi:"截然",pinyin:"jiérán",pos:"adv.",meaning:"nettement, totalement, absolument (souvent 截然不同)",cat:"other"},
+    {id:17,hanzi:"困惑",pinyin:"kùnhuò",pos:"adj.",meaning:"perplexe, déconcerté, désorienté",cat:"adj"},
+    {id:18,hanzi:"含义",pinyin:"hányì",pos:"n.",meaning:"signification, sens, signifié (sous-entendu)",cat:"noun"},
+    {id:19,hanzi:"直观",pinyin:"zhíguān",pos:"adj.",meaning:"intuitif, direct, immédiatement perceptible",cat:"adj"},
+    {id:20,hanzi:"几何",pinyin:"jǐhé",pos:"n./adj.",meaning:"géométrie ; géométrique",cat:"noun"},
+    {id:21,hanzi:"图形",pinyin:"túxíng",pos:"n.",meaning:"figure géométrique, forme graphique",cat:"noun"},
+    {id:22,hanzi:"涂鸦",pinyin:"túyā",pos:"v./n.",meaning:"gribouiller ; gribouillis, graffiti",cat:"verb"},
+    {id:23,hanzi:"持",pinyin:"chí",pos:"v.",meaning:"tenir, soutenir (une opinion), maintenir",cat:"verb"},
+    {id:24,hanzi:"传递",pinyin:"chuándì",pos:"v.",meaning:"transmettre, communiquer, faire passer",cat:"verb"},
+    {id:25,hanzi:"共鸣",pinyin:"gòngmíng",pos:"n./v.",meaning:"résonance émotionnelle ; faire écho, résonner",cat:"noun"},
+    {id:26,hanzi:"想象力",pinyin:"xiǎngxiànglì",pos:"n.",meaning:"imagination, créativité",cat:"noun"},
+    {id:27,hanzi:"心态",pinyin:"xīntài",pos:"n.",meaning:"état d'esprit, mentalité, attitude psychologique",cat:"noun"},
+    {id:28,hanzi:"写实",pinyin:"xiěshí",pos:"adj./n.",meaning:"réaliste (art) ; réalisme pictural",cat:"adj"},
+    {id:29,hanzi:"独特",pinyin:"dútè",pos:"adj.",meaning:"unique, original, particulier, propre à",cat:"adj"},
+    {id:30,hanzi:"魅力",pinyin:"mèilì",pos:"n.",meaning:"charme, attrait, fascination",cat:"noun"},
+    {id:31,hanzi:"替代",pinyin:"tìdài",pos:"v.",meaning:"remplacer, se substituer à",cat:"verb"},
+    {id:32,hanzi:"固有",pinyin:"gùyǒu",pos:"adj.",meaning:"inhérent, propre, naturel, préconçu (固有观念 = idée reçue)",cat:"adj"},
+    {id:33,hanzi:"标准",pinyin:"biāozhǔn",pos:"n./adj.",meaning:"standard, critère, norme ; standard, conforme",cat:"noun"},
+    {id:34,hanzi:"排列",pinyin:"páiliè",pos:"v./n.",meaning:"disposer, arranger, ordonner ; disposition",cat:"verb"},
+    {id:35,hanzi:"视觉",pinyin:"shìjué",pos:"n.",meaning:"vision, sens visuel, perception visuelle",cat:"noun"},
+    {id:36,hanzi:"效果",pinyin:"xiàoguǒ",pos:"n.",meaning:"effet, résultat, impact",cat:"noun"},
+    {id:37,hanzi:"随意",pinyin:"suíyì",pos:"adj./adv.",meaning:"au hasard, sans soin, désinvolte ; à sa guise",cat:"adj"},
+    {id:38,hanzi:"外表",pinyin:"wàibiǎo",pos:"n.",meaning:"apparence extérieure, dehors, aspect",cat:"noun"},
+    {id:39,hanzi:"情感",pinyin:"qínggǎn",pos:"n.",meaning:"émotion, sentiment, affect",cat:"noun"},
+    {id:40,hanzi:"开放",pinyin:"kāifàng",pos:"adj.",meaning:"ouvert, libéral, réceptif, expansif",cat:"adj"}
+];
+
+function renderVocab(filter='all'){const g=document.getElementById('vocabGrid');const f=filter==='all'?vocabData:vocabData.filter(v=>v.cat===filter);g.innerHTML=f.map(v=>`<div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')"><span class="vocab-num">#${v.id}</span><div class="hanzi">${v.hanzi}</div><div class="pinyin">${v.pinyin}</div><span class="pos">${v.pos}</span><div class="meaning-placeholder">Cliquez pour voir...</div><div class="meaning-hidden" style="font-size:.9rem;margin-top:6px;">${v.meaning}</div></div>`).join('');}
+function filterVocab(c){document.querySelectorAll('.vocab-controls button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderVocab(c);}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function hideAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('revealed'));}
+
+let fcIndex=0,fcOrder=[...Array(vocabData.length).keys()];
+function updateFlashcard(){const v=vocabData[fcOrder[fcIndex]];document.getElementById('fcHanzi').textContent=v.hanzi;document.getElementById('fcPinyin').textContent=v.pinyin;document.getElementById('fcMeaning').textContent=v.meaning;document.getElementById('fcPos').textContent=v.pos;document.getElementById('fcCurrent').textContent=fcIndex+1;document.getElementById('fcTotal').textContent=fcOrder.length;document.getElementById('flashcard').classList.remove('flipped');}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%fcOrder.length;updateFlashcard();}
+function prevCard(){fcIndex=(fcIndex-1+fcOrder.length)%fcOrder.length;updateFlashcard();}
+function shuffleCards(){for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}fcIndex=0;updateFlashcard();}
+
+const vocabQuizData=[
+    {q:"欣赏 signifie :",options:["Créer une œuvre d'art","Apprécier, admirer, trouver beau","Copier un tableau","Exposer au public"],correct:1},
+    {q:"证据 veut dire :",options:["Preuve, témoignage, indice","Opinion personnelle","Résultat d'une enquête","Avis d'un expert"],correct:0},
+    {q:"业余 signifie :",options:["Professionnel accompli","Amateur, non-professionnel","Enthousiaste passionné","Apprenti débutant"],correct:1},
+    {q:"调整 veut dire :",options:["Critiquer, évaluer","Supprimer complètement","Ajuster, adapter, régler","Maintenir tel quel"],correct:2},
+    {q:"分辨 signifie :",options:["Comprendre en profondeur","Distinguer, différencier, discerner","Commenter, analyser","Apprendre par cœur"],correct:1},
+    {q:"活跃 veut dire :",options:["Discret, réservé, calme","Actif, animé, dynamique","Brillant, excellent","Fatigué, épuisé"],correct:1},
+    {q:"极其 signifie :",options:["Relativement, assez","Un peu, légèrement","Extrêmement (fort intensificateur, écrit)","Peut-être, probablement"],correct:2},
+    {q:"其余 veut dire :",options:["Chacun, tous sans exception","Le reste, les autres (d'un ensemble défini)","La plupart, la majorité","Certains, quelques-uns"],correct:1},
+    {q:"可见 signifie :",options:["Il est possible que","On peut donc voir que, il est évident que (conclusion)","Cependant, pourtant","En d'autres termes"],correct:1},
+    {q:"截然 veut dire :",options:["Progressivement, peu à peu","Parfois, de temps en temps","Nettement, totalement (截然不同)","Heureusement, par chance"],correct:2},
+    {q:"共鸣 signifie :",options:["Incompréhension totale","Résonance émotionnelle, fait écho","Admiration silencieuse","Opposition, contradiction"],correct:1},
+    {q:"固有 veut dire :",options:["Nouveau, récent, moderne","Inhérent, propre, préconçu (固有观念)","Évident, clair, manifeste","Étranger, externe, importé"],correct:1}
+];
+
+const grammarQuizData=[
+    {q:"'极其重要的艺术形式' — 极其 peut modifier :",options:["Des verbes d'action (如：极其运行)","Des adjectifs et des verbes d'état (jamais des verbes d'action)","N'importe quel type de mot","Seulement des noms"],correct:1},
+    {q:"极其 se distingue de 非常 principalement parce que :",options:["Ils sont totalement synonymes sans aucune différence","极其 est plus fort et plus formel (surtout langue écrite)","非常 est plus formel et soutenu","极其 ne peut modifier qu'un seul type de mot"],correct:1},
+    {q:"'其余的艺术形式' — 其余 diffère de 其他 car :",options:["Ils sont totalement synonymes","其余 = le reste d'un ensemble défini ; 其他 = d'autres (pas nécessairement du même groupe)","其他 est plus formel","其余 est plus courant à l'oral"],correct:1},
+    {q:"'三个方案中，其余两个都有不足' — 其余 peut s'employer ici car :",options:["L'ensemble est indéfini et ouvert","L'ensemble (3 propositions) est préalablement défini et délimité","C'est une généralité sans ensemble précis","On parle de personnes, pas de choses"],correct:1},
+    {q:"'可见，抽象艺术之美不在于描绘了什么' — 可见 introduit ici :",options:["Une condition hypothétique","Une opposition ou concession","Une conclusion ou inférence tirée du contexte précédent","Une cause explicative"],correct:2},
+    {q:"由此可见 signifie :",options:["C'est pourquoi l'on peut voir que / on peut en conclure que","Pourtant, bien que ce soit le cas","À la condition que cela soit visible","Dès lors qu'on peut voir"],correct:0},
+    {q:"目前 se distingue de 现在 par :",options:["Ils sont totalement synonymes","目前 = à l'heure actuelle (formel, écrit, situation/tendance) ; 现在 = maintenant (polyvalent)","现在 est plus formel que 目前","目前 peut s'employer à l'oral comme maintenant"],correct:1},
+    {q:"'你现在在哪里？' — On utilise 现在 et non 目前 parce que :",options:["La phrase est trop courte pour 目前","目前 est trop fort pour cette situation","C'est une question sur un moment précis/oral ; 目前 est réservé aux contextes formels de situation","Les deux conviendraient également"],correct:2}
+];
+
+const compQuizData=[
+    {q:"Qu'est-ce qui caractérise l'art abstrait selon le texte ?",options:["Il décrit des événements historiques précis","Il représente des sujets concrets de manière stylisée","Il exprime des émotions et des idées par la couleur, les lignes et les formes","Il copie fidèlement la réalité visible"],correct:2},
+    {q:"Pourquoi certaines personnes trouvent-elles l'art abstrait difficile à apprécier ?",options:["Parce qu'il est toujours très grand et impressionnant","Parce qu'ils ne peuvent pas distinguer le sens concret ni trouver de preuve de sa beauté","Parce que les couleurs sont trop vives","Parce qu'il est trop coûteux"],correct:1},
+    {q:"Quel argument les défenseurs de l'art abstrait avancent-ils ?",options:["L'art abstrait est plus facile à réaliser","Sa valeur réside dans sa capacité à transmettre des émotions profondes","Il représente des sujets philosophiques","Il est techniquement plus difficile que le réalisme"],correct:1},
+    {q:"Selon le texte, que font des artistes comme Kandinsky pour créer un effet visuel unique ?",options:["Ils copient la nature avec exactitude","Ils ajustent l'arrangement des couleurs et des lignes","Ils utilisent uniquement des couleurs primaires","Ils créent des scènes narratives complexes"],correct:1},
+    {q:"Selon le 4e paragraphe, pourquoi l'art abstrait demande-t-il plus au spectateur ?",options:["Il est plus grand et plus coloré","Il nécessite une imagination plus riche et un esprit plus ouvert","Il exige des connaissances techniques spécialisées","Il demande une formation académique de haut niveau"],correct:1},
+    {q:"Quelle conclusion le texte tire-t-il sur la beauté de l'art abstrait (可见) ?",options:["Sa beauté réside dans la représentation du monde réel","Sa beauté dépend de la formation artistique du spectateur","Sa beauté est dans ce qu'il nous fait ressentir, non dans ce qu'il représente","Sa beauté ne peut être jugée que par des experts"],correct:2},
+    {q:"Comment le texte conseille-t-il d'approcher l'art abstrait ?",options:["En cherchant à identifier des formes reconnaissables","En abandonnant les critères fixes du beau et en ressentant les émotions transmises","En se concentrant uniquement sur les techniques utilisées","En comparant avec d'autres œuvres réalistes"],correct:1},
+    {q:"Quel artiste le texte mentionne-t-il comme représentant de l'abstraction géométrique ?",options:["康定斯基 (Kandinsky)","波洛克 (Pollock)","蒙德里安 (Mondrian)","毕加索 (Picasso)"],correct:2},
+    {q:"Que dit le texte sur l'évolution actuelle de l'art abstrait (目前) ?",options:["Il est en déclin et de moins en moins exposé","De plus en plus de personnes commencent à l'accepter et les expositions sont très actives","Il est réservé à une élite artistique","Il revient à des formes plus réalistes"],correct:1},
+    {q:"Selon le texte, quelle est la valeur unique de l'art abstrait ?",options:["Il est techniquement parfait","Il représente des sujets universels","Il a un charme qu'aucune autre forme artistique ne peut remplacer","Il est le plus populaire auprès du grand public"],correct:2}
+];
+
+function renderQuiz(data,cid,prefix){document.getElementById(cid).innerHTML=data.map((q,i)=>`<div class="quiz-question" id="${prefix}-q${i}"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options">${q.options.map((o,j)=>`<div class="quiz-option" onclick="answerQuiz('${prefix}',${i},${j})">${o}</div>`).join('')}</div></div>`).join('');}
+const quizState={vocab:{score:0,answered:0,total:12},grammar:{score:0,answered:0,total:8},comp:{score:0,answered:0,total:10}};
+function getQuizData(p){return p==='vocab'?vocabQuizData:p==='grammar'?grammarQuizData:compQuizData;}
+function answerQuiz(p,qi,oi){const d=getQuizData(p),qE=document.getElementById(`${p}-q${qi}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const opts=qE.querySelectorAll('.quiz-option'),c=d[qi].correct;opts.forEach((o,i)=>{o.classList.add('disabled');if(i===c)o.classList.add('selected-correct');if(i===oi&&i!==c)o.classList.add('selected-wrong');});qE.classList.add(oi===c?'correct':'wrong');if(oi===c)quizState[p].score++;quizState[p].answered++;updateScore(p);}
+function updateScore(p){const s=quizState[p];document.getElementById(`${p}Score`).textContent=`${s.score} / ${s.total}`;document.getElementById(`${p}ScoreBar`).style.width=`${(s.score/s.total)*100}%`;}
+function resetQuiz(p){quizState[p]={score:0,answered:0,total:quizState[p].total};updateScore(p);renderQuiz(getQuizData(p),p==='vocab'?'vocabQuizContainer':p==='grammar'?'grammarQuizContainer':'compQuizContainer',p);}
+function switchQuizTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById(t).classList.add('active');}
+
+let selectedFillWord=null;
+function selectFillWord(el){document.querySelectorAll('.fill-chip').forEach(c=>c.classList.remove('placed'));el.classList.add('placed');selectedFillWord=el.dataset.word;}
+function placeFillWord(b){if(!selectedFillWord)return;b.textContent=selectedFillWord;b.dataset.placed=selectedFillWord;document.querySelectorAll('.fill-chip').forEach(c=>{if(c.dataset.word===selectedFillWord)c.classList.add('used');c.classList.remove('placed');});selectedFillWord=null;}
+function checkFillAnswers(){document.querySelectorAll('.fill-blank').forEach(b=>{const p=b.dataset.placed,a=b.dataset.answer;if(p===a){b.style.borderColor='var(--success)';b.style.background='#dcfce7';b.style.color='var(--success)';b.style.fontWeight='600';}else{b.style.borderColor='var(--wrong)';b.style.background='#fecaca';b.style.color='var(--wrong)';b.title=`Reponse : ${a}`;}});}
+function resetFill(){document.querySelectorAll('.fill-blank').forEach(b=>{b.textContent='___';b.dataset.placed='';b.style.borderColor='';b.style.background='';b.style.color='';b.style.fontWeight='';b.title='';});document.querySelectorAll('.fill-chip').forEach(c=>{c.classList.remove('used','placed');});selectedFillWord=null;}
+
+const choiceQuizData=[
+    {q:"____，越来越多的人开始接受并热爱抽象艺术。",a:"目前",b:"现在",correct:"目前",explain:"目前 = à l'heure actuelle (formel, décrit une tendance/situation en cours). Phrase de style écrit ou journalistique sur une évolution actuelle → 目前. 现在 serait aussi grammaticalement correct mais moins formel."},
+    {q:"你____在哪里？我们已经到了，在门口等你。",a:"目前",b:"现在",correct:"现在",explain:"现在 = maintenant, à ce moment précis (question directe à l'oral). 目前 ne s'emploie pas dans ce type de question orale portant sur la localisation immédiate."},
+    {q:"____全球气候变化问题极其严峻，各国正积极寻求解决方案。",a:"目前",b:"现在",correct:"目前",explain:"目前 = à l'heure actuelle (formel, écrit, contexte de situation globale/tendance). Phrase de rapport ou article sur la situation actuelle → 目前."},
+    {q:"我____还没有想好该如何处理这件事，等明天再说吧。",a:"目前",b:"现在",correct:"现在",explain:"现在 = pour l'instant, à ce moment précis (état actuel de réflexion). 目前 serait possible mais moins naturel dans une phrase orale/informelle sur un état mental du moment."},
+    {q:"从____来看，这项政策已经取得了显著成效，获得了广泛认可。",a:"目前",b:"现在",correct:"目前",explain:"目前来看 = de la perspective actuelle, à ce stade (expression fixe formelle). 目前来看 est une collocation très courante dans la langue écrite. 现在来看 existe aussi mais 目前来看 est plus formel."},
+    {q:"他____正在做什么？请不要打扰他。",a:"目前",b:"现在",correct:"现在",explain:"现在 = en ce moment précis (question sur une action en cours). 目前 ne s'emploie pas pour décrire une action ponctuelle en cours à l'instant."},
+    {q:"这家公司____的市场占有率已经达到了行业第一。",a:"目前",b:"现在",correct:"目前",explain:"目前的 + nom de situation (目前的市场占有率) est une collocation formelle classique. Décrit la situation actuelle dans un contexte formel/rapport. 现在的 conviendrait aussi mais 目前的 est plus formel et précis."},
+    {q:"我们____开始上课，请大家打开书本翻到第16页。",a:"目前",b:"现在",correct:"现在",explain:"现在 = maintenant, à cet instant (annonce d'une action immédiate). 目前 ne peut pas introduire une instruction ou action à faire immédiatement. 从现在开始 / 现在开始 sont des formulations courantes."}
+];
+function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').innerHTML=choiceQuizData.map((q,i)=>`<div class="quiz-question" id="choice-q${i}" style="margin-bottom:12px;"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options" style="grid-template-columns:1fr 1fr;"><div class="quiz-option" onclick="answerChoice(${i},'${q.a}')">${q.a}</div><div class="quiz-option" onclick="answerChoice(${i},'${q.b}')">${q.b}</div></div><div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div></div>`).join('');}
+function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
+
+window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
+document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+</script>
+</body>
+</html>

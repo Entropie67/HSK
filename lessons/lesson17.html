@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第17课 在最美好的时刻离开</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+        :root{--primary:#9d174d;--primary-light:#be185d;--accent:#ec4899;--gold:#db2777;--gold-light:#fdf2f8;--bg:#fafbfc;--card:#fff;--text:#2c3e50;--text-light:#7f8c8d;--border:#e8ecf1;--success:#27ae60;--wrong:#e74c3c;--gradient-water:linear-gradient(135deg,#9d174d 0%,#ec4899 100%);--gradient-hero:linear-gradient(135deg,#500724 0%,#9d174d 35%,#db2777 70%,#f472b6 100%);}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;scroll-behavior:smooth;}
+        .hero{background:var(--gradient-hero);color:#fff;padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;background-size:cover;opacity:.3;}
+        .hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+        .hero .lesson-badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:6px 20px;border-radius:30px;font-size:.9rem;letter-spacing:2px;margin-bottom:20px;}
+        .hero h1{font-family:'Noto Serif SC',serif;font-size:3.2rem;font-weight:900;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+        .hero .subtitle{font-size:1.3rem;opacity:.9;font-weight:300;margin-bottom:30px;}
+        .hero .deco{font-size:2rem;letter-spacing:8px;opacity:.6;}
+        .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+        .nav-inner::-webkit-scrollbar{display:none;}
+        .nav-inner a{padding:14px 18px;text-decoration:none;color:var(--text-light);font-size:.9rem;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+        .nav-inner a:hover,.nav-inner a.active{color:var(--primary);border-bottom-color:var(--primary-light);}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+        section{padding:50px 0;}
+        .section-header{text-align:center;margin-bottom:40px;}
+        .section-header h2{font-family:'Noto Serif SC',serif;font-size:2rem;color:var(--primary);margin-bottom:6px;}
+        .section-header .section-sub{color:var(--text-light);font-size:.95rem;}
+        .section-divider{width:60px;height:3px;background:var(--gradient-water);margin:12px auto 0;border-radius:2px;}
+        .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);margin-bottom:24px;}
+        .card h3{font-size:1.2rem;color:var(--primary);margin-bottom:16px;}
+        .text-block{background:var(--card);border-radius:16px;padding:35px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);font-family:'Noto Serif SC',serif;font-size:1.1rem;line-height:2.2;}
+        .text-block p{text-indent:2em;margin-bottom:16px;}
+        .vocab-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
+        .vocab-controls button{padding:8px 20px;border:2px solid var(--border);background:#fff;border-radius:25px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s;color:var(--text);}
+        .vocab-controls button.active,.vocab-controls button:hover{border-color:var(--primary-light);background:var(--primary-light);color:#fff;}
+        .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .vocab-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .3s;position:relative;}
+        .vocab-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.08);border-color:var(--primary-light);}
+        .vocab-card .vocab-num{position:absolute;top:8px;right:12px;font-size:.75rem;color:var(--text-light);opacity:.5;}
+        .vocab-card .hanzi{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;color:var(--primary);}
+        .vocab-card .pinyin{color:var(--accent);font-size:.9rem;margin:4px 0;}
+        .vocab-card .pos{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;}
+        .vocab-card .meaning-hidden{display:none;}
+        .vocab-card.revealed .meaning-hidden{display:block;}
+        .vocab-card.revealed .meaning-placeholder{display:none;}
+        .meaning-placeholder{color:var(--text-light);font-size:.85rem;font-style:italic;margin-top:6px;}
+        .sakura-quote{background:linear-gradient(135deg,#fdf2f8,#fce7f3);border:2px solid #f9a8d4;border-radius:16px;padding:28px;margin:20px 0;position:relative;}
+        .sakura-quote::before{content:'"';font-family:'Noto Serif SC',serif;font-size:5rem;color:#f9a8d4;position:absolute;top:-10px;left:16px;line-height:1;}
+        .sakura-quote .quote-text{font-family:'Noto Serif SC',serif;font-size:1.15rem;line-height:2;color:var(--primary);padding-left:20px;margin-bottom:12px;}
+        .sakura-quote .quote-source{font-size:.85rem;color:var(--text-light);text-align:right;font-style:italic;}
+        .examples-list{display:flex;flex-direction:column;gap:12px;margin-top:16px;}
+        .example-item{display:flex;align-items:flex-start;gap:16px;background:linear-gradient(135deg,#fdf2f8,#fce7f3);border:1px solid #f9a8d4;border-radius:12px;padding:16px;}
+        .example-item .ex-icon{font-size:1.8rem;flex-shrink:0;}
+        .example-item .ex-title{font-family:'Noto Serif SC',serif;font-size:1.1rem;font-weight:700;color:var(--primary);margin-bottom:4px;}
+        .example-item .ex-detail{font-size:.9rem;color:var(--text-light);}
+        .flashcard-area{display:flex;flex-direction:column;align-items:center;gap:20px;padding:20px 0;}
+        .flashcard-container{perspective:1000px;width:380px;height:260px;max-width:100%;}
+        .flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);cursor:pointer;}
+        .flashcard.flipped{transform:rotateY(180deg);}
+        .flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;}
+        .flashcard-front{background:linear-gradient(135deg,#500724,#ec4899);color:#fff;box-shadow:0 10px 40px rgba(236,72,153,.3);}
+        .flashcard-front .fc-hanzi{font-family:'Noto Serif SC',serif;font-size:3rem;font-weight:900;margin-bottom:10px;}
+        .flashcard-front .fc-pinyin{font-size:1.1rem;opacity:.8;}
+        .flashcard-front .fc-hint{font-size:.8rem;opacity:.5;margin-top:20px;}
+        .flashcard-back{background:#fff;border:2px solid var(--primary-light);transform:rotateY(180deg);box-shadow:0 10px 40px rgba(0,0,0,.1);}
+        .flashcard-back .fc-meaning{font-size:1.3rem;color:var(--primary);font-weight:600;}
+        .flashcard-back .fc-pos{background:var(--gold-light);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-top:10px;}
+        .fc-controls{display:flex;gap:12px;}
+        .fc-controls button{padding:10px 28px;border-radius:25px;border:none;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;}
+        .fc-btn-prev,.fc-btn-next{background:var(--primary-light);color:#fff;}
+        .fc-btn-prev:hover,.fc-btn-next:hover{background:var(--primary);}
+        .fc-btn-shuffle{background:#fff;border:2px solid var(--border)!important;color:var(--text);}
+        .fc-counter{color:var(--text-light);font-size:.9rem;}
+        .grammar-card{background:var(--card);border-radius:16px;border:1px solid var(--border);margin-bottom:20px;overflow:hidden;}
+        .grammar-header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;}
+        .grammar-header .grammar-num{background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+        .grammar-header .grammar-title{font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;}
+        .grammar-header .grammar-pinyin{font-size:.9rem;opacity:.8;}
+        .grammar-body{padding:24px;}
+        .grammar-rule{background:var(--gold-light);border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:20px;font-size:.95rem;color:var(--primary);}
+        .grammar-example{padding:12px 0;border-bottom:1px solid var(--border);}
+        .grammar-example:last-child{border-bottom:none;}
+        .grammar-example .ex-cn{font-size:1.05rem;margin-bottom:4px;}
+        .grammar-example .ex-note{color:var(--text-light);font-size:.85rem;}
+        .grammar-example .ex-highlight{color:var(--accent);font-weight:600;}
+        .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+        .comparison-table th{background:var(--primary);color:#fff;padding:14px 18px;font-weight:600;text-align:center;}
+        .comparison-table td{padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top;font-size:.95rem;}
+        .comparison-table tr:last-child td{border-bottom:none;}
+        .comparison-table tr:nth-child(even){background:#f8fafc;}
+        .comparison-table .label-cell{background:var(--gold-light);font-weight:600;color:var(--primary);text-align:center;width:60px;}
+        .colloc-section{margin-bottom:24px;}
+        .colloc-label{display:inline-block;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:12px;}
+        .colloc-label.verb{background:#e74c3c;}.colloc-label.attr{background:#f39c12;}.colloc-label.adv{background:#27ae60;}.colloc-label.comp{background:#8e44ad;}.colloc-label.subj{background:#16a085;}
+        .colloc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+        .colloc-row:last-child{border-bottom:none;}
+        .colloc-word{font-weight:600;color:var(--primary);min-width:100px;font-size:1.1rem;}
+        .colloc-plus{color:var(--text-light);font-weight:700;}
+        .colloc-partners{display:flex;flex-wrap:wrap;gap:6px;}
+        .colloc-tag{background:#f0f4f8;padding:4px 12px;border-radius:15px;font-size:.85rem;}
+        .tab-bar{display:flex;gap:4px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:20px;}
+        .tab-btn{flex:1;padding:10px;border:none;background:transparent;border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--text-light);transition:all .2s;}
+        .tab-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+        .tab-content{display:none;}.tab-content.active{display:block;}
+        .quiz-score-bar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+        .score-display{font-size:1.5rem;font-weight:700;color:var(--primary);}
+        .score-bar-visual{flex:1;margin:0 20px;height:10px;background:var(--border);border-radius:5px;overflow:hidden;}
+        .score-bar-fill{height:100%;background:var(--gradient-water);border-radius:5px;transition:width .5s ease;width:0%;}
+        .quiz-reset-btn{padding:8px 20px;background:var(--primary-light);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;}
+        .quiz-question{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;transition:all .3s;}
+        .quiz-question.correct{border-color:var(--success);background:#f0fdf4;}
+        .quiz-question.wrong{border-color:var(--wrong);background:#fef2f2;}
+        .quiz-q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--primary-light);color:#fff;border-radius:50%;font-size:.8rem;font-weight:700;margin-right:10px;}
+        .quiz-q-text{font-size:1.05rem;margin-bottom:14px;}
+        .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .quiz-option{padding:12px 16px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.95rem;text-align:center;background:#fff;}
+        .quiz-option:hover{border-color:var(--primary-light);background:var(--gold-light);}
+        .quiz-option.selected-correct{border-color:var(--success);background:#dcfce7;color:var(--success);font-weight:600;}
+        .quiz-option.selected-wrong{border-color:var(--wrong);background:#fecaca;color:var(--wrong);font-weight:600;}
+        .quiz-option.disabled{pointer-events:none;opacity:.7;}
+        .quiz-explanation{display:none;margin-top:12px;padding:12px 16px;background:#fdf2f8;border-radius:10px;font-size:.9rem;color:#9d174d;border:1px solid #f9a8d4;}
+        .fill-blank{display:inline-block;min-width:80px;border-bottom:2px dashed var(--primary-light);padding:2px 8px;margin:0 4px;text-align:center;cursor:pointer;transition:all .2s;}
+        .fill-blank:hover{background:var(--gold-light);}
+        .fill-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center;}
+        .fill-chip{padding:8px 18px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s;}
+        .fill-chip:hover{border-color:var(--primary-light);background:var(--gold-light);}
+        .fill-chip.used{opacity:.4;pointer-events:none;}
+        .fill-chip.placed{background:var(--primary-light);color:#fff;border-color:var(--primary-light);}
+        .app-box{background:linear-gradient(135deg,#fdf2f8,#fce7f3);border:1px solid #f9a8d4;border-radius:16px;padding:30px;margin-bottom:20px;}
+        .app-box h4{color:var(--primary);font-size:1.1rem;margin-bottom:12px;}
+        .discussion-q{padding:10px 0;border-bottom:1px solid rgba(249,168,212,.4);font-size:.95rem;}
+        .discussion-q:last-child{border-bottom:none;}
+        .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
+        @media(max-width:768px){.hero h1{font-size:2rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}}
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
+        <h1>在最美好的时刻离开</h1>
+        <p class="subtitle">Ending at the Best Moment - Lesson 17</p>
+        <div class="deco">🌸 ✨ 🎭 🕊️</div>
+    </div>
+</header>
+
+<nav class="sticky-nav"><div class="nav-inner">
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#wisdom">智慧 Sagesse</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+</div></nav>
+
+<main class="container">
+
+<section id="text">
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">在最美好的时刻离开 — réflexion philosophique</p><div class="section-divider"></div></div>
+    <div class="text-block">
+        <p>每个人都喜欢美好的事物，但是美好的事物往往不能永远持续。懂得在最美好的时刻主动离开，是一种人生智慧，也是对美好本身的尊重与珍惜。</p>
+        <p>日本的樱花，以其短暂的花期而闻名于世。它平常不引人注目，但在那短短几天的盛开期间，整个世界仿佛都因它而改变了颜色。正因为它能在最美好的时刻飘落，才显得格外珍贵。许多诗人和作家都曾以樱花为题，写下对生命短暂之美的深刻体会。</p>
+        <p>在人类社会中，也有许多关于"在最美好的时刻离开"的故事。著名运动员在巅峰时期宣布退役，不是因为他们无力继续，而是因为他们懂得：宁可在最辉煌的时刻告别观众，也不要让人们看到自己走下坡路时的样子。他们迅速做出这一决定，以保留最美好的印象。这种态度，值得我们推荐和学习。</p>
+        <p>然而，在现实生活中，许多人往往忽视了这一道理。他们集中注意力于眼前的利益，不愿主动放弃已有的成就，总想着再争取多一点。结果，平常还不错的表现因为过度延续而让人感到疲倦，最后留下的印象远不如当初美好。</p>
+        <p>学会在最美好的时刻离开，需要勇气，更需要对"美好"本身有深刻的认识。那些懂得适时退出的人，往往能够以更轻松的态度面对未来，同时也为他人留下了最珍贵的回忆。正如中国古语所说："花看半开，酒饮微醺"，这才是生活中最美好的状态。</p>
+    </div>
+</section>
+
+<section id="vocab">
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">33 mots - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (33)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout reveler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+</section>
+
+<section id="wisdom">
+    <div class="section-header"><h2>智慧 - Sagesse et exemples</h2><p class="section-sub">Citations et illustrations du concept</p><div class="section-divider"></div></div>
+    <div class="sakura-quote">
+        <div class="quote-text">花看半开，酒饮微醺。<br><span style="font-size:.9rem;opacity:.8;">正因为它能在最美好的时刻飘落，才显得格外珍贵。</span></div>
+        <div class="quote-source">— Proverbe chinois classique / Texte leçon 17</div>
+    </div>
+    <div class="card" style="margin-top:8px;">
+        <h3>生活中的例子 — Exemples concrets</h3>
+        <div class="examples-list">
+            <div class="example-item">
+                <div class="ex-icon">🌸</div>
+                <div><div class="ex-title">日本樱花</div><div class="ex-detail">平常不引人注目，盛开数日后飘落 — 正因短暂，才格外珍贵</div></div>
+            </div>
+            <div class="example-item">
+                <div class="ex-icon">🏆</div>
+                <div><div class="ex-title">运动员巅峰退役</div><div class="ex-detail">宁可在最辉煌的时刻告别观众，以保留最美好的印象</div></div>
+            </div>
+            <div class="example-item">
+                <div class="ex-icon">🎭</div>
+                <div><div class="ex-title">艺术家的告别演出</div><div class="ex-detail">懂得适时退出，为观众和自己留下最珍贵的回忆</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="flashcards">
+    <div class="section-header"><h2>卡片 - Flashcards</h2><p class="section-sub">Cliquez pour retourner la carte</p><div class="section-divider"></div></div>
+    <div class="flashcard-area">
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">33</span></div>
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front"><div class="fc-hanzi" id="fcHanzi">智慧</div><div class="fc-pinyin" id="fcPinyin">zhìhuì</div><div class="fc-hint">cliquez pour voir la traduction</div></div>
+                <div class="flashcard-back"><div class="fc-meaning" id="fcMeaning">sagesse, intelligence</div><div class="fc-pos" id="fcPos">n.</div></div>
+            </div>
+        </div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+        </div>
+    </div>
+</section>
+
+<section id="grammar">
+    <div class="section-header"><h2>语法 - Grammaire</h2><p class="section-sub">3 points de grammaire essentiels</p><div class="section-divider"></div></div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">1</div><div><div class="grammar-title">以</div><div class="grammar-pinyin">yǐ — par, avec, afin de (langue écrite formelle)</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>以</strong>, préposition formelle (plus littéraire que 用/为了), a plusieurs structures : (1) <strong>以A为B</strong> = prendre A comme B, considérer A comme B ; (2) <strong>以+moyen</strong> = par le biais de, au moyen de ; (3) <strong>以便/以免</strong> = afin de / pour éviter. Très courant dans les textes écrits.</div>
+            <div class="grammar-example"><div class="ex-cn">许多诗人都曾<span class="ex-highlight">以</span>樱花为题，写下对生命之美的深刻体会。</div><div class="ex-note">(1) 以A为B : De nombreux poètes ont <em>pris la fleur de cerisier comme sujet</em> pour écrire sur la beauté éphémère de la vie.</div></div>
+            <div class="grammar-example"><div class="ex-cn">他们迅速做出这一决定，<span class="ex-highlight">以</span>保留最美好的印象。</div><div class="ex-note">(2) 以+infinitif : Ils ont rapidement pris cette décision <em>afin de</em> préserver la plus belle impression.</div></div>
+            <div class="grammar-example"><div class="ex-cn">我们应该<span class="ex-highlight">以</span>开放的态度面对新的挑战，才能不断进步。</div><div class="ex-note">(3) 以+attitude : Nous devons <em>avec</em> une attitude ouverte faire face aux nouveaux défis.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">2</div><div><div class="grammar-title">平常</div><div class="grammar-pinyin">píngcháng — ordinaire / d'habitude</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>平常</strong> a deux fonctions : (1) adjectif = <strong>ordinaire, banal, habituel</strong> (opposé à 特别/特殊) ; (2) adverbe = <strong>d'habitude, en temps normal</strong> (= 通常/往常). La nuance : 平常 insiste sur le caractère non-exceptionnel, 通常 est plus neutre pour une fréquence générale.</div>
+            <div class="grammar-example"><div class="ex-cn">樱花<span class="ex-highlight">平常</span>不引人注目，但盛开时整个世界都变了颜色。</div><div class="ex-note">(1) Adverbe : D'habitude, le cerisier ne retient pas l'attention, mais quand il fleurit, le monde entier change de couleur.</div></div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">平常</span>还不错的表现因为过度延续而让人感到疲倦。</div><div class="ex-note">(2) Adverbe : Une performance <em>qui était habituellement</em> assez bonne finit par lasser à force de se prolonger.</div></div>
+            <div class="grammar-example"><div class="ex-cn">这只是一件很<span class="ex-highlight">平常</span>的事，不必太在意。</div><div class="ex-note">(3) Adjectif : Ce n'est qu'une chose tout à fait ordinaire, inutile d'y accorder trop d'attention.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">3</div><div><div class="grammar-title">宁可</div><div class="grammar-pinyin">nìngkě — plutôt que de, préférer (choix difficile)</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>宁可…也不/也要</strong> : structure exprimant un choix difficile où l'on préfère A (moins agréable) plutôt que de subir B. <strong>宁可A，也不B</strong> = "je préfère A plutôt que B (même si A est dur)". Insiste sur une préférence volontaire face à deux options difficiles. Souvent en langue écrite.</div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">宁可</span>在最辉煌的时刻告别观众，也不要让人们看到自己走下坡路时的样子。</div><div class="ex-note">(1) Ils préfèrent dire adieu au public au moment le plus glorieux plutôt que de laisser les gens les voir décliner.</div></div>
+            <div class="grammar-example"><div class="ex-cn">他<span class="ex-highlight">宁可</span>自己少睡一点，也要把这篇文章写完。</div><div class="ex-note">(2) Il préfère dormir moins plutôt que de laisser cet article inachevé.</div></div>
+            <div class="grammar-example"><div class="ex-cn">我们<span class="ex-highlight">宁可</span>把计划推迟，也不能在准备不足的情况下仓促行事。</div><div class="ex-note">(3) Nous préférons reporter le projet plutôt que d'agir à la hâte sans préparation suffisante.</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="analysis">
+    <div class="section-header"><h2>词语辨析 - Analyse comparative</h2><p class="section-sub">忽视 vs 轻视</p><div class="section-divider"></div></div>
+    <div class="card">
+        <table class="comparison-table">
+            <thead><tr><th></th><th>忽视 (hūshì)</th><th>轻视 (qīngshì)</th></tr></thead>
+            <tbody>
+                <tr><td class="label-cell">Points communs</td><td colspan="2" style="text-align:center;">Les deux expriment une attention insuffisante accordée à quelque chose ou quelqu'un. Parfois interchangeables.<br><em>如：不能忽视/轻视这个问题。</em></td></tr>
+                <tr><td class="label-cell" rowspan="3">Differences</td>
+                    <td>1. Signifie <strong>négliger, passer à côté, oublier</strong> — souvent <strong>involontaire</strong> ou par manque d'attention.<br><em>如：由于太忙，他<u>忽视</u>了家人的感受。</em></td>
+                    <td>1. Signifie <strong>mépriser, sous-estimer, regarder de haut</strong> — attitude souvent <strong>délibérée, arrogante</strong>.<br><em>如：他的态度傲慢，总是<u>轻视</u>别人的意见。</em></td></tr>
+                <tr>
+                    <td>2. Objet = souvent des <strong>choses abstraites</strong> : problème, sécurité, sentiment, importance.<br><em>如：不能<u>忽视</u>道路安全问题。</em></td>
+                    <td>2. Objet = souvent des <strong>personnes ou leurs capacités</strong> : 轻视对手, 轻视别人.<br><em>如：不要因为他年轻就<u>轻视</u>他的能力。</em></td></tr>
+                <tr>
+                    <td>3. Connotation de <strong>négligence par inattention</strong>, pas forcément mauvaise intention.<br><em>忽视 ≈ "rater", "ne pas remarquer"</em></td>
+                    <td>3. Connotation de <strong>dédain actif, condescendance</strong> — implique une mauvaise attitude.<br><em>轻视 ≈ "mépriser", "sous-estimer volontairement"</em></td></tr>
+            </tbody>
+        </table>
+        <div style="margin-top:20px;padding:14px 18px;background:#fdf2f8;border-radius:10px;font-size:.9rem;color:#9d174d;border:1px solid #f9a8d4;">
+            <strong>Astuce :</strong> 忽视 = "négliger par inattention" (souvent involontaire, objet = chose). 轻视 = "mépriser, sous-estimer" (souvent délibéré, arrogant, objet = personne ou capacité). Test : si c'est une erreur d'inattention → 忽视 ; si c'est une attitude de condescendance → 轻视.
+        </div>
+    </div>
+</section>
+
+<section id="collocation">
+    <div class="section-header"><h2>词语搭配 - Collocations</h2><p class="section-sub">Combinaisons essentielles</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="colloc-section"><div class="colloc-label verb">动词 + 宾语</div>
+            <div class="colloc-row"><span class="colloc-word">推荐</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">图书</span><span class="colloc-tag">朋友</span><span class="colloc-tag">方法</span><span class="colloc-tag">候选人</span><span class="colloc-tag">餐厅</span><span class="colloc-tag">人才</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">争取</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">机会</span><span class="colloc-tag">时间</span><span class="colloc-tag">支持</span><span class="colloc-tag">理解</span><span class="colloc-tag">胜利</span><span class="colloc-tag">名额</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label attr">定语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">短暂的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">时光</span><span class="colloc-tag">花期</span><span class="colloc-tag">生命</span><span class="colloc-tag">相遇</span><span class="colloc-tag">停留</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">辉煌的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">成就</span><span class="colloc-tag">历史</span><span class="colloc-tag">时代</span><span class="colloc-tag">记录</span><span class="colloc-tag">时刻</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label adv">状语 + 动词</div>
+            <div class="colloc-row"><span class="colloc-word">迅速（地）</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">行动</span><span class="colloc-tag">发展</span><span class="colloc-tag">成长</span><span class="colloc-tag">决定</span><span class="colloc-tag">处理</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">格外</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">珍惜</span><span class="colloc-tag">重视</span><span class="colloc-tag">小心</span><span class="colloc-tag">努力</span><span class="colloc-tag">珍贵</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label subj">主语 + 谓语</div>
+            <div class="colloc-row"><span class="colloc-word">印象</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">深刻</span><span class="colloc-tag">良好</span><span class="colloc-tag">美好</span><span class="colloc-tag">难忘</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">遗憾</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">留下</span><span class="colloc-tag">感到</span><span class="colloc-tag">表示</span><span class="colloc-tag">消除</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="quiz-section">
+    <div class="section-header"><h2>测验 - Quiz</h2><p class="section-sub">Testez vos connaissances</p><div class="section-divider"></div></div>
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+    </div>
+    <div class="tab-content active" id="vocab-quiz"><div class="quiz-score-bar"><div class="score-display" id="vocabScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button></div><div id="vocabQuizContainer"></div></div>
+    <div class="tab-content" id="grammar-quiz"><div class="quiz-score-bar"><div class="score-display" id="grammarScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button></div><div id="grammarQuizContainer"></div></div>
+    <div class="tab-content" id="comprehension-quiz"><div class="quiz-score-bar"><div class="score-display" id="compScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button></div><div id="compQuizContainer"></div></div>
+</section>
+
+<section id="fill-quiz">
+    <div class="section-header"><h2>填空练习 - Exercices a trous</h2><p class="section-sub">Choisissez le mot correct</p><div class="section-divider"></div></div>
+    <div class="card" id="fillExercise">
+        <h3>Choisissez parmi : 推荐、集中、体会、争取、平常、迅速</h3>
+        <div class="fill-options" id="fillOptions">
+            <span class="fill-chip" data-word="推荐" onclick="selectFillWord(this)">推荐</span>
+            <span class="fill-chip" data-word="集中" onclick="selectFillWord(this)">集中</span>
+            <span class="fill-chip" data-word="体会" onclick="selectFillWord(this)">体会</span>
+            <span class="fill-chip" data-word="争取" onclick="selectFillWord(this)">争取</span>
+            <span class="fill-chip" data-word="平常" onclick="selectFillWord(this)">平常</span>
+            <span class="fill-chip" data-word="迅速" onclick="selectFillWord(this)">迅速</span>
+        </div>
+        <div style="margin-top:24px;">
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">1</span>我向朋友<span class="fill-blank" data-answer="推荐" onclick="placeFillWord(this)">___</span>了这本书，因为它对我影响很深。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">2</span>考试前，请大家<span class="fill-blank" data-answer="集中" onclick="placeFillWord(this)">___</span>注意力，认真听讲。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">3</span>只有亲身参与，才能真正<span class="fill-blank" data-answer="体会" onclick="placeFillWord(this)">___</span>到其中的艰辛与快乐。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">4</span>我们要<span class="fill-blank" data-answer="争取" onclick="placeFillWord(this)">___</span>在明年年底前完成这项研究工作。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">5</span>他<span class="fill-blank" data-answer="平常" onclick="placeFillWord(this)">___</span>不太说话，今天却格外兴奋，让大家感到很奇怪。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">6</span>救援队<span class="fill-blank" data-answer="迅速" onclick="placeFillWord(this)">___</span>赶到了受灾地区，立即展开救援工作。</div>
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+            <button onclick="checkFillAnswers()" style="padding:10px 30px;background:var(--primary-light);color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:.95rem;font-weight:600;">Verifier</button>
+            <button onclick="resetFill()" style="padding:10px 30px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.95rem;margin-left:10px;">Recommencer</button>
+        </div>
+    </div>
+    <div class="card"><h3>忽视 ou 轻视 ? Choisissez la bonne reponse</h3><div id="choiceQuizContainer"></div></div>
+</section>
+
+<section id="application">
+    <div class="section-header"><h2>运用 - Application</h2><p class="section-sub">Contexte et discussion</p><div class="section-divider"></div></div>
+    <div class="app-box">
+        <h4>背景知识 — "花看半开，酒饮微醺"</h4>
+        <p style="line-height:2;">这句中国古语出自明代文人洪应明的《菜根谭》，意思是：看花要看它半开的样子，喝酒要喝到微醺的状态，这才是最美的境界。过于完美或过于极端，反而会失去美感。这种哲学观与本课的主题"在最美好的时刻离开"一脉相承，提醒我们要懂得适可而止，懂得欣赏过程中的美好，而不是一味追求极致或延续。</p>
+    </div>
+    <div class="app-box">
+        <h4>话题讨论 - 人生中的"离开时机"</h4>
+        <div class="discussion-q">1. 你觉得"在最美好的时刻离开"需要什么样的勇气？在现实生活中，这样做容易吗？<br><em>Quel type de courage faut-il pour "partir au meilleur moment" ? Est-ce facile dans la vie réelle ?</em></div>
+        <div class="discussion-q">2. 你知道哪些名人在巅峰时期宣布退休或告别的故事？你如何看待他们的选择？<br><em>Connaissez-vous des célébrités qui se sont retirées au sommet de leur gloire ? Que pensez-vous de leur choix ?</em></div>
+        <div class="discussion-q">3. 在你的生活或学习中，有没有类似的情况，让你觉得应该"适时离开"或"适时停止"？<br><em>Dans votre vie ou vos études, avez-vous vécu une situation où il aurait fallu "partir à temps" ?</em></div>
+    </div>
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'ecriture</h4>
+        <p>请以"我对'在最美好的时刻离开'的理解"为题，写一篇短文，结合生活实例谈谈你的看法。请尽量使用本课词汇，字数不少于100字。</p>
+        <p style="font-style:italic;color:var(--text-light);margin-top:8px;">Redigez un texte sur "Ma compréhension de l'idée de partir au meilleur moment". Illustrez avec des exemples concrets et utilisez le vocabulaire de la lecon, au moins 100 caracteres.</p>
+    </div>
+</section>
+
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+<footer style="text-align:center;padding:40px 20px;color:var(--text-light);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px;">HSK 5 Standard Course - Lesson 17 - 在最美好的时刻离开</footer>
+
+<script>
+const vocabData=[
+    {id:1,hanzi:"推荐",pinyin:"tuījiàn",pos:"v.",meaning:"recommander, conseiller, préconiser",cat:"verb"},
+    {id:2,hanzi:"集中",pinyin:"jízhōng",pos:"v./adj.",meaning:"concentrer, rassembler ; concentré",cat:"verb"},
+    {id:3,hanzi:"体会",pinyin:"tǐhuì",pos:"v./n.",meaning:"ressentir profondément, vivre de l'intérieur ; sentiment vécu",cat:"verb"},
+    {id:4,hanzi:"争取",pinyin:"zhēngqǔ",pos:"v.",meaning:"s'efforcer d'obtenir, viser à, chercher à gagner",cat:"verb"},
+    {id:5,hanzi:"平常",pinyin:"píngcháng",pos:"adj./adv.",meaning:"ordinaire, habituel ; d'habitude, en temps normal",cat:"adj"},
+    {id:6,hanzi:"迅速",pinyin:"xùnsù",pos:"adj./adv.",meaning:"rapide, prompt ; rapidement",cat:"adj"},
+    {id:7,hanzi:"宁可",pinyin:"nìngkě",pos:"conj.",meaning:"plutôt que de, préférer (choix difficile : 宁可A也不B)",cat:"other"},
+    {id:8,hanzi:"以",pinyin:"yǐ",pos:"prep.",meaning:"par, avec, afin de ; 以A为B (prendre A comme B) — langue écrite",cat:"other"},
+    {id:9,hanzi:"忽视",pinyin:"hūshì",pos:"v.",meaning:"négliger, passer à côté, ignorer (souvent involontaire)",cat:"verb"},
+    {id:10,hanzi:"轻视",pinyin:"qīngshì",pos:"v.",meaning:"mépriser, sous-estimer, regarder de haut (délibéré)",cat:"verb"},
+    {id:11,hanzi:"智慧",pinyin:"zhìhuì",pos:"n.",meaning:"sagesse, intelligence, discernement",cat:"noun"},
+    {id:12,hanzi:"珍惜",pinyin:"zhēnxī",pos:"v.",meaning:"chérir, apprécier à sa juste valeur, ne pas gaspiller",cat:"verb"},
+    {id:13,hanzi:"短暂",pinyin:"duǎnzàn",pos:"adj.",meaning:"bref, éphémère, de courte durée",cat:"adj"},
+    {id:14,hanzi:"盛开",pinyin:"shèngkāi",pos:"v.",meaning:"s'épanouir pleinement, être en pleine floraison",cat:"verb"},
+    {id:15,hanzi:"格外",pinyin:"géwài",pos:"adv.",meaning:"particulièrement, encore plus, tout spécialement",cat:"other"},
+    {id:16,hanzi:"辉煌",pinyin:"huīhuáng",pos:"adj.",meaning:"glorieux, éclatant, brillant, splendide",cat:"adj"},
+    {id:17,hanzi:"告别",pinyin:"gàobié",pos:"v.",meaning:"prendre congé, faire ses adieux, dire au revoir",cat:"verb"},
+    {id:18,hanzi:"印象",pinyin:"yìnxiàng",pos:"n.",meaning:"impression",cat:"noun"},
+    {id:19,hanzi:"主动",pinyin:"zhǔdòng",pos:"adj.",meaning:"de sa propre initiative, proactif, actif (volontaire)",cat:"adj"},
+    {id:20,hanzi:"延续",pinyin:"yánxù",pos:"v.",meaning:"continuer, se poursuivre, prolonger, perpétuer",cat:"verb"},
+    {id:21,hanzi:"退役",pinyin:"tuìyì",pos:"v.",meaning:"se retirer du sport, prendre sa retraite sportive",cat:"verb"},
+    {id:22,hanzi:"巅峰",pinyin:"diānfēng",pos:"n.",meaning:"sommet, apogée, point culminant",cat:"noun"},
+    {id:23,hanzi:"遗憾",pinyin:"yíhàn",pos:"n./v.",meaning:"regret ; regretter, être désolé",cat:"noun"},
+    {id:24,hanzi:"注意力",pinyin:"zhùyìlì",pos:"n.",meaning:"attention, concentration mentale",cat:"noun"},
+    {id:25,hanzi:"成就",pinyin:"chéngjiù",pos:"n.",meaning:"accomplissement, réussite, exploit, acquis",cat:"noun"},
+    {id:26,hanzi:"态度",pinyin:"tàidu",pos:"n.",meaning:"attitude, disposition, position, manière d'être",cat:"noun"},
+    {id:27,hanzi:"适时",pinyin:"shìshí",pos:"adj./adv.",meaning:"opportun, au bon moment ; à temps, au moment propice",cat:"adj"},
+    {id:28,hanzi:"退出",pinyin:"tuìchū",pos:"v.",meaning:"se retirer de, quitter, se désengager",cat:"verb"},
+    {id:29,hanzi:"回忆",pinyin:"huíyì",pos:"n./v.",meaning:"souvenir ; se souvenir, se rappeler",cat:"noun"},
+    {id:30,hanzi:"坚持",pinyin:"jiānchí",pos:"v.",meaning:"persister, maintenir, s'accrocher à, tenir bon",cat:"verb"},
+    {id:31,hanzi:"疲倦",pinyin:"píjuàn",pos:"adj.",meaning:"fatigué, las, épuisé, lassé",cat:"adj"},
+    {id:32,hanzi:"尊重",pinyin:"zūnzhòng",pos:"v./n.",meaning:"respecter, estimer ; respect",cat:"verb"},
+    {id:33,hanzi:"理由",pinyin:"lǐyóu",pos:"n.",meaning:"raison, motif, argument, justification",cat:"noun"}
+];
+
+function renderVocab(filter='all'){const g=document.getElementById('vocabGrid');const f=filter==='all'?vocabData:vocabData.filter(v=>v.cat===filter);g.innerHTML=f.map(v=>`<div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')"><span class="vocab-num">#${v.id}</span><div class="hanzi">${v.hanzi}</div><div class="pinyin">${v.pinyin}</div><span class="pos">${v.pos}</span><div class="meaning-placeholder">Cliquez pour voir...</div><div class="meaning-hidden" style="font-size:.9rem;margin-top:6px;">${v.meaning}</div></div>`).join('');}
+function filterVocab(c){document.querySelectorAll('.vocab-controls button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderVocab(c);}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function hideAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('revealed'));}
+
+let fcIndex=0,fcOrder=[...Array(vocabData.length).keys()];
+function updateFlashcard(){const v=vocabData[fcOrder[fcIndex]];document.getElementById('fcHanzi').textContent=v.hanzi;document.getElementById('fcPinyin').textContent=v.pinyin;document.getElementById('fcMeaning').textContent=v.meaning;document.getElementById('fcPos').textContent=v.pos;document.getElementById('fcCurrent').textContent=fcIndex+1;document.getElementById('fcTotal').textContent=fcOrder.length;document.getElementById('flashcard').classList.remove('flipped');}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%fcOrder.length;updateFlashcard();}
+function prevCard(){fcIndex=(fcIndex-1+fcOrder.length)%fcOrder.length;updateFlashcard();}
+function shuffleCards(){for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}fcIndex=0;updateFlashcard();}
+
+const vocabQuizData=[
+    {q:"智慧 signifie :",options:["Connaissance livresque","Sagesse, intelligence, discernement","Talent artistique","Courage face au danger"],correct:1},
+    {q:"珍惜 veut dire :",options:["Collectionner des objets","Offrir en cadeau","Chérir, apprécier à sa juste valeur","Conserver soigneusement"],correct:2},
+    {q:"短暂 signifie :",options:["Profond et durable","Bref, éphémère, de courte durée","Incertain, imprévisible","Récent, nouveau"],correct:1},
+    {q:"格外 veut dire :",options:["En général, habituellement","Rarement, exceptionnellement","Particulièrement, encore plus","Normalement, comme prévu"],correct:2},
+    {q:"遗憾 signifie :",options:["Bonheur inattendu","Regret, désolation","Surprise agréable","Satisfaction profonde"],correct:1},
+    {q:"巅峰 veut dire :",options:["Le début d'un chemin","Un moment difficile","Le sommet, l'apogée, le point culminant","Une longue période stable"],correct:2},
+    {q:"适时 signifie :",options:["Trop tôt, prématurément","Trop tard, après l'échéance","Opportun, au bon moment","Sans tenir compte du timing"],correct:2},
+    {q:"疲倦 veut dire :",options:["Plein d'énergie et enthousiaste","Fatigué, las, lassé","Concentré et attentif","Surpris et étonné"],correct:1},
+    {q:"延续 signifie :",options:["Interrompre brutalement","Continuer, se poursuivre, se prolonger","Recommencer depuis le début","Accélérer progressivement"],correct:1},
+    {q:"退出 veut dire :",options:["Avancer vers l'objectif","S'améliorer progressivement","Se retirer de, quitter, se désengager","Changer de direction"],correct:2},
+    {q:"迅速 signifie :",options:["Lent et méthodique","Rapide, prompt","Progressif et graduel","Hésitant, incertain"],correct:1},
+    {q:"宁可 veut dire :",options:["De plus en plus","Seulement si, à condition que","Plutôt que de, préférer (choix difficile)","Même si, bien que"],correct:2}
+];
+
+const grammarQuizData=[
+    {q:"'以樱花为题' — 以A为B signifie ici :",options:["À cause de la fleur de cerisier","En plus de la fleur de cerisier","Prendre la fleur de cerisier comme sujet, choisir A comme B","La fleur de cerisier étant épuisée"],correct:2},
+    {q:"'以保留最美好的印象' — 以 exprime ici :",options:["Une cause : à cause de","Un but : afin de, pour","Une concession : bien que","Une condition : si"],correct:1},
+    {q:"'以开放的态度面对挑战' — 以 signifie :",options:["Après avoir adopté une attitude","Avec (au moyen de), par le biais de (manière)","Bien que l'attitude soit ouverte","Pendant qu'on a une attitude"],correct:1},
+    {q:"'平常不引人注目' — 平常 est ici :",options:["Adjectif : ordinaire, banal","Adverbe : d'habitude, en temps normal","Nom : quotidien, vie quotidienne","Verbe : normaliser"],correct:1},
+    {q:"平常 (adverbe) se distingue de 通常 car :",options:["Ils sont totalement synonymes","平常 insiste sur le côté non-exceptionnel ; 通常 est plus neutre pour une fréquence générale","通常 est plus littéraire","平常 ne s'utilise qu'en position de sujet"],correct:1},
+    {q:"'宁可在最辉煌的时刻告别，也不要让人看到走下坡路' — 宁可…也不 signifie :",options:["Même si… alors","Plutôt A que B (choix difficile, on préfère A)","Si A alors pas B","Ni A ni B"],correct:1},
+    {q:"忽视 diffère de 轻视 principalement parce que :",options:["Ils sont totalement synonymes","忽视 = négliger (souvent involontaire) ; 轻视 = mépriser (attitude délibérée, condescendante)","轻视 est plus léger et moins grave","忽视 implique toujours une mauvaise intention"],correct:1},
+    {q:"'不要轻视他的能力' — 轻视 convient mieux que 忽视 parce que :",options:["C'est une erreur d'inattention","C'est une attitude de mépris/condescendance envers une personne","Les deux conviennent exactement autant","忽视 serait trop formel ici"],correct:1}
+];
+
+const compQuizData=[
+    {q:"Selon le texte, que représente 'partir au meilleur moment' ?",options:["Une forme de faiblesse ou de capitulation","Une sagesse de vie et un respect de la beauté","Un manque de persévérance","Une décision regrettable"],correct:1},
+    {q:"Pourquoi les cerisiers japonais sont-ils considérés comme particulièrement précieux ?",options:["Parce qu'ils fleurissent très longtemps","Parce qu'ils fleurissent toute l'année","Parce qu'ils tombent au plus beau moment de leur floraison","Parce qu'ils sont difficiles à cultiver"],correct:2},
+    {q:"Quelle est la principale raison pour laquelle des sportifs célèbres choisissent de se retirer à leur apogée ?",options:["Ils ne peuvent plus continuer physiquement","Ils veulent garder la meilleure impression dans la mémoire du public","Ils ont été forcés de le faire","Ils veulent passer à une autre carrière"],correct:1},
+    {q:"Quelle est l'erreur souvent commise par les personnes décrites dans le 4e paragraphe ?",options:["Ils abandonnent trop tôt avant d'atteindre le sommet","Ils concentrent leur attention sur les avantages immédiats et refusent de lâcher","Ils ignorent complètement le jugement des autres","Ils ne savent pas ce qu'ils veulent"],correct:1},
+    {q:"Que dit le texte sur les personnes qui savent se retirer au bon moment ?",options:["Elles regrettent souvent leur décision","Elles font face à l'avenir avec plus de légèreté et laissent de précieux souvenirs","Elles sont perçues comme des perdants","Elles ne peuvent jamais revenir"],correct:1},
+    {q:"Que signifie le proverbe '花看半开，酒饮微醺' ?",options:["Il faut toujours attendre la perfection absolue avant d'agir","La beauté se trouve dans l'inachèvement et la modération, pas dans l'extrême","Il faut éviter toutes les fleurs et l'alcool","On doit toujours terminer ce qu'on a commencé"],correct:1},
+    {q:"Le texte compare implicitement les sportifs à quoi ?",options:["Aux guerriers antiques","Aux poètes romantiques","Aux cerisiers qui tombent à leur plus belle heure","Aux arbres qui gardent leurs feuilles en hiver"],correct:2},
+    {q:"Selon le texte, que faut-il pour savoir 'partir au meilleur moment' ?",options:["Uniquement de la chance","Du courage et une compréhension profonde de la beauté","La permission de son entourage","De l'argent et des ressources"],correct:1},
+    {q:"Quelle conséquence une performance 'prolongée au-delà du moment idéal' a-t-elle selon le texte ?",options:["Elle améliore l'impression globale","Elle est toujours appréciée du public","Elle finit par lasser les gens","Elle mène forcément à l'échec"],correct:2},
+    {q:"D'où vient la citation '花看半开，酒饮微醺' ?",options:["D'un poème de la Dynasty Tang","Du roman classique 红楼梦","Du livre 菜根谭 de la Dynastie Ming","D'un discours politique moderne"],correct:2}
+];
+
+function renderQuiz(data,cid,prefix){document.getElementById(cid).innerHTML=data.map((q,i)=>`<div class="quiz-question" id="${prefix}-q${i}"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options">${q.options.map((o,j)=>`<div class="quiz-option" onclick="answerQuiz('${prefix}',${i},${j})">${o}</div>`).join('')}</div></div>`).join('');}
+const quizState={vocab:{score:0,answered:0,total:12},grammar:{score:0,answered:0,total:8},comp:{score:0,answered:0,total:10}};
+function getQuizData(p){return p==='vocab'?vocabQuizData:p==='grammar'?grammarQuizData:compQuizData;}
+function answerQuiz(p,qi,oi){const d=getQuizData(p),qE=document.getElementById(`${p}-q${qi}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const opts=qE.querySelectorAll('.quiz-option'),c=d[qi].correct;opts.forEach((o,i)=>{o.classList.add('disabled');if(i===c)o.classList.add('selected-correct');if(i===oi&&i!==c)o.classList.add('selected-wrong');});qE.classList.add(oi===c?'correct':'wrong');if(oi===c)quizState[p].score++;quizState[p].answered++;updateScore(p);}
+function updateScore(p){const s=quizState[p];document.getElementById(`${p}Score`).textContent=`${s.score} / ${s.total}`;document.getElementById(`${p}ScoreBar`).style.width=`${(s.score/s.total)*100}%`;}
+function resetQuiz(p){quizState[p]={score:0,answered:0,total:quizState[p].total};updateScore(p);renderQuiz(getQuizData(p),p==='vocab'?'vocabQuizContainer':p==='grammar'?'grammarQuizContainer':'compQuizContainer',p);}
+function switchQuizTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById(t).classList.add('active');}
+
+let selectedFillWord=null;
+function selectFillWord(el){document.querySelectorAll('.fill-chip').forEach(c=>c.classList.remove('placed'));el.classList.add('placed');selectedFillWord=el.dataset.word;}
+function placeFillWord(b){if(!selectedFillWord)return;b.textContent=selectedFillWord;b.dataset.placed=selectedFillWord;document.querySelectorAll('.fill-chip').forEach(c=>{if(c.dataset.word===selectedFillWord)c.classList.add('used');c.classList.remove('placed');});selectedFillWord=null;}
+function checkFillAnswers(){document.querySelectorAll('.fill-blank').forEach(b=>{const p=b.dataset.placed,a=b.dataset.answer;if(p===a){b.style.borderColor='var(--success)';b.style.background='#dcfce7';b.style.color='var(--success)';b.style.fontWeight='600';}else{b.style.borderColor='var(--wrong)';b.style.background='#fecaca';b.style.color='var(--wrong)';b.title=`Reponse : ${a}`;}});}
+function resetFill(){document.querySelectorAll('.fill-blank').forEach(b=>{b.textContent='___';b.dataset.placed='';b.style.borderColor='';b.style.background='';b.style.color='';b.style.fontWeight='';b.title='';});document.querySelectorAll('.fill-chip').forEach(c=>{c.classList.remove('used','placed');});selectedFillWord=null;}
+
+const choiceQuizData=[
+    {q:"我们不能____道路安全问题，每年的交通事故造成大量伤亡。",a:"忽视",b:"轻视",correct:"忽视",explain:"忽视 = négliger (ne pas prêter attention, involontaire). La sécurité routière est négligée par inattention/manque de priorité. 轻视 impliquerait une attitude de mépris délibéré envers la sécurité."},
+    {q:"他的态度很傲慢，总是____别人的意见，从不认真听取。",a:"忽视",b:"轻视",correct:"轻视",explain:"轻视 = mépriser, regarder de haut (attitude délibérée, arrogante). L'arrogance envers les opinions des autres → 轻视. 忽视 serait plutôt 'ne pas remarquer par inattention'."},
+    {q:"由于工作太忙，他____了家人的感受，导致关系变得疏远。",a:"忽视",b:"轻视",correct:"忽视",explain:"忽视 = négliger par inattention/manque de temps (involontaire). Il n'a pas fait exprès de mépriser sa famille — il était juste trop occupé. C'est une négligence, pas du mépris."},
+    {q:"不要因为对方年轻就____他的能力，年轻人有时非常出色。",a:"忽视",b:"轻视",correct:"轻视",explain:"轻视 = sous-estimer, mépriser (attitude condescendante envers une personne ou ses capacités). Sous-estimer quelqu'un à cause de son âge = attitude délibérée de condescendance → 轻视."},
+    {q:"政府不能____民众的基本生活需求，这是最重要的执政任务。",a:"忽视",b:"轻视",correct:"忽视",explain:"忽视 = négliger (ne pas accorder l'importance nécessaire). Les besoins fondamentaux de la population sont 'ignorés' par manque d'attention. 轻视 impliquerait un mépris actif."},
+    {q:"他过于自信，____了对手的实力，结果在比赛中输得很惨。",a:"忽视",b:"轻视",correct:"轻视",explain:"轻视 = sous-estimer, regarder de haut (attitude de mépris envers l'adversaire). Sous-estimer délibérément la force d'un adversaire → 轻视."},
+    {q:"这种____科学事实的做法是非常不负责任的，可能带来严重后果。",a:"忽视",b:"轻视",correct:"忽视",explain:"忽视科学事实 = ignorer/négliger des faits scientifiques (ne pas en tenir compte). Objet = chose abstraite (faits). 忽视 convient mieux ici. 轻视 serait 'mépriser la science' (attitude envers la discipline)."},
+    {q:"在最美好的时刻离开，需要勇气，不能____这种智慧的重要性。",a:"忽视",b:"轻视",correct:"忽视",explain:"忽视 = négliger, passer à côté (ne pas reconnaître l'importance de quelque chose). Objet abstrait (importance de cette sagesse). 轻视 impliquerait une attitude de mépris actif, moins naturel ici."}
+];
+function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').innerHTML=choiceQuizData.map((q,i)=>`<div class="quiz-question" id="choice-q${i}" style="margin-bottom:12px;"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options" style="grid-template-columns:1fr 1fr;"><div class="quiz-option" onclick="answerChoice(${i},'${q.a}')">${q.a}</div><div class="quiz-option" onclick="answerChoice(${i},'${q.b}')">${q.b}</div></div><div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div></div>`).join('');}
+function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
+
+window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
+document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+</script>
+</body>
+</html>

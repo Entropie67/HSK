@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第16课 体重与节食</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+        :root{--primary:#14532d;--primary-light:#166534;--accent:#16a34a;--gold:#15803d;--gold-light:#f0fdf4;--bg:#fafbfc;--card:#fff;--text:#2c3e50;--text-light:#7f8c8d;--border:#e8ecf1;--success:#27ae60;--wrong:#e74c3c;--gradient-water:linear-gradient(135deg,#14532d 0%,#16a34a 100%);--gradient-hero:linear-gradient(135deg,#052e16 0%,#14532d 35%,#16a34a 70%,#4ade80 100%);}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;scroll-behavior:smooth;}
+        .hero{background:var(--gradient-hero);color:#fff;padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;background-size:cover;opacity:.3;}
+        .hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+        .hero .lesson-badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:6px 20px;border-radius:30px;font-size:.9rem;letter-spacing:2px;margin-bottom:20px;}
+        .hero h1{font-family:'Noto Serif SC',serif;font-size:3.2rem;font-weight:900;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+        .hero .subtitle{font-size:1.3rem;opacity:.9;font-weight:300;margin-bottom:30px;}
+        .hero .deco{font-size:2rem;letter-spacing:8px;opacity:.6;}
+        .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+        .nav-inner::-webkit-scrollbar{display:none;}
+        .nav-inner a{padding:14px 18px;text-decoration:none;color:var(--text-light);font-size:.9rem;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+        .nav-inner a:hover,.nav-inner a.active{color:var(--primary);border-bottom-color:var(--primary-light);}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+        section{padding:50px 0;}
+        .section-header{text-align:center;margin-bottom:40px;}
+        .section-header h2{font-family:'Noto Serif SC',serif;font-size:2rem;color:var(--primary);margin-bottom:6px;}
+        .section-header .section-sub{color:var(--text-light);font-size:.95rem;}
+        .section-divider{width:60px;height:3px;background:var(--gradient-water);margin:12px auto 0;border-radius:2px;}
+        .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);margin-bottom:24px;}
+        .card h3{font-size:1.2rem;color:var(--primary);margin-bottom:16px;}
+        .text-block{background:var(--card);border-radius:16px;padding:35px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);font-family:'Noto Serif SC',serif;font-size:1.1rem;line-height:2.2;}
+        .text-block p{text-indent:2em;margin-bottom:16px;}
+        .text-source{text-align:right;font-size:.85rem;color:var(--text-light);font-family:'Noto Sans SC',sans-serif;margin-top:8px;font-style:italic;}
+        .vocab-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
+        .vocab-controls button{padding:8px 20px;border:2px solid var(--border);background:#fff;border-radius:25px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s;color:var(--text);}
+        .vocab-controls button.active,.vocab-controls button:hover{border-color:var(--primary-light);background:var(--primary-light);color:#fff;}
+        .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .vocab-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .3s;position:relative;}
+        .vocab-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.08);border-color:var(--primary-light);}
+        .vocab-card .vocab-num{position:absolute;top:8px;right:12px;font-size:.75rem;color:var(--text-light);opacity:.5;}
+        .vocab-card .hanzi{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;color:var(--primary);}
+        .vocab-card .pinyin{color:var(--accent);font-size:.9rem;margin:4px 0;}
+        .vocab-card .pos{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;}
+        .vocab-card .meaning-hidden{display:none;}
+        .vocab-card.revealed .meaning-hidden{display:block;}
+        .vocab-card.revealed .meaning-placeholder{display:none;}
+        .meaning-placeholder{color:var(--text-light);font-size:.85rem;font-style:italic;margin-top:6px;}
+        .weight-pattern{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid #86efac;border-radius:16px;padding:28px;margin:20px 0;}
+        .wp-title{font-family:'Noto Serif SC',serif;font-size:1.05rem;color:#14532d;font-weight:700;margin-bottom:18px;text-align:center;}
+        .wp-cycle{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:14px;}
+        .wp-node{padding:14px 18px;border-radius:12px;font-size:.85rem;font-weight:600;text-align:center;min-width:110px;}
+        .wp-node.up{background:#fee2e2;color:#7f1d1d;border:1px solid #fca5a5;}
+        .wp-node.mid{background:#dbeafe;color:#1e3a8a;border:1px solid #93c5fd;}
+        .wp-node.low{background:#dcfce7;color:#14532d;border:2px solid #16a34a;}
+        .wp-arrow{color:#9ca3af;font-size:1.3rem;font-weight:700;}
+        .wp-note{font-size:.82rem;color:var(--text-light);text-align:center;padding:10px 16px;background:#fff;border-radius:10px;border:1px solid #d1fae5;}
+        .flashcard-area{display:flex;flex-direction:column;align-items:center;gap:20px;padding:20px 0;}
+        .flashcard-container{perspective:1000px;width:380px;height:260px;max-width:100%;}
+        .flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);cursor:pointer;}
+        .flashcard.flipped{transform:rotateY(180deg);}
+        .flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;}
+        .flashcard-front{background:linear-gradient(135deg,#052e16,#16a34a);color:#fff;box-shadow:0 10px 40px rgba(22,163,74,.3);}
+        .flashcard-front .fc-hanzi{font-family:'Noto Serif SC',serif;font-size:3rem;font-weight:900;margin-bottom:10px;}
+        .flashcard-front .fc-pinyin{font-size:1.1rem;opacity:.8;}
+        .flashcard-front .fc-hint{font-size:.8rem;opacity:.5;margin-top:20px;}
+        .flashcard-back{background:#fff;border:2px solid var(--primary-light);transform:rotateY(180deg);box-shadow:0 10px 40px rgba(0,0,0,.1);}
+        .flashcard-back .fc-meaning{font-size:1.3rem;color:var(--primary);font-weight:600;}
+        .flashcard-back .fc-pos{background:var(--gold-light);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-top:10px;}
+        .fc-controls{display:flex;gap:12px;}
+        .fc-controls button{padding:10px 28px;border-radius:25px;border:none;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;}
+        .fc-btn-prev,.fc-btn-next{background:var(--primary-light);color:#fff;}
+        .fc-btn-prev:hover,.fc-btn-next:hover{background:var(--primary);}
+        .fc-btn-shuffle{background:#fff;border:2px solid var(--border)!important;color:var(--text);}
+        .fc-counter{color:var(--text-light);font-size:.9rem;}
+        .grammar-card{background:var(--card);border-radius:16px;border:1px solid var(--border);margin-bottom:20px;overflow:hidden;}
+        .grammar-header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;}
+        .grammar-header .grammar-num{background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+        .grammar-header .grammar-title{font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;}
+        .grammar-header .grammar-pinyin{font-size:.9rem;opacity:.8;}
+        .grammar-body{padding:24px;}
+        .grammar-rule{background:var(--gold-light);border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:20px;font-size:.95rem;color:var(--primary);}
+        .grammar-example{padding:12px 0;border-bottom:1px solid var(--border);}
+        .grammar-example:last-child{border-bottom:none;}
+        .grammar-example .ex-cn{font-size:1.05rem;margin-bottom:4px;}
+        .grammar-example .ex-note{color:var(--text-light);font-size:.85rem;}
+        .grammar-example .ex-highlight{color:var(--accent);font-weight:600;}
+        .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+        .comparison-table th{background:var(--primary);color:#fff;padding:14px 18px;font-weight:600;text-align:center;}
+        .comparison-table td{padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top;font-size:.95rem;}
+        .comparison-table tr:last-child td{border-bottom:none;}
+        .comparison-table tr:nth-child(even){background:#f8fafc;}
+        .comparison-table .label-cell{background:var(--gold-light);font-weight:600;color:var(--primary);text-align:center;width:60px;}
+        .colloc-section{margin-bottom:24px;}
+        .colloc-label{display:inline-block;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:12px;}
+        .colloc-label.verb{background:#e74c3c;}.colloc-label.attr{background:#f39c12;}.colloc-label.adv{background:#27ae60;}.colloc-label.comp{background:#8e44ad;}.colloc-label.subj{background:#16a085;}
+        .colloc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+        .colloc-row:last-child{border-bottom:none;}
+        .colloc-word{font-weight:600;color:var(--primary);min-width:100px;font-size:1.1rem;}
+        .colloc-plus{color:var(--text-light);font-weight:700;}
+        .colloc-partners{display:flex;flex-wrap:wrap;gap:6px;}
+        .colloc-tag{background:#f0f4f8;padding:4px 12px;border-radius:15px;font-size:.85rem;}
+        .tab-bar{display:flex;gap:4px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:20px;}
+        .tab-btn{flex:1;padding:10px;border:none;background:transparent;border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--text-light);transition:all .2s;}
+        .tab-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+        .tab-content{display:none;}.tab-content.active{display:block;}
+        .quiz-score-bar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+        .score-display{font-size:1.5rem;font-weight:700;color:var(--primary);}
+        .score-bar-visual{flex:1;margin:0 20px;height:10px;background:var(--border);border-radius:5px;overflow:hidden;}
+        .score-bar-fill{height:100%;background:var(--gradient-water);border-radius:5px;transition:width .5s ease;width:0%;}
+        .quiz-reset-btn{padding:8px 20px;background:var(--primary-light);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;}
+        .quiz-question{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;transition:all .3s;}
+        .quiz-question.correct{border-color:var(--success);background:#f0fdf4;}
+        .quiz-question.wrong{border-color:var(--wrong);background:#fef2f2;}
+        .quiz-q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--primary-light);color:#fff;border-radius:50%;font-size:.8rem;font-weight:700;margin-right:10px;}
+        .quiz-q-text{font-size:1.05rem;margin-bottom:14px;}
+        .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .quiz-option{padding:12px 16px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.95rem;text-align:center;background:#fff;}
+        .quiz-option:hover{border-color:var(--primary-light);background:var(--gold-light);}
+        .quiz-option.selected-correct{border-color:var(--success);background:#dcfce7;color:var(--success);font-weight:600;}
+        .quiz-option.selected-wrong{border-color:var(--wrong);background:#fecaca;color:var(--wrong);font-weight:600;}
+        .quiz-option.disabled{pointer-events:none;opacity:.7;}
+        .quiz-explanation{display:none;margin-top:12px;padding:12px 16px;background:#f0fdf4;border-radius:10px;font-size:.9rem;color:#14532d;border:1px solid #86efac;}
+        .fill-blank{display:inline-block;min-width:80px;border-bottom:2px dashed var(--primary-light);padding:2px 8px;margin:0 4px;text-align:center;cursor:pointer;transition:all .2s;}
+        .fill-blank:hover{background:var(--gold-light);}
+        .fill-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center;}
+        .fill-chip{padding:8px 18px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s;}
+        .fill-chip:hover{border-color:var(--primary-light);background:var(--gold-light);}
+        .fill-chip.used{opacity:.4;pointer-events:none;}
+        .fill-chip.placed{background:var(--primary-light);color:#fff;border-color:var(--primary-light);}
+        .app-box{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #86efac;border-radius:16px;padding:30px;margin-bottom:20px;}
+        .app-box h4{color:var(--primary);font-size:1.1rem;margin-bottom:12px;}
+        .discussion-q{padding:10px 0;border-bottom:1px solid rgba(134,239,172,.4);font-size:.95rem;}
+        .discussion-q:last-child{border-bottom:none;}
+        .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
+        @media(max-width:768px){.hero h1{font-size:2rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}}
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
+        <h1>体重与节食</h1>
+        <p class="subtitle">Weight and Diet - Lesson 16</p>
+        <div class="deco">🥗 ⚖️ 📊 🌿</div>
+    </div>
+</header>
+
+<nav class="sticky-nav"><div class="nav-inner">
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#research">研究 Recherche</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+</div></nav>
+
+<main class="container">
+
+<section id="text">
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">体重与节食 — article de recherche scientifique</p><div class="section-divider"></div></div>
+    <div class="text-block">
+        <p>节食是许多人控制体重、保持苗条身材的方式。但是，大多数节食者都有这样的体会：即使认真控制饮食，体重也会出现波动，让人感到困惑。针对这一现象，美国研究人员进行了专门调查，并在《营养》杂志上发表了最新报道。</p>
+        <p>这项研究总共纳入了80名志愿者，年龄从25岁到62岁不等。研究人员将参与研究的人员分为两种类型：一类是体重成功下降的人，另一类是体重相对保持不变的人。他们对这些志愿者的日常饮食摄入进行了为期三年的跟踪分析，最终获得了一些令人意外的成果。</p>
+        <p>研究成果显示，节食者的体重在一周之内存在明显的规律性波动：体重通常在周末升高，这是因为周末就餐次数增多，个别人甚至出现了放纵饮食的现象；进入工作日后，体重又开始下降，到周五时达到全周的最低点。</p>
+        <p>分析两类人群的数据后，研究成果更加清晰：成功减肥的人在出现体重波动后，会立即采取补偿措施，即从周一起减少食物摄入，有效弥补周末放纵带来的影响。这种节食模式与体重波动的联合作用，形成了清晰可辨的差异趋势，表明了成功减肥的关键所在。</p>
+        <p>研究还称，减肥不成功的人往往将体重的临时升高视为一种借口，非但不立即采取措施加以调整，反而继续放纵饮食。而成功减肥者则将体重的短期波动视为正常现象，能够坚持长期调整饮食摄入量，最终达到减肥的目的。</p>
+        <p>营养专家分析称，可靠的节食方案并非要求绝对杜绝体重波动，而是要学会管理这种波动规律，为每个个别情况制定合理的应对措施，这样才能真正保持健康的体重水平。</p>
+        <div class="text-source">改编自《北京青年报》，作者：臧恒佳</div>
+    </div>
+</section>
+
+<section id="vocab">
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">41 mots - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (41)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout reveler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+</section>
+
+<section id="research">
+    <div class="section-header"><h2>研究 - Données clés</h2><p class="section-sub">Le cycle hebdomadaire du poids</p><div class="section-divider"></div></div>
+    <div class="weight-pattern">
+        <div class="wp-title">体重周规律 — Le cycle hebdomadaire du poids selon l'étude</div>
+        <div class="wp-cycle">
+            <div class="wp-node up">周六–周日<br><small>体重↑ 放纵就餐</small></div>
+            <div class="wp-arrow">→</div>
+            <div class="wp-node mid">周一–周四<br><small>体重↓ 工作日</small></div>
+            <div class="wp-arrow">→</div>
+            <div class="wp-node low">周五<br><small>⬇ 最低点</small></div>
+        </div>
+        <div class="wp-note">成功减肥者：周末后立即从周一起采取补偿措施（减少摄入），差异趋势更明显</div>
+    </div>
+    <div class="card">
+        <h3>研究摘要 — Données de l'étude</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:8px;">
+            <div style="background:var(--gold-light);border-radius:12px;padding:16px;text-align:center;border:1px solid #bbf7d0;">
+                <div style="font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;color:var(--primary);">80</div>
+                <div style="font-size:.85rem;color:var(--text-light);">志愿者 participants</div>
+            </div>
+            <div style="background:var(--gold-light);border-radius:12px;padding:16px;text-align:center;border:1px solid #bbf7d0;">
+                <div style="font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;color:var(--primary);">25–62</div>
+                <div style="font-size:.85rem;color:var(--text-light);">年龄范围 (岁)</div>
+            </div>
+            <div style="background:var(--gold-light);border-radius:12px;padding:16px;text-align:center;border:1px solid #bbf7d0;">
+                <div style="font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;color:var(--primary);">3年</div>
+                <div style="font-size:.85rem;color:var(--text-light);">跟踪时长 durée</div>
+            </div>
+            <div style="background:var(--gold-light);border-radius:12px;padding:16px;text-align:center;border:1px solid #bbf7d0;">
+                <div style="font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;color:var(--primary);">2</div>
+                <div style="font-size:.85rem;color:var(--text-light);">人员类型 groupes</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="flashcards">
+    <div class="section-header"><h2>卡片 - Flashcards</h2><p class="section-sub">Cliquez pour retourner la carte</p><div class="section-divider"></div></div>
+    <div class="flashcard-area">
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">41</span></div>
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front"><div class="fc-hanzi" id="fcHanzi">节食</div><div class="fc-pinyin" id="fcPinyin">jiéshí</div><div class="fc-hint">cliquez pour voir la traduction</div></div>
+                <div class="flashcard-back"><div class="fc-meaning" id="fcMeaning">faire un régime, se mettre à la diète</div><div class="fc-pos" id="fcPos">v.</div></div>
+            </div>
+        </div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+        </div>
+    </div>
+</section>
+
+<section id="grammar">
+    <div class="section-header"><h2>语法 - Grammaire</h2><p class="section-sub">3 points de grammaire essentiels</p><div class="section-divider"></div></div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">1</div><div><div class="grammar-title">即</div><div class="grammar-pinyin">jí — c'est-à-dire, à savoir ; aussitôt</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>即</strong> a deux grandes fonctions : (1) conjonction ou adverbe d'explication : <strong>A，即B</strong> = A, c'est-à-dire B / A qui est B ; (2) adverbe de temps (littéraire) : <strong>即刻/立即</strong> = immédiatement. Dans les textes écrits formels, 即 remplace souvent 就是 pour expliquer ou préciser.</div>
+            <div class="grammar-example"><div class="ex-cn">成功减肥的人会立即采取补偿措施，<span class="ex-highlight">即</span>从周一起减少食物摄入。</div><div class="ex-note">(1) Les personnes qui réussissent à maigrir prennent immédiatement des mesures compensatoires, <em>à savoir</em> réduire les apports alimentaires dès le lundi.</div></div>
+            <div class="grammar-example"><div class="ex-cn">他所说的可持续发展，<span class="ex-highlight">即</span>在保护环境的前提下实现经济增长。</div><div class="ex-note">(2) Ce qu'il appelle développement durable, c'est-à-dire réaliser la croissance économique dans le respect de l'environnement.</div></div>
+            <div class="grammar-example"><div class="ex-cn">中国最大的城市<span class="ex-highlight">即</span>上海，常住人口超过2400万。</div><div class="ex-note">(3) La plus grande ville de Chine, à savoir Shanghai, compte plus de 24 millions d'habitants permanents.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">2</div><div><div class="grammar-title">个别</div><div class="grammar-pinyin">gèbié — individuel ; exceptionnel (très peu de cas)</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>个别</strong>, adjectif, a deux sens : (1) <strong>individuel, cas par cas</strong> (对个别问题 = pour chaque cas individuel) ; (2) <strong>une très petite quantité, exceptionnel</strong> : 个别人 = une poignée de personnes, quelques rares cas. À distinguer de 部分 (une portion, plusieurs) et 少数 (minorité).</div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">个别</span>人甚至出现了放纵饮食的现象。</div><div class="ex-note">(1) Quelques rares personnes ont même présenté un comportement alimentaire débridé. (très peu, exceptionnel)</div></div>
+            <div class="grammar-example"><div class="ex-cn">这是<span class="ex-highlight">个别</span>现象，不能代表整体情况。</div><div class="ex-note">(2) Ce sont des cas isolés, qui ne peuvent pas représenter la situation générale.</div></div>
+            <div class="grammar-example"><div class="ex-cn">老师对学生进行<span class="ex-highlight">个别</span>辅导，帮助他们解决学习中的具体问题。</div><div class="ex-note">(3) L'enseignant fait du soutien individuel aux élèves pour les aider à résoudre leurs problèmes d'apprentissage. (sens 1 : individuel)</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">3</div><div><div class="grammar-title">非</div><div class="grammar-pinyin">fēi — non-, faux ; ne pas être ; (非…不可 = devoir absolument)</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>非</strong>, en chinois écrit formel, a plusieurs usages : (1) préfixe négatif ou adjectif <strong>非A = pas A, faux-A</strong> (非正式, 非营利) ; (2) dans <strong>非但…反而/而且</strong> = non seulement… mais au contraire/en outre ; (3) dans <strong>非…不可</strong> = ne pas pouvoir s'en empêcher, devoir absolument.</div>
+            <div class="grammar-example"><div class="ex-cn">减肥不成功的人<span class="ex-highlight">非</span>但不立即采取措施，反而继续放纵饮食。</div><div class="ex-note">(1) 非但…反而 : Les gens qui échouent à maigrir non seulement ne prennent pas de mesures immédiates, mais au contraire continuent à se laisser aller.</div></div>
+            <div class="grammar-example"><div class="ex-cn">可靠的节食方案<span class="ex-highlight">非</span>但要控制饮食，而且要坚持运动。</div><div class="ex-note">(2) 非但…而且 : Un programme de régime fiable ne doit pas seulement contrôler l'alimentation, mais aussi maintenir une activité physique.</div></div>
+            <div class="grammar-example"><div class="ex-cn">他今天<span class="ex-highlight">非</span>要去见那个朋友不可，谁也拦不住。</div><div class="ex-note">(3) 非…不可 : Il tient absolument à aller voir cet ami aujourd'hui — personne ne peut l'en empêcher.</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="analysis">
+    <div class="section-header"><h2>词语辨析 - Analyse comparative</h2><p class="section-sub">临时 vs 暂时</p><div class="section-divider"></div></div>
+    <div class="card">
+        <table class="comparison-table">
+            <thead><tr><th></th><th>临时 (línshí)</th><th>暂时 (zànshí)</th></tr></thead>
+            <tbody>
+                <tr><td class="label-cell">Points communs</td><td colspan="2" style="text-align:center;">Les deux expriment un caractère non-permanent, provisoire. Parfois interchangeables.<br><em>如：这是临时/暂时的安排，以后再改。</em></td></tr>
+                <tr><td class="label-cell" rowspan="3">Differences</td>
+                    <td>1. Insiste sur le côté <strong>improvisé, de circonstance, non-planifié</strong>.<br><em>如：公司招了几名<u>临时</u>工来完成这个项目。</em></td>
+                    <td>1. Insiste sur la <strong>durée limitée dans le temps</strong> — neutre, pas forcément improvisé.<br><em>如：这个问题<u>暂时</u>没有解决方案。</em></td></tr>
+                <tr>
+                    <td>2. S'emploie surtout comme <strong>adjectif épithète</strong> (avant un nom) : 临时工, 临时措施, 临时方案.<br><em>临时 + nom = solution de fortune.</em></td>
+                    <td>2. S'emploie surtout comme <strong>adverbe</strong> (avant verbe) ou comme prédicat.<br><em>如：我<u>暂时</u>不知道，等了解后再告诉你。</em></td></tr>
+                <tr>
+                    <td>3. Connotation souvent <strong>négative ou insuffisante</strong> : arrangement de dépannage.<br><em>如：不能只靠<u>临时</u>方案，要找根本解决办法。</em></td>
+                    <td>3. Connotation <strong>neutre</strong> : simplement "pour l'instant, pendant un moment".<br><em>如：他<u>暂时</u>住在朋友家，房子下月才装修好。</em></td></tr>
+            </tbody>
+        </table>
+        <div style="margin-top:20px;padding:14px 18px;background:#f0fdf4;border-radius:10px;font-size:.9rem;color:#14532d;border:1px solid #86efac;">
+            <strong>Astuce :</strong> 临时 = "improvisé, de fortune" (临时工, 临时搭建 — souvent avant un nom, connotation insuffisante). 暂时 = "pour l'instant, momentanément" (souvent adverbe, neutre). Test : si c'est un arrangement "de dépannage non-prévu" → 临时 ; si c'est "pour le moment, pas encore définitif" → 暂时.
+        </div>
+    </div>
+</section>
+
+<section id="collocation">
+    <div class="section-header"><h2>词语搭配 - Collocations</h2><p class="section-sub">Combinaisons essentielles</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="colloc-section"><div class="colloc-label verb">动词 + 宾语</div>
+            <div class="colloc-row"><span class="colloc-word">采取</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">措施</span><span class="colloc-tag">行动</span><span class="colloc-tag">方案</span><span class="colloc-tag">政策</span><span class="colloc-tag">手段</span><span class="colloc-tag">态度</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">达到</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">目的</span><span class="colloc-tag">目标</span><span class="colloc-tag">效果</span><span class="colloc-tag">水平</span><span class="colloc-tag">标准</span><span class="colloc-tag">最低点</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label attr">定语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">可靠的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">方案</span><span class="colloc-tag">消息</span><span class="colloc-tag">数据</span><span class="colloc-tag">方法</span><span class="colloc-tag">品牌</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">明显的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">效果</span><span class="colloc-tag">差异</span><span class="colloc-tag">趋势</span><span class="colloc-tag">变化</span><span class="colloc-tag">下降</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label adv">状语 + 动词</div>
+            <div class="colloc-row"><span class="colloc-word">立即（地）</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">采取</span><span class="colloc-tag">行动</span><span class="colloc-tag">通知</span><span class="colloc-tag">解决</span><span class="colloc-tag">处理</span><span class="colloc-tag">补偿</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">临时（地）</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">安排</span><span class="colloc-tag">代替</span><span class="colloc-tag">充当</span><span class="colloc-tag">搭建</span><span class="colloc-tag">解决</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label subj">主语 + 谓语</div>
+            <div class="colloc-row"><span class="colloc-word">趋势</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">明显</span><span class="colloc-tag">加剧</span><span class="colloc-tag">出现</span><span class="colloc-tag">形成</span><span class="colloc-tag">持续</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">现象</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">存在</span><span class="colloc-tag">普遍</span><span class="colloc-tag">消失</span><span class="colloc-tag">引起关注</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="quiz-section">
+    <div class="section-header"><h2>测验 - Quiz</h2><p class="section-sub">Testez vos connaissances</p><div class="section-divider"></div></div>
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+    </div>
+    <div class="tab-content active" id="vocab-quiz"><div class="quiz-score-bar"><div class="score-display" id="vocabScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button></div><div id="vocabQuizContainer"></div></div>
+    <div class="tab-content" id="grammar-quiz"><div class="quiz-score-bar"><div class="score-display" id="grammarScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button></div><div id="grammarQuizContainer"></div></div>
+    <div class="tab-content" id="comprehension-quiz"><div class="quiz-score-bar"><div class="score-display" id="compScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button></div><div id="compQuizContainer"></div></div>
+</section>
+
+<section id="fill-quiz">
+    <div class="section-header"><h2>填空练习 - Exercices a trous</h2><p class="section-sub">Choisissez le mot correct</p><div class="section-divider"></div></div>
+    <div class="card" id="fillExercise">
+        <h3>Choisissez parmi : 措施、借口、分析、趋势、补偿、可靠</h3>
+        <div class="fill-options" id="fillOptions">
+            <span class="fill-chip" data-word="措施" onclick="selectFillWord(this)">措施</span>
+            <span class="fill-chip" data-word="借口" onclick="selectFillWord(this)">借口</span>
+            <span class="fill-chip" data-word="分析" onclick="selectFillWord(this)">分析</span>
+            <span class="fill-chip" data-word="趋势" onclick="selectFillWord(this)">趋势</span>
+            <span class="fill-chip" data-word="补偿" onclick="selectFillWord(this)">补偿</span>
+            <span class="fill-chip" data-word="可靠" onclick="selectFillWord(this)">可靠</span>
+        </div>
+        <div style="margin-top:24px;">
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">1</span>政府采取了一系列<span class="fill-blank" data-answer="措施" onclick="placeFillWord(this)">___</span>来控制空气污染，效果非常明显。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">2</span>他把工作做不好的原因推给了别人，这只不过是一个<span class="fill-blank" data-answer="借口" onclick="placeFillWord(this)">___</span>。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">3</span>我们需要对这些数据进行深入的<span class="fill-blank" data-answer="分析" onclick="placeFillWord(this)">___</span>，才能得出正确的结论。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">4</span>越来越多的企业开始注重环保，这是一种明显的<span class="fill-blank" data-answer="趋势" onclick="placeFillWord(this)">___</span>。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">5</span>为了<span class="fill-blank" data-answer="补偿" onclick="placeFillWord(this)">___</span>对员工的不公平对待，公司决定给大家额外放假。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">6</span>选择一个<span class="fill-blank" data-answer="可靠" onclick="placeFillWord(this)">___</span>的信息来源，能帮助我们做出更准确的判断。</div>
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+            <button onclick="checkFillAnswers()" style="padding:10px 30px;background:var(--primary-light);color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:.95rem;font-weight:600;">Verifier</button>
+            <button onclick="resetFill()" style="padding:10px 30px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.95rem;margin-left:10px;">Recommencer</button>
+        </div>
+    </div>
+    <div class="card"><h3>临时 ou 暂时 ? Choisissez la bonne reponse</h3><div id="choiceQuizContainer"></div></div>
+</section>
+
+<section id="application">
+    <div class="section-header"><h2>运用 - Application</h2><p class="section-sub">Contexte et discussion</p><div class="section-divider"></div></div>
+    <div class="app-box">
+        <h4>背景知识 — La revue 《营养》et les études comportementales</h4>
+        <p style="line-height:2;">《营养》（Obesity）是国际知名的营养与肥胖研究领域学术期刊，发表的研究成果对全球健康政策有重要影响。本文所介绍的研究属于行为营养学领域，重点关注人们在节食过程中的行为模式与心理机制，而非仅仅依靠药物或手术来解决体重问题。这类研究的价值在于，它帮助人们了解自身行为规律，从而制定更可靠、更长期的饮食管理方案。</p>
+    </div>
+    <div class="app-box">
+        <h4>话题讨论 - 节食与体重管理</h4>
+        <div class="discussion-q">1. 根据这项研究，成功减肥的人和减肥不成功的人最大的区别是什么？<br><em>Selon cette étude, quelle est la principale différence entre ceux qui réussissent et ceux qui échouent à maigrir ?</em></div>
+        <div class="discussion-q">2. 你认为"临时升高体重作为借口继续放纵"这种心理是怎么形成的？如何克服？<br><em>Pourquoi selon vous les gens utilisent-ils la prise de poids temporaire comme prétexte ? Comment surmonter ce réflexe ?</em></div>
+        <div class="discussion-q">3. 除了节食，你还知道哪些控制体重的可靠方法？请结合本课词汇进行说明。<br><em>En dehors du régime, quelles autres méthodes fiables connaissez-vous pour contrôler son poids ? Utilisez le vocabulaire de la leçon.</em></div>
+    </div>
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'ecriture</h4>
+        <p>请以"节食减肥：你怎么看？"为题，写一篇短文，谈谈你对节食减肥这种方式的看法。请尽量使用本课所学词汇，字数不少于100字。</p>
+        <p style="font-style:italic;color:var(--text-light);margin-top:8px;">Redigez un texte sur "Le regime alimentaire pour maigrir : qu'en pensez-vous ?" Utilisez le maximum de vocabulaire de la lecon, au moins 100 caracteres.</p>
+    </div>
+</section>
+
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+<footer style="text-align:center;padding:40px 20px;color:var(--text-light);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px;">HSK 5 Standard Course - Lesson 16 - 体重与节食</footer>
+
+<script>
+const vocabData=[
+    {id:1,hanzi:"节食",pinyin:"jiéshí",pos:"v.",meaning:"faire un régime, se mettre à la diète",cat:"verb"},
+    {id:2,hanzi:"报道",pinyin:"bàodào",pos:"n./v.",meaning:"reportage ; rapporter, rendre compte",cat:"noun"},
+    {id:3,hanzi:"营养",pinyin:"yíngyǎng",pos:"n.",meaning:"nutrition, éléments nutritifs",cat:"noun"},
+    {id:4,hanzi:"摄入",pinyin:"shèrù",pos:"v.",meaning:"absorber, ingérer (nourriture, info.)",cat:"verb"},
+    {id:5,hanzi:"模式",pinyin:"móshì",pos:"n.",meaning:"modèle, mode, schéma, pattern",cat:"noun"},
+    {id:6,hanzi:"波动",pinyin:"bōdòng",pos:"v./n.",meaning:"fluctuer ; fluctuation, variation",cat:"verb"},
+    {id:7,hanzi:"总共",pinyin:"zǒnggòng",pos:"adv.",meaning:"en tout, au total",cat:"other"},
+    {id:8,hanzi:"参与",pinyin:"cānyù",pos:"v.",meaning:"participer à, prendre part",cat:"verb"},
+    {id:9,hanzi:"人员",pinyin:"rényuán",pos:"n.",meaning:"personnel, membres (d'un groupe)",cat:"noun"},
+    {id:10,hanzi:"相对",pinyin:"xiāngduì",pos:"adj./adv.",meaning:"relatif, comparatif ; relativement",cat:"adj"},
+    {id:11,hanzi:"类型",pinyin:"lèixíng",pos:"n.",meaning:"type, catégorie, sorte",cat:"noun"},
+    {id:12,hanzi:"称",pinyin:"chēng",pos:"v.",meaning:"appeler, nommer ; déclarer, affirmer",cat:"verb"},
+    {id:13,hanzi:"可靠",pinyin:"kěkào",pos:"adj.",meaning:"fiable, sûr, solide, digne de confiance",cat:"adj"},
+    {id:14,hanzi:"纳入",pinyin:"nàrù",pos:"v.",meaning:"inclure dans, intégrer, prendre en compte",cat:"verb"},
+    {id:15,hanzi:"分析",pinyin:"fēnxī",pos:"v./n.",meaning:"analyser ; analyse",cat:"verb"},
+    {id:16,hanzi:"志愿者",pinyin:"zhìyuànzhě",pos:"n.",meaning:"bénévole, volontaire",cat:"noun"},
+    {id:17,hanzi:"跟踪",pinyin:"gēnzōng",pos:"v.",meaning:"suivre (dans le temps), surveiller, tracer",cat:"verb"},
+    {id:18,hanzi:"成果",pinyin:"chéngguǒ",pos:"n.",meaning:"résultat, fruit (d'un travail), acquis",cat:"noun"},
+    {id:19,hanzi:"清晰",pinyin:"qīngxī",pos:"adj.",meaning:"clair, net, distinct, limpide",cat:"adj"},
+    {id:20,hanzi:"即",pinyin:"jí",pos:"adv./conj.",meaning:"c'est-à-dire, à savoir ; aussitôt (littér.)",cat:"other"},
+    {id:21,hanzi:"升",pinyin:"shēng",pos:"v.",meaning:"monter, augmenter, s'élever",cat:"verb"},
+    {id:22,hanzi:"达到",pinyin:"dádào",pos:"v.",meaning:"atteindre, parvenir à, accomplir",cat:"verb"},
+    {id:23,hanzi:"意外",pinyin:"yìwài",pos:"adj./n.",meaning:"inattendu, surprenant ; incident, accident",cat:"adj"},
+    {id:24,hanzi:"存在",pinyin:"cúnzài",pos:"v./n.",meaning:"exister ; existence",cat:"verb"},
+    {id:25,hanzi:"明显",pinyin:"míngxiǎn",pos:"adj.",meaning:"évident, manifeste, notable, net",cat:"adj"},
+    {id:26,hanzi:"补偿",pinyin:"bǔcháng",pos:"v./n.",meaning:"compenser, dédommager ; compensation",cat:"verb"},
+    {id:27,hanzi:"立即",pinyin:"lìjí",pos:"adv.",meaning:"immédiatement, aussitôt",cat:"other"},
+    {id:28,hanzi:"趋势",pinyin:"qūshì",pos:"n.",meaning:"tendance, trend",cat:"noun"},
+    {id:29,hanzi:"差异",pinyin:"chāyì",pos:"n.",meaning:"différence, écart, disparité",cat:"noun"},
+    {id:30,hanzi:"联合",pinyin:"liánhé",pos:"v./adj.",meaning:"s'unir, se conjuguer ; conjoint, uni",cat:"verb"},
+    {id:31,hanzi:"个别",pinyin:"gèbié",pos:"adj.",meaning:"individuel ; exceptionnel, très rare (cas isolés)",cat:"adj"},
+    {id:32,hanzi:"表明",pinyin:"biǎomíng",pos:"v.",meaning:"montrer, indiquer, révéler, démontrer",cat:"verb"},
+    {id:33,hanzi:"临时",pinyin:"línshí",pos:"adj./adv.",meaning:"temporaire, provisoire, improvisé (non-planifié)",cat:"adj"},
+    {id:34,hanzi:"现象",pinyin:"xiànxiàng",pos:"n.",meaning:"phénomène",cat:"noun"},
+    {id:35,hanzi:"非",pinyin:"fēi",pos:"adv.",meaning:"non-, ne pas ; (非但…反而 = non seulement… mais au contraire)",cat:"other"},
+    {id:36,hanzi:"就餐",pinyin:"jiùcān",pos:"v.",meaning:"prendre un repas, se restaurer, dîner",cat:"verb"},
+    {id:37,hanzi:"放纵",pinyin:"fàngzòng",pos:"v./adj.",meaning:"se laisser aller, s'abandonner ; déchaîné",cat:"verb"},
+    {id:38,hanzi:"苗条",pinyin:"miáotiao",pos:"adj.",meaning:"svelte, mince, élancé(e)",cat:"adj"},
+    {id:39,hanzi:"借口",pinyin:"jièkǒu",pos:"n./v.",meaning:"prétexte, excuse ; prétexer",cat:"noun"},
+    {id:40,hanzi:"采取",pinyin:"cǎiqǔ",pos:"v.",meaning:"adopter, prendre (mesures, actions)",cat:"verb"},
+    {id:41,hanzi:"措施",pinyin:"cuòshī",pos:"n.",meaning:"mesure, disposition, action concrète",cat:"noun"}
+];
+
+function renderVocab(filter='all'){const g=document.getElementById('vocabGrid');const f=filter==='all'?vocabData:vocabData.filter(v=>v.cat===filter);g.innerHTML=f.map(v=>`<div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')"><span class="vocab-num">#${v.id}</span><div class="hanzi">${v.hanzi}</div><div class="pinyin">${v.pinyin}</div><span class="pos">${v.pos}</span><div class="meaning-placeholder">Cliquez pour voir...</div><div class="meaning-hidden" style="font-size:.9rem;margin-top:6px;">${v.meaning}</div></div>`).join('');}
+function filterVocab(c){document.querySelectorAll('.vocab-controls button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderVocab(c);}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function hideAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('revealed'));}
+
+let fcIndex=0,fcOrder=[...Array(vocabData.length).keys()];
+function updateFlashcard(){const v=vocabData[fcOrder[fcIndex]];document.getElementById('fcHanzi').textContent=v.hanzi;document.getElementById('fcPinyin').textContent=v.pinyin;document.getElementById('fcMeaning').textContent=v.meaning;document.getElementById('fcPos').textContent=v.pos;document.getElementById('fcCurrent').textContent=fcIndex+1;document.getElementById('fcTotal').textContent=fcOrder.length;document.getElementById('flashcard').classList.remove('flipped');}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%fcOrder.length;updateFlashcard();}
+function prevCard(){fcIndex=(fcIndex-1+fcOrder.length)%fcOrder.length;updateFlashcard();}
+function shuffleCards(){for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}fcIndex=0;updateFlashcard();}
+
+const vocabQuizData=[
+    {q:"节食 signifie :",options:["Manger davantage pour prendre des forces","Faire un régime, se mettre à la diète","Peser ses aliments avec soin","Cuisiner de manière équilibrée"],correct:1},
+    {q:"摄入 veut dire :",options:["Dépenser de l'énergie","Rejeter, évacuer","Absorber, ingérer (nourriture)","Mâcher lentement"],correct:2},
+    {q:"波动 signifie :",options:["Stable, constant, sans variation","Fluctuer, varier, osciller","Augmenter progressivement","Une vague de la mer"],correct:1},
+    {q:"志愿者 veut dire :",options:["Chercheur scientifique","Médecin nutritionniste","Patient en traitement","Bénévole, volontaire"],correct:3},
+    {q:"趋势 signifie :",options:["Méthode précise","Résultat final","Tendance, orientation générale","Effort physique"],correct:2},
+    {q:"补偿 veut dire :",options:["Compenser, dédommager","Augmenter progressivement","Supprimer complètement","Éviter à tout prix"],correct:0},
+    {q:"现象 signifie :",options:["Apparence physique extérieure","Phénomène observable","Illustration concrète","Réalité profonde"],correct:1},
+    {q:"措施 veut dire :",options:["Méthode théorique","Résultat obtenu","Mesure, disposition concrète","Plan stratégique"],correct:2},
+    {q:"清晰 signifie :",options:["Clair, net, distinct, limpide","Flou, indistinct","Difficile à comprendre","Intéressant et varié"],correct:0},
+    {q:"苗条 veut dire :",options:["Grand et imposant","Svelte, mince, élancé(e)","Fort et musclé","Jeune et énergique"],correct:1},
+    {q:"差异 signifie :",options:["Résultat satisfaisant","Opinion divergente","Différence, écart, disparité","Obstacle insurmontable"],correct:2},
+    {q:"跟踪 veut dire :",options:["Analyser en profondeur","Suivre dans le temps, surveiller","Mesurer avec précision","Enregistrer les données"],correct:1}
+];
+
+const grammarQuizData=[
+    {q:"'即从周一起减少食物摄入' — 即 ici signifie :",options:["Immédiatement, sans délai","C'est-à-dire, à savoir (explication)","Même si, bien que","Déjà accompli"],correct:1},
+    {q:"即 peut exprimer deux choses à la fois :",options:["La comparaison et la concession","C'est-à-dire (explication) ET aussi immédiatement (temps, littéraire)","La répétition et la fréquence","La cause et la conséquence"],correct:1},
+    {q:"'个别人甚至放纵饮食' — 个别 implique :",options:["Chaque personne sans exception","Beaucoup de personnes, une majorité","Quelques rares cas, une très petite quantité","Exactement la moitié"],correct:2},
+    {q:"个别 (sens 2 : très peu) se distingue de 部分 car :",options:["Ils sont parfaitement synonymes","个别 = très peu, cas isolés ; 部分 = une portion, plusieurs (quantité plus grande)","个别 est plus formel et savant","部分 est plus rare dans la langue parlée"],correct:1},
+    {q:"'非但不立即采取措施，反而继续放纵' — 非但…反而 signifie :",options:["Parce que… alors","Non seulement… mais au contraire (aggravation)","Si… alors","Même si… quand même"],correct:1},
+    {q:"非 peut également former la structure 非…不可, qui signifie :",options:["Il ne faut pas du tout","Devoir absolument, ne pas pouvoir s'en empêcher","Peut-être, il est possible que","Il ne sera jamais possible de"],correct:1},
+    {q:"临时 se distingue de 暂时 principalement parce que :",options:["Ils sont totalement synonymes sans aucune différence","临时 = improvisé, de fortune (non-planifié) ; 暂时 = pour le moment (neutre, durée)","暂时 implique une permanence future certaine","临时 est plus neutre et plus général"],correct:1},
+    {q:"Dans '可靠的节食方案' — 可靠 modifie 节食方案 en tant que :",options:["Complément de résultat (补语)","Adjectif épithète (定语)","Adverbe de manière (状语)","Sujet de la phrase"],correct:1}
+];
+
+const compQuizData=[
+    {q:"Combien de participants comprenait l'étude ?",options:["40 personnes","60 personnes","80 personnes","100 personnes"],correct:2},
+    {q:"Quelle était la tranche d'âge des participants ?",options:["18–40 ans","20–50 ans","25–62 ans","30–65 ans"],correct:2},
+    {q:"À quel moment de la semaine le poids est-il généralement le plus élevé ?",options:["Mercredi soir","Le weekend (samedi–dimanche)","Vendredi après-midi","Lundi matin"],correct:1},
+    {q:"Quel jour le poids des participants atteignait-il son point le plus bas ?",options:["Lundi","Mercredi","Vendredi","Dimanche soir"],correct:2},
+    {q:"Que font les personnes qui maigrissent avec succès dès le lundi ?",options:["Elles mangent davantage pour se donner de l'énergie","Elles arrêtent complètement de se peser","Elles adoptent immédiatement des mesures compensatoires (réduire les apports)","Elles reprennent une activité sportive intense"],correct:2},
+    {q:"Quelle était la durée du suivi dans cette étude ?",options:["1 an","2 ans","3 ans","5 ans"],correct:2},
+    {q:"Comment les personnes qui échouent à maigrir réagissent-elles à une prise de poids temporaire ?",options:["Elles compensent immédiatement dès le lundi","Elles s'en servent comme prétexte pour continuer à se laisser aller","Elles consultent immédiatement un médecin","Elles changent complètement de régime alimentaire"],correct:1},
+    {q:"Dans quelle revue les résultats de l'étude ont-ils été publiés ?",options:["《科学》","《自然》","《营养》","《健康》"],correct:2},
+    {q:"Que conseillent les experts en nutrition selon le texte ?",options:["D'éviter absolument toute fluctuation de poids","De gérer les fluctuations et de maintenir des habitudes alimentaires saines à long terme","De ne jamais se peser pendant la semaine","De faire du sport tous les jours sans exception"],correct:1},
+    {q:"Quelle attitude distingue les personnes qui réussissent à maigrir ?",options:["Elles mangent toujours la même quantité, sans variation","Elles voient la fluctuation comme normale et s'ajustent immédiatement","Elles ne font jamais d'excès le weekend","Elles suivent un régime extrêmement strict sans aucune exception"],correct:1}
+];
+
+function renderQuiz(data,cid,prefix){document.getElementById(cid).innerHTML=data.map((q,i)=>`<div class="quiz-question" id="${prefix}-q${i}"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options">${q.options.map((o,j)=>`<div class="quiz-option" onclick="answerQuiz('${prefix}',${i},${j})">${o}</div>`).join('')}</div></div>`).join('');}
+const quizState={vocab:{score:0,answered:0,total:12},grammar:{score:0,answered:0,total:8},comp:{score:0,answered:0,total:10}};
+function getQuizData(p){return p==='vocab'?vocabQuizData:p==='grammar'?grammarQuizData:compQuizData;}
+function answerQuiz(p,qi,oi){const d=getQuizData(p),qE=document.getElementById(`${p}-q${qi}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const opts=qE.querySelectorAll('.quiz-option'),c=d[qi].correct;opts.forEach((o,i)=>{o.classList.add('disabled');if(i===c)o.classList.add('selected-correct');if(i===oi&&i!==c)o.classList.add('selected-wrong');});qE.classList.add(oi===c?'correct':'wrong');if(oi===c)quizState[p].score++;quizState[p].answered++;updateScore(p);}
+function updateScore(p){const s=quizState[p];document.getElementById(`${p}Score`).textContent=`${s.score} / ${s.total}`;document.getElementById(`${p}ScoreBar`).style.width=`${(s.score/s.total)*100}%`;}
+function resetQuiz(p){quizState[p]={score:0,answered:0,total:quizState[p].total};updateScore(p);renderQuiz(getQuizData(p),p==='vocab'?'vocabQuizContainer':p==='grammar'?'grammarQuizContainer':'compQuizContainer',p);}
+function switchQuizTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById(t).classList.add('active');}
+
+let selectedFillWord=null;
+function selectFillWord(el){document.querySelectorAll('.fill-chip').forEach(c=>c.classList.remove('placed'));el.classList.add('placed');selectedFillWord=el.dataset.word;}
+function placeFillWord(b){if(!selectedFillWord)return;b.textContent=selectedFillWord;b.dataset.placed=selectedFillWord;document.querySelectorAll('.fill-chip').forEach(c=>{if(c.dataset.word===selectedFillWord)c.classList.add('used');c.classList.remove('placed');});selectedFillWord=null;}
+function checkFillAnswers(){document.querySelectorAll('.fill-blank').forEach(b=>{const p=b.dataset.placed,a=b.dataset.answer;if(p===a){b.style.borderColor='var(--success)';b.style.background='#dcfce7';b.style.color='var(--success)';b.style.fontWeight='600';}else{b.style.borderColor='var(--wrong)';b.style.background='#fecaca';b.style.color='var(--wrong)';b.title=`Reponse : ${a}`;}});}
+function resetFill(){document.querySelectorAll('.fill-blank').forEach(b=>{b.textContent='___';b.dataset.placed='';b.style.borderColor='';b.style.background='';b.style.color='';b.style.fontWeight='';b.title='';});document.querySelectorAll('.fill-chip').forEach(c=>{c.classList.remove('used','placed');});selectedFillWord=null;}
+
+const choiceQuizData=[
+    {q:"他只是被____雇来帮忙的，这个项目结束后就离开了。",a:"临时",b:"暂时",correct:"临时",explain:"临时 = improvisé, de circonstance (临时雇用 = embauche ponctuelle non-planifiée). 暂时 = pour un moment (neutre). Ici c'est une embauche de dépannage → 临时."},
+    {q:"我____还不清楚这件事的详细情况，等我了解一下再告诉你。",a:"临时",b:"暂时",correct:"暂时",explain:"暂时 = pour l'instant, pour le moment (neutre, exprime une période de temps). Ici : je ne sais pas encore — situation temporaire. 临时 serait bizarre ici."},
+    {q:"由于下大雨，今天的运动会____中止了。",a:"临时",b:"暂时",correct:"暂时",explain:"暂时中止 = suspendu temporairement (pour une durée limitée, reprendra). 临时 + verbe serait moins naturel. 暂时 est ici adverbe (状语)."},
+    {q:"由于人手不够，公司召集了几名____工人来完成紧急任务。",a:"临时",b:"暂时",correct:"临时",explain:"临时工 = travailleur temporaire, intérimaire (terme figé, improvisé). 暂时工 n'existe pas comme terme fixe. 临时 + nom = arrangement de fortune."},
+    {q:"这只是一个____性的解决方案，长期问题还需要进一步商讨。",a:"临时",b:"暂时",correct:"临时",explain:"临时性 = provisoire, de dépannage (临时性 est un adjectif composé courant). L'accent est sur le côté improvisé et insuffisant. 暂时性 existe mais 临时性 est plus fort ici."},
+    {q:"我____没有时间读这本书，等下周空了再说。",a:"临时",b:"暂时",correct:"暂时",explain:"暂时 = pour l'instant (adverbe neutre : je n'ai pas le temps en ce moment). 临时 ne s'emploie pas comme adverbe seul devant un verbe d'état comme 没有时间."},
+    {q:"停电了，他们____用手电筒代替灯来照明。",a:"临时",b:"暂时",correct:"临时",explain:"临时 = improvisé, de circonstance (usage imprévu d'une torche comme substitut). L'idée de dépannage non-planifié → 临时. 暂时 insisterait sur la durée, pas l'improvisation."},
+    {q:"医生说，这种皮肤反应只是____现象，很快就会消失，不用担心。",a:"临时",b:"暂时",correct:"暂时",explain:"暂时现象 = phénomène passager (neutre : ça va disparaître). 临时现象 conviendrait aussi mais 暂时 est plus naturel pour un phénomène médical qui dure un moment."}
+];
+function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').innerHTML=choiceQuizData.map((q,i)=>`<div class="quiz-question" id="choice-q${i}" style="margin-bottom:12px;"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options" style="grid-template-columns:1fr 1fr;"><div class="quiz-option" onclick="answerChoice(${i},'${q.a}')">${q.a}</div><div class="quiz-option" onclick="answerChoice(${i},'${q.b}')">${q.b}</div></div><div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div></div>`).join('');}
+function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
+
+window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
+document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+</script>
+</body>
+</html>

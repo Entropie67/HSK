@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第15课 纸上谈兵</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+        :root{--primary:#7f1d1d;--primary-light:#991b1b;--accent:#dc2626;--gold:#b91c1c;--gold-light:#fff1f2;--bg:#fafbfc;--card:#fff;--text:#2c3e50;--text-light:#7f8c8d;--border:#e8ecf1;--success:#27ae60;--wrong:#e74c3c;--gradient-water:linear-gradient(135deg,#7f1d1d 0%,#dc2626 100%);--gradient-hero:linear-gradient(135deg,#0c0000 0%,#7f1d1d 35%,#b91c1c 70%,#ef4444 100%);}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;scroll-behavior:smooth;}
+        .hero{background:var(--gradient-hero);color:#fff;padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;background-size:cover;opacity:.3;}
+        .hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+        .hero .lesson-badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:6px 20px;border-radius:30px;font-size:.9rem;letter-spacing:2px;margin-bottom:20px;}
+        .hero h1{font-family:'Noto Serif SC',serif;font-size:3.2rem;font-weight:900;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+        .hero .subtitle{font-size:1.3rem;opacity:.9;font-weight:300;margin-bottom:30px;}
+        .hero .deco{font-size:2rem;letter-spacing:8px;opacity:.6;}
+        .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+        .nav-inner::-webkit-scrollbar{display:none;}
+        .nav-inner a{padding:14px 18px;text-decoration:none;color:var(--text-light);font-size:.9rem;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+        .nav-inner a:hover,.nav-inner a.active{color:var(--primary);border-bottom-color:var(--primary-light);}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+        section{padding:50px 0;}
+        .section-header{text-align:center;margin-bottom:40px;}
+        .section-header h2{font-family:'Noto Serif SC',serif;font-size:2rem;color:var(--primary);margin-bottom:6px;}
+        .section-header .section-sub{color:var(--text-light);font-size:.95rem;}
+        .section-divider{width:60px;height:3px;background:var(--gradient-water);margin:12px auto 0;border-radius:2px;}
+        .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);margin-bottom:24px;}
+        .card h3{font-size:1.2rem;color:var(--primary);margin-bottom:16px;}
+        .text-block{background:var(--card);border-radius:16px;padding:35px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);font-family:'Noto Serif SC',serif;font-size:1.1rem;line-height:2.2;}
+        .text-block p{text-indent:2em;margin-bottom:16px;}
+        .vocab-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
+        .vocab-controls button{padding:8px 20px;border:2px solid var(--border);background:#fff;border-radius:25px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s;color:var(--text);}
+        .vocab-controls button.active,.vocab-controls button:hover{border-color:var(--primary-light);background:var(--primary-light);color:#fff;}
+        .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .vocab-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .3s;position:relative;}
+        .vocab-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.08);border-color:var(--primary-light);}
+        .vocab-card .vocab-num{position:absolute;top:8px;right:12px;font-size:.75rem;color:var(--text-light);opacity:.5;}
+        .vocab-card .hanzi{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;color:var(--primary);}
+        .vocab-card .pinyin{color:var(--accent);font-size:.9rem;margin:4px 0;}
+        .vocab-card .pos{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;}
+        .vocab-card .meaning-hidden{display:none;}
+        .vocab-card.revealed .meaning-hidden{display:block;}
+        .vocab-card.revealed .meaning-placeholder{display:none;}
+        .meaning-placeholder{color:var(--text-light);font-size:.85rem;font-style:italic;margin-top:6px;}
+        .key-quote{background:linear-gradient(135deg,#fff1f2,#fecaca);border:2px solid #fca5a5;border-radius:16px;padding:28px;margin:20px 0;position:relative;}
+        .key-quote::before{content:'"';font-family:'Noto Serif SC',serif;font-size:5rem;color:#fca5a5;position:absolute;top:-10px;left:16px;line-height:1;}
+        .key-quote .quote-text{font-family:'Noto Serif SC',serif;font-size:1.15rem;line-height:2;color:var(--primary);padding-left:20px;margin-bottom:12px;}
+        .key-quote .quote-source{font-size:.85rem;color:var(--text-light);text-align:right;font-style:italic;}
+        .pn-list{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;}
+        .pn-card{background:linear-gradient(135deg,#fff1f2,#fecaca);border:1px solid #fca5a5;border-radius:12px;padding:14px 18px;}
+        .pn-card .pn-cn{font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:700;color:var(--primary);}
+        .pn-card .pn-py{color:var(--accent);font-size:.85rem;margin:2px 0;}
+        .pn-card .pn-en{font-size:.85rem;color:var(--text-light);}
+        .flashcard-area{display:flex;flex-direction:column;align-items:center;gap:20px;padding:20px 0;}
+        .flashcard-container{perspective:1000px;width:380px;height:260px;max-width:100%;}
+        .flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);cursor:pointer;}
+        .flashcard.flipped{transform:rotateY(180deg);}
+        .flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;}
+        .flashcard-front{background:linear-gradient(135deg,#0c0000,#dc2626);color:#fff;box-shadow:0 10px 40px rgba(220,38,38,.3);}
+        .flashcard-front .fc-hanzi{font-family:'Noto Serif SC',serif;font-size:3rem;font-weight:900;margin-bottom:10px;}
+        .flashcard-front .fc-pinyin{font-size:1.1rem;opacity:.8;}
+        .flashcard-front .fc-hint{font-size:.8rem;opacity:.5;margin-top:20px;}
+        .flashcard-back{background:#fff;border:2px solid var(--primary-light);transform:rotateY(180deg);box-shadow:0 10px 40px rgba(0,0,0,.1);}
+        .flashcard-back .fc-meaning{font-size:1.3rem;color:var(--primary);font-weight:600;}
+        .flashcard-back .fc-pos{background:var(--gold-light);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-top:10px;}
+        .fc-controls{display:flex;gap:12px;}
+        .fc-controls button{padding:10px 28px;border-radius:25px;border:none;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;}
+        .fc-btn-prev,.fc-btn-next{background:var(--primary-light);color:#fff;}
+        .fc-btn-prev:hover,.fc-btn-next:hover{background:var(--primary);}
+        .fc-btn-shuffle{background:#fff;border:2px solid var(--border)!important;color:var(--text);}
+        .fc-counter{color:var(--text-light);font-size:.9rem;}
+        .grammar-card{background:var(--card);border-radius:16px;border:1px solid var(--border);margin-bottom:20px;overflow:hidden;}
+        .grammar-header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;}
+        .grammar-header .grammar-num{background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+        .grammar-header .grammar-title{font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;}
+        .grammar-header .grammar-pinyin{font-size:.9rem;opacity:.8;}
+        .grammar-body{padding:24px;}
+        .grammar-rule{background:var(--gold-light);border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:20px;font-size:.95rem;color:var(--primary);}
+        .grammar-example{padding:12px 0;border-bottom:1px solid var(--border);}
+        .grammar-example:last-child{border-bottom:none;}
+        .grammar-example .ex-cn{font-size:1.05rem;margin-bottom:4px;}
+        .grammar-example .ex-note{color:var(--text-light);font-size:.85rem;}
+        .grammar-example .ex-highlight{color:var(--accent);font-weight:600;}
+        .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+        .comparison-table th{background:var(--primary);color:#fff;padding:14px 18px;font-weight:600;text-align:center;}
+        .comparison-table td{padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top;font-size:.95rem;}
+        .comparison-table tr:last-child td{border-bottom:none;}
+        .comparison-table tr:nth-child(even){background:#f8fafc;}
+        .comparison-table .label-cell{background:var(--gold-light);font-weight:600;color:var(--primary);text-align:center;width:60px;}
+        .colloc-section{margin-bottom:24px;}
+        .colloc-label{display:inline-block;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:12px;}
+        .colloc-label.verb{background:#e74c3c;}.colloc-label.attr{background:#f39c12;}.colloc-label.adv{background:#27ae60;}.colloc-label.comp{background:#8e44ad;}.colloc-label.subj{background:#16a085;}
+        .colloc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+        .colloc-row:last-child{border-bottom:none;}
+        .colloc-word{font-weight:600;color:var(--primary);min-width:100px;font-size:1.1rem;}
+        .colloc-plus{color:var(--text-light);font-weight:700;}
+        .colloc-partners{display:flex;flex-wrap:wrap;gap:6px;}
+        .colloc-tag{background:#f0f4f8;padding:4px 12px;border-radius:15px;font-size:.85rem;}
+        .tab-bar{display:flex;gap:4px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:20px;}
+        .tab-btn{flex:1;padding:10px;border:none;background:transparent;border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--text-light);transition:all .2s;}
+        .tab-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+        .tab-content{display:none;}.tab-content.active{display:block;}
+        .quiz-score-bar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+        .score-display{font-size:1.5rem;font-weight:700;color:var(--primary);}
+        .score-bar-visual{flex:1;margin:0 20px;height:10px;background:var(--border);border-radius:5px;overflow:hidden;}
+        .score-bar-fill{height:100%;background:var(--gradient-water);border-radius:5px;transition:width .5s ease;width:0%;}
+        .quiz-reset-btn{padding:8px 20px;background:var(--primary-light);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;}
+        .quiz-question{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;transition:all .3s;}
+        .quiz-question.correct{border-color:var(--success);background:#f0fdf4;}
+        .quiz-question.wrong{border-color:var(--wrong);background:#fef2f2;}
+        .quiz-q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--primary-light);color:#fff;border-radius:50%;font-size:.8rem;font-weight:700;margin-right:10px;}
+        .quiz-q-text{font-size:1.05rem;margin-bottom:14px;}
+        .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .quiz-option{padding:12px 16px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.95rem;text-align:center;background:#fff;}
+        .quiz-option:hover{border-color:var(--primary-light);background:var(--gold-light);}
+        .quiz-option.selected-correct{border-color:var(--success);background:#dcfce7;color:var(--success);font-weight:600;}
+        .quiz-option.selected-wrong{border-color:var(--wrong);background:#fecaca;color:var(--wrong);font-weight:600;}
+        .quiz-option.disabled{pointer-events:none;opacity:.7;}
+        .quiz-explanation{display:none;margin-top:12px;padding:12px 16px;background:#fffbeb;border-radius:10px;font-size:.9rem;color:#7f1d1d;border:1px solid #fde68a;}
+        .fill-blank{display:inline-block;min-width:80px;border-bottom:2px dashed var(--primary-light);padding:2px 8px;margin:0 4px;text-align:center;cursor:pointer;transition:all .2s;}
+        .fill-blank:hover{background:var(--gold-light);}
+        .fill-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center;}
+        .fill-chip{padding:8px 18px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s;}
+        .fill-chip:hover{border-color:var(--primary-light);background:var(--gold-light);}
+        .fill-chip.used{opacity:.4;pointer-events:none;}
+        .fill-chip.placed{background:var(--primary-light);color:#fff;border-color:var(--primary-light);}
+        .app-box{background:linear-gradient(135deg,#fff1f2,#fecaca);border:1px solid #fca5a5;border-radius:16px;padding:30px;margin-bottom:20px;}
+        .app-box h4{color:var(--primary);font-size:1.1rem;margin-bottom:12px;}
+        .discussion-q{padding:10px 0;border-bottom:1px solid rgba(252,165,165,.4);font-size:.95rem;}
+        .discussion-q:last-child{border-bottom:none;}
+        .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
+        @media(max-width:768px){.hero h1{font-size:2rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}}
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
+        <h1>纸上谈兵</h1>
+        <p class="subtitle">Being an Armchair Strategist - Lesson 15</p>
+        <div class="deco">⚔️ 📜 🏯 🎯</div>
+    </div>
+</header>
+
+<nav class="sticky-nav"><div class="nav-inner">
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#idiom">成语 Idiome</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+</div></nav>
+
+<main class="container">
+
+<section id="text">
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">纸上谈兵 (639 caracteres)</p><div class="section-divider"></div></div>
+    <div class="text-block">
+        <p>两千七百多年前的战国末期，赵国名将赵奢有个儿子叫赵括，他从小读了不少兵书，跟别人谈论起军事来，没有人说得过他，就是父亲赵奢也难不住他。赵括因此很骄傲，自以为天下无敌，连父亲也不放在眼里。</p>
+        <p>但是赵奢心里明白，自己的儿子虽然对军事理论都很了解，但是没有实际作战的经验，想法很不符合实际。他曾经偷偷对妻子说："儿子的毛病是只会讲大道理，缺乏实际锻炼，不能当大将。如果让他当了大将，迟早会害了赵国。"</p>
+        <p>几年后，赵奢去世了。这一年正好秦国军队来打赵国，赵国派老将廉颇带20万大军迎战。廉颇根据敌强我弱的形势，命令士兵们坚守阵地，绝对不可主动出战。秦军多次挑战，骂他是胆小鬼，他还是不出兵。这个办法果然非常有效，成功地把秦军拦在了国门之外。渐渐地，秦军无法快速取得胜利，粮食也快没了，有些坚持不住了。</p>
+        <p>秦人深知廉颇善于用兵，如果想在短期内打败赵国，必须想办法叫赵国把廉颇调回去。于是，他们在赵国四处散布谣言，说秦军最怕赵括，别的人都不放在眼里。</p>
+        <p>这时，赵王正因廉颇闭门不战而生气呢，听到外面的那些谣言，果然上当了，他派赵括去换回廉颇。赵括的母亲再三阻止赵王任命儿子为大将，说他还没有独立带兵作战的资格。可是，糊涂的赵王哪里听得进去！</p>
+        <p>公元前260年，赵括带兵出战。一直盲目自信、轻视秦军的他完全改变了廉颇的作战方案，死搬兵书上的理论，主动进攻秦军，结果数十万赵军全部被杀，丢掉了宝贵的生命。</p>
+        <p>这就是成语"纸上谈兵"的故事。现在常用这个成语讽刺那些只会空谈理论的人，提醒大家做事一定要灵活，要注意理论联系实际。</p>
+    </div>
+</section>
+
+<section id="vocab">
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">39 mots - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (39)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout reveler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+</section>
+
+<section id="idiom">
+    <div class="section-header"><h2>成语 - L'idiome et son contexte</h2><p class="section-sub">Citation clé et noms propres historiques</p><div class="section-divider"></div></div>
+    <div class="key-quote">
+        <div class="quote-text">儿子的毛病是只会讲大道理，缺乏实际锻炼，不能当大将。如果让他当了大将，<strong>迟早</strong>会害了赵国。</div>
+        <div class="quote-source">— 赵奢 (Zhào Shē), à sa femme, au sujet de son fils Zhao Kuo</div>
+    </div>
+    <div class="card" style="margin-top:8px;">
+        <h3>专有名词 — Personnages et royaumes</h3>
+        <div class="pn-list">
+            <div class="pn-card"><div class="pn-cn">战国</div><div class="pn-py">Zhànguó</div><div class="pn-en">Royaumes Combattants (475–221 av. J.-C.)</div></div>
+            <div class="pn-card"><div class="pn-cn">赵国</div><div class="pn-py">Zhàoguó</div><div class="pn-en">Royaume de Zhao</div></div>
+            <div class="pn-card"><div class="pn-cn">赵奢</div><div class="pn-py">Zhào Shē</div><div class="pn-en">Zhao She, général célèbre</div></div>
+            <div class="pn-card"><div class="pn-cn">赵括</div><div class="pn-py">Zhào Kuò</div><div class="pn-en">Zhao Kuo, fils de Zhao She</div></div>
+            <div class="pn-card"><div class="pn-cn">秦国</div><div class="pn-py">Qínguó</div><div class="pn-en">Royaume de Qin</div></div>
+            <div class="pn-card"><div class="pn-cn">廉颇</div><div class="pn-py">Lián Pō</div><div class="pn-en">Lian Po, vieux général stratège</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="flashcards">
+    <div class="section-header"><h2>卡片 - Flashcards</h2><p class="section-sub">Cliquez pour retourner la carte</p><div class="section-divider"></div></div>
+    <div class="flashcard-area">
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">39</span></div>
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front"><div class="fc-hanzi" id="fcHanzi">纸上谈兵</div><div class="fc-pinyin" id="fcPinyin">zhǐshàng tánbīng</div><div class="fc-hint">cliquez pour voir la traduction</div></div>
+                <div class="flashcard-back"><div class="fc-meaning" id="fcMeaning">faire de la stratégie sur papier (armchair strategist)</div><div class="fc-pos" id="fcPos">expr.</div></div>
+            </div>
+        </div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+        </div>
+    </div>
+</section>
+
+<section id="grammar">
+    <div class="section-header"><h2>语法 - Grammaire</h2><p class="section-sub">3 points de grammaire essentiels</p><div class="section-divider"></div></div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">1</div><div><div class="grammar-title">过</div><div class="grammar-pinyin">guò — complément de tendance / surpassement</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>过</strong>, verbe de tendance, se prononce guò. Structure courante : <strong>动词 + 得/不 + 过</strong> = complément de résultat signifiant "pouvoir (ou non) surpasser, l'emporter sur". Ex : 说得过 = pouvoir l'emporter à l'argumentation ; 比不过 = ne pas pouvoir se mesurer à.</div>
+            <div class="grammar-example"><div class="ex-cn">跟别人谈论起军事来，没有人说得<span class="ex-highlight">过</span>他。</div><div class="ex-note">(1) Quand on parlait de stratégie militaire, personne ne pouvait l'emporter sur lui dans la discussion.</div></div>
+            <div class="grammar-example"><div class="ex-cn">年轻人记忆力好，这一点我比不<span class="ex-highlight">过</span>你们。</div><div class="ex-note">(2) Les jeunes ont bonne mémoire — sur ce point, je ne peux pas me mesurer à vous.</div></div>
+            <div class="grammar-example"><div class="ex-cn">我们的原材料贵，人工费用高，产品在价格上肯定竞争不<span class="ex-highlight">过</span>他们。</div><div class="ex-note">(3) Nos matières premières sont chères, la main-d'œuvre coûteuse — en termes de prix, on ne peut certainement pas leur faire concurrence.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">2</div><div><div class="grammar-title">迟早</div><div class="grammar-pinyin">chízǎo — tôt ou tard</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>迟早</strong>, adverbe, suivi d'un verbe, exprime qu'une action ou un événement <strong>finira immanquablement par se produire</strong>, que ce soit tôt ou tard. Exprime une certitude inévitable.</div>
+            <div class="grammar-example"><div class="ex-cn">如果让他当了大将，<span class="ex-highlight">迟早</span>会害了赵国。</div><div class="ex-note">(1) Si on le nomme grand général, cela causera tôt ou tard la perte du royaume de Zhao.</div></div>
+            <div class="grammar-example"><div class="ex-cn">随着网络技术的发展，这些问题<span class="ex-highlight">迟早</span>都会得到解决。</div><div class="ex-note">(2) Avec le développement des technologies d'internet, ces problèmes seront tôt ou tard résolus.</div></div>
+            <div class="grammar-example"><div class="ex-cn">如果不重视技术研究和产品开发，我们<span class="ex-highlight">迟早</span>会被别人挤出市场。</div><div class="ex-note">(3) Si on ne met pas l'accent sur la R&D, on sera tôt ou tard éliminé du marché.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">3</div><div><div class="grammar-title">再三</div><div class="grammar-pinyin">zàisān — à plusieurs reprises</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>再三</strong>, adverbe, signifie "une fois de plus et encore, à maintes reprises". Se place avant le verbe. Parfois aussi utilisé après un verbe sans complément d'objet. Insiste sur la répétition têtue ou insistante d'une action.</div>
+            <div class="grammar-example"><div class="ex-cn">赵括的母亲<span class="ex-highlight">再三</span>阻止赵王任命儿子为大将，……</div><div class="ex-note">(1) La mère de Zhao Kuo chercha à plusieurs reprises à empêcher le roi de Zhao de nommer son fils grand général.</div></div>
+            <div class="grammar-example"><div class="ex-cn">我最近这段时间特别忙，可他<span class="ex-highlight">再三</span>邀请，出于礼貌，我只好答应了。</div><div class="ex-note">(2) J'étais très occupé ces derniers temps, mais comme il m'a invité à plusieurs reprises, par politesse j'ai finalement accepté.</div></div>
+            <div class="grammar-example"><div class="ex-cn">朋友请他做公司的总经理，他考虑<span class="ex-highlight">再三</span>，最后还是客气地拒绝了。</div><div class="ex-note">(3) Son ami lui proposa de devenir directeur général. Après y avoir longuement réfléchi, il refusa poliment.</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="analysis">
+    <div class="section-header"><h2>词语辨析 - Analyse comparative</h2><p class="section-sub">胜利 vs 成功</p><div class="section-divider"></div></div>
+    <div class="card">
+        <table class="comparison-table">
+            <thead><tr><th></th><th>胜利 (shènglì)</th><th>成功 (chénggōng)</th></tr></thead>
+            <tbody>
+                <tr><td class="label-cell">Points communs</td><td colspan="2" style="text-align:center;">Les deux sont des verbes exprimant l'atteinte d'un objectif prévu. Interchangeables dans certains contextes.<br><em>如：北京胜利/成功地举办了2008年夏季奥运会。</em></td></tr>
+                <tr><td class="label-cell" rowspan="3">Differences</td>
+                    <td>1. Dans le travail/compétition, généralement <strong>adverbe</strong> (状语).<br><em>如：经过一年多的努力，我们<u>胜利地</u>完成了调查工作。</em></td>
+                    <td>1. S'utilise dans le travail ET d'autres domaines. Peut être <strong>adverbe ou prédicat</strong>.<br><em>如：经过艰苦努力，实验终于<u>成功</u>了。</em></td></tr>
+                <tr>
+                    <td>2. Implique <strong>vaincre un adversaire</strong> (guerre, compétition).<br><em>如：谁坚持到最后，谁就是这场比赛的<u>胜利者</u>。</em></td>
+                    <td>2. <strong>N'implique pas</strong> vaincre un adversaire.<br><em>如：这项实验如果研究<u>成功</u>，将给病人带来希望。</em></td></tr>
+                <tr>
+                    <td>3. Pas le sens de "satisfaisant". Ne peut pas être complément de résultat (补语).</td>
+                    <td>3. <strong>Adjectif</strong> = "satisfaisant, réussi". Peut être complément de résultat.<br><em>如：这部电视剧拍得很<u>成功</u>，受到观众喜爱。</em></td></tr>
+            </tbody>
+        </table>
+        <div style="margin-top:20px;padding:14px 18px;background:#fffbeb;border-radius:10px;font-size:.9rem;color:#7f1d1d;border:1px solid #fde68a;">
+            <strong>Astuce :</strong> 胜利 = "victoire" (implique un adversaire vaincu). 成功 = "succès/réussir" (plus large : travail, expérience, événement, adj. complément). Test : si on peut dire "vaincre un adversaire" → 胜利 ; sinon → 成功.
+        </div>
+    </div>
+</section>
+
+<section id="collocation">
+    <div class="section-header"><h2>词语搭配 - Collocations</h2><p class="section-sub">Combinaisons essentielles</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="colloc-section"><div class="colloc-label verb">动词 + 宾语</div>
+            <div class="colloc-row"><span class="colloc-word">轻视</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">对方</span><span class="colloc-tag">科学</span><span class="colloc-tag">成果</span><span class="colloc-tag">工作</span><span class="colloc-tag">知识</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">善于</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">学习</span><span class="colloc-tag">发现</span><span class="colloc-tag">总结</span><span class="colloc-tag">表达</span><span class="colloc-tag">分析</span><span class="colloc-tag">用兵</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label attr">定语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">糊涂的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">孩子</span><span class="colloc-tag">领导</span><span class="colloc-tag">话</span><span class="colloc-tag">看法</span><span class="colloc-tag">脑子</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">宝贵的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">机会</span><span class="colloc-tag">生命</span><span class="colloc-tag">经验</span><span class="colloc-tag">意见</span><span class="colloc-tag">时间</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label adv">状语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">独立（地）</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">生活</span><span class="colloc-tag">分析</span><span class="colloc-tag">工作</span><span class="colloc-tag">完成</span><span class="colloc-tag">发展</span><span class="colloc-tag">领导</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">主动（地）</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">提出</span><span class="colloc-tag">建议</span><span class="colloc-tag">帮助</span><span class="colloc-tag">解决</span><span class="colloc-tag">联系</span><span class="colloc-tag">进攻</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label subj">主语 + 谓语</div>
+            <div class="colloc-row"><span class="colloc-word">形势</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">好转</span><span class="colloc-tag">乐观</span><span class="colloc-tag">危险</span><span class="colloc-tag">严重</span><span class="colloc-tag">紧张</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">毛病</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">多</span><span class="colloc-tag">（被）克服</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="quiz-section">
+    <div class="section-header"><h2>测验 - Quiz</h2><p class="section-sub">Testez vos connaissances</p><div class="section-divider"></div></div>
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+    </div>
+    <div class="tab-content active" id="vocab-quiz"><div class="quiz-score-bar"><div class="score-display" id="vocabScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button></div><div id="vocabQuizContainer"></div></div>
+    <div class="tab-content" id="grammar-quiz"><div class="quiz-score-bar"><div class="score-display" id="grammarScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button></div><div id="grammarQuizContainer"></div></div>
+    <div class="tab-content" id="comprehension-quiz"><div class="quiz-score-bar"><div class="score-display" id="compScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button></div><div id="compQuizContainer"></div></div>
+</section>
+
+<section id="fill-quiz">
+    <div class="section-header"><h2>填空练习 - Exercices a trous</h2><p class="section-sub">Choisissez le mot correct</p><div class="section-divider"></div></div>
+    <div class="card" id="fillExercise">
+        <h3>Choisissez parmi : 宝贵、糊涂、独立、灵活、方案、资格</h3>
+        <div class="fill-options" id="fillOptions">
+            <span class="fill-chip" data-word="宝贵" onclick="selectFillWord(this)">宝贵</span>
+            <span class="fill-chip" data-word="糊涂" onclick="selectFillWord(this)">糊涂</span>
+            <span class="fill-chip" data-word="独立" onclick="selectFillWord(this)">独立</span>
+            <span class="fill-chip" data-word="灵活" onclick="selectFillWord(this)">灵活</span>
+            <span class="fill-chip" data-word="方案" onclick="selectFillWord(this)">方案</span>
+            <span class="fill-chip" data-word="资格" onclick="selectFillWord(this)">资格</span>
+        </div>
+        <div style="margin-top:24px;">
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">1</span>家长应尽量创造一个能让孩子<span class="fill-blank" data-answer="独立" onclick="placeFillWord(this)">___</span>生活和学习的环境。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">2</span>你这脑子可真<span class="fill-blank" data-answer="糊涂" onclick="placeFillWord(this)">___</span>，银行卡的密码怎么能忘了呢？</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">3</span>这么<span class="fill-blank" data-answer="宝贵" onclick="placeFillWord(this)">___</span>的机会，我们不能错过。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">4</span>新的合作<span class="fill-blank" data-answer="方案" onclick="placeFillWord(this)">___</span>已经制定好了，明天开始执行。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">5</span>他还不具备独立承担这项工作的<span class="fill-blank" data-answer="资格" onclick="placeFillWord(this)">___</span>。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">6</span>做事要学会<span class="fill-blank" data-answer="灵活" onclick="placeFillWord(this)">___</span>应对，不能死板。</div>
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+            <button onclick="checkFillAnswers()" style="padding:10px 30px;background:var(--primary-light);color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:.95rem;font-weight:600;">Verifier</button>
+            <button onclick="resetFill()" style="padding:10px 30px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.95rem;margin-left:10px;">Recommencer</button>
+        </div>
+    </div>
+    <div class="card"><h3>胜利 ou 成功 ? Choisissez la bonne reponse</h3><div id="choiceQuizContainer"></div></div>
+</section>
+
+<section id="application">
+    <div class="section-header"><h2>运用 - Application</h2><p class="section-sub">Contexte et discussion</p><div class="section-divider"></div></div>
+    <div class="app-box">
+        <h4>背景分析 - 《孙子兵法》et la théorie militaire</h4>
+        <p style="line-height:2;">中国古代著名的兵书《孙子兵法》中有句话叫"兵者，诡道也"。意思是说，用兵的方法在于千变万化、出其不意，最重要的是运用各种方法迷惑敌人。这句话给我们最大的启发就是，理论是可以指导我们的行动的，但处理问题时，实际情况又是千变万化的，脱离实际空谈理论往往解决不了问题。</p>
+    </div>
+    <div class="app-box">
+        <h4>话题讨论 - 理论与实际的关系</h4>
+        <div class="discussion-q">1. 赵括算不算一位出色的军事家？你认为赵括的死是什么原因造成的？<br><em>Zhao Kuo était-il un bon stratège ? Qu'est-ce qui a causé sa mort selon vous ?</em></div>
+        <div class="discussion-q">2. 赵括的死给你最大的启发是什么？<br><em>Quelle est la plus grande leçon que vous tirez de la mort de Zhao Kuo ?</em></div>
+        <div class="discussion-q">3. 请举一个生活中类似的例子，并说说我们在生活中应该注意什么。<br><em>Donnez un exemple similaire dans la vie réelle et dites ce à quoi nous devons faire attention.</em></div>
+    </div>
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'ecriture</h4>
+        <p>请以"从赵括之死想到的"为题，谈一谈你对这篇历史故事的看法。尽量用上本课所学的生词，字数不少于100字。</p>
+        <p style="font-style:italic;color:var(--text-light);margin-top:8px;">Redigez un texte sur "Ce que la mort de Zhao Kuo m'inspire". Utilisez le maximum de vocabulaire de la lecon, au moins 100 caracteres.</p>
+    </div>
+</section>
+
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+<footer style="text-align:center;padding:40px 20px;color:var(--text-light);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px;">HSK 5 Standard Course - Lesson 15 - 纸上谈兵</footer>
+
+<script>
+const vocabData=[
+    {id:1,hanzi:"纸上谈兵",pinyin:"zhǐshàng tánbīng",pos:"expr.",meaning:"faire de la stratégie sur papier (armchair strategist)",cat:"other"},
+    {id:2,hanzi:"军事",pinyin:"jūnshì",pos:"n.",meaning:"affaires militaires",cat:"noun"},
+    {id:3,hanzi:"敌(人)",pinyin:"dí(rén)",pos:"n.",meaning:"ennemi",cat:"noun"},
+    {id:4,hanzi:"理论",pinyin:"lǐlùn",pos:"n.",meaning:"théorie",cat:"noun"},
+    {id:5,hanzi:"作战",pinyin:"zuòzhàn",pos:"v.",meaning:"combattre, livrer bataille",cat:"verb"},
+    {id:6,hanzi:"毛病",pinyin:"máobìng",pos:"n.",meaning:"défaut, problème, manque",cat:"noun"},
+    {id:7,hanzi:"道理",pinyin:"dàolǐ",pos:"n.",meaning:"principe, raison, logique",cat:"noun"},
+    {id:8,hanzi:"迟早",pinyin:"chízǎo",pos:"adv.",meaning:"tôt ou tard",cat:"other"},
+    {id:9,hanzi:"军队",pinyin:"jūnduì",pos:"n.",meaning:"armée, troupes",cat:"noun"},
+    {id:10,hanzi:"派",pinyin:"pài",pos:"v.",meaning:"envoyer, déléguer, nommer",cat:"verb"},
+    {id:11,hanzi:"弱",pinyin:"ruò",pos:"adj.",meaning:"faible",cat:"adj"},
+    {id:12,hanzi:"形势",pinyin:"xíngshì",pos:"n.",meaning:"situation, état des choses",cat:"noun"},
+    {id:13,hanzi:"命令",pinyin:"mìnglìng",pos:"v./n.",meaning:"ordonner ; ordre, commandement",cat:"verb"},
+    {id:14,hanzi:"守",pinyin:"shǒu",pos:"v.",meaning:"garder, défendre",cat:"verb"},
+    {id:15,hanzi:"阵地",pinyin:"zhèndì",pos:"n.",meaning:"position militaire, ligne de front",cat:"noun"},
+    {id:16,hanzi:"绝对",pinyin:"juéduì",pos:"adj./adv.",meaning:"absolu ; absolument, formellement",cat:"adj"},
+    {id:17,hanzi:"主动",pinyin:"zhǔdòng",pos:"adj.",meaning:"de sa propre initiative, actif, proactif",cat:"adj"},
+    {id:18,hanzi:"挑战",pinyin:"tiǎozhàn",pos:"v./n.",meaning:"défier ; défi, provocation",cat:"verb"},
+    {id:19,hanzi:"骂",pinyin:"mà",pos:"v.",meaning:"insulter, traiter de, injurier",cat:"verb"},
+    {id:20,hanzi:"胆小鬼",pinyin:"dǎnxiǎoguǐ",pos:"n.",meaning:"lâche, peureux",cat:"noun"},
+    {id:21,hanzi:"胜利",pinyin:"shènglì",pos:"v./n.",meaning:"remporter la victoire ; victoire",cat:"verb"},
+    {id:22,hanzi:"调(动)",pinyin:"diào(dòng)",pos:"v.",meaning:"transférer, muter (un employé/soldat)",cat:"verb"},
+    {id:23,hanzi:"散布",pinyin:"sànbù",pos:"v.",meaning:"répandre, disséminer, propager",cat:"verb"},
+    {id:24,hanzi:"谣言",pinyin:"yáoyán",pos:"n.",meaning:"rumeur, bruit qui court",cat:"noun"},
+    {id:25,hanzi:"上当",pinyin:"shàng dàng",pos:"v.",meaning:"se faire avoir, être trompé, tomber dans le piège",cat:"verb"},
+    {id:26,hanzi:"再三",pinyin:"zàisān",pos:"adv.",meaning:"à plusieurs reprises, encore et encore",cat:"other"},
+    {id:27,hanzi:"阻止",pinyin:"zǔzhǐ",pos:"v.",meaning:"empêcher, arrêter, bloquer",cat:"verb"},
+    {id:28,hanzi:"任命",pinyin:"rènmìng",pos:"v.",meaning:"nommer (à un poste)",cat:"verb"},
+    {id:29,hanzi:"独立",pinyin:"dúlì",pos:"v.",meaning:"agir de façon autonome, être indépendant",cat:"verb"},
+    {id:30,hanzi:"资格",pinyin:"zīgé",pos:"n.",meaning:"qualification, aptitude, accréditation",cat:"noun"},
+    {id:31,hanzi:"糊涂",pinyin:"hútu",pos:"adj.",meaning:"confus, brouillon, dans le brouillard",cat:"adj"},
+    {id:32,hanzi:"公元",pinyin:"gōngyuán",pos:"n.",meaning:"ère chrétienne (公元前 = avant J.-C.)",cat:"noun"},
+    {id:33,hanzi:"盲目",pinyin:"mángmù",pos:"adj.",meaning:"aveugle, sans discernement, irréfléchi",cat:"adj"},
+    {id:34,hanzi:"轻视",pinyin:"qīngshì",pos:"v.",meaning:"mépriser, sous-estimer, regarder de haut",cat:"verb"},
+    {id:35,hanzi:"方案",pinyin:"fāng'àn",pos:"n.",meaning:"plan, projet, stratégie, programme",cat:"noun"},
+    {id:36,hanzi:"进攻",pinyin:"jìngōng",pos:"v.",meaning:"attaquer, assaillir, lancer une offensive",cat:"verb"},
+    {id:37,hanzi:"宝贵",pinyin:"bǎoguì",pos:"adj.",meaning:"précieux, inestimable",cat:"adj"},
+    {id:38,hanzi:"讽刺",pinyin:"fěngcì",pos:"v.",meaning:"satiriser, railler, se moquer de",cat:"verb"},
+    {id:39,hanzi:"灵活",pinyin:"línghuó",pos:"adj.",meaning:"souple, flexible, adaptable",cat:"adj"}
+];
+
+function renderVocab(filter='all'){const g=document.getElementById('vocabGrid');const f=filter==='all'?vocabData:vocabData.filter(v=>v.cat===filter);g.innerHTML=f.map(v=>`<div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')"><span class="vocab-num">#${v.id}</span><div class="hanzi">${v.hanzi}</div><div class="pinyin">${v.pinyin}</div><span class="pos">${v.pos}</span><div class="meaning-placeholder">Cliquez pour voir...</div><div class="meaning-hidden" style="font-size:.9rem;margin-top:6px;">${v.meaning}</div></div>`).join('');}
+function filterVocab(c){document.querySelectorAll('.vocab-controls button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderVocab(c);}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function hideAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('revealed'));}
+
+let fcIndex=0,fcOrder=[...Array(vocabData.length).keys()];
+function updateFlashcard(){const v=vocabData[fcOrder[fcIndex]];document.getElementById('fcHanzi').textContent=v.hanzi;document.getElementById('fcPinyin').textContent=v.pinyin;document.getElementById('fcMeaning').textContent=v.meaning;document.getElementById('fcPos').textContent=v.pos;document.getElementById('fcCurrent').textContent=fcIndex+1;document.getElementById('fcTotal').textContent=fcOrder.length;document.getElementById('flashcard').classList.remove('flipped');}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%fcOrder.length;updateFlashcard();}
+function prevCard(){fcIndex=(fcIndex-1+fcOrder.length)%fcOrder.length;updateFlashcard();}
+function shuffleCards(){for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}fcIndex=0;updateFlashcard();}
+
+const vocabQuizData=[
+    {q:"迟早 signifie :",options:["Bientôt, dans peu de temps","Tôt ou tard (inévitablement)","Rarement","Jamais"],correct:1},
+    {q:"谣言 veut dire :",options:["Vérité","Nouvelle officielle","Rumeur, bruit qui court","Récit historique"],correct:2},
+    {q:"资格 signifie :",options:["Talent inné","Qualification, aptitude","Résultat d'un test","Caractère moral"],correct:1},
+    {q:"再三 veut dire :",options:["Trois fois exactement","À plusieurs reprises, encore et encore","Une seule fois fermement","Deux fois seulement"],correct:1},
+    {q:"形势 signifie :",options:["Forme géométrique","Tactique militaire","Armée ennemie","Situation, état des choses"],correct:3},
+    {q:"糊涂 veut dire :",options:["Intelligent et vif","Confus, brouillon, dans le brouillard","Courageux","Rusé et calculateur"],correct:1},
+    {q:"盲目 signifie :",options:["Aveugle, sans discernement","Observateur attentif","Très prudent","Les yeux bien ouverts"],correct:0},
+    {q:"灵活 veut dire :",options:["Rigide, inflexible","Rapide et efficace","Souple, flexible, adaptable","Puissant"],correct:2},
+    {q:"讽刺 signifie :",options:["Admirer, louer","Consoler quelqu'un","Expliquer clairement","Satiriser, railler"],correct:3},
+    {q:"阻止 veut dire :",options:["Accélérer","Empêcher, arrêter, bloquer","Ignorer","Encourager"],correct:1},
+    {q:"宝贵 signifie :",options:["Rare et difficile à trouver","Très coûteux à acheter","Précieux, inestimable","Utile et pratique"],correct:2},
+    {q:"方案 veut dire :",options:["Direction géographique","Méthode simple","Plan, projet, stratégie","Ordre militaire"],correct:2}
+];
+
+const grammarQuizData=[
+    {q:"'没有人说得过他' — 过 (complément) signifie ici :",options:["L'action est terminée","Surpasser, l'emporter sur (动词+得/不+过)","Traverser un endroit","Aller au-delà d'une limite"],correct:1},
+    {q:"'说不过他' veut précisément dire :",options:["Ne pas pouvoir finir de lui parler","Ne plus jamais lui adresser la parole","Ne pas pouvoir l'emporter sur lui à l'argumentation","Lui parler sans obtenir de résultat"],correct:2},
+    {q:"'如果让他当了大将，迟早会害了赵国' — 迟早 est ici :",options:["Un adjectif qualifiant le danger","Un adverbe signifiant 'tôt ou tard'","Un nom de temps précis","Une conjonction causale"],correct:1},
+    {q:"迟早 exprime une :",options:["Fréquence habituelle","Certitude que l'événement se produira, tôt ou tard","Hésitation entre deux options","Condition hypothétique"],correct:1},
+    {q:"'赵括的母亲再三阻止……' — 再三 signifie :",options:["Une seule fois, avec fermeté","Exactement deux fois","À plusieurs reprises, encore et encore","Rarement, à de rares occasions"],correct:2},
+    {q:"再三 peut s'utiliser :",options:["Seulement avec des verbes de parole","Avec des verbes d'action, parfois sans complément d'objet","Seulement dans des phrases négatives","Seulement en fin de phrase"],correct:1},
+    {q:"胜利 diffère de 成功 car :",options:["胜利 est toujours un verbe","胜利 implique vaincre un adversaire ; 成功 n'a pas ce sens","成功 est plus formel que 胜利","Ils sont totalement synonymes"],correct:1},
+    {q:"'这部电视剧拍得很成功' — 成功 est ici :",options:["Un adverbe de manière","Un nom désignant une récompense","Un adjectif servant de complément de résultat (补语)","Une conjonction"],correct:2}
+];
+
+const compQuizData=[
+    {q:"Pourquoi Zhao Kuo était-il si arrogant ?",options:["Il avait gagné de nombreuses batailles","Personne ne pouvait le surpasser en théorie militaire","Son père lui avait tout appris directement","Il était le prince héritier du royaume"],correct:1},
+    {q:"Quelle était la principale critique de Zhao She contre son fils ?",options:["Il était trop jeune pour commander","Il était paresseux et n'étudiait pas","Il connaissait la théorie mais manquait d'expérience pratique","Il était trop timide pour être général"],correct:2},
+    {q:"Quelle stratégie Lian Po adopta-t-il contre l'armée Qin ?",options:["Attaquer massivement de front","Défendre les positions sans sortir combattre","Se retirer et attendre des renforts","Demander des négociations de paix"],correct:1},
+    {q:"Comment les Qin cherchèrent-ils à affaiblir Zhao ?",options:["En attaquant de nuit par surprise","En répandant des rumeurs disant que Zhao Kuo était redouté","En corrompant des généraux de Zhao","En coupant les routes d'approvisionnement"],correct:1},
+    {q:"Qui s'opposa à la nomination de Zhao Kuo comme grand général ?",options:["Le roi de Zhao lui-même","Lian Po, le vieux général","La mère de Zhao Kuo","Les soldats de l'armée"],correct:2},
+    {q:"Qu'arriva-t-il quand Zhao Kuo changea la stratégie de Lian Po ?",options:["L'armée Zhao remporta la victoire","Des dizaines de milliers de soldats Zhao furent tués","Un cessez-le-feu fut négocié","Les deux armées se retirèrent sans combattre"],correct:1},
+    {q:"Quel est le sens de '纸上谈兵' dans la langue moderne ?",options:["Étudier sérieusement la théorie militaire","Critiquer ceux qui ne font que parler théorie sans la pratiquer","Lire de nombreux livres de stratégie","Préparer soigneusement un plan avant d'agir"],correct:1},
+    {q:"En quelle année la bataille décisive eut-elle lieu ?",options:["公元前360年","公元前260年","公元前160年","公元前460年"],correct:1},
+    {q:"Pourquoi les Qin voulaient-ils absolument que Lian Po soit remplacé ?",options:["Il était trop vieux pour commander","Il était corruptible","Il était très habile et impossible à vaincre rapidement","Il était malade et affaibli"],correct:2},
+    {q:"Quelle leçon principale le texte tire-t-il de cette histoire ?",options:["La théorie militaire est inutile en pratique","Il faut agir avec flexibilité et connecter théorie et pratique","Les livres de stratégie ne servent à rien","Les rumeurs sont l'arme la plus puissante"],correct:1}
+];
+
+function renderQuiz(data,cid,prefix){document.getElementById(cid).innerHTML=data.map((q,i)=>`<div class="quiz-question" id="${prefix}-q${i}"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options">${q.options.map((o,j)=>`<div class="quiz-option" onclick="answerQuiz('${prefix}',${i},${j})">${o}</div>`).join('')}</div></div>`).join('');}
+const quizState={vocab:{score:0,answered:0,total:12},grammar:{score:0,answered:0,total:8},comp:{score:0,answered:0,total:10}};
+function getQuizData(p){return p==='vocab'?vocabQuizData:p==='grammar'?grammarQuizData:compQuizData;}
+function answerQuiz(p,qi,oi){const d=getQuizData(p),qE=document.getElementById(`${p}-q${qi}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const opts=qE.querySelectorAll('.quiz-option'),c=d[qi].correct;opts.forEach((o,i)=>{o.classList.add('disabled');if(i===c)o.classList.add('selected-correct');if(i===oi&&i!==c)o.classList.add('selected-wrong');});qE.classList.add(oi===c?'correct':'wrong');if(oi===c)quizState[p].score++;quizState[p].answered++;updateScore(p);}
+function updateScore(p){const s=quizState[p];document.getElementById(`${p}Score`).textContent=`${s.score} / ${s.total}`;document.getElementById(`${p}ScoreBar`).style.width=`${(s.score/s.total)*100}%`;}
+function resetQuiz(p){quizState[p]={score:0,answered:0,total:quizState[p].total};updateScore(p);renderQuiz(getQuizData(p),p==='vocab'?'vocabQuizContainer':p==='grammar'?'grammarQuizContainer':'compQuizContainer',p);}
+function switchQuizTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById(t).classList.add('active');}
+
+let selectedFillWord=null;
+function selectFillWord(el){document.querySelectorAll('.fill-chip').forEach(c=>c.classList.remove('placed'));el.classList.add('placed');selectedFillWord=el.dataset.word;}
+function placeFillWord(b){if(!selectedFillWord)return;b.textContent=selectedFillWord;b.dataset.placed=selectedFillWord;document.querySelectorAll('.fill-chip').forEach(c=>{if(c.dataset.word===selectedFillWord)c.classList.add('used');c.classList.remove('placed');});selectedFillWord=null;}
+function checkFillAnswers(){document.querySelectorAll('.fill-blank').forEach(b=>{const p=b.dataset.placed,a=b.dataset.answer;if(p===a){b.style.borderColor='var(--success)';b.style.background='#dcfce7';b.style.color='var(--success)';b.style.fontWeight='600';}else{b.style.borderColor='var(--wrong)';b.style.background='#fecaca';b.style.color='var(--wrong)';b.title=`Reponse : ${a}`;}});}
+function resetFill(){document.querySelectorAll('.fill-blank').forEach(b=>{b.textContent='___';b.dataset.placed='';b.style.borderColor='';b.style.background='';b.style.color='';b.style.fontWeight='';b.title='';});document.querySelectorAll('.fill-chip').forEach(c=>{c.classList.remove('used','placed');});selectedFillWord=null;}
+
+const choiceQuizData=[
+    {q:"这项实验如果研究____，将给成千上万的病人带来希望。",a:"胜利",b:"成功",correct:"成功",explain:"成功 = réussir (à accomplir une tâche). La réussite d'une expérience scientifique → 成功, pas 胜利 (qui implique vaincre un adversaire)."},
+    {q:"得民心者才会赢得这场战争的____。",a:"胜利",b:"成功",correct:"胜利",explain:"胜利 = victoire dans un conflit/compétition. On '赢得胜利' dans une guerre. 成功 n'implique pas vaincre un adversaire."},
+    {q:"经过一年多的努力，我们____地完成了调查工作。",a:"成功",b:"胜利",correct:"成功",explain:"成功地 = avec succès (adverbe). 成功 s'utilise dans des contextes non-compétitifs (travail, projet). 胜利地 aussi possible en principe mais 成功地 est nettement plus naturel ici."},
+    {q:"谁坚持到最后，谁就是这场比赛的____者。",a:"胜利",b:"成功",correct:"胜利",explain:"胜利者 = vainqueur (dans une compétition). 成功者 = quelqu'un qui a réussi dans la vie/carrière, pas nécessairement dans une compétition avec adversaire direct."},
+    {q:"北京____举办了2008年夏季奥运会。",a:"成功",b:"胜利",correct:"成功",explain:"北京成功举办 = Pékin a réussi à organiser. L'organisation d'un grand événement utilise 成功, pas 胜利."},
+    {q:"座谈会开得很____，大家交换了意见，增进了理解。",a:"胜利",b:"成功",correct:"成功",explain:"成功 peut être adjectif complément de résultat (补语) : 开得很成功. 胜利 ne peut pas être 补语. La réunion ne '战胜' personne — elle a simplement bien marché."},
+    {q:"这部电视剧拍得很____，在全国播出后，受到观众的喜爱。",a:"胜利",b:"成功",correct:"成功",explain:"成功 est adjectif ici (complément de résultat) = la production est réussie, satisfaisante. 胜利 n'a pas ce sens adjectival."},
+    {q:"经过艰苦的努力，实验终于____了。",a:"胜利",b:"成功",correct:"成功",explain:"成功 peut être prédicat : 实验成功了 = l'expérience a réussi. 胜利 ici serait bizarre car une expérience ne 'vainc' personne."}
+];
+function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').innerHTML=choiceQuizData.map((q,i)=>`<div class="quiz-question" id="choice-q${i}" style="margin-bottom:12px;"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options" style="grid-template-columns:1fr 1fr;"><div class="quiz-option" onclick="answerChoice(${i},'${q.a}')">${q.a}</div><div class="quiz-option" onclick="answerChoice(${i},'${q.b}')">${q.b}</div></div><div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div></div>`).join('');}
+function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
+
+window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
+document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+</script>
+</body>
+</html>
