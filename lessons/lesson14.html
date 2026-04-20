@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第14课 北京的四合院</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+        :root{--primary:#78350f;--primary-light:#92400e;--accent:#b45309;--gold:#d97706;--gold-light:#fef3c7;--bg:#fafbfc;--card:#fff;--text:#2c3e50;--text-light:#7f8c8d;--border:#e8ecf1;--success:#27ae60;--wrong:#e74c3c;--gradient-water:linear-gradient(135deg,#78350f 0%,#b45309 100%);--gradient-hero:linear-gradient(135deg,#1c1917 0%,#78350f 30%,#92400e 65%,#b45309 100%);}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;scroll-behavior:smooth;}
+        .hero{background:var(--gradient-hero);color:#fff;padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;background-size:cover;opacity:.3;}
+        .hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+        .hero .lesson-badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:6px 20px;border-radius:30px;font-size:.9rem;letter-spacing:2px;margin-bottom:20px;}
+        .hero h1{font-family:'Noto Serif SC',serif;font-size:3.2rem;font-weight:900;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+        .hero .subtitle{font-size:1.3rem;opacity:.9;font-weight:300;margin-bottom:30px;}
+        .hero .deco{font-size:2rem;letter-spacing:8px;opacity:.6;}
+        .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+        .nav-inner::-webkit-scrollbar{display:none;}
+        .nav-inner a{padding:14px 18px;text-decoration:none;color:var(--text-light);font-size:.9rem;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+        .nav-inner a:hover,.nav-inner a.active{color:var(--primary);border-bottom-color:var(--primary-light);}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+        section{padding:50px 0;}
+        .section-header{text-align:center;margin-bottom:40px;}
+        .section-header h2{font-family:'Noto Serif SC',serif;font-size:2rem;color:var(--primary);margin-bottom:6px;}
+        .section-header .section-sub{color:var(--text-light);font-size:.95rem;}
+        .section-divider{width:60px;height:3px;background:var(--gradient-water);margin:12px auto 0;border-radius:2px;}
+        .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);margin-bottom:24px;}
+        .card h3{font-size:1.2rem;color:var(--primary);margin-bottom:16px;}
+        .text-block{background:var(--card);border-radius:16px;padding:35px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);font-family:'Noto Serif SC',serif;font-size:1.1rem;line-height:2.2;}
+        .text-block p{text-indent:2em;margin-bottom:16px;}
+        .vocab-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
+        .vocab-controls button{padding:8px 20px;border:2px solid var(--border);background:#fff;border-radius:25px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s;color:var(--text);}
+        .vocab-controls button.active,.vocab-controls button:hover{border-color:var(--primary-light);background:var(--primary-light);color:#fff;}
+        .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .vocab-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .3s;position:relative;}
+        .vocab-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.08);border-color:var(--primary-light);}
+        .vocab-card .vocab-num{position:absolute;top:8px;right:12px;font-size:.75rem;color:var(--text-light);opacity:.5;}
+        .vocab-card .hanzi{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;color:var(--primary);}
+        .vocab-card .pinyin{color:var(--accent);font-size:.9rem;margin:4px 0;}
+        .vocab-card .pos{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;}
+        .vocab-card .meaning-hidden{display:none;}
+        .vocab-card.revealed .meaning-hidden{display:block;}
+        .vocab-card.revealed .meaning-placeholder{display:none;}
+        .meaning-placeholder{color:var(--text-light);font-size:.85rem;font-style:italic;margin-top:6px;}
+        .siheyuan-diagram{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #f59e0b;border-radius:16px;padding:24px;margin:20px 0;font-family:'Noto Serif SC',serif;}
+        .siheyuan-diagram h4{color:var(--primary);font-size:1.1rem;margin-bottom:16px;text-align:center;}
+        .diagram-grid{display:grid;grid-template-columns:1fr 2fr 1fr;grid-template-rows:auto auto auto;gap:8px;max-width:500px;margin:0 auto;text-align:center;}
+        .diagram-cell{padding:10px 6px;border-radius:8px;font-size:.85rem;font-weight:600;}
+        .cell-north{background:#92400e;color:#fff;grid-column:2;}
+        .cell-west{background:#b45309;color:#fff;}
+        .cell-court{background:rgba(255,255,255,.6);border:2px dashed #d97706;color:#78350f;display:flex;align-items:center;justify-content:center;min-height:80px;font-size:.8rem;}
+        .cell-east{background:#b45309;color:#fff;}
+        .cell-south{background:#d97706;color:#fff;grid-column:2;}
+        .pn-card{background:linear-gradient(135deg,#fef3c7,#fde68a);border:1px solid #f59e0b;border-radius:12px;padding:14px 18px;display:inline-block;margin-top:12px;}
+        .pn-card .pn-cn{font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:700;color:var(--primary);}
+        .pn-card .pn-py{color:var(--accent);font-size:.85rem;margin:2px 0;}
+        .pn-card .pn-en{font-size:.85rem;color:var(--text-light);}
+        .flashcard-area{display:flex;flex-direction:column;align-items:center;gap:20px;padding:20px 0;}
+        .flashcard-container{perspective:1000px;width:380px;height:260px;max-width:100%;}
+        .flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);cursor:pointer;}
+        .flashcard.flipped{transform:rotateY(180deg);}
+        .flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;}
+        .flashcard-front{background:linear-gradient(135deg,#1c1917,#b45309);color:#fff;box-shadow:0 10px 40px rgba(180,83,9,.3);}
+        .flashcard-front .fc-hanzi{font-family:'Noto Serif SC',serif;font-size:3rem;font-weight:900;margin-bottom:10px;}
+        .flashcard-front .fc-pinyin{font-size:1.1rem;opacity:.8;}
+        .flashcard-front .fc-hint{font-size:.8rem;opacity:.5;margin-top:20px;}
+        .flashcard-back{background:#fff;border:2px solid var(--primary-light);transform:rotateY(180deg);box-shadow:0 10px 40px rgba(0,0,0,.1);}
+        .flashcard-back .fc-meaning{font-size:1.3rem;color:var(--primary);font-weight:600;}
+        .flashcard-back .fc-pos{background:var(--gold-light);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-top:10px;}
+        .fc-controls{display:flex;gap:12px;}
+        .fc-controls button{padding:10px 28px;border-radius:25px;border:none;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;}
+        .fc-btn-prev,.fc-btn-next{background:var(--primary-light);color:#fff;}
+        .fc-btn-prev:hover,.fc-btn-next:hover{background:var(--primary);}
+        .fc-btn-shuffle{background:#fff;border:2px solid var(--border)!important;color:var(--text);}
+        .fc-counter{color:var(--text-light);font-size:.9rem;}
+        .grammar-card{background:var(--card);border-radius:16px;border:1px solid var(--border);margin-bottom:20px;overflow:hidden;}
+        .grammar-header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;}
+        .grammar-header .grammar-num{background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+        .grammar-header .grammar-title{font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;}
+        .grammar-header .grammar-pinyin{font-size:.9rem;opacity:.8;}
+        .grammar-body{padding:24px;}
+        .grammar-rule{background:#fef3c7;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:20px;font-size:.95rem;color:var(--primary);}
+        .grammar-example{padding:12px 0;border-bottom:1px solid var(--border);}
+        .grammar-example:last-child{border-bottom:none;}
+        .grammar-example .ex-cn{font-size:1.05rem;margin-bottom:4px;}
+        .grammar-example .ex-note{color:var(--text-light);font-size:.85rem;}
+        .grammar-example .ex-highlight{color:var(--accent);font-weight:600;}
+        .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+        .comparison-table th{background:var(--primary);color:#fff;padding:14px 18px;font-weight:600;text-align:center;}
+        .comparison-table td{padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top;font-size:.95rem;}
+        .comparison-table tr:last-child td{border-bottom:none;}
+        .comparison-table tr:nth-child(even){background:#f8fafc;}
+        .comparison-table .label-cell{background:#fef3c7;font-weight:600;color:var(--primary);text-align:center;width:60px;}
+        .colloc-section{margin-bottom:24px;}
+        .colloc-label{display:inline-block;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:12px;}
+        .colloc-label.verb{background:#e74c3c;}.colloc-label.attr{background:#f39c12;}.colloc-label.adv{background:#27ae60;}.colloc-label.comp{background:#8e44ad;}.colloc-label.subj{background:#16a085;}
+        .colloc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+        .colloc-row:last-child{border-bottom:none;}
+        .colloc-word{font-weight:600;color:var(--primary);min-width:100px;font-size:1.1rem;}
+        .colloc-plus{color:var(--text-light);font-weight:700;}
+        .colloc-partners{display:flex;flex-wrap:wrap;gap:6px;}
+        .colloc-tag{background:#f0f4f8;padding:4px 12px;border-radius:15px;font-size:.85rem;}
+        .tab-bar{display:flex;gap:4px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:20px;}
+        .tab-btn{flex:1;padding:10px;border:none;background:transparent;border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--text-light);transition:all .2s;}
+        .tab-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+        .tab-content{display:none;}.tab-content.active{display:block;}
+        .quiz-score-bar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+        .score-display{font-size:1.5rem;font-weight:700;color:var(--primary);}
+        .score-bar-visual{flex:1;margin:0 20px;height:10px;background:var(--border);border-radius:5px;overflow:hidden;}
+        .score-bar-fill{height:100%;background:var(--gradient-water);border-radius:5px;transition:width .5s ease;width:0%;}
+        .quiz-reset-btn{padding:8px 20px;background:var(--primary-light);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;}
+        .quiz-question{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;transition:all .3s;}
+        .quiz-question.correct{border-color:var(--success);background:#f0fdf4;}
+        .quiz-question.wrong{border-color:var(--wrong);background:#fef2f2;}
+        .quiz-q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--primary-light);color:#fff;border-radius:50%;font-size:.8rem;font-weight:700;margin-right:10px;}
+        .quiz-q-text{font-size:1.05rem;margin-bottom:14px;}
+        .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .quiz-option{padding:12px 16px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.95rem;text-align:center;background:#fff;}
+        .quiz-option:hover{border-color:var(--primary-light);background:#fef3c7;}
+        .quiz-option.selected-correct{border-color:var(--success);background:#dcfce7;color:var(--success);font-weight:600;}
+        .quiz-option.selected-wrong{border-color:var(--wrong);background:#fecaca;color:var(--wrong);font-weight:600;}
+        .quiz-option.disabled{pointer-events:none;opacity:.7;}
+        .quiz-explanation{display:none;margin-top:12px;padding:12px 16px;background:#fffbeb;border-radius:10px;font-size:.9rem;color:#92400e;border:1px solid #fde68a;}
+        .fill-blank{display:inline-block;min-width:80px;border-bottom:2px dashed var(--primary-light);padding:2px 8px;margin:0 4px;text-align:center;cursor:pointer;transition:all .2s;}
+        .fill-blank:hover{background:#fef3c7;}
+        .fill-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center;}
+        .fill-chip{padding:8px 18px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s;}
+        .fill-chip:hover{border-color:var(--primary-light);background:#fef3c7;}
+        .fill-chip.used{opacity:.4;pointer-events:none;}
+        .fill-chip.placed{background:var(--primary-light);color:#fff;border-color:var(--primary-light);}
+        .app-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border:1px solid #f59e0b;border-radius:16px;padding:30px;margin-bottom:20px;}
+        .app-box h4{color:var(--primary);font-size:1.1rem;margin-bottom:12px;}
+        .discussion-q{padding:10px 0;border-bottom:1px solid rgba(245,158,11,.4);font-size:.95rem;}
+        .discussion-q:last-child{border-bottom:none;}
+        .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
+        @media(max-width:768px){.hero h1{font-size:2rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}}
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
+        <h1>北京的四合院</h1>
+        <p class="subtitle">Quadrangle Courtyards in Beijing - Lesson 14</p>
+        <div class="deco">🏯 🌿 🐟 🏮</div>
+    </div>
+</header>
+
+<nav class="sticky-nav"><div class="nav-inner">
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#structure">结构 Structure</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+</div></nav>
+
+<main class="container">
+
+<section id="text">
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">北京的四合院 (617 caracteres)</p><div class="section-divider"></div></div>
+    <div class="text-block">
+        <p>四合院，是中国华北地区民居中的一种组合建筑形式。所谓四合，"四"指东、西、南、北四面，"合"就是四面房屋围在一起，中间形成一个方形的院子。四合院在中国汉族民居中历史最悠久，分布最广泛。不过，只要人们一提到四合院，便自然会想到北京四合院，这是因为传统的北京四合院都有一套固定的样式，十分具有代表性，在各种各样的四合院中，北京四合院可以代表其主要特点。</p>
+        <p>北京有各种规模的四合院。最简单的四合院只有一个院子，比较复杂的有两三个，而有钱人家的，通常是由好几座四合院并列组成的。大门一般开在东南角或西北角，院中的北房是正房，比其他房屋的规模大，一般包括长辈的卧室和具备日常起居、接待客人等功能的客厅。院子的两边是东西厢房，是晚辈们生活的地方。在正房和厢房之间建有走廊，可以供人行走和休息。院子是十分理想的室外生活空间。有的人家喜欢种草、养花、种竹子，有的人家则喜欢用大盆养金鱼。院子不仅拉近了人与自然的关系，也让家里人在此得到了感情的交流，对创造生活情趣起了很大作用，因而最为人们所喜爱。</p>
+        <p>只要关闭起大门，四合院内便形成一个封闭式的小环境。住在四合院里的人不常与周围的邻居打交道。在小院里，一家人过着与世无争的日子，充分享受家庭的乐趣，自然有一种令人感到自在亲切的气氛。但也有多户合住一座四合院的情况，被称为"大杂院"，住户多为普通劳动人民。邻里之间有时虽然也有矛盾，但更多时候是互帮互助，不是亲人胜过亲人，这种浓浓的情感是许多老北京人无法忘记的。</p>
+        <p style="text-align:right;font-style:italic;color:var(--text-light);">— 改编自百度文库《建筑欣赏之四合院》</p>
+    </div>
+</section>
+
+<section id="vocab">
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">41 mots - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (41)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout reveler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+</section>
+
+<section id="structure">
+    <div class="section-header"><h2>四合院结构 - Structure du siheyuan</h2><p class="section-sub">Organisation spatiale et nom propre</p><div class="section-divider"></div></div>
+    <div class="siheyuan-diagram">
+        <h4>四合院 — Disposition typique</h4>
+        <div class="diagram-grid">
+            <div></div>
+            <div class="diagram-cell cell-north">北房（正房）<br><small>Maison nord — chambre des aînés + salon</small></div>
+            <div></div>
+            <div class="diagram-cell cell-west">西厢房<br><small>Aile ouest — cadets</small></div>
+            <div class="diagram-cell cell-court">院子<br>🌿 🐟 🎋<br><small>Espace de vie extérieur</small></div>
+            <div class="diagram-cell cell-east">东厢房<br><small>Aile est — cadets</small></div>
+            <div></div>
+            <div class="diagram-cell cell-south">南房 / 大门（东南角或西北角）<br><small>Maison sud / Entrée au coin SE ou NW</small></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="card" style="margin-top:8px;">
+        <h3>专有名词</h3>
+        <div class="pn-card"><div class="pn-cn">华北</div><div class="pn-py">Huáběi</div><div class="pn-en">Nord de la Chine (Pékin, Tianjin, Hebei, Shanxi, Mongolie intérieure)</div></div>
+    </div>
+</section>
+
+<section id="flashcards">
+    <div class="section-header"><h2>卡片 - Flashcards</h2><p class="section-sub">Cliquez pour retourner la carte</p><div class="section-divider"></div></div>
+    <div class="flashcard-area">
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">41</span></div>
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front"><div class="fc-hanzi" id="fcHanzi">四合院</div><div class="fc-pinyin" id="fcPinyin">sìhéyuàn</div><div class="fc-hint">cliquez pour voir la traduction</div></div>
+                <div class="flashcard-back"><div class="fc-meaning" id="fcMeaning">cour carrée traditionnelle, siheyuan</div><div class="fc-pos" id="fcPos">n.</div></div>
+            </div>
+        </div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+        </div>
+    </div>
+</section>
+
+<section id="grammar">
+    <div class="section-header"><h2>语法 - Grammaire</h2><p class="section-sub">4 points de grammaire essentiels</p><div class="section-divider"></div></div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">1</div><div><div class="grammar-title">所谓</div><div class="grammar-pinyin">suǒwèi</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Adjectif / présentatif</strong>. <strong>Emploi 1 :</strong> "ce qu'on appelle, le prétendu" — introduit un terme qui va être expliqué ou défini. <strong>Emploi 2 :</strong> désigne ce que certaines personnes disent — souvent avec désaccord ou ironie (les soi-disant…).</div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">所谓</span>四合，"四"指东、西、南、北四面，"合"就是四面房屋围在一起……</div><div class="ex-note">(1) Ce qu'on appelle sìhé : "四" désigne les quatre côtés est, ouest, sud et nord ; "合" signifie que les maisons des quatre côtés sont réunies ensemble…</div></div>
+            <div class="grammar-example"><div class="ex-cn">很多时候，烦恼是自己找来的，这就是<span class="ex-highlight">所谓</span>的"自寻烦恼"。</div><div class="ex-note">(1) Souvent, les ennuis sont de notre propre fait — c'est ce qu'on appelle "se chercher des ennuis soi-même".</div></div>
+            <div class="grammar-example"><div class="ex-cn">他<span class="ex-highlight">所谓</span>的"新闻"，其实我们早就知道了！</div><div class="ex-note">(2) Sa soi-disante "nouvelle", on la connaissait depuis longtemps !</div></div>
+            <div class="grammar-example"><div class="ex-cn">现在市场上<span class="ex-highlight">所谓</span>的"健康食品"其实没有统一的标准。</div><div class="ex-note">(2) Les soi-disant "aliments santé" sur le marché actuel n'ont en réalité aucun standard unifié.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">2</div><div><div class="grammar-title">则</div><div class="grammar-pinyin">zé</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>3 emplois :</strong> (a) <strong>classificateur</strong> pour des textes courts (nouvelles, dictons, 一则消息) ; (b) <strong>conjonction de contraste</strong> "A…, (而) B 则…" = "quant à B, lui (en revanche)…" ; (c) <strong>conjonction de causalité</strong> (littéraire) = "dans ce cas, alors" (≈ 就 oral).</div>
+            <div class="grammar-example"><div class="ex-cn">在第七课，我们学习了两<span class="ex-highlight">则</span>成语故事。</div><div class="ex-note">(a) Dans la leçon 7, nous avons étudié deux histoires de chéngyǔ (classifier = 则).</div></div>
+            <div class="grammar-example"><div class="ex-cn">有的人家喜欢种草、养花、种竹子，有的人家<span class="ex-highlight">则</span>喜欢用大盆养金鱼。</div><div class="ex-note">(b) Certaines familles aiment planter des herbes, des fleurs, du bambou ; d'autres, elles, préfèrent élever des poissons rouges dans de grandes vasques.</div></div>
+            <div class="grammar-example"><div class="ex-cn">猫享受独处的快乐，而狗<span class="ex-highlight">则</span>是希望和别人分享快乐。</div><div class="ex-note">(b) Les chats savourent la solitude ; les chiens, eux, cherchent à partager leur bonheur avec les autres.</div></div>
+            <div class="grammar-example"><div class="ex-cn">北京的冬天，有风<span class="ex-highlight">则</span>寒，无风<span class="ex-highlight">则</span>暖。</div><div class="ex-note">(c) L'hiver à Pékin, s'il y a du vent c'est froid ; sans vent c'est chaud.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">3</div><div><div class="grammar-title">为……所……</div><div class="grammar-pinyin">wéi...suǒ...</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Structure passive littéraire</strong>. "为 + agent + 所 + verbe" = "être V-é par (agent)". 为 signifie "par" (= 被). Structure figée, registre soutenu/écrit. Souvent avec négation "无不为……所" = "tout le monde est V-é par".</div>
+            <div class="grammar-example"><div class="ex-cn">院子不仅……对创造生活情趣起了很大作用，因而最<span class="ex-highlight">为</span>人们<span class="ex-highlight">所</span>喜爱。</div><div class="ex-note">La cour est appréciée par tous — elle est la plus aimée des gens.</div></div>
+            <div class="grammar-example"><div class="ex-cn">认识他的人，没有人不<span class="ex-highlight">为</span>他认真的工作态度<span class="ex-highlight">所</span>感动。</div><div class="ex-note">Tous ceux qui le connaissent sont touchés par son sérieux au travail — pas un seul ne fait exception.</div></div>
+            <div class="grammar-example"><div class="ex-cn">有了科学，大自然就可以更好地<span class="ex-highlight">为</span>人<span class="ex-highlight">所</span>用。</div><div class="ex-note">Grâce à la science, la nature peut être mieux mise au service de l'homme.</div></div>
+            <div class="grammar-example"><div class="ex-cn">你知道梅西这个人吗？他早就<span class="ex-highlight">为</span>中国球迷<span class="ex-highlight">所</span>知晓了。</div><div class="ex-note">Connaissez-vous Messi ? Il est depuis longtemps connu des fans de foot chinois.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">4</div><div><div class="grammar-title">起</div><div class="grammar-pinyin">qǐ</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Verbe complément</strong>. "动词 + 起" exprime la connexion, l'assemblage, la fixation ou la mise en œuvre effective d'une action. Renforce l'idée que l'action crée quelque chose de stable ou constitué.</div>
+            <div class="grammar-example"><div class="ex-cn">只要关闭<span class="ex-highlight">起</span>大门，四合院内便形成一个封闭式的小环境。</div><div class="ex-note">Il suffit de fermer complètement la grande porte pour que la cour forme un microcosme fermé.</div></div>
+            <div class="grammar-example"><div class="ex-cn">拉<span class="ex-highlight">起</span>手，我们就是好朋友。</div><div class="ex-note">En nous tenant la main, nous devenons de bons amis.</div></div>
+            <div class="grammar-example"><div class="ex-cn">对公司来说，最重要的是建立<span class="ex-highlight">起</span>一套行之有效的制度。</div><div class="ex-note">Pour une entreprise, le plus important est de mettre en place un système réellement efficace.</div></div>
+            <div class="grammar-example"><div class="ex-cn">这本书是由三个部分组合<span class="ex-highlight">起</span>来的。</div><div class="ex-note">Ce livre est constitué de trois parties assembblées.</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="analysis">
+    <div class="section-header"><h2>词语辨析 - Analyse comparative</h2><p class="section-sub">通常 vs 常常</p><div class="section-divider"></div></div>
+    <div class="card">
+        <table class="comparison-table">
+            <thead><tr><th></th><th>通常 (tōngcháng)</th><th>常常 (chángcháng)</th></tr></thead>
+            <tbody>
+                <tr><td class="label-cell">Points communs</td><td colspan="2" style="text-align:center;">Les deux expriment une action qui se produit souvent de façon identique. Dans certaines phrases, ils sont interchangeables.<br><em>如：我通常/常常在学校外面那个超市买东西。</em></td></tr>
+                <tr><td class="label-cell" rowspan="2">Differences</td>
+                    <td>1. Insiste sur la <strong>régularité de l'action</strong> (schéma habituel).<br><em>如：有钱人家的，<u>通常</u>是由好几座四合院并列组成的。</em></td>
+                    <td>1. Insiste sur le <strong>nombre de répétitions</strong> (occurrence fréquente).<br><em>如：他成绩很好，<u>常常</u>受到表扬。</em></td></tr>
+                <tr>
+                    <td>2. <strong>Adjectif</strong> — peut être épithète (定语).<br><em>如：我们<u>通常</u>的做法都是这样的。</em></td>
+                    <td>2. <strong>Adverbe</strong> uniquement — ne peut pas modifier une petite proposition ou être épithète.<br><em>如：他<u>常常</u>去上海出差，对上海很熟悉。</em></td></tr>
+            </tbody>
+        </table>
+        <div style="margin-top:20px;padding:14px 18px;background:#fffbeb;border-radius:10px;font-size:.9rem;color:#92400e;border:1px solid #fde68a;">
+            <strong>Astuce :</strong> 通常 = "normalement, habituellement" (régularité d'un schéma, peut être adj.). 常常 = "souvent, fréquemment" (nombre de fois, toujours adverbe). Test : si on peut remplacer par "normalement" → 通常 ; si par "souvent" → 常常.
+        </div>
+    </div>
+</section>
+
+<section id="collocation">
+    <div class="section-header"><h2>词语搭配 - Collocations</h2><p class="section-sub">Combinaisons essentielles</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="colloc-section"><div class="colloc-label verb">动词 + 宾语</div>
+            <div class="colloc-row"><span class="colloc-word">有/具备</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">……（的）功能</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">创造</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">文字</span><span class="colloc-tag">历史</span><span class="colloc-tag">机会</span><span class="colloc-tag">奇迹</span><span class="colloc-tag">美好生活</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">产生/有/闹</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">矛盾</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label attr">定语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">日常</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">生活</span><span class="colloc-tag">工作</span><span class="colloc-tag">用品</span><span class="colloc-tag">用语</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">重要的/幸福的/困难的/与世无争的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">日子</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label adv">状语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">广泛（地）</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">调查</span><span class="colloc-tag">研究</span><span class="colloc-tag">应用</span><span class="colloc-tag">流行</span><span class="colloc-tag">分布</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label comp">中心语 + 补语</div>
+            <div class="colloc-row"><span class="colloc-word">组合</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">起来</span><span class="colloc-tag">到一起</span><span class="colloc-tag">成……</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">矛盾</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">极了</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label subj">主语 + 谓语</div>
+            <div class="colloc-row"><span class="colloc-word">兴趣/爱好/知识/内容</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">广泛</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">准备/理由</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">充分</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="quiz-section">
+    <div class="section-header"><h2>测验 - Quiz</h2><p class="section-sub">Testez vos connaissances</p><div class="section-divider"></div></div>
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+    </div>
+    <div class="tab-content active" id="vocab-quiz"><div class="quiz-score-bar"><div class="score-display" id="vocabScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button></div><div id="vocabQuizContainer"></div></div>
+    <div class="tab-content" id="grammar-quiz"><div class="quiz-score-bar"><div class="score-display" id="grammarScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button></div><div id="grammarQuizContainer"></div></div>
+    <div class="tab-content" id="comprehension-quiz"><div class="quiz-score-bar"><div class="score-display" id="compScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button></div><div id="compQuizContainer"></div></div>
+</section>
+
+<section id="fill-quiz">
+    <div class="section-header"><h2>填空练习 - Exercices a trous</h2><p class="section-sub">Choisissez le mot correct</p><div class="section-divider"></div></div>
+    <div class="card" id="fillExercise">
+        <h3>Choisissez parmi : 浓、广泛、具备、矛盾、日常、组合</h3>
+        <div class="fill-options" id="fillOptions">
+            <span class="fill-chip" data-word="浓" onclick="selectFillWord(this)">浓</span>
+            <span class="fill-chip" data-word="广泛" onclick="selectFillWord(this)">广泛</span>
+            <span class="fill-chip" data-word="具备" onclick="selectFillWord(this)">具备</span>
+            <span class="fill-chip" data-word="矛盾" onclick="selectFillWord(this)">矛盾</span>
+            <span class="fill-chip" data-word="日常" onclick="selectFillWord(this)">日常</span>
+            <span class="fill-chip" data-word="组合" onclick="selectFillWord(this)">组合</span>
+        </div>
+        <div style="margin-top:24px;">
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">1</span>现在的手机都<span class="fill-blank" data-answer="具备" onclick="placeFillWord(this)">___</span>很多功能，不再只是个打电话的工具。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">2</span>刚开始学中文的时候，我学的主要是一些<span class="fill-blank" data-answer="日常" onclick="placeFillWord(this)">___</span>用语。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">3</span>今天雾很<span class="fill-blank" data-answer="浓" onclick="placeFillWord(this)">___</span>，对面的建筑都看不清了。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">4</span>这个问题需要进行<span class="fill-blank" data-answer="广泛" onclick="placeFillWord(this)">___</span>调查，然后才能做出决定。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">5</span>这本书是由三个部分<span class="fill-blank" data-answer="组合" onclick="placeFillWord(this)">___</span>起来的。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">6</span>老人家里有两个儿子，他们俩常常闹<span class="fill-blank" data-answer="矛盾" onclick="placeFillWord(this)">___</span>。</div>
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+            <button onclick="checkFillAnswers()" style="padding:10px 30px;background:var(--primary-light);color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:.95rem;font-weight:600;">Verifier</button>
+            <button onclick="resetFill()" style="padding:10px 30px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.95rem;margin-left:10px;">Recommencer</button>
+        </div>
+    </div>
+    <div class="card"><h3>Choisissez la bonne reponse</h3><div id="choiceQuizContainer"></div></div>
+</section>
+
+<section id="application">
+    <div class="section-header"><h2>运用 - Application</h2><p class="section-sub">Contexte et discussion</p><div class="section-divider"></div></div>
+    <div class="app-box">
+        <h4>背景分析 - Contexte : architecture et voyage</h4>
+        <p style="line-height:2;">有人曾说："生活中不是缺少美，而是缺少发现美的眼睛。"美在生活中随处可见，建筑之美就是其中一个重要的组成部分。在世界各地旅行，我们可以欣赏到不同的建筑，从中也可以了解到各地不同的历史、文化、风俗等，具有传统特色的建筑是一个国家、一个城市的记忆，四合院就是中国建筑的一个代表作。许多外国或外地游客来到北京旅游时，都会专门去看看北京的胡同和四合院。</p>
+    </div>
+    <div class="app-box">
+        <h4>话题讨论 - Discussion : 建筑与旅游</h4>
+        <div class="discussion-q">1. 你最喜欢（或印象最深）的建筑是什么？你是怎么知道它的？<br><em>Quel est le bâtiment qui vous a le plus impressionné ? Comment l'avez-vous découvert ?</em></div>
+        <div class="discussion-q">2. 介绍一下你了解到的情况。<br><em>Décrivez ce que vous savez sur ce bâtiment ou ce lieu.</em></div>
+        <div class="discussion-q">3. 介绍一下你通过旅行这种方式来了解各地建筑的感受及收获。<br><em>Parlez de vos découvertes architecturales lors de voyages — ce que vous avez ressenti et appris.</em></div>
+    </div>
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'écriture</h4>
+        <p>请以 "<strong>我眼中最美的中国建筑</strong>" 为题，介绍一下你了解到的或在中国旅行时亲眼所见的印象最深的一处建筑。尽量用上本课所学的生词，字数不少于100字。</p>
+        <p style="font-style:italic;color:var(--text-light);margin-top:8px;">Redigez un texte sur "Le plus beau monument chinois à mes yeux". Presentez un lieu que vous connaissez ou que vous avez vu lors d'un voyage en Chine. Utilisez le maximum de vocabulaire de la lecon, au moins 100 caracteres.</p>
+    </div>
+</section>
+
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+<footer style="text-align:center;padding:40px 20px;color:var(--text-light);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px;">HSK 5 Standard Course - Lesson 14 - 北京的四合院</footer>
+
+<script>
+const vocabData=[
+    {id:1,hanzi:"四合院",pinyin:"sìhéyuàn",pos:"n.",meaning:"cour carrée traditionnelle, siheyuan",cat:"noun"},
+    {id:2,hanzi:"民居",pinyin:"mínjū",pos:"n.",meaning:"habitation civile traditionnelle",cat:"noun"},
+    {id:3,hanzi:"组合",pinyin:"zǔhé",pos:"v./n.",meaning:"combiner, assembler ; combinaison",cat:"verb"},
+    {id:4,hanzi:"建筑",pinyin:"jiànzhù",pos:"n.",meaning:"bâtiment, construction, architecture",cat:"noun"},
+    {id:5,hanzi:"形式",pinyin:"xíngshì",pos:"n.",meaning:"forme, mode",cat:"noun"},
+    {id:6,hanzi:"所谓",pinyin:"suǒwèi",pos:"adj.",meaning:"ce qu'on appelle, soi-disant",cat:"adj"},
+    {id:7,hanzi:"方",pinyin:"fāng",pos:"adj.",meaning:"carré",cat:"adj"},
+    {id:8,hanzi:"广泛",pinyin:"guǎngfàn",pos:"adj.",meaning:"vaste, répandu, étendu",cat:"adj"},
+    {id:9,hanzi:"样式",pinyin:"yàngshì",pos:"n.",meaning:"style, modèle, patron",cat:"noun"},
+    {id:10,hanzi:"代表",pinyin:"dàibiǎo",pos:"n./v.",meaning:"représentant, cas typique ; représenter",cat:"noun"},
+    {id:11,hanzi:"通常",pinyin:"tōngcháng",pos:"adv./adj.",meaning:"habituellement, normalement ; habituel",cat:"other"},
+    {id:12,hanzi:"并列",pinyin:"bìngliè",pos:"v.",meaning:"être aligné côte à côte",cat:"verb"},
+    {id:13,hanzi:"组成",pinyin:"zǔchéng",pos:"v.",meaning:"former, constituer, composer",cat:"verb"},
+    {id:14,hanzi:"长辈",pinyin:"zhǎngbèi",pos:"n.",meaning:"aîné, membre senior de la famille",cat:"noun"},
+    {id:15,hanzi:"具备",pinyin:"jùbèi",pos:"v.",meaning:"posséder, être doté de, disposer de",cat:"verb"},
+    {id:16,hanzi:"日常",pinyin:"rìcháng",pos:"adj.",meaning:"quotidien, journalier",cat:"adj"},
+    {id:17,hanzi:"起居",pinyin:"qǐjū",pos:"n.",meaning:"vie quotidienne (manger, dormir, activités de base)",cat:"noun"},
+    {id:18,hanzi:"接待",pinyin:"jiēdài",pos:"v.",meaning:"accueillir, recevoir (des visiteurs)",cat:"verb"},
+    {id:19,hanzi:"功能",pinyin:"gōngnéng",pos:"n.",meaning:"fonction",cat:"noun"},
+    {id:20,hanzi:"厢房",pinyin:"xiāngfáng",pos:"n.",meaning:"aile (chambre latérale d'une cour)",cat:"noun"},
+    {id:21,hanzi:"走廊",pinyin:"zǒuláng",pos:"n.",meaning:"couloir, corridor, passage couvert",cat:"noun"},
+    {id:22,hanzi:"空间",pinyin:"kōngjiān",pos:"n.",meaning:"espace",cat:"noun"},
+    {id:23,hanzi:"种",pinyin:"zhòng",pos:"v.",meaning:"planter, cultiver",cat:"verb"},
+    {id:24,hanzi:"竹子",pinyin:"zhúzi",pos:"n.",meaning:"bambou",cat:"noun"},
+    {id:25,hanzi:"则",pinyin:"zé",pos:"conj.",meaning:"tandis que (contraste) ; alors/dans ce cas (lit.)",cat:"other"},
+    {id:26,hanzi:"金鱼",pinyin:"jīnyú",pos:"n.",meaning:"poisson rouge",cat:"noun"},
+    {id:27,hanzi:"创造",pinyin:"chuàngzào",pos:"v.",meaning:"créer, produire",cat:"verb"},
+    {id:28,hanzi:"情趣",pinyin:"qíngqù",pos:"n.",meaning:"charme, intérêt émotionnel, agrément",cat:"noun"},
+    {id:29,hanzi:"因而",pinyin:"yīn'ér",pos:"conj.",meaning:"c'est pourquoi, ainsi, par conséquent",cat:"other"},
+    {id:30,hanzi:"为",pinyin:"wéi",pos:"prep.",meaning:"par (souvent avec 所, structure passive littéraire)",cat:"other"},
+    {id:31,hanzi:"关闭",pinyin:"guānbì",pos:"v.",meaning:"fermer, clore",cat:"verb"},
+    {id:32,hanzi:"封闭",pinyin:"fēngbì",pos:"v.",meaning:"fermer hermétiquement, sceller, cloisonner",cat:"verb"},
+    {id:33,hanzi:"打交道",pinyin:"dǎ jiāodào",pos:"v.",meaning:"avoir des contacts avec, fréquenter",cat:"verb"},
+    {id:34,hanzi:"日子",pinyin:"rìzi",pos:"n.",meaning:"vie, jours, existence quotidienne",cat:"noun"},
+    {id:35,hanzi:"充分",pinyin:"chōngfèn",pos:"adj.",meaning:"ample, suffisant, pleinement",cat:"adj"},
+    {id:36,hanzi:"令",pinyin:"lìng",pos:"v.",meaning:"faire, rendre, amener à",cat:"verb"},
+    {id:37,hanzi:"亲切",pinyin:"qīnqiè",pos:"adj.",meaning:"chaleureux, affectueux, cordial",cat:"adj"},
+    {id:38,hanzi:"劳动",pinyin:"láodòng",pos:"n./v.",meaning:"travail, labeur ; travailler",cat:"noun"},
+    {id:39,hanzi:"人民",pinyin:"rénmín",pos:"n.",meaning:"le peuple",cat:"noun"},
+    {id:40,hanzi:"矛盾",pinyin:"máodùn",pos:"n./adj.",meaning:"conflit, contradiction ; contradictoire",cat:"noun"},
+    {id:41,hanzi:"浓",pinyin:"nóng",pos:"adj.",meaning:"fort, profond (sentiments), dense (brouillard)",cat:"adj"}
+];
+
+function renderVocab(filter='all'){const g=document.getElementById('vocabGrid');const f=filter==='all'?vocabData:vocabData.filter(v=>v.cat===filter);g.innerHTML=f.map(v=>`<div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')"><span class="vocab-num">#${v.id}</span><div class="hanzi">${v.hanzi}</div><div class="pinyin">${v.pinyin}</div><span class="pos">${v.pos}</span><div class="meaning-placeholder">Cliquez pour voir...</div><div class="meaning-hidden" style="font-size:.9rem;margin-top:6px;">${v.meaning}</div></div>`).join('');}
+function filterVocab(c){document.querySelectorAll('.vocab-controls button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderVocab(c);}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function hideAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('revealed'));}
+
+let fcIndex=0,fcOrder=[...Array(vocabData.length).keys()];
+function updateFlashcard(){const v=vocabData[fcOrder[fcIndex]];document.getElementById('fcHanzi').textContent=v.hanzi;document.getElementById('fcPinyin').textContent=v.pinyin;document.getElementById('fcMeaning').textContent=v.meaning;document.getElementById('fcPos').textContent=v.pos;document.getElementById('fcCurrent').textContent=fcIndex+1;document.getElementById('fcTotal').textContent=fcOrder.length;document.getElementById('flashcard').classList.remove('flipped');}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%fcOrder.length;updateFlashcard();}
+function prevCard(){fcIndex=(fcIndex-1+fcOrder.length)%fcOrder.length;updateFlashcard();}
+function shuffleCards(){for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}fcIndex=0;updateFlashcard();}
+
+const vocabQuizData=[
+    {q:"所谓 veut dire :",options:["Toujours","Ce qu'on appelle, soi-disant","Parfois","Quelque part"],correct:1},
+    {q:"广泛 signifie :",options:["Étroit","Vaste, répandu, étendu","Profond","Rapide"],correct:1},
+    {q:"长辈 veut dire :",options:["Grand bâtiment","Aîné, membre senior de la famille","Vieux camarade","Ancêtre lointain"],correct:1},
+    {q:"具备 signifie :",options:["Préparer","Posséder, être doté de","Manquer de","Acheter"],correct:1},
+    {q:"起居 veut dire :",options:["Se lever et dormir","Vie quotidienne (manger, dormir, activités)","Entrer et sortir","Travailler"],correct:1},
+    {q:"情趣 signifie :",options:["Sentiment amoureux","Charme, intérêt émotionnel, agrément","Curiosité intellectuelle","Humour"],correct:1},
+    {q:"封闭 veut dire :",options:["Ouvrir","Fermer hermétiquement, cloisonner","Construire","Décorer"],correct:1},
+    {q:"亲切 signifie :",options:["Familier (famille proche)","Chaleureux, affectueux, cordial","Proche géographiquement","Exactement pareil"],correct:1},
+    {q:"矛盾 veut dire :",options:["Arme ancienne","Conflit, contradiction","Discussion","Problème technique"],correct:1},
+    {q:"令 signifie :",options:["Commander une armée","Faire, rendre, amener à","Permettre","Interdire"],correct:1},
+    {q:"充分 veut dire :",options:["Insuffisant","Ample, suffisant, pleinement","Excessif","Équilibré"],correct:1},
+    {q:"打交道 signifie :",options:["Frapper quelqu'un","Avoir des contacts avec, fréquenter","Se disputer","Se réconcilier"],correct:1}
+];
+
+const grammarQuizData=[
+    {q:"'所谓四合，\"四\"指东、西、南、北四面……' — 所谓 introduit ici :",options:["Un jugement négatif","Un terme qui va être expliqué/défini","Une opinion personnelle","Une citation"],correct:1},
+    {q:"'他所谓的\"新闻\"，其实我们早就知道了' — 所谓 exprime ici :",options:["Une définition précise","Un désaccord/ironie (les soi-disant...)","Une confirmation","Une question"],correct:1},
+    {q:"'有的人家喜欢种草，有的人家则喜欢养金鱼' — 则 exprime ici :",options:["Une cause","Un contraste (tandis que, en revanche)","Une conséquence","Une condition"],correct:1},
+    {q:"则 peut aussi être :",options:["Un verbe de mouvement","Un classificateur pour des textes courts (一则新闻)","Un adverbe de lieu","Un complément directionnel"],correct:1},
+    {q:"'最为人们所喜爱' — cette structure passive (为……所……) signifie :",options:["Les gens l'aiment le plus (passif littéraire)","Les gens ne l'aiment pas","Pour que les gens l'aiment","À cause des gens qui l'aiment"],correct:0},
+    {q:"'为……所……' est une structure :",options:["Passive colloquiale et informelle","Passive littéraire et soutenue","Active avec complément","Interrogative"],correct:1},
+    {q:"'只要关闭起大门，四合院内便形成……' — 起 après 关闭 indique :",options:["Un mouvement vers le bas","La fermeture complète/effective (connexion établie)","Une répétition","Le début d'une action"],correct:1},
+    {q:"通常 diffère de 常常 parce que :",options:["通常 est plus informel","通常 insiste sur la régularité et peut être adjectif épithète","通常 ne peut s'utiliser qu'à l'oral","通常 exprime toujours un nombre de fois"],correct:1}
+];
+
+const compQuizData=[
+    {q:"Dans quelle région de Chine trouve-t-on traditionnellement les 四合院 ?",options:["Sud de la Chine","Nord de la Chine (华北)","Côte est","Intérieur du pays"],correct:1},
+    {q:"Que signifie '四合' ?",options:["Quatre saisons réunies","Quatre côtés (E/W/S/N) avec les maisons réunies formant une cour carrée","Quatre familles vivant ensemble","Quatre étages"],correct:1},
+    {q:"Pourquoi pense-t-on spontanément au 四合院 de Pékin ?",options:["Parce que c'est le plus ancien","Parce qu'il a un style fixe et représentatif","Parce qu'il est le plus grand","Parce qu'il est ouvert aux touristes"],correct:1},
+    {q:"Quelle maison est la principale (正房) dans un 四合院 ?",options:["La maison sud","La maison nord — la plus grande, pour les aînés","La maison est","La maison du centre"],correct:1},
+    {q:"À qui sont destinées les 厢房 (ailes) ?",options:["Aux invités","Aux cadets (晚辈)","Aux domestiques","Aux ancêtres"],correct:1},
+    {q:"Comment s'appelle une 四合院 partagée par plusieurs familles ?",options:["大院","大杂院","合院","共院"],correct:1},
+    {q:"Quel est l'effet de fermer la grande porte d'un 四合院 ?",options:["La cour devient une zone commerciale","La cour forme un microcosme fermé et isolé","La cour s'ouvre sur la rue","Les voisins entrent librement"],correct:1},
+    {q:"Que dit le texte sur les relations de voisinage dans la 大杂院 ?",options:["Les voisins se disputent toujours","Il y a parfois des conflits mais surtout de l'entraide","Les voisins ne se connaissent pas","La vie est solitaire"],correct:1},
+    {q:"Qu'est-ce que les résidents d'une 四合院 aimaient cultiver dans la cour ?",options:["Du riz et du blé","Des herbes, des fleurs, du bambou ; ou élever des poissons rouges","Des légumes uniquement","Des arbres fruitiers"],correct:1},
+    {q:"D'où est adapté ce texte ?",options:["D'un roman historique","De Baidu Library 《建筑欣赏之四合院》","D'un guide touristique","D'un manuel d'architecture"],correct:1}
+];
+
+function renderQuiz(data,cid,prefix){document.getElementById(cid).innerHTML=data.map((q,i)=>`<div class="quiz-question" id="${prefix}-q${i}"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options">${q.options.map((o,j)=>`<div class="quiz-option" onclick="answerQuiz('${prefix}',${i},${j})">${o}</div>`).join('')}</div></div>`).join('');}
+const quizState={vocab:{score:0,answered:0,total:12},grammar:{score:0,answered:0,total:8},comp:{score:0,answered:0,total:10}};
+function getQuizData(p){return p==='vocab'?vocabQuizData:p==='grammar'?grammarQuizData:compQuizData;}
+function answerQuiz(p,qi,oi){const d=getQuizData(p),qE=document.getElementById(`${p}-q${qi}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const opts=qE.querySelectorAll('.quiz-option'),c=d[qi].correct;opts.forEach((o,i)=>{o.classList.add('disabled');if(i===c)o.classList.add('selected-correct');if(i===oi&&i!==c)o.classList.add('selected-wrong');});qE.classList.add(oi===c?'correct':'wrong');if(oi===c)quizState[p].score++;quizState[p].answered++;updateScore(p);}
+function updateScore(p){const s=quizState[p];document.getElementById(`${p}Score`).textContent=`${s.score} / ${s.total}`;document.getElementById(`${p}ScoreBar`).style.width=`${(s.score/s.total)*100}%`;}
+function resetQuiz(p){quizState[p]={score:0,answered:0,total:quizState[p].total};updateScore(p);renderQuiz(getQuizData(p),p==='vocab'?'vocabQuizContainer':p==='grammar'?'grammarQuizContainer':'compQuizContainer',p);}
+function switchQuizTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById(t).classList.add('active');}
+
+let selectedFillWord=null;
+function selectFillWord(el){document.querySelectorAll('.fill-chip').forEach(c=>c.classList.remove('placed'));el.classList.add('placed');selectedFillWord=el.dataset.word;}
+function placeFillWord(b){if(!selectedFillWord)return;b.textContent=selectedFillWord;b.dataset.placed=selectedFillWord;document.querySelectorAll('.fill-chip').forEach(c=>{if(c.dataset.word===selectedFillWord)c.classList.add('used');c.classList.remove('placed');});selectedFillWord=null;}
+function checkFillAnswers(){document.querySelectorAll('.fill-blank').forEach(b=>{const p=b.dataset.placed,a=b.dataset.answer;if(p===a){b.style.borderColor='var(--success)';b.style.background='#dcfce7';b.style.color='var(--success)';b.style.fontWeight='600';}else{b.style.borderColor='var(--wrong)';b.style.background='#fecaca';b.style.color='var(--wrong)';b.title=`Reponse : ${a}`;}});}
+function resetFill(){document.querySelectorAll('.fill-blank').forEach(b=>{b.textContent='___';b.dataset.placed='';b.style.borderColor='';b.style.background='';b.style.color='';b.style.fontWeight='';b.title='';});document.querySelectorAll('.fill-chip').forEach(c=>{c.classList.remove('used','placed');});selectedFillWord=null;}
+
+const choiceQuizData=[
+    {q:"手机已经成为人们生活中的重要____部分。",a:"组成",b:"组合",correct:"组成",explain:"组成 = former, constituer (partie d'un tout). 组合 = assembler, combiner (processus). 重要组成部分 = partie constitutive importante — expression figée."},
+    {q:"他的兴趣爱好非常____，跟谁都能聊到一块儿。",a:"广大",b:"广泛",correct:"广泛",explain:"广泛 = vaste, étendu (intérêts larges). 广大 = grand, vaste (superficie, masse de gens). 兴趣广泛 = avoir des intérêts variés."},
+    {q:"他坚持锻炼，____身体很好。",a:"因而",b:"反而",correct:"因而",explain:"因而 = c'est pourquoi, par conséquent (cause → résultat logique). 反而 = au contraire (résultat contraire à l'attendu). Faire du sport → être en bonne santé = résultat logique."},
+    {q:"是那位工程师____我把机器安装在这儿。",a:"令",b:"让",correct:"令",explain:"令 (registre plus soutenu) = faire, amener à, ordonner. 让 (oral/courant) = laisser faire, demander de. Les deux sont parfois interchangeables mais 令 est plus formel."},
+    {q:"她____在家帮妈妈干活儿。",a:"通常",b:"常常",correct:"常常",explain:"常常 = souvent (fréquence). 通常 = normalement/habituellement (régularité d'un schéma). Ici on décrit quelque chose qui arrive fréquemment, 常常 convient mieux."},
+    {q:"____除夕晚上都要放鞭炮、吃饺子。",a:"通常",b:"常常",correct:"通常",explain:"通常 = normalement, habituellement (schéma régulier associé à la tradition). La tradition du Nouvel An suit un schéma établi → 通常."},
+    {q:"在____情况下，火车是不会晚点的。",a:"通常",b:"常常",correct:"通常",explain:"通常 peut être adjectif épithète (定语) : 通常情况下 = dans les conditions habituelles. 常常 ne peut pas être épithète."},
+    {q:"周末他____去父母家过。",a:"通常",b:"常常",correct:"常常",explain:"常常 = souvent (il le fait fréquemment). 通常 insisterait sur la régularité d'un schéma fixe. Ici l'accent est sur la fréquence, donc 常常."}
+];
+function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').innerHTML=choiceQuizData.map((q,i)=>`<div class="quiz-question" id="choice-q${i}" style="margin-bottom:12px;"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options" style="grid-template-columns:1fr 1fr;"><div class="quiz-option" onclick="answerChoice(${i},'${q.a}')">${q.a}</div><div class="quiz-option" onclick="answerChoice(${i},'${q.b}')">${q.b}</div></div><div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div></div>`).join('');}
+function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
+
+window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
+document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+</script>
+</body>
+</html>

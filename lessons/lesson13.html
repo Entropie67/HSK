@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第13课 锯掉生活的"筐底"</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+        :root{--primary:#7c2d12;--primary-light:#9a3412;--accent:#ea580c;--gold:#c2410c;--gold-light:#fff7ed;--bg:#fafbfc;--card:#fff;--text:#2c3e50;--text-light:#7f8c8d;--border:#e8ecf1;--success:#27ae60;--wrong:#e74c3c;--gradient-water:linear-gradient(135deg,#7c2d12 0%,#ea580c 100%);--gradient-hero:linear-gradient(135deg,#1c0a00 0%,#7c2d12 35%,#c2410c 75%,#fb923c 100%);}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;scroll-behavior:smooth;}
+        .hero{background:var(--gradient-hero);color:#fff;padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;background-size:cover;opacity:.3;}
+        .hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+        .hero .lesson-badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:6px 20px;border-radius:30px;font-size:.9rem;letter-spacing:2px;margin-bottom:20px;}
+        .hero h1{font-family:'Noto Serif SC',serif;font-size:3.2rem;font-weight:900;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+        .hero .subtitle{font-size:1.3rem;opacity:.9;font-weight:300;margin-bottom:30px;}
+        .hero .deco{font-size:2rem;letter-spacing:8px;opacity:.6;}
+        .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+        .nav-inner::-webkit-scrollbar{display:none;}
+        .nav-inner a{padding:14px 18px;text-decoration:none;color:var(--text-light);font-size:.9rem;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+        .nav-inner a:hover,.nav-inner a.active{color:var(--primary);border-bottom-color:var(--primary-light);}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+        section{padding:50px 0;}
+        .section-header{text-align:center;margin-bottom:40px;}
+        .section-header h2{font-family:'Noto Serif SC',serif;font-size:2rem;color:var(--primary);margin-bottom:6px;}
+        .section-header .section-sub{color:var(--text-light);font-size:.95rem;}
+        .section-divider{width:60px;height:3px;background:var(--gradient-water);margin:12px auto 0;border-radius:2px;}
+        .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);margin-bottom:24px;}
+        .card h3{font-size:1.2rem;color:var(--primary);margin-bottom:16px;}
+        .text-block{background:var(--card);border-radius:16px;padding:35px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);font-family:'Noto Serif SC',serif;font-size:1.1rem;line-height:2.2;}
+        .text-block p{text-indent:2em;margin-bottom:16px;}
+        .vocab-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
+        .vocab-controls button{padding:8px 20px;border:2px solid var(--border);background:#fff;border-radius:25px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s;color:var(--text);}
+        .vocab-controls button.active,.vocab-controls button:hover{border-color:var(--primary-light);background:var(--primary-light);color:#fff;}
+        .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .vocab-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .3s;position:relative;}
+        .vocab-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.08);border-color:var(--primary-light);}
+        .vocab-card .vocab-num{position:absolute;top:8px;right:12px;font-size:.75rem;color:var(--text-light);opacity:.5;}
+        .vocab-card .hanzi{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;color:var(--primary);}
+        .vocab-card .pinyin{color:var(--accent);font-size:.9rem;margin:4px 0;}
+        .vocab-card .pos{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;}
+        .vocab-card .meaning-hidden{display:none;}
+        .vocab-card.revealed .meaning-hidden{display:block;}
+        .vocab-card.revealed .meaning-placeholder{display:none;}
+        .meaning-placeholder{color:var(--text-light);font-size:.85rem;font-style:italic;margin-top:6px;}
+        .pn-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:20px;}
+        .pn-card{background:linear-gradient(135deg,#fff7ed,#fed7aa);border:1px solid #fdba74;border-radius:12px;padding:14px 18px;}
+        .pn-card .pn-cn{font-family:'Noto Serif SC',serif;font-size:1.2rem;font-weight:700;color:var(--primary);}
+        .pn-card .pn-py{color:var(--accent);font-size:.85rem;margin:2px 0;}
+        .pn-card .pn-en{font-size:.85rem;color:var(--text-light);}
+        .key-quote{background:linear-gradient(135deg,#fff7ed,#fed7aa);border-left:5px solid var(--accent);border-radius:0 16px 16px 0;padding:20px 24px;margin:20px 0;font-family:'Noto Serif SC',serif;font-size:1.15rem;color:var(--primary);}
+        .flashcard-area{display:flex;flex-direction:column;align-items:center;gap:20px;padding:20px 0;}
+        .flashcard-container{perspective:1000px;width:380px;height:260px;max-width:100%;}
+        .flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);cursor:pointer;}
+        .flashcard.flipped{transform:rotateY(180deg);}
+        .flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;}
+        .flashcard-front{background:linear-gradient(135deg,#431407,#ea580c);color:#fff;box-shadow:0 10px 40px rgba(234,88,12,.3);}
+        .flashcard-front .fc-hanzi{font-family:'Noto Serif SC',serif;font-size:3rem;font-weight:900;margin-bottom:10px;}
+        .flashcard-front .fc-pinyin{font-size:1.1rem;opacity:.8;}
+        .flashcard-front .fc-hint{font-size:.8rem;opacity:.5;margin-top:20px;}
+        .flashcard-back{background:#fff;border:2px solid var(--primary-light);transform:rotateY(180deg);box-shadow:0 10px 40px rgba(0,0,0,.1);}
+        .flashcard-back .fc-meaning{font-size:1.3rem;color:var(--primary);font-weight:600;}
+        .flashcard-back .fc-pos{background:var(--gold-light);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-top:10px;}
+        .fc-controls{display:flex;gap:12px;}
+        .fc-controls button{padding:10px 28px;border-radius:25px;border:none;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;}
+        .fc-btn-prev,.fc-btn-next{background:var(--primary-light);color:#fff;}
+        .fc-btn-prev:hover,.fc-btn-next:hover{background:var(--primary);}
+        .fc-btn-shuffle{background:#fff;border:2px solid var(--border)!important;color:var(--text);}
+        .fc-counter{color:var(--text-light);font-size:.9rem;}
+        .grammar-card{background:var(--card);border-radius:16px;border:1px solid var(--border);margin-bottom:20px;overflow:hidden;}
+        .grammar-header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;}
+        .grammar-header .grammar-num{background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+        .grammar-header .grammar-title{font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;}
+        .grammar-header .grammar-pinyin{font-size:.9rem;opacity:.8;}
+        .grammar-body{padding:24px;}
+        .grammar-rule{background:#fff7ed;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:20px;font-size:.95rem;color:var(--primary);}
+        .grammar-example{padding:12px 0;border-bottom:1px solid var(--border);}
+        .grammar-example:last-child{border-bottom:none;}
+        .grammar-example .ex-cn{font-size:1.05rem;margin-bottom:4px;}
+        .grammar-example .ex-note{color:var(--text-light);font-size:.85rem;}
+        .grammar-example .ex-highlight{color:var(--accent);font-weight:600;}
+        .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+        .comparison-table th{background:var(--primary);color:#fff;padding:14px 18px;font-weight:600;text-align:center;}
+        .comparison-table td{padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top;font-size:.95rem;}
+        .comparison-table tr:last-child td{border-bottom:none;}
+        .comparison-table tr:nth-child(even){background:#f8fafc;}
+        .comparison-table .label-cell{background:#fff7ed;font-weight:600;color:var(--primary);text-align:center;width:60px;}
+        .colloc-section{margin-bottom:24px;}
+        .colloc-label{display:inline-block;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:12px;}
+        .colloc-label.verb{background:#e74c3c;}.colloc-label.attr{background:#f39c12;}.colloc-label.adv{background:#27ae60;}.colloc-label.comp{background:#8e44ad;}.colloc-label.subj{background:#16a085;}
+        .colloc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+        .colloc-row:last-child{border-bottom:none;}
+        .colloc-word{font-weight:600;color:var(--primary);min-width:100px;font-size:1.1rem;}
+        .colloc-plus{color:var(--text-light);font-weight:700;}
+        .colloc-partners{display:flex;flex-wrap:wrap;gap:6px;}
+        .colloc-tag{background:#f0f4f8;padding:4px 12px;border-radius:15px;font-size:.85rem;}
+        .tab-bar{display:flex;gap:4px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:20px;}
+        .tab-btn{flex:1;padding:10px;border:none;background:transparent;border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--text-light);transition:all .2s;}
+        .tab-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+        .tab-content{display:none;}.tab-content.active{display:block;}
+        .quiz-score-bar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+        .score-display{font-size:1.5rem;font-weight:700;color:var(--primary);}
+        .score-bar-visual{flex:1;margin:0 20px;height:10px;background:var(--border);border-radius:5px;overflow:hidden;}
+        .score-bar-fill{height:100%;background:var(--gradient-water);border-radius:5px;transition:width .5s ease;width:0%;}
+        .quiz-reset-btn{padding:8px 20px;background:var(--primary-light);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;}
+        .quiz-question{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;transition:all .3s;}
+        .quiz-question.correct{border-color:var(--success);background:#f0fdf4;}
+        .quiz-question.wrong{border-color:var(--wrong);background:#fef2f2;}
+        .quiz-q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--primary-light);color:#fff;border-radius:50%;font-size:.8rem;font-weight:700;margin-right:10px;}
+        .quiz-q-text{font-size:1.05rem;margin-bottom:14px;}
+        .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .quiz-option{padding:12px 16px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.95rem;text-align:center;background:#fff;}
+        .quiz-option:hover{border-color:var(--primary-light);background:#fff7ed;}
+        .quiz-option.selected-correct{border-color:var(--success);background:#dcfce7;color:var(--success);font-weight:600;}
+        .quiz-option.selected-wrong{border-color:var(--wrong);background:#fecaca;color:var(--wrong);font-weight:600;}
+        .quiz-option.disabled{pointer-events:none;opacity:.7;}
+        .quiz-explanation{display:none;margin-top:12px;padding:12px 16px;background:#fffbeb;border-radius:10px;font-size:.9rem;color:#92400e;border:1px solid #fde68a;}
+        .fill-blank{display:inline-block;min-width:80px;border-bottom:2px dashed var(--primary-light);padding:2px 8px;margin:0 4px;text-align:center;cursor:pointer;transition:all .2s;}
+        .fill-blank:hover{background:#fff7ed;}
+        .fill-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center;}
+        .fill-chip{padding:8px 18px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s;}
+        .fill-chip:hover{border-color:var(--primary-light);background:#fff7ed;}
+        .fill-chip.used{opacity:.4;pointer-events:none;}
+        .fill-chip.placed{background:var(--primary-light);color:#fff;border-color:var(--primary-light);}
+        .app-box{background:linear-gradient(135deg,#fff7ed,#fed7aa);border:1px solid #fdba74;border-radius:16px;padding:30px;margin-bottom:20px;}
+        .app-box h4{color:var(--primary);font-size:1.1rem;margin-bottom:12px;}
+        .discussion-q{padding:10px 0;border-bottom:1px solid rgba(253,186,116,.5);font-size:.95rem;}
+        .discussion-q:last-child{border-bottom:none;}
+        .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
+        @media(max-width:768px){.hero h1{font-size:2rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}}
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
+        <h1>锯掉生活的"筐底"</h1>
+        <p class="subtitle">Cutting Off the "Bottom of the Basket" in Life - Lesson 13</p>
+        <div class="deco">🏀 🪚 💡 🌊</div>
+    </div>
+</header>
+
+<nav class="sticky-nav"><div class="nav-inner">
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#proper">专有名词</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+</div></nav>
+
+<main class="container">
+
+<section id="text">
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">锯掉生活的"筐底" (656 caracteres)</p><div class="section-divider"></div></div>
+    <div class="key-quote">"何必这么麻烦呢？把篮筐的底去掉不就行了吗？"</div>
+    <div class="text-block">
+        <p>篮球运动是1891年由美国马萨诸塞州的体育教师詹姆斯·奈史密斯博士发明的。那年的冬天特别冷，奈史密斯所在的训练学校缺乏在室内进行的球类比赛项目，他从当地人把球扔进桃子筐（当地产桃子，各家各户都备有装桃子的专用篮筐）的游戏中得到启发，将两只篮筐分别安装在体育馆两边看台的栏杆上，学生分为甲乙两队，以足球为比赛工具向篮内投，按得分多少决定输赢。</p>
+        <p>这项运动很快流行起来。不过，由于栏杆上固定的是真正的筐，每当球投进时，就得有一个人踩着梯子上去把球取出来。这样的行为必须一再地重复，为此，比赛不得不断断续续地进行，缺少了激烈紧张的气氛，连运动员都不满意，更何况看比赛的球迷呢？为了解决这个问题，大家纷纷出主意，想出了很多取球的办法。有一位工程师甚至专门制造出一种机器，在下面一拉篮筐就能把球弹出来。可是，这些办法都没能让比赛顺畅起来。</p>
+        <p>几年后的一天，一个上幼儿园的小男孩跟着父亲从一群正在进行篮球比赛的人旁边经过。看到大人们一次次辛苦地取球，小男孩好奇地问父亲："何必这么麻烦呢？把篮筐的底去掉不就行了吗？"多亏了他这句话，人们如梦初醒，一位球员连忙找来一把锯子把篮筐的底锯掉。你瞧，困扰人们很长时间的取球问题就这样被一个小孩子解决了。</p>
+        <p>去掉篮筐的底，本是一件简单的事，可为什么那么多人都没有想到呢？说白了，因为我们的思维像篮球一样被篮筐的底挡在了半空中。于是，我们呆呆地去搬梯子、造机器……其实，世界上本来就没有太复杂的事，复杂都是我们自己造成的。生活仿佛篮筐，许多时候，我们需要的只不过是一把锯子，来锯掉那些阻碍我们的"筐底"。</p>
+        <p style="text-align:right;font-style:italic;color:var(--text-light);">— 摘自《环球人物》，作者：张前</p>
+    </div>
+</section>
+
+<section id="vocab">
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">37 mots - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (37)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout reveler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+</section>
+
+<section id="proper">
+    <div class="section-header"><h2>专有名词 - Noms propres</h2><p class="section-sub">2 noms propres de la lecon</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="pn-list">
+            <div class="pn-card"><div class="pn-cn">马萨诸塞州</div><div class="pn-py">Mǎsàzhūsài Zhōu</div><div class="pn-en">Massachusetts — État du nord-est des États-Unis où le basket fut inventé</div></div>
+            <div class="pn-card"><div class="pn-cn">詹姆斯·奈史密斯</div><div class="pn-py">Zhānmǔsì · Nàishǐmìsī</div><div class="pn-en">James Naismith — professeur d'éducation physique canadien-américain, inventeur du basketball (1891)</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="flashcards">
+    <div class="section-header"><h2>卡片 - Flashcards</h2><p class="section-sub">Cliquez pour retourner la carte</p><div class="section-divider"></div></div>
+    <div class="flashcard-area">
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">37</span></div>
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front"><div class="fc-hanzi" id="fcHanzi">锯</div><div class="fc-pinyin" id="fcPinyin">jù</div><div class="fc-hint">cliquez pour voir la traduction</div></div>
+                <div class="flashcard-back"><div class="fc-meaning" id="fcMeaning">couper à la scie ; scie</div><div class="fc-pos" id="fcPos">v./n.</div></div>
+            </div>
+        </div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+        </div>
+    </div>
+</section>
+
+<section id="grammar">
+    <div class="section-header"><h2>语法 - Grammaire</h2><p class="section-sub">3 points de grammaire essentiels</p><div class="section-divider"></div></div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">1</div><div><div class="grammar-title">何况</div><div class="grammar-pinyin">hékuàng</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Conjonction</strong> qui renforce un argument par une question rhétorique. Structure : "A (déjà difficile), 更/连 …… 何况 B 呢 ?" = "A est déjà le cas, à plus forte raison B". Deux emplois : (1) "encore moins, à plus forte raison" ; (2) ajouter une raison supplémentaire.</div>
+            <div class="grammar-example"><div class="ex-cn">……缺少了激烈紧张的气氛，连运动员都不满意，更<span class="ex-highlight">何况</span>看比赛的球迷呢？</div><div class="ex-note">(1) L'ambiance manquait d'intensité, même les athlètes étaient insatisfaits — à plus forte raison les spectateurs !</div></div>
+            <div class="grammar-example"><div class="ex-cn">北京的发展变化太快，我这个土生土长的老北京还常迷路呢，<span class="ex-highlight">何况</span>你一个外地人。</div><div class="ex-note">(1) Pékin change si vite que même moi, vieux Pékinois de souche, je me perds souvent — alors vous qui venez d'ailleurs…</div></div>
+            <div class="grammar-example"><div class="ex-cn">这辆车外观漂亮，安全性高，又<span class="ex-highlight">何况</span>价钱也就比上次看的那辆贵了几千块，小王有点儿动心了。</div><div class="ex-note">(2) Cette voiture est belle, sécurisée, et de plus elle ne coûte que quelques milliers de plus que la précédente — Xiao Wang commence à craquer.</div></div>
+            <div class="grammar-example"><div class="ex-cn">上海冬天没有暖气，屋子里冷得让人伸不出手，<span class="ex-highlight">何况</span>李阳还是病人，自然是受不了的。</div><div class="ex-note">(2) L'hiver à Shanghai il n'y a pas de chauffage, les pièces sont si froides qu'on peut à peine tendre la main — de plus Li Yang est malade, c'est naturellement insupportable pour lui.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">2</div><div><div class="grammar-title">何必</div><div class="grammar-pinyin">hébì</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Adverbe</strong> avec ton rhétorique. "何必……呢？" = "Pourquoi faudrait-il… ? Il n'est pas nécessaire de…" Exprime qu'une action est superflue ou inutile. Toujours suivi d'un verbe ou d'une proposition.</div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">何必</span>这么麻烦呢？把篮筐的底去掉不就行了吗？</div><div class="ex-note">Pourquoi se compliquer autant ? Il suffit de retirer le fond du panier !</div></div>
+            <div class="grammar-example"><div class="ex-cn">食堂楼下就有个小超市，<span class="ex-highlight">何必</span>去学校外边呢？</div><div class="ex-note">Il y a un petit supermarché en bas de la cantine — pourquoi aller en dehors de l'école ?</div></div>
+            <div class="grammar-example"><div class="ex-cn">你<span class="ex-highlight">何必</span>亲自送一趟呢？叫个快递不就行了？</div><div class="ex-note">Pourquoi te donner la peine d'y aller toi-même ? Il te suffit d'appeler un livreur.</div></div>
+            <div class="grammar-example"><div class="ex-cn">早知道你有这本书，我<span class="ex-highlight">何必</span>专门去图书馆借呢？</div><div class="ex-note">Si j'avais su que tu avais ce livre, pourquoi me serais-je donné la peine d'aller le chercher à la bibliothèque ?</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">3</div><div><div class="grammar-title">多亏</div><div class="grammar-pinyin">duōkuī</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Verbe</strong> exprimant la gratitude ou le soulagement. "多亏（了）+ personne/chose" = "Heureusement grâce à…, C'est grâce à… que…" Indique qu'on a évité un malheur ou obtenu un bénéfice grâce à une aide extérieure.</div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">多亏</span>了他这句话，人们如梦初醒。</div><div class="ex-note">C'est grâce à ce qu'il a dit que les gens se sont réveillés comme d'un rêve.</div></div>
+            <div class="grammar-example"><div class="ex-cn">赵老师，谢谢您，<span class="ex-highlight">多亏</span>您给我那瓶药，很管用。</div><div class="ex-note">Professeur Zhao, merci — heureusement que vous m'avez donné ce médicament, il m'a été très utile.</div></div>
+            <div class="grammar-example"><div class="ex-cn">今天搬家<span class="ex-highlight">多亏</span>有你在，你可帮了我大忙了。</div><div class="ex-note">Heureusement que tu étais là pour le déménagement aujourd'hui — tu m'as rendu un immense service.</div></div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">多亏</span>你提醒，要不今天的飞机我准赶不上了。</div><div class="ex-note">Heureusement que tu me l'as rappelé — sinon j'aurais raté mon avion aujourd'hui.</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="analysis">
+    <div class="section-header"><h2>词语辨析 - Analyse comparative</h2><p class="section-sub">激烈 vs 强烈</p><div class="section-divider"></div></div>
+    <div class="card">
+        <table class="comparison-table">
+            <thead><tr><th></th><th>激烈 (jīliè)</th><th>强烈 (qiángliè)</th></tr></thead>
+            <tbody>
+                <tr><td class="label-cell">Points communs</td><td colspan="2" style="text-align:center;">Les deux sont adjectifs avec le sens de "vigoureux, intense, vif". Dans certaines phrases, ils sont interchangeables.<br><em>如：我不顾父母的激烈/强烈反对，偷偷地报考了表演专业。</em></td></tr>
+                <tr><td class="label-cell" rowspan="2">Differences</td>
+                    <td>1. Insiste sur le côté <strong>âpre, acharné, tendu</strong>.<br><em>如：人类最早什么时候开始用火，一直是学者<u>激烈</u>争论的问题。</em></td>
+                    <td>1. Insiste sur le côté <strong>fort, puissant, marquant</strong>.<br><em>如：文章发表以后立刻引起了读者的<u>强烈</u>反响。</em></td></tr>
+                <tr>
+                    <td>2. S'utilise surtout pour les <strong>paroles, émotions, compétitions, combats</strong>.<br><em>如：人在<u>激烈</u>运动时，会出很多汗。</em></td>
+                    <td>2. S'utilise surtout pour la <strong>lumière, le courant électrique, les couleurs, les odeurs, les sentiments, les pensées, les exigences</strong>.<br><em>如：这里夏天尽管阳光的照射很<u>强烈</u>，但白天气温很少超过35℃。</em></td></tr>
+            </tbody>
+        </table>
+        <div style="margin-top:20px;padding:14px 18px;background:#fffbeb;border-radius:10px;font-size:.9rem;color:#92400e;border:1px solid #fde68a;">
+            <strong>Astuce :</strong> 激烈 = acharné/tendu (débats, compétitions, sports). 强烈 = fort/puissant (lumière, odeur, sentiments, réactions). Pour un "désir intense" : 强烈的愿望 ✓ ; pour une "compétition acharnée" : 激烈的比赛 ✓.
+        </div>
+    </div>
+</section>
+
+<section id="collocation">
+    <div class="section-header"><h2>词语搭配 - Collocations</h2><p class="section-sub">Combinaisons essentielles</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="colloc-section"><div class="colloc-label verb">动词 + 宾语</div>
+            <div class="colloc-row"><span class="colloc-word">缺乏</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">人才</span><span class="colloc-tag">教师</span><span class="colloc-tag">材料</span><span class="colloc-tag">工具</span><span class="colloc-tag">勇气</span><span class="colloc-tag">信心</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">造成</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">困难</span><span class="colloc-tag">印象</span><span class="colloc-tag">影响</span><span class="colloc-tag">浪费</span><span class="colloc-tag">危害</span><span class="colloc-tag">失眠</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label attr">定语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">激烈的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">比赛</span><span class="colloc-tag">争吵</span><span class="colloc-tag">战争</span><span class="colloc-tag">运动</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">家庭的/政治/节日/学习的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">气氛</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label adv">状语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">认真地/紧张地/艰苦地/严格地</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">训练</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">简单地/完全/准确地</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">重复</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label comp">中心语 + 补语</div>
+            <div class="colloc-row"><span class="colloc-word">踩</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">破</span><span class="colloc-tag">伤</span><span class="colloc-tag">断</span><span class="colloc-tag">碎</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">瞧</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">见</span><span class="colloc-tag">得起</span><span class="colloc-tag">不起</span><span class="colloc-tag">得上</span><span class="colloc-tag">不上</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="quiz-section">
+    <div class="section-header"><h2>测验 - Quiz</h2><p class="section-sub">Testez vos connaissances</p><div class="section-divider"></div></div>
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+    </div>
+    <div class="tab-content active" id="vocab-quiz"><div class="quiz-score-bar"><div class="score-display" id="vocabScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button></div><div id="vocabQuizContainer"></div></div>
+    <div class="tab-content" id="grammar-quiz"><div class="quiz-score-bar"><div class="score-display" id="grammarScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button></div><div id="grammarQuizContainer"></div></div>
+    <div class="tab-content" id="comprehension-quiz"><div class="quiz-score-bar"><div class="score-display" id="compScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button></div><div id="compQuizContainer"></div></div>
+</section>
+
+<section id="fill-quiz">
+    <div class="section-header"><h2>填空练习 - Exercices a trous</h2><p class="section-sub">Choisissez le mot correct</p><div class="section-divider"></div></div>
+    <div class="card" id="fillExercise">
+        <h3>Choisissez parmi : 重复、造成、气氛、缺乏、仿佛、连忙</h3>
+        <div class="fill-options" id="fillOptions">
+            <span class="fill-chip" data-word="重复" onclick="selectFillWord(this)">重复</span>
+            <span class="fill-chip" data-word="造成" onclick="selectFillWord(this)">造成</span>
+            <span class="fill-chip" data-word="气氛" onclick="selectFillWord(this)">气氛</span>
+            <span class="fill-chip" data-word="缺乏" onclick="selectFillWord(this)">缺乏</span>
+            <span class="fill-chip" data-word="仿佛" onclick="selectFillWord(this)">仿佛</span>
+            <span class="fill-chip" data-word="连忙" onclick="selectFillWord(this)">连忙</span>
+        </div>
+        <div style="margin-top:24px;">
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">1</span>今天的晚会你们组织得相当好，<span class="fill-blank" data-answer="气氛" onclick="placeFillWord(this)">___</span>搞得轻松愉快。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">2</span>一觉醒来发现已经8点多了，李阳<span class="fill-blank" data-answer="连忙" onclick="placeFillWord(this)">___</span>穿好衣服往公司赶。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">3</span>他一边听，一边在本子上记着什么，<span class="fill-blank" data-answer="仿佛" onclick="placeFillWord(this)">___</span>对我的发言挺感兴趣似的。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">4</span>心理学家指出，一个人的动作或想法，如果<span class="fill-blank" data-answer="重复" onclick="placeFillWord(this)">___</span>二十一天就会形成习惯。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">5</span>每天大量饮酒确实给我的身体健康<span class="fill-blank" data-answer="造成" onclick="placeFillWord(this)">___</span>了很大的伤害。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">6</span>在食物<span class="fill-blank" data-answer="缺乏" onclick="placeFillWord(this)">___</span>的季节，动物为了活下去就只能多睡觉。</div>
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+            <button onclick="checkFillAnswers()" style="padding:10px 30px;background:var(--primary-light);color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:.95rem;font-weight:600;">Verifier</button>
+            <button onclick="resetFill()" style="padding:10px 30px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.95rem;margin-left:10px;">Recommencer</button>
+        </div>
+    </div>
+    <div class="card"><h3>Choisissez la bonne reponse</h3><div id="choiceQuizContainer"></div></div>
+</section>
+
+<section id="application">
+    <div class="section-header"><h2>运用 - Application</h2><p class="section-sub">Contexte et discussion</p><div class="section-divider"></div></div>
+    <div class="app-box">
+        <h4>背景分析 - Contexte : le sport et la santé</h4>
+        <p style="line-height:2;">中国有句话："饭后走一走，活到九十九；饭后趴一趴，活到一百八。"前者主张运动，活到了九十九岁；后者主张静止，却活到了一百八十岁。当然这只不过是句笑话，但是大多数人一般还是认为，生命在于运动！运动必须因人、因时、因环境而论，身体的强弱决定了运动的强弱。体弱者不要做过于激烈的运动；体强者也不可自以为身体好，就做超量的运动，这样也会对身体造成伤害。早晚时差，环境不同，也决定了运动时间的长短、运动方式的不同。运动仿佛长流之水，贵在坚持。</p>
+    </div>
+    <div class="app-box">
+        <h4>话题讨论 - Discussion : 运动与健康</h4>
+        <div class="discussion-q">1. 你喜欢的运动是什么？你是怎么接触到并喜欢上它的？<br><em>Quel est votre sport favori ? Comment l'avez-vous découvert et appris à l'aimer ?</em></div>
+        <div class="discussion-q">2. 进行这项运动有什么要求或条件？它的好处或优点是什么？<br><em>Quelles sont les exigences ou conditions pour pratiquer ce sport ? Quels en sont les avantages ?</em></div>
+        <div class="discussion-q">3. 介绍一下现在你参加这项运动的情况以及它给你的生活带来什么影响。<br><em>Décrivez votre pratique actuelle et l'impact de ce sport sur votre vie.</em></div>
+    </div>
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'écriture</h4>
+        <p>请以 "<strong>我喜欢的一项运动</strong>" 为题，谈一谈你的看法。尽量用上本课所学的生词，字数不少于100字。</p>
+        <p style="font-style:italic;color:var(--text-light);margin-top:8px;">Redigez un texte sur le theme "Un sport que j'aime". Utilisez le maximum de vocabulaire de la lecon, au moins 100 caracteres.</p>
+    </div>
+</section>
+
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+<footer style="text-align:center;padding:40px 20px;color:var(--text-light);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px;">HSK 5 Standard Course - Lesson 13 - 锯掉生活的"筐底"</footer>
+
+<script>
+const vocabData=[
+    {id:1,hanzi:"锯(子)",pinyin:"jù(zi)",pos:"v./n.",meaning:"couper à la scie ; scie",cat:"verb"},
+    {id:2,hanzi:"筐",pinyin:"kuāng",pos:"n.",meaning:"panier, corbeille",cat:"noun"},
+    {id:3,hanzi:"训练",pinyin:"xùnliàn",pos:"v.",meaning:"entraîner, former, s'entraîner",cat:"verb"},
+    {id:4,hanzi:"缺乏",pinyin:"quēfá",pos:"v.",meaning:"manquer de, être à court de",cat:"verb"},
+    {id:5,hanzi:"项目",pinyin:"xiàngmù",pos:"n.",meaning:"projet, discipline (sportive), item",cat:"noun"},
+    {id:6,hanzi:"桃",pinyin:"táo",pos:"n.",meaning:"pêche (fruit)",cat:"noun"},
+    {id:7,hanzi:"装",pinyin:"zhuāng",pos:"v.",meaning:"charger, contenir, porter (dans un récipient)",cat:"verb"},
+    {id:8,hanzi:"启发",pinyin:"qǐfā",pos:"v.",meaning:"inspirer, éclairer, stimuler la réflexion",cat:"verb"},
+    {id:9,hanzi:"安装",pinyin:"ānzhuāng",pos:"v.",meaning:"installer, fixer, monter",cat:"verb"},
+    {id:10,hanzi:"栏杆",pinyin:"lángān",pos:"n.",meaning:"rampe, balustrade, rambarde",cat:"noun"},
+    {id:11,hanzi:"甲",pinyin:"jiǎ",pos:"n.",meaning:"premier (d'une série), équipe A",cat:"noun"},
+    {id:12,hanzi:"乙",pinyin:"yǐ",pos:"n.",meaning:"deuxième, équipe B",cat:"noun"},
+    {id:13,hanzi:"工具",pinyin:"gōngjù",pos:"n.",meaning:"outil, instrument",cat:"noun"},
+    {id:14,hanzi:"投篮",pinyin:"tóu lán",pos:"v.",meaning:"tirer au panier (basket)",cat:"verb"},
+    {id:15,hanzi:"踩",pinyin:"cǎi",pos:"v.",meaning:"marcher sur, piétiner",cat:"verb"},
+    {id:16,hanzi:"一再",pinyin:"yízài",pos:"adv.",meaning:"à plusieurs reprises, encore et encore",cat:"other"},
+    {id:17,hanzi:"重复",pinyin:"chóngfù",pos:"v.",meaning:"répéter, recommencer",cat:"verb"},
+    {id:18,hanzi:"断断续续",pinyin:"duànduàn xùxù",pos:"adj.",meaning:"intermittent, par à-coups, discontinu",cat:"adj"},
+    {id:19,hanzi:"激烈",pinyin:"jīliè",pos:"adj.",meaning:"intense, acharné, vif",cat:"adj"},
+    {id:20,hanzi:"气氛",pinyin:"qìfēn",pos:"n.",meaning:"atmosphère, ambiance",cat:"noun"},
+    {id:21,hanzi:"何况",pinyin:"hékuàng",pos:"conj.",meaning:"d'autant plus que, à plus forte raison",cat:"other"},
+    {id:22,hanzi:"球迷",pinyin:"qiúmí",pos:"n.",meaning:"fan de sport (balle/ballon), supporter",cat:"noun"},
+    {id:23,hanzi:"工程师",pinyin:"gōngchéngshī",pos:"n.",meaning:"ingénieur",cat:"noun"},
+    {id:24,hanzi:"机器",pinyin:"jīqì",pos:"n.",meaning:"machine",cat:"noun"},
+    {id:25,hanzi:"顺畅",pinyin:"shùnchàng",pos:"adj.",meaning:"fluide, sans obstacle, sans heurts",cat:"adj"},
+    {id:26,hanzi:"幼儿园",pinyin:"yòu'éryuán",pos:"n.",meaning:"école maternelle, jardin d'enfants",cat:"noun"},
+    {id:27,hanzi:"好奇",pinyin:"hàoqí",pos:"adj.",meaning:"curieux",cat:"adj"},
+    {id:28,hanzi:"何必",pinyin:"hébì",pos:"adv.",meaning:"pourquoi (il n'est pas nécessaire de...)",cat:"other"},
+    {id:29,hanzi:"多亏",pinyin:"duōkuī",pos:"v.",meaning:"heureusement grâce à, c'est grâce à",cat:"verb"},
+    {id:30,hanzi:"连忙",pinyin:"liánmáng",pos:"adv.",meaning:"aussitôt, en toute hâte, promptement",cat:"other"},
+    {id:31,hanzi:"瞧",pinyin:"qiáo",pos:"v.",meaning:"regarder, voir",cat:"verb"},
+    {id:32,hanzi:"困扰",pinyin:"kùnrǎo",pos:"v.",meaning:"perturber, tracasser, hanter",cat:"verb"},
+    {id:33,hanzi:"思维",pinyin:"sīwéi",pos:"n./v.",meaning:"pensée, manière de penser ; penser",cat:"noun"},
+    {id:34,hanzi:"呆",pinyin:"dāi",pos:"adj./v.",meaning:"stupide, hébété ; rester sans réagir",cat:"adj"},
+    {id:35,hanzi:"造成",pinyin:"zàochéng",pos:"v.",meaning:"causer, provoquer, engendrer",cat:"verb"},
+    {id:36,hanzi:"仿佛",pinyin:"fǎngfú",pos:"adv./v.",meaning:"comme si, on dirait que ; ressembler à",cat:"other"},
+    {id:37,hanzi:"阻碍",pinyin:"zǔ'ài",pos:"v.",meaning:"entraver, empêcher, faire obstacle à",cat:"verb"}
+];
+
+function renderVocab(filter='all'){const g=document.getElementById('vocabGrid');const f=filter==='all'?vocabData:vocabData.filter(v=>v.cat===filter);g.innerHTML=f.map(v=>`<div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')"><span class="vocab-num">#${v.id}</span><div class="hanzi">${v.hanzi}</div><div class="pinyin">${v.pinyin}</div><span class="pos">${v.pos}</span><div class="meaning-placeholder">Cliquez pour voir...</div><div class="meaning-hidden" style="font-size:.9rem;margin-top:6px;">${v.meaning}</div></div>`).join('');}
+function filterVocab(c){document.querySelectorAll('.vocab-controls button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderVocab(c);}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function hideAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('revealed'));}
+
+let fcIndex=0,fcOrder=[...Array(vocabData.length).keys()];
+function updateFlashcard(){const v=vocabData[fcOrder[fcIndex]];document.getElementById('fcHanzi').textContent=v.hanzi;document.getElementById('fcPinyin').textContent=v.pinyin;document.getElementById('fcMeaning').textContent=v.meaning;document.getElementById('fcPos').textContent=v.pos;document.getElementById('fcCurrent').textContent=fcIndex+1;document.getElementById('fcTotal').textContent=fcOrder.length;document.getElementById('flashcard').classList.remove('flipped');}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%fcOrder.length;updateFlashcard();}
+function prevCard(){fcIndex=(fcIndex-1+fcOrder.length)%fcOrder.length;updateFlashcard();}
+function shuffleCards(){for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}fcIndex=0;updateFlashcard();}
+
+const vocabQuizData=[
+    {q:"缺乏 veut dire :",options:["Avoir beaucoup de","Manquer de, être à court de","Chercher","Utiliser"],correct:1},
+    {q:"启发 signifie :",options:["Commencer","Inspirer, éclairer, stimuler la réflexion","Découvrir","Arrêter"],correct:1},
+    {q:"断断续续 veut dire :",options:["Très rapide","Intermittent, discontinu, par à-coups","Régulier","Permanent"],correct:1},
+    {q:"激烈 signifie :",options:["Doux, calme","Intense, acharné, vif","Lent","Facile"],correct:1},
+    {q:"顺畅 veut dire :",options:["Difficile, compliqué","Fluide, sans obstacle, sans heurts","Rapide","Agréable"],correct:1},
+    {q:"困扰 signifie :",options:["Aider","Perturber, tracasser, hanter","Ignorer","Réjouir"],correct:1},
+    {q:"造成 veut dire :",options:["Fabriquer quelque chose d'utile","Causer, provoquer, engendrer","Préparer","Éviter"],correct:1},
+    {q:"阻碍 signifie :",options:["Faciliter","Entraver, empêcher, faire obstacle à","Encourager","Diriger"],correct:1},
+    {q:"仿佛 veut dire :",options:["Certainement","Comme si, on dirait que","Finalement","Pourtant"],correct:1},
+    {q:"何况 signifie :",options:["Heureusement","D'autant plus que, à plus forte raison","Cependant","Malheureusement"],correct:1},
+    {q:"多亏 veut dire :",options:["Malgré","Heureusement grâce à, c'est grâce à","À cause de","Sans"],correct:1},
+    {q:"思维 signifie :",options:["Habitude","Pensée, manière de penser","Émotion","Mémoire"],correct:1}
+];
+
+const grammarQuizData=[
+    {q:"'连运动员都不满意，更何况看比赛的球迷呢？' — 何况 exprime :",options:["Une condition","Un renforcement rhétorique (à plus forte raison)","Une concession","Un résultat"],correct:1},
+    {q:"'何况' peut aussi :",options:["Indiquer une opposition","Ajouter une raison supplémentaire en faveur de la proposition","Exprimer un souhait","Nier une action"],correct:1},
+    {q:"'何必这么麻烦呢？' signifie :",options:["Pourquoi ne pas être plus compliqué ?","Il n'est pas nécessaire de se compliquer ainsi","C'est très difficile","Comment faire cela ?"],correct:1},
+    {q:"何必 est suivi de :",options:["Un adjectif seul","Un verbe ou une proposition","Un nom","Un adverbe"],correct:1},
+    {q:"'多亏了他这句话' signifie :",options:["Malgré ce qu'il a dit","C'est grâce à ce qu'il a dit (qu'un problème a été résolu)","Ce qu'il a dit était inutile","Nous n'avons pas besoin de lui"],correct:1},
+    {q:"多亏 est suivi de :",options:["La personne/chose à qui on est redevable","Un résultat négatif","Une hypothèse","Un refus"],correct:0},
+    {q:"Laquelle des phrases avec 何必 est correcte ?",options:["何必你这么做了","你何必这么做呢？","何必的你这样","这么做了何必"],correct:1},
+    {q:"'连……更何况……' — 连 sert à :",options:["Renforcer l'argument en citant l'exemple le plus extrême","Nier totalement","Indiquer le temps","Exprimer la comparaison"],correct:0}
+];
+
+const compQuizData=[
+    {q:"Qui a inventé le basketball ?",options:["Un joueur américain","James Naismith, professeur d'éducation physique au Massachusetts","Un ingénieur californien","Des étudiants universitaires"],correct:1},
+    {q:"En quelle année le basketball a-t-il été inventé ?",options:["1880","1901","1891","1910"],correct:2},
+    {q:"D'où Naismith s'est-il inspiré pour inventer ce sport ?",options:["D'un sport antique","Du jeu consistant à lancer des balles dans des paniers à pêches","D'un jeu de plein air","D'un jeu d'enfants"],correct:1},
+    {q:"Quel était le problème avec les vrais paniers au début ?",options:["Ils étaient trop hauts","Il fallait grimper sur une échelle pour récupérer le ballon après chaque panier","Ils étaient trop lourds","Les balles ne rentraient pas"],correct:1},
+    {q:"Quel effet ce problème avait-il sur le jeu ?",options:["Le jeu était trop rapide","Le jeu manquait d'intensité car il était sans cesse interrompu","Les joueurs se blessaient","Le score était trop élevé"],correct:1},
+    {q:"Quelle solution un ingénieur avait-il proposée ?",options:["Des paniers en métal","Une machine qui éjectait le ballon en tirant sur le panier","Des paniers ouverts en bas","Des balles plus légères"],correct:1},
+    {q:"Qui a finalement résolu le problème ?",options:["Un ingénieur spécialisé","Un petit garçon en maternelle curieux","Naismith lui-même","Un arbitre professionnel"],correct:1},
+    {q:"Quelle est la morale philosophique de l'histoire ?",options:["Les enfants sont plus intelligents que les adultes","Notre pensée se bloque comme un ballon sur le fond du panier — la complexité est de notre fait","Il faut toujours faire simple","Les sports évoluent avec le temps"],correct:1},
+    {q:"Que représente la 'scie' dans la conclusion du texte ?",options:["Un outil pour fabriquer des paniers","L'outil qui nous permet de supprimer les obstacles mentaux que nous créons","La solution technologique","Le talent sportif"],correct:1},
+    {q:"D'où est extrait ce texte ?",options:["D'une revue de basket","De 《环球人物》, auteur Zhang Qian","D'un manuel scolaire","D'un roman de fiction"],correct:1}
+];
+
+function renderQuiz(data,cid,prefix){document.getElementById(cid).innerHTML=data.map((q,i)=>`<div class="quiz-question" id="${prefix}-q${i}"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options">${q.options.map((o,j)=>`<div class="quiz-option" onclick="answerQuiz('${prefix}',${i},${j})">${o}</div>`).join('')}</div></div>`).join('');}
+const quizState={vocab:{score:0,answered:0,total:12},grammar:{score:0,answered:0,total:8},comp:{score:0,answered:0,total:10}};
+function getQuizData(p){return p==='vocab'?vocabQuizData:p==='grammar'?grammarQuizData:compQuizData;}
+function answerQuiz(p,qi,oi){const d=getQuizData(p),qE=document.getElementById(`${p}-q${qi}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const opts=qE.querySelectorAll('.quiz-option'),c=d[qi].correct;opts.forEach((o,i)=>{o.classList.add('disabled');if(i===c)o.classList.add('selected-correct');if(i===oi&&i!==c)o.classList.add('selected-wrong');});qE.classList.add(oi===c?'correct':'wrong');if(oi===c)quizState[p].score++;quizState[p].answered++;updateScore(p);}
+function updateScore(p){const s=quizState[p];document.getElementById(`${p}Score`).textContent=`${s.score} / ${s.total}`;document.getElementById(`${p}ScoreBar`).style.width=`${(s.score/s.total)*100}%`;}
+function resetQuiz(p){quizState[p]={score:0,answered:0,total:quizState[p].total};updateScore(p);renderQuiz(getQuizData(p),p==='vocab'?'vocabQuizContainer':p==='grammar'?'grammarQuizContainer':'compQuizContainer',p);}
+function switchQuizTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById(t).classList.add('active');}
+
+let selectedFillWord=null;
+function selectFillWord(el){document.querySelectorAll('.fill-chip').forEach(c=>c.classList.remove('placed'));el.classList.add('placed');selectedFillWord=el.dataset.word;}
+function placeFillWord(b){if(!selectedFillWord)return;b.textContent=selectedFillWord;b.dataset.placed=selectedFillWord;document.querySelectorAll('.fill-chip').forEach(c=>{if(c.dataset.word===selectedFillWord)c.classList.add('used');c.classList.remove('placed');});selectedFillWord=null;}
+function checkFillAnswers(){document.querySelectorAll('.fill-blank').forEach(b=>{const p=b.dataset.placed,a=b.dataset.answer;if(p===a){b.style.borderColor='var(--success)';b.style.background='#dcfce7';b.style.color='var(--success)';b.style.fontWeight='600';}else{b.style.borderColor='var(--wrong)';b.style.background='#fecaca';b.style.color='var(--wrong)';b.title=`Reponse : ${a}`;}});}
+function resetFill(){document.querySelectorAll('.fill-blank').forEach(b=>{b.textContent='___';b.dataset.placed='';b.style.borderColor='';b.style.background='';b.style.color='';b.style.fontWeight='';b.title='';});document.querySelectorAll('.fill-chip').forEach(c=>{c.classList.remove('used','placed');});selectedFillWord=null;}
+
+const choiceQuizData=[
+    {q:"要整理的东西太多了，你看，这个箱子根本____不下。",a:"装",b:"安装",correct:"装",explain:"装 = mettre dans (un récipient), charger. 安装 = installer (un appareil, un équipement fixe). On ne peut pas 安装 des affaires dans une boîte."},
+    {q:"昨晚我失眠了，睡不着就躺着____书，结果不知不觉天就亮了。",a:"瞧",b:"看",correct:"瞧",explain:"瞧 (registre oral/informel) = regarder, jeter un coup d'œil. Dans un contexte oral/narratif détendu, 瞧 s'utilise mais 看 serait aussi acceptable. La réponse attendue du PDF est 瞧."},
+    {q:"即使在现代社会里，故事仍然是人们生活中不可____的一部分。",a:"缺少",b:"缺乏",correct:"缺少",explain:"缺少 = manquer de (quantité insuffisante). 缺乏 = être dépourvu de, manquer vraiment (absence quasi totale). 不可缺少 = indispensable est une expression figée."},
+    {q:"你们知道中国人除夕夜守岁、放鞭炮的风俗是怎么____的吗？",a:"形成",b:"造成",correct:"形成",explain:"形成 = se former, se constituer (résultat naturel/positif). 造成 = causer, provoquer (résultat souvent négatif ou accidentel). Les traditions se sont 形成 naturellement."},
+    {q:"明天我去一家公司面试，听说竞争很____。",a:"激烈",b:"强烈",correct:"激烈",explain:"激烈 = acharné, vif (compétitions, débats). 强烈 = fort, puissant (lumière, sentiments, réactions). La compétition lors d'un entretien est 激烈."},
+    {q:"当晚的比赛紧张、____，两队都打出了很高的水平。",a:"激烈",b:"强烈",correct:"激烈",explain:"激烈 qualifie les compétitions sportives et les affrontements. 强烈 qualifie des stimuli physiques ou des réactions émotionnelles."},
+    {q:"这种蔬菜有____的香味，它既可以生吃，又可熟食。",a:"激烈",b:"强烈",correct:"强烈",explain:"强烈 qualifie les odeurs, couleurs, lumières et autres perceptions sensorielles intenses. 激烈 ne s'utilise pas pour les odeurs."},
+    {q:"学生们____要求重新安排考试。",a:"激烈",b:"强烈",correct:"强烈",explain:"强烈 qualifie les exigences, protestations, réactions humaines fortes. 强烈要求 = exiger vivement. 激烈 ne convient pas pour décrire une demande."}
+];
+function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').innerHTML=choiceQuizData.map((q,i)=>`<div class="quiz-question" id="choice-q${i}" style="margin-bottom:12px;"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options" style="grid-template-columns:1fr 1fr;"><div class="quiz-option" onclick="answerChoice(${i},'${q.a}')">${q.a}</div><div class="quiz-option" onclick="answerChoice(${i},'${q.b}')">${q.b}</div></div><div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div></div>`).join('');}
+function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
+
+window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
+document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+</script>
+</body>
+</html>
