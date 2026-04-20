@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第9课 别样鲁迅</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+        :root{--primary:#7b1e2e;--primary-light:#a02a3f;--accent:#c9a96e;--gold:#b8860b;--gold-light:#fcf3d9;--bg:#fafbfc;--card:#fff;--text:#2c3e50;--text-light:#7f8c8d;--border:#e8ecf1;--success:#27ae60;--wrong:#e74c3c;--gradient-water:linear-gradient(135deg,#4a4e69 0%,#7b1e2e 100%);--gradient-hero:linear-gradient(135deg,#1a1a2e 0%,#2d3047 30%,#7b1e2e 70%,#c9a96e 100%);}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;scroll-behavior:smooth;}
+        .hero{background:var(--gradient-hero);color:#fff;padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;background-size:cover;opacity:.3;}
+        .hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+        .hero .lesson-badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:6px 20px;border-radius:30px;font-size:.9rem;letter-spacing:2px;margin-bottom:20px;}
+        .hero h1{font-family:'Noto Serif SC',serif;font-size:3.2rem;font-weight:900;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+        .hero .subtitle{font-size:1.3rem;opacity:.9;font-weight:300;margin-bottom:30px;}
+        .hero .deco{font-size:2rem;letter-spacing:8px;opacity:.6;}
+        .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+        .nav-inner::-webkit-scrollbar{display:none;}
+        .nav-inner a{padding:14px 18px;text-decoration:none;color:var(--text-light);font-size:.9rem;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+        .nav-inner a:hover,.nav-inner a.active{color:var(--primary);border-bottom-color:var(--primary-light);}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+        section{padding:50px 0;}
+        .section-header{text-align:center;margin-bottom:40px;}
+        .section-header h2{font-family:'Noto Serif SC',serif;font-size:2rem;color:var(--primary);margin-bottom:6px;}
+        .section-header .section-sub{color:var(--text-light);font-size:.95rem;}
+        .section-divider{width:60px;height:3px;background:var(--gradient-water);margin:12px auto 0;border-radius:2px;}
+        .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);margin-bottom:24px;}
+        .card h3{font-size:1.2rem;color:var(--primary);margin-bottom:16px;}
+        .text-block{background:var(--card);border-radius:16px;padding:35px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);font-family:'Noto Serif SC',serif;font-size:1.1rem;line-height:2.2;}
+        .text-block p{text-indent:2em;margin-bottom:16px;}
+        .vocab-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
+        .vocab-controls button{padding:8px 20px;border:2px solid var(--border);background:#fff;border-radius:25px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s;color:var(--text);}
+        .vocab-controls button.active,.vocab-controls button:hover{border-color:var(--primary-light);background:var(--primary-light);color:#fff;}
+        .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .vocab-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .3s;position:relative;}
+        .vocab-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.08);border-color:var(--primary-light);}
+        .vocab-card .vocab-num{position:absolute;top:8px;right:12px;font-size:.75rem;color:var(--text-light);opacity:.5;}
+        .vocab-card .hanzi{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;color:var(--primary);}
+        .vocab-card .pinyin{color:var(--accent);font-size:.9rem;margin:4px 0;}
+        .vocab-card .pos{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;}
+        .vocab-card .meaning-hidden{display:none;}
+        .vocab-card.revealed .meaning-hidden{display:block;}
+        .vocab-card.revealed .meaning-placeholder{display:none;}
+        .meaning-placeholder{color:var(--text-light);font-size:.85rem;font-style:italic;margin-top:6px;}
+        .flashcard-area{display:flex;flex-direction:column;align-items:center;gap:20px;padding:20px 0;}
+        .flashcard-container{perspective:1000px;width:380px;height:260px;max-width:100%;}
+        .flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);cursor:pointer;}
+        .flashcard.flipped{transform:rotateY(180deg);}
+        .flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;}
+        .flashcard-front{background:linear-gradient(135deg,#1a1a2e,#7b1e2e);color:#fff;box-shadow:0 10px 40px rgba(123,30,46,.3);}
+        .flashcard-front .fc-hanzi{font-family:'Noto Serif SC',serif;font-size:3rem;font-weight:900;margin-bottom:10px;}
+        .flashcard-front .fc-pinyin{font-size:1.1rem;opacity:.8;}
+        .flashcard-front .fc-hint{font-size:.8rem;opacity:.5;margin-top:20px;}
+        .flashcard-back{background:#fff;border:2px solid var(--primary-light);transform:rotateY(180deg);box-shadow:0 10px 40px rgba(0,0,0,.1);}
+        .flashcard-back .fc-meaning{font-size:1.3rem;color:var(--primary);font-weight:600;}
+        .flashcard-back .fc-pos{background:var(--gold-light);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-top:10px;}
+        .fc-controls{display:flex;gap:12px;}
+        .fc-controls button{padding:10px 28px;border-radius:25px;border:none;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;}
+        .fc-btn-prev,.fc-btn-next{background:var(--primary-light);color:#fff;}
+        .fc-btn-prev:hover,.fc-btn-next:hover{background:var(--primary);}
+        .fc-btn-shuffle{background:#fff;border:2px solid var(--border)!important;color:var(--text);}
+        .fc-counter{color:var(--text-light);font-size:.9rem;}
+        .grammar-card{background:var(--card);border-radius:16px;border:1px solid var(--border);margin-bottom:20px;overflow:hidden;}
+        .grammar-header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;}
+        .grammar-header .grammar-num{background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+        .grammar-header .grammar-title{font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;}
+        .grammar-header .grammar-pinyin{font-size:.9rem;opacity:.8;}
+        .grammar-body{padding:24px;}
+        .grammar-rule{background:#fdf2f4;border-left:4px solid var(--primary-light);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:20px;font-size:.95rem;color:var(--primary);}
+        .grammar-example{padding:12px 0;border-bottom:1px solid var(--border);}
+        .grammar-example:last-child{border-bottom:none;}
+        .grammar-example .ex-cn{font-size:1.05rem;margin-bottom:4px;}
+        .grammar-example .ex-note{color:var(--text-light);font-size:.85rem;}
+        .grammar-example .ex-highlight{color:var(--accent);font-weight:600;}
+        .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+        .comparison-table th{background:var(--primary);color:#fff;padding:14px 18px;font-weight:600;text-align:center;}
+        .comparison-table td{padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top;font-size:.95rem;}
+        .comparison-table tr:last-child td{border-bottom:none;}
+        .comparison-table tr:nth-child(even){background:#f8fafc;}
+        .comparison-table .label-cell{background:#f5e9ec;font-weight:600;color:var(--primary);text-align:center;width:60px;}
+        .colloc-section{margin-bottom:24px;}
+        .colloc-label{display:inline-block;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:12px;}
+        .colloc-label.verb{background:#e74c3c;}.colloc-label.attr{background:#f39c12;}.colloc-label.adv{background:#27ae60;}.colloc-label.comp{background:#8e44ad;}.colloc-label.num{background:#3498db;}.colloc-label.subj{background:#16a085;}
+        .colloc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+        .colloc-row:last-child{border-bottom:none;}
+        .colloc-word{font-weight:600;color:var(--primary);min-width:100px;font-size:1.1rem;}
+        .colloc-plus{color:var(--text-light);font-weight:700;}
+        .colloc-partners{display:flex;flex-wrap:wrap;gap:6px;}
+        .colloc-tag{background:#f0f4f8;padding:4px 12px;border-radius:15px;font-size:.85rem;}
+        .tab-bar{display:flex;gap:4px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:20px;}
+        .tab-btn{flex:1;padding:10px;border:none;background:transparent;border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--text-light);transition:all .2s;}
+        .tab-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+        .tab-content{display:none;}.tab-content.active{display:block;}
+        .quiz-score-bar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+        .score-display{font-size:1.5rem;font-weight:700;color:var(--primary);}
+        .score-bar-visual{flex:1;margin:0 20px;height:10px;background:var(--border);border-radius:5px;overflow:hidden;}
+        .score-bar-fill{height:100%;background:var(--gradient-water);border-radius:5px;transition:width .5s ease;width:0%;}
+        .quiz-reset-btn{padding:8px 20px;background:var(--primary-light);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;}
+        .quiz-question{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;transition:all .3s;}
+        .quiz-question.correct{border-color:var(--success);background:#f0fdf4;}
+        .quiz-question.wrong{border-color:var(--wrong);background:#fef2f2;}
+        .quiz-q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--primary-light);color:#fff;border-radius:50%;font-size:.8rem;font-weight:700;margin-right:10px;}
+        .quiz-q-text{font-size:1.05rem;margin-bottom:14px;}
+        .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .quiz-option{padding:12px 16px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.95rem;text-align:center;background:#fff;}
+        .quiz-option:hover{border-color:var(--primary-light);background:#fdf2f4;}
+        .quiz-option.selected-correct{border-color:var(--success);background:#dcfce7;color:var(--success);font-weight:600;}
+        .quiz-option.selected-wrong{border-color:var(--wrong);background:#fecaca;color:var(--wrong);font-weight:600;}
+        .quiz-option.disabled{pointer-events:none;opacity:.7;}
+        .quiz-explanation{display:none;margin-top:12px;padding:12px 16px;background:#fffbeb;border-radius:10px;font-size:.9rem;color:#92400e;border:1px solid #fde68a;}
+        .fill-blank{display:inline-block;min-width:80px;border-bottom:2px dashed var(--primary-light);padding:2px 8px;margin:0 4px;text-align:center;cursor:pointer;transition:all .2s;}
+        .fill-blank:hover{background:#fdf2f4;}
+        .fill-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center;}
+        .fill-chip{padding:8px 18px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s;}
+        .fill-chip:hover{border-color:var(--primary-light);background:#fdf2f4;}
+        .fill-chip.used{opacity:.4;pointer-events:none;}
+        .fill-chip.placed{background:var(--primary-light);color:#fff;border-color:var(--primary-light);}
+        .app-box{background:linear-gradient(135deg,#fdf2f4,#f5e9ec);border:1px solid #e9c5cd;border-radius:16px;padding:30px;margin-bottom:20px;}
+        .app-box h4{color:var(--primary);font-size:1.1rem;margin-bottom:12px;}
+        .discussion-q{padding:10px 0;border-bottom:1px solid rgba(233,197,205,.6);font-size:.95rem;}
+        .discussion-q:last-child{border-bottom:none;}
+        .person-box{background:linear-gradient(135deg,#1a1a2e,#7b1e2e);color:#fff;padding:24px 28px;border-radius:14px;margin-bottom:20px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;}
+        .person-box .p-portrait{flex:0 0 90px;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:2.5rem;border:2px solid var(--accent);}
+        .person-box .p-info{flex:1;min-width:200px;}
+        .person-box .p-name{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;margin-bottom:4px;}
+        .person-box .p-pinyin{font-size:.95rem;opacity:.8;margin-bottom:8px;}
+        .person-box .p-bio{font-size:.9rem;opacity:.95;line-height:1.7;}
+        .pn-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;}
+        .pn-item{background:#fdf2f4;border:1px solid #e9c5cd;border-radius:10px;padding:12px 16px;}
+        .pn-item .pn-cn{font-family:'Noto Serif SC',serif;font-size:1.15rem;font-weight:700;color:var(--primary);}
+        .pn-item .pn-py{color:var(--accent);font-size:.85rem;margin:2px 0;}
+        .pn-item .pn-en{font-size:.85rem;color:var(--text-light);}
+        .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
+        @media(max-width:768px){.hero h1{font-size:2rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}}
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
+        <h1>别样鲁迅</h1>
+        <p class="subtitle">The Lu Xun You Don't Know - Lesson 9</p>
+        <div class="deco">📚 🍷 🥢 🖋️</div>
+    </div>
+</header>
+
+<nav class="sticky-nav"><div class="nav-inner">
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#proper">专有名词 Noms propres</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+</div></nav>
+
+<main class="container">
+
+<section id="text">
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">别样鲁迅 (648 caracteres)</p><div class="section-divider"></div></div>
+    <div class="text-block">
+        <p>美食很大一部分是靠名人推动的，这一点在民国时期表现得尤其突出。例如著名的文学家鲁迅，在吃喝这件事上，就算是个地道的行家，不但会吃，还会亲自动手做，对许多美食都有独特的见解。这是近代新时尚。</p>
+        <p>北京是鲁迅长期生活过的城市，仅从这一时期鲁迅写作的日记中，我们发现他去过的知名餐馆就有65家，另外，他还很爱吃稻香村的点心。作为大作家、大学问家，鲁迅对吃很讲究，吃的内容在他的日记里占了很大一部分。在众多餐馆里，鲁迅去得最多、最喜欢的是广和居，平均每周都要去一次。</p>
+        <p>鲁迅经常到这家店的一个重要原因是距离近，广和居的大门就在他当时住的胡同的斜对面。位于菜市口附近的广和居是北京"八大居"之首，在民国时期非常出名。广和居算不上豪华，但却很适合朋友在这里聚会、热闹。这里特别欢迎文人的光临，为他们的聚会创造了很好的条件。广和居院里分成大小不同的各种房间，有一个人的，有三五人小聚的，也有十多个人大聚会的。这大大满足了鲁迅爱和朋友吃饭的要求。他爱好交际，大方好客，常呼朋唤友，多数是三五个人一起吃，有时甚至会直接让广和居送外卖到家里，在家招待朋友。当然最重要的还是因为广和居有鲁迅喜欢的菜。那里的菜既有高档的，也有适合普通百姓的，样样都让人有胃口。</p>
+        <p>鲁迅也爱喝酒，虽然明明知道自己有胃病，不应该喝酒，但却很难戒掉。他是每顿饭必喝酒的人。现在保存的历史资料记载，他和郁达夫一起喝酒的次数最多。鲁迅酒量不大，经常喝醉，而且在喝酒的过程中烟不离手。郁达夫在1933年曾经作诗形容他："醉眼蒙眬上酒楼，彷徨呐喊两悠悠"，描写得十分形象。</p>
+        <p style="text-align:right;font-style:italic;color:var(--text-light);">— 改编自《民国吃家》，作者：二毛</p>
+    </div>
+</section>
+
+<section id="vocab">
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">38 mots - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (38)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout reveler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+</section>
+
+<section id="proper">
+    <div class="section-header"><h2>专有名词 - Noms propres</h2><p class="section-sub">Personnes et lieux</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="pn-list">
+            <div class="pn-item"><div class="pn-cn">鲁迅</div><div class="pn-py">Lǔ Xùn</div><div class="pn-en">Lu Xun (1881-1936), celebre ecrivain chinois</div></div>
+            <div class="pn-item"><div class="pn-cn">民国</div><div class="pn-py">Mínguó (Zhōnghuá Mínguó)</div><div class="pn-en">Republique de Chine (1912-1949)</div></div>
+            <div class="pn-item"><div class="pn-cn">稻香村</div><div class="pn-py">Dàoxiāngcūn</div><div class="pn-en">Daoxiangcun, celebre patisserie de Pekin</div></div>
+            <div class="pn-item"><div class="pn-cn">广和居</div><div class="pn-py">Guǎnghéjū</div><div class="pn-en">Restaurant Guangheju</div></div>
+            <div class="pn-item"><div class="pn-cn">菜市口</div><div class="pn-py">Càishìkǒu</div><div class="pn-en">Caishikou, quartier de Pekin</div></div>
+            <div class="pn-item"><div class="pn-cn">郁达夫</div><div class="pn-py">Yù Dáfū</div><div class="pn-en">Yu Dafu (1896-1945), celebre ecrivain chinois</div></div>
+            <div class="pn-item"><div class="pn-cn">《彷徨》</div><div class="pn-py">Pánghuáng</div><div class="pn-en"><em>Wandering</em>, recueil de nouvelles de Lu Xun</div></div>
+            <div class="pn-item"><div class="pn-cn">《呐喊》</div><div class="pn-py">Nàhǎn</div><div class="pn-en"><em>Call to Arms</em>, recueil de nouvelles de Lu Xun</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="flashcards">
+    <div class="section-header"><h2>卡片 - Flashcards</h2><p class="section-sub">Cliquez pour retourner la carte</p><div class="section-divider"></div></div>
+    <div class="flashcard-area">
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">38</span></div>
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front"><div class="fc-hanzi" id="fcHanzi">表现</div><div class="fc-pinyin" id="fcPinyin">biǎoxiàn</div><div class="fc-hint">cliquez pour voir la traduction</div></div>
+                <div class="flashcard-back"><div class="fc-meaning" id="fcMeaning">manifester, montrer ; manifestation, performance</div><div class="fc-pos" id="fcPos">v./n.</div></div>
+            </div>
+        </div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+        </div>
+    </div>
+
+    <div style="margin-top:30px;">
+        <h3 style="color:var(--primary);font-size:1.2rem;margin-bottom:16px;text-align:center;">Le personnage de la lecon</h3>
+        <div class="person-box">
+            <div class="p-portrait">📖</div>
+            <div class="p-info">
+                <div class="p-name">鲁迅 (Lu Xun)</div>
+                <div class="p-pinyin">1881-1936 · Zhejiang, Shaoxing · Pseudonyme de 周树人 (Zhōu Shùrén)</div>
+                <div class="p-bio">Pere de la litterature chinoise moderne. Etudie la medecine au Japon avant de se tourner vers l'ecriture. Auteur de <em>《呐喊》Call to Arms</em> et <em>《彷徨》Wandering</em>. Sa premiere nouvelle en chinois vernaculaire <em>《狂人日记》Le Journal d'un fou</em> (1918) signe l'avenement de la litterature moderne en Chine. Sa pensee est profonde, critique, "comme une arme tenue avec un pinceau".</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="grammar">
+    <div class="section-header"><h2>语法 - Grammaire</h2><p class="section-sub">3 points de grammaire essentiels</p><div class="section-divider"></div></div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">1</div><div><div class="grammar-title">算</div><div class="grammar-pinyin">suàn</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Verbe :</strong> "etre considere comme, compter pour, valoir comme". Souvent precede de 就 (就算 = "compte au moins comme"). Suivi de 了, exprime "laisser tomber, ne plus se preoccuper" : <strong>算了</strong> = "laisse tomber, peu importe".</div>
+            <div class="grammar-example"><div class="ex-cn">例如著名的文学家鲁迅，在吃喝这件事上，就<span class="ex-highlight">算</span>是个地道的行家。</div><div class="ex-note">Le celebre ecrivain Lu Xun, en matiere de cuisine, peut etre considere comme un vrai connaisseur.</div></div>
+            <div class="grammar-example"><div class="ex-cn">这钱就<span class="ex-highlight">算</span>我借给你的，将来你有了的时候再还我。</div><div class="ex-note">Considerons cet argent comme un pret ; tu me rembourseras quand tu pourras.</div></div>
+            <div class="grammar-example"><div class="ex-cn">不就是一个空瓶子吗？扔掉<span class="ex-highlight">算了</span>。</div><div class="ex-note">Ce n'est qu'une bouteille vide, jette-la et n'y pense plus.</div></div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">算了</span>吧，你跑得再快，也追不上会飞的鸟啊。</div><div class="ex-note">Laisse tomber, meme en courant tres vite tu ne rattraperas pas un oiseau en vol.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">2</div><div><div class="grammar-title">作为</div><div class="grammar-pinyin">zuòwéi</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>2 emplois :</strong> (a) <strong>verbe</strong> = "considerer comme, prendre pour" ; (b) <strong>preposition</strong> = "en tant que, en qualite de" — introduit l'identite, le statut ou la nature du sujet.</div>
+            <div class="grammar-example"><div class="ex-cn">北海公园离家最近，所以我把那儿<span class="ex-highlight">作为</span>每晚散步的去处。</div><div class="ex-note">(a) Beihai est le plus proche, donc j'en ai fait mon lieu de promenade chaque soir.</div></div>
+            <div class="grammar-example"><div class="ex-cn">经理要请我去吃顿饭，说是<span class="ex-highlight">作为</span>我加班的表扬。</div><div class="ex-note">(a) Le directeur m'invite au restaurant, en guise de recompense pour mes heures supplementaires.</div></div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">作为</span>大作家、大学问家，鲁迅对吃很讲究。</div><div class="ex-note">(b) En tant que grand ecrivain et grand erudit, Lu Xun etait tres exigeant en matiere de nourriture.</div></div>
+            <div class="grammar-example"><div class="ex-cn">中国<span class="ex-highlight">作为</span>主要生产国之一也在扩大它的种植面积。</div><div class="ex-note">(b) La Chine, en tant que l'un des principaux producteurs, accroit aussi sa surface cultivee.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">3</div><div><div class="grammar-title">曾经</div><div class="grammar-pinyin">céngjīng</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Adverbe.</strong> Indique qu'une action a eu lieu ou qu'une situation a existe <em>dans le passe</em> ("autrefois, jadis, il fut un temps ou..."). Souvent suivi du suffixe verbal 过. A distinguer de 已经 (= "deja", lien avec le present).</div>
+            <div class="grammar-example"><div class="ex-cn">郁达夫在1933年<span class="ex-highlight">曾经</span>作诗形容他：……</div><div class="ex-note">Yu Dafu, en 1933, ecrivit jadis un poeme pour le decrire :…</div></div>
+            <div class="grammar-example"><div class="ex-cn">鲁迅<span class="ex-highlight">曾经</span>说他是将别人喝牛奶、咖啡的时间用来学习。</div><div class="ex-note">Lu Xun a dit autrefois qu'il consacrait a l'etude le temps que les autres passent a boire du lait et du cafe.</div></div>
+            <div class="grammar-example"><div class="ex-cn">孔子<span class="ex-highlight">曾经</span>带着学生周游各国14年，传播他的思想。</div><div class="ex-note">Confucius parcourut autrefois les royaumes pendant 14 ans avec ses disciples, propageant sa pensee.</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="analysis">
+    <div class="section-header"><h2>词语辨析 - Analyse comparative</h2><p class="section-sub">亲自 vs 自己</p><div class="section-divider"></div></div>
+    <div class="card">
+        <table class="comparison-table">
+            <thead><tr><th></th><th>亲自 (qīnzì)</th><th>自己 (zìjǐ)</th></tr></thead>
+            <tbody>
+                <tr><td class="label-cell">Points communs</td><td colspan="2" style="text-align:center;">Tous deux indiquent la personne elle-meme.<br><em>Ex : 鲁迅不但会吃，还会<u>亲自</u> / <u>自己</u>动手做。</em></td></tr>
+                <tr><td class="label-cell" rowspan="2">Differences</td>
+                    <td>1. <strong>Adverbe.</strong> Place uniquement entre le sujet et le verbe.<br><em>老人总是<u>亲自</u>喂养他的猴子。</em></td>
+                    <td>1. <strong>Pronom.</strong> Peut etre sujet, objet ou epithete.<br><em>请大家带好<u>自己</u>的资料。</em></td></tr>
+                <tr>
+                    <td>2. Reserve aux <strong>personnes de rang eleve</strong> ou pour des actions inhabituelles que l'on fait soi-meme.<br><em>这份礼物是市长<u>亲自</u>为生病的小女孩做的。</em></td>
+                    <td>2. Insiste sur le fait que l'<strong>auteur de l'action est la personne elle-meme</strong>, et pas quelqu'un d'autre.<br><em>你应该<u>自己</u>努力学习，不能总是靠别人。</em></td></tr>
+            </tbody>
+        </table>
+        <div style="margin-top:20px;padding:14px 18px;background:#fffbeb;border-radius:10px;font-size:.9rem;color:#92400e;border:1px solid #fde68a;">
+            <strong>Astuce :</strong> 亲自 met l'accent sur le caractere remarquable du fait que telle personne <em>en personne</em> fasse quelque chose qu'on attendrait d'un subordonne. 自己 oppose simplement "soi-meme" a "quelqu'un d'autre".
+        </div>
+    </div>
+</section>
+
+<section id="collocation">
+    <div class="section-header"><h2>词语搭配 - Collocations</h2><p class="section-sub">Combinaisons essentielles</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="colloc-section"><div class="colloc-label verb">动词 + 宾语</div>
+            <div class="colloc-row"><span class="colloc-word">讲究</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">吃</span><span class="colloc-tag">穿</span><span class="colloc-tag">卫生</span><span class="colloc-tag">方法</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">戒</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">烟</span><span class="colloc-tag">酒</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label attr">定语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">地道的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">普通话</span><span class="colloc-tag">北京小吃</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">高档（的）</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">礼品</span><span class="colloc-tag">家具</span><span class="colloc-tag">服装</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label comp">中心语 + 补语</div>
+            <div class="colloc-row"><span class="colloc-word">算</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">得上</span><span class="colloc-tag">不上</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">保存</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">几百年</span><span class="colloc-tag">完好</span><span class="colloc-tag">至今</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label num">数量词 + 名词</div>
+            <div class="colloc-row"><span class="colloc-word">一条 / 个</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">胡同</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">一首</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">歌</span><span class="colloc-tag">诗</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label subj">主语 + 谓语</div>
+            <div class="colloc-row"><span class="colloc-word">表现</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">(很)好</span><span class="colloc-tag">突出</span><span class="colloc-tag">稳定</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">描写</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">(很)形象</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="quiz-section">
+    <div class="section-header"><h2>测验 - Quiz</h2><p class="section-sub">Testez vos connaissances</p><div class="section-divider"></div></div>
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+    </div>
+    <div class="tab-content active" id="vocab-quiz"><div class="quiz-score-bar"><div class="score-display" id="vocabScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button></div><div id="vocabQuizContainer"></div></div>
+    <div class="tab-content" id="grammar-quiz"><div class="quiz-score-bar"><div class="score-display" id="grammarScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button></div><div id="grammarQuizContainer"></div></div>
+    <div class="tab-content" id="comprehension-quiz"><div class="quiz-score-bar"><div class="score-display" id="compScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button></div><div id="compQuizContainer"></div></div>
+</section>
+
+<section id="fill-quiz">
+    <div class="section-header"><h2>填空练习 - Exercices a trous</h2><p class="section-sub">Choisissez le mot correct</p><div class="section-divider"></div></div>
+    <div class="card" id="fillExercise">
+        <h3>Choisissez parmi : 戒、首、保存、地道、讲究、形象</h3>
+        <div class="fill-options" id="fillOptions">
+            <span class="fill-chip" data-word="首" onclick="selectFillWord(this)">首</span>
+            <span class="fill-chip" data-word="讲究" onclick="selectFillWord(this)">讲究</span>
+            <span class="fill-chip" data-word="戒" onclick="selectFillWord(this)">戒</span>
+            <span class="fill-chip" data-word="地道" onclick="selectFillWord(this)">地道</span>
+            <span class="fill-chip" data-word="保存" onclick="selectFillWord(this)">保存</span>
+            <span class="fill-chip" data-word="形象" onclick="selectFillWord(this)">形象</span>
+        </div>
+        <div style="margin-top:24px;">
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">1</span>著名的文学家、语言学家刘半农1920年写了一<span class="fill-blank" data-answer="首" onclick="placeFillWord(this)">___</span>题为《教我如何不想她》的小诗，流传至今。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">2</span>筷子是中餐最主要的进餐用具，在使用上也有很多<span class="fill-blank" data-answer="讲究" onclick="placeFillWord(this)">___</span>。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">3</span>你咳嗽得这么厉害，真得<span class="fill-blank" data-answer="戒" onclick="placeFillWord(this)">___</span>烟了！</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">4</span>作为一家北京的川菜馆，能做出如此<span class="fill-blank" data-answer="地道" onclick="placeFillWord(this)">___</span>的麻婆豆腐真是不容易。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">5</span>新鲜的葡萄不易<span class="fill-blank" data-answer="保存" onclick="placeFillWord(this)">___</span>，因此其价格也比较高。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">6</span>公司这次要求招聘<span class="fill-blank" data-answer="形象" onclick="placeFillWord(this)">___</span>好的职员。</div>
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+            <button onclick="checkFillAnswers()" style="padding:10px 30px;background:var(--primary-light);color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:.95rem;font-weight:600;">Verifier</button>
+            <button onclick="resetFill()" style="padding:10px 30px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.95rem;margin-left:10px;">Recommencer</button>
+        </div>
+    </div>
+    <div class="card"><h3>Choisissez la bonne reponse</h3><div id="choiceQuizContainer"></div></div>
+</section>
+
+<section id="application">
+    <div class="section-header"><h2>运用 - Application</h2><p class="section-sub">Contexte et discussion</p><div class="section-divider"></div></div>
+    <div class="app-box">
+        <h4>背景分析 - Contexte : 鲁迅</h4>
+        <p style="line-height:2;">鲁迅（1881—1936），浙江绍兴人，原名周树人，"鲁迅"是他在1918年5月发表中国第一篇白话小说《狂人日记》时开始使用的笔名。他曾留学日本学习医学，后从事（cóngshì, to engage in）文学创作。在中国，鲁迅是中国现代文学史上一位地位独特、影响深远的作家。他的作品思想（sīxiǎng, thought）深刻，充满批判（pīpàn, to criticize）性，像是用笔做武器在战斗。《呐喊》和《彷徨》是他的两部小说集。</p>
+    </div>
+    <div class="app-box">
+        <h4>话题讨论 - Discussion : 我喜欢的一位名人</h4>
+        <div class="discussion-q">1. 你喜欢的这位名人是谁？简单介绍一下有关他/她的情况。<br><em>Quelle est la celebrite que vous appreciez ? Presentez-la brievement.</em></div>
+        <div class="discussion-q">2. 你如何评价他/她？你喜欢他/她的理由是什么？<br><em>Comment l'evaluez-vous ? Pour quelles raisons l'aimez-vous ?</em></div>
+        <div class="discussion-q">3. 你觉得他/她对你有影响吗？有什么影响？<br><em>Pensez-vous qu'il/elle a une influence sur vous ? Laquelle ?</em></div>
+    </div>
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'ecriture</h4>
+        <p>请以 "<strong>我喜欢的一位名人</strong>" 为题，介绍一位你熟悉的著名人物。尽量用上本课所学的生词，字数不少于100字。</p>
+        <p style="font-style:italic;color:var(--text-light);margin-top:8px;">Redigez un texte intitule "Une celebrite que j'aime" et presentez une personne celebre que vous connaissez bien. Utilisez le maximum de vocabulaire de la lecon, au moins 100 caracteres.</p>
+    </div>
+</section>
+
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+<footer style="text-align:center;padding:40px 20px;color:var(--text-light);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px;">HSK 5 Standard Course - Lesson 9 - 别样鲁迅</footer>
+
+<script>
+const vocabData=[
+    {id:1,hanzi:"表现",pinyin:"biǎoxiàn",pos:"v./n.",meaning:"manifester, montrer ; manifestation, performance",cat:"verb"},
+    {id:2,hanzi:"突出",pinyin:"tūchū",pos:"adj.",meaning:"saillant, remarquable, eminent",cat:"adj"},
+    {id:3,hanzi:"文学家",pinyin:"wénxuéjiā",pos:"n.",meaning:"ecrivain, homme de lettres",cat:"noun"},
+    {id:4,hanzi:"算",pinyin:"suàn",pos:"v.",meaning:"etre considere comme, compter pour",cat:"verb"},
+    {id:5,hanzi:"地道",pinyin:"dìdao",pos:"adj.",meaning:"authentique, veritable, pur",cat:"adj"},
+    {id:6,hanzi:"行家",pinyin:"hángjia",pos:"n.",meaning:"connaisseur, expert, specialiste",cat:"noun"},
+    {id:7,hanzi:"亲自",pinyin:"qīnzì",pos:"adv.",meaning:"en personne, soi-meme",cat:"other"},
+    {id:8,hanzi:"见解",pinyin:"jiànjiě",pos:"n.",meaning:"point de vue, opinion, vision",cat:"noun"},
+    {id:9,hanzi:"近代",pinyin:"jìndài",pos:"n.",meaning:"epoque moderne (mi-XIXe a 1919)",cat:"noun"},
+    {id:10,hanzi:"时尚",pinyin:"shíshàng",pos:"n.",meaning:"mode, tendance",cat:"noun"},
+    {id:11,hanzi:"写作",pinyin:"xiězuò",pos:"v.",meaning:"ecrire, rediger (litterairement)",cat:"verb"},
+    {id:12,hanzi:"点心",pinyin:"diǎnxin",pos:"n.",meaning:"patisseries, dim sum, en-cas",cat:"noun"},
+    {id:13,hanzi:"作为",pinyin:"zuòwéi",pos:"v./prep.",meaning:"prendre pour ; en tant que, en qualite de",cat:"other"},
+    {id:14,hanzi:"学问",pinyin:"xuéwen",pos:"n.",meaning:"savoir, erudition, connaissances",cat:"noun"},
+    {id:15,hanzi:"讲究",pinyin:"jiǎngjiu",pos:"v./adj.",meaning:"etre exigeant sur, mettre l'accent sur ; raffine, soigne",cat:"verb"},
+    {id:16,hanzi:"平均",pinyin:"píngjūn",pos:"adj.",meaning:"moyen, en moyenne",cat:"adj"},
+    {id:17,hanzi:"胡同",pinyin:"hútòng",pos:"n.",meaning:"hutong, ruelle (de Pekin)",cat:"noun"},
+    {id:18,hanzi:"位于",pinyin:"wèiyú",pos:"v.",meaning:"etre situe a / dans / sur",cat:"verb"},
+    {id:19,hanzi:"首",pinyin:"shǒu",pos:"n./m.",meaning:"tete, premier ; specificatif (poemes, chansons)",cat:"other"},
+    {id:20,hanzi:"豪华",pinyin:"háohuá",pos:"adj.",meaning:"luxueux, somptueux",cat:"adj"},
+    {id:21,hanzi:"光临",pinyin:"guānglín",pos:"v.",meaning:"daigner visiter, honorer de sa presence",cat:"verb"},
+    {id:22,hanzi:"交际",pinyin:"jiāojì",pos:"n.",meaning:"relations sociales, sociabilite",cat:"noun"},
+    {id:23,hanzi:"大方",pinyin:"dàfang",pos:"adj.",meaning:"genereux, naturel, distingue",cat:"adj"},
+    {id:24,hanzi:"好客",pinyin:"hàokè",pos:"v.",meaning:"etre hospitalier, aimer recevoir",cat:"verb"},
+    {id:25,hanzi:"呼朋唤友",pinyin:"hūpéng huànyǒu",pos:"idiom",meaning:"reunir amis et compagnons, inviter ses amis",cat:"other"},
+    {id:26,hanzi:"招待",pinyin:"zhāodài",pos:"v.",meaning:"recevoir, accueillir, traiter (un invite)",cat:"verb"},
+    {id:27,hanzi:"高档",pinyin:"gāodàng",pos:"adj.",meaning:"haut de gamme, de luxe",cat:"adj"},
+    {id:28,hanzi:"胃口",pinyin:"wèikǒu",pos:"n.",meaning:"appetit",cat:"noun"},
+    {id:29,hanzi:"明明",pinyin:"míngmíng",pos:"adv.",meaning:"manifestement, de toute evidence",cat:"other"},
+    {id:30,hanzi:"胃",pinyin:"wèi",pos:"n.",meaning:"estomac",cat:"noun"},
+    {id:31,hanzi:"戒",pinyin:"jiè",pos:"v.",meaning:"renoncer a, arreter (tabac, alcool…)",cat:"verb"},
+    {id:32,hanzi:"保存",pinyin:"bǎocún",pos:"v.",meaning:"conserver, preserver, garder",cat:"verb"},
+    {id:33,hanzi:"资料",pinyin:"zīliào",pos:"n.",meaning:"donnees, documents, materiaux",cat:"noun"},
+    {id:34,hanzi:"曾经",pinyin:"céngjīng",pos:"adv.",meaning:"autrefois, jadis, il fut un temps ou…",cat:"other"},
+    {id:35,hanzi:"形容",pinyin:"xíngróng",pos:"v.",meaning:"decrire, depeindre",cat:"verb"},
+    {id:36,hanzi:"蒙眬",pinyin:"ménglóng",pos:"adj.",meaning:"endormi, brumeux (regard, conscience)",cat:"adj"},
+    {id:37,hanzi:"悠悠",pinyin:"yōuyōu",pos:"adj.",meaning:"tranquille, lent, sans hate",cat:"adj"},
+    {id:38,hanzi:"形象",pinyin:"xíngxiàng",pos:"adj./n.",meaning:"vivant, image ; image, figure",cat:"adj"}
+];
+
+function renderVocab(filter='all'){const g=document.getElementById('vocabGrid');const f=filter==='all'?vocabData:vocabData.filter(v=>v.cat===filter);g.innerHTML=f.map(v=>`<div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')"><span class="vocab-num">#${v.id}</span><div class="hanzi">${v.hanzi}</div><div class="pinyin">${v.pinyin}</div><span class="pos">${v.pos}</span><div class="meaning-placeholder">Cliquez pour voir...</div><div class="meaning-hidden" style="font-size:.9rem;margin-top:6px;">${v.meaning}</div></div>`).join('');}
+function filterVocab(c){document.querySelectorAll('.vocab-controls button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderVocab(c);}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function hideAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('revealed'));}
+
+let fcIndex=0,fcOrder=[...Array(vocabData.length).keys()];
+function updateFlashcard(){const v=vocabData[fcOrder[fcIndex]];document.getElementById('fcHanzi').textContent=v.hanzi;document.getElementById('fcPinyin').textContent=v.pinyin;document.getElementById('fcMeaning').textContent=v.meaning;document.getElementById('fcPos').textContent=v.pos;document.getElementById('fcCurrent').textContent=fcIndex+1;document.getElementById('fcTotal').textContent=fcOrder.length;document.getElementById('flashcard').classList.remove('flipped');}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%fcOrder.length;updateFlashcard();}
+function prevCard(){fcIndex=(fcIndex-1+fcOrder.length)%fcOrder.length;updateFlashcard();}
+function shuffleCards(){for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}fcIndex=0;updateFlashcard();}
+
+const vocabQuizData=[
+    {q:"文学家 designe :",options:["Un philosophe","Un ecrivain, homme de lettres","Un musicien","Un scientifique"],correct:1},
+    {q:"地道 (didao) signifie :",options:["Souterrain","Authentique, veritable","Mauvais","Etrange"],correct:1},
+    {q:"行家 veut dire :",options:["Voyageur","Expert, connaisseur","Acheteur","Marchand"],correct:1},
+    {q:"亲自 signifie :",options:["Plus tard","En personne, soi-meme","Souvent","Doucement"],correct:1},
+    {q:"见解 veut dire :",options:["Rencontre","Point de vue, opinion","Solution","Explication"],correct:1},
+    {q:"豪华 signifie :",options:["Modeste","Luxueux, somptueux","Sale","Bruyant"],correct:1},
+    {q:"光临 est une formule polie pour :",options:["S'en aller","Daigner visiter, honorer de sa presence","Manger","Dormir"],correct:1},
+    {q:"招待 veut dire :",options:["Refuser","Recevoir, accueillir, traiter (un invite)","Vendre","Punir"],correct:1},
+    {q:"胃口 signifie :",options:["Bouche","Appetit","Maladie","Goutter"],correct:1},
+    {q:"戒 (烟/酒) veut dire :",options:["Boire / fumer","Renoncer a, arreter","Acheter","Aimer"],correct:1},
+    {q:"保存 signifie :",options:["Detruire","Conserver, preserver","Vendre","Cacher"],correct:1},
+    {q:"形容 veut dire :",options:["Imiter","Decrire, depeindre","Photographier","Aimer"],correct:1}
+];
+
+const grammarQuizData=[
+    {q:"Dans '在吃喝这件事上，就算是个地道的行家', 算 signifie :",options:["Calculer (mathematiquement)","Etre considere comme, compter pour","Oublier","Remplacer"],correct:1},
+    {q:"算了 (suàn le) signifie :",options:["C'est calcule","Laisse tomber, peu importe","Vite !","Continuons !"],correct:1},
+    {q:"Dans '作为大作家、大学问家，鲁迅对吃很讲究', 作为 est :",options:["Verbe principal","Preposition introduisant l'identite (en tant que)","Adverbe","Conjonction"],correct:1},
+    {q:"作为 peut aussi signifier (verbe) :",options:["Sortir","Considerer comme, prendre pour","Demander","Ecouter"],correct:1},
+    {q:"曾经 indique :",options:["Une action future","Une action ou situation passee, autrefois","Une action en cours","Une obligation"],correct:1},
+    {q:"Quelle phrase emploie correctement 曾经 ?",options:["我曾经明天去北京","他曾经在日本留学","我曾经现在很忙","曾经下雨吗？"],correct:1},
+    {q:"Difference 亲自 / 自己 : 亲自 est…",options:["Un pronom","Un adverbe (entre sujet et verbe), pour les personnes de rang eleve","Un nom","Une conjonction"],correct:1},
+    {q:"Dans '请大家带好___的资料', on doit utiliser :",options:["亲自","自己","曾经","作为"],correct:1}
+];
+
+const compQuizData=[
+    {q:"Selon le texte, quelle epoque a particulierement vu les celebrites promouvoir la gastronomie ?",options:["La dynastie Tang","L'epoque Qing","La Republique de Chine (民国)","L'epoque contemporaine"],correct:2},
+    {q:"Combien de restaurants connus Lu Xun a-t-il visites a Pekin selon ses journaux intimes ?",options:["35","65","100","200"],correct:1},
+    {q:"Quel restaurant Lu Xun frequentait-il en moyenne une fois par semaine ?",options:["稻香村","广和居","八大居","彷徨"],correct:1},
+    {q:"Pourquoi Lu Xun aimait-il particulierement aller a 广和居 ?",options:["Parce que c'etait luxueux","Parce que c'etait juste en face du hutong ou il vivait","Parce que c'etait gratuit","Parce que c'etait recommande par le gouvernement"],correct:1},
+    {q:"Quel etait le caractere social de Lu Xun ?",options:["Solitaire et reserve","Genereux, hospitalier, aimant les rassemblements d'amis","Severe et froid","Toujours occupe"],correct:1},
+    {q:"Quel probleme de sante avait Lu Xun, qu'il continuait pourtant a aggraver en buvant ?",options:["Probleme de cœur","Probleme d'estomac (胃病)","Probleme de poumons","Probleme de yeux"],correct:1},
+    {q:"Avec qui Lu Xun buvait-il le plus souvent selon les archives ?",options:["Yu Dafu (郁达夫)","Zhou Shuren","Confucius","Liu Bannong"],correct:0},
+    {q:"En quelle annee Yu Dafu ecrivit-il un poeme decrivant Lu Xun ?",options:["1918","1933","1936","1949"],correct:1},
+    {q:"Quels sont les deux recueils de nouvelles de Lu Xun mentionnes dans le poeme ?",options:["《呐喊》et《彷徨》","《狂人日记》et《呐喊》","《阿Q正传》et《祝福》","《野草》et《朝花夕拾》"],correct:0},
+    {q:"Quel etait le vrai nom de Lu Xun ?",options:["周树人 (Zhōu Shùrén)","郁达夫 (Yù Dáfū)","二毛 (Er Mao)","刘半农 (Liú Bànnóng)"],correct:0}
+];
+
+function renderQuiz(data,cid,prefix){document.getElementById(cid).innerHTML=data.map((q,i)=>`<div class="quiz-question" id="${prefix}-q${i}"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options">${q.options.map((o,j)=>`<div class="quiz-option" onclick="answerQuiz('${prefix}',${i},${j})">${o}</div>`).join('')}</div></div>`).join('');}
+const quizState={vocab:{score:0,answered:0,total:12},grammar:{score:0,answered:0,total:8},comp:{score:0,answered:0,total:10}};
+function getQuizData(p){return p==='vocab'?vocabQuizData:p==='grammar'?grammarQuizData:compQuizData;}
+function answerQuiz(p,qi,oi){const d=getQuizData(p),qE=document.getElementById(`${p}-q${qi}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const opts=qE.querySelectorAll('.quiz-option'),c=d[qi].correct;opts.forEach((o,i)=>{o.classList.add('disabled');if(i===c)o.classList.add('selected-correct');if(i===oi&&i!==c)o.classList.add('selected-wrong');});qE.classList.add(oi===c?'correct':'wrong');if(oi===c)quizState[p].score++;quizState[p].answered++;updateScore(p);}
+function updateScore(p){const s=quizState[p];document.getElementById(`${p}Score`).textContent=`${s.score} / ${s.total}`;document.getElementById(`${p}ScoreBar`).style.width=`${(s.score/s.total)*100}%`;}
+function resetQuiz(p){quizState[p]={score:0,answered:0,total:quizState[p].total};updateScore(p);renderQuiz(getQuizData(p),p==='vocab'?'vocabQuizContainer':p==='grammar'?'grammarQuizContainer':'compQuizContainer',p);}
+function switchQuizTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById(t).classList.add('active');}
+
+let selectedFillWord=null;
+function selectFillWord(el){document.querySelectorAll('.fill-chip').forEach(c=>c.classList.remove('placed'));el.classList.add('placed');selectedFillWord=el.dataset.word;}
+function placeFillWord(b){if(!selectedFillWord)return;b.textContent=selectedFillWord;b.dataset.placed=selectedFillWord;document.querySelectorAll('.fill-chip').forEach(c=>{if(c.dataset.word===selectedFillWord)c.classList.add('used');c.classList.remove('placed');});selectedFillWord=null;}
+function checkFillAnswers(){document.querySelectorAll('.fill-blank').forEach(b=>{const p=b.dataset.placed,a=b.dataset.answer;if(p===a){b.style.borderColor='var(--success)';b.style.background='#dcfce7';b.style.color='var(--success)';b.style.fontWeight='600';}else{b.style.borderColor='var(--wrong)';b.style.background='#fecaca';b.style.color='var(--wrong)';b.title=`Reponse : ${a}`;}});}
+function resetFill(){document.querySelectorAll('.fill-blank').forEach(b=>{b.textContent='___';b.dataset.placed='';b.style.borderColor='';b.style.background='';b.style.color='';b.style.fontWeight='';b.title='';});document.querySelectorAll('.fill-chip').forEach(c=>{c.classList.remove('used','placed');});selectedFillWord=null;}
+
+const choiceQuizData=[
+    {q:"他平时成绩一般，但在今晚的比赛中___得很突出。",a:"表达",b:"表现",correct:"表现",explain:"表现 = se montrer, manifester sa performance (souvent associe a 突出, 好). 表达 = exprimer (idees, sentiments) avec des mots."},
+    {q:"我对从1840年到1919年的中国___历史很感兴趣。",a:"近代",b:"现代",correct:"近代",explain:"近代 = epoque moderne (mi-XIXe a 1919 en histoire chinoise). 现代 = epoque contemporaine (apres 1919)."},
+    {q:"我今天___不太舒服，所以没什么___。",a:"胃 / 胃口",b:"胃口 / 胃",correct:"胃 / 胃口",explain:"胃 = estomac (organe). 胃口 = appetit. L'estomac ne va pas bien, donc pas d'appetit."},
+    {q:"人们___把西红柿当做有害的果子。",a:"曾经",b:"已经",correct:"曾经",explain:"曾经 = autrefois (action passee, plus revolue). 已经 = deja (action accomplie, lien avec le present)."},
+    {q:"这事你找我商量、找对人了，这方面我可懂得不少。___",a:"算 va apres '懂得'",b:"算 va apres '我'",correct:"算 va apres '我'",explain:"我算 = 'je peux compter pour' / 'je peux etre considere comme' celui qui s'y connait. Position naturelle : sujet + 算 + complement."},
+    {q:"我听说总理将参加这次活动。___ (亲自)",a:"亲自 va apres '将'",b:"亲自 va apres '总理'",correct:"亲自 va apres '将'",explain:"亲自 est un adverbe place entre le sujet (总理) et le verbe — typiquement avec auxiliaire : 总理将亲自参加."},
+    {q:"请写下与你关系最亲近的六个朋友，记下他们每个人的月收入，然后___出他们月收入的___数。 (平均)",a:"算 / 平均",b:"平均 / 算",correct:"算 / 平均",explain:"算出 = calculer / faire ressortir (verbe), 平均数 = moyenne (le nombre moyen). On calcule la moyenne."},
+    {q:"这怎么是个缺点呢？是个优点呀！ (明明)",a:"明明 au debut",b:"明明 apres '怎么'",correct:"明明 au debut",explain:"明明 (de toute evidence) se place souvent en tete : 明明这怎么是缺点呢? = 'Manifestement, comment cela pourrait-il etre un defaut ?'"}
+];
+function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').innerHTML=choiceQuizData.map((q,i)=>`<div class="quiz-question" id="choice-q${i}" style="margin-bottom:12px;"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options" style="grid-template-columns:1fr 1fr;"><div class="quiz-option" onclick="answerChoice(${i},'${q.a}')">${q.a}</div><div class="quiz-option" onclick="answerChoice(${i},'${q.b}')">${q.b}</div></div><div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div></div>`).join('');}
+function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
+
+window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
+document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+</script>
+</body>
+</html>
