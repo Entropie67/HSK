@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第11课 闹钟的危害</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+        :root{--primary:#0f4c81;--primary-light:#1a6faf;--accent:#0891b2;--gold:#0e7490;--gold-light:#e0f7fa;--bg:#fafbfc;--card:#fff;--text:#2c3e50;--text-light:#7f8c8d;--border:#e8ecf1;--success:#27ae60;--wrong:#e74c3c;--gradient-water:linear-gradient(135deg,#0f4c81 0%,#0891b2 100%);--gradient-hero:linear-gradient(135deg,#0f2744 0%,#1a4480 35%,#0891b2 75%,#67e8f9 100%);}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;scroll-behavior:smooth;}
+        .hero{background:var(--gradient-hero);color:#fff;padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;background-size:cover;opacity:.3;}
+        .hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+        .hero .lesson-badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:6px 20px;border-radius:30px;font-size:.9rem;letter-spacing:2px;margin-bottom:20px;}
+        .hero h1{font-family:'Noto Serif SC',serif;font-size:3.2rem;font-weight:900;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+        .hero .subtitle{font-size:1.3rem;opacity:.9;font-weight:300;margin-bottom:30px;}
+        .hero .deco{font-size:2rem;letter-spacing:8px;opacity:.6;}
+        .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+        .nav-inner::-webkit-scrollbar{display:none;}
+        .nav-inner a{padding:14px 18px;text-decoration:none;color:var(--text-light);font-size:.9rem;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+        .nav-inner a:hover,.nav-inner a.active{color:var(--primary);border-bottom-color:var(--primary-light);}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+        section{padding:50px 0;}
+        .section-header{text-align:center;margin-bottom:40px;}
+        .section-header h2{font-family:'Noto Serif SC',serif;font-size:2rem;color:var(--primary);margin-bottom:6px;}
+        .section-header .section-sub{color:var(--text-light);font-size:.95rem;}
+        .section-divider{width:60px;height:3px;background:var(--gradient-water);margin:12px auto 0;border-radius:2px;}
+        .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);margin-bottom:24px;}
+        .card h3{font-size:1.2rem;color:var(--primary);margin-bottom:16px;}
+        .text-block{background:var(--card);border-radius:16px;padding:35px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);font-family:'Noto Serif SC',serif;font-size:1.1rem;line-height:2.2;}
+        .text-block p{text-indent:2em;margin-bottom:16px;}
+        .vocab-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
+        .vocab-controls button{padding:8px 20px;border:2px solid var(--border);background:#fff;border-radius:25px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s;color:var(--text);}
+        .vocab-controls button.active,.vocab-controls button:hover{border-color:var(--primary-light);background:var(--primary-light);color:#fff;}
+        .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .vocab-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .3s;position:relative;}
+        .vocab-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.08);border-color:var(--primary-light);}
+        .vocab-card .vocab-num{position:absolute;top:8px;right:12px;font-size:.75rem;color:var(--text-light);opacity:.5;}
+        .vocab-card .hanzi{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;color:var(--primary);}
+        .vocab-card .pinyin{color:var(--accent);font-size:.9rem;margin:4px 0;}
+        .vocab-card .pos{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;}
+        .vocab-card .meaning-hidden{display:none;}
+        .vocab-card.revealed .meaning-hidden{display:block;}
+        .vocab-card.revealed .meaning-placeholder{display:none;}
+        .meaning-placeholder{color:var(--text-light);font-size:.85rem;font-style:italic;margin-top:6px;}
+        .science-terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:20px;}
+        .sci-card{background:linear-gradient(135deg,#e0f7fa,#b2ebf2);border:1px solid #80deea;border-radius:12px;padding:14px 18px;}
+        .sci-card .sci-cn{font-family:'Noto Serif SC',serif;font-size:1.2rem;font-weight:700;color:var(--primary);}
+        .sci-card .sci-py{color:var(--accent);font-size:.85rem;margin:2px 0;}
+        .sci-card .sci-en{font-size:.85rem;color:var(--text-light);}
+        .flashcard-area{display:flex;flex-direction:column;align-items:center;gap:20px;padding:20px 0;}
+        .flashcard-container{perspective:1000px;width:380px;height:260px;max-width:100%;}
+        .flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);cursor:pointer;}
+        .flashcard.flipped{transform:rotateY(180deg);}
+        .flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;}
+        .flashcard-front{background:linear-gradient(135deg,#0f2744,#0891b2);color:#fff;box-shadow:0 10px 40px rgba(8,145,178,.3);}
+        .flashcard-front .fc-hanzi{font-family:'Noto Serif SC',serif;font-size:3rem;font-weight:900;margin-bottom:10px;}
+        .flashcard-front .fc-pinyin{font-size:1.1rem;opacity:.8;}
+        .flashcard-front .fc-hint{font-size:.8rem;opacity:.5;margin-top:20px;}
+        .flashcard-back{background:#fff;border:2px solid var(--primary-light);transform:rotateY(180deg);box-shadow:0 10px 40px rgba(0,0,0,.1);}
+        .flashcard-back .fc-meaning{font-size:1.3rem;color:var(--primary);font-weight:600;}
+        .flashcard-back .fc-pos{background:var(--gold-light);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-top:10px;}
+        .fc-controls{display:flex;gap:12px;}
+        .fc-controls button{padding:10px 28px;border-radius:25px;border:none;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;}
+        .fc-btn-prev,.fc-btn-next{background:var(--primary-light);color:#fff;}
+        .fc-btn-prev:hover,.fc-btn-next:hover{background:var(--primary);}
+        .fc-btn-shuffle{background:#fff;border:2px solid var(--border)!important;color:var(--text);}
+        .fc-counter{color:var(--text-light);font-size:.9rem;}
+        .grammar-card{background:var(--card);border-radius:16px;border:1px solid var(--border);margin-bottom:20px;overflow:hidden;}
+        .grammar-header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;}
+        .grammar-header .grammar-num{background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+        .grammar-header .grammar-title{font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;}
+        .grammar-header .grammar-pinyin{font-size:.9rem;opacity:.8;}
+        .grammar-body{padding:24px;}
+        .grammar-rule{background:#e0f7fa;border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:20px;font-size:.95rem;color:var(--primary);}
+        .grammar-example{padding:12px 0;border-bottom:1px solid var(--border);}
+        .grammar-example:last-child{border-bottom:none;}
+        .grammar-example .ex-cn{font-size:1.05rem;margin-bottom:4px;}
+        .grammar-example .ex-note{color:var(--text-light);font-size:.85rem;}
+        .grammar-example .ex-highlight{color:var(--accent);font-weight:600;}
+        .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+        .comparison-table th{background:var(--primary);color:#fff;padding:14px 18px;font-weight:600;text-align:center;}
+        .comparison-table td{padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top;font-size:.95rem;}
+        .comparison-table tr:last-child td{border-bottom:none;}
+        .comparison-table tr:nth-child(even){background:#f8fafc;}
+        .comparison-table .label-cell{background:#e0f7fa;font-weight:600;color:var(--primary);text-align:center;width:60px;}
+        .colloc-section{margin-bottom:24px;}
+        .colloc-label{display:inline-block;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:12px;}
+        .colloc-label.verb{background:#e74c3c;}.colloc-label.attr{background:#f39c12;}.colloc-label.adv{background:#27ae60;}.colloc-label.comp{background:#8e44ad;}.colloc-label.subj{background:#16a085;}
+        .colloc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+        .colloc-row:last-child{border-bottom:none;}
+        .colloc-word{font-weight:600;color:var(--primary);min-width:100px;font-size:1.1rem;}
+        .colloc-plus{color:var(--text-light);font-weight:700;}
+        .colloc-partners{display:flex;flex-wrap:wrap;gap:6px;}
+        .colloc-tag{background:#f0f4f8;padding:4px 12px;border-radius:15px;font-size:.85rem;}
+        .tab-bar{display:flex;gap:4px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:20px;}
+        .tab-btn{flex:1;padding:10px;border:none;background:transparent;border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--text-light);transition:all .2s;}
+        .tab-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+        .tab-content{display:none;}.tab-content.active{display:block;}
+        .quiz-score-bar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+        .score-display{font-size:1.5rem;font-weight:700;color:var(--primary);}
+        .score-bar-visual{flex:1;margin:0 20px;height:10px;background:var(--border);border-radius:5px;overflow:hidden;}
+        .score-bar-fill{height:100%;background:var(--gradient-water);border-radius:5px;transition:width .5s ease;width:0%;}
+        .quiz-reset-btn{padding:8px 20px;background:var(--primary-light);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;}
+        .quiz-question{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;transition:all .3s;}
+        .quiz-question.correct{border-color:var(--success);background:#f0fdf4;}
+        .quiz-question.wrong{border-color:var(--wrong);background:#fef2f2;}
+        .quiz-q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--primary-light);color:#fff;border-radius:50%;font-size:.8rem;font-weight:700;margin-right:10px;}
+        .quiz-q-text{font-size:1.05rem;margin-bottom:14px;}
+        .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .quiz-option{padding:12px 16px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.95rem;text-align:center;background:#fff;}
+        .quiz-option:hover{border-color:var(--primary-light);background:#e0f7fa;}
+        .quiz-option.selected-correct{border-color:var(--success);background:#dcfce7;color:var(--success);font-weight:600;}
+        .quiz-option.selected-wrong{border-color:var(--wrong);background:#fecaca;color:var(--wrong);font-weight:600;}
+        .quiz-option.disabled{pointer-events:none;opacity:.7;}
+        .quiz-explanation{display:none;margin-top:12px;padding:12px 16px;background:#fffbeb;border-radius:10px;font-size:.9rem;color:#92400e;border:1px solid #fde68a;}
+        .fill-blank{display:inline-block;min-width:80px;border-bottom:2px dashed var(--primary-light);padding:2px 8px;margin:0 4px;text-align:center;cursor:pointer;transition:all .2s;}
+        .fill-blank:hover{background:#e0f7fa;}
+        .fill-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center;}
+        .fill-chip{padding:8px 18px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s;}
+        .fill-chip:hover{border-color:var(--primary-light);background:#e0f7fa;}
+        .fill-chip.used{opacity:.4;pointer-events:none;}
+        .fill-chip.placed{background:var(--primary-light);color:#fff;border-color:var(--primary-light);}
+        .app-box{background:linear-gradient(135deg,#e0f7fa,#b2ebf2);border:1px solid #80deea;border-radius:16px;padding:30px;margin-bottom:20px;}
+        .app-box h4{color:var(--primary);font-size:1.1rem;margin-bottom:12px;}
+        .discussion-q{padding:10px 0;border-bottom:1px solid rgba(128,222,234,.5);font-size:.95rem;}
+        .discussion-q:last-child{border-bottom:none;}
+        .stat-box{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin:16px 0;}
+        .stat-item{background:#fff;border:2px solid #b2ebf2;border-radius:12px;padding:16px;text-align:center;}
+        .stat-item .stat-val{font-size:2rem;font-weight:900;color:var(--primary);font-family:'Noto Serif SC',serif;}
+        .stat-item .stat-label{font-size:.85rem;color:var(--text-light);margin-top:4px;}
+        .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
+        @media(max-width:768px){.hero h1{font-size:2rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}.stat-box{grid-template-columns:1fr 1fr;}}
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
+        <h1>闹钟的危害</h1>
+        <p class="subtitle">Harm of Alarm Clocks - Lesson 11</p>
+        <div class="deco">⏰ 💤 🧬 ☀️</div>
+    </div>
+</header>
+
+<nav class="sticky-nav"><div class="nav-inner">
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#science">科学名词</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+</div></nav>
+
+<main class="container">
+
+<section id="text">
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">闹钟的危害 (673 caracteres)</p><div class="section-divider"></div></div>
+    <div class="stat-box" style="margin-bottom:24px;">
+        <div class="stat-item"><div class="stat-val">16→24</div><div class="stat-label">Respirations/min au réveil</div></div>
+        <div class="stat-item"><div class="stat-val">+10</div><div class="stat-label">Battements/min supplémentaires</div></div>
+        <div class="stat-item"><div class="stat-val">65%</div><div class="stat-label">Capacités cognitives si réveil brutal</div></div>
+        <div class="stat-item"><div class="stat-val">65</div><div class="stat-label">Restaurants connus de Lu Xun à Pekin</div></div>
+    </div>
+    <div class="text-block">
+        <p>医学研究证明，人类睡眠有其特定的机制，自然醒是最符合人体生物钟规律的。光线是自然醒的必要条件，是人体内的生物闹钟。</p>
+        <p>早晨，人体感受到逐渐变强的太阳光线，新陈代谢随之加快，人逐渐从熟睡过渡到浅睡，直到醒来。这就是阴雨天人们往往喜欢睡懒觉的原因。</p>
+        <p>紧张的现代生活，使很多上班的人无法享受轻松舒适的睡眠、自然地醒来，闹钟的用途也就显得格外重要了。但实验研究证明，人们对自然醒与被闹钟铃声叫醒这两种方式所产生的反应是很不相同的。从睡眠状态过渡到清醒状态时，人的呼吸会从16次/分钟提高到24次/分钟，心跳每分钟加快10次。如果突然被闹钟叫醒，将在心理上使人产生心慌、情绪低落、感觉没睡醒等不适。如果是从深度睡眠中被突然叫醒，那么，人的短期记忆能力、计算技能都会受到影响，这些能力最多为正常状态的65%，与醉酒者相当。</p>
+        <p>出于自我保护，被闹钟叫醒时我们的身体会提高体内的肾上腺素水平。这种状态如果持续数天、数周、数月，将导致高血压、失眠和一些精神问题等。研究发现，突然被闹铃惊醒的人比自然醒的人血压更高、心跳更快。对此，专家解释说，人在睡眠时，身体会发生一些变化，因此人们在早上醒来时更容易发病，而闹铃则会使发病的可能性变得更大。如果你必须定个闹钟，应采用柔和的声音或音乐。</p>
+        <p>各种醒来方式中，当然是自然醒最符合我们的愿望。可谁能替你拉开窗帘让阳光照进来呢？近年来，市场上出现了一种新的电子产品，名为"光闹钟"。它能在室内模仿早晨自然光线的变化，通过光线的作用使人在设定的时间里自然地醒来，可避免传统闹钟突然惊醒对人体健康的伤害。希望这样能向真正的"自然醒"走近一点，再走近一点。</p>
+        <p style="text-align:right;font-style:italic;color:var(--text-light);">— 改编自"中国科普网"</p>
+    </div>
+</section>
+
+<section id="vocab">
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">41 mots - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (41)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout reveler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+</section>
+
+<section id="science">
+    <div class="section-header"><h2>科学名词 - Termes scientifiques</h2><p class="section-sub">4 termes techniques de la lecon</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="science-terms">
+            <div class="sci-card"><div class="sci-cn">生物钟</div><div class="sci-py">shēngwùzhōng</div><div class="sci-en">biological clock (horloge biologique)</div></div>
+            <div class="sci-card"><div class="sci-cn">新陈代谢</div><div class="sci-py">xīnchén dàixiè</div><div class="sci-en">metabolism (métabolisme)</div></div>
+            <div class="sci-card"><div class="sci-cn">肾上腺素</div><div class="sci-py">shènshàngxiànsù</div><div class="sci-en">adrenaline (adrénaline)</div></div>
+            <div class="sci-card"><div class="sci-cn">血压</div><div class="sci-py">xuèyā</div><div class="sci-en">blood pressure (pression artérielle)</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="flashcards">
+    <div class="section-header"><h2>卡片 - Flashcards</h2><p class="section-sub">Cliquez pour retourner la carte</p><div class="section-divider"></div></div>
+    <div class="flashcard-area">
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">41</span></div>
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front"><div class="fc-hanzi" id="fcHanzi">闹钟</div><div class="fc-pinyin" id="fcPinyin">nàozhōng</div><div class="fc-hint">cliquez pour voir la traduction</div></div>
+                <div class="flashcard-back"><div class="fc-meaning" id="fcMeaning">réveil, horloge sonnante</div><div class="fc-pos" id="fcPos">n.</div></div>
+            </div>
+        </div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+        </div>
+    </div>
+</section>
+
+<section id="grammar">
+    <div class="section-header"><h2>语法 - Grammaire</h2><p class="section-sub">4 points de grammaire essentiels</p><div class="section-divider"></div></div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">1</div><div><div class="grammar-title">来 / 过来</div><div class="grammar-pinyin">lái / guòlái</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Complement directionnel</strong> apres un verbe. "V + 来/过来" apres 醒 indique la transition du sommeil a l'etat éveillé. "V + 过来" seul indique un retour a l'état normal. "V + 得/不 + 过来" exprime la capacité (ou non) d'accomplir qqch.</div>
+            <div class="grammar-example"><div class="ex-cn">人逐渐从熟睡过渡到浅睡，直到醒<span class="ex-highlight">来</span>。</div><div class="ex-note">Transition progressive du sommeil profond au sommeil léger, jusqu'au réveil.</div></div>
+            <div class="grammar-example"><div class="ex-cn">早晨醒<span class="ex-highlight">来</span>，我发现窗外正下着大雪。</div><div class="ex-note">En me réveillant ce matin, j'ai découvert qu'il neigeait dehors.</div></div>
+            <div class="grammar-example"><div class="ex-cn">我被一阵吵闹声突然惊醒，过了半天，脑子才清醒<span class="ex-highlight">过来</span>。</div><div class="ex-note">J'ai été brusquement réveillé par du bruit, et c'est seulement après un bon moment que mon cerveau a retrouvé ses esprits.</div></div>
+            <div class="grammar-example"><div class="ex-cn">天上的星星那么多，谁数得<span class="ex-highlight">过来</span>呀？</div><div class="ex-note">Il y a tellement d'étoiles dans le ciel — qui pourrait les compter toutes ?</div></div>
+            <div class="grammar-example"><div class="ex-cn">最近手头的工作太多了，我都忙不<span class="ex-highlight">过来</span>了。</div><div class="ex-note">En ce moment j'ai tellement de travail que je n'arrive pas à tout faire.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">2</div><div><div class="grammar-title">所</div><div class="grammar-pinyin">suǒ</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>3 emplois :</strong> (a) particule avant un verbe pour nominaliser l'action (l'objet recu) — sert d'épithète, sujet, etc. ; (b) dans "有/无 + 所 + V" (avoir ou ne pas avoir de…) ; (c) comme classificateur pour les institutions (一所大学, 一所幼儿园).</div>
+            <div class="grammar-example"><div class="ex-cn">山水画<span class="ex-highlight">所</span>表现的是人与自然的关系。</div><div class="ex-note">(a) Ce que les peintures de paysage expriment, c'est la relation entre l'homme et la nature.</div></div>
+            <div class="grammar-example"><div class="ex-cn">人们对自然醒与被闹钟铃声叫醒这两种方式<span class="ex-highlight">所</span>产生的反应是很不相同的。</div><div class="ex-note">(a) Les réactions produites par les deux façons de se réveiller sont très différentes.</div></div>
+            <div class="grammar-example"><div class="ex-cn">调查显示，随着年龄的增大，女性的职场幸福感有<span class="ex-highlight">所</span>提高。</div><div class="ex-note">(b) Selon les enquêtes, le bonheur professionnel des femmes augmente (dans une certaine mesure) avec l'âge.</div></div>
+            <div class="grammar-example"><div class="ex-cn">我和李阳是无<span class="ex-highlight">所</span>不谈的好朋友。</div><div class="ex-note">(b) Li Yang et moi sommes des amis si proches que nous parlons de tout.</div></div>
+            <div class="grammar-example"><div class="ex-cn">来自北京一<span class="ex-highlight">所</span>大学的学生做了关于这个问题的实验。</div><div class="ex-note">(c) Des étudiants d'une université de Pékin ont mené une expérience sur cette question.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">3</div><div><div class="grammar-title">相当</div><div class="grammar-pinyin">xiāngdāng</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>2 emplois :</strong> (a) <strong>verbe</strong> = "être équivalent à, être comparable à, être à la hauteur de" (avec 于) ; (b) <strong>adverbe</strong> = "assez, plutôt, considérablement" (degré élevé).</div>
+            <div class="grammar-example"><div class="ex-cn">这些能力最多为正常状态的65%，与醉酒者<span class="ex-highlight">相当</span>。</div><div class="ex-note">(a) Ces capacités atteignent au plus 65 % de la normale, ce qui est comparable à un état d'ivresse.</div></div>
+            <div class="grammar-example"><div class="ex-cn">这种鸟一天所食的害虫<span class="ex-highlight">相当于</span>自己的体重。</div><div class="ex-note">(a) Les insectes nuisibles mangés chaque jour par cet oiseau pèsent autant que son propre poids.</div></div>
+            <div class="grammar-example"><div class="ex-cn">菜的味道好极了，服务也挺周到，我<span class="ex-highlight">相当</span>满意。</div><div class="ex-note">(b) La nourriture était délicieuse et le service très attentionné — j'étais assez satisfait.</div></div>
+            <div class="grammar-example"><div class="ex-cn">有<span class="ex-highlight">相当</span>一部分人会以收入多少作为选择职业的标准。</div><div class="ex-note">(b) Une partie considérable des gens prendrait le salaire comme critère de choix professionnel.</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">4</div><div><div class="grammar-title">数</div><div class="grammar-pinyin">shù / shǔ</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>2 lectures :</strong> (a) 数 (shǔ) verbe = compter, dénombrer ; aussi dans "数……（最）……" / "（最）……的（要/就）数……" = "c'est X qui arrive en tête / le plus…" ; (b) 数 (shù) numéral = "plusieurs, quelques" (langue écrite).</div>
+            <div class="grammar-example"><div class="ex-cn">我大概<span class="ex-highlight">数</span>了一下，车上有32个学生。</div><div class="ex-note">(a) J'ai compté grossièrement — il y avait 32 étudiants dans le bus.</div></div>
+            <div class="grammar-example"><div class="ex-cn">我觉得北京最美、最有名气的公园要<span class="ex-highlight">数</span>颐和园了。</div><div class="ex-note">(a) Je pense que le parc le plus beau et le plus célèbre de Pékin est sans conteste le Palais d'été.</div></div>
+            <div class="grammar-example"><div class="ex-cn">这种状态如果持续<span class="ex-highlight">数</span>天、<span class="ex-highlight">数</span>周、<span class="ex-highlight">数</span>月，将导致高血压……</div><div class="ex-note">(b) Si cet état persiste pendant plusieurs jours, semaines ou mois, il entraînera de l'hypertension…</div></div>
+            <div class="grammar-example"><div class="ex-cn">这里夏季的雷阵雨一般可持续<span class="ex-highlight">数</span>小时或者更久的时间。</div><div class="ex-note">(b) Les orages d'été ici durent généralement plusieurs heures ou plus.</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="analysis">
+    <div class="section-header"><h2>词语辨析 - Analyse comparative</h2><p class="section-sub">持续 vs 继续</p><div class="section-divider"></div></div>
+    <div class="card">
+        <table class="comparison-table">
+            <thead><tr><th></th><th>持续 (chíxù)</th><th>继续 (jìxù)</th></tr></thead>
+            <tbody>
+                <tr><td class="label-cell">Points communs</td><td colspan="2" style="text-align:center;">Les deux verbes indiquent la continuation d'une action ou d'un état — mais ils ne sont pas interchangeables, car leur sens diffère considérablement.</td></tr>
+                <tr><td class="label-cell" rowspan="3">Differences</td>
+                    <td>1. Exprime une action <strong>continue sans interruption</strong>.<br><em>如 : 这场雨<u>持续</u>下了两个多小时。</em></td>
+                    <td>1. L'action peut avoir une <strong>pause</strong> avant de reprendre.<br><em>如 : 对不起！打扰了，你们<u>继续</u>学习吧。</em></td></tr>
+                <tr>
+                    <td>2. Peut être <strong>épithète</strong> (定语).<br><em>如 : <u>持续</u>的高温让许多老人感到不适。</em></td>
+                    <td>2. Ne peut <strong>pas</strong> être épithète.</td></tr>
+                <tr>
+                    <td>3. Peut prendre un <strong>complément de durée</strong>.<br><em>如 : 小明发烧<u>持续</u>三天了，家里人都很着急。</em></td>
+                    <td>3. Ne prend généralement <strong>pas</strong> de complément de durée.</td></tr>
+            </tbody>
+        </table>
+        <div style="margin-top:20px;padding:14px 18px;background:#fffbeb;border-radius:10px;font-size:.9rem;color:#92400e;border:1px solid #fde68a;">
+            <strong>Astuce :</strong> 持续 insiste sur la continuité ininterrompue (une pluie de 2h sans arrêt, une fièvre de 3 jours). 继续 dit simplement "reprendre/poursuivre" après qu'une activité s'est arrêtée momentanément.
+        </div>
+    </div>
+</section>
+
+<section id="collocation">
+    <div class="section-header"><h2>词语搭配 - Collocations</h2><p class="section-sub">Combinaisons essentielles</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="colloc-section"><div class="colloc-label verb">动词 + 宾语</div>
+            <div class="colloc-row"><span class="colloc-word">享受</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">自由</span><span class="colloc-tag">艺术</span><span class="colloc-tag">人生</span><span class="colloc-tag">美酒</span><span class="colloc-tag">幸福</span><span class="colloc-tag">快乐</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">导致</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">错误</span><span class="colloc-tag">失败</span><span class="colloc-tag">失眠</span><span class="colloc-tag">危险</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label attr">定语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">稳定的/不满的/紧张的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">情绪</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">家的/童年的/难忘的</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">记忆</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label adv">状语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">努力/尽量/主动/故意/完全/永远</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">避免</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">准确地/成功地/专门/故意</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">模仿</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label comp">中心语 + 补语</div>
+            <div class="colloc-row"><span class="colloc-word">计算</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">出</span><span class="colloc-tag">出来</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">改/救/清醒/明白/反应</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">过来</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label subj">主语 + 谓语</div>
+            <div class="colloc-row"><span class="colloc-word">精神</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">愉快</span><span class="colloc-tag">放松</span><span class="colloc-tag">饱满</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">光线</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">昏暗</span><span class="colloc-tag">明亮</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="quiz-section">
+    <div class="section-header"><h2>测验 - Quiz</h2><p class="section-sub">Testez vos connaissances</p><div class="section-divider"></div></div>
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+    </div>
+    <div class="tab-content active" id="vocab-quiz"><div class="quiz-score-bar"><div class="score-display" id="vocabScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button></div><div id="vocabQuizContainer"></div></div>
+    <div class="tab-content" id="grammar-quiz"><div class="quiz-score-bar"><div class="score-display" id="grammarScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button></div><div id="grammarQuizContainer"></div></div>
+    <div class="tab-content" id="comprehension-quiz"><div class="quiz-score-bar"><div class="score-display" id="compScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button></div><div id="compQuizContainer"></div></div>
+</section>
+
+<section id="fill-quiz">
+    <div class="section-header"><h2>填空练习 - Exercices a trous</h2><p class="section-sub">Choisissez le mot correct</p><div class="section-divider"></div></div>
+    <div class="card" id="fillExercise">
+        <h3>Choisissez parmi : 所、享受、导致、过渡、必要、规律</h3>
+        <div class="fill-options" id="fillOptions">
+            <span class="fill-chip" data-word="所" onclick="selectFillWord(this)">所</span>
+            <span class="fill-chip" data-word="享受" onclick="selectFillWord(this)">享受</span>
+            <span class="fill-chip" data-word="导致" onclick="selectFillWord(this)">导致</span>
+            <span class="fill-chip" data-word="过渡" onclick="selectFillWord(this)">过渡</span>
+            <span class="fill-chip" data-word="必要" onclick="selectFillWord(this)">必要</span>
+            <span class="fill-chip" data-word="规律" onclick="selectFillWord(this)">规律</span>
+        </div>
+        <div style="margin-top:24px;">
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">1</span>在婚姻问题上，听听父母的意见还是很有<span class="fill-blank" data-answer="必要" onclick="placeFillWord(this)">___</span>的。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">2</span>由于近一个月来没有降水，<span class="fill-blank" data-answer="导致" onclick="placeFillWord(this)">___</span>河水水位持续下降。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">3</span>正如你<span class="fill-blank" data-answer="所" onclick="placeFillWord(this)">___</span>估计的那样，李岩确实改变了主意。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">4</span>擦擦办公桌，整理一下文件，这些都可以让你从放松的休息状态自然<span class="fill-blank" data-answer="过渡" onclick="placeFillWord(this)">___</span>到工作状态。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">5</span>生命在于运动，有<span class="fill-blank" data-answer="规律" onclick="placeFillWord(this)">___</span>的运动对于身体健康大有好处。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">6</span>为了<span class="fill-blank" data-answer="享受" onclick="placeFillWord(this)">___</span>轻松的生活，夫妻俩决定把家搬到这个安静的小镇。</div>
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+            <button onclick="checkFillAnswers()" style="padding:10px 30px;background:var(--primary-light);color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:.95rem;font-weight:600;">Verifier</button>
+            <button onclick="resetFill()" style="padding:10px 30px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.95rem;margin-left:10px;">Recommencer</button>
+        </div>
+    </div>
+    <div class="card"><h3>Choisissez la bonne reponse</h3><div id="choiceQuizContainer"></div></div>
+</section>
+
+<section id="application">
+    <div class="section-header"><h2>运用 - Application</h2><p class="section-sub">Contexte et discussion</p><div class="section-divider"></div></div>
+    <div class="app-box">
+        <h4>背景分析 - Contexte : la santé du sommeil</h4>
+        <p style="line-height:2;">在日常生活中，我们为了让自己能够按时醒来，通常都会给自己定个闹钟，但正如课文中所介绍的那样，闹钟对身体健康有很大的不良影响。有些国家，闹钟被评为他们最讨厌的人类发明之一。这些危害也许以前我们并未了解，或者即使知道也只能无奈地接受。生活紧张对现代人的生理和心理都产生了很大的危害，因而越来越引起人们的普遍关注。睡眠健康就是人们普遍关心的一个重要方面。如何放松我们的精神，获得一个舒适的睡眠呢？</p>
+    </div>
+    <div class="app-box">
+        <h4>话题讨论 - Discussion : 如何提高睡眠质量</h4>
+        <div class="discussion-q">1. 你是从什么时候开始使用闹钟的？为什么要用闹钟？<br><em>Depuis quand utilisez-vous un réveil ? Pourquoi ?</em></div>
+        <div class="discussion-q">2. 本文的观点你认为哪些是有道理的？<br><em>Quelles idées du texte vous semblent valables ?</em></div>
+        <div class="discussion-q">3. 你有没有关于实现"自然醒"的好的经验或做法？<br><em>Avez-vous des astuces ou expériences pour se réveiller naturellement ?</em></div>
+    </div>
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'écriture</h4>
+        <p>请以 "<strong>你真的需要闹钟吗？</strong>" 为题，谈一谈你的看法。尽量用上本课所学的生词，字数不少于100字。</p>
+        <p style="font-style:italic;color:var(--text-light);margin-top:8px;">Redigez un texte intitule "As-tu vraiment besoin d'un reveil ?" et donnez votre avis. Utilisez le maximum de vocabulaire de la lecon, au moins 100 caracteres.</p>
+    </div>
+</section>
+
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+<footer style="text-align:center;padding:40px 20px;color:var(--text-light);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px;">HSK 5 Standard Course - Lesson 11 - 闹钟的危害</footer>
+
+<script>
+const vocabData=[
+    {id:1,hanzi:"闹钟",pinyin:"nàozhōng",pos:"n.",meaning:"réveil, horloge sonnante",cat:"noun"},
+    {id:2,hanzi:"危害",pinyin:"wēihài",pos:"v./n.",meaning:"nuire à, porter atteinte à ; danger, méfait",cat:"verb"},
+    {id:3,hanzi:"人类",pinyin:"rénlèi",pos:"n.",meaning:"l'humanité, le genre humain",cat:"noun"},
+    {id:4,hanzi:"机制",pinyin:"jīzhì",pos:"n.",meaning:"mécanisme, système",cat:"noun"},
+    {id:5,hanzi:"生物",pinyin:"shēngwù",pos:"n.",meaning:"êtres vivants, organismes",cat:"noun"},
+    {id:6,hanzi:"规律",pinyin:"guīlǜ",pos:"n./adj.",meaning:"loi, règle, schéma régulier ; régulier",cat:"noun"},
+    {id:7,hanzi:"光线",pinyin:"guāngxiàn",pos:"n.",meaning:"lumière, rayon lumineux",cat:"noun"},
+    {id:8,hanzi:"必要",pinyin:"bìyào",pos:"adj.",meaning:"nécessaire, indispensable, essentiel",cat:"adj"},
+    {id:9,hanzi:"过渡",pinyin:"guòdù",pos:"v.",meaning:"transitionner, passer (d'un état à un autre)",cat:"verb"},
+    {id:10,hanzi:"浅",pinyin:"qiǎn",pos:"adj.",meaning:"léger, peu profond (sommeil, couleur…)",cat:"adj"},
+    {id:11,hanzi:"现代",pinyin:"xiàndài",pos:"n./adj.",meaning:"époque moderne ; moderne",cat:"noun"},
+    {id:12,hanzi:"享受",pinyin:"xiǎngshòu",pos:"v.",meaning:"jouir de, savourer, apprécier",cat:"verb"},
+    {id:13,hanzi:"用途",pinyin:"yòngtú",pos:"n.",meaning:"usage, utilité, emploi",cat:"noun"},
+    {id:14,hanzi:"实验",pinyin:"shíyàn",pos:"v./n.",meaning:"faire une expérience ; expérience, expérimentation",cat:"verb"},
+    {id:15,hanzi:"铃",pinyin:"líng",pos:"n.",meaning:"sonnette, clochette, grelot",cat:"noun"},
+    {id:16,hanzi:"所",pinyin:"suǒ",pos:"part.",meaning:"particule nominalisant un verbe (l'objet de l'action)",cat:"other"},
+    {id:17,hanzi:"状态",pinyin:"zhuàngtài",pos:"n.",meaning:"état, condition, statut",cat:"noun"},
+    {id:18,hanzi:"清醒",pinyin:"qīngxǐng",pos:"adj./v.",meaning:"éveillé, lucide ; reprendre ses esprits",cat:"adj"},
+    {id:19,hanzi:"呼吸",pinyin:"hūxī",pos:"v.",meaning:"respirer",cat:"verb"},
+    {id:20,hanzi:"心理",pinyin:"xīnlǐ",pos:"n.",meaning:"psychologie, mental, état d'esprit",cat:"noun"},
+    {id:21,hanzi:"慌",pinyin:"huāng",pos:"adj.",meaning:"affolé, paniqué, troublé",cat:"adj"},
+    {id:22,hanzi:"情绪",pinyin:"qíngxù",pos:"n.",meaning:"émotion, humeur, état affectif",cat:"noun"},
+    {id:23,hanzi:"低落",pinyin:"dīluò",pos:"adj.",meaning:"déprimé, abattu, en baisse",cat:"adj"},
+    {id:24,hanzi:"记忆",pinyin:"jìyì",pos:"v./n.",meaning:"mémoriser ; mémoire, souvenir",cat:"verb"},
+    {id:25,hanzi:"计算",pinyin:"jìsuàn",pos:"v.",meaning:"calculer, calculer mentalement",cat:"verb"},
+    {id:26,hanzi:"相当",pinyin:"xiāngdāng",pos:"v./adv.",meaning:"être équivalent à ; assez, considérablement",cat:"other"},
+    {id:27,hanzi:"持续",pinyin:"chíxù",pos:"v.",meaning:"continuer sans interruption, durer",cat:"verb"},
+    {id:28,hanzi:"数",pinyin:"shù",pos:"num.",meaning:"plusieurs, quelques (langue écrite)",cat:"other"},
+    {id:29,hanzi:"导致",pinyin:"dǎozhì",pos:"v.",meaning:"causer, entraîner, provoquer",cat:"verb"},
+    {id:30,hanzi:"失眠",pinyin:"shīmián",pos:"v.",meaning:"souffrir d'insomnie",cat:"verb"},
+    {id:31,hanzi:"精神",pinyin:"jīngshén",pos:"n./adj.",meaning:"esprit, vigueur, mental ; alerte, plein d'énergie",cat:"noun"},
+    {id:32,hanzi:"专家",pinyin:"zhuānjiā",pos:"n.",meaning:"expert, spécialiste",cat:"noun"},
+    {id:33,hanzi:"采用",pinyin:"cǎiyòng",pos:"v.",meaning:"adopter, utiliser, employer (une méthode)",cat:"verb"},
+    {id:34,hanzi:"柔和",pinyin:"róuhé",pos:"adj.",meaning:"doux, clément, gentil",cat:"adj"},
+    {id:35,hanzi:"愿望",pinyin:"yuànwàng",pos:"n.",meaning:"désir, souhait, vœu",cat:"noun"},
+    {id:36,hanzi:"窗帘",pinyin:"chuānglián",pos:"n.",meaning:"rideau, store (de fenêtre)",cat:"noun"},
+    {id:37,hanzi:"市场",pinyin:"shìchǎng",pos:"n.",meaning:"marché",cat:"noun"},
+    {id:38,hanzi:"产品",pinyin:"chǎnpǐn",pos:"n.",meaning:"produit",cat:"noun"},
+    {id:39,hanzi:"模仿",pinyin:"mófǎng",pos:"v.",meaning:"imiter, reproduire, s'inspirer de",cat:"verb"},
+    {id:40,hanzi:"避免",pinyin:"bìmiǎn",pos:"v.",meaning:"éviter, prévenir",cat:"verb"},
+    {id:41,hanzi:"传统",pinyin:"chuántǒng",pos:"n./adj.",meaning:"tradition ; traditionnel",cat:"noun"}
+];
+
+function renderVocab(filter='all'){const g=document.getElementById('vocabGrid');const f=filter==='all'?vocabData:vocabData.filter(v=>v.cat===filter);g.innerHTML=f.map(v=>`<div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')"><span class="vocab-num">#${v.id}</span><div class="hanzi">${v.hanzi}</div><div class="pinyin">${v.pinyin}</div><span class="pos">${v.pos}</span><div class="meaning-placeholder">Cliquez pour voir...</div><div class="meaning-hidden" style="font-size:.9rem;margin-top:6px;">${v.meaning}</div></div>`).join('');}
+function filterVocab(c){document.querySelectorAll('.vocab-controls button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderVocab(c);}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function hideAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('revealed'));}
+
+let fcIndex=0,fcOrder=[...Array(vocabData.length).keys()];
+function updateFlashcard(){const v=vocabData[fcOrder[fcIndex]];document.getElementById('fcHanzi').textContent=v.hanzi;document.getElementById('fcPinyin').textContent=v.pinyin;document.getElementById('fcMeaning').textContent=v.meaning;document.getElementById('fcPos').textContent=v.pos;document.getElementById('fcCurrent').textContent=fcIndex+1;document.getElementById('fcTotal').textContent=fcOrder.length;document.getElementById('flashcard').classList.remove('flipped');}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%fcOrder.length;updateFlashcard();}
+function prevCard(){fcIndex=(fcIndex-1+fcOrder.length)%fcOrder.length;updateFlashcard();}
+function shuffleCards(){for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}fcIndex=0;updateFlashcard();}
+
+const vocabQuizData=[
+    {q:"危害 veut dire :",options:["Aider","Nuire à, porter atteinte ; méfait","Craindre","Protéger"],correct:1},
+    {q:"机制 signifie :",options:["Machine","Mécanisme, système","Règle","Horaire"],correct:1},
+    {q:"规律 veut dire :",options:["Règle de grammaire","Loi, schéma régulier ; régulier","Tradition","Calendrier"],correct:1},
+    {q:"必要 signifie :",options:["Facile","Nécessaire, indispensable","Possible","Urgent"],correct:1},
+    {q:"清醒 veut dire :",options:["Endormi","Éveillé, lucide","Ivre","Calme"],correct:1},
+    {q:"情绪 signifie :",options:["Opinion","Émotion, humeur","Pensée","Discours"],correct:1},
+    {q:"持续 veut dire :",options:["Reprendre après pause","Continuer sans interruption, durer","S'arrêter","Commencer"],correct:1},
+    {q:"导致 signifie :",options:["Recommander","Causer, entraîner","Permettre","Aider"],correct:1},
+    {q:"模仿 veut dire :",options:["Admirer","Imiter, reproduire","Critiquer","Observer"],correct:1},
+    {q:"避免 signifie :",options:["Rechercher","Éviter, prévenir","Accepter","Choisir"],correct:1},
+    {q:"柔和 veut dire :",options:["Fort, puissant","Doux, clément","Bruyant","Rapide"],correct:1},
+    {q:"状态 signifie :",options:["Activité","État, condition, statut","Résultat","Problème"],correct:1}
+];
+
+const grammarQuizData=[
+    {q:"Dans '人逐渐从熟睡过渡到浅睡，直到醒来', 来 après 醒 exprime :",options:["Un mouvement physique vers l'avant","La transition du sommeil à l'état de veille","Une action future","Un souvenir"],correct:1},
+    {q:"'脑子才清醒过来' — 过来 indique :",options:["Aller quelque part","Revenir à l'état normal / reprendre ses esprits","Une action rapide","Une action passée"],correct:1},
+    {q:"'最近我都忙不过来了' signifie :",options:["Je suis trop occupé et je n'arrive pas à tout gérer","Je ne veux pas revenir","Je suis trop fatigué","Je ne suis pas pressé"],correct:0},
+    {q:"Dans '人们对自然醒与被闹钟铃声叫醒这两种方式所产生的反应', 所 sert à :",options:["Compter (un bâtiment)","Nominaliser le verbe 产生 (l'objet = les réactions produites)","Nier l'action","Exprimer la surprise"],correct:1},
+    {q:"'有所提高' (yǒu suǒ tígāo) signifie :",options:["N'a pas augmenté","A augmenté dans une certaine mesure","A beaucoup augmenté","A d'abord augmenté"],correct:1},
+    {q:"相当 en tant qu'adverbe exprime :",options:["Une équivalence exacte","Un degré assez élevé (assez, plutôt, considérablement)","La nécessité","La possibilité"],correct:1},
+    {q:"Quel sens a 数 (shù) dans '持续数天、数周、数月' ?",options:["Compter (verbe)","Plusieurs, quelques (numéral, langue écrite)","Un nombre précis","Tous les"],correct:1},
+    {q:"继续 (vs 持续) : lequel peut être épithète (定语) ?",options:["继续","持续","Les deux","Aucun"],correct:1}
+];
+
+const compQuizData=[
+    {q:"Selon le texte, quel est le meilleur mode de réveil pour l'organisme ?",options:["Le réveil sonnant","Le réveil naturel (自然醒)","Être réveillé par quelqu'un","Le bruit de la rue"],correct:1},
+    {q:"Qu'est-ce qui permet à l'homme de se réveiller naturellement le matin ?",options:["La température","La lumière naturelle (光线)","Le bruit des voisins","La faim"],correct:1},
+    {q:"Pourquoi les gens aiment-ils dormir les jours de pluie ?",options:["Parce qu'il fait froid","Parce que sans soleil il n'y a pas de signal lumineux pour le réveil","Parce qu'ils sont fatigués","Parce que c'est le week-end"],correct:1},
+    {q:"Lors du passage du sommeil à l'éveil, combien de fois la respiration augmente-t-elle par minute ?",options:["De 16 à 20","De 16 à 24","De 10 à 20","De 20 à 30"],correct:1},
+    {q:"Si l'on est réveillé brusquement d'un sommeil profond, à combien % de la normale tombent les capacités cognitives ?",options:["50%","75%","65%","80%"],correct:2},
+    {q:"Avec qui ces capacités réduites sont-elles comparées ?",options:["Quelqu'un qui vient de courir","Une personne ivre (醉酒者)","Un enfant","Un malade"],correct:1},
+    {q:"Quelle hormone le corps libère-t-il quand on est réveillé brusquement par un réveil ?",options:["De la mélatonine","De l'adrénaline (肾上腺素)","De la sérotonine","Du cortisol"],correct:1},
+    {q:"Que conseille le texte si l'on doit quand même utiliser un réveil ?",options:["Utiliser le son le plus fort possible","Choisir un son doux ou de la musique","Placer le réveil loin du lit","Mettre plusieurs alarmes"],correct:1},
+    {q:"Qu'est-ce que le '光闹钟' (guāng nàozhōng) ?",options:["Un réveil à sonnerie très douce","Un réveil qui imite la lumière naturelle du matin pour réveiller progressivement","Un réveil sans aiguilles","Une lampe de chevet"],correct:1},
+    {q:"D'où est adapté ce texte ?",options:["D'un roman","De '中国科普网' (un site de vulgarisation scientifique)","D'un manuel médical","D'un journal"],correct:1}
+];
+
+function renderQuiz(data,cid,prefix){document.getElementById(cid).innerHTML=data.map((q,i)=>`<div class="quiz-question" id="${prefix}-q${i}"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options">${q.options.map((o,j)=>`<div class="quiz-option" onclick="answerQuiz('${prefix}',${i},${j})">${o}</div>`).join('')}</div></div>`).join('');}
+const quizState={vocab:{score:0,answered:0,total:12},grammar:{score:0,answered:0,total:8},comp:{score:0,answered:0,total:10}};
+function getQuizData(p){return p==='vocab'?vocabQuizData:p==='grammar'?grammarQuizData:compQuizData;}
+function answerQuiz(p,qi,oi){const d=getQuizData(p),qE=document.getElementById(`${p}-q${qi}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const opts=qE.querySelectorAll('.quiz-option'),c=d[qi].correct;opts.forEach((o,i)=>{o.classList.add('disabled');if(i===c)o.classList.add('selected-correct');if(i===oi&&i!==c)o.classList.add('selected-wrong');});qE.classList.add(oi===c?'correct':'wrong');if(oi===c)quizState[p].score++;quizState[p].answered++;updateScore(p);}
+function updateScore(p){const s=quizState[p];document.getElementById(`${p}Score`).textContent=`${s.score} / ${s.total}`;document.getElementById(`${p}ScoreBar`).style.width=`${(s.score/s.total)*100}%`;}
+function resetQuiz(p){quizState[p]={score:0,answered:0,total:quizState[p].total};updateScore(p);renderQuiz(getQuizData(p),p==='vocab'?'vocabQuizContainer':p==='grammar'?'grammarQuizContainer':'compQuizContainer',p);}
+function switchQuizTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById(t).classList.add('active');}
+
+let selectedFillWord=null;
+function selectFillWord(el){document.querySelectorAll('.fill-chip').forEach(c=>c.classList.remove('placed'));el.classList.add('placed');selectedFillWord=el.dataset.word;}
+function placeFillWord(b){if(!selectedFillWord)return;b.textContent=selectedFillWord;b.dataset.placed=selectedFillWord;document.querySelectorAll('.fill-chip').forEach(c=>{if(c.dataset.word===selectedFillWord)c.classList.add('used');c.classList.remove('placed');});selectedFillWord=null;}
+function checkFillAnswers(){document.querySelectorAll('.fill-blank').forEach(b=>{const p=b.dataset.placed,a=b.dataset.answer;if(p===a){b.style.borderColor='var(--success)';b.style.background='#dcfce7';b.style.color='var(--success)';b.style.fontWeight='600';}else{b.style.borderColor='var(--wrong)';b.style.background='#fecaca';b.style.color='var(--wrong)';b.title=`Reponse : ${a}`;}});}
+function resetFill(){document.querySelectorAll('.fill-blank').forEach(b=>{b.textContent='___';b.dataset.placed='';b.style.borderColor='';b.style.background='';b.style.color='';b.style.fontWeight='';b.title='';});document.querySelectorAll('.fill-chip').forEach(c=>{c.classList.remove('used','placed');});selectedFillWord=null;}
+
+const choiceQuizData=[
+    {q:"实验失败了没关系，打起___从头再来。",a:"情绪",b:"精神",correct:"精神",explain:"精神 = courage, élan (打起精神 = reprendre courage). 情绪 = humeur, émotion."},
+    {q:"每晚抽出点儿时间来阅读、学习，坚持___年之后，成功就会向你招手。",a:"来",b:"数",correct:"数",explain:"数 (shù) = plusieurs (langue écrite). 来 n'a pas ce sens numéral."},
+    {q:"作为孩子的父母，我们当然___他能成为一个有用的人才。",a:"愿望",b:"希望",correct:"希望",explain:"希望 (verbe) = espérer que…. 愿望 est un nom (un souhait, un désir) — il ne peut pas introduire une proposition."},
+    {q:"他的行为已经严重___到了社会安全。",a:"危害",b:"伤害",correct:"危害",explain:"危害 = porter atteinte à, nuire à (社会安全 = sécurité sociale). 伤害 = blesser (personne ou sentiment)."},
+    {q:"真希望刘老师能___给我们上课。",a:"持续",b:"继续",correct:"继续",explain:"继续 = reprendre/continuer après une pause. Ici on reprend les cours après une interruption. 持续 exige une continuité sans pause, et veut souvent un complément de durée."},
+    {q:"这次的宣传活动将___到9月底。",a:"持续",b:"继续",correct:"持续",explain:"持续 = durer (sans interruption) jusqu'à une date. La campagne se maintient jusqu'à fin septembre."},
+    {q:"不管你是快乐还是难过，生活总要___下去。",a:"持续",b:"继续",correct:"继续",explain:"继续 + 下去 = continuer à avancer. 持续 ne prend généralement pas de complément directionnel comme 下去."},
+    {q:"朋友是在你失败时，鼓励你___前进的人。",a:"持续",b:"继续",correct:"继续",explain:"继续前进 = reprendre la marche en avant. 持续 décrit une durée, pas une reprise d'action."}
+];
+function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').innerHTML=choiceQuizData.map((q,i)=>`<div class="quiz-question" id="choice-q${i}" style="margin-bottom:12px;"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options" style="grid-template-columns:1fr 1fr;"><div class="quiz-option" onclick="answerChoice(${i},'${q.a}')">${q.a}</div><div class="quiz-option" onclick="answerChoice(${i},'${q.b}')">${q.b}</div></div><div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div></div>`).join('');}
+function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
+
+window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
+document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+</script>
+</body>
+</html>
