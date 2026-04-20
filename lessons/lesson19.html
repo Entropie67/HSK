@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第19课 家乡的萝卜饼</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+        :root{--primary:#92400e;--primary-light:#b45309;--accent:#d97706;--gold:#d97706;--gold-light:#fef3c7;--bg:#fafbfc;--card:#fff;--text:#2c3e50;--text-light:#7f8c8d;--border:#e8ecf1;--success:#27ae60;--wrong:#e74c3c;--gradient-water:linear-gradient(135deg,#92400e 0%,#d97706 100%);--gradient-hero:linear-gradient(135deg,#3d1a00 0%,#92400e 35%,#d97706 70%,#fbbf24 100%);}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;scroll-behavior:smooth;}
+        .hero{background:var(--gradient-hero);color:#fff;padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;background-size:cover;opacity:.3;}
+        .hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+        .hero .lesson-badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:6px 20px;border-radius:30px;font-size:.9rem;letter-spacing:2px;margin-bottom:20px;}
+        .hero h1{font-family:'Noto Serif SC',serif;font-size:3.2rem;font-weight:900;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+        .hero .subtitle{font-size:1.3rem;opacity:.9;font-weight:300;margin-bottom:30px;}
+        .hero .deco{font-size:2rem;letter-spacing:8px;opacity:.6;}
+        .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+        .nav-inner::-webkit-scrollbar{display:none;}
+        .nav-inner a{padding:14px 18px;text-decoration:none;color:var(--text-light);font-size:.9rem;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+        .nav-inner a:hover,.nav-inner a.active{color:var(--primary);border-bottom-color:var(--primary-light);}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+        section{padding:50px 0;}
+        .section-header{text-align:center;margin-bottom:40px;}
+        .section-header h2{font-family:'Noto Serif SC',serif;font-size:2rem;color:var(--primary);margin-bottom:6px;}
+        .section-header .section-sub{color:var(--text-light);font-size:.95rem;}
+        .section-divider{width:60px;height:3px;background:var(--gradient-water);margin:12px auto 0;border-radius:2px;}
+        .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);margin-bottom:24px;}
+        .card h3{font-size:1.2rem;color:var(--primary);margin-bottom:16px;}
+        .text-block{background:var(--card);border-radius:16px;padding:35px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);font-family:'Noto Serif SC',serif;font-size:1.1rem;line-height:2.2;}
+        .text-block p{text-indent:2em;margin-bottom:16px;}
+        .text-source{text-align:right;font-size:.85rem;color:var(--text-light);margin-top:12px;font-family:'Noto Sans SC',sans-serif;font-style:italic;}
+        .vocab-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
+        .vocab-controls button{padding:8px 20px;border:2px solid var(--border);background:#fff;border-radius:25px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s;color:var(--text);}
+        .vocab-controls button.active,.vocab-controls button:hover{border-color:var(--primary-light);background:var(--primary-light);color:#fff;}
+        .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .vocab-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .3s;position:relative;}
+        .vocab-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.08);border-color:var(--primary-light);}
+        .vocab-card .vocab-num{position:absolute;top:8px;right:12px;font-size:.75rem;color:var(--text-light);opacity:.5;}
+        .vocab-card .hanzi{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;color:var(--primary);}
+        .vocab-card .pinyin{color:var(--accent);font-size:.9rem;margin:4px 0;}
+        .vocab-card .pos{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;}
+        .vocab-card .meaning-hidden{display:none;}
+        .vocab-card.revealed .meaning-hidden{display:block;}
+        .vocab-card.revealed .meaning-placeholder{display:none;}
+        .meaning-placeholder{color:var(--text-light);font-size:.85rem;font-style:italic;margin-top:6px;}
+        /* Recipe steps custom widget */
+        .recipe-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:20px 0;}
+        .recipe-step{background:#fff;border-radius:16px;padding:20px;border:2px solid var(--border);transition:all .3s;position:relative;}
+        .recipe-step:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 25px rgba(212,119,6,.15);}
+        .step-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--gradient-water);color:#fff;border-radius:50%;font-weight:700;font-size:1.1rem;margin-bottom:12px;}
+        .step-icon{font-size:1.8rem;margin-bottom:8px;display:block;}
+        .step-title{font-weight:700;color:var(--primary);font-size:1rem;margin-bottom:6px;}
+        .step-desc{font-size:.9rem;color:var(--text);line-height:1.7;}
+        .step-keyword{background:var(--gold-light);color:var(--primary);padding:1px 6px;border-radius:4px;font-weight:600;}
+        .proverb-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #fbbf24;border-radius:16px;padding:24px 30px;text-align:center;margin:20px 0;}
+        .proverb-box .proverb-text{font-family:'Noto Serif SC',serif;font-size:1.4rem;font-weight:700;color:#92400e;margin-bottom:8px;}
+        .proverb-box .proverb-note{font-size:.9rem;color:#b45309;}
+        .flashcard-area{display:flex;flex-direction:column;align-items:center;gap:20px;padding:20px 0;}
+        .flashcard-container{perspective:1000px;width:380px;height:260px;max-width:100%;}
+        .flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);cursor:pointer;}
+        .flashcard.flipped{transform:rotateY(180deg);}
+        .flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;}
+        .flashcard-front{background:linear-gradient(135deg,#451a00,#b45309);color:#fff;box-shadow:0 10px 40px rgba(146,64,14,.3);}
+        .flashcard-front .fc-hanzi{font-family:'Noto Serif SC',serif;font-size:3rem;font-weight:900;margin-bottom:10px;}
+        .flashcard-front .fc-pinyin{font-size:1.1rem;opacity:.8;}
+        .flashcard-front .fc-hint{font-size:.8rem;opacity:.5;margin-top:20px;}
+        .flashcard-back{background:#fff;border:2px solid var(--primary-light);transform:rotateY(180deg);box-shadow:0 10px 40px rgba(0,0,0,.1);}
+        .flashcard-back .fc-meaning{font-size:1.3rem;color:var(--primary);font-weight:600;}
+        .flashcard-back .fc-pos{background:var(--gold-light);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-top:10px;}
+        .fc-controls{display:flex;gap:12px;}
+        .fc-controls button{padding:10px 28px;border-radius:25px;border:none;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;}
+        .fc-btn-prev,.fc-btn-next{background:var(--primary-light);color:#fff;}
+        .fc-btn-prev:hover,.fc-btn-next:hover{background:var(--primary);}
+        .fc-btn-shuffle{background:#fff;border:2px solid var(--border)!important;color:var(--text);}
+        .fc-counter{color:var(--text-light);font-size:.9rem;}
+        .grammar-card{background:var(--card);border-radius:16px;border:1px solid var(--border);margin-bottom:20px;overflow:hidden;}
+        .grammar-header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;}
+        .grammar-header .grammar-num{background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+        .grammar-header .grammar-title{font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;}
+        .grammar-header .grammar-pinyin{font-size:.9rem;opacity:.8;}
+        .grammar-body{padding:24px;}
+        .grammar-rule{background:var(--gold-light);border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:20px;font-size:.95rem;color:var(--primary);}
+        .grammar-example{padding:12px 0;border-bottom:1px solid var(--border);}
+        .grammar-example:last-child{border-bottom:none;}
+        .grammar-example .ex-cn{font-size:1.05rem;margin-bottom:4px;}
+        .grammar-example .ex-note{color:var(--text-light);font-size:.85rem;}
+        .grammar-example .ex-highlight{color:var(--accent);font-weight:600;}
+        .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+        .comparison-table th{background:var(--primary);color:#fff;padding:14px 18px;font-weight:600;text-align:center;}
+        .comparison-table td{padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top;font-size:.95rem;}
+        .comparison-table tr:last-child td{border-bottom:none;}
+        .comparison-table tr:nth-child(even){background:#f8fafc;}
+        .comparison-table .label-cell{background:var(--gold-light);font-weight:600;color:var(--primary);text-align:center;width:60px;}
+        .colloc-section{margin-bottom:24px;}
+        .colloc-label{display:inline-block;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:12px;}
+        .colloc-label.verb{background:#e74c3c;}.colloc-label.attr{background:#f39c12;}.colloc-label.comp{background:#8e44ad;}.colloc-label.subj{background:#16a085;}
+        .colloc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+        .colloc-row:last-child{border-bottom:none;}
+        .colloc-word{font-weight:600;color:var(--primary);min-width:100px;font-size:1.1rem;}
+        .colloc-plus{color:var(--text-light);font-weight:700;}
+        .colloc-partners{display:flex;flex-wrap:wrap;gap:6px;}
+        .colloc-tag{background:#f0f4f8;padding:4px 12px;border-radius:15px;font-size:.85rem;}
+        .tab-bar{display:flex;gap:4px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:20px;}
+        .tab-btn{flex:1;padding:10px;border:none;background:transparent;border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--text-light);transition:all .2s;}
+        .tab-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+        .tab-content{display:none;}.tab-content.active{display:block;}
+        .quiz-score-bar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+        .score-display{font-size:1.5rem;font-weight:700;color:var(--primary);}
+        .score-bar-visual{flex:1;margin:0 20px;height:10px;background:var(--border);border-radius:5px;overflow:hidden;}
+        .score-bar-fill{height:100%;background:var(--gradient-water);border-radius:5px;transition:width .5s ease;width:0%;}
+        .quiz-reset-btn{padding:8px 20px;background:var(--primary-light);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;}
+        .quiz-question{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;transition:all .3s;}
+        .quiz-question.correct{border-color:var(--success);background:#f0fdf4;}
+        .quiz-question.wrong{border-color:var(--wrong);background:#fef2f2;}
+        .quiz-q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--primary-light);color:#fff;border-radius:50%;font-size:.8rem;font-weight:700;margin-right:10px;}
+        .quiz-q-text{font-size:1.05rem;margin-bottom:14px;}
+        .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .quiz-option{padding:12px 16px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.95rem;text-align:center;background:#fff;}
+        .quiz-option:hover{border-color:var(--primary-light);background:var(--gold-light);}
+        .quiz-option.selected-correct{border-color:var(--success);background:#dcfce7;color:var(--success);font-weight:600;}
+        .quiz-option.selected-wrong{border-color:var(--wrong);background:#fecaca;color:var(--wrong);font-weight:600;}
+        .quiz-option.disabled{pointer-events:none;opacity:.7;}
+        .quiz-explanation{display:none;margin-top:12px;padding:12px 16px;background:#fef3c7;border-radius:10px;font-size:.9rem;color:#92400e;border:1px solid #fbbf24;}
+        .fill-blank{display:inline-block;min-width:80px;border-bottom:2px dashed var(--primary-light);padding:2px 8px;margin:0 4px;text-align:center;cursor:pointer;transition:all .2s;}
+        .fill-blank:hover{background:var(--gold-light);}
+        .fill-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center;}
+        .fill-chip{padding:8px 18px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s;}
+        .fill-chip:hover{border-color:var(--primary-light);background:var(--gold-light);}
+        .fill-chip.used{opacity:.4;pointer-events:none;}
+        .fill-chip.placed{background:var(--primary-light);color:#fff;border-color:var(--primary-light);}
+        .app-box{background:linear-gradient(135deg,#fef3c7,#fde68a10);border:1px solid #fbbf24;border-radius:16px;padding:30px;margin-bottom:20px;}
+        .app-box h4{color:var(--primary);font-size:1.1rem;margin-bottom:12px;}
+        .discussion-q{padding:10px 0;border-bottom:1px solid rgba(251,191,36,.3);font-size:.95rem;}
+        .discussion-q:last-child{border-bottom:none;}
+        .expansion-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
+        .exp-chip{padding:8px 16px;background:#fff;border:1.5px solid var(--border);border-radius:20px;font-size:.9rem;transition:all .2s;cursor:default;}
+        .exp-chip:hover{border-color:var(--accent);background:var(--gold-light);}
+        .exp-chip .exp-pinyin{font-size:.75rem;color:var(--accent);display:block;text-align:center;}
+        .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
+        @media(max-width:768px){.hero h1{font-size:2rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}.recipe-steps{grid-template-columns:1fr;}}
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 下 · UNITÉ 7 · 交流文化</div>
+        <h1>家乡的萝卜饼</h1>
+        <p class="subtitle">Turnip Pancakes in My Hometown — Lesson 19</p>
+        <div class="deco">🥕 🫓 🍵 🏡</div>
+    </div>
+</header>
+
+<nav class="sticky-nav"><div class="nav-inner"><a href="../index.html" style="font-weight:700;padding-right:20px;border-right:2px solid var(--border);color:var(--primary)!important;">← Accueil</a>
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#recipe">做法 Recette</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+</div></nav>
+
+<main class="container">
+
+<section id="text">
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">家乡的萝卜饼 — un souvenir culinaire (547 caractères)</p><div class="section-divider"></div></div>
+    <div class="text-block">
+        <p>家乡的众多美食中，萝卜饼是最让我怀念的。它那丰富的色彩、微甜的口感，至今仍让我十分想念。</p>
+        <p>家乡的萝卜有青、红、紫三种。三种萝卜看起来赏心悦目，吃起来，青的甜中带点儿辣，红的辣中带着甜，紫的像山泉般清淡可口。父老乡亲们夸它说："橘子、葡萄、梨，比不上咱的萝卜皮。"而萝卜饼就是用这三种颜色的萝卜做成的。</p>
+        <p>萝卜饼的做法极其简单，既不必炒或煮，也不用油炸。先把三色萝卜洗净切丝，放入油、盐等，用筷子搅拌均匀，萝卜饼的原料便做成了。最关键的功夫是擀面。高手往往把面擀得薄如白纸，拌好的萝卜丝儿铺到饼上后，得再折叠两三次，要求饼熟之后表皮是透明的，能透过表皮看见萝卜丝儿。最后用刀切成块状，饼便做好了。</p>
+        <p>接下来，拿一个平底锅，先在锅里淋一圈油，待油锅烫手时，将切好的萝卜饼一块一块地放进锅里。盖锅前须放进一些温水，预防糊底。火最好用文火，等能闻到香味时，便可开锅了。萝卜饼要趁热吃，喜欢口味重的，还可以加少许酱油和醋。刚出锅的萝卜饼，香味扑鼻，外焦里嫩，吃上一口，便让人永远忘记不了。</p>
+        <p>如今，美食家们对吃提出了更高的要求。他们不仅要观色、闻香、尝味、赏形，而且还要求食物具有养生方面的特色。我想，家乡的萝卜饼完全具备这几个方面的条件，人们不是常说吗——"鱼生火，肉生痰，青菜萝卜保平安"，养生的功能，让我更加喜爱它了。</p>
+        <div class="text-source">改编自《中国电视报》，作者：李星涛</div>
+    </div>
+</section>
+
+<section id="vocab">
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">44 mots — Cliquez pour révéler</p><div class="section-divider"></div></div>
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (44)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout révéler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+</section>
+
+<section id="recipe">
+    <div class="section-header"><h2>做法 - La Recette</h2><p class="section-sub">Les 6 étapes pour préparer les galettes de radis</p><div class="section-divider"></div></div>
+    <div class="recipe-steps">
+        <div class="recipe-step">
+            <div class="step-num">1</div>
+            <span class="step-icon">🥕</span>
+            <div class="step-title">准备原料</div>
+            <div class="step-desc">将青、红、紫三色萝卜洗净，<span class="step-keyword">切丝</span>。放入油、盐等调料，用筷子<span class="step-keyword">搅拌均匀</span>。</div>
+        </div>
+        <div class="recipe-step">
+            <div class="step-num">2</div>
+            <span class="step-icon">🫓</span>
+            <div class="step-title">擀面</div>
+            <div class="step-desc">高手把面<span class="step-keyword">擀</span>得<span class="step-keyword">薄</span>如白纸。将萝卜丝铺到饼上，<span class="step-keyword">折叠</span>两三次。</div>
+        </div>
+        <div class="recipe-step">
+            <div class="step-num">3</div>
+            <span class="step-icon">🔪</span>
+            <div class="step-title">切块</div>
+            <div class="step-desc">用刀将折叠好的饼切成块状。饼熟后表皮应是<span class="step-keyword">透明</span>的，能透过表皮看见萝卜丝儿。</div>
+        </div>
+        <div class="recipe-step">
+            <div class="step-num">4</div>
+            <span class="step-icon">🍳</span>
+            <div class="step-title">热锅淋油</div>
+            <div class="step-desc">平底锅内<span class="step-keyword">淋</span>一<span class="step-keyword">圈</span>油，待油锅<span class="step-keyword">烫</span>手时，将萝卜饼一块一块放入锅里。</div>
+        </div>
+        <div class="recipe-step">
+            <div class="step-num">5</div>
+            <span class="step-icon">🔥</span>
+            <div class="step-title">文火慢煎</div>
+            <div class="step-desc"><span class="step-keyword">盖</span>锅前须放进温水，<span class="step-keyword">预防糊</span>底。火最好用<span class="step-keyword">文火</span>，等能<span class="step-keyword">闻</span>到香味时便可开锅。</div>
+        </div>
+        <div class="recipe-step">
+            <div class="step-num">6</div>
+            <span class="step-icon">🍽️</span>
+            <div class="step-title">趁热品尝</div>
+            <div class="step-desc">萝卜饼要<span class="step-keyword">趁</span>热吃！外<span class="step-keyword">焦</span>里<span class="step-keyword">嫩</span>，香味扑鼻。可加<span class="step-keyword">少许酱油</span>和<span class="step-keyword">醋</span>。</div>
+        </div>
+    </div>
+    <div class="proverb-box">
+        <div class="proverb-text">🐟 鱼生火，肉生痰，青菜萝卜保平安 🥬</div>
+        <div class="proverb-note">Proverbe populaire chinois : "Le poisson cause de la fièvre, la viande du mucus, les légumes verts et les radis préservent la santé."</div>
+    </div>
+</section>
+
+<section id="flashcards">
+    <div class="section-header"><h2>卡片 - Flashcards</h2><p class="section-sub">Entraînez-vous sur les 44 mots</p><div class="section-divider"></div></div>
+    <div class="flashcard-area">
+        <div class="flashcard-container">
+            <div class="flashcard" id="flashcard" onclick="flipCard()">
+                <div class="flashcard-front">
+                    <div class="fc-hanzi" id="fcHanzi"></div>
+                    <div class="fc-pinyin" id="fcPinyin"></div>
+                    <div class="fc-hint">Cliquez pour retourner</div>
+                </div>
+                <div class="flashcard-back">
+                    <div class="fc-meaning" id="fcMeaning"></div>
+                    <div class="fc-pos" id="fcPos"></div>
+                </div>
+            </div>
+        </div>
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">44</span></div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">← Préc.</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">🔀 Mélanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suiv. →</button>
+        </div>
+    </div>
+</section>
+
+<section id="grammar">
+    <div class="section-header"><h2>语法 - Grammaire</h2><p class="section-sub">Notes (一) : Exemples de vocabulaire</p><div class="section-divider"></div></div>
+
+    <div class="grammar-card">
+        <div class="grammar-header">
+            <div class="grammar-num">1</div>
+            <div>
+                <div class="grammar-title">般</div>
+                <div class="grammar-pinyin">bān — particule de comparaison</div>
+            </div>
+        </div>
+        <div class="grammar-body">
+            <div class="grammar-rule">「般」助词，意思是"一样""似的"，常用在名词后，构成短语做定语或状语。<br>Particule signifiant "comme, tel que, semblable à", s'utilise après un nom pour former un groupe attributif ou adverbial.</div>
+            <div class="grammar-example">
+                <div class="ex-cn">（1）……紫的像山泉<span class="ex-highlight">般</span>清淡可口。</div>
+                <div class="ex-note">Le violet a un goût léger et délicieux, comme l'eau d'une source de montagne.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（2）说起那段往事，她的脸上露出了阳光<span class="ex-highlight">般</span>的笑容。</div>
+                <div class="ex-note">En évoquant ce passé, un sourire radieux comme le soleil apparut sur son visage.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（3）望着爸爸远去的背影，我的眼泪雨点<span class="ex-highlight">般</span>不停地往下掉。</div>
+                <div class="ex-note">En regardant la silhouette de mon père s'éloigner, mes larmes tombaient comme des gouttes de pluie.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grammar-card">
+        <div class="grammar-header">
+            <div class="grammar-num">2</div>
+            <div>
+                <div class="grammar-title">闻</div>
+                <div class="grammar-pinyin">wén — deux sens distincts</div>
+            </div>
+        </div>
+        <div class="grammar-body">
+            <div class="grammar-rule">「闻」做语素时，意思是"听见、听见的事情、消息"。做动词时，表示用鼻子感知味道。<br>Comme morphème : "entendre, nouvelles, ce qu'on entend". Comme verbe : "sentir (avec le nez)".</div>
+            <div class="grammar-example">
+                <div class="ex-cn">（1）你们去各地去旅游，一定会增加对中国的了解，老话说：百<span class="ex-highlight">闻</span>不如一见。</div>
+                <div class="ex-note">Sens "entendre" → 百闻不如一见 : voir vaut mieux qu'entendre.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（2）时隔多年再来这里，所到之处、所见所<span class="ex-highlight">闻</span>，无不给人一种新鲜感。</div>
+                <div class="ex-note">所见所闻 : ce qu'on voit et ce qu'on entend.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（3）火最好用文火，等能<span class="ex-highlight">闻</span>到香味时，便可开锅了。</div>
+                <div class="ex-note">Sens "sentir (odorat)" → utiliser le feu doux jusqu'à sentir l'arôme.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（4）他把壶盖儿打开，<span class="ex-highlight">闻</span>了闻，原来是酒。</div>
+                <div class="ex-note">Il ouvrit le couvercle de la théière et le sentit — c'était en fait de l'alcool.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grammar-card">
+        <div class="grammar-header">
+            <div class="grammar-num">3</div>
+            <div>
+                <div class="grammar-title">趁</div>
+                <div class="grammar-pinyin">chèn — préposition de saisie d'opportunité</div>
+            </div>
+        </div>
+        <div class="grammar-body">
+            <div class="grammar-rule">「趁」介词，意思是"利用（时间、机会）"，后面可跟名词、动词短语、形容词和小句。<br>Préposition signifiant "profiter de (temps/occasion)", peut être suivi d'un nom, d'un groupe verbal, d'un adjectif ou d'une proposition.</div>
+            <div class="grammar-example">
+                <div class="ex-cn">（1）<span class="ex-highlight">趁</span>着这几天休息，我们去看看房子吧。</div>
+                <div class="ex-note">Profitons de ces quelques jours de repos pour aller voir la maison.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（2）<span class="ex-highlight">趁</span>电影还没开始，我去买两瓶矿泉水。</div>
+                <div class="ex-note">Avant que le film ne commence, je vais acheter deux bouteilles d'eau minérale.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（3）萝卜饼要<span class="ex-highlight">趁</span>热吃，喜欢口味重的，还可以加少许酱油和醋。</div>
+                <div class="ex-note">Les galettes de radis doivent se manger pendant qu'elles sont encore chaudes.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="analysis">
+    <div class="section-header"><h2>辨析 - Analyse contrastive</h2><p class="section-sub">怀念 vs 想念 — deux façons de "manquer"</p><div class="section-divider"></div></div>
+    <div class="card">
+        <table class="comparison-table">
+            <thead>
+                <tr><th style="width:60px;"></th><th>怀念 (huáiniàn)</th><th>想念 (xiǎngniàn)</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="label-cell">共同点</td>
+                    <td colspan="2">都是动词，都表示对人或环境不能忘记，有思念的意思。<br><em>Tous deux sont des verbes signifiant qu'on ne peut oublier une personne ou un lieu — on lui manque.</em><br><br>如：每当回忆起小学时代的学习生活，我最<strong>怀念/想念</strong>的人就是刘老师。</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">怀念</td>
+                    <td>① 多用于书面语，语义强调常常想起，不能忘记。<br><em>Plus littéraire, souligne qu'on y pense souvent, qu'on ne peut pas oublier.</em><br><br>如：刘教授非常怀念年轻时在国外留学的那段生活。</td>
+                    <td style="background:#fef2f2;">✗ ne convient pas ici</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">想念</td>
+                    <td style="background:#fef2f2;">✗ ne convient pas ici</td>
+                    <td>① 多用于口语，语义强调希望见到某人。<br><em>Plus oral, souligne le désir de revoir quelqu'un.</em><br><br>如：女儿告诉我，她很想念出差的爸爸。</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">怀念</td>
+                    <td>② 多用于已去世的人或不能再见到的环境。<br><em>S'emploie pour des personnes décédées ou des environnements auxquels on ne peut plus retourner.</em><br><br>如：从文章中我们读到了先生对去世的母亲的怀念。</td>
+                    <td style="background:#fef2f2;">✗ ne convient pas ici</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">想念</td>
+                    <td style="background:#fef2f2;">✗ ne convient pas ici</td>
+                    <td>② 多用于活着的人或能再见到的环境。<br><em>S'emploie pour des personnes vivantes ou des lieux qu'on peut revoir.</em><br><br>如：每到春节，我就格外想念家乡的一草一木。</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="collocation">
+    <div class="section-header"><h2>搭配 - Collocations</h2><p class="section-sub">词语搭配 — combinaisons lexicales clés</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="colloc-section">
+            <span class="colloc-label verb">动词 + 宾语</span>
+            <div class="colloc-row">
+                <span class="colloc-word">切</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">蛋糕</span><span class="colloc-tag">菜</span><span class="colloc-tag">肉</span><span class="colloc-tag">萝卜</span></div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">预防</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">中毒</span><span class="colloc-tag">疾病</span><span class="colloc-tag">感冒</span><span class="colloc-tag">灾害</span><span class="colloc-tag">糊底</span></div>
+            </div>
+        </div>
+        <div class="colloc-section">
+            <span class="colloc-label attr">定语 + 中心语</span>
+            <div class="colloc-row">
+                <span class="colloc-word">色彩</span><span class="colloc-plus">←</span>
+                <div class="colloc-partners"><span class="colloc-tag">美丽的</span><span class="colloc-tag">丰富的</span><span class="colloc-tag">鲜艳的</span><span class="colloc-tag">感情/民族/喜剧</span></div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">特色</span><span class="colloc-plus">←</span>
+                <div class="colloc-partners"><span class="colloc-tag">中国的</span><span class="colloc-tag">地方的</span><span class="colloc-tag">共同的</span><span class="colloc-tag">养生方面的</span></div>
+            </div>
+        </div>
+        <div class="colloc-section">
+            <span class="colloc-label comp">中心语 + 补语</span>
+            <div class="colloc-row">
+                <span class="colloc-word">搅拌/翻炒</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">均匀</span><span class="colloc-tag">好</span></div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">烫</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">红</span><span class="colloc-tag">熟</span><span class="colloc-tag">软</span><span class="colloc-tag">破</span><span class="colloc-tag">手</span></div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">炒/煮/炸</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">好</span><span class="colloc-tag">熟</span><span class="colloc-tag">烂</span><span class="colloc-tag">透</span></div>
+            </div>
+        </div>
+        <div class="colloc-section">
+            <span class="colloc-label subj">主语 + 谓语</span>
+            <div class="colloc-row">
+                <span class="colloc-word">色彩</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">鲜艳</span><span class="colloc-tag">丰富</span><span class="colloc-tag">强烈</span><span class="colloc-tag">明显</span></div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">分布/呼吸</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">均匀</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="quiz-section">
+    <div class="section-header"><h2>测验 - Quiz</h2><p class="section-sub">Testez vos connaissances sur la leçon 19</p><div class="section-divider"></div></div>
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('tab-vocab')">🗂 Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('tab-grammar')">📖 Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('tab-comp')">📝 Compréhension</button>
+    </div>
+    <div class="tab-content active" id="tab-vocab">
+        <div class="quiz-score-bar"><span class="score-display" id="vocabScore">0 / 12</span><div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button></div>
+        <div id="vocabQuizContainer"></div>
+    </div>
+    <div class="tab-content" id="tab-grammar">
+        <div class="quiz-score-bar"><span class="score-display" id="grammarScore">0 / 8</span><div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button></div>
+        <div id="grammarQuizContainer"></div>
+    </div>
+    <div class="tab-content" id="tab-comp">
+        <div class="quiz-score-bar"><span class="score-display" id="compScore">0 / 10</span><div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button></div>
+        <div id="compQuizContainer"></div>
+    </div>
+</section>
+
+<section id="fill-quiz">
+    <div class="section-header"><h2>填空 - Exercices</h2><p class="section-sub">Sélectionnez un mot, puis cliquez sur le blanc correspondant</p><div class="section-divider"></div></div>
+    <div class="card">
+        <h3>练习 1 — 选择合适的词语填空</h3>
+        <div class="fill-options">
+            <div class="fill-chip" data-word="特色" onclick="selectFillWord(this)">特色</div>
+            <div class="fill-chip" data-word="预防" onclick="selectFillWord(this)">预防</div>
+            <div class="fill-chip" data-word="色彩" onclick="selectFillWord(this)">色彩</div>
+            <div class="fill-chip" data-word="平安" onclick="selectFillWord(this)">平安</div>
+            <div class="fill-chip" data-word="清淡" onclick="selectFillWord(this)">清淡</div>
+            <div class="fill-chip" data-word="均匀" onclick="selectFillWord(this)">均匀</div>
+        </div>
+        <div style="margin-top:20px;line-height:3.2;font-size:1.05rem;">
+            <p>❶ 也许是药物的作用，这一夜他<span class="fill-blank" data-answer="平安" onclick="placeFillWord(this)">___</span>地度过了。</p>
+            <p>❷ 最后，我们用酱油、白糖、味精等做成汁，<span class="fill-blank" data-answer="均匀" onclick="placeFillWord(this)">___</span>地浇在鸡肉上就做好了。</p>
+            <p>❸ 饭菜很<span class="fill-blank" data-answer="清淡" onclick="placeFillWord(this)">___</span>，很平常，却给我留下了极深的印象。</p>
+            <p>❹ 请你给我们推荐几个你们这儿的<span class="fill-blank" data-answer="特色" onclick="placeFillWord(this)">___</span>菜吧。</p>
+            <p>❺ 研究发现，常吃胡萝卜能起到保护眼睛、<span class="fill-blank" data-answer="预防" onclick="placeFillWord(this)">___</span>近视的效果。</p>
+            <p>❻ 此菜的特点是<span class="fill-blank" data-answer="色彩" onclick="placeFillWord(this)">___</span>美观，咸鲜滑嫩，味香可口，营养丰富。</p>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:16px;">
+            <button onclick="checkFillAnswers()" style="padding:10px 24px;background:var(--gradient-water);color:#fff;border:none;border-radius:20px;cursor:pointer;font-weight:600;">Vérifier ✓</button>
+            <button onclick="resetFill()" style="padding:10px 24px;background:#fff;border:2px solid var(--border);border-radius:20px;cursor:pointer;font-weight:600;">Réinitialiser</button>
+        </div>
+    </div>
+
+    <div class="card"><h3>怀念 ou 想念 ? Choisissez la bonne réponse</h3><div id="choiceQuizContainer"></div></div>
+</section>
+
+<section id="application">
+    <div class="section-header"><h2>运用 - Application</h2><p class="section-sub">Contexte culturel et discussion</p><div class="section-divider"></div></div>
+    <div class="app-box">
+        <h4>背景知识 — 中国饮食文化与地方特色</h4>
+        <p style="line-height:2;">中国饮食文化源远流长，各地美食都有其独特的地方特色。所谓"一方水土养一方人"，不同地区的气候、物产和风俗造就了风格迥异的饮食传统。萝卜在中国历史上一直是重要的蔬菜，古人认为它有极强的养生功效，故有"冬吃萝卜夏吃姜，不劳医生开药方"之说。在外地求学或工作的人，往往最思念的就是家乡特有的味道——那种口感与情感交织在一起的记忆，是任何山珍海味都无法替代的。</p>
+    </div>
+    <div class="app-box">
+        <h4>话题讨论 - 家乡的味道</h4>
+        <div class="discussion-q">1. 你最怀念的家乡食物是什么？请描述它的外观、做法和味道，并说说它对你的特殊意义。<br><em>Quel plat de votre région vous manque le plus ? Décrivez son aspect, sa préparation et sa saveur, et expliquez ce qu'il représente pour vous.</em></div>
+        <div class="discussion-q">2. 文章说萝卜饼"观色、闻香、尝味、赏形"都具备。你认为一道好的菜应该具备哪些条件？<br><em>L'article dit que les galettes de radis réunissent couleur, arôme, goût et forme. Selon vous, quelles sont les qualités d'un bon plat ?</em></div>
+        <div class="discussion-q">3. 你有没有尝试过用中文介绍一道菜的做法？请用"先……，接下来……，最后……"和"趁……"介绍一道你喜欢的菜。<br><em>Avez-vous déjà essayé de décrire une recette en chinois ? Utilisez "先…, 接下来…, 最后…" et "趁…" pour décrire un plat que vous aimez.</em></div>
+    </div>
+    <div class="app-box">
+        <h4>扩展词汇 — 饮食 2</h4>
+        <p style="color:var(--text-light);font-size:.9rem;margin-bottom:4px;">Vocabulaire HSK5 thématique : alimentation et boissons</p>
+        <div class="expansion-grid" id="expansionGrid"></div>
+    </div>
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'écriture</h4>
+        <p>请以"我最怀念的一道菜"为题，写一篇短文，介绍这道菜的做法、味道以及它对你的特殊意义。请尽量使用本课词汇，字数不少于100字。</p>
+        <p style="font-style:italic;color:var(--text-light);margin-top:8px;">Rédigez un texte sur "Le plat qui me manque le plus". Décrivez sa préparation, sa saveur et ce qu'il représente pour vous. Utilisez le maximum de vocabulaire de la leçon, au moins 100 caractères.</p>
+    </div>
+</section>
+
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<footer style="text-align:center;padding:40px 20px;color:var(--text-light);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px;">HSK 5 Standard Course 下 — Leçon 19 — 家乡的萝卜饼</footer>
+
+<script>
+const vocabData=[
+    {id:1,hanzi:"家乡",pinyin:"jiāxiāng",pos:"n.",meaning:"pays natal, ville d'origine, région d'où l'on vient",cat:"noun"},
+    {id:2,hanzi:"萝卜",pinyin:"luóbo",pos:"n.",meaning:"radis, navet (légume-racine commun en Chine)",cat:"noun"},
+    {id:3,hanzi:"怀念",pinyin:"huáiniàn",pos:"v.",meaning:"avoir la nostalgie de, ne pas pouvoir oublier (style écrit, souvent pour le passé inaccessible)",cat:"verb"},
+    {id:4,hanzi:"色彩",pinyin:"sècǎi",pos:"n.",meaning:"couleur, tonalité colorée ; nuance (ex. 感情色彩)",cat:"noun"},
+    {id:5,hanzi:"想念",pinyin:"xiǎngniàn",pos:"v.",meaning:"avoir envie de revoir, manquer à (style oral, pour des personnes/lieux qu'on peut retrouver)",cat:"verb"},
+    {id:6,hanzi:"青",pinyin:"qīng",pos:"adj.",meaning:"vert-bleu, verdâtre (couleur naturelle, végétaux, bronze)",cat:"adj"},
+    {id:7,hanzi:"紫",pinyin:"zǐ",pos:"adj.",meaning:"violet, pourpre",cat:"adj"},
+    {id:8,hanzi:"赏心悦目",pinyin:"shǎngxīn-yuèmù",pos:"expr.",meaning:"agréable à l'œil et à l'esprit, plaisant à regarder (chengyu)",cat:"other"},
+    {id:9,hanzi:"般",pinyin:"bān",pos:"part.",meaning:"comme, tel que, semblable à (particule comparative, après un nom)",cat:"other"},
+    {id:10,hanzi:"清淡",pinyin:"qīngdàn",pos:"adj.",meaning:"léger (goût), peu relevé, sans excès de matière grasse",cat:"adj"},
+    {id:11,hanzi:"可口",pinyin:"kěkǒu",pos:"adj.",meaning:"savoureux, délicieux, agréable en bouche",cat:"adj"},
+    {id:12,hanzi:"夸",pinyin:"kuā",pos:"v.",meaning:"faire l'éloge de, louer, vanter, complimenter",cat:"verb"},
+    {id:13,hanzi:"橘子",pinyin:"júzi",pos:"n.",meaning:"mandarine, tangerine",cat:"noun"},
+    {id:14,hanzi:"梨",pinyin:"lí",pos:"n.",meaning:"poire",cat:"noun"},
+    {id:15,hanzi:"炒",pinyin:"chǎo",pos:"v.",meaning:"faire sauter à la poêle, faire revenir (cuisine)",cat:"verb"},
+    {id:16,hanzi:"煮",pinyin:"zhǔ",pos:"v.",meaning:"faire bouillir, cuire à l'eau, mijoter",cat:"verb"},
+    {id:17,hanzi:"油炸",pinyin:"yóuzhá",pos:"v.",meaning:"frire dans l'huile, faire frire",cat:"verb"},
+    {id:18,hanzi:"切",pinyin:"qiē",pos:"v.",meaning:"couper, trancher, émincer, hacher",cat:"verb"},
+    {id:19,hanzi:"丝",pinyin:"sī",pos:"n.",meaning:"fil, filament, lanière, julienne (aliment coupé fin)",cat:"noun"},
+    {id:20,hanzi:"搅拌",pinyin:"jiǎobàn",pos:"v.",meaning:"mélanger, remuer, brasser, battre",cat:"verb"},
+    {id:21,hanzi:"均匀",pinyin:"jūnyún",pos:"adj.",meaning:"régulier, uniforme, bien réparti, homogène",cat:"adj"},
+    {id:22,hanzi:"原料",pinyin:"yuánliào",pos:"n.",meaning:"matière première, ingrédient de base",cat:"noun"},
+    {id:23,hanzi:"擀",pinyin:"gǎn",pos:"v.",meaning:"étaler (la pâte) au rouleau, abaisser",cat:"verb"},
+    {id:24,hanzi:"薄",pinyin:"báo",pos:"adj.",meaning:"mince, fin, peu épais",cat:"adj"},
+    {id:25,hanzi:"折叠",pinyin:"zhédié",pos:"v.",meaning:"plier, replier (en deux ou plusieurs fois)",cat:"verb"},
+    {id:26,hanzi:"透明",pinyin:"tòumíng",pos:"adj.",meaning:"transparent, translucide",cat:"adj"},
+    {id:27,hanzi:"淋",pinyin:"lín",pos:"v.",meaning:"arroser, verser (un liquide sur), asperger",cat:"verb"},
+    {id:28,hanzi:"圈",pinyin:"quān",pos:"n.",meaning:"cercle, anneau, tour (圈油 = un tour d'huile)",cat:"noun"},
+    {id:29,hanzi:"烫",pinyin:"tàng",pos:"v./adj.",meaning:"brûler, ébouillanter ; très chaud, brûlant",cat:"verb"},
+    {id:30,hanzi:"盖",pinyin:"gài",pos:"v./n.",meaning:"couvrir, mettre un couvercle ; couvercle",cat:"verb"},
+    {id:31,hanzi:"预防",pinyin:"yùfáng",pos:"v.",meaning:"prévenir, se prémunir contre, empêcher",cat:"verb"},
+    {id:32,hanzi:"糊",pinyin:"hú",pos:"v.",meaning:"brûler, accrocher au fond (aliments), carboniser légèrement",cat:"verb"},
+    {id:33,hanzi:"文火",pinyin:"wénhuǒ",pos:"n.",meaning:"feu doux, petit feu (cuisson lente)",cat:"noun"},
+    {id:34,hanzi:"闻",pinyin:"wén",pos:"v.",meaning:"sentir (avec le nez) ; [morphème] entendre, nouvelles",cat:"verb"},
+    {id:35,hanzi:"趁",pinyin:"chèn",pos:"prép.",meaning:"profiter de (temps, occasion), pendant que, avant que",cat:"other"},
+    {id:36,hanzi:"口味",pinyin:"kǒuwèi",pos:"n.",meaning:"goût, saveur, palais (préférence gustative)",cat:"noun"},
+    {id:37,hanzi:"少许",pinyin:"shǎoxǔ",pos:"adj.",meaning:"un peu de, quelques, une petite quantité de (style écrit)",cat:"adj"},
+    {id:38,hanzi:"酱油",pinyin:"jiàngyóu",pos:"n.",meaning:"sauce soja",cat:"noun"},
+    {id:39,hanzi:"醋",pinyin:"cù",pos:"n.",meaning:"vinaigre",cat:"noun"},
+    {id:40,hanzi:"焦",pinyin:"jiāo",pos:"adj.",meaning:"brûlé, grillé, croustillant (外焦里嫩 = croustillant dehors, tendre dedans)",cat:"adj"},
+    {id:41,hanzi:"嫩",pinyin:"nèn",pos:"adj.",meaning:"tendre, moelleux, délicat (texture d'un aliment)",cat:"adj"},
+    {id:42,hanzi:"特色",pinyin:"tèsè",pos:"n.",meaning:"caractéristique distinctive, spécificité, particularité",cat:"noun"},
+    {id:43,hanzi:"痰",pinyin:"tán",pos:"n.",meaning:"mucosités, glaires, flegme (médecine traditionnelle chinoise)",cat:"noun"},
+    {id:44,hanzi:"平安",pinyin:"píng'ān",pos:"adj.",meaning:"sain et sauf, en bonne santé, sans incident",cat:"adj"}
+];
+
+const expansionData=[
+    {hanzi:"零食",pinyin:"língshí"},{hanzi:"冰激凌",pinyin:"bīngjīlíng"},{hanzi:"酱油",pinyin:"jiàngyóu"},
+    {hanzi:"醋",pinyin:"cù"},{hanzi:"开水",pinyin:"kāishuǐ"},{hanzi:"点心",pinyin:"diǎnxin"},
+    {hanzi:"营养",pinyin:"yíngyǎng"},{hanzi:"口味",pinyin:"kǒuwèi"},{hanzi:"胃口",pinyin:"wèikǒu"},
+    {hanzi:"淡",pinyin:"dàn"},{hanzi:"臭",pinyin:"chòu"},{hanzi:"软",pinyin:"ruǎn"},
+    {hanzi:"嫩",pinyin:"nèn"},{hanzi:"过期",pinyin:"guòqī"}
+];
+
+function renderExpansion(){document.getElementById('expansionGrid').innerHTML=expansionData.map(w=>`<div class="exp-chip"><span>${w.hanzi}</span><span class="exp-pinyin">${w.pinyin}</span></div>`).join('');}
+
+function renderVocab(filter='all'){const g=document.getElementById('vocabGrid');const f=filter==='all'?vocabData:vocabData.filter(v=>v.cat===filter);g.innerHTML=f.map(v=>`<div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')"><span class="vocab-num">#${v.id}</span><div class="hanzi">${v.hanzi}</div><div class="pinyin">${v.pinyin}</div><span class="pos">${v.pos}</span><div class="meaning-placeholder">Cliquez pour voir...</div><div class="meaning-hidden" style="font-size:.9rem;margin-top:6px;">${v.meaning}</div></div>`).join('');}
+function filterVocab(c){document.querySelectorAll('.vocab-controls button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderVocab(c);}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function hideAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('revealed'));}
+
+let fcIndex=0,fcOrder=[...Array(vocabData.length).keys()];
+function updateFlashcard(){const v=vocabData[fcOrder[fcIndex]];document.getElementById('fcHanzi').textContent=v.hanzi;document.getElementById('fcPinyin').textContent=v.pinyin;document.getElementById('fcMeaning').textContent=v.meaning;document.getElementById('fcPos').textContent=v.pos;document.getElementById('fcCurrent').textContent=fcIndex+1;document.getElementById('fcTotal').textContent=fcOrder.length;document.getElementById('flashcard').classList.remove('flipped');}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%fcOrder.length;updateFlashcard();}
+function prevCard(){fcIndex=(fcIndex-1+fcOrder.length)%fcOrder.length;updateFlashcard();}
+function shuffleCards(){for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}fcIndex=0;updateFlashcard();}
+
+const vocabQuizData=[
+    {q:"怀念 signifie :",options:["Avoir envie de revoir quelqu'un (oral)","Avoir la nostalgie de, ne pouvoir oublier (style écrit, passé inaccessible)","Oublier progressivement","Être nostalgique du futur"],correct:1},
+    {q:"赏心悦目 veut dire :",options:["Difficile à regarder, désagréable","Agréable à l'œil et à l'esprit, plaisant à voir","Très appétissant, délicieux","Impressionnant, grandiose"],correct:1},
+    {q:"均匀 signifie :",options:["Épais, dense, concentré","Très fin, délié","Régulier, uniforme, bien réparti","Déséquilibré, inégal"],correct:2},
+    {q:"擀 veut dire :",options:["Hacher finement","Étaler la pâte au rouleau, abaisser","Faire bouillir longtemps","Émincer en julienne"],correct:1},
+    {q:"趁 signifie :",options:["Attendre patiemment que","Même si, bien que","Profiter de (temps/occasion), pendant que","À la condition que"],correct:2},
+    {q:"文火 veut dire :",options:["Feu très vif, flamme haute","Feu doux, petit feu (cuisson lente)","Flamme courte et rapide","Chaleur indirecte"],correct:1},
+    {q:"透明 signifie :",options:["Opaque, non translucide","Transparent, translucide","Brillant, laqué","Mat, sans reflet"],correct:1},
+    {q:"折叠 veut dire :",options:["Déchirer, couper","Plier, replier (plusieurs fois)","Enrouler, rouler","Étaler, aplatir"],correct:1},
+    {q:"特色 signifie :",options:["Défaut, faiblesse","Ressemblance, similitude","Caractéristique distinctive, spécificité","Qualité ordinaire, standard"],correct:2},
+    {q:"外焦里嫩 veut dire :",options:["Brûlé à l'extérieur et à l'intérieur","Cru dehors et cuit dedans","Croustillant à l'extérieur, tendre à l'intérieur","Dur en surface et mou au centre"],correct:2},
+    {q:"少许 signifie :",options:["Beaucoup, en grande quantité","Un peu de, une petite quantité (style écrit)","Suffisamment, en quantité adéquate","Pas du tout, zéro"],correct:1},
+    {q:"预防 veut dire :",options:["Traiter une maladie existante","Prévenir, se prémunir contre, empêcher","Ignorer un danger","Chercher une solution après coup"],correct:1}
+];
+
+const grammarQuizData=[
+    {q:"'紫的像山泉般清淡可口' — 般 s'emploie ici pour exprimer :",options:["La quantité approximative","Une comparaison (comme, tel que, semblable à)","La conséquence d'une action","Le but d'une action"],correct:1},
+    {q:"般 se place grammaticalement :",options:["Devant le nom qui sert de comparaison","Après le nom qui sert de référence comparative","Au début de la phrase","Uniquement après des adjectifs"],correct:1},
+    {q:"'雨点般不停地往下掉' — 般 permet ici de former :",options:["Un sujet","Un objet direct","Un groupe adverbial (状语) modifiant le verbe 掉","Un attribut du sujet"],correct:2},
+    {q:"闻 utilisé dans '等能闻到香味时' a le sens de :",options:["Entendre (avec les oreilles)","Sentir (avec le nez)","Regarder (avec les yeux)","Goûter (avec la bouche)"],correct:1},
+    {q:"Dans '所见所闻', le morphème 闻 signifie :",options:["Sentir l'odeur de","Ce qu'on mange","Ce qu'on entend, les nouvelles","Ce qu'on touche"],correct:2},
+    {q:"百闻不如一见 signifie :",options:["Il vaut mieux sentir que voir","Voir vaut mieux qu'entendre (cent fois)","Entendre cent fois plutôt qu'une","L'odorat est plus fiable que la vue"],correct:1},
+    {q:"趁 diffère de 等 car :",options:["Ils sont totalement synonymes","趁 = profiter d'une condition favorable maintenant ; 等 = attendre que quelque chose se produise","等 implique une urgence, 趁 une attente","趁 ne peut être suivi que de noms"],correct:1},
+    {q:"'趁电影还没开始，我去买水' — On utilise 趁 car :",options:["On attend que quelque chose se produise","On profite de la fenêtre de temps favorable avant que le film commence","On exprime une condition hypothétique","On décrit une action simultanée obligatoire"],correct:1}
+];
+
+const compQuizData=[
+    {q:"De quelle région est originaire la galette de radis décrite dans le texte ?",options:["Pékin","La ville natale de l'auteur (sa région d'origine)","Shanghai","Chengdu"],correct:1},
+    {q:"Combien de variétés de radis sont utilisées pour faire les galettes ?",options:["Deux (rouge et blanc)","Quatre (vert, rouge, violet, blanc)","Trois (vert-bleu, rouge et violet)","Une seule, le radis blanc"],correct:2},
+    {q:"Comment prépare-t-on les galettes (selon le texte) ?",options:["On fait sauter les radis puis on frit la galette","On fait bouillir les radis et on les pile","On coupe les radis en julienne, on mélange avec huile et sel, on étale en galette fine","On pétrit les radis avec de la farine et on fait cuire à la vapeur"],correct:2},
+    {q:"Qu'est-ce que 'le coup de main' le plus important dans la préparation ?",options:["Couper les radis en julienne très fine","Étaler la pâte au rouleau (擀面)","Choisir la bonne variété de radis","Doser la quantité de sel"],correct:1},
+    {q:"Comment doit être la galette une fois cuite, selon le texte ?",options:["Opaque et bien dorée des deux côtés","Translucide, permettant de voir les radis en julienne","Dorée et épaisse comme du pain","Molle et souple comme une crêpe"],correct:1},
+    {q:"Pourquoi met-on de l'eau tiède dans la poêle avant de couvrir ?",options:["Pour donner du goût à la galette","Pour ramollir la pâte","Pour empêcher la galette de coller/brûler au fond (糊底)","Pour cuire les radis plus vite"],correct:2},
+    {q:"Comment doit-on manger les galettes selon le texte ?",options:["Froides avec du piment","Chaudes (趁热) ; on peut ajouter sauce soja et vinaigre","Tièdes avec du sucre","À température ambiante, sans condiments"],correct:1},
+    {q:"Quelles sont les quatre qualités gastronomiques mentionnées par les gourmets (美食家) ?",options:["硬, 脆, 甜, 辣","观色, 闻香, 尝味, 赏形","清淡, 可口, 均匀, 透明","炒, 煮, 炸, 煎"],correct:1},
+    {q:"Que signifie le proverbe final '鱼生火，肉生痰，青菜萝卜保平安' ?",options:["Les poissons, la viande et les légumes sont tous bons pour la santé","Le poisson cause de la chaleur, la viande du mucus, les légumes et radis préservent la santé","Il faut manger du poisson, de la viande et des légumes chaque jour","Les légumes sont meilleurs que le poisson et la viande"],correct:1},
+    {q:"Pourquoi l'auteur aime-t-il encore plus les galettes de radis à la fin du texte ?",options:["Parce qu'elles sont très faciles à préparer","Parce qu'elles sont moins chères que les autres plats","Parce qu'il découvre leur fonction de 养生 (bienfaits pour la santé)","Parce que ses amis les lui ont recommandées"],correct:2}
+];
+
+function renderQuiz(data,cid,prefix){document.getElementById(cid).innerHTML=data.map((q,i)=>`<div class="quiz-question" id="${prefix}-q${i}"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options">${q.options.map((o,j)=>`<div class="quiz-option" onclick="answerQuiz('${prefix}',${i},${j})">${o}</div>`).join('')}</div></div>`).join('');}
+const quizState={vocab:{score:0,answered:0,total:12},grammar:{score:0,answered:0,total:8},comp:{score:0,answered:0,total:10}};
+function getQuizData(p){return p==='vocab'?vocabQuizData:p==='grammar'?grammarQuizData:compQuizData;}
+function answerQuiz(p,qi,oi){const d=getQuizData(p),qE=document.getElementById(`${p}-q${qi}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const opts=qE.querySelectorAll('.quiz-option'),c=d[qi].correct;opts.forEach((o,i)=>{o.classList.add('disabled');if(i===c)o.classList.add('selected-correct');if(i===oi&&i!==c)o.classList.add('selected-wrong');});qE.classList.add(oi===c?'correct':'wrong');if(oi===c)quizState[p].score++;quizState[p].answered++;updateScore(p);}
+function updateScore(p){const s=quizState[p];document.getElementById(`${p}Score`).textContent=`${s.score} / ${s.total}`;document.getElementById(`${p}ScoreBar`).style.width=`${(s.score/s.total)*100}%`;}
+function resetQuiz(p){quizState[p]={score:0,answered:0,total:quizState[p].total};updateScore(p);renderQuiz(getQuizData(p),p==='vocab'?'vocabQuizContainer':p==='grammar'?'grammarQuizContainer':'compQuizContainer',p);}
+function switchQuizTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById(t).classList.add('active');}
+
+let selectedFillWord=null;
+function selectFillWord(el){document.querySelectorAll('.fill-chip').forEach(c=>c.classList.remove('placed'));el.classList.add('placed');selectedFillWord=el.dataset.word;}
+function placeFillWord(b){if(!selectedFillWord)return;b.textContent=selectedFillWord;b.dataset.placed=selectedFillWord;document.querySelectorAll('.fill-chip').forEach(c=>{if(c.dataset.word===selectedFillWord)c.classList.add('used');c.classList.remove('placed');});selectedFillWord=null;}
+function checkFillAnswers(){document.querySelectorAll('.fill-blank').forEach(b=>{const p=b.dataset.placed,a=b.dataset.answer;if(p===a){b.style.borderColor='var(--success)';b.style.background='#dcfce7';b.style.color='var(--success)';b.style.fontWeight='600';}else{b.style.borderColor='var(--wrong)';b.style.background='#fecaca';b.style.color='var(--wrong)';b.title=`Réponse : ${a}`;}});}
+function resetFill(){document.querySelectorAll('.fill-blank').forEach(b=>{b.textContent='___';b.dataset.placed='';b.style.borderColor='';b.style.background='';b.style.color='';b.style.fontWeight='';b.title='';});document.querySelectorAll('.fill-chip').forEach(c=>{c.classList.remove('used','placed');});selectedFillWord=null;}
+
+const choiceQuizData=[
+    {q:"在南方的时候，我总是______北方雪花飘飘的美景。",a:"怀念",b:"想念",correct:"想念",explain:"想念 = avoir envie de revoir (style oral). Il s'agit ici d'une scène/paysage qu'on pourrait revoir → 想念. Toutefois 怀念 est aussi possible ici selon le contexte."},
+    {q:"在国外工作的那段时间，他时时刻刻都在______着家人。",a:"怀念",b:"想念",correct:"想念",explain:"想念 = manquer à (personnes vivantes, qu'on peut revoir). Il pense à sa famille — des personnes vivantes qu'il peut retrouver → 想念."},
+    {q:"一阵清风送来桂花的清香，令我______起自己的家乡。",a:"怀念",b:"想念",correct:"怀念",explain:"怀念 = avoir la nostalgie de (style plus écrit, rappel d'un lieu du passé). Le parfum des fleurs lui rappelle son pays natal — contexte nostalgique littéraire → 怀念."},
+    {q:"在楼房里住了十多年后，老李却开始______起住在四合院里的生活。",a:"怀念",b:"想念",correct:"怀念",explain:"怀念 = nostalgie d'un mode de vie révolu (vie dans un 四合院 qu'il ne mène plus). Style écrit, sentiment de regret pour un passé inaccessible → 怀念."}
+];
+function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').innerHTML=choiceQuizData.map((q,i)=>`<div class="quiz-question" id="choice-q${i}" style="margin-bottom:12px;"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options" style="grid-template-columns:1fr 1fr;"><div class="quiz-option" onclick="answerChoice(${i},'${q.a}')">${q.a}</div><div class="quiz-option" onclick="answerChoice(${i},'${q.b}')">${q.b}</div></div><div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div></div>`).join('');}
+function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
+
+window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
+document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderExpansion();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+</script>
+</body>
+</html>
