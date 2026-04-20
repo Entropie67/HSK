@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第7课 成语故事两则</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+        :root{--primary:#5b21b6;--primary-light:#7c3aed;--accent:#e74c3c;--gold:#f39c12;--gold-light:#fdebd0;--bg:#fafbfc;--card:#fff;--text:#2c3e50;--text-light:#7f8c8d;--border:#e8ecf1;--success:#27ae60;--wrong:#e74c3c;--gradient-water:linear-gradient(135deg,#667eea 0%,#764ba2 100%);--gradient-hero:linear-gradient(135deg,#3e2723 0%,#6d4c1b 30%,#a17c2e 70%,#d4a657 100%);}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;scroll-behavior:smooth;}
+        .hero{background:var(--gradient-hero);color:#fff;padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;background-size:cover;opacity:.3;}
+        .hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+        .hero .lesson-badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:6px 20px;border-radius:30px;font-size:.9rem;letter-spacing:2px;margin-bottom:20px;}
+        .hero h1{font-family:'Noto Serif SC',serif;font-size:3.5rem;font-weight:900;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+        .hero .subtitle{font-size:1.3rem;opacity:.9;font-weight:300;margin-bottom:30px;}
+        .hero .deco{font-size:2rem;letter-spacing:8px;opacity:.6;}
+        .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+        .nav-inner::-webkit-scrollbar{display:none;}
+        .nav-inner a{padding:14px 18px;text-decoration:none;color:var(--text-light);font-size:.9rem;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+        .nav-inner a:hover,.nav-inner a.active{color:var(--primary);border-bottom-color:var(--primary-light);}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+        section{padding:50px 0;}
+        .section-header{text-align:center;margin-bottom:40px;}
+        .section-header h2{font-family:'Noto Serif SC',serif;font-size:2rem;color:var(--primary);margin-bottom:6px;}
+        .section-header .section-sub{color:var(--text-light);font-size:.95rem;}
+        .section-divider{width:60px;height:3px;background:var(--gradient-water);margin:12px auto 0;border-radius:2px;}
+        .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);margin-bottom:24px;}
+        .card h3{font-size:1.2rem;color:var(--primary);margin-bottom:16px;}
+        .text-block{background:var(--card);border-radius:16px;padding:35px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);font-family:'Noto Serif SC',serif;font-size:1.1rem;line-height:2.2;margin-bottom:24px;}
+        .text-block p{text-indent:2em;margin-bottom:16px;}
+        .story-title{font-family:'Noto Serif SC',serif;font-size:1.5rem;color:#fff;background:linear-gradient(135deg,#a17c2e,#d4a657);padding:14px 24px;border-radius:12px 12px 0 0;display:flex;align-items:center;justify-content:space-between;margin-top:30px;}
+        .story-title .story-meta{font-size:.85rem;font-weight:400;opacity:.85;}
+        .text-block.with-title{border-radius:0 0 16px 16px;margin-top:0;}
+        .vocab-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
+        .vocab-controls button{padding:8px 20px;border:2px solid var(--border);background:#fff;border-radius:25px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s;color:var(--text);}
+        .vocab-controls button.active,.vocab-controls button:hover{border-color:var(--primary-light);background:var(--primary-light);color:#fff;}
+        .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .vocab-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .3s;position:relative;}
+        .vocab-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.08);border-color:var(--primary-light);}
+        .vocab-card .vocab-num{position:absolute;top:8px;right:12px;font-size:.75rem;color:var(--text-light);opacity:.5;}
+        .vocab-card .hanzi{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;color:var(--primary);}
+        .vocab-card .pinyin{color:var(--accent);font-size:.9rem;margin:4px 0;}
+        .vocab-card .pos{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;}
+        .vocab-card .meaning-hidden{display:none;}
+        .vocab-card.revealed .meaning-hidden{display:block;}
+        .vocab-card.revealed .meaning-placeholder{display:none;}
+        .meaning-placeholder{color:var(--text-light);font-size:.85rem;font-style:italic;margin-top:6px;}
+        .proper-nouns-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .pn-card{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;}
+        .pn-hanzi{font-family:'Noto Serif SC',serif;font-size:1.2rem;font-weight:700;color:var(--primary);min-width:50px;}
+        .pn-info .pn-pinyin{color:var(--accent);font-size:.85rem;}
+        .pn-info .pn-meaning{font-size:.9rem;}
+        .flashcard-area{display:flex;flex-direction:column;align-items:center;gap:20px;padding:20px 0;}
+        .flashcard-container{perspective:1000px;width:380px;height:260px;max-width:100%;}
+        .flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);cursor:pointer;}
+        .flashcard.flipped{transform:rotateY(180deg);}
+        .flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;}
+        .flashcard-front{background:linear-gradient(135deg,#3e2723,#a17c2e);color:#fff;box-shadow:0 10px 40px rgba(161,124,46,.3);}
+        .flashcard-front .fc-hanzi{font-family:'Noto Serif SC',serif;font-size:3rem;font-weight:900;margin-bottom:10px;}
+        .flashcard-front .fc-pinyin{font-size:1.1rem;opacity:.8;}
+        .flashcard-front .fc-hint{font-size:.8rem;opacity:.5;margin-top:20px;}
+        .flashcard-back{background:#fff;border:2px solid var(--primary-light);transform:rotateY(180deg);box-shadow:0 10px 40px rgba(0,0,0,.1);}
+        .flashcard-back .fc-meaning{font-size:1.3rem;color:var(--primary);font-weight:600;}
+        .flashcard-back .fc-pos{background:var(--gold-light);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-top:10px;}
+        .fc-controls{display:flex;gap:12px;}
+        .fc-controls button{padding:10px 28px;border-radius:25px;border:none;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;}
+        .fc-btn-prev,.fc-btn-next{background:var(--primary-light);color:#fff;}
+        .fc-btn-prev:hover,.fc-btn-next:hover{background:var(--primary);}
+        .fc-btn-shuffle{background:#fff;border:2px solid var(--border)!important;color:var(--text);}
+        .fc-counter{color:var(--text-light);font-size:.9rem;}
+        .grammar-card{background:var(--card);border-radius:16px;border:1px solid var(--border);margin-bottom:20px;overflow:hidden;}
+        .grammar-header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;}
+        .grammar-header .grammar-num{background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+        .grammar-header .grammar-title{font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;}
+        .grammar-header .grammar-pinyin{font-size:.9rem;opacity:.8;}
+        .grammar-body{padding:24px;}
+        .grammar-rule{background:#f0f7ff;border-left:4px solid var(--primary-light);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:20px;font-size:.95rem;color:var(--primary);}
+        .grammar-example{padding:12px 0;border-bottom:1px solid var(--border);}
+        .grammar-example:last-child{border-bottom:none;}
+        .grammar-example .ex-cn{font-size:1.05rem;margin-bottom:4px;}
+        .grammar-example .ex-note{color:var(--text-light);font-size:.85rem;}
+        .grammar-example .ex-highlight{color:var(--accent);font-weight:600;}
+        .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+        .comparison-table th{background:var(--primary);color:#fff;padding:14px 18px;font-weight:600;text-align:center;}
+        .comparison-table td{padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top;font-size:.95rem;}
+        .comparison-table tr:last-child td{border-bottom:none;}
+        .comparison-table tr:nth-child(even){background:#f8fafc;}
+        .comparison-table .label-cell{background:#f0f4f8;font-weight:600;color:var(--primary);text-align:center;width:60px;}
+        .colloc-section{margin-bottom:24px;}
+        .colloc-label{display:inline-block;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:12px;}
+        .colloc-label.verb{background:#e74c3c;}.colloc-label.attr{background:#f39c12;}.colloc-label.adv{background:#27ae60;}.colloc-label.comp{background:#8e44ad;}.colloc-label.num{background:#3498db;}.colloc-label.subj{background:#16a085;}
+        .colloc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+        .colloc-row:last-child{border-bottom:none;}
+        .colloc-word{font-weight:600;color:var(--primary);min-width:100px;font-size:1.1rem;}
+        .colloc-plus{color:var(--text-light);font-weight:700;}
+        .colloc-partners{display:flex;flex-wrap:wrap;gap:6px;}
+        .colloc-tag{background:#f0f4f8;padding:4px 12px;border-radius:15px;font-size:.85rem;}
+        .tab-bar{display:flex;gap:4px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:20px;}
+        .tab-btn{flex:1;padding:10px;border:none;background:transparent;border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--text-light);transition:all .2s;}
+        .tab-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+        .tab-content{display:none;}.tab-content.active{display:block;}
+        .quiz-score-bar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+        .score-display{font-size:1.5rem;font-weight:700;color:var(--primary);}
+        .score-bar-visual{flex:1;margin:0 20px;height:10px;background:var(--border);border-radius:5px;overflow:hidden;}
+        .score-bar-fill{height:100%;background:var(--gradient-water);border-radius:5px;transition:width .5s ease;width:0%;}
+        .quiz-reset-btn{padding:8px 20px;background:var(--primary-light);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;}
+        .quiz-question{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;transition:all .3s;}
+        .quiz-question.correct{border-color:var(--success);background:#f0fdf4;}
+        .quiz-question.wrong{border-color:var(--wrong);background:#fef2f2;}
+        .quiz-q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--primary-light);color:#fff;border-radius:50%;font-size:.8rem;font-weight:700;margin-right:10px;}
+        .quiz-q-text{font-size:1.05rem;margin-bottom:14px;}
+        .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .quiz-option{padding:12px 16px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.95rem;text-align:center;background:#fff;}
+        .quiz-option:hover{border-color:var(--primary-light);background:#f0f7ff;}
+        .quiz-option.selected-correct{border-color:var(--success);background:#dcfce7;color:var(--success);font-weight:600;}
+        .quiz-option.selected-wrong{border-color:var(--wrong);background:#fecaca;color:var(--wrong);font-weight:600;}
+        .quiz-option.disabled{pointer-events:none;opacity:.7;}
+        .quiz-explanation{display:none;margin-top:12px;padding:12px 16px;background:#fffbeb;border-radius:10px;font-size:.9rem;color:#92400e;border:1px solid #fde68a;}
+        .fill-blank{display:inline-block;min-width:80px;border-bottom:2px dashed var(--primary-light);padding:2px 8px;margin:0 4px;text-align:center;cursor:pointer;transition:all .2s;}
+        .fill-blank:hover{background:#f0f7ff;}
+        .fill-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center;}
+        .fill-chip{padding:8px 18px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s;}
+        .fill-chip:hover{border-color:var(--primary-light);background:#f0f7ff;}
+        .fill-chip.used{opacity:.4;pointer-events:none;}
+        .fill-chip.placed{background:var(--primary-light);color:#fff;border-color:var(--primary-light);}
+        .app-box{background:linear-gradient(135deg,#fff8e7,#fdebd0);border:1px solid #f5cba7;border-radius:16px;padding:30px;margin-bottom:20px;}
+        .app-box h4{color:var(--primary);font-size:1.1rem;margin-bottom:12px;}
+        .discussion-q{padding:10px 0;border-bottom:1px solid rgba(245,203,167,.5);font-size:.95rem;}
+        .discussion-q:last-child{border-bottom:none;}
+        .idiom-box{background:linear-gradient(135deg,#3e2723,#a17c2e);color:#fff;padding:24px 28px;border-radius:14px;margin-bottom:20px;text-align:center;}
+        .idiom-box .idiom-cn{font-family:'Noto Serif SC',serif;font-size:1.8rem;font-weight:700;letter-spacing:4px;margin-bottom:6px;}
+        .idiom-box .idiom-py{font-size:.95rem;opacity:.8;margin-bottom:10px;}
+        .idiom-box .idiom-meaning{font-size:.95rem;opacity:.95;line-height:1.7;}
+        .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
+        @media(max-width:768px){.hero h1{font-size:2.4rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.proper-nouns-grid{grid-template-columns:1fr;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}.story-title{flex-direction:column;align-items:flex-start;gap:6px;}}
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
+        <h1>成语故事两则</h1>
+        <p class="subtitle">Two Idiom Stories - Lesson 7</p>
+        <div class="deco">🐘 🏹 📜 ⛰️</div>
+    </div>
+</header>
+
+<nav class="sticky-nav"><div class="nav-inner">
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+</div></nav>
+
+<main class="container">
+
+<section id="text">
+    <div class="section-header"><h2>课文 - Textes</h2><p class="section-sub">Deux histoires d'idiomes (chengyu)</p><div class="section-divider"></div></div>
+
+    <div class="story-title"><span>盲人摸象</span><span class="story-meta">Les aveugles touchent l'elephant — 255 caracteres</span></div>
+    <div class="text-block with-title">
+        <p>很久以前，有一个很有智慧的国王。一天，他让士兵们去找一头大象和一些出生时眼睛就瞎了的人回来。士兵们分别去不同地方寻找，把找到的大象和盲人带到他面前。</p>
+        <p>国王叫盲人们去摸一摸大象，问他们："你们觉得大象是什么样的呢？"摸到牙齿的盲人说："我觉得像一个角。""胡说！"摸到尾巴的盲人说，"它像一条绳子。"摸到大象身子的盲人说："我觉得像一面又高又平的墙。""不，你们都错了，应该是像一把扇子。"这个盲人摸到了大象的耳朵。</p>
+        <p>国王笑了起来："你们每个人都只摸到了一点，就认为自己了解全部了吗？只有片面的认识是不能下结论的。"</p>
+    </div>
+
+    <div class="story-title"><span>精诚所至，金石为开</span><span class="story-meta">Une sincerite absolue ouvre meme metal et pierre — 436 caracteres</span></div>
+    <div class="text-block with-title">
+        <p>西汉时期有一位著名的将军叫李广，他善于骑马射箭，作战勇敢，被称为"飞将军"。一天傍晚，他正带着士兵们在山中打猎，忽然发现远处蹲着一只大老虎。士兵们都紧张地围了上来，想要保护他。李广摇摇头，表示不要紧。只见他从箭袋里取出一支箭，摆好姿势，全神贯注，用尽全力向老虎射去。</p>
+        <p>过了一会儿，老虎没什么反应，士兵们小心地走上前去，想确定它是不是死了。没想到仔细一看，被射中的竟不是老虎，而是一块形状很像老虎的大石头，而且一整支箭几乎全都射到石头中去了！大家都很吃惊，连李广自己都不相信他能有这么大的力气，于是他想再试试。可是，这次他连续换了几根箭，都没能再射进去，有的箭头碎了，有的箭杆断了，而大石头一点儿变化也没有。"哎，怎么会这样？"士兵奇怪地你看我，我看你。"唉！大概是我不够用心了吧！"李广也无奈地说。</p>
+        <p>人们对这件事情感到很不解，就去问当时最有影响力的学者扬雄。扬雄回答说："如果诚心实意，即使像金属和石头那样硬的东西也会被打动。""精诚所至，金石为开"这一成语也便由此流传下来。</p>
+    </div>
+</section>
+
+<section id="vocab">
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">45 mots + 3 noms propres - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (45)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout reveler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+    <h3 style="margin:30px 0 16px;color:var(--primary);font-size:1.2rem;">专有名词 - Noms propres</h3>
+    <div class="proper-nouns-grid">
+        <div class="pn-card"><div class="pn-hanzi">西汉</div><div class="pn-info"><div class="pn-pinyin">Xīhàn</div><div class="pn-meaning">Dynastie des Han occidentaux (206 av. J.-C. — 25 ap. J.-C.)</div></div></div>
+        <div class="pn-card"><div class="pn-hanzi">李广</div><div class="pn-info"><div class="pn-pinyin">Lǐ Guǎng</div><div class="pn-meaning">Li Guang (?—119 av. J.-C.), celebre general</div></div></div>
+        <div class="pn-card"><div class="pn-hanzi">扬雄</div><div class="pn-info"><div class="pn-pinyin">Yáng Xióng</div><div class="pn-meaning">Yang Xiong (53 av. J.-C. — 18 ap. J.-C.), lettre confuceen</div></div></div>
+    </div>
+</section>
+
+<section id="flashcards">
+    <div class="section-header"><h2>卡片 - Flashcards</h2><p class="section-sub">Cliquez pour retourner la carte</p><div class="section-divider"></div></div>
+    <div class="flashcard-area">
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">45</span></div>
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front"><div class="fc-hanzi" id="fcHanzi">成语</div><div class="fc-pinyin" id="fcPinyin">chéngyǔ</div><div class="fc-hint">cliquez pour voir la traduction</div></div>
+                <div class="flashcard-back"><div class="fc-meaning" id="fcMeaning">expression idiomatique (a 4 caracteres)</div><div class="fc-pos" id="fcPos">n.</div></div>
+            </div>
+        </div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+        </div>
+    </div>
+
+    <div style="margin-top:30px;">
+        <h3 style="color:var(--primary);font-size:1.2rem;margin-bottom:16px;text-align:center;">Les deux idiomes a retenir</h3>
+        <div class="idiom-box">
+            <div class="idiom-cn">盲人摸象</div>
+            <div class="idiom-py">mángrén mō xiàng</div>
+            <div class="idiom-meaning">Litt. "des aveugles touchent un elephant" — juger d'une chose en n'en connaissant qu'une partie ; tirer des conclusions fragmentaires.</div>
+        </div>
+        <div class="idiom-box">
+            <div class="idiom-cn">精诚所至，金石为开</div>
+            <div class="idiom-py">jīngchéng suǒzhì, jīnshí wéi kāi</div>
+            <div class="idiom-meaning">Litt. "ou la sincerite parfaite arrive, le metal et la pierre s'ouvrent" — une volonte sincere et determinee vient a bout de tous les obstacles.</div>
+        </div>
+    </div>
+</section>
+
+<section id="grammar">
+    <div class="section-header"><h2>语法 - Grammaire</h2><p class="section-sub">4 points de grammaire essentiels</p><div class="section-divider"></div></div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">1</div><div><div class="grammar-title">瞎</div><div class="grammar-pinyin">xiā</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Verbe :</strong> "etre aveugle, ne pas voir". <strong>Adverbe :</strong> sans raison, sans fondement, sans resultat — "a l'aveuglette, n'importe comment".</div>
+            <div class="grammar-example"><div class="ex-cn">聪明人用双手挡住了马的双眼，对那个人说："要是这马真是你的，你一定知道马的哪只眼睛是<span class="ex-highlight">瞎</span>的。"</div><div class="ex-note">L'homme intelligent couvrit les yeux du cheval et dit : "Si ce cheval est vraiment a toi, tu dois savoir lequel de ses yeux est aveugle." (verbe)</div></div>
+            <div class="grammar-example"><div class="ex-cn">一天，他让士兵们去找一头大象和一些出生时眼睛就<span class="ex-highlight">瞎</span>了的人回来。</div><div class="ex-note">Un jour, il envoya ses soldats chercher un elephant et des gens aveugles de naissance. (verbe)</div></div>
+            <div class="grammar-example"><div class="ex-cn">别听他<span class="ex-highlight">瞎</span>说，不用害怕。我们不会这么倒霉的。</div><div class="ex-note">N'ecoute pas ses betises, n'aie pas peur. On n'aura pas tant de malchance. (adverbe)</div></div>
+            <div class="grammar-example"><div class="ex-cn">他自己的问题，他会想办法的，你就别替他<span class="ex-highlight">瞎</span>担心了。</div><div class="ex-note">C'est son probleme, il s'en occupera ; ne te fais pas de souci pour rien. (adverbe)</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">2</div><div><div class="grammar-title">分别</div><div class="grammar-pinyin">fēnbié</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Verbe :</strong> "se separer, se quitter" (= 离别). <strong>Adverbe :</strong> "separement, respectivement, chacun de son cote" ou "en detail, un par un". <strong>Nom :</strong> "difference, distinction".</div>
+            <div class="grammar-example"><div class="ex-cn"><span class="ex-highlight">分别</span>是暂时的，我们以后一定会再见。</div><div class="ex-note">La separation n'est que temporaire, nous nous reverrons. (verbe)</div></div>
+            <div class="grammar-example"><div class="ex-cn">士兵们<span class="ex-highlight">分别</span>去不同地方寻找，把找到的大象和盲人带到他面前。</div><div class="ex-note">Les soldats partirent chacun de son cote, ramenerent l'elephant et les aveugles devant lui. (adv.)</div></div>
+            <div class="grammar-example"><div class="ex-cn">一张桌子上放着三瓶饮料，<span class="ex-highlight">分别</span>是茶、可乐和咖啡。</div><div class="ex-note">Trois bouteilles sur la table : ce sont respectivement du the, du cola et du cafe. (adv.)</div></div>
+            <div class="grammar-example"><div class="ex-cn">我不知道这两种做法有什么<span class="ex-highlight">分别</span>。</div><div class="ex-note">Je ne sais pas quelle difference il y a entre ces deux methodes. (nom)</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">3</div><div><div class="grammar-title">根</div><div class="grammar-pinyin">gēn</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Nom :</strong> "racine" (d'une plante) ; au sens figure : "fondement, base". <strong>Specificatif (mesure) :</strong> pour les objets longs et fins (cordes, fleches, cheveux, baguettes…).</div>
+            <div class="grammar-example"><div class="ex-cn">这棵树的<span class="ex-highlight">根</span>又粗又长。</div><div class="ex-note">Les racines de cet arbre sont epaisses et longues. (nom)</div></div>
+            <div class="grammar-example"><div class="ex-cn">这件事还是得从<span class="ex-highlight">根</span>上解决，只解决表面问题是不行的。</div><div class="ex-note">Cette affaire doit etre resolue a la racine, regler la surface ne suffit pas. (nom — fondement)</div></div>
+            <div class="grammar-example"><div class="ex-cn">摸到尾巴的盲人说大象像一<span class="ex-highlight">根</span>绳子。</div><div class="ex-note">L'aveugle qui touchait la queue dit que l'elephant ressemblait a une corde. (mesure)</div></div>
+            <div class="grammar-example"><div class="ex-cn">可是，这次他连续换了几<span class="ex-highlight">根</span>箭，都没能再射进去……</div><div class="ex-note">Mais cette fois, il changea successivement plusieurs fleches sans pouvoir transpercer la pierre. (mesure)</div></div>
+        </div>
+    </div>
+
+    <div class="grammar-card"><div class="grammar-header"><div class="grammar-num">4</div><div><div class="grammar-title">便</div><div class="grammar-pinyin">biàn</div></div></div>
+        <div class="grammar-body">
+            <div class="grammar-rule"><strong>Adverbe :</strong> equivaut a 就 mais s'emploie surtout dans la <em>langue ecrite</em>. Indique qu'une chose decoule naturellement d'une condition ou d'une circonstance.</div>
+            <div class="grammar-example"><div class="ex-cn">楼上新买了一架钢琴，我们家<span class="ex-highlight">便</span>多了一些不安静。</div><div class="ex-note">Au-dessus on a achete un piano, et notre maison s'est donc trouvee un peu moins calme.</div></div>
+            <div class="grammar-example"><div class="ex-cn">很多时候，仅仅是换一种心情，换一个角度，<span class="ex-highlight">便</span>可以从困境中走出来。</div><div class="ex-note">Souvent, il suffit de changer d'humeur ou d'angle pour sortir d'une impasse.</div></div>
+            <div class="grammar-example"><div class="ex-cn">"精诚所至，金石为开"这一成语也<span class="ex-highlight">便</span>由此流传下来。</div><div class="ex-note">L'idiome "jingcheng suozhi, jinshi wei kai" s'est ainsi transmis depuis cette epoque.</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="analysis">
+    <div class="section-header"><h2>词语辨析 - Analyse comparative</h2><p class="section-sub">忽然 vs 突然</p><div class="section-divider"></div></div>
+    <div class="card">
+        <table class="comparison-table">
+            <thead><tr><th></th><th>忽然 (hūrán)</th><th>突然 (tūrán)</th></tr></thead>
+            <tbody>
+                <tr><td class="label-cell">Points communs</td><td colspan="2" style="text-align:center;">Tous deux peuvent se placer devant un verbe pour exprimer "soudain, de maniere inattendue".<br><em>Ex : 我们正在上课，他忽然/突然站了起来。</em></td></tr>
+                <tr><td class="label-cell" rowspan="2">Differences</td>
+                    <td>1. <strong>Adverbe uniquement.</strong> Ne peut etre place que devant un verbe ou une proposition courte. (Peut etre remplace par 突然.)<br><em>Ex : 一天傍晚，他正带着士兵们在山中打猎，<u>忽然</u>发现远处的草丛中蹲着一只大老虎。</em></td>
+                    <td>1. <strong>Adverbe ET adjectif.</strong> Peut servir de predicat, complement, epithete.<br><em>这件事太<u>突然</u>了！(adj. - predicat)</em><br><em>这件事发生得太<u>突然</u>了！(complement)</em><br><em>这<u>突然</u>的一声喊叫吓了我一跳。(epithete)</em></td></tr>
+                <tr>
+                    <td>2. Ne peut pas etre modifie par 很/非常.</td>
+                    <td>2. Peut etre modifie par 很/非常 (en tant qu'adjectif).</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="collocation">
+    <div class="section-header"><h2>词语搭配 - Collocations</h2><p class="section-sub">Combinaisons essentielles</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="colloc-section"><div class="colloc-label verb">动词 + 宾语</div>
+            <div class="colloc-row"><span class="colloc-word">寻找</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">机会</span><span class="colloc-tag">信息</span><span class="colloc-tag">亲人</span><span class="colloc-tag">人才</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">确定</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">时间</span><span class="colloc-tag">地点</span><span class="colloc-tag">人选</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label adv">状语 + 中心语</div>
+            <div class="colloc-row"><span class="colloc-word">片面（地）</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">看</span><span class="colloc-tag">认为</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">连续</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">工作</span><span class="colloc-tag">驾驶</span><span class="colloc-tag">发生</span><span class="colloc-tag">演出</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label comp">中心语 + 补语</div>
+            <div class="colloc-row"><span class="colloc-word">摸</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">到……</span><span class="colloc-tag">出（来）……</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">打 / 撞 / 撕</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">碎</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label num">数量词 + 名词</div>
+            <div class="colloc-row"><span class="colloc-word">一支</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">笔</span><span class="colloc-tag">花</span><span class="colloc-tag">烟</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">一根 / 一条</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">尾巴</span><span class="colloc-tag">绳子</span><span class="colloc-tag">皮带</span></div></div>
+        </div>
+        <div class="colloc-section"><div class="colloc-label subj">主语 + 谓语</div>
+            <div class="colloc-row"><span class="colloc-word">这件事情 / 他的伤</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">不要紧</span></div></div>
+            <div class="colloc-row"><span class="colloc-word">反应</span><span class="colloc-plus">+</span><div class="colloc-partners"><span class="colloc-tag">很快</span></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="quiz-section">
+    <div class="section-header"><h2>测验 - Quiz</h2><p class="section-sub">Testez vos connaissances</p><div class="section-divider"></div></div>
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+    </div>
+    <div class="tab-content active" id="vocab-quiz"><div class="quiz-score-bar"><div class="score-display" id="vocabScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button></div><div id="vocabQuizContainer"></div></div>
+    <div class="tab-content" id="grammar-quiz"><div class="quiz-score-bar"><div class="score-display" id="grammarScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button></div><div id="grammarQuizContainer"></div></div>
+    <div class="tab-content" id="comprehension-quiz"><div class="quiz-score-bar"><div class="score-display" id="compScore">0 / 0</div><div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button></div><div id="compQuizContainer"></div></div>
+</section>
+
+<section id="fill-quiz">
+    <div class="section-header"><h2>填空练习 - Exercices a trous</h2><p class="section-sub">Choisissez le mot correct</p><div class="section-divider"></div></div>
+    <div class="card" id="fillExercise">
+        <h3>Choisissez parmi : 尽力、片面、确定、善于、寻找、不要紧</h3>
+        <div class="fill-options" id="fillOptions">
+            <span class="fill-chip" data-word="寻找" onclick="selectFillWord(this)">寻找</span>
+            <span class="fill-chip" data-word="片面" onclick="selectFillWord(this)">片面</span>
+            <span class="fill-chip" data-word="确定" onclick="selectFillWord(this)">确定</span>
+            <span class="fill-chip" data-word="不要紧" onclick="selectFillWord(this)">不要紧</span>
+            <span class="fill-chip" data-word="善于" onclick="selectFillWord(this)">善于</span>
+            <span class="fill-chip" data-word="尽力" onclick="selectFillWord(this)">尽力</span>
+        </div>
+        <div style="margin-top:24px;">
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">1</span>他在四处<span class="fill-blank" data-answer="寻找" onclick="placeFillWord(this)">___</span>，但至今仍然没有结果。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">2</span>不能这样<span class="fill-blank" data-answer="片面" onclick="placeFillWord(this)">___</span>地看问题，而要多方面地考虑。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">3</span>你<span class="fill-blank" data-answer="确定" onclick="placeFillWord(this)">___</span>他就是我们要找的那位英雄吗？</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">4</span>我们班有个同学被车撞了，还好伤得不重，<span class="fill-blank" data-answer="不要紧" onclick="placeFillWord(this)">___</span>。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">5</span>她很爱护学生，也很<span class="fill-blank" data-answer="善于" onclick="placeFillWord(this)">___</span>教育他们。</div>
+            <div class="quiz-question" style="margin-bottom:12px;"><span class="quiz-q-num">6</span>别难过了，虽然成绩不理想，但你已经<span class="fill-blank" data-answer="尽力" onclick="placeFillWord(this)">___</span>了。</div>
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+            <button onclick="checkFillAnswers()" style="padding:10px 30px;background:var(--primary-light);color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:.95rem;font-weight:600;">Verifier</button>
+            <button onclick="resetFill()" style="padding:10px 30px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.95rem;margin-left:10px;">Recommencer</button>
+        </div>
+    </div>
+    <div class="card"><h3>Choisissez la bonne reponse</h3><div id="choiceQuizContainer"></div></div>
+</section>
+
+<section id="application">
+    <div class="section-header"><h2>运用 - Application</h2><p class="section-sub">Contexte et discussion</p><div class="section-divider"></div></div>
+    <div class="app-box">
+        <h4>背景分析 - Contexte : 凡事应有的放矢</h4>
+        <p style="line-height:2;">射箭的时候，我们要对准目标（mùbiāo, target）。这个目标，在古代叫作"的"，也就是我们今天说的"目的"的"的"；而箭，在古代叫做"矢"（shǐ, arrow）。连起来就是成语"<strong>有的放矢</strong>"（litt. "tirer la fleche en visant la cible" — agir avec un but precis, ne pas tirer au hasard）。我们在这一课中学到了"精诚所至，金石为开"，它告诉我们，做事情的时候，态度很重要，如果诚心实意，即使像金属和石头那样硬的东西也会被打动。但另一方面，如何确定目标也很重要。我们都知道，箭射出的距离是有一定限度的，太远的目标，即使非常正确，也是无法达到（dádào, atteindre）的。</p>
+    </div>
+    <div class="app-box">
+        <h4>话题讨论 - Discussion : 凡事应有的放矢</h4>
+        <div class="discussion-q">1. 你学习过射箭吗？应该怎么做才能更容易射中目标？<br><em>Avez-vous deja pratique le tir a l'arc ? Comment s'y prendre pour mieux atteindre la cible ?</em></div>
+        <div class="discussion-q">2. 在学习、工作或者生活中，我们同样需要有目标，你的目标是什么？<br><em>Dans les etudes, le travail ou la vie, on a besoin d'objectifs. Quel est le votre ?</em></div>
+        <div class="discussion-q">3. 你觉得给自己确定什么样的目标才是最合适的？<br><em>D'apres vous, quel type d'objectif est-il le plus approprie de se fixer ?</em></div>
+    </div>
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'ecriture</h4>
+        <p>请以"<strong>有的放矢</strong>"为题，谈一谈你对做事情时态度和目标的看法。尽量用上本课所学的生词，字数不少于100字。</p>
+        <p style="font-style:italic;color:var(--text-light);margin-top:8px;">Redigez un texte intitule "Tirer la fleche en visant la cible" en parlant de votre vision de l'attitude et des objectifs dans l'action. Utilisez le maximum de mots de la lecon, au moins 100 caracteres.</p>
+    </div>
+</section>
+
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+<footer style="text-align:center;padding:40px 20px;color:var(--text-light);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px;">HSK 5 Standard Course - Lesson 7 - 成语故事两则</footer>
+
+<script>
+const vocabData=[
+    {id:1,hanzi:"成语",pinyin:"chéngyǔ",pos:"n.",meaning:"expression idiomatique (a 4 caracteres)",cat:"noun"},
+    {id:2,hanzi:"则",pinyin:"zé",pos:"m.",meaning:"specificatif pour les nouvelles, ecrits, histoires",cat:"other"},
+    {id:3,hanzi:"盲人",pinyin:"mángrén",pos:"n.",meaning:"aveugle, personne non-voyante",cat:"noun"},
+    {id:4,hanzi:"摸",pinyin:"mō",pos:"v.",meaning:"toucher, palper, tatonner",cat:"verb"},
+    {id:5,hanzi:"(大)象",pinyin:"(dà)xiàng",pos:"n.",meaning:"elephant",cat:"noun"},
+    {id:6,hanzi:"智慧",pinyin:"zhìhuì",pos:"n.",meaning:"sagesse, intelligence",cat:"noun"},
+    {id:7,hanzi:"士兵",pinyin:"shìbīng",pos:"n.",meaning:"soldat",cat:"noun"},
+    {id:8,hanzi:"瞎",pinyin:"xiā",pos:"v./adv.",meaning:"etre aveugle ; a l'aveuglette, n'importe comment",cat:"verb"},
+    {id:9,hanzi:"分别",pinyin:"fēnbié",pos:"adv./v./n.",meaning:"separement, respectivement ; se quitter ; difference",cat:"other"},
+    {id:10,hanzi:"寻找",pinyin:"xúnzhǎo",pos:"v.",meaning:"chercher, rechercher",cat:"verb"},
+    {id:11,hanzi:"牙齿",pinyin:"yáchǐ",pos:"n.",meaning:"dent",cat:"noun"},
+    {id:12,hanzi:"胡说",pinyin:"húshuō",pos:"v.",meaning:"dire n'importe quoi, raconter des absurdites",cat:"verb"},
+    {id:13,hanzi:"尾巴",pinyin:"wěiba",pos:"n.",meaning:"queue (d'un animal)",cat:"noun"},
+    {id:14,hanzi:"绳子",pinyin:"shéngzi",pos:"n.",meaning:"corde, ficelle",cat:"noun"},
+    {id:15,hanzi:"平",pinyin:"píng",pos:"adj.",meaning:"plat, plan, uni",cat:"adj"},
+    {id:16,hanzi:"墙",pinyin:"qiáng",pos:"n.",meaning:"mur, paroi",cat:"noun"},
+    {id:17,hanzi:"扇子",pinyin:"shànzi",pos:"n.",meaning:"eventail",cat:"noun"},
+    {id:18,hanzi:"片面",pinyin:"piànmiàn",pos:"adj.",meaning:"partiel, unilateral, fragmentaire",cat:"adj"},
+    {id:19,hanzi:"结论",pinyin:"jiélùn",pos:"n.",meaning:"conclusion",cat:"noun"},
+    {id:20,hanzi:"精诚所至，金石为开",pinyin:"jīngchéng suǒzhì, jīnshí wéi kāi",pos:"idiom",meaning:"la sincerite parfaite vient a bout de tout (litt. ouvre meme metal et pierre)",cat:"other"},
+    {id:21,hanzi:"将军",pinyin:"jiāngjūn",pos:"n.",meaning:"general (grade militaire)",cat:"noun"},
+    {id:22,hanzi:"善于",pinyin:"shànyú",pos:"v.",meaning:"etre dou(e) pour, exceller a",cat:"verb"},
+    {id:23,hanzi:"称",pinyin:"chēng",pos:"v.",meaning:"appeler, surnommer, donner un nom a",cat:"verb"},
+    {id:24,hanzi:"打猎",pinyin:"dǎ liè",pos:"v.",meaning:"chasser, aller a la chasse",cat:"verb"},
+    {id:25,hanzi:"忽然",pinyin:"hūrán",pos:"adv.",meaning:"soudain, tout a coup",cat:"other"},
+    {id:26,hanzi:"蹲",pinyin:"dūn",pos:"v.",meaning:"s'accroupir, etre tapi",cat:"verb"},
+    {id:27,hanzi:"摇",pinyin:"yáo",pos:"v.",meaning:"agiter, secouer, hocher (la tete)",cat:"verb"},
+    {id:28,hanzi:"不要紧",pinyin:"bú yàojǐn",pos:"expr.",meaning:"ce n'est pas grave, peu importe",cat:"other"},
+    {id:29,hanzi:"支",pinyin:"zhī",pos:"m.",meaning:"specificatif pour objets longs, fins et rigides (fleches, stylos…)",cat:"other"},
+    {id:30,hanzi:"摆",pinyin:"bǎi",pos:"v.",meaning:"poser, disposer, mettre en place",cat:"verb"},
+    {id:31,hanzi:"姿势",pinyin:"zīshì",pos:"n.",meaning:"posture, position du corps",cat:"noun"},
+    {id:32,hanzi:"全神贯注",pinyin:"quánshén guànzhù",pos:"idiom",meaning:"se concentrer entierement, etre tout absorbe",cat:"other"},
+    {id:33,hanzi:"尽(力)",pinyin:"jìn(lì)",pos:"v.",meaning:"faire de son mieux, donner tous ses efforts",cat:"verb"},
+    {id:34,hanzi:"反应",pinyin:"fǎnyìng",pos:"v./n.",meaning:"reagir ; reaction, reponse",cat:"verb"},
+    {id:35,hanzi:"确定",pinyin:"quèdìng",pos:"v.",meaning:"confirmer, s'assurer de, fixer",cat:"verb"},
+    {id:36,hanzi:"石头",pinyin:"shítou",pos:"n.",meaning:"pierre, rocher",cat:"noun"},
+    {id:37,hanzi:"连续",pinyin:"liánxù",pos:"v./adv.",meaning:"successif, continu, sans interruption",cat:"other"},
+    {id:38,hanzi:"根",pinyin:"gēn",pos:"n./m.",meaning:"racine ; specificatif pour objets longs et fins",cat:"noun"},
+    {id:39,hanzi:"碎",pinyin:"suì",pos:"v./adj.",meaning:"se briser en morceaux ; brise, casse",cat:"verb"},
+    {id:40,hanzi:"杆",pinyin:"gǎn",pos:"n.",meaning:"hampe, manche, tige",cat:"noun"},
+    {id:41,hanzi:"哎",pinyin:"āi",pos:"int.",meaning:"interjection de surprise ou de mecontentement (eh!)",cat:"other"},
+    {id:42,hanzi:"唉",pinyin:"ài",pos:"int.",meaning:"interjection de soupir, regret ou tristesse (helas!)",cat:"other"},
+    {id:43,hanzi:"金属",pinyin:"jīnshǔ",pos:"n.",meaning:"metal",cat:"noun"},
+    {id:44,hanzi:"硬",pinyin:"yìng",pos:"adj.",meaning:"dur, ferme, resistant",cat:"adj"},
+    {id:45,hanzi:"便",pinyin:"biàn",pos:"adv.",meaning:"alors, ainsi (= 就, langue ecrite)",cat:"other"}
+];
+
+function renderVocab(filter='all'){const g=document.getElementById('vocabGrid');const f=filter==='all'?vocabData:vocabData.filter(v=>v.cat===filter);g.innerHTML=f.map(v=>`<div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')"><span class="vocab-num">#${v.id}</span><div class="hanzi">${v.hanzi}</div><div class="pinyin">${v.pinyin}</div><span class="pos">${v.pos}</span><div class="meaning-placeholder">Cliquez pour voir...</div><div class="meaning-hidden" style="font-size:.9rem;margin-top:6px;">${v.meaning}</div></div>`).join('');}
+function filterVocab(c){document.querySelectorAll('.vocab-controls button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderVocab(c);}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function hideAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('revealed'));}
+
+let fcIndex=0,fcOrder=[...Array(vocabData.length).keys()];
+function updateFlashcard(){const v=vocabData[fcOrder[fcIndex]];document.getElementById('fcHanzi').textContent=v.hanzi;document.getElementById('fcPinyin').textContent=v.pinyin;document.getElementById('fcMeaning').textContent=v.meaning;document.getElementById('fcPos').textContent=v.pos;document.getElementById('fcCurrent').textContent=fcIndex+1;document.getElementById('fcTotal').textContent=fcOrder.length;document.getElementById('flashcard').classList.remove('flipped');}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%fcOrder.length;updateFlashcard();}
+function prevCard(){fcIndex=(fcIndex-1+fcOrder.length)%fcOrder.length;updateFlashcard();}
+function shuffleCards(){for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}fcIndex=0;updateFlashcard();}
+
+const vocabQuizData=[
+    {q:"成语 signifie :",options:["Caractere","Expression idiomatique","Phrase","Mot etranger"],correct:1},
+    {q:"Quel mot signifie 'aveugle' ?",options:["盲人","士兵","姑娘","将军"],correct:0},
+    {q:"摸 veut dire :",options:["Frapper","Toucher, palper","Pousser","Tirer"],correct:1},
+    {q:"智慧 signifie :",options:["Force","Beaute","Sagesse, intelligence","Richesse"],correct:2},
+    {q:"Comment dit-on 'eventail' en chinois ?",options:["扇子","绳子","尾巴","牙齿"],correct:0},
+    {q:"片面 signifie :",options:["Complet","Partiel, unilateral","Profond","Detaille"],correct:1},
+    {q:"将军 designe :",options:["Un soldat","Un general (militaire)","Un ministre","Un chasseur"],correct:1},
+    {q:"善于 veut dire :",options:["Detester","Etre doue pour, exceller a","Refuser","Apprendre"],correct:1},
+    {q:"全神贯注 exprime :",options:["L'ennui","La distraction","La concentration totale","La confusion"],correct:2},
+    {q:"忽然 signifie :",options:["Lentement","Soudain, tout a coup","Doucement","Rarement"],correct:1},
+    {q:"碎 veut dire :",options:["Couper","Se briser en morceaux","Souder","Plier"],correct:1},
+    {q:"金属 signifie :",options:["Bois","Pierre","Metal","Verre"],correct:2}
+];
+
+const grammarQuizData=[
+    {q:"Dans '别听他瞎说', 瞎 est utilise comme :",options:["Verbe = etre aveugle","Adverbe = sans raison, n'importe comment","Adjectif","Nom"],correct:1},
+    {q:"分别 dans '士兵们分别去不同地方寻找' est :",options:["Verbe = se separer","Adverbe = chacun de son cote, separement","Nom = difference","Particule"],correct:1},
+    {q:"根 dans '一根绳子' est :",options:["Nom = racine","Specificatif (mesure) pour objets longs et fins","Verbe","Adverbe"],correct:1},
+    {q:"便 dans '便由此流传下来' equivaut a :",options:["也","就","还","已"],correct:1},
+    {q:"Quelle phrase utilise 分别 comme nom (= difference) ?",options:["分别是暂时的","他们分别去了","我不知道这两种做法有什么分别","分别是茶和咖啡"],correct:2},
+    {q:"忽然 et 突然, lequel peut etre adjectif ?",options:["忽然","突然","Les deux","Aucun"],correct:1},
+    {q:"Laquelle est INCORRECTE ?",options:["这件事很突然","这件事很忽然","这件事发生得太突然了","他突然站了起来"],correct:1},
+    {q:"Quelle phrase utilise 根 comme nom (sens figure = fondement) ?",options:["这棵树的根又粗又长","一根绳子","这件事还是得从根上解决","换了几根箭"],correct:2}
+];
+
+const compQuizData=[
+    {q:"Combien d'idiomes sont presentes dans cette lecon ?",options:["Un","Deux","Trois","Quatre"],correct:1},
+    {q:"Dans la 1ere histoire, qui demande aux aveugles de toucher l'elephant ?",options:["Un soldat","Un savant","Un roi","Un general"],correct:2},
+    {q:"L'aveugle qui touche la queue de l'elephant le compare a :",options:["Une corne","Une corde","Un mur","Un eventail"],correct:1},
+    {q:"L'aveugle qui touche l'oreille le compare a :",options:["Une corde","Un mur","Un eventail","Une corne"],correct:2},
+    {q:"Quelle est la morale de '盲人摸象' ?",options:["Les aveugles voient mieux","Une connaissance partielle ne permet pas de conclure","Les elephants sont enormes","Le roi est sage"],correct:1},
+    {q:"Comment etait surnomme le general Li Guang ?",options:["Le General Tigre","Le General Volant (飞将军)","Le General de Fer","Le General Sage"],correct:1},
+    {q:"Que vise Li Guang dans la 2e histoire en croyant viser un tigre ?",options:["Un autre soldat","Un cerf","Une grosse pierre en forme de tigre","Un arbre"],correct:2},
+    {q:"Pourquoi Li Guang n'arrive-t-il plus a planter ses fleches ensuite ?",options:["Le tigre s'est sauve","Il n'est plus assez concentre / sincere","Les fleches sont cassees au depart","Il fait nuit"],correct:1},
+    {q:"Qui explique le sens de l'evenement aux gens ?",options:["Li Guang","Un soldat","Le savant Yang Xiong","Un moine"],correct:2},
+    {q:"Quelle dynastie est evoquee dans la 2e histoire ?",options:["Tang","Song","Han occidentaux (西汉)","Ming"],correct:2}
+];
+
+function renderQuiz(data,cid,prefix){document.getElementById(cid).innerHTML=data.map((q,i)=>`<div class="quiz-question" id="${prefix}-q${i}"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options">${q.options.map((o,j)=>`<div class="quiz-option" onclick="answerQuiz('${prefix}',${i},${j})">${o}</div>`).join('')}</div></div>`).join('');}
+const quizState={vocab:{score:0,answered:0,total:12},grammar:{score:0,answered:0,total:8},comp:{score:0,answered:0,total:10}};
+function getQuizData(p){return p==='vocab'?vocabQuizData:p==='grammar'?grammarQuizData:compQuizData;}
+function answerQuiz(p,qi,oi){const d=getQuizData(p),qE=document.getElementById(`${p}-q${qi}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const opts=qE.querySelectorAll('.quiz-option'),c=d[qi].correct;opts.forEach((o,i)=>{o.classList.add('disabled');if(i===c)o.classList.add('selected-correct');if(i===oi&&i!==c)o.classList.add('selected-wrong');});qE.classList.add(oi===c?'correct':'wrong');if(oi===c)quizState[p].score++;quizState[p].answered++;updateScore(p);}
+function updateScore(p){const s=quizState[p];document.getElementById(`${p}Score`).textContent=`${s.score} / ${s.total}`;document.getElementById(`${p}ScoreBar`).style.width=`${(s.score/s.total)*100}%`;}
+function resetQuiz(p){quizState[p]={score:0,answered:0,total:quizState[p].total};updateScore(p);renderQuiz(getQuizData(p),p==='vocab'?'vocabQuizContainer':p==='grammar'?'grammarQuizContainer':'compQuizContainer',p);}
+function switchQuizTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById(t).classList.add('active');}
+
+let selectedFillWord=null;
+function selectFillWord(el){document.querySelectorAll('.fill-chip').forEach(c=>c.classList.remove('placed'));el.classList.add('placed');selectedFillWord=el.dataset.word;}
+function placeFillWord(b){if(!selectedFillWord)return;b.textContent=selectedFillWord;b.dataset.placed=selectedFillWord;document.querySelectorAll('.fill-chip').forEach(c=>{if(c.dataset.word===selectedFillWord)c.classList.add('used');c.classList.remove('placed');});selectedFillWord=null;}
+function checkFillAnswers(){document.querySelectorAll('.fill-blank').forEach(b=>{const p=b.dataset.placed,a=b.dataset.answer;if(p===a){b.style.borderColor='var(--success)';b.style.background='#dcfce7';b.style.color='var(--success)';b.style.fontWeight='600';}else{b.style.borderColor='var(--wrong)';b.style.background='#fecaca';b.style.color='var(--wrong)';b.title=`Reponse : ${a}`;}});}
+function resetFill(){document.querySelectorAll('.fill-blank').forEach(b=>{b.textContent='___';b.dataset.placed='';b.style.borderColor='';b.style.background='';b.style.color='';b.style.fontWeight='';b.title='';});document.querySelectorAll('.fill-chip').forEach(c=>{c.classList.remove('used','placed');});selectedFillWord=null;}
+
+const choiceQuizData=[
+    {q:"每天我一回家，可爱的小狗就___着尾巴冲我跑过来。",a:"摸",b:"摇",correct:"摇",explain:"摇 = secouer, agiter (la queue). 摸 = toucher, palper."},
+    {q:"对我们提出的意见，老板还没有做出___。",a:"反应",b:"反映",correct:"反应",explain:"反应 = reaction, reponse. 反映 = refleter, faire remonter (une opinion)."},
+    {q:"我真的需要休息了，我已经___工作20个小时了。",a:"继续",b:"连续",correct:"连续",explain:"连续 = en continu, sans interruption (objectif). 继续 = continuer, reprendre apres une pause."},
+    {q:"___，我想到了一个办法，你们看看行不行。",a:"唉",b:"哎",correct:"哎",explain:"哎 = surprise, eveil (eh !). 唉 = soupir, regret (helas)."},
+    {q:"我们正在上课，他___站了起来。",a:"忽然",b:"突然",correct:"忽然",explain:"Les deux sont possibles ici, mais 忽然 ne fonctionne que comme adverbe devant un verbe — c'est l'usage le plus typique."},
+    {q:"这件事太___了，我完全没有准备。",a:"忽然",b:"突然",correct:"突然",explain:"突然 peut etre adjectif (predicat avec 太…了). 忽然 ne peut pas occuper cette position."},
+    {q:"他抱着小狗走到门口，___想起妈妈不允许他在家里养小动物。",a:"忽然",b:"突然",correct:"忽然",explain:"Les deux sont acceptables ici (adverbe + verbe). 忽然 est tres naturel dans ce contexte."}
+];
+function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').innerHTML=choiceQuizData.map((q,i)=>`<div class="quiz-question" id="choice-q${i}" style="margin-bottom:12px;"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options" style="grid-template-columns:1fr 1fr;"><div class="quiz-option" onclick="answerChoice(${i},'${q.a}')">${q.a}</div><div class="quiz-option" onclick="answerChoice(${i},'${q.b}')">${q.b}</div></div><div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div></div>`).join('');}
+function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
+
+window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
+document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+</script>
+</body>
+</html>
