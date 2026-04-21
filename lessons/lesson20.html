@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK5 - 第20课 小人书摊</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+        :root{--primary:#1e3a8a;--primary-light:#1d4ed8;--accent:#3b82f6;--gold:#1d4ed8;--gold-light:#eff6ff;--bg:#fafbfc;--card:#fff;--text:#2c3e50;--text-light:#7f8c8d;--border:#e8ecf1;--success:#27ae60;--wrong:#e74c3c;--gradient-water:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 100%);--gradient-hero:linear-gradient(135deg,#0f172a 0%,#1e3a8a 35%,#1d4ed8 70%,#60a5fa 100%);}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;scroll-behavior:smooth;}
+        .hero{background:var(--gradient-hero);color:#fff;padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff10' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;background-size:cover;opacity:.3;}
+        .hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto;}
+        .hero .lesson-badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);padding:6px 20px;border-radius:30px;font-size:.9rem;letter-spacing:2px;margin-bottom:20px;}
+        .hero h1{font-family:'Noto Serif SC',serif;font-size:3.2rem;font-weight:900;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+        .hero .subtitle{font-size:1.3rem;opacity:.9;font-weight:300;margin-bottom:30px;}
+        .hero .deco{font-size:2rem;letter-spacing:8px;opacity:.6;}
+        .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+        .nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+        .nav-inner::-webkit-scrollbar{display:none;}
+        .nav-inner a{padding:14px 18px;text-decoration:none;color:var(--text-light);font-size:.9rem;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;}
+        .nav-inner a:hover,.nav-inner a.active{color:var(--primary);border-bottom-color:var(--primary-light);}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+        section{padding:50px 0;}
+        .section-header{text-align:center;margin-bottom:40px;}
+        .section-header h2{font-family:'Noto Serif SC',serif;font-size:2rem;color:var(--primary);margin-bottom:6px;}
+        .section-header .section-sub{color:var(--text-light);font-size:.95rem;}
+        .section-divider{width:60px;height:3px;background:var(--gradient-water);margin:12px auto 0;border-radius:2px;}
+        .card{background:var(--card);border-radius:16px;padding:30px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);margin-bottom:24px;}
+        .card h3{font-size:1.2rem;color:var(--primary);margin-bottom:16px;}
+        .text-block{background:var(--card);border-radius:16px;padding:35px;box-shadow:0 2px 20px rgba(0,0,0,.04);border:1px solid var(--border);font-family:'Noto Serif SC',serif;font-size:1.1rem;line-height:2.2;}
+        .text-block p{text-indent:2em;margin-bottom:16px;}
+        .text-source{text-align:right;font-size:.85rem;color:var(--text-light);margin-top:12px;font-family:'Noto Sans SC',sans-serif;font-style:italic;}
+        .vocab-controls{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;}
+        .vocab-controls button{padding:8px 20px;border:2px solid var(--border);background:#fff;border-radius:25px;cursor:pointer;font-size:.85rem;font-weight:500;transition:all .2s;color:var(--text);}
+        .vocab-controls button.active,.vocab-controls button:hover{border-color:var(--primary-light);background:var(--primary-light);color:#fff;}
+        .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+        .vocab-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .3s;position:relative;}
+        .vocab-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.08);border-color:var(--primary-light);}
+        .vocab-card .vocab-num{position:absolute;top:8px;right:12px;font-size:.75rem;color:var(--text-light);opacity:.5;}
+        .vocab-card .hanzi{font-family:'Noto Serif SC',serif;font-size:1.6rem;font-weight:700;color:var(--primary);}
+        .vocab-card .pinyin{color:var(--accent);font-size:.9rem;margin:4px 0;}
+        .vocab-card .pos{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;}
+        .vocab-card .meaning-hidden{display:none;}
+        .vocab-card.revealed .meaning-hidden{display:block;}
+        .vocab-card.revealed .meaning-placeholder{display:none;}
+        .meaning-placeholder{color:var(--text-light);font-size:.85rem;font-style:italic;margin-top:6px;}
+        /* Timeline then vs now widget */
+        .timeline-widget{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:start;margin:24px 0;}
+        .timeline-col{display:flex;flex-direction:column;gap:12px;}
+        .timeline-era{text-align:center;padding:12px 20px;border-radius:12px;font-weight:700;font-size:1.1rem;margin-bottom:8px;}
+        .timeline-era.past{background:linear-gradient(135deg,#1e3a8a,#1d4ed8);color:#fff;}
+        .timeline-era.present{background:linear-gradient(135deg,#374151,#6b7280);color:#fff;}
+        .timeline-center{display:flex;flex-direction:column;align-items:center;padding:0 16px;margin-top:52px;}
+        .timeline-arrow{font-size:2rem;color:var(--accent);}
+        .timeline-item{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;font-size:.9rem;transition:all .3s;}
+        .timeline-item:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(59,130,246,.1);}
+        .timeline-item.past-item{border-left:3px solid #1d4ed8;}
+        .timeline-item.present-item{border-left:3px solid #6b7280;}
+        .timeline-item .t-icon{font-size:1.2rem;margin-right:8px;}
+        .timeline-item .t-label{font-weight:600;color:var(--primary);font-size:.95rem;}
+        .timeline-item .t-detail{color:var(--text-light);font-size:.85rem;margin-top:4px;}
+        .flashcard-area{display:flex;flex-direction:column;align-items:center;gap:20px;padding:20px 0;}
+        .flashcard-container{perspective:1000px;width:380px;height:260px;max-width:100%;}
+        .flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);cursor:pointer;}
+        .flashcard.flipped{transform:rotateY(180deg);}
+        .flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;}
+        .flashcard-front{background:linear-gradient(135deg,#0f172a,#1d4ed8);color:#fff;box-shadow:0 10px 40px rgba(30,58,138,.3);}
+        .flashcard-front .fc-hanzi{font-family:'Noto Serif SC',serif;font-size:3rem;font-weight:900;margin-bottom:10px;}
+        .flashcard-front .fc-pinyin{font-size:1.1rem;opacity:.8;}
+        .flashcard-front .fc-hint{font-size:.8rem;opacity:.5;margin-top:20px;}
+        .flashcard-back{background:#fff;border:2px solid var(--primary-light);transform:rotateY(180deg);box-shadow:0 10px 40px rgba(0,0,0,.1);}
+        .flashcard-back .fc-meaning{font-size:1.3rem;color:var(--primary);font-weight:600;}
+        .flashcard-back .fc-pos{background:var(--gold-light);color:var(--gold);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-top:10px;}
+        .fc-controls{display:flex;gap:12px;}
+        .fc-controls button{padding:10px 28px;border-radius:25px;border:none;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .2s;}
+        .fc-btn-prev,.fc-btn-next{background:var(--primary-light);color:#fff;}
+        .fc-btn-prev:hover,.fc-btn-next:hover{background:var(--primary);}
+        .fc-btn-shuffle{background:#fff;border:2px solid var(--border)!important;color:var(--text);}
+        .fc-counter{color:var(--text-light);font-size:.9rem;}
+        .grammar-card{background:var(--card);border-radius:16px;border:1px solid var(--border);margin-bottom:20px;overflow:hidden;}
+        .grammar-header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;}
+        .grammar-header .grammar-num{background:rgba(255,255,255,.2);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+        .grammar-header .grammar-title{font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;}
+        .grammar-header .grammar-pinyin{font-size:.9rem;opacity:.8;}
+        .grammar-body{padding:24px;}
+        .grammar-rule{background:var(--gold-light);border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:20px;font-size:.95rem;color:var(--primary);}
+        .grammar-example{padding:12px 0;border-bottom:1px solid var(--border);}
+        .grammar-example:last-child{border-bottom:none;}
+        .grammar-example .ex-cn{font-size:1.05rem;margin-bottom:4px;}
+        .grammar-example .ex-note{color:var(--text-light);font-size:.85rem;}
+        .grammar-example .ex-highlight{color:var(--accent);font-weight:600;}
+        .comparison-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+        .comparison-table th{background:var(--primary);color:#fff;padding:14px 18px;font-weight:600;text-align:center;}
+        .comparison-table td{padding:14px 18px;border-bottom:1px solid var(--border);vertical-align:top;font-size:.95rem;}
+        .comparison-table tr:last-child td{border-bottom:none;}
+        .comparison-table tr:nth-child(even){background:#f8fafc;}
+        .comparison-table .label-cell{background:var(--gold-light);font-weight:600;color:var(--primary);text-align:center;width:80px;}
+        .colloc-section{margin-bottom:24px;}
+        .colloc-label{display:inline-block;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:12px;}
+        .colloc-label.verb{background:#e74c3c;}.colloc-label.attr{background:#f39c12;}.colloc-label.comp{background:#8e44ad;}.colloc-label.meas{background:#16a085;}.colloc-label.subj{background:#2980b9;}
+        .colloc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+        .colloc-row:last-child{border-bottom:none;}
+        .colloc-word{font-weight:600;color:var(--primary);min-width:100px;font-size:1.1rem;}
+        .colloc-plus{color:var(--text-light);font-weight:700;}
+        .colloc-partners{display:flex;flex-wrap:wrap;gap:6px;}
+        .colloc-tag{background:#f0f4f8;padding:4px 12px;border-radius:15px;font-size:.85rem;}
+        .tab-bar{display:flex;gap:4px;background:#f0f4f8;padding:4px;border-radius:12px;margin-bottom:20px;}
+        .tab-btn{flex:1;padding:10px;border:none;background:transparent;border-radius:10px;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--text-light);transition:all .2s;}
+        .tab-btn.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+        .tab-content{display:none;}.tab-content.active{display:block;}
+        .quiz-score-bar{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+        .score-display{font-size:1.5rem;font-weight:700;color:var(--primary);}
+        .score-bar-visual{flex:1;margin:0 20px;height:10px;background:var(--border);border-radius:5px;overflow:hidden;}
+        .score-bar-fill{height:100%;background:var(--gradient-water);border-radius:5px;transition:width .5s ease;width:0%;}
+        .quiz-reset-btn{padding:8px 20px;background:var(--primary-light);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;}
+        .quiz-question{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;transition:all .3s;}
+        .quiz-question.correct{border-color:var(--success);background:#f0fdf4;}
+        .quiz-question.wrong{border-color:var(--wrong);background:#fef2f2;}
+        .quiz-q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--primary-light);color:#fff;border-radius:50%;font-size:.8rem;font-weight:700;margin-right:10px;}
+        .quiz-q-text{font-size:1.05rem;margin-bottom:14px;}
+        .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .quiz-option{padding:12px 16px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.95rem;text-align:center;background:#fff;}
+        .quiz-option:hover{border-color:var(--primary-light);background:var(--gold-light);}
+        .quiz-option.selected-correct{border-color:var(--success);background:#dcfce7;color:var(--success);font-weight:600;}
+        .quiz-option.selected-wrong{border-color:var(--wrong);background:#fecaca;color:var(--wrong);font-weight:600;}
+        .quiz-option.disabled{pointer-events:none;opacity:.7;}
+        .quiz-explanation{display:none;margin-top:12px;padding:12px 16px;background:var(--gold-light);border-radius:10px;font-size:.9rem;color:var(--primary);border:1px solid #bfdbfe;}
+        .fill-blank{display:inline-block;min-width:80px;border-bottom:2px dashed var(--primary-light);padding:2px 8px;margin:0 4px;text-align:center;cursor:pointer;transition:all .2s;}
+        .fill-blank:hover{background:var(--gold-light);}
+        .fill-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center;}
+        .fill-chip{padding:8px 18px;background:#fff;border:2px solid var(--border);border-radius:25px;cursor:pointer;font-size:.9rem;font-weight:500;transition:all .2s;}
+        .fill-chip:hover{border-color:var(--primary-light);background:var(--gold-light);}
+        .fill-chip.used{opacity:.4;pointer-events:none;}
+        .fill-chip.placed{background:var(--primary-light);color:#fff;border-color:var(--primary-light);}
+        .app-box{background:linear-gradient(135deg,#eff6ff,#dbeafe20);border:1px solid #bfdbfe;border-radius:16px;padding:30px;margin-bottom:20px;}
+        .app-box h4{color:var(--primary);font-size:1.1rem;margin-bottom:12px;}
+        .discussion-q{padding:10px 0;border-bottom:1px solid rgba(191,219,254,.5);font-size:.95rem;}
+        .discussion-q:last-child{border-bottom:none;}
+        .expansion-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
+        .exp-chip{padding:8px 16px;background:#fff;border:1.5px solid var(--border);border-radius:20px;font-size:.9rem;transition:all .2s;cursor:default;}
+        .exp-chip:hover{border-color:var(--accent);background:var(--gold-light);}
+        .exp-chip .exp-pinyin{font-size:.75rem;color:var(--accent);display:block;text-align:center;}
+        .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
+        @media(max-width:768px){.hero h1{font-size:2rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}.timeline-widget{grid-template-columns:1fr;}.timeline-center{display:none;}}
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="lesson-badge">HSK 5 下 · UNITÉ 7 · 交流文化</div>
+        <h1>小人书摊</h1>
+        <p class="subtitle">Picture-story Book Stalls — Lesson 20</p>
+        <div class="deco">📚 🏮 🖼️ 🌃</div>
+    </div>
+</header>
+
+<nav class="sticky-nav"><div class="nav-inner"><a href="../index.html" style="font-weight:700;padding-right:20px;border-right:2px solid var(--border);color:var(--primary)!important;">← Accueil</a>
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#history">历史 Histoire</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+</div></nav>
+
+<main class="container">
+
+<section id="text">
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">小人书摊 — un souvenir d'enfance (664 caractères)</p><div class="section-divider"></div></div>
+    <div class="text-block">
+        <p>小人书，是一种以书的形式出版的连环画。在二十世纪五六十年代，那时候生活很单调，没有网络，没有动画片，读小人书是儿童最主要的娱乐之一。不仅小孩子爱看，还有无数的青少年和大人也爱看。</p>
+        <p>随着小人书的流行，出现了从事租书业务的小人书摊，这对于那些想看又买不起书的人来说，只用很少的钱就能看一本，毫无疑问是件大好事。</p>
+        <p>记得小时候，我家附近就有个小人书摊，就是一进街口靠墙的一个小棚子，里面用几块砖头支着粗糙的木头板子供人们坐着看书。棚子里有一张床板摆着各种题材的小人书，墙边还拉了几根绳子，一本本书翻开搭在上面，五颜六色的，很好看。为了减少损坏程度，每本小人书都用牛皮纸加了层封皮，封皮上用毛笔写上书名，整齐漂亮的毛笔字能充分地显示出书摊主人的文化水平。摊主是位上了年纪、身材瘦小的老人，总是穿着一件灰色长衫，静静地坐在一边，陪着看书的人们。</p>
+        <p>在这里看书的人大部分是附近住户的孩子，也有一些喜欢小人书的成人。租借小人书很便宜，在摊里看，每册1分钱，选好书坐下就看，看完连书带钱交给摊主；假如借走回家看，则每本每天2分钱，挑好书后交给摊主，摊主仔细地将租书人的姓名、地址和所借小人书的书名登记在本子上，收了租金就可以拿走了，第二天还书时再把记录一个一个地画掉，还书手续就算是办理好了。印象中似乎没有什么押金，全凭信用。我每天放学回家总要经过这家书摊，都要进去看看。</p>
+        <p>然而，这种影响了数代人的小人书，如今只能在北京的潘家园、护国寺等地的旧书摊上找到，一些印刷精美、有特色的作品则身价大涨，成了收藏品，甚至进了博物馆。小人书和小人书摊已成为历史的记忆。</p>
+        <div class="text-source">改编自《中国电视报》，作者：俞万林</div>
+    </div>
+</section>
+
+<section id="vocab">
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">36 mots — Cliquez pour révéler</p><div class="section-divider"></div></div>
+    <div class="vocab-controls">
+        <button class="active" onclick="filterVocab('all')">Tous (36)</button>
+        <button onclick="filterVocab('verb')">Verbes</button>
+        <button onclick="filterVocab('noun')">Noms</button>
+        <button onclick="filterVocab('adj')">Adjectifs</button>
+        <button onclick="filterVocab('other')">Autres</button>
+        <button onclick="revealAll()">Tout révéler</button>
+        <button onclick="hideAll()">Tout cacher</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+</section>
+
+<section id="history">
+    <div class="section-header"><h2>历史 - Évolution</h2><p class="section-sub">小人书摊 — Avant et maintenant</p><div class="section-divider"></div></div>
+    <div class="timeline-widget">
+        <div class="timeline-col">
+            <div class="timeline-era past">📖 五六十年代 — Années 1950–60</div>
+            <div class="timeline-item past-item"><span class="t-icon">😔</span><div class="t-label">生活单调</div><div class="t-detail">没有网络，没有动画片，读小人书是主要娱乐之一</div></div>
+            <div class="timeline-item past-item"><span class="t-icon">🏚️</span><div class="t-label">街口小棚子</div><div class="t-detail">靠墙一个小棚子，砖头支着木头板子，供人坐着看书</div></div>
+            <div class="timeline-item past-item"><span class="t-icon">💰</span><div class="t-label">价格极低</div><div class="t-detail">在摊里看：每册1分钱 / 借走：每本每天2分钱</div></div>
+            <div class="timeline-item past-item"><span class="t-icon">📝</span><div class="t-label">人工登记</div><div class="t-detail">摊主用毛笔登记姓名、地址和书名，全凭信用</div></div>
+            <div class="timeline-item past-item"><span class="t-icon">👴</span><div class="t-label">摊主形象</div><div class="t-detail">上了年纪、身材瘦小的老人，穿灰色长衫，静静陪读</div></div>
+        </div>
+        <div class="timeline-center">
+            <div class="timeline-arrow">→</div>
+        </div>
+        <div class="timeline-col">
+            <div class="timeline-era present">🏛️ 如今 — Aujourd'hui</div>
+            <div class="timeline-item present-item"><span class="t-icon">🌐</span><div class="t-label">娱乐多样化</div><div class="t-detail">网络、动画片、视频游戏……小人书已被取代</div></div>
+            <div class="timeline-item present-item"><span class="t-icon">📍</span><div class="t-label">仅在旧书摊</div><div class="t-detail">只能在北京潘家园、护国寺等地的旧书摊上找到</div></div>
+            <div class="timeline-item present-item"><span class="t-icon">📈</span><div class="t-label">身价大涨</div><div class="t-detail">印刷精美的作品成了收藏品，身价大涨</div></div>
+            <div class="timeline-item present-item"><span class="t-icon">🏛️</span><div class="t-label">进入博物馆</div><div class="t-detail">一些有特色的作品甚至进了博物馆</div></div>
+            <div class="timeline-item present-item"><span class="t-icon">💭</span><div class="t-label">历史的记忆</div><div class="t-detail">小人书和小人书摊已成为数代人共同的童年记忆</div></div>
+        </div>
+    </div>
+</section>
+
+<section id="flashcards">
+    <div class="section-header"><h2>卡片 - Flashcards</h2><p class="section-sub">Entraînez-vous sur les 36 mots</p><div class="section-divider"></div></div>
+    <div class="flashcard-area">
+        <div class="flashcard-container">
+            <div class="flashcard" id="flashcard" onclick="flipCard()">
+                <div class="flashcard-front">
+                    <div class="fc-hanzi" id="fcHanzi"></div>
+                    <div class="fc-pinyin" id="fcPinyin"></div>
+                    <div class="fc-hint">Cliquez pour retourner</div>
+                </div>
+                <div class="flashcard-back">
+                    <div class="fc-meaning" id="fcMeaning"></div>
+                    <div class="fc-pos" id="fcPos"></div>
+                </div>
+            </div>
+        </div>
+        <div class="fc-counter"><span id="fcCurrent">1</span> / <span id="fcTotal">36</span></div>
+        <div class="fc-controls">
+            <button class="fc-btn-prev" onclick="prevCard()">← Préc.</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()">🔀 Mélanger</button>
+            <button class="fc-btn-next" onclick="nextCard()">Suiv. →</button>
+        </div>
+    </div>
+</section>
+
+<section id="grammar">
+    <div class="section-header"><h2>语法 - Grammaire</h2><p class="section-sub">Notes (一) : Exemples de vocabulaire</p><div class="section-divider"></div></div>
+
+    <div class="grammar-card">
+        <div class="grammar-header">
+            <div class="grammar-num">1</div>
+            <div>
+                <div class="grammar-title">动词 + 得/不 + 起</div>
+                <div class="grammar-pinyin">V + de/bù + qǐ — pouvoir ou non se permettre de</div>
+            </div>
+        </div>
+        <div class="grammar-body">
+            <div class="grammar-rule">表示主观上有（没有）实现（或承受）某种动作的能力和条件。<br>Exprime le fait d'avoir (ou non) la capacité et les moyens de réaliser une action — souvent lié au coût, à la résistance ou à la dignité.</div>
+            <div class="grammar-example">
+                <div class="ex-cn">（1）……这对于那些想看又<span class="ex-highlight">买不起</span>书的人来说，只用很少的钱就能看一本，毫无疑问是件大好事。</div>
+                <div class="ex-note">买不起 = ne pas pouvoir se permettre d'acheter (manque de moyens financiers)</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（2）古时候，有个十分好学的年轻人，但他家里很穷，<span class="ex-highlight">买不起</span>灯，一到晚上就不能读书。</div>
+                <div class="ex-note">Même structure : impossibilité financière d'acheter une lampe.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（3）只有<span class="ex-highlight">经得起</span>困难和时间考验的朋友才算是真正的朋友。</div>
+                <div class="ex-note">经得起 = pouvoir résister à, tenir le coup face à (épreuve, difficulté)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grammar-card">
+        <div class="grammar-header">
+            <div class="grammar-num">2</div>
+            <div>
+                <div class="grammar-title">支</div>
+                <div class="grammar-pinyin">zhī — verbe ET classificateur</div>
+            </div>
+        </div>
+        <div class="grammar-body">
+            <div class="grammar-rule">「支」动词，表示用东西撑着使物体不落下来。也可做量词，用于音乐作品、队伍或杆状的东西。<br>Comme verbe : étayer, soutenir (pour que qqch. ne tombe pas). Comme classificateur : pour les œuvres musicales, les formations, les objets longs et fins.</div>
+            <div class="grammar-example">
+                <div class="ex-cn">（1）他的两只手放在桌上，<span class="ex-highlight">支</span>着脑袋，正在想事情。</div>
+                <div class="ex-note">支 verbe : poser sa tête dans ses mains pour la soutenir.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（2）……里面用几块砖头<span class="ex-highlight">支</span>着粗糙的木头板子供人们坐着看书。</div>
+                <div class="ex-note">支 verbe : soutenir/étayer des planches de bois avec des briques.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（3）他弹第二<span class="ex-highlight">支</span>曲子时引起了牛的注意。</div>
+                <div class="ex-note">支 classificateur : pour les œuvres musicales (曲子, chansons, mélodies).</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（4）一般来说，一包香烟有二十<span class="ex-highlight">支</span>。</div>
+                <div class="ex-note">支 classificateur : pour les cigarettes et objets longs et fins.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grammar-card">
+        <div class="grammar-header">
+            <div class="grammar-num">3</div>
+            <div>
+                <div class="grammar-title">凭</div>
+                <div class="grammar-pinyin">píng — verbe ET préposition</div>
+            </div>
+        </div>
+        <div class="grammar-body">
+            <div class="grammar-rule">「凭」动词，依靠。也可做介词，常用格式是"凭+宾语+动词"，表示根据、凭借。<br>Comme verbe : s'appuyer sur, compter sur. Comme préposition : sur la base de, grâce à, en s'appuyant sur.</div>
+            <div class="grammar-example">
+                <div class="ex-cn">（1）干工作不能光<span class="ex-highlight">凭</span>经验，还要有创新。</div>
+                <div class="ex-note">凭 verbe : se fier uniquement à l'expérience → il faut aussi innover.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（2）印象中似乎没有什么押金，全<span class="ex-highlight">凭</span>信用。</div>
+                <div class="ex-note">凭 verbe : tout repose sur la confiance (honneur), pas de caution.</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（3）请旅客们准备好车票，<span class="ex-highlight">凭</span>票进站。</div>
+                <div class="ex-note">凭 préposition : sur présentation du billet / grâce au billet (凭+宾语+动词).</div>
+            </div>
+            <div class="grammar-example">
+                <div class="ex-cn">（4）你<span class="ex-highlight">凭</span>什么怀疑我偷了东西？</div>
+                <div class="ex-note">凭 préposition : sur quelle base / de quel droit (sens interrogatif/rhétorique).</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="analysis">
+    <div class="section-header"><h2>辨析 - Analyse contrastive</h2><p class="section-sub">记录 vs 纪录 — deux homophones à ne pas confondre</p><div class="section-divider"></div></div>
+    <div class="card">
+        <table class="comparison-table">
+            <thead>
+                <tr><th style="width:80px;"></th><th>记录 (jìlù)</th><th>纪录 (jìlù)</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="label-cell">用法1</td>
+                    <td>① <strong>动词</strong> — mettre par écrit, noter, consigner.<br><br>如：我已经把这次会议的内容详细地<strong>记录</strong>下来了。<br><em>J'ai déjà consigné en détail le contenu de cette réunion.</em></td>
+                    <td>① <strong>名词</strong> — record, meilleure performance dans une compétition.<br><br>如：他在本次比赛中打破了世界<strong>纪录</strong>。<br><em>Il a battu le record du monde lors de cette compétition.</em></td>
+                </tr>
+                <tr>
+                    <td class="label-cell">用法2</td>
+                    <td>② <strong>名词</strong> — ce qui a été noté, les notes prises ; la personne qui prend les notes (secrétaire de séance).<br><br>如：第二天还书时再把<strong>记录</strong>一个一个地画掉。<br>小刘，你来做这次会议的<strong>记录</strong>。<br><em>Xiao Liu, c'est vous qui prenez les notes de cette réunion.</em></td>
+                    <td>② <strong>名词</strong> — document relatant des faits d'actualité ; documentaire.<br><br>如：学校带孩子们看了一部有教育意义的<strong>纪录</strong>片。<br><em>L'école a emmené les enfants voir un film documentaire instructif.</em></td>
+                </tr>
+                <tr>
+                    <td class="label-cell">口诀</td>
+                    <td colspan="2" style="text-align:center;font-style:italic;color:var(--text-light);">
+                        记录 = "记" (noter, mémoriser) → action de noter + ce qui est noté + personne qui note<br>
+                        纪录 = "纪" (registre historique) → record sportif + documentaire (纪录片)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="collocation">
+    <div class="section-header"><h2>搭配 - Collocations</h2><p class="section-sub">词语搭配 — combinaisons lexicales clés</p><div class="section-divider"></div></div>
+    <div class="card">
+        <div class="colloc-section">
+            <span class="colloc-label verb">动词 + 宾语</span>
+            <div class="colloc-row">
+                <span class="colloc-word">从事</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">（…的）工作</span><span class="colloc-tag">业务</span><span class="colloc-tag">职业</span><span class="colloc-tag">教育</span></div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">办理</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">手续</span><span class="colloc-tag">业务</span><span class="colloc-tag">信用卡</span><span class="colloc-tag">签证</span></div>
+            </div>
+        </div>
+        <div class="colloc-section">
+            <span class="colloc-label attr">定语 + 中心语</span>
+            <div class="colloc-row">
+                <span class="colloc-word">粗糙的</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">皮肤</span><span class="colloc-tag">地面</span><span class="colloc-tag">木板</span><span class="colloc-tag">表面</span></div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">整齐的</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">房间</span><span class="colloc-tag">队伍</span><span class="colloc-tag">声音</span><span class="colloc-tag">毛笔字</span></div>
+            </div>
+        </div>
+        <div class="colloc-section">
+            <span class="colloc-label comp">中心语 + 补语</span>
+            <div class="colloc-row">
+                <span class="colloc-word">登记</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">清楚</span><span class="colloc-tag">好</span></div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">打/碰/翻</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">翻</span></div>
+            </div>
+        </div>
+        <div class="colloc-section">
+            <span class="colloc-label meas">数量词 + 名词</span>
+            <div class="colloc-row">
+                <span class="colloc-word">一册/几册</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">书</span></div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">一笔</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">押金</span><span class="colloc-tag">钱</span><span class="colloc-tag">账</span></div>
+            </div>
+        </div>
+        <div class="colloc-section">
+            <span class="colloc-label subj">主语 + 谓语</span>
+            <div class="colloc-row">
+                <span class="colloc-word">生活/色彩</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">单调</span><span class="colloc-tag">丰富</span></div>
+            </div>
+            <div class="colloc-row">
+                <span class="colloc-word">身材</span><span class="colloc-plus">+</span>
+                <div class="colloc-partners"><span class="colloc-tag">好</span><span class="colloc-tag">高大</span><span class="colloc-tag">矮小</span><span class="colloc-tag">苗条</span><span class="colloc-tag">瘦小</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="quiz-section">
+    <div class="section-header"><h2>测验 - Quiz</h2><p class="section-sub">Testez vos connaissances sur la leçon 20</p><div class="section-divider"></div></div>
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchQuizTab('tab-vocab')">🗂 Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('tab-grammar')">📖 Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('tab-comp')">📝 Compréhension</button>
+    </div>
+    <div class="tab-content active" id="tab-vocab">
+        <div class="quiz-score-bar"><span class="score-display" id="vocabScore">0 / 12</span><div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button></div>
+        <div id="vocabQuizContainer"></div>
+    </div>
+    <div class="tab-content" id="tab-grammar">
+        <div class="quiz-score-bar"><span class="score-display" id="grammarScore">0 / 8</span><div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button></div>
+        <div id="grammarQuizContainer"></div>
+    </div>
+    <div class="tab-content" id="tab-comp">
+        <div class="quiz-score-bar"><span class="score-display" id="compScore">0 / 10</span><div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div><button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button></div>
+        <div id="compQuizContainer"></div>
+    </div>
+</section>
+
+<section id="fill-quiz">
+    <div class="section-header"><h2>填空 - Exercices</h2><p class="section-sub">Sélectionnez un mot, puis cliquez sur le blanc correspondant</p><div class="section-divider"></div></div>
+    <div class="card">
+        <h3>练习 1 — 选择合适的词语填空</h3>
+        <div class="fill-options">
+            <div class="fill-chip" data-word="涨" onclick="selectFillWord(this)">涨</div>
+            <div class="fill-chip" data-word="办理" onclick="selectFillWord(this)">办理</div>
+            <div class="fill-chip" data-word="从事" onclick="selectFillWord(this)">从事</div>
+            <div class="fill-chip" data-word="粗糙" onclick="selectFillWord(this)">粗糙</div>
+            <div class="fill-chip" data-word="单调" onclick="selectFillWord(this)">单调</div>
+            <div class="fill-chip" data-word="整齐" onclick="selectFillWord(this)">整齐</div>
+        </div>
+        <div style="margin-top:20px;line-height:3.2;font-size:1.05rem;">
+            <p>❶ 我想<span class="fill-blank" data-answer="从事" onclick="placeFillWord(this)">___</span>有挑战性的工作，因为那样可以更好地成长。</p>
+            <p>❷ 请96号顾客到2号窗口<span class="fill-blank" data-answer="办理" onclick="placeFillWord(this)">___</span>业务。</p>
+            <p>❸ 这房子装修得太<span class="fill-blank" data-answer="粗糙" onclick="placeFillWord(this)">___</span>了！你看，地板都没铺平。</p>
+            <p>❹ 窗外响起了一阵<span class="fill-blank" data-answer="整齐" onclick="placeFillWord(this)">___</span>的歌声。</p>
+            <p>❺ 他觉得在中国的生活很<span class="fill-blank" data-answer="单调" onclick="placeFillWord(this)">___</span>，我却觉得很丰富。</p>
+            <p>❻ 最近几年，物价<span class="fill-blank" data-answer="涨" onclick="placeFillWord(this)">___</span>得很厉害。</p>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:16px;">
+            <button onclick="checkFillAnswers()" style="padding:10px 24px;background:var(--gradient-water);color:#fff;border:none;border-radius:20px;cursor:pointer;font-weight:600;">Vérifier ✓</button>
+            <button onclick="resetFill()" style="padding:10px 24px;background:#fff;border:2px solid var(--border);border-radius:20px;cursor:pointer;font-weight:600;">Réinitialiser</button>
+        </div>
+    </div>
+
+    <div class="card"><h3>记录 ou 纪录 ? Choisissez la bonne réponse</h3><div id="choiceQuizContainer"></div></div>
+</section>
+
+<section id="application">
+    <div class="section-header"><h2>运用 - Application</h2><p class="section-sub">Contexte culturel et discussion</p><div class="section-divider"></div></div>
+    <div class="app-box">
+        <h4>背景知识 — 小人书与中国童年文化</h4>
+        <p style="line-height:2;">每个人都有自己的童年时代。关于童年，我们有各种各样的记忆，愉快的、不愉快的，可能关于一件事，可能关于一个人，也可能是一件东西，或者一个曾经爱玩儿的游戏……虽然时间已经过去了很久，我们已经长大，但这些记忆，还藏在我们的心里。小人书，作为二十世纪五六十年代中国儿童最重要的文化娱乐形式，承载了数代人的共同记忆。今天，在数字娱乐无处不在的时代，这种简单的连环画已成为珍贵的文化遗产。</p>
+    </div>
+    <div class="app-box">
+        <h4>话题讨论 - 童年的生活与记忆</h4>
+        <div class="discussion-q">1. 你的童年是在什么地方度过的？童年生活中，哪些人、哪些事或者哪些东西给你留下的印象最深刻？<br><em>Où avez-vous passé votre enfance ? Quelles personnes, événements ou objets vous ont le plus marqué(e) ?</em></div>
+        <div class="discussion-q">2. 在你的国家，小时候有哪些有趣的娱乐活动？这些活动现在还有吗？和现代娱乐有什么不同？<br><em>Quelles étaient les activités de loisirs populaires chez vous quand vous étiez enfant ? Existent-elles encore ? En quoi diffèrent-elles des divertissements modernes ?</em></div>
+        <div class="discussion-q">3. 文章说租书"全凭信用"。你认为在现代社会，这种基于信任的商业模式还可能存在吗？<br><em>L'article dit que la location se faisait "entièrement sur parole". Pensez-vous qu'un tel modèle économique basé sur la confiance pourrait encore exister aujourd'hui ?</em></div>
+    </div>
+    <div class="app-box">
+        <h4>扩展词汇 — 单位、场所 + 生产2</h4>
+        <p style="color:var(--text-light);font-size:.9rem;margin-bottom:4px;">Vocabulaire HSK5 thématique</p>
+        <div class="expansion-grid" id="expansionGrid"></div>
+    </div>
+    <div class="app-box">
+        <h4>命题写作 - Sujet d'écriture</h4>
+        <p>请以"我的童年"为题，谈一谈你的童年时代。尽量用上本课所学的生词，字数不少于100字。</p>
+        <p style="font-style:italic;color:var(--text-light);margin-top:8px;">Rédigez un texte sur "Mon enfance". Utilisez le maximum de vocabulaire de la leçon, au moins 100 caractères.</p>
+    </div>
+</section>
+
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<footer style="text-align:center;padding:40px 20px;color:var(--text-light);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px;">HSK 5 Standard Course 下 — Leçon 20 — 小人书摊</footer>
+
+<script>
+const vocabData=[
+    {id:1,hanzi:"摊",pinyin:"tān",pos:"n.",meaning:"étal, échoppe, stand (marché en plein air)",cat:"noun"},
+    {id:2,hanzi:"出版",pinyin:"chūbǎn",pos:"v.",meaning:"publier, éditer (un livre, un journal)",cat:"verb"},
+    {id:3,hanzi:"连环画",pinyin:"liánhuánhuà",pos:"n.",meaning:"histoire en images, roman-photo illustré (bande dessinée populaire chinoise)",cat:"noun"},
+    {id:4,hanzi:"年代",pinyin:"niándài",pos:"n.",meaning:"décennie d'un siècle (ex. 五六十年代 = les années 50-60)",cat:"noun"},
+    {id:5,hanzi:"单调",pinyin:"dāndiào",pos:"adj.",meaning:"monotone, ennuyeux, sans variété",cat:"adj"},
+    {id:6,hanzi:"网络",pinyin:"wǎngluò",pos:"n.",meaning:"réseau, internet, toile",cat:"noun"},
+    {id:7,hanzi:"动画片",pinyin:"dònghuàpiàn",pos:"n.",meaning:"dessin animé, film d'animation",cat:"noun"},
+    {id:8,hanzi:"娱乐",pinyin:"yúlè",pos:"n./v.",meaning:"divertissement, loisir ; divertir, amuser",cat:"noun"},
+    {id:9,hanzi:"无数",pinyin:"wúshù",pos:"adj.",meaning:"innombrable, incalculable, sans nombre",cat:"adj"},
+    {id:10,hanzi:"青少年",pinyin:"qīng-shàonián",pos:"n.",meaning:"adolescents et jeunes, jeunesse",cat:"noun"},
+    {id:11,hanzi:"从事",pinyin:"cóngshì",pos:"v.",meaning:"s'adonner à, se consacrer à, exercer (une profession/activité)",cat:"verb"},
+    {id:12,hanzi:"毫无",pinyin:"háowú",pos:"adv.",meaning:"pas du tout, nullement, sans la moindre (毫无疑问 = sans aucun doute)",cat:"other"},
+    {id:13,hanzi:"疑问",pinyin:"yíwèn",pos:"n.",meaning:"doute, question, interrogation",cat:"noun"},
+    {id:14,hanzi:"棚子",pinyin:"péngzi",pos:"n.",meaning:"baraque, abri, cabane, hangar",cat:"noun"},
+    {id:15,hanzi:"砖头",pinyin:"zhuāntóu",pos:"n.",meaning:"brique (de construction)",cat:"noun"},
+    {id:16,hanzi:"支",pinyin:"zhī",pos:"v./m.",meaning:"étayer, soutenir, tenir ; [classif.] pour objets fins, œuvres musicales, cigarettes",cat:"verb"},
+    {id:17,hanzi:"粗糙",pinyin:"cūcao",pos:"adj.",meaning:"rugueux, grossier, rudimentaire, sans soin",cat:"adj"},
+    {id:18,hanzi:"木头",pinyin:"mùtou",pos:"n.",meaning:"bois, madrier, pièce de bois",cat:"noun"},
+    {id:19,hanzi:"题材",pinyin:"tícái",pos:"n.",meaning:"thème, sujet (d'une œuvre littéraire ou artistique)",cat:"noun"},
+    {id:20,hanzi:"翻",pinyin:"fān",pos:"v.",meaning:"tourner (les pages), retourner, renverser",cat:"verb"},
+    {id:21,hanzi:"搭",pinyin:"dā",pos:"v.",meaning:"poser sur, suspendre (par-dessus), draper",cat:"verb"},
+    {id:22,hanzi:"整齐",pinyin:"zhěngqí",pos:"adj.",meaning:"ordonné, rangé, en ordre, bien aligné",cat:"adj"},
+    {id:23,hanzi:"年纪",pinyin:"niánjì",pos:"n.",meaning:"âge (surtout pour les personnes âgées)",cat:"noun"},
+    {id:24,hanzi:"身材",pinyin:"shēncái",pos:"n.",meaning:"silhouette, stature, constitution physique",cat:"noun"},
+    {id:25,hanzi:"成人",pinyin:"chéngrén",pos:"n.",meaning:"adulte, personne majeure",cat:"noun"},
+    {id:26,hanzi:"册",pinyin:"cè",pos:"m.",meaning:"[classif.] tome, volume (pour les livres reliés)",cat:"other"},
+    {id:27,hanzi:"假如",pinyin:"jiǎrú",pos:"conj.",meaning:"si, à supposer que, dans le cas où (hypothèse)",cat:"other"},
+    {id:28,hanzi:"登记",pinyin:"dēngjì",pos:"v.",meaning:"s'inscrire, enregistrer, consigner (dans un registre)",cat:"verb"},
+    {id:29,hanzi:"记录",pinyin:"jìlù",pos:"n./v.",meaning:"noter, consigner ; notes, procès-verbal ; secrétaire de séance",cat:"verb"},
+    {id:30,hanzi:"手续",pinyin:"shǒuxù",pos:"n.",meaning:"formalités, procédure, démarches administratives",cat:"noun"},
+    {id:31,hanzi:"办理",pinyin:"bànlǐ",pos:"v.",meaning:"s'occuper de, traiter, effectuer (formalités, démarches)",cat:"verb"},
+    {id:32,hanzi:"押金",pinyin:"yājīn",pos:"n.",meaning:"caution, dépôt de garantie, arrhes",cat:"noun"},
+    {id:33,hanzi:"凭",pinyin:"píng",pos:"v./prép.",meaning:"s'appuyer sur, compter sur ; sur la base de, grâce à",cat:"verb"},
+    {id:34,hanzi:"印刷",pinyin:"yìnshuā",pos:"v.",meaning:"imprimer, éditer (livres, journaux, etc.)",cat:"verb"},
+    {id:35,hanzi:"涨",pinyin:"zhǎng",pos:"v.",meaning:"monter, augmenter, hausser (prix, eau, etc.)",cat:"verb"},
+    {id:36,hanzi:"收藏",pinyin:"shōucáng",pos:"v.",meaning:"collectionner, garder précieusement, conserver",cat:"verb"}
+];
+
+const expansionData=[
+    {hanzi:"俱乐部",pinyin:"jùlèbù"},{hanzi:"幼儿园",pinyin:"yòu'éryuán"},{hanzi:"博物馆",pinyin:"bówùguǎn"},
+    {hanzi:"酒吧",pinyin:"jiǔbā"},{hanzi:"法院",pinyin:"fǎyuàn"},{hanzi:"海关",pinyin:"hǎiguān"},
+    {hanzi:"生产",pinyin:"shēngchǎn"},{hanzi:"发明",pinyin:"fāmíng"},{hanzi:"设计",pinyin:"shèjì"},
+    {hanzi:"业务",pinyin:"yèwù"},{hanzi:"项目",pinyin:"xiàngmù"},{hanzi:"效率",pinyin:"xiàolǜ"},
+    {hanzi:"合法",pinyin:"héfǎ"},{hanzi:"公平",pinyin:"gōngpíng"}
+];
+
+function renderExpansion(){document.getElementById('expansionGrid').innerHTML=expansionData.map(w=>`<div class="exp-chip"><span>${w.hanzi}</span><span class="exp-pinyin">${w.pinyin}</span></div>`).join('');}
+
+function renderVocab(filter='all'){const g=document.getElementById('vocabGrid');const f=filter==='all'?vocabData:vocabData.filter(v=>v.cat===filter);g.innerHTML=f.map(v=>`<div class="vocab-card" data-cat="${v.cat}" onclick="this.classList.toggle('revealed')"><span class="vocab-num">#${v.id}</span><div class="hanzi">${v.hanzi}</div><div class="pinyin">${v.pinyin}</div><span class="pos">${v.pos}</span><div class="meaning-placeholder">Cliquez pour voir...</div><div class="meaning-hidden" style="font-size:.9rem;margin-top:6px;">${v.meaning}</div></div>`).join('');}
+function filterVocab(c){document.querySelectorAll('.vocab-controls button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');renderVocab(c);}
+function revealAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.add('revealed'));}
+function hideAll(){document.querySelectorAll('.vocab-card').forEach(c=>c.classList.remove('revealed'));}
+
+let fcIndex=0,fcOrder=[...Array(vocabData.length).keys()];
+function updateFlashcard(){const v=vocabData[fcOrder[fcIndex]];document.getElementById('fcHanzi').textContent=v.hanzi;document.getElementById('fcPinyin').textContent=v.pinyin;document.getElementById('fcMeaning').textContent=v.meaning;document.getElementById('fcPos').textContent=v.pos;document.getElementById('fcCurrent').textContent=fcIndex+1;document.getElementById('fcTotal').textContent=fcOrder.length;document.getElementById('flashcard').classList.remove('flipped');}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');}
+function nextCard(){fcIndex=(fcIndex+1)%fcOrder.length;updateFlashcard();}
+function prevCard(){fcIndex=(fcIndex-1+fcOrder.length)%fcOrder.length;updateFlashcard();}
+function shuffleCards(){for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}fcIndex=0;updateFlashcard();}
+
+const vocabQuizData=[
+    {q:"连环画 signifie :",options:["Roman de science-fiction","Histoire en images, bande dessinée populaire chinoise","Journal illustré quotidien","Album de photographies"],correct:1},
+    {q:"单调 veut dire :",options:["Coloré, varié, dynamique","Simple, élégant, épuré","Monotone, ennuyeux, sans variété","Mystérieux, complexe"],correct:2},
+    {q:"从事 signifie :",options:["Avoir l'habitude de faire","S'adonner à, exercer (profession/activité)","Commencer à faire quelque chose","Finir de faire quelque chose"],correct:1},
+    {q:"毫无疑问 veut dire :",options:["Il est probable que","Il est douteux que","Sans aucun doute, incontestablement","Il faut vérifier si"],correct:2},
+    {q:"题材 signifie :",options:["Titre d'un livre","Auteur d'une œuvre","Thème, sujet (d'une œuvre littéraire ou artistique)","Prix d'un ouvrage"],correct:2},
+    {q:"整齐 veut dire :",options:["Désordonné, en pagaille","Ordonné, rangé, bien aligné","Petit, compact, miniature","Abîmé, usagé, en mauvais état"],correct:1},
+    {q:"凭 (préposition) signifie :",options:["Malgré, en dépit de","Sur la base de, grâce à, en s'appuyant sur","Pendant que, au moment où","Jusqu'à ce que"],correct:1},
+    {q:"押金 veut dire :",options:["Loyer mensuel","Caution, dépôt de garantie","Prix de vente","Commission du vendeur"],correct:1},
+    {q:"收藏 signifie :",options:["Vendre aux enchères","Ranger en désordre","Collectionner, garder précieusement","Exposer au public"],correct:2},
+    {q:"身材 veut dire :",options:["Âge d'une personne","Silhouette, stature, constitution physique","Niveau d'éducation","Situation professionnelle"],correct:1},
+    {q:"手续 signifie :",options:["Matériaux nécessaires","Formalités, procédure, démarches","Résultats obtenus","Méthode employée"],correct:1},
+    {q:"涨 veut dire :",options:["Diminuer, baisser, descendre","Rester stable, ne pas changer","Monter, augmenter, hausser (prix, eau)","Fondre, disparaître"],correct:2}
+];
+
+const grammarQuizData=[
+    {q:"'买不起' exprime :",options:["L'action de refuser d'acheter","L'impossibilité d'acheter (manque de moyens)","L'interdiction d'acheter","Le fait de ne pas vouloir acheter"],correct:1},
+    {q:"动词+得/不+起 — laquelle de ces formes est correcte ?",options:["吃不起（trop cher à manger）","走不起（trop cher pour marcher）","说不起（trop cher pour parler）","想不起（trop cher pour penser）"],correct:0},
+    {q:"'经得起考验' signifie :",options:["Être soumis à un test difficile","Pouvoir résister à une épreuve, tenir le coup","Ne pas vouloir être testé","Refuser de passer l'examen"],correct:1},
+    {q:"支 utilisé dans '砖头支着木头板子' est :",options:["Un classificateur pour les briques","Un verbe signifiant étayer, soutenir","Un adjectif signifiant solide","Un adverbe signifiant fermement"],correct:1},
+    {q:"'他弹第二支曲子' — 支 est ici :",options:["Un verbe signifiant jouer de la musique","Un classificateur pour les œuvres musicales","Un adverbe de temps","Un complément de résultat"],correct:1},
+    {q:"支 peut servir de classificateur pour :",options:["Des livres (册)","Des cigarettes, des objets longs et fins, des œuvres musicales","Des animaux","Des véhicules"],correct:1},
+    {q:"凭 verbe vs préposition — dans '凭票进站', 凭 est :",options:["Un verbe signifiant s'appuyer","Une préposition signifiant sur présentation de, grâce à","Un adverbe signifiant seulement","Un nom signifiant billet"],correct:1},
+    {q:"'你凭什么怀疑我？' — 凭什么 exprime ici :",options:["La raison légitime de soupçonner","Une question rhétorique : sur quelle base / de quel droit","La méthode utilisée pour enquêter","La certitude de la culpabilité"],correct:1}
+];
+
+const compQuizData=[
+    {q:"Qu'est-ce qu'un 小人书 (liánhuánhuà) ?",options:["Un roman pour adultes","Un livre de contes illustré pour enfants","Une bande dessinée en images séquentielles (histoire en images publiée sous forme de livre)","Un manuel scolaire"],correct:2},
+    {q:"Pourquoi les 小人书 étaient-ils populaires dans les années 1950-60 ?",options:["Parce qu'ils étaient très luxueux","Parce que la vie était monotone, sans internet ni dessins animés","Parce que les parents les offraient comme récompense","Parce que les écoles les imposaient comme lecture obligatoire"],correct:1},
+    {q:"Comment était construit le stand de livres décrit dans le texte ?",options:["C'était une belle boutique avec des étagères en bois verni","C'était une petite baraque avec des planches de bois brut soutenues par des briques","C'était un kiosque en métal avec des vitrines","C'était un simple stand en tissu avec des cordes"],correct:1},
+    {q:"Comment les livres étaient-ils protégés ?",options:["Ils étaient rangés dans des pochettes en plastique","Ils étaient enveloppés dans du papier kraft avec le titre écrit au pinceau","Ils étaient recouverts d'un film plastique transparent","Ils étaient enfermés dans des boîtes en bois"],correct:1},
+    {q:"Quel était le prix pour lire sur place ?",options:["1 yuan par livre","5 fen par heure","1 fen par volume (册)","Gratuit pour les enfants"],correct:2},
+    {q:"Que faisait le propriétaire quand quelqu'un empruntait un livre ?",options:["Il prenait une photo du lecteur","Il consignait le nom, l'adresse et le titre du livre dans un cahier","Il gardait la carte d'identité du lecteur","Il faisait signer un contrat de location"],correct:1},
+    {q:"Quel était le montant de la caution selon le texte ?",options:["10 fen par livre","1 yuan de dépôt","Il n'y avait pas de caution — tout reposait sur la confiance (凭信用)","5 fen par jour de retard"],correct:2},
+    {q:"Où peut-on encore trouver des 小人书 aujourd'hui ?",options:["Dans toutes les librairies chinoises","Dans les supermarchés","Dans les marchés aux puces comme 潘家园 et 护国寺 à Pékin","Dans les bibliothèques scolaires"],correct:2},
+    {q:"Qu'est-il arrivé aux 小人书 de grande qualité ?",options:["Ils ont été détruits","Ils ont été réédités en masse","Ils sont devenus des objets de collection, leur valeur a beaucoup augmenté","Ils ont été offerts aux musées gratuitement"],correct:2},
+    {q:"Quelle conclusion l'auteur tire-t-il à la fin du texte ?",options:["Les 小人书 vont connaître un renouveau grâce au numérique","Les 小人书 sont devenus un souvenir historique (历史的记忆)","Les 小人书 sont encore populaires chez les enfants","Les 小人书 sont trop chers pour être collectionnés"],correct:1}
+];
+
+function renderQuiz(data,cid,prefix){document.getElementById(cid).innerHTML=data.map((q,i)=>`<div class="quiz-question" id="${prefix}-q${i}"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options">${q.options.map((o,j)=>`<div class="quiz-option" onclick="answerQuiz('${prefix}',${i},${j})">${o}</div>`).join('')}</div></div>`).join('');}
+const quizState={vocab:{score:0,answered:0,total:12},grammar:{score:0,answered:0,total:8},comp:{score:0,answered:0,total:10}};
+function getQuizData(p){return p==='vocab'?vocabQuizData:p==='grammar'?grammarQuizData:compQuizData;}
+function answerQuiz(p,qi,oi){const d=getQuizData(p),qE=document.getElementById(`${p}-q${qi}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const opts=qE.querySelectorAll('.quiz-option'),c=d[qi].correct;opts.forEach((o,i)=>{o.classList.add('disabled');if(i===c)o.classList.add('selected-correct');if(i===oi&&i!==c)o.classList.add('selected-wrong');});qE.classList.add(oi===c?'correct':'wrong');if(oi===c)quizState[p].score++;quizState[p].answered++;updateScore(p);}
+function updateScore(p){const s=quizState[p];document.getElementById(`${p}Score`).textContent=`${s.score} / ${s.total}`;document.getElementById(`${p}ScoreBar`).style.width=`${(s.score/s.total)*100}%`;}
+function resetQuiz(p){quizState[p]={score:0,answered:0,total:quizState[p].total};updateScore(p);renderQuiz(getQuizData(p),p==='vocab'?'vocabQuizContainer':p==='grammar'?'grammarQuizContainer':'compQuizContainer',p);}
+function switchQuizTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));event.target.classList.add('active');document.getElementById(t).classList.add('active');}
+
+let selectedFillWord=null;
+function selectFillWord(el){document.querySelectorAll('.fill-chip').forEach(c=>c.classList.remove('placed'));el.classList.add('placed');selectedFillWord=el.dataset.word;}
+function placeFillWord(b){if(!selectedFillWord)return;b.textContent=selectedFillWord;b.dataset.placed=selectedFillWord;document.querySelectorAll('.fill-chip').forEach(c=>{if(c.dataset.word===selectedFillWord)c.classList.add('used');c.classList.remove('placed');});selectedFillWord=null;}
+function checkFillAnswers(){document.querySelectorAll('.fill-blank').forEach(b=>{const p=b.dataset.placed,a=b.dataset.answer;if(p===a){b.style.borderColor='var(--success)';b.style.background='#dcfce7';b.style.color='var(--success)';b.style.fontWeight='600';}else{b.style.borderColor='var(--wrong)';b.style.background='#fecaca';b.style.color='var(--wrong)';b.title=`Réponse : ${a}`;}});}
+function resetFill(){document.querySelectorAll('.fill-blank').forEach(b=>{b.textContent='___';b.dataset.placed='';b.style.borderColor='';b.style.background='';b.style.color='';b.style.fontWeight='';b.title='';});document.querySelectorAll('.fill-chip').forEach(c=>{c.classList.remove('used','placed');});selectedFillWord=null;}
+
+const choiceQuizData=[
+    {q:"他又创造了新的奥运会______。",a:"记录",b:"纪录",correct:"纪录",explain:"纪录 = record (meilleure performance sportive). Ici il s'agit d'un record olympique → 纪录. 记录 serait incorrect car il ne peut pas exprimer un record sportif."},
+    {q:"小张呢？不是安排她来做会议______吗？",a:"记录",b:"纪录",correct:"记录",explain:"记录 = la personne qui prend les notes de réunion / secrétaire de séance. 记录 peut désigner une personne ou l'action de noter → 记录. 纪录 ne peut pas désigner une personne."},
+    {q:"我很喜欢看新闻______片。",a:"记录",b:"纪录",correct:"纪录",explain:"纪录片 = documentaire (film documentaire). C'est une collocation fixe : 纪录片, jamais 记录片."},
+    {q:"甲骨文______了3000多年以前的中国历史和社会生活。",a:"记录",b:"纪录",correct:"记录",explain:"记录 verbe = consigner, témoigner de (qqch.). Les os oraculaires ont consigné / témoigné de l'histoire chinoise → 记录. 纪录 ne peut pas s'employer comme verbe."}
+];
+function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').innerHTML=choiceQuizData.map((q,i)=>`<div class="quiz-question" id="choice-q${i}" style="margin-bottom:12px;"><div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div><div class="quiz-options" style="grid-template-columns:1fr 1fr;"><div class="quiz-option" onclick="answerChoice(${i},'${q.a}')">${q.a}</div><div class="quiz-option" onclick="answerChoice(${i},'${q.b}')">${q.b}</div></div><div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div></div>`).join('');}
+function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
+
+window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
+document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderExpansion();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+</script>
+</body>
+</html>
