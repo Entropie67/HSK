@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HSK 5 — 模拟考试 H51553C</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root{
+  --primary:#7c2d12;
+  --primary-light:#9a3412;
+  --primary-dark:#431407;
+  --accent:#ea580c;
+  --gold:#f59e0b;
+  --gold-light:#fef3c7;
+  --bg:#fdfbf7;
+  --bg-warm:#fef7ec;
+  --card:#ffffff;
+  --text:#1c1917;
+  --text-light:#78716c;
+  --text-mute:#a8a29e;
+  --border:#f5e6d3;
+  --border-strong:#e7c59c;
+  --success:#16a34a;
+  --success-bg:#dcfce7;
+  --error:#dc2626;
+  --error-bg:#fee2e2;
+  --warn:#f59e0b;
+  --warn-bg:#fef3c7;
+  --info:#0ea5e9;
+  --info-bg:#e0f2fe;
+  --gradient-hero:linear-gradient(135deg,#431407 0%,#7c2d12 35%,#9a3412 70%,#ea580c 100%);
+  --shadow-sm:0 2px 6px rgba(67,20,7,0.05);
+  --shadow-md:0 6px 24px rgba(67,20,7,0.08);
+  --shadow-lg:0 12px 48px rgba(67,20,7,0.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans SC',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  min-height:100vh;
+  padding-bottom:120px;
+}
+
+/* ===== TOP STICKY BAR ===== */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(253,251,247,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:10px 20px;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.topbar-left{display:flex;align-items:center;gap:14px;}
+.back-link{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--primary);text-decoration:none;font-weight:500;font-size:0.9rem;
+  padding:6px 12px;border-radius:8px;transition:background .2s;
+}
+.back-link:hover{background:var(--bg-warm);}
+.exam-code{
+  font-family:'JetBrains Mono',monospace;font-weight:700;
+  background:var(--primary);color:white;
+  padding:5px 12px;border-radius:6px;font-size:0.85rem;letter-spacing:1px;
+}
+.topbar-center{flex:1;display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;}
+
+.timer{
+  display:flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#fef3c7,#fde68a);
+  border:2px solid var(--gold);
+  border-radius:12px;padding:6px 16px;
+}
+.timer.warning{background:linear-gradient(135deg,#fee2e2,#fecaca);border-color:var(--error);animation:pulseRed 1.5s infinite;}
+.timer.paused{background:#f5f5f4;border-color:var(--text-mute);}
+@keyframes pulseRed{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,0);}50%{box-shadow:0 0 0 6px rgba(220,38,38,0.15);}}
+.timer-icon{font-size:1.2rem;}
+.timer-display{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.05rem;color:var(--primary-dark);letter-spacing:1px;}
+.timer-label{font-size:0.7rem;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;}
+
+.mode-toggle{
+  display:flex;background:var(--bg-warm);border-radius:10px;padding:3px;border:1px solid var(--border);
+}
+.mode-btn{
+  border:none;background:transparent;padding:6px 14px;border-radius:8px;
+  font-family:inherit;font-size:0.82rem;font-weight:500;cursor:pointer;color:var(--text-light);
+  transition:all .2s;
+}
+.mode-btn.active{background:var(--primary);color:white;box-shadow:var(--shadow-sm);}
+
+.topbar-right{display:flex;gap:10px;align-items:center;}
+.icon-btn{
+  width:38px;height:38px;border-radius:10px;
+  background:var(--card);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:1.05rem;transition:all .2s;
+}
+.icon-btn:hover{border-color:var(--primary);color:var(--primary);}
+
+/* ===== HERO ===== */
+.hero{
+  background:var(--gradient-hero);
+  color:white;padding:60px 20px 80px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-30%;right:-15%;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(255,255,255,0.08),transparent 70%);
+  border-radius:50%;
+}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:50px;
+  background:var(--bg);clip-path:ellipse(60% 100% at 50% 100%);
+}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.hero-badge{
+  display:inline-block;background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.2);padding:6px 16px;border-radius:20px;
+  font-size:0.78rem;font-weight:500;letter-spacing:1.5px;margin-bottom:18px;
+}
+.hero h1{
+  font-family:'Noto Serif SC',serif;font-size:3rem;font-weight:900;
+  margin-bottom:8px;text-shadow:0 2px 12px rgba(0,0,0,0.25);
+}
+.hero .hero-sub{font-size:1.1rem;opacity:0.85;font-weight:300;margin-bottom:30px;}
+
+.hero-stats{display:flex;gap:14px;flex-wrap:wrap;}
+.hs-card{
+  background:rgba(255,255,255,0.13);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:14px;padding:14px 22px;flex:1;min-width:140px;
+}
+.hs-num{font-size:1.6rem;font-weight:900;font-family:'Noto Serif SC',serif;}
+.hs-label{font-size:0.78rem;opacity:0.8;text-transform:uppercase;letter-spacing:1.5px;margin-top:2px;}
+
+/* ===== AUDIO BAR ===== */
+.audio-bar{
+  position:sticky;top:60px;z-index:90;
+  background:linear-gradient(135deg,#7c2d12,#9a3412);
+  color:white;padding:14px 20px;display:none;
+  box-shadow:0 4px 20px rgba(67,20,7,0.25);
+}
+.audio-bar.visible{display:block;animation:slideDown .3s;}
+@keyframes slideDown{from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.audio-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.audio-icon{font-size:1.5rem;}
+.audio-title{font-weight:600;font-size:0.95rem;}
+.audio-title .small{display:block;font-weight:400;font-size:0.78rem;opacity:0.75;margin-top:2px;}
+.audio-controls{flex:1;display:flex;align-items:center;gap:12px;min-width:280px;}
+.audio-controls audio{flex:1;height:42px;}
+.audio-controls audio::-webkit-media-controls-panel{background:rgba(255,255,255,0.92);}
+.audio-speed{
+  display:flex;background:rgba(255,255,255,0.15);border-radius:8px;padding:3px;
+}
+.spd-btn{
+  border:none;background:transparent;color:white;padding:5px 10px;
+  border-radius:6px;font-size:0.78rem;cursor:pointer;font-family:inherit;font-weight:600;
+}
+.spd-btn.active{background:white;color:var(--primary-dark);}
+
+/* ===== CONTENT WRAPPER ===== */
+.content{max-width:1100px;margin:-50px auto 0;padding:0 20px;position:relative;z-index:2;}
+
+/* ===== SECTION TABS ===== */
+.section-tabs{
+  background:var(--card);border-radius:18px;padding:12px;
+  display:flex;gap:8px;box-shadow:var(--shadow-md);margin-bottom:24px;
+  overflow-x:auto;
+}
+.sec-tab{
+  flex:1;min-width:200px;
+  border:none;background:transparent;padding:14px 20px;
+  border-radius:12px;cursor:pointer;font-family:inherit;
+  text-align:left;transition:all .25s;color:var(--text);
+}
+.sec-tab:hover{background:var(--bg-warm);}
+.sec-tab.active{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;box-shadow:var(--shadow-md);}
+.sec-tab .st-cn{font-family:'Noto Serif SC',serif;font-weight:700;font-size:1.05rem;display:block;}
+.sec-tab .st-fr{font-size:0.78rem;opacity:0.85;font-weight:400;display:block;margin-top:1px;}
+.sec-tab .st-prog{
+  display:flex;align-items:center;gap:6px;margin-top:8px;
+  font-size:0.72rem;font-weight:500;
+}
+.st-bar{flex:1;height:4px;border-radius:2px;background:rgba(0,0,0,0.08);overflow:hidden;}
+.sec-tab.active .st-bar{background:rgba(255,255,255,0.25);}
+.st-bar-fill{height:100%;background:var(--success);transition:width .3s;border-radius:2px;}
+.sec-tab.active .st-bar-fill{background:white;}
+
+/* ===== LAYOUT ===== */
+.exam-layout{
+  display:grid;grid-template-columns:1fr 280px;gap:24px;align-items:start;
+}
+@media(max-width:900px){.exam-layout{grid-template-columns:1fr;}}
+
+/* ===== QUESTION CARD ===== */
+.question-card{
+  background:var(--card);border-radius:18px;padding:32px;
+  box-shadow:var(--shadow-md);border:1px solid var(--border);
+}
+.part-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:18px;margin-bottom:24px;border-bottom:2px dashed var(--border);
+}
+.part-title{
+  font-family:'Noto Serif SC',serif;font-size:1.3rem;font-weight:700;color:var(--primary);
+}
+.part-desc{color:var(--text-light);font-size:0.85rem;margin-top:3px;}
+.part-meta{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--text-light);}
+.part-chip{
+  background:var(--bg-warm);border:1px solid var(--border);padding:4px 10px;border-radius:8px;
+  font-size:0.78rem;font-weight:500;
+}
+
+.passage{
+  background:var(--bg-warm);border-left:4px solid var(--gold);
+  border-radius:8px;padding:18px 22px;margin-bottom:22px;
+  font-family:'Noto Serif SC',serif;font-size:1.02rem;line-height:1.95;
+  color:#3d2817;white-space:pre-wrap;
+}
+.passage .blank{
+  display:inline-block;min-width:70px;padding:0 8px;margin:0 4px;
+  border-bottom:2px solid var(--primary);font-weight:700;color:var(--primary);
+  text-align:center;
+}
+
+.q-block{margin-bottom:18px;padding:20px;border-radius:14px;background:#fafaf7;border:1px solid var(--border);}
+.q-block.current{background:linear-gradient(135deg,#fff7ed,#fef3c7);border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,158,11,0.15);}
+.q-num-wrap{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.q-num{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--primary);color:white;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-family:'JetBrains Mono',monospace;font-size:0.95rem;
+  flex-shrink:0;
+}
+.q-stem{font-size:1.02rem;color:var(--text);font-weight:500;flex:1;}
+.q-stem.empty{color:var(--text-mute);font-style:italic;font-weight:400;font-size:0.92rem;}
+
+.options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:600px){.options{grid-template-columns:1fr;}}
+.opt{
+  border:2px solid var(--border);background:var(--card);
+  border-radius:12px;padding:14px 18px;
+  display:flex;align-items:center;gap:14px;cursor:pointer;
+  transition:all .2s;font-family:inherit;text-align:left;
+  font-size:0.96rem;color:var(--text);
+}
+.opt:hover{border-color:var(--primary-light);background:var(--bg-warm);}
+.opt.selected{border-color:var(--primary);background:linear-gradient(135deg,#fff7ed,#fed7aa);box-shadow:var(--shadow-sm);}
+.opt-letter{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--bg-warm);color:var(--primary);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-family:'JetBrains Mono',monospace;flex-shrink:0;
+  border:2px solid var(--border);
+  transition:all .2s;
+}
+.opt.selected .opt-letter{background:var(--primary);color:white;border-color:var(--primary);}
+.opt-text{flex:1;}
+
+/* Result feedback (only in practice mode after answer or after submit) */
+.opt.correct{border-color:var(--success);background:var(--success-bg);}
+.opt.correct .opt-letter{background:var(--success);color:white;border-color:var(--success);}
+.opt.wrong{border-color:var(--error);background:var(--error-bg);}
+.opt.wrong .opt-letter{background:var(--error);color:white;border-color:var(--error);}
+
+.feedback{
+  margin-top:14px;padding:12px 16px;border-radius:10px;font-size:0.9rem;
+  display:none;align-items:flex-start;gap:10px;
+}
+.feedback.show{display:flex;}
+.feedback.ok{background:var(--success-bg);color:#166534;}
+.feedback.bad{background:var(--error-bg);color:#991b1b;}
+
+/* Transcript reveal */
+.transcript-toggle{
+  margin-top:12px;background:none;border:1px dashed var(--border-strong);
+  padding:8px 14px;border-radius:8px;font-family:inherit;cursor:pointer;
+  color:var(--primary);font-size:0.82rem;font-weight:500;
+  transition:all .2s;
+}
+.transcript-toggle:hover{background:var(--bg-warm);}
+.transcript-box{
+  display:none;margin-top:10px;padding:14px 18px;
+  background:#fffbeb;border-left:3px solid var(--gold);border-radius:8px;
+  font-family:'Noto Serif SC',serif;font-size:0.94rem;line-height:1.85;color:#3d2817;
+}
+.transcript-box.show{display:block;}
+.transcript-box .role{font-weight:700;color:var(--primary);margin-right:6px;}
+
+/* ===== WRITING - SENTENCE REORDER ===== */
+.reorder-wrap{margin-top:14px;}
+.reorder-words{
+  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;
+  padding:14px;background:var(--bg-warm);border-radius:10px;border:1px dashed var(--border-strong);
+  min-height:60px;
+}
+.word-chip{
+  border:2px solid var(--border-strong);background:var(--card);
+  padding:8px 14px;border-radius:8px;cursor:pointer;
+  font-family:'Noto Serif SC',serif;font-size:1rem;font-weight:500;color:var(--primary-dark);
+  transition:all .2s;user-select:none;
+}
+.word-chip:hover{border-color:var(--primary);background:var(--bg-warm);transform:translateY(-1px);}
+.word-chip.placed{opacity:0.4;pointer-events:none;background:var(--bg);}
+.reorder-answer{
+  display:flex;flex-wrap:wrap;gap:8px;
+  padding:14px;background:white;border-radius:10px;border:2px solid var(--primary);
+  min-height:60px;align-items:center;
+}
+.reorder-answer:empty::before{
+  content:"Cliquez sur les mots ci-dessous pour les placer ici";
+  color:var(--text-mute);font-style:italic;font-size:0.88rem;
+}
+.placed-word{
+  background:var(--primary);color:white;padding:8px 14px;border-radius:8px;
+  font-family:'Noto Serif SC',serif;font-size:1rem;font-weight:500;cursor:pointer;
+  transition:all .2s;display:inline-flex;align-items:center;gap:6px;
+}
+.placed-word:hover{background:var(--accent);}
+.placed-word::after{content:"×";opacity:0.7;font-size:1.1rem;}
+.reorder-actions{margin-top:12px;display:flex;gap:10px;}
+.reorder-actions button{
+  border:1px solid var(--border);background:var(--card);
+  padding:7px 14px;border-radius:8px;cursor:pointer;font-family:inherit;
+  font-size:0.85rem;color:var(--text-light);transition:all .2s;
+}
+.reorder-actions button:hover{border-color:var(--primary);color:var(--primary);}
+.model-answer{
+  margin-top:12px;padding:12px 16px;background:var(--success-bg);border-radius:8px;
+  font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#166534;
+  display:none;
+}
+.model-answer.show{display:block;}
+.model-answer .lbl{font-weight:700;display:block;margin-bottom:4px;}
+
+/* ===== WRITING - ESSAY ===== */
+.essay-prompt{
+  background:var(--info-bg);border-left:4px solid var(--info);
+  border-radius:8px;padding:14px 18px;margin-bottom:14px;font-size:0.95rem;color:#0c4a6e;
+}
+.essay-prompt strong{color:#0369a1;}
+.essay-words{
+  display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;
+}
+.essay-words .ew{
+  background:white;border:2px solid var(--info);color:var(--info);
+  padding:6px 14px;border-radius:8px;font-family:'Noto Serif SC',serif;
+  font-weight:700;font-size:1rem;
+}
+.essay-img{
+  width:100%;max-width:340px;background:linear-gradient(135deg,#fef3c7,#fed7aa);
+  border-radius:12px;padding:30px;text-align:center;margin:14px 0;
+  font-size:0.9rem;color:var(--text-light);
+  border:2px dashed var(--gold);
+}
+.essay-textarea{
+  width:100%;min-height:200px;padding:16px;
+  border:2px solid var(--border);border-radius:12px;
+  font-family:'Noto Serif SC',serif;font-size:1.02rem;line-height:1.85;
+  resize:vertical;transition:border-color .2s;
+}
+.essay-textarea:focus{outline:none;border-color:var(--primary);}
+.essay-counter{
+  margin-top:8px;text-align:right;font-size:0.82rem;color:var(--text-light);
+  font-family:'JetBrains Mono',monospace;
+}
+.essay-counter.ok{color:var(--success);font-weight:600;}
+
+/* ===== SIDEBAR ===== */
+.sidebar{position:sticky;top:80px;}
+.sidebar-card{
+  background:var(--card);border-radius:18px;padding:20px;
+  box-shadow:var(--shadow-md);border:1px solid var(--border);margin-bottom:16px;
+}
+.sb-title{
+  font-family:'Noto Serif SC',serif;font-weight:700;font-size:1rem;
+  color:var(--primary);margin-bottom:12px;display:flex;align-items:center;gap:8px;
+  padding-bottom:10px;border-bottom:1px solid var(--border);
+}
+.sb-title .sb-count{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--text-light);font-weight:500;}
+
+.q-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;}
+.q-grid .q-cell{
+  aspect-ratio:1;border-radius:7px;border:1.5px solid var(--border);
+  background:var(--card);font-family:'JetBrains Mono',monospace;font-size:0.78rem;font-weight:600;
+  color:var(--text-light);cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;
+}
+.q-cell:hover{border-color:var(--primary);color:var(--primary);transform:scale(1.06);}
+.q-cell.answered{background:var(--success-bg);border-color:var(--success);color:#166534;}
+.q-cell.flagged{background:var(--warn-bg);border-color:var(--warn);color:#92400e;}
+.q-cell.flagged.answered{background:linear-gradient(135deg,var(--warn-bg) 50%,var(--success-bg) 50%);}
+.q-cell.current{outline:2px solid var(--primary);outline-offset:1px;background:var(--primary)!important;color:white!important;border-color:var(--primary)!important;}
+.q-cell.correct-rev{background:var(--success);color:white;border-color:var(--success);}
+.q-cell.wrong-rev{background:var(--error);color:white;border-color:var(--error);}
+
+.q-grid-section-label{
+  grid-column:span 5;font-size:0.75rem;font-weight:700;color:var(--text-light);
+  text-transform:uppercase;letter-spacing:1px;margin-top:10px;padding-bottom:4px;
+  border-bottom:1px dashed var(--border);
+}
+.q-grid-section-label:first-child{margin-top:0;}
+
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:0.74rem;color:var(--text-light);margin-top:14px;padding-top:12px;border-top:1px solid var(--border);}
+.legend-item{display:flex;align-items:center;gap:5px;}
+.legend-dot{width:10px;height:10px;border-radius:3px;border:1.5px solid var(--border);}
+.legend-dot.lg-answered{background:var(--success-bg);border-color:var(--success);}
+.legend-dot.lg-flag{background:var(--warn-bg);border-color:var(--warn);}
+.legend-dot.lg-cur{background:var(--primary);border-color:var(--primary);}
+
+/* ===== NAV BUTTONS ===== */
+.nav-buttons{
+  display:flex;gap:10px;margin-top:24px;padding-top:20px;
+  border-top:1px solid var(--border);
+}
+.nav-btn{
+  flex:1;border:none;padding:14px 20px;border-radius:12px;
+  font-family:inherit;font-weight:600;font-size:0.95rem;cursor:pointer;
+  transition:all .2s;
+}
+.nav-btn.prev{background:var(--bg-warm);color:var(--text);}
+.nav-btn.prev:hover{background:var(--border);}
+.nav-btn.next{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;}
+.nav-btn.next:hover{box-shadow:var(--shadow-md);transform:translateY(-1px);}
+.nav-btn.flag{flex:0 0 auto;background:var(--warn-bg);color:#92400e;border:1px solid var(--warn);}
+.nav-btn.flag.active{background:var(--warn);color:white;}
+.nav-btn:disabled{opacity:0.4;cursor:not-allowed;}
+
+/* ===== BOTTOM ACTION BAR ===== */
+.action-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);
+  border-top:1px solid var(--border);
+  padding:14px 20px;display:flex;align-items:center;gap:14px;
+  box-shadow:0 -4px 20px rgba(0,0,0,0.05);
+}
+.ab-progress{flex:1;display:flex;align-items:center;gap:14px;}
+.ab-bar{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;max-width:400px;}
+.ab-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:4px;transition:width .3s;}
+.ab-text{font-size:0.85rem;color:var(--text-light);font-family:'JetBrains Mono',monospace;}
+.submit-btn{
+  background:linear-gradient(135deg,var(--success),#15803d);color:white;
+  border:none;padding:12px 28px;border-radius:12px;
+  font-family:inherit;font-weight:700;font-size:0.95rem;cursor:pointer;
+  display:flex;align-items:center;gap:8px;transition:all .2s;
+  box-shadow:0 4px 14px rgba(22,163,74,0.3);
+}
+.submit-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(22,163,74,0.4);}
+
+/* ===== MODAL ===== */
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(28,25,23,0.6);
+  z-index:200;display:none;align-items:center;justify-content:center;
+  padding:20px;backdrop-filter:blur(4px);
+}
+.modal-backdrop.show{display:flex;animation:fadeIn .2s;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.modal{
+  background:var(--card);border-radius:20px;padding:36px;
+  max-width:560px;width:100%;max-height:90vh;overflow-y:auto;
+  box-shadow:var(--shadow-lg);
+  animation:slideUp .25s;
+}
+@keyframes slideUp{from{transform:translateY(20px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.modal h2{font-family:'Noto Serif SC',serif;color:var(--primary);margin-bottom:14px;font-size:1.5rem;}
+.modal p{color:var(--text-light);margin-bottom:20px;}
+.modal-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:24px;flex-wrap:wrap;}
+.modal-actions button{
+  border:none;padding:12px 24px;border-radius:10px;
+  font-family:inherit;font-weight:600;font-size:0.92rem;cursor:pointer;transition:all .2s;
+}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:white;}
+.btn-primary:hover{box-shadow:var(--shadow-md);}
+.btn-secondary{background:var(--bg-warm);color:var(--text);}
+.btn-secondary:hover{background:var(--border);}
+.btn-danger{background:var(--error);color:white;}
+
+/* Score modal */
+.score-summary{
+  background:linear-gradient(135deg,var(--bg-warm),#fef3c7);
+  border-radius:14px;padding:24px;margin-bottom:20px;text-align:center;
+}
+.score-big{font-size:3.5rem;font-weight:900;color:var(--primary);font-family:'Noto Serif SC',serif;line-height:1;}
+.score-big .denom{font-size:1.5rem;color:var(--text-light);font-weight:400;}
+.score-label{margin-top:6px;color:var(--text-light);font-size:0.9rem;}
+.score-emoji{font-size:2.5rem;margin-bottom:8px;}
+
+.score-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;}
+.sb-item{background:white;border-radius:10px;padding:12px;text-align:center;}
+.sb-item .sb-cn{font-family:'Noto Serif SC',serif;font-weight:700;color:var(--primary);font-size:0.95rem;}
+.sb-item .sb-score{font-size:1.4rem;font-weight:900;color:var(--text);font-family:'JetBrains Mono',monospace;margin-top:4px;}
+.sb-item .sb-pct{font-size:0.78rem;color:var(--text-light);margin-top:2px;}
+
+/* ===== START SCREEN ===== */
+.start-screen{
+  background:var(--card);border-radius:18px;padding:40px;
+  box-shadow:var(--shadow-md);border:1px solid var(--border);
+  margin-bottom:24px;
+}
+.ss-title{
+  font-family:'Noto Serif SC',serif;font-size:1.6rem;color:var(--primary);margin-bottom:8px;
+}
+.ss-sub{color:var(--text-light);margin-bottom:24px;}
+.ss-info{
+  background:var(--bg-warm);border-radius:12px;padding:20px;margin-bottom:24px;
+}
+.ss-info ul{list-style:none;padding:0;}
+.ss-info li{padding:8px 0;border-bottom:1px dashed var(--border);display:flex;justify-content:space-between;align-items:center;font-size:0.95rem;}
+.ss-info li:last-child{border-bottom:none;}
+.ss-info li strong{font-family:'Noto Serif SC',serif;color:var(--primary-dark);}
+.ss-info li .v{font-family:'JetBrains Mono',monospace;color:var(--text-light);font-size:0.88rem;}
+
+.mode-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+@media(max-width:600px){.mode-cards{grid-template-columns:1fr;}}
+.mc{
+  border:2px solid var(--border);border-radius:14px;padding:22px;
+  cursor:pointer;transition:all .25s;background:white;
+}
+.mc:hover{border-color:var(--primary-light);transform:translateY(-2px);box-shadow:var(--shadow-md);}
+.mc.selected{border-color:var(--primary);background:linear-gradient(135deg,#fff7ed,#fef3c7);box-shadow:var(--shadow-md);}
+.mc-icon{font-size:2rem;margin-bottom:10px;}
+.mc-name{font-family:'Noto Serif SC',serif;font-weight:700;font-size:1.15rem;color:var(--primary-dark);margin-bottom:6px;}
+.mc-desc{font-size:0.86rem;color:var(--text-light);line-height:1.6;}
+
+.start-btn{
+  display:block;width:100%;padding:18px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));color:white;
+  border:none;border-radius:14px;font-family:inherit;font-weight:700;
+  font-size:1.1rem;cursor:pointer;transition:all .2s;
+  box-shadow:0 4px 16px rgba(124,45,18,0.25);
+}
+.start-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,45,18,0.35);}
+
+.resume-banner{
+  background:linear-gradient(135deg,#dbeafe,#bfdbfe);border:1px solid #60a5fa;
+  border-radius:12px;padding:14px 18px;margin-bottom:18px;
+  display:flex;align-items:center;gap:12px;
+}
+.resume-banner .rb-text{flex:1;color:#1e3a8a;font-size:0.92rem;}
+.resume-banner button{
+  border:none;padding:8px 16px;border-radius:8px;
+  font-family:inherit;font-weight:600;font-size:0.85rem;cursor:pointer;
+}
+.resume-banner .rb-yes{background:#1e40af;color:white;}
+.resume-banner .rb-no{background:white;color:#1e3a8a;border:1px solid #60a5fa;}
+
+/* Hide views */
+.view{display:none;}
+.view.active{display:block;}
+
+@media(max-width:700px){
+  .hero h1{font-size:2rem;}
+  .question-card{padding:22px 18px;}
+  .topbar{padding:8px 12px;gap:8px;}
+  .topbar-center{order:3;flex-basis:100%;justify-content:flex-start;}
+  .timer{padding:5px 12px;}
+  .timer-display{font-size:0.95rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <a class="back-link" href="../index.html">← Examens</a>
+    <span class="exam-code">H51553C</span>
+  </div>
+  <div class="topbar-center" id="topbarCenter" style="display:none;">
+    <div class="timer" id="timer">
+      <span class="timer-icon">⏱</span>
+      <div>
+        <div class="timer-label" id="timerLabel">Temps écoulé</div>
+        <div class="timer-display" id="timerDisplay">00:00:00</div>
+      </div>
+    </div>
+    <div class="mode-toggle">
+      <button class="mode-btn" id="modeSimBtn" onclick="setMode('sim')">🎯 Examen</button>
+      <button class="mode-btn" id="modePracBtn" onclick="setMode('prac')">📚 Pratique</button>
+    </div>
+  </div>
+  <div class="topbar-right" id="topbarRight" style="display:none;">
+    <button class="icon-btn" title="Pause" onclick="togglePause()" id="pauseBtn">⏸</button>
+    <button class="icon-btn" title="Réinitialiser" onclick="confirmReset()">↺</button>
+  </div>
+</div>
+
+<!-- AUDIO BAR (sticky, listening section only) -->
+<div class="audio-bar" id="audioBar">
+  <div class="audio-inner">
+    <span class="audio-icon">🎧</span>
+    <div class="audio-title">
+      听力材料
+      <span class="small">Audio officiel · ~30 min · Lecture continue de Q1 à Q45</span>
+    </div>
+    <div class="audio-controls">
+      <audio id="audioEl" controls preload="metadata">
+        <source src="H51553C.mp3" type="audio/mpeg">
+      </audio>
+      <div class="audio-speed">
+        <button class="spd-btn" onclick="setSpeed(0.75,this)">0.75×</button>
+        <button class="spd-btn active" onclick="setSpeed(1,this)">1×</button>
+        <button class="spd-btn" onclick="setSpeed(1.25,this)">1.25×</button>
+        <button class="spd-btn" onclick="setSpeed(1.5,this)">1.5×</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-inner">
+    <span class="hero-badge">🇨🇳 新汉语水平考试 · NIVEAU 5</span>
+    <h1>模拟考试 H51553C</h1>
+    <p class="hero-sub">Examen blanc complet HSK 5 — 听力 · 阅读 · 书写 · audio officiel inclus</p>
+    <div class="hero-stats">
+      <div class="hs-card"><div class="hs-num">100</div><div class="hs-label">Questions</div></div>
+      <div class="hs-card"><div class="hs-num">125 min</div><div class="hs-label">Durée totale</div></div>
+      <div class="hs-card"><div class="hs-num">3</div><div class="hs-label">Sections</div></div>
+      <div class="hs-card"><div class="hs-num">300</div><div class="hs-label">Points (180=réussite)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- ========= START SCREEN ========= -->
+  <div class="view active" id="startView">
+    <div id="resumeWrap"></div>
+    <div class="start-screen">
+      <h2 class="ss-title">Bienvenue dans votre examen blanc</h2>
+      <p class="ss-sub">Préparez-vous comme le jour J — ou exercez-vous question par question avec correction immédiate.</p>
+
+      <div class="ss-info">
+        <ul>
+          <li><strong>一、听力 Compréhension orale</strong> <span class="v">45 questions · ~30 min · audio</span></li>
+          <li><strong>二、阅读 Compréhension écrite</strong> <span class="v">45 questions · 45 min</span></li>
+          <li><strong>三、书写 Expression écrite</strong> <span class="v">10 questions · 40 min</span></li>
+          <li><strong>Total</strong> <span class="v">100 questions · ~125 min · 300 points</span></li>
+        </ul>
+      </div>
+
+      <h3 style="font-family:'Noto Serif SC',serif;color:var(--primary);margin-bottom:14px;font-size:1.15rem;">Choisissez votre mode</h3>
+      <div class="mode-cards">
+        <div class="mc selected" id="mcSim" onclick="selectMode('sim')">
+          <div class="mc-icon">🎯</div>
+          <div class="mc-name">Mode Examen</div>
+          <div class="mc-desc">Conditions réelles : chronomètre de 125 min, pas de feedback, score final à la soumission. Recommandé pour s'auto-évaluer.</div>
+        </div>
+        <div class="mc" id="mcPrac" onclick="selectMode('prac')">
+          <div class="mc-icon">📚</div>
+          <div class="mc-name">Mode Pratique</div>
+          <div class="mc-desc">Pas de limite de temps. Correction immédiate dès qu'une réponse est cochée, transcript révélable. Idéal pour apprendre.</div>
+        </div>
+      </div>
+
+      <button class="start-btn" onclick="startExam()">Commencer l'examen →</button>
+    </div>
+  </div>
+
+  <!-- ========= EXAM VIEW ========= -->
+  <div class="view" id="examView">
+    <div class="section-tabs" id="secTabs"></div>
+    <div class="exam-layout">
+      <div class="question-card" id="questionCard"></div>
+      <div class="sidebar">
+        <div class="sidebar-card">
+          <div class="sb-title">📋 Plan de réponses <span class="sb-count" id="answeredCount">0/100</span></div>
+          <div class="q-grid" id="qGrid"></div>
+          <div class="legend">
+            <div class="legend-item"><span class="legend-dot lg-answered"></span>Répondu</div>
+            <div class="legend-item"><span class="legend-dot lg-flag"></span>Marqué</div>
+            <div class="legend-item"><span class="legend-dot lg-cur"></span>Actuel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= RESULTS VIEW ========= -->
+  <div class="view" id="resultsView"></div>
+
+</div>
+
+<!-- ACTION BAR (bottom, only during exam) -->
+<div class="action-bar" id="actionBar" style="display:none;">
+  <div class="ab-progress">
+    <div class="ab-bar"><div class="ab-fill" id="abFill" style="width:0%"></div></div>
+    <div class="ab-text" id="abText">0 / 100</div>
+  </div>
+  <button class="submit-btn" onclick="confirmSubmit()">📤 Soumettre l'examen</button>
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+/* ============================================================
+   HSK 5 EXAM DATA — H51553C
+   ============================================================ */
+
+const EXAM = {
+  code: "H51553C",
+  audioFile: "H51553C.mp3",
+  totalDuration: 125 * 60, // seconds
+  sections: [
+    {
+      id:"listening", cn:"一、听力", fr:"Compréhension orale", icon:"🎧", duration:30*60,
+      parts:[
+        {
+          id:"L1", title:"第一部分", desc:"短对话 — 1 question par dialogue (Q1-20)",
+          range:[1,20]
+        },
+        {
+          id:"L2", title:"第二部分", desc:"长对话 + 短文 — Q21-30 dialogues, Q31-45 passages",
+          range:[21,45]
+        }
+      ]
+    },
+    {
+      id:"reading", cn:"二、阅读", fr:"Compréhension écrite", icon:"📖", duration:45*60,
+      parts:[
+        {id:"R1", title:"第一部分", desc:"Cloze — choisir le mot manquant (Q46-60)", range:[46,60]},
+        {id:"R2", title:"第二部分", desc:"Court texte + énoncé conforme (Q61-70)", range:[61,70]},
+        {id:"R3", title:"第三部分", desc:"Long texte + 3-4 questions (Q71-90)", range:[71,90]}
+      ]
+    },
+    {
+      id:"writing", cn:"三、书写", fr:"Expression écrite", icon:"✍", duration:40*60,
+      parts:[
+        {id:"W1", title:"第一部分", desc:"Remettre les mots dans l'ordre (Q91-98)", range:[91,98]},
+        {id:"W2", title:"第二部分", desc:"Rédaction (Q99-100, ~80 caractères)", range:[99,100]}
+      ]
+    }
+  ]
+};
+
+/* ---- Listening transcripts: short dialogues Q1-20 ---- */
+const LISTEN_DIALOGUES = {
+  1:{f:"你们的产品确实挺好的，只是价钱上能不能再便宜些？",m:"你们想要多少？如果数量多的话，价格当然可以再商量。",q:"男的是什么意思？"},
+  2:{m:"今天是星期三吧？差点儿忘了今天下午还要开会。",f:"多亏你提醒，要不我也忘了。",q:"从对话中可以知道什么？"},
+  3:{f:"担任执行总裁？我恐怕不行吧？",m:"你别推辞了，这是公司对你的信任，也是对你能力的肯定。",q:"关于女的，可以知道什么？"},
+  4:{m:"下午的讲座去不了了，你能帮我录一下音吗？",f:"没问题。但你不去听，太可惜了。",q:"女的为什么说可惜？"},
+  5:{f:"我的电脑速度特别慢，是不是中病毒了？",m:"有可能，我检查一下看看。",q:"他们在谈什么？"},
+  6:{m:"你前几天去应聘的那家出版社有没有消息？",f:"暂时还没有，他们说国庆节后会打电话通知我。",q:"关于女的，可以知道什么？"},
+  7:{f:"你知道\"虎头蛇尾\"这个成语是什么意思吗？",m:"知道，就是形容一个人做事情有始无终，不能坚持下去。",q:"\"虎头蛇尾\"形容人做事怎么样？"},
+  8:{m:"你回公寓等我吧，我先去银行取点儿钱。我们一会儿去楼下的餐厅吃饭。",f:"公寓附近就有取款机，何必去银行呢。",q:"女的是什么意思？"},
+  9:{f:"您觉得这个方案怎么样？",m:"我很满意，但我们还得征求一下投资方的意见。",q:"这个方案需要征求谁的意见？"},
+  10:{m:"服务员，你们这儿有刀叉吗？他不会用筷子。",f:"抱歉，我们这儿是中餐厅，没有刀叉，不好意思。",q:"男的想要什么？"},
+  11:{f:"今年流行短发，我想把头发剪短了。",m:"好的，我先帮您设计一下。",q:"男的最可能是做什么的？"},
+  12:{m:"请问，报名时要带身份证吗？",f:"不用，您只要带身份证复印件就可以，要两份。",q:"报名时需要带什么？"},
+  13:{f:"糟糕，我把行李箱的密码忘记了。",m:"你是越来越糊涂了。别着急，再想想，是不是你的生日？",q:"女的怎么了？"},
+  14:{m:"你看新闻了吗？从明天开始汽油又要涨价了。",f:"难怪今天加油站又排起了很长的车队。",q:"根据对话，可以知道什么？"},
+  15:{f:"一年中你有五六个月在外地跑，真是太辛苦了。",m:"还行，可以接触、采访各种各样的人，也挺有意思的。",q:"男的最可能是做什么的？"},
+  16:{m:"快点儿，换到八频道去，《交换空间》马上就开始了。",f:"还有十五分钟才九点，等看完我的电视剧也来得及。",q:"关于女的，可以知道什么？"},
+  17:{f:"听说你戒烟了？真让人佩服。我丈夫一直想戒，到现在都没戒掉。",m:"其实很简单，关键就看他有没有下决心。",q:"关于男的，下列哪项正确？"},
+  18:{m:"这些建筑物已经有上百年的历史了，到现在依然保存完好。",f:"规模这么大，居然保存得这么好，真了不起。",q:"关于这些建筑，可以知道什么？"},
+  19:{f:"你的那篇论文写得怎么样了？",m:"刚写完，正想请你帮我看看有什么毛病，给我提提修改意见。",q:"男的想请女的做什么？"},
+  20:{m:"把这个纸箱子扔了吧，放在这里太占地方。",f:"别扔，我有用，你先放阳台上吧。",q:"女的要怎么处理那个纸箱子？"}
+};
+
+/* Long dialogues Q21-30 */
+const LISTEN_LONG = {
+  21:[["女","喂？你最近是不是常去打排球？"],["男","你怎么知道的？"],["女","这几天我路过操场，有两次看到你在那儿打排球。"],["男","怪不得，你什么时候有空，我们一起去打好不好？"],["问","女的是怎么知道的？"]],
+  22:[["男","这些花篮都是你亲手做的？"],["女","是啊，我平时喜欢做点儿小手工，装饰一下家里。"],["男","你真厉害，你可以开一家小店，专门卖你的手工制品。"],["女","现在工作忙，只能作为业余爱好了。"],["问","关于女的，下列哪项正确？"]],
+  23:[["女","我的登机牌呢？在你那儿吗？"],["男","没有啊，刚才你要自己拿着。"],["女","坏了，找不到了，不会是刚才买饮料时掉了吧？"],["男","你真粗心，快回去找找，一会儿就要登机了。"],["问","男的为什么说女的粗心？"]],
+  24:[["男","我下午给你打电话，你怎么一直关机呢？"],["女","别提了，我昨晚才充的电，今早到单位就没电了，也不知道是不是手机出了问题。"],["男","也有可能是电池的毛病，你换块儿新电池试试。"],["女","好吧。"],["问","男的有什么建议？"]],
+  25:[["女","真的是你啊？刚才我差点儿没认出来。"],["男","我也没想到是你，太意外了，竟然在这里碰到你。"],["女","你来办签证是去留学吗？"],["男","不是，我是去旅游。"],["问","关于男的，可以知道什么？"]],
+  26:[["男","听说你扭到腰了，医生怎么说？"],["女","他说只要多休息，不做剧烈运动，很快就没事了。"],["男","那下礼拜的运动会你还能参加吗？"],["女","不能了，教练已经让小李代替我参赛了。"],["问","女的怎么了？"]],
+  27:[["女","你好，是物业吧？我们办公室的空调坏了，麻烦你们过来看一下。"],["男","好的，您在几楼？"],["女","十八层，销售部。"],["男","好，我们马上派人过去。"],["问","哪儿的空调坏了？"]],
+  28:[["男","趁着这几天休息我们去看看房子吧？"],["女","你想看哪儿的房子？"],["男","我们去郊区看看？环境好，价格也相对便宜，反正现在交通方便。"],["女","有道理，那我们去看看。"],["问","他们打算去哪儿看房子？"]],
+  29:[["女","一共四百五，您刷卡还是付现金？"],["男","付现金，麻烦你给我开一张发票。"],["女","好的，抬头怎么写？"],["男","你就按照这张名片上的公司名称开。"],["问","男的正在做什么？"]],
+  30:[["男","我们想去云南放松放松，所以不希望时间安排得太紧。"],["女","您放心，我们会为您考虑这一点的。"],["男","具体时间，我回去跟太太商量一下再告诉你们。"],["女","好的，您决定了，随时都可以给我们打电话，这是我的名片。"],["问","女的最可能在哪儿工作？"]]
+};
+
+/* Listening passages Q31-45 */
+const LISTEN_PASSAGES = {
+  "31-32":{
+    text:"亲爱的旅客朋友们，你们好！欢迎乘坐本次列车。由于前方江苏省部分地区出现暴雨天气，出于安全考虑，列车将减速运行，预计将晚点一小时。对于列车晚点给您带来的不便，我们深表歉意。列车在济南西站停靠后，我们将为每位旅客免费发放矿泉水及零食。如果您还有其他需要，请告知乘务员，我们将竭诚为您服务。",
+    qs:{31:"列车为什么晚点了？", 32:"列车停靠济南西站后会做什么？"}
+  },
+  "33-35":{
+    text:'有一个人不会游泳，他向一位水手求教。水手告诉他游泳是件非常简单的事情，很快就能学会。于是这个人跟着水手来到海边。看到辽阔的大海，水手兴奋地冲进了波涛里，可是这个不会游泳的人还是坐在沙滩上。水手冲他喊道："快过来啊，你不是想学游泳吗？"这个人说："你还没有教会我游泳呢！我怎么能到海里呢？这样太危险了，要是出了差错，谁负责啊？"结果，这个人一直也没有学会游泳。\n\n不下水，永远也学不会游泳；不上公路，永远也学不会开车。一个人需要学习的东西太多了，若是一味害怕、担心，不敢尝试，终究会一事无成。',
+    qs:{33:"来到海边后，水手让那个人做什么？", 34:"关于那个人，可以知道什么？", 35:"这段话主要想告诉我们什么？"}
+  },
+  "36-38":{
+    text:"小时候，住在北京的胡同里，特别羡慕那些能够住进楼房的孩子，对楼房里的生活充满了各种幻想，想象着午后可以在阳台上放把椅子，喝着茶晒太阳；也想象着能在十几层的高度，看着楼下像火柴盒一样大小的汽车开来开去。现在，在楼房里住了十多年，却开始怀念起儿童时代住在平房里的生活，想起以前最爱的街边的小吃，想起夏天的晚上在院子里乘凉，看天上的星星，于是又开始喜欢上了胡同里的酒吧，觉得那里显得特别亲切，能让人找到许多小时候的影子，想起小时候和伙伴们快乐的生活。",
+    qs:{36:"说话人小时候怎么样？", 37:"说话人现在为什么常去胡同里的酒吧？", 38:"关于说话人，下列哪项正确？"}
+  },
+  "39-41":{
+    text:"一天，一只小鸟在天上飞了很久，觉得口渴了，于是它就去找水喝。它在一个瓶子前面停了下来，但是瓶子里面只有半瓶水，而且瓶子的口很小，小鸟的嘴太短了，喝不到。怎么办呢？小鸟想了一个好办法，它从附近找来一些小石子，然后把小石子一颗一颗地丢进瓶子里，瓶子里的水面越来越高，最后，它终于喝到了水。",
+    qs:{39:"瓶子里有多少水？", 40:"小鸟用什么办法喝到了水？", 41:"关于小鸟，下列哪项正确？"}
+  },
+  "42-43":{
+    text:"在人际交往中，有些人总是拿着放大镜看别人，这样往往会突出别人的缺点，也使得自己无法信任他人。相反，有的人则是拿着望远镜看别人，因而他们始终能够欣赏到别人美好的一面。但这并不是说放大镜就没用了，放大镜应该对准自己，而非别人。如此一来，放大镜和望远镜就都能发挥出它们最大的效用。",
+    qs:{42:"用望远镜看别人会怎么样？", 43:"根据这段话，我们应该怎么做？"}
+  },
+  "44-45":{
+    text:'儿子六岁了，对什么都好奇，总是有问不完的问题。一天，父亲和儿子在外面吃完饭后一起回家。路上，儿子问父亲："爸爸，\'喝醉\'的\'醉\'是什么意思？""哦，儿子，"父亲回答道，"你看见前面站着两个警察吧，如果我把他们看成了四个，那么我就醉了。""不过，爸爸，"儿子说，"那儿只有一个警察呀。"',
+    qs:{44:"儿子看到了什么？", 45:"根据这段话，可以知道什么？"}
+  }
+};
+
+/* ALL QUESTIONS Q1-100 with options */
+// answers from 答案
+const ANSWERS = "C A B D C B D D C A D D B B B C C A D C B C B B A C B A A A B C B D A C B C A D A C D A B A C B B A D A B D D C B A D C D C C D B B B C B C D D C D B C B D B C B D D C D C D B D A".split(" ");
+// (positions 0..89 correspond to Q1..Q90)
+
+// Reading Part 1 (Q46-60) — passages with blanks
+const READING_P1 = [
+  {
+    text:"有两个人相约到山上去寻找精美的石头，甲 ▢46 了满满的一筐，乙的筐里只有一个他认为是最精美的石头。甲就笑乙：\"你为什么只挑一个啊？\"乙说：\"漂亮的石头虽然多，但我只选一个最精美的就够了。\"下山的路上，甲感到负担越来越重，后来不得已， ▢47 地从一筐石头中挑一个最差的扔下，到山下的时候，他的筐里也只剩下一个石头了。人生中会有许多的东西值得留恋，但有的时候你应该学会 ▢48 。",
+    qs:[
+      {n:46, opts:["背","催","摘","插"]},
+      {n:47, opts:["曾经","过分","不断","根本"]},
+      {n:48, opts:["抗议","放弃","降落","享受"]}
+    ]
+  },
+  {
+    text:"工作中那些不懂装懂的人，喜欢说：\"这些工作真无聊。\"但他们内心的真正感觉是：\"我做不好任何工作。\"他们希望自己年纪轻轻就取得成功，但是他们又不喜欢学习、 ▢49 意见或寻求帮助，因为这样会被人认为他们能力不行， ▢50 。\n\n脱掉不懂装懂的\"外套\"吧，因为学习的心态已经成为一个人在这个竞争的社会中得以生存和发展的最基本的心态。21世纪是一个知识爆炸的时代，知识和技能成为一个人生存的 ▢51 条件。没有知识和技能你将无法生存，而知识和技能的获得要靠不断地学习，学习，再学习。多 ▢52 一种知识或是一门技术，在众多的竞争对手面前就多了一份取胜的机会。",
+    qs:[
+      {n:49, opts:["请求","征求","表现","参与"]},
+      {n:50, opts:["所以他们只好装懂","于是他们变得更单纯","于是他们改变沟通方式","所以他们努力提高工作效率"]},
+      {n:51, opts:["高级","抽象","出色","必要"]},
+      {n:52, opts:["掌握","从事","创造","促进"]}
+    ]
+  },
+  {
+    text:"一个心理学家请一些实验者在周日晚上，把 ▢53 7天所有可能发生的烦恼写下来，放到一个箱子里。\n\n7天后，他在实验者面前打开这个箱子，与他们逐一核对每一项\"烦恼\"，结果发现其中有90%的\"烦恼\"并未真正发生。接着，他又要求大家把那些剩下的字条重新丢入纸箱中。等又过了7天，他们打开箱子， ▢54 。\n\n烦恼是自己找来的，这就是 ▢55 的\"自寻烦恼\"。据统计，一般人92%的忧虑从未发生过，剩下的8%则是你能够轻易 ▢56 的。",
+    qs:[
+      {n:53, opts:["以来","未来","过去","事先"]},
+      {n:54, opts:["忍不住笑了起来","很感激那位心理学家","发现那些纸条不见了","发现那些烦恼也不再是烦恼了"]},
+      {n:55, opts:["相对","相似","神秘","所谓"]},
+      {n:56, opts:["利用","达到","应付","批准"]}
+    ]
+  },
+  {
+    text:"春秋时期，齐国和楚国是著名的强国。有一回，齐国的国王派自己的大臣晏子访问楚国。楚王想趁这个机会，找一个办法让齐国的使者丢脸，借此来 ▢57 楚国的强大。\n\n楚王了解到晏子身材矮小，就命令手下的人在城门旁边开了一个很低的洞。晏子来到楚国的时候，楚王命令守门的士兵关闭了城门，让晏子从旁边的洞口爬进去。晏子看到这样的 ▢58 ，明白了楚王的目的，他思考了一小会儿，便对 ▢59 的人说：\"这是一个狗洞，不是城门。我要是访问狗国，当然可以爬狗洞。请你们替我问一下楚王，我来访问的国家到底是楚国还是狗国？\"楚王听了士兵的报告， ▢60 ，迎接晏子进城。",
+    qs:[
+      {n:57, opts:["具备","显示","发表","领导"]},
+      {n:58, opts:["情景","景色","背景","奇迹"]},
+      {n:59, opts:["说服","批准","咨询","接待"]},
+      {n:60, opts:["变得非常愤怒","思考了很长时间","只好命令打开城门","发现晏子是个很有智慧的人"]}
+    ]
+  }
+];
+
+/* Reading Part 2 (Q61-70) */
+const READING_P2 = [
+  {n:61, text:"爱因斯坦在谈到他成功的秘密时说：\"我没什么特殊的才能，我只是保持了我的好奇心。\"是什么伤害了你的好奇心？为什么有的人可以成功，而有的人却会失败？想想你最好奇的事物是什么，追寻你的好奇心，这将是你成功的秘诀。",
+    opts:["失败是成功之母","成功的秘诀是勤奋","科学家需要特殊的才能","好奇心让爱因斯坦获得了成功"]},
+  {n:62, text:"中国有一句话叫\"五岳归来不看山，黄山归来不看岳\"，意思是游览过中国最有特点的五座山——东岳泰山、西岳华山、中岳嵩山、南岳恒山、北岳衡山之后，天下所有的山都不必游览了；可是，如果先游览了黄山，那么连五岳也不必去看了，由此可见黄山的独特和壮美。",
+    opts:["泰山最高","黄山是五岳之一","黄山最值得一游","应该先游览五岳"]},
+  {n:63, text:"企业的发展需要团队，企业管理者必须学会如何组织、掌握及管理团队。企业管理者应以每个员工的专长为思考点，为他们安排适当的位置，并依照他们的优缺点做机动性的调整，使团队发挥最大的效能。",
+    opts:["企业应加强对员工的培训","管理者应重视员工的意见","团队建设对企业管理很重要","企业发展需要良好的文化氛围"]},
+  {n:64, text:"成长过程中，每个人都会经历一段\"叛逆期\"，这一时期的主要特征之一就是拒绝接受父母的意见，甚至与父母对着干。这其实并不完全是坏事，从心理发展的角度来看，这是获得独立思考能力必经的、不可缺少的阶段。",
+    opts:["父母不应责备孩子","孩子应该孝顺父母","\"叛逆期\"的孩子很听话","\"叛逆期\"是每个人必经的阶段"]},
+  {n:65, text:"现在，如果要问人们选择职业时主要考虑的是什么，有相当一部分人会以收入多少作为标准。当然，也有人主要看自己是否喜欢这份工作。也许，最理想的情况是能找到一份既让人喜欢又有较多收入的职业。可惜的是，这种情况在生活中并不能经常遇到。",
+    opts:["现在人们经常换工作","人们找工作的标准不同","喜欢的才是最好的工作","找一份满意的工作并不难"]},
+  {n:66, text:"心理学家研究发现：适当地选择衣服，可以帮助人们改善情绪。他们认为，称心的衣着可以使神经得到放松，从而给人舒适的感觉。所以在情绪不好的时候应该注意\"四不\"：不穿易皱的衣服，不穿太硬的衣服，不穿过紧的衣服以及不系领带。",
+    opts:["硬衣服对身体不好","心情不好别穿紧身衣服","心理学家不赞成系领带","避免穿与别人一样的衣服"]},
+  {n:67, text:"《华容道》这款游戏源自一个历史故事，相传三国时曹操曾遭遇兵败，败走华容道。游戏的玩儿法就是通过移动最少的棋子，把曹操移出华容道。由于这款游戏形式变化多样，且有益于智力开发，所以深受人们的喜爱。",
+    opts:["《华容道》是曹操发明的","《华容道》是一款益智游戏","《华容道》有两千多年的历史","《华容道》至今没有正确的解法"]},
+  {n:68, text:"经常会有人疑惑，上海不产茶叶，怎么会连续举办十八届国际茶文化节？若您有时间，在上海闸北区逛一逛，相信就会找到答案。无论是步行还是坐车，到处都可以找到您心仪的茶叶。上海不产茶叶，却是中国最大的茶叶消费与流通城市。",
+    opts:["上海的茶多销往国外","上海闸北区种植茶叶","上海的茶叶消费量很大","上海是中国最大的茶叶产地"]},
+  {n:69, text:"按照饮食特点分，中国主要有四大菜系，即川菜、鲁菜、淮菜和粤菜。当然，其中最有名的，还是大家熟悉的川菜。川菜的突出特点是麻和辣，最正宗的川菜是成都和重庆两地的菜肴。如今川菜馆早已遍布世界各地，受到了人们的广泛欢迎。",
+    opts:["川菜口味清淡","重庆菜属于川菜","中国菜的特点是麻和辣","成都和重庆两地才有川菜"]},
+  {n:70, text:"竹子四季常青，最适合生长在湿润、温暖的环境中。竹子的用途非常广泛，可以食用，可以制作成各种农具，还可以种植在房屋周围和公园中，供人们观赏。大多数品种的竹子一生只开一次花，开花后竹子就会死去，严重缺水、营养不足的恶劣环境更容易导致竹子开花。",
+    opts:["竹子的花非常漂亮","竹子的花可以做药材","多数竹子开花代表生命的结束","暖湿的环境可以促使竹子开花"]}
+];
+
+/* Reading Part 3 (Q71-90) */
+const READING_P3 = [
+  {
+    text:"下班时正是车流量高峰，你急着赶一个约会。从办公室走到地铁站需要15分钟，于是你决定打车。\n\n10分钟过去了，没有一辆出租车停在你的面前，你决定继续等待。15分钟后，你开始烦躁不安。但通常你还会继续等下去，因为已经等了这么久，你心存侥幸：或许再多等一分钟，车子就会来。可直到半个小时后，你仍然站在马路上等待，你感到万分后悔——早知道这样，就该选择步行15分钟去地铁站。\n\n这样的情况，估计大多数人都经历过。无法放弃已经付出的时间，结果投入了更多的时间。这与投资中的\"套牢\"多么相似啊：已经亏损了，却没有及早卖出，结果赔了更多。\n\n很多投资者在进行某项投资时，最先想到的往往是能赚多少，而不是会亏多少。殊不知，事实上，必须为每一笔买卖事先定一个\"止损线\"，\"止损线\"可能就是你的生命线。\n\n我们必须要先学会如何输钱，这比学会如何赢钱更为重要。即使你只搞对一半儿，你也是赢家，关键在于每次搞错的时候，要将损失减到最少。",
+    qs:[
+      {n:71, q:"15分钟后出租车还没来，很多人会：", opts:["换坐地铁","取消约会","选择步行","继续等出租车"]},
+      {n:72, q:"第2段中\"心存侥幸\"的意思最可能是：", opts:["失去耐心","觉得很生气","感到十分后悔","仍然抱有幻想"]},
+      {n:73, q:"定\"止损线\"的目的是：", opts:["投资更多领域","保证只赚不赔","尽量减少损失","吸引更多资金"]},
+      {n:74, q:"上文主要想告诉我们什么道理？", opts:["投资需要保证时间","输赢并不是最重要的","不要轻易改变自己的决定","减少损失比赚更多钱还重要"]}
+    ]
+  },
+  {
+    text:"新学期开始时，校长把三位老师叫进办公室，对他们说：\"根据你们过去的教学表现，你们是本校最优秀的教师。因此，我们特意挑选了全校最聪明的100名学生组成三个班让你们教。这些学生比别的孩子都要聪明，希望你们能让他们取得更好的成绩。\"三位老师都高兴地表示一定尽力。\n\n校长又叮嘱他们，对待这些孩子，要像平常一样，不要让孩子或家长知道他们是被特意挑选出来的。老师们都答应了。\n\n一年之后，这三个班的学生成绩果然排在整个地区的前列。\n\n这时，校长告诉了老师真相：这些学生并不是刻意选出来的最优秀的学生，只不过是随机抽调的普通学生。\n\n老师们没想到会是这样，经过分析，他们都认为自己的教学水平高才是真正的原因。\n\n这时校长又告诉他们另一个真相，那就是，他们也不是被专门挑选出来的全校最优秀的教师，也只是随机抽调的普通老师。",
+    qs:[
+      {n:75, q:"开始，校长跟三位老师说：", opts:["这些学生很懒","他们是最棒的教师","这些学生是最笨的","他们受到了家长的欢迎"]},
+      {n:76, q:"校长希望老师怎么对待这些学生？", opts:["要多鼓励学生","允许学生犯错误","像普通学生那样对待","要培养学生独立思考的能力"]},
+      {n:77, q:"老师们认为自己的教学水平怎么样？", opts:["很糟糕","非常出色","属于中等水平","实际上很普通"]},
+      {n:78, q:"上文主要想告诉我们：", opts:["万事开头难","不要轻信他人","努力了未必能成功","别人的看法对我们影响很大"]}
+    ]
+  },
+  {
+    text:"在云南，一年只有旱季和雨季两个季节。雨季一到，村民们便争先恐后地往山里去。因为山里长着一种叫做松茸的菌类，这种菌味道鲜美，近几年成为餐桌上的新宠，价格逐年上涨。因此，雨季挖松茸卖，成为当地人最主要的收入来源。\n\n村民找到松茸后，用木棍撬开周围的土，小心地把松茸完整地取出来。这一过程很短暂，几秒钟就能完成。可是，得到松茸后，村民并不急着去寻找下一个目标，而是蹲在那里，把刚挖的坑填平，这个过程，往往比挖松茸更花时间。\n\n既然松茸已经到手，为什么还要浪费时间填坑呢？原来松茸是一种很独特的菌类，它很恋\"家\"，年年都选择在同一个地方生长，一旦它的\"家\"被破坏，第二年，它便拒绝生长。所以，尽管所有的村民都在争分夺秒地挖松茸，但所有的人也都会花时间填平挖过的坑，没有人要求他们，这是他们自觉的行为，一代传一代，成为一条不成文的规定。\n\n为松茸填坑，是举手之劳，很多人可能根本不屑于去做。可是云南的村民们知道，深山里的菌是大自然对人类的慷慨赠予，饮水思源，人类必须尽自己所能来对待它们。举手之劳，可以让大自然的万物绵绵不绝，而大自然奖赏给他们的，是世世代代取之不尽的资源。",
+    qs:[
+      {n:79, q:"根据第1段，可以知道：", opts:["松茸价格下降","松茸很受欢迎","村民将松茸当做主食","松茸主要在旱季生长"]},
+      {n:80, q:"第2段中，\"寻找下一个目标\"指的是：", opts:["等下一个雨季","寻找松茸的买主","继续找其他松茸","到另一个山上去找"]},
+      {n:81, q:"为什么说松茸很恋\"家\"？", opts:["它的根很深","它的生长地点固定","它需要得到细心照顾","它只跟同类菌长在一起"]},
+      {n:82, q:"最后一段主要想告诉我们什么？", opts:["不要浪费时间","做事要注意细节","保护环境是每个人的义务","善待自然就是善待人类自己"]}
+    ]
+  },
+  {
+    text:"坐在你身旁的同事是否总是不停地抱怨工作环境不好或是工作压力太大？在他们抱怨时，你是否会耐心地倾听呢？如果是，那你可不只是在听别人讲而已。事实上，在倾听的过程中，你也会不知不觉地被他们的压力所\"传染\"。\n\n心理学家发现，压力就像感冒一样会传染，这种\"二手\"的压力和焦虑情绪可以在工作场所迅速蔓延。因为人们能够以惊人的速度模仿他人的面部表情、声音和姿势，从而对他人的情绪感同身受。我们其实都是\"海绵\"，可以吸收周围人散发出的感染性的情绪。而在吸收他人压力的同时，我们自己也开始感受到压力，并会不自觉地去关注那些可能会困扰我们的问题。\n\n为什么别人的压力会传染给我们？这是因为，一方面，我们吸收朋友或同事的压力是为了和他们打成一片；另一方面，持续灌进我们耳中的不满的声音，也会让我们开始产生消极的想法。\n\n研究者发现，我们不仅会接受他人消极的思维模式，还会下意识地模仿他们在压力下的身体语言，这导致我们在交谈时会与他们一样弓起背、皱起眉。另外，女性遭遇\"二手压力\"的风险更大，因为她们往往更容易与他人产生共鸣。",
+    qs:[
+      {n:83, q:"为什么说\"我们其实都是'海绵'\"？", opts:["抗压性强","学习能力强","有很强的适应性","会吸收别人的情绪"]},
+      {n:84, q:"第3段中的\"打成一片\"，是什么意思？", opts:["争论","打架","搞好关系","相互支持"]},
+      {n:85, q:"根据第4段，下列哪项正确？", opts:["女性喜欢模仿","身体语言与年龄有关","人的思维方式很难改变","女性更容易受他人影响"]},
+      {n:86, q:"最适合做上文标题的是：", opts:["海绵效应","倾诉的力量","会传染的压力","你能读懂表情吗"]}
+    ]
+  },
+  {
+    text:"在日常生活中，谁都有不小心打碎东西的时候，但极少有人会去研究这些碎片中的学问。有位物理学家却从花瓶的碎片中发现了这样一个规律：将打碎后的物体碎片按重量级的数量分类，不同的重量级间会表现出统一的倍数关系。例如，被打碎的花瓶，最大的碎片与次大的碎片重量比是16：1，次大的与第三大的碎片间的重量比也是16：1，以此类推。这就是著名的\"碎花瓶理论\"。\n\n物理学家进一步研究发现，不同形状的物体，这个重量比是不同的。对于花瓶或茶杯状的物体，这个倍数约为16，棒状物体约为11，球状物体则约为40。更重要的是，这个倍数与物体的材料无关，即使是一块儿冻豆腐摔碎了，也会遵循这个规律。\n\n由此可知，只要有同一物体的部分碎片就能求出这个倍数，从而可以推测出物体破碎前的大概形状。目前，\"碎花瓶理论\"在恢复文物原貌、推测陨石形状等工作中有特别的用处，它给这些原来全凭经验和想象的工作提供了理论依据。",
+    qs:[
+      {n:87, q:"根据第1段，最大的花瓶碎片：", opts:["数量最多","用处不大","形状最特别","重量是第二大的16倍"]},
+      {n:88, q:"第2段中，举\"冻豆腐\"的例子是为了说明：", opts:["食物碎片很难统计","重量比不受材料影响","碎片形状和重量比有关","重量比与温度有一定关系"]},
+      {n:89, q:"关于碎花瓶理论，下列哪项正确？", opts:["缺少理论支持","对实验室条件要求高","很多人提出反对意见","球状物体重量比约为40：1"]},
+      {n:90, q:"第3段主要介绍的是碎花瓶理论的：", opts:["应用价值","实验步骤","历史背景","理论依据"]}
+    ]
+  }
+];
+
+/* Listening short dialogues options Q1-20 */
+const LISTEN_OPTS_1_20 = [
+  ["质量非常好","以后再说吧","价格可以再谈","现在没有产品"], //1
+  ["下午要开会","今天不是星期三","女的在提醒男的","男的不知道要开会"], //2
+  ["主张改革","要升职了","总结了教训","违反了规定"], //3
+  ["没办法录音","讲座取消了","听讲座的人很少","男的不能去听讲座"], //4
+  ["健康","服装","计算机","传染病"], //5
+  ["是秘书","在等应聘结果","本科还没毕业","发表过很多作品"], //6
+  ["犹豫不决","比较负责","非常干脆","不能坚持到底"], //7
+  ["不赞成贷款","得去一趟银行","餐厅今天不营业","公寓附近也可以取钱"], //8
+  ["总裁","专家","投资方","部门经理"], //9
+  ["刀叉","酱油","茶壶","土豆"], //10
+  ["律师","医生","老师","理发师"], //11
+  ["简历","毕业证","个人照片两张","身份证复印件两份"], //12
+  ["忘锁门了","忘密码了","没拿钥匙","没拿行李箱"], //13
+  ["汽车涨价了","汽油要涨价","道路很拥挤","加油站的设备坏了"], //14
+  ["司机","记者","医生","售票员"], //15
+  ["记忆力很好","9 点要出门","在看电视剧","在主持节目"], //16
+  ["决定戒烟","还在犹豫","戒烟成功了","认为戒烟很困难"], //17
+  ["规模很大","风格多样","正在重建","吸引了很多游客"], //18
+  ["诊断病情","制定计划","补充个人信息","对论文提一些意见"], //19
+  ["扔了","卖掉","先放阳台上","当垃圾桶用"] //20
+];
+
+const LISTEN_OPTS_21_45 = [
+  ["自己猜的","自己看见的","听别人说的","她也去打球了"], //21
+  ["爱好广泛","快退休了","喜欢做手工","开了家饰品店"], //22
+  ["饮料洒了","登机牌丢了","记错时间了","忘带护照了"], //23
+  ["换手机","换电池","重装系统","再买个充电器"], //24
+  ["在办签证","刚出差回来","准备出国留学","在保险公司工作"], //25
+  ["过敏了","肩膀疼","腰扭伤了","胃不舒服"], //26
+  ["客厅","销售部","研发部","会议室"], //27
+  ["郊区","市中心","公司附近","公园周围"], //28
+  ["结账","点菜","换零钱","订房间"], //29
+  ["旅行社","政府部门","广告公司","高级服装店"], //30
+  ["地震了","天气恶劣","前方堵车","铁路临时维修"], //31
+  ["检查车票","调整座位","发放免费食品","停车检修一小时"], //32
+  ["买救生圈","到海里去","先学抓鱼","做准备活动"], //33
+  ["胳膊受伤了","想换个教练","担心海水太冷","最终也没学会游泳"], //34
+  ["要勇于实践","学游泳需要耐心","要不断完善自己","一切从实际出发"], //35
+  ["胆子小","特别调皮","想住楼房","想有一辆汽车"], //36
+  ["去看朋友","怀念过去","想找一份工作","那里非常安静"], //37
+  ["想经营酒吧","记忆力很好","小时候住平房","现在住在胡同里"], //38
+  ["半瓶","没有水","不到半瓶","满满一瓶"], //39
+  ["打破瓶子","把瓶子弄倒","把水倒进杯子里","往瓶子里放小石头"], //40
+  ["很聪明","肚子饿了","力气很大","掉进水里了"], //41
+  ["看得范围广","看得更深刻","能看到他人优点","促使自己改正缺点"], //42
+  ["尊重别人","学会满足","多赞美学生","严格要求自己"], //43
+  ["一个警察","两瓶啤酒","爸爸在开车","他的好朋友"], //44
+  ["爸爸很好奇","爸爸喝醉了","儿子喝酒了","儿子没吃饭"]  //45
+];
+
+/* Writing Part 1 — sentence reordering Q91-98 */
+const WRITING_P1 = [
+  {n:91, words:["他","日程","把","已经","安排好了"], answer:"他已经把日程安排好了。"},
+  {n:92, words:["彩虹","雨后","常常能","看到"], answer:"雨后常常能看到彩虹。"},
+  {n:93, words:["一下","柜台前","请您","去","登记"], answer:"请您去柜台前登记一下。"},
+  {n:94, words:["北京","给","深刻的印象","他","留下了"], answer:"北京给他留下了深刻的印象。"},
+  {n:95, words:["很羡慕","她","苗条的身材","让","人"], answer:"她苗条的身材让人很羡慕。"},
+  {n:96, words:["抽屉","在","里","保险柜的钥匙"], answer:"保险柜的钥匙在抽屉里。"},
+  {n:97, words:["这是一项","心理测试","针对","青少年的"], answer:"这是一项针对青少年的心理测试。"},
+  {n:98, words:["什么安慰的话","一个拥抱","比","都","温暖"], answer:"一个拥抱比什么安慰的话都温暖。"}
+];
+
+/* Writing Part 2 — essays Q99-100 */
+const WRITING_P2 = [
+  {n:99, type:"words", words:["经验","打工","业余","通常","矛盾"],
+   prompt:"请结合下列词语（要全部使用，顺序不分先后），写一篇 80 字左右的短文。"},
+  {n:100, type:"image", img:"📷",
+   imgDesc:"(Image officielle non disponible — décrivez librement une scène autour de la vie étudiante / de la nature / de la famille)",
+   prompt:"请结合这张图片写一篇 80 字左右的短文。"}
+];
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const STORAGE_KEY = "hsk5_exam_H51553C";
+let state = {
+  mode: "sim",        // "sim" or "prac"
+  started: false,
+  finished: false,
+  currentQ: 1,
+  currentSection: "listening",
+  currentPart: "L1",
+  answers: {},        // {1:"A", 2:"B", ...}
+  flagged: {},        // {7:true, ...}
+  reorder: {},        // {91:["长城","是",...]}
+  essays: {99:"", 100:""},
+  startTime: null,
+  elapsed: 0,
+  paused: false
+};
+
+let timerInterval = null;
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function $(id){return document.getElementById(id);}
+function getQAnswer(n){return ANSWERS[n-1];}
+function getQOpts(n){
+  if(n<=20) return LISTEN_OPTS_1_20[n-1];
+  if(n<=45) return LISTEN_OPTS_21_45[n-21];
+  if(n<=60){ // reading P1
+    for(const blk of READING_P1) for(const q of blk.qs) if(q.n===n) return q.opts;
+  }
+  if(n<=70){
+    const item = READING_P2.find(x=>x.n===n);
+    return item?item.opts:[];
+  }
+  if(n<=90){
+    for(const blk of READING_P3) for(const q of blk.qs) if(q.n===n) return q.opts;
+  }
+  return [];
+}
+function getQText(n){
+  if(n<=20){ return null; } // audio only
+  if(n<=30){ return null; }
+  if(n<=45){
+    for(const k in LISTEN_PASSAGES){
+      const [a,b]=k.split("-").map(Number);
+      if(n>=a && n<=b) return LISTEN_PASSAGES[k].qs[n];
+    }
+  }
+  if(n<=70){
+    const item = READING_P2.find(x=>x.n===n);
+    return item?null:null; // text in passage
+  }
+  if(n<=90){
+    for(const blk of READING_P3) for(const q of blk.qs) if(q.n===n) return q.q;
+  }
+  return null;
+}
+function getSectionForQ(n){
+  if(n<=45) return "listening";
+  if(n<=90) return "reading";
+  return "writing";
+}
+function getPartForQ(n){
+  if(n<=20) return "L1";
+  if(n<=45) return "L2";
+  if(n<=60) return "R1";
+  if(n<=70) return "R2";
+  if(n<=90) return "R3";
+  if(n<=98) return "W1";
+  return "W2";
+}
+function fmtTime(s){
+  const h=Math.floor(s/3600), m=Math.floor((s%3600)/60), sec=s%60;
+  return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+}
+function countAnswered(){
+  let n=0;
+  for(let i=1;i<=90;i++) if(state.answers[i]) n++;
+  for(let i=91;i<=98;i++) if(state.reorder[i]&&state.reorder[i].length) n++;
+  for(let i=99;i<=100;i++) if(state.essays[i]&&state.essays[i].trim()) n++;
+  return n;
+}
+
+/* ============================================================
+   PERSISTENCE
+   ============================================================ */
+function saveState(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+}
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return null;
+    return JSON.parse(raw);
+  }catch(e){ return null; }
+}
+function clearState(){
+  try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+}
+
+/* ============================================================
+   MODE / START
+   ============================================================ */
+function selectMode(m){
+  state.mode = m;
+  $("mcSim").classList.toggle("selected", m==="sim");
+  $("mcPrac").classList.toggle("selected", m==="prac");
+}
+
+function setMode(m){
+  state.mode = m;
+  $("modeSimBtn").classList.toggle("active", m==="sim");
+  $("modePracBtn").classList.toggle("active", m==="prac");
+  if(m==="sim"){
+    $("timerLabel").textContent = "Temps restant";
+  }else{
+    $("timerLabel").textContent = "Temps écoulé";
+  }
+  renderQuestion();
+  saveState();
+}
+
+function startExam(){
+  state.started = true;
+  state.startTime = Date.now() - state.elapsed*1000;
+  state.currentQ = 1;
+  $("startView").classList.remove("active");
+  $("examView").classList.add("active");
+  $("topbarCenter").style.display = "flex";
+  $("topbarRight").style.display = "flex";
+  $("actionBar").style.display = "flex";
+  $("modeSimBtn").classList.toggle("active", state.mode==="sim");
+  $("modePracBtn").classList.toggle("active", state.mode==="prac");
+  $("timerLabel").textContent = state.mode==="sim" ? "Temps restant" : "Temps écoulé";
+  renderTabs();
+  renderQuestion();
+  startTimer();
+  saveState();
+}
+
+function resumeExam(){
+  state.started = true;
+  state.startTime = Date.now() - state.elapsed*1000;
+  $("startView").classList.remove("active");
+  $("examView").classList.add("active");
+  $("topbarCenter").style.display = "flex";
+  $("topbarRight").style.display = "flex";
+  $("actionBar").style.display = "flex";
+  $("modeSimBtn").classList.toggle("active", state.mode==="sim");
+  $("modePracBtn").classList.toggle("active", state.mode==="prac");
+  $("timerLabel").textContent = state.mode==="sim" ? "Temps restant" : "Temps écoulé";
+  renderTabs();
+  renderQuestion();
+  startTimer();
+  saveState();
+}
+
+/* ============================================================
+   TIMER
+   ============================================================ */
+function startTimer(){
+  if(timerInterval) clearInterval(timerInterval);
+  timerInterval = setInterval(()=>{
+    if(state.paused || state.finished) return;
+    state.elapsed = Math.floor((Date.now() - state.startTime)/1000);
+    updateTimerDisplay();
+    if(state.mode==="sim" && state.elapsed >= EXAM.totalDuration){
+      submitExam();
+    }
+    if(state.elapsed % 5 === 0) saveState();
+  },1000);
+  updateTimerDisplay();
+}
+function updateTimerDisplay(){
+  const t = $("timer");
+  let display, secLeft;
+  if(state.mode==="sim"){
+    secLeft = Math.max(0, EXAM.totalDuration - state.elapsed);
+    display = fmtTime(secLeft);
+    t.classList.toggle("warning", secLeft <= 5*60);
+  }else{
+    display = fmtTime(state.elapsed);
+    t.classList.remove("warning");
+  }
+  $("timerDisplay").textContent = display;
+}
+function togglePause(){
+  state.paused = !state.paused;
+  $("pauseBtn").textContent = state.paused ? "▶" : "⏸";
+  $("timer").classList.toggle("paused", state.paused);
+  if(!state.paused){
+    state.startTime = Date.now() - state.elapsed*1000;
+  }
+}
+
+/* ============================================================
+   TAB RENDERING
+   ============================================================ */
+function renderTabs(){
+  const tabs = $("secTabs");
+  tabs.innerHTML = EXAM.sections.map(sec=>{
+    const total = sec.parts.reduce((a,p)=>a+(p.range[1]-p.range[0]+1),0);
+    let answered = 0;
+    sec.parts.forEach(p=>{
+      for(let i=p.range[0];i<=p.range[1];i++){
+        if(i<=90 && state.answers[i]) answered++;
+        else if(i>=91 && i<=98 && state.reorder[i] && state.reorder[i].length) answered++;
+        else if(i>=99 && state.essays[i] && state.essays[i].trim()) answered++;
+      }
+    });
+    const pct = total ? (answered/total*100) : 0;
+    const isActive = sec.id === state.currentSection;
+    return `<button class="sec-tab ${isActive?'active':''}" onclick="goToSection('${sec.id}')">
+      <span class="st-cn">${sec.icon} ${sec.cn}</span>
+      <span class="st-fr">${sec.fr}</span>
+      <div class="st-prog">
+        <div class="st-bar"><div class="st-bar-fill" style="width:${pct}%"></div></div>
+        <span>${answered}/${total}</span>
+      </div>
+    </button>`;
+  }).join("");
+}
+
+function goToSection(secId){
+  const sec = EXAM.sections.find(s=>s.id===secId);
+  state.currentQ = sec.parts[0].range[0];
+  state.currentSection = secId;
+  state.currentPart = sec.parts[0].id;
+  renderTabs();
+  renderQuestion();
+  saveState();
+}
+
+/* ============================================================
+   QUESTION RENDERING
+   ============================================================ */
+function renderQuestion(){
+  const n = state.currentQ;
+  state.currentSection = getSectionForQ(n);
+  state.currentPart = getPartForQ(n);
+  const sec = EXAM.sections.find(s=>s.id===state.currentSection);
+  const part = sec.parts.find(p=>p.id===state.currentPart);
+
+  // Audio bar visibility
+  $("audioBar").classList.toggle("visible", state.currentSection==="listening");
+
+  let html = `<div class="part-header">
+    <div>
+      <div class="part-title">${sec.cn} · ${part.title}</div>
+      <div class="part-desc">${part.desc}</div>
+    </div>
+    <div class="part-meta">
+      <span class="part-chip">Q${part.range[0]}–${part.range[1]}</span>
+    </div>
+  </div>`;
+
+  if(n<=20){
+    html += renderListeningSimple(n);
+  }else if(n<=30){
+    html += renderListeningLong(n);
+  }else if(n<=45){
+    html += renderListeningPassage(n);
+  }else if(n<=60){
+    html += renderReadingP1(n);
+  }else if(n<=70){
+    html += renderReadingP2(n);
+  }else if(n<=90){
+    html += renderReadingP3(n);
+  }else if(n<=98){
+    html += renderWritingP1(n);
+  }else{
+    html += renderWritingP2(n);
+  }
+
+  // Nav buttons
+  html += `<div class="nav-buttons">
+    <button class="nav-btn prev" onclick="prevQ()" ${n===1?'disabled':''}>← Précédent</button>
+    <button class="nav-btn flag ${state.flagged[n]?'active':''}" onclick="toggleFlag()" title="Marquer">⚑ ${state.flagged[n]?'Marqué':'Marquer'}</button>
+    <button class="nav-btn next" onclick="nextQ()" ${n===100?'disabled':''}>Suivant →</button>
+  </div>`;
+
+  $("questionCard").innerHTML = html;
+  renderGrid();
+  renderTabs();
+  updateProgress();
+}
+
+function renderOptions(n, opts){
+  const sel = state.answers[n];
+  const correct = getQAnswer(n);
+  const showFeedback = (state.mode==="prac" && sel) || state.finished;
+  return `<div class="options">
+    ${opts.map((o,i)=>{
+      const letter = String.fromCharCode(65+i);
+      let cls = "opt";
+      if(sel===letter) cls += " selected";
+      if(showFeedback){
+        if(letter===correct) cls += " correct";
+        else if(letter===sel) cls += " wrong";
+      }
+      return `<button class="${cls}" onclick="selectAnswer(${n},'${letter}')">
+        <span class="opt-letter">${letter}</span>
+        <span class="opt-text">${escapeHtml(o)}</span>
+      </button>`;
+    }).join("")}
+  </div>`;
+}
+
+function renderListeningSimple(n){
+  const opts = getQOpts(n);
+  const showTrans = state.mode==="prac" || state.finished;
+  let html = `<div class="q-block current">
+    <div class="q-num-wrap">
+      <span class="q-num">${n}</span>
+      <span class="q-stem empty">🎧 Écoutez l'audio puis sélectionnez la bonne réponse</span>
+    </div>
+    ${renderOptions(n, opts)}
+  </div>`;
+  if(showTrans){
+    const d = LISTEN_DIALOGUES[n];
+    html += `<button class="transcript-toggle" onclick="document.getElementById('trans${n}').classList.toggle('show')">📜 Voir / masquer la transcription</button>
+    <div class="transcript-box" id="trans${n}">
+      ${d.f?'<span class="role">女:</span>'+escapeHtml(d.f)+'<br>':''}
+      ${d.m?'<span class="role">男:</span>'+escapeHtml(d.m)+'<br>':''}
+      <span class="role">问:</span>${escapeHtml(d.q)}
+    </div>`;
+  }
+  return html;
+}
+
+function renderListeningLong(n){
+  const opts = getQOpts(n);
+  const showTrans = state.mode==="prac" || state.finished;
+  let html = `<div class="q-block current">
+    <div class="q-num-wrap">
+      <span class="q-num">${n}</span>
+      <span class="q-stem empty">🎧 Écoutez le dialogue puis sélectionnez la bonne réponse</span>
+    </div>
+    ${renderOptions(n, opts)}
+  </div>`;
+  if(showTrans && LISTEN_LONG[n]){
+    html += `<button class="transcript-toggle" onclick="document.getElementById('trans${n}').classList.toggle('show')">📜 Voir / masquer la transcription</button>
+    <div class="transcript-box" id="trans${n}">
+      ${LISTEN_LONG[n].map(([role,line])=>`<span class="role">${role}:</span>${escapeHtml(line)}<br>`).join("")}
+    </div>`;
+  }
+  return html;
+}
+
+function renderListeningPassage(n){
+  const showTrans = state.mode==="prac" || state.finished;
+  // Find the passage block and render all questions in that block
+  let blockKey = null, block = null;
+  for(const k in LISTEN_PASSAGES){
+    const [a,b]=k.split("-").map(Number);
+    if(n>=a && n<=b){ blockKey=k; block=LISTEN_PASSAGES[k]; break; }
+  }
+  if(!block) return "";
+  const [a,b] = blockKey.split("-").map(Number);
+
+  let html = "";
+  if(showTrans){
+    html += `<div class="passage">${escapeHtml(block.text).replace(/\n/g,'<br>')}</div>`;
+  }else{
+    html += `<div class="passage" style="background:#f5e6d3;border-left-color:var(--text-mute);color:var(--text-light);font-style:italic;text-align:center;">🎧 Écoutez le passage audio (la transcription sera disponible en mode pratique ou après soumission)</div>`;
+  }
+  for(let i=a;i<=b;i++){
+    const opts = getQOpts(i);
+    const stem = block.qs[i];
+    const isCur = (i===n);
+    html += `<div class="q-block ${isCur?'current':''}" id="qb${i}">
+      <div class="q-num-wrap">
+        <span class="q-num">${i}</span>
+        <span class="q-stem">${escapeHtml(stem)}</span>
+      </div>
+      ${renderOptions(i, opts)}
+    </div>`;
+  }
+  return html;
+}
+
+function renderReadingP1(n){
+  const block = READING_P1.find(b => b.qs.some(q=>q.n===n));
+  if(!block) return "";
+  // Replace blanks with current answer (or numbered placeholders)
+  let txt = block.text;
+  block.qs.forEach(q=>{
+    const ans = state.answers[q.n];
+    const opts = q.opts;
+    const fill = ans ? `<span class="blank">${escapeHtml(opts['ABCD'.indexOf(ans)])}</span>` : `<span class="blank">${q.n}</span>`;
+    txt = txt.replace(`▢${q.n}`, fill);
+  });
+  let html = `<div class="passage">${txt.replace(/\n/g,'<br>')}</div>`;
+  block.qs.forEach(q=>{
+    const isCur = (q.n===n);
+    html += `<div class="q-block ${isCur?'current':''}" id="qb${q.n}">
+      <div class="q-num-wrap">
+        <span class="q-num">${q.n}</span>
+        <span class="q-stem empty">Choisissez le mot/groupe pour le blanc <strong style="color:var(--primary);">${q.n}</strong></span>
+      </div>
+      ${renderOptions(q.n, q.opts)}
+    </div>`;
+  });
+  return html;
+}
+
+function renderReadingP2(n){
+  const item = READING_P2.find(x=>x.n===n);
+  if(!item) return "";
+  let html = `<div class="passage">${escapeHtml(item.text).replace(/\n/g,'<br>')}</div>`;
+  html += `<div class="q-block current">
+    <div class="q-num-wrap">
+      <span class="q-num">${n}</span>
+      <span class="q-stem">Choisissez l'énoncé conforme au texte.</span>
+    </div>
+    ${renderOptions(n, item.opts)}
+  </div>`;
+  return html;
+}
+
+function renderReadingP3(n){
+  const block = READING_P3.find(b=>b.qs.some(q=>q.n===n));
+  if(!block) return "";
+  let html = `<div class="passage">${escapeHtml(block.text).replace(/\n/g,'<br>')}</div>`;
+  block.qs.forEach(q=>{
+    const isCur = (q.n===n);
+    html += `<div class="q-block ${isCur?'current':''}" id="qb${q.n}">
+      <div class="q-num-wrap">
+        <span class="q-num">${q.n}</span>
+        <span class="q-stem">${escapeHtml(q.q)}</span>
+      </div>
+      ${renderOptions(q.n, q.opts)}
+    </div>`;
+  });
+  return html;
+}
+
+function renderWritingP1(n){
+  const item = WRITING_P1.find(x=>x.n===n);
+  const placed = state.reorder[n] || [];
+  const showAns = state.mode==="prac" && placed.length>0 || state.finished;
+  let html = `<div class="q-block current">
+    <div class="q-num-wrap">
+      <span class="q-num">${n}</span>
+      <span class="q-stem">Remettez les mots/groupes ci-dessous dans le bon ordre pour former une phrase complète.</span>
+    </div>
+    <div class="reorder-wrap">
+      <div class="reorder-answer" id="ans${n}">
+        ${placed.map(w=>`<span class="placed-word" onclick="removeWord(${n},'${escapeAttr(w)}')">${escapeHtml(w)}</span>`).join("")}
+      </div>
+      <div class="reorder-words" id="src${n}">
+        ${item.words.map(w=>{
+          const isPlaced = placed.includes(w);
+          return `<button class="word-chip ${isPlaced?'placed':''}" onclick="placeWord(${n},'${escapeAttr(w)}')">${escapeHtml(w)}</button>`;
+        }).join("")}
+      </div>
+      <div class="reorder-actions">
+        <button onclick="clearReorder(${n})">↺ Réinitialiser</button>
+      </div>
+      ${showAns?`<div class="model-answer show"><span class="lbl">✓ Réponse modèle :</span>${escapeHtml(item.answer)}</div>`:''}
+    </div>
+  </div>`;
+  return html;
+}
+
+function renderWritingP2(n){
+  const item = WRITING_P2.find(x=>x.n===n);
+  const text = state.essays[n] || "";
+  const len = countChinese(text);
+  const ok = len >= 70;
+  let promptHtml = "";
+  if(item.type==="words"){
+    promptHtml = `<div class="essay-prompt">
+      <strong>${escapeHtml(item.prompt)}</strong>
+      <div class="essay-words">${item.words.map(w=>`<span class="ew">${escapeHtml(w)}</span>`).join("")}</div>
+    </div>`;
+  }else{
+    promptHtml = `<div class="essay-prompt">
+      <strong>${escapeHtml(item.prompt)}</strong>
+      <div class="essay-img">📷<br>${escapeHtml(item.imgDesc)}</div>
+    </div>`;
+  }
+  return `<div class="q-block current">
+    <div class="q-num-wrap">
+      <span class="q-num">${n}</span>
+      <span class="q-stem">Rédaction (~80 caractères)</span>
+    </div>
+    ${promptHtml}
+    <textarea class="essay-textarea" id="essay${n}" oninput="updateEssay(${n})" placeholder="Rédigez votre texte ici...">${escapeHtml(text)}</textarea>
+    <div class="essay-counter ${ok?'ok':''}" id="counter${n}">${len} / ~80 caractères</div>
+  </div>`;
+}
+
+/* ============================================================
+   ANSWER ACTIONS
+   ============================================================ */
+function selectAnswer(n, letter){
+  state.answers[n] = letter;
+  renderQuestion();
+  saveState();
+}
+
+function placeWord(n, w){
+  if(!state.reorder[n]) state.reorder[n] = [];
+  if(state.reorder[n].includes(w)) return;
+  state.reorder[n].push(w);
+  renderQuestion();
+  saveState();
+}
+function removeWord(n, w){
+  if(!state.reorder[n]) return;
+  state.reorder[n] = state.reorder[n].filter(x=>x!==w);
+  renderQuestion();
+  saveState();
+}
+function clearReorder(n){
+  state.reorder[n] = [];
+  renderQuestion();
+  saveState();
+}
+
+function updateEssay(n){
+  const txt = $("essay"+n).value;
+  state.essays[n] = txt;
+  const len = countChinese(txt);
+  const c = $("counter"+n);
+  c.textContent = `${len} / ~80 caractères`;
+  c.classList.toggle("ok", len>=70);
+  updateProgress();
+  renderTabs();
+  // Save with debounce
+  clearTimeout(window._essayDebounce);
+  window._essayDebounce = setTimeout(saveState, 500);
+}
+function countChinese(s){
+  // Count CJK chars + words roughly
+  return [...s].filter(c=>/[\u4e00-\u9fa5]/.test(c)).length;
+}
+
+function toggleFlag(){
+  const n = state.currentQ;
+  state.flagged[n] = !state.flagged[n];
+  renderQuestion();
+  saveState();
+}
+
+/* ============================================================
+   GRID
+   ============================================================ */
+function renderGrid(){
+  let html = "";
+  EXAM.sections.forEach(sec=>{
+    sec.parts.forEach(part=>{
+      html += `<div class="q-grid-section-label">${sec.cn} · ${part.title}</div>`;
+      for(let i=part.range[0]; i<=part.range[1]; i++){
+        let cls = "q-cell";
+        const ans = state.answers[i] || (state.reorder[i]&&state.reorder[i].length) || (state.essays[i]&&state.essays[i].trim());
+        if(ans) cls += " answered";
+        if(state.flagged[i]) cls += " flagged";
+        if(i===state.currentQ) cls += " current";
+        if(state.finished && i<=90){
+          if(state.answers[i]===getQAnswer(i)) cls += " correct-rev";
+          else if(state.answers[i]) cls += " wrong-rev";
+        }
+        html += `<button class="${cls}" onclick="goTo(${i})">${i}</button>`;
+      }
+    });
+  });
+  $("qGrid").innerHTML = html;
+  $("answeredCount").textContent = `${countAnswered()}/100`;
+}
+
+function goTo(n){
+  state.currentQ = n;
+  renderQuestion();
+  saveState();
+}
+function nextQ(){ if(state.currentQ<100){ state.currentQ++; renderQuestion(); saveState(); } }
+function prevQ(){ if(state.currentQ>1){ state.currentQ--; renderQuestion(); saveState(); } }
+
+function updateProgress(){
+  const n = countAnswered();
+  $("abFill").style.width = (n/100*100)+"%";
+  $("abText").textContent = `${n} / 100 répondues`;
+}
+
+/* ============================================================
+   AUDIO
+   ============================================================ */
+function setSpeed(rate, btn){
+  document.querySelectorAll(".spd-btn").forEach(b=>b.classList.remove("active"));
+  if(btn) btn.classList.add("active");
+  const a = $("audioEl");
+  if(a) a.playbackRate = rate;
+}
+
+/* ============================================================
+   SUBMIT
+   ============================================================ */
+function confirmSubmit(){
+  const remaining = 100 - countAnswered();
+  showModal(`
+    <h2>Soumettre l'examen ?</h2>
+    <p>Vous avez répondu à <strong>${countAnswered()}/100</strong> questions${remaining?` — il en reste <strong>${remaining}</strong> sans réponse.`:"."}</p>
+    <p>Une fois soumis, vous verrez votre score et pourrez consulter chaque correction. Êtes-vous sûr·e ?</p>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal()">Continuer</button>
+      <button class="btn-primary" onclick="submitExam()">Soumettre maintenant</button>
+    </div>
+  `);
+}
+function confirmReset(){
+  showModal(`
+    <h2>Réinitialiser cet examen ?</h2>
+    <p>Toutes vos réponses, le chronomètre et la progression seront effacés. Cette action est irréversible.</p>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal()">Annuler</button>
+      <button class="btn-danger" onclick="resetExam()">Tout effacer</button>
+    </div>
+  `);
+}
+function resetExam(){
+  clearState();
+  state = {
+    mode:"sim", started:false, finished:false, currentQ:1,
+    currentSection:"listening", currentPart:"L1",
+    answers:{}, flagged:{}, reorder:{}, essays:{99:"",100:""},
+    startTime:null, elapsed:0, paused:false
+  };
+  if(timerInterval) clearInterval(timerInterval);
+  closeModal();
+  $("examView").classList.remove("active");
+  $("resultsView").classList.remove("active");
+  $("startView").classList.add("active");
+  $("topbarCenter").style.display = "none";
+  $("topbarRight").style.display = "none";
+  $("actionBar").style.display = "none";
+  $("audioBar").classList.remove("visible");
+  $("resumeWrap").innerHTML = "";
+}
+
+function submitExam(){
+  state.finished = true;
+  if(timerInterval) clearInterval(timerInterval);
+  closeModal();
+
+  // Compute score
+  let lis=0, lisOk=0, read=0, readOk=0, wri=0, wriOk=0;
+  for(let i=1;i<=45;i++){
+    lis++;
+    if(state.answers[i]===getQAnswer(i)) lisOk++;
+  }
+  for(let i=46;i<=90;i++){
+    read++;
+    if(state.answers[i]===getQAnswer(i)) readOk++;
+  }
+  // Writing P1: simple check — if joined matches answer (ignoring punctuation)
+  for(let i=91;i<=98;i++){
+    wri++;
+    const placed = (state.reorder[i]||[]).join("");
+    const ans = WRITING_P1.find(x=>x.n===i).answer.replace(/[，。！？]/g,"");
+    if(placed === ans) wriOk++;
+  }
+  // Writing P2: count if essay has at least 60 chars (auto-credit)
+  for(let i=99;i<=100;i++){
+    wri++;
+    if(countChinese(state.essays[i]||"") >= 60) wriOk++;
+  }
+
+  const total = lisOk + readOk + wriOk;
+  const totalQs = lis + read + wri;
+  // HSK 5 official: each section ~100 pts. Approximation:
+  const lisPts = Math.round(lisOk/lis * 100);
+  const readPts = Math.round(readOk/read * 100);
+  const wriPts = Math.round(wriOk/wri * 100);
+  const totalPts = lisPts + readPts + wriPts;
+
+  const passed = totalPts >= 180;
+  let emoji = "🎉", title = "Excellent !";
+  if(totalPts < 120){ emoji="💪"; title="À retravailler"; }
+  else if(totalPts < 180){ emoji="📚"; title="Presque !"; }
+  else if(totalPts < 240){ emoji="🎯"; title="Réussi !"; }
+  else { emoji="🏆"; title="Maîtrise du HSK 5 !"; }
+
+  const elapsedFmt = fmtTime(state.elapsed);
+
+  $("examView").classList.remove("active");
+  $("resultsView").classList.add("active");
+  $("actionBar").style.display = "none";
+  $("topbarCenter").style.display = "none";
+  $("audioBar").classList.remove("visible");
+
+  $("resultsView").innerHTML = `
+    <div class="question-card">
+      <div class="score-summary">
+        <div class="score-emoji">${emoji}</div>
+        <div class="score-big">${totalPts}<span class="denom">/300</span></div>
+        <div class="score-label"><strong>${title}</strong> · ${passed?'✅ Seuil de réussite atteint (180)':'❌ Seuil de réussite : 180/300'}</div>
+        <div class="score-breakdown">
+          <div class="sb-item"><div class="sb-cn">🎧 听力</div><div class="sb-score">${lisPts}<span style="font-size:0.7rem;color:var(--text-light);">/100</span></div><div class="sb-pct">${lisOk}/${lis} bonnes</div></div>
+          <div class="sb-item"><div class="sb-cn">📖 阅读</div><div class="sb-score">${readPts}<span style="font-size:0.7rem;color:var(--text-light);">/100</span></div><div class="sb-pct">${readOk}/${read} bonnes</div></div>
+          <div class="sb-item"><div class="sb-cn">✍ 书写</div><div class="sb-score">${wriPts}<span style="font-size:0.7rem;color:var(--text-light);">/100</span></div><div class="sb-pct">${wriOk}/${wri} bonnes</div></div>
+        </div>
+        <div style="margin-top:14px;font-size:0.85rem;color:var(--text-light);">⏱ Temps total : ${elapsedFmt}</div>
+      </div>
+
+      <h3 style="font-family:'Noto Serif SC',serif;color:var(--primary);margin-bottom:14px;">📝 Consultez chaque réponse</h3>
+      <p style="color:var(--text-light);margin-bottom:18px;">Cliquez sur n'importe quelle question dans le plan à droite pour voir la correction (les mauvaises réponses sont en rouge, les bonnes en vert).</p>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
+        <button class="start-btn" style="flex:1;min-width:200px;" onclick="reviewMode()">📖 Revoir les questions</button>
+        <button class="nav-btn prev" style="flex:1;min-width:200px;padding:18px;" onclick="confirmReset()">↺ Refaire l'examen</button>
+        <a class="nav-btn next" style="flex:1;min-width:200px;padding:18px;text-align:center;text-decoration:none;display:block;" href="../index.html">← Autres examens</a>
+      </div>
+    </div>
+  `;
+
+  saveState();
+}
+
+function reviewMode(){
+  $("resultsView").classList.remove("active");
+  $("examView").classList.add("active");
+  $("audioBar").classList.add("visible");
+  state.currentQ = 1;
+  renderQuestion();
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+function showModal(html){
+  $("modalContent").innerHTML = html;
+  $("modal").classList.add("show");
+}
+function closeModal(){
+  $("modal").classList.remove("show");
+}
+$("modal").addEventListener("click", e=>{
+  if(e.target.id==="modal") closeModal();
+});
+
+/* ============================================================
+   UTILS
+   ============================================================ */
+function escapeHtml(s){
+  if(s==null) return "";
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function escapeAttr(s){
+  return String(s).replace(/'/g,"\\'").replace(/"/g,'&quot;');
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+window.addEventListener("DOMContentLoaded", ()=>{
+  const saved = loadState();
+  if(saved && saved.started && !saved.finished){
+    state = Object.assign(state, saved);
+    const answered = countAnswered();
+    $("resumeWrap").innerHTML = `
+      <div class="resume-banner">
+        <span style="font-size:1.5rem;">💾</span>
+        <div class="rb-text">
+          <strong>Reprendre votre session ?</strong> Vous avez répondu à ${answered}/100 questions
+          (mode ${state.mode==="sim"?"Examen":"Pratique"}, ${fmtTime(state.elapsed)} écoulées).
+        </div>
+        <button class="rb-yes" onclick="resumeExam()">Reprendre</button>
+        <button class="rb-no" onclick="resetExam()">Recommencer</button>
+      </div>
+    `;
+  } else if(saved && saved.finished){
+    state = Object.assign(state, saved);
+    $("resumeWrap").innerHTML = `
+      <div class="resume-banner">
+        <span style="font-size:1.5rem;">📊</span>
+        <div class="rb-text">
+          <strong>Examen précédent terminé.</strong> Voulez-vous consulter le score ou recommencer ?
+        </div>
+        <button class="rb-yes" onclick="showLastResults()">Voir résultats</button>
+        <button class="rb-no" onclick="resetExam()">Refaire</button>
+      </div>
+    `;
+  }
+});
+
+function showLastResults(){
+  // Re-trigger results view
+  state.finished = true;
+  $("startView").classList.remove("active");
+  submitExam();
+}
+
+</script>
+</body>
+</html>

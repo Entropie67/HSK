@@ -338,21 +338,43 @@ footer{
 
 <script>
 const exams = [
-  {
-    code: "H51553D",
-    folder: "51553D",
-    available: true,
-    sessions: "Session de référence",
-    note: "100 questions · audio + corrigé"
-  },
-  // Coming soon — based on common HSK 5 paper codes
-  { code: "H51553C", folder: "51553C", available: false, sessions: "Session précédente" },
+  // Available — fully digitised, audio + corrigé inclus
+  { code: "H51553D", folder: "51553D", available: true, sessions: "Session de référence", note: "100 questions · audio + corrigé" },
+  { code: "H51553C", folder: "51553C", available: true, sessions: "Session précédente",   note: "100 questions · audio + corrigé" },
+  // Coming soon — fichiers reçus, en cours de numérisation
   { code: "H51553B", folder: "51553B", available: false, sessions: "Session précédente" },
-  { code: "H51553A", folder: "51553A", available: false, sessions: "Session précédente" },
   { code: "H51552",  folder: "51552",  available: false, sessions: "Session antérieure" },
+  { code: "H51553",  folder: "51553",  available: false, sessions: "Session antérieure" },
   { code: "H51448",  folder: "51448",  available: false, sessions: "Session antérieure" },
   { code: "H51447",  folder: "51447",  available: false, sessions: "Session antérieure" },
-  { code: "H51333",  folder: "51333",  available: false, sessions: "Session ancienne" }
+  { code: "H51438",  folder: "51438",  available: false, sessions: "Session antérieure" },
+  { code: "H51333",  folder: "51333",  available: false, sessions: "Session ancienne" },
+  { code: "H51332",  folder: "51332",  available: false, sessions: "Session ancienne" },
+  { code: "H51331",  folder: "51331",  available: false, sessions: "Session ancienne" },
+  { code: "H51330",  folder: "51330",  available: false, sessions: "Session ancienne" },
+  { code: "H51329",  folder: "51329",  available: false, sessions: "Session ancienne" },
+  { code: "H51328",  folder: "51328",  available: false, sessions: "Session ancienne" },
+  { code: "H51327",  folder: "51327",  available: false, sessions: "Session ancienne" },
+  { code: "H51225",  folder: "51225",  available: false, sessions: "Session ancienne" },
+  { code: "H51224",  folder: "51224",  available: false, sessions: "Session ancienne" },
+  { code: "H51223",  folder: "51223",  available: false, sessions: "Session ancienne" },
+  { code: "H51222",  folder: "51222",  available: false, sessions: "Session ancienne" },
+  { code: "H51221",  folder: "51221",  available: false, sessions: "Session ancienne" },
+  { code: "H51220",  folder: "51220",  available: false, sessions: "Session ancienne" },
+  { code: "H51219",  folder: "51219",  available: false, sessions: "Session ancienne" },
+  { code: "H51218",  folder: "51218",  available: false, sessions: "Session ancienne" },
+  { code: "H51111",  folder: "51111",  available: false, sessions: "Session ancienne" },
+  { code: "H51110",  folder: "51110",  available: false, sessions: "Session ancienne" },
+  { code: "H51009",  folder: "51009",  available: false, sessions: "Session ancienne" },
+  { code: "H51008",  folder: "51008",  available: false, sessions: "Session ancienne" },
+  { code: "H51007",  folder: "51007",  available: false, sessions: "Session ancienne" },
+  { code: "H51006",  folder: "51006",  available: false, sessions: "Session ancienne" },
+  { code: "H51005",  folder: "51005",  available: false, sessions: "Session ancienne" },
+  { code: "H51004",  folder: "51004",  available: false, sessions: "Session ancienne" },
+  { code: "H51003",  folder: "51003",  available: false, sessions: "Session ancienne" },
+  { code: "H51002",  folder: "51002",  available: false, sessions: "Session ancienne" },
+  { code: "H51001",  folder: "51001",  available: false, sessions: "Session ancienne" },
+  { code: "H50000",  folder: "50000",  available: false, sessions: "Session ancienne" }
 ];
 
 function renderExams(){
