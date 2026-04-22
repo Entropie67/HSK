@@ -1,0 +1,12 @@
+# Original textbook PDFs (too large, copyrighted)
+pdf/
+
+# Reference materials kept locally
+intense/pdf/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/

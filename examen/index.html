@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HSK 5 — Examens blancs</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root{
+  --primary:#7c2d12;
+  --primary-light:#9a3412;
+  --primary-dark:#431407;
+  --accent:#ea580c;
+  --gold:#f59e0b;
+  --gold-light:#fef3c7;
+  --bg:#fdfbf7;
+  --bg-warm:#fef7ec;
+  --card:#ffffff;
+  --text:#1c1917;
+  --text-light:#78716c;
+  --text-mute:#a8a29e;
+  --border:#f5e6d3;
+  --border-strong:#e7c59c;
+  --success:#16a34a;
+  --gradient-hero:linear-gradient(135deg,#431407 0%,#7c2d12 35%,#9a3412 70%,#ea580c 100%);
+  --shadow-sm:0 2px 6px rgba(67,20,7,0.05);
+  --shadow-md:0 6px 24px rgba(67,20,7,0.08);
+  --shadow-lg:0 12px 48px rgba(67,20,7,0.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Noto Sans SC',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  min-height:100vh;
+}
+
+.topbar{
+  background:rgba(253,251,247,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:14px 20px;
+}
+.topbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px;}
+.back-link{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--primary);text-decoration:none;font-weight:500;font-size:0.92rem;
+  padding:6px 12px;border-radius:8px;transition:background .2s;
+}
+.back-link:hover{background:var(--bg-warm);}
+
+.hero{
+  background:var(--gradient-hero);
+  color:white;padding:70px 20px 100px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-30%;right:-10%;
+  width:550px;height:550px;
+  background:radial-gradient(circle,rgba(255,255,255,0.07),transparent 70%);
+  border-radius:50%;
+}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:60px;
+  background:var(--bg);clip-path:ellipse(60% 100% at 50% 100%);
+}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.hero-badge{
+  display:inline-block;background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.2);padding:6px 16px;border-radius:20px;
+  font-size:0.78rem;font-weight:500;letter-spacing:1.5px;margin-bottom:18px;
+}
+.hero h1{
+  font-family:'Noto Serif SC',serif;font-size:3.2rem;font-weight:900;
+  margin-bottom:10px;text-shadow:0 2px 12px rgba(0,0,0,0.25);
+}
+.hero .hero-sub{font-size:1.15rem;opacity:0.85;font-weight:300;margin-bottom:30px;max-width:700px;}
+
+.hero-stats{display:flex;gap:14px;flex-wrap:wrap;}
+.hs-card{
+  background:rgba(255,255,255,0.13);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:14px;padding:14px 22px;flex:1;min-width:140px;
+}
+.hs-num{font-size:1.6rem;font-weight:900;font-family:'Noto Serif SC',serif;}
+.hs-label{font-size:0.78rem;opacity:0.8;text-transform:uppercase;letter-spacing:1.5px;margin-top:2px;}
+
+.content{max-width:1100px;margin:-60px auto 60px;padding:0 20px;position:relative;z-index:2;}
+
+/* INFO PANEL */
+.info-panel{
+  background:var(--card);border-radius:18px;padding:28px;
+  box-shadow:var(--shadow-md);border:1px solid var(--border);margin-bottom:30px;
+  display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;
+}
+@media(max-width:600px){.info-panel{grid-template-columns:1fr;text-align:center;}}
+.info-icon{
+  width:80px;height:80px;border-radius:20px;
+  background:linear-gradient(135deg,var(--gold),var(--accent));
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.4rem;color:white;
+  box-shadow:0 8px 24px rgba(245,158,11,0.3);
+}
+.info-text h2{font-family:'Noto Serif SC',serif;font-size:1.4rem;color:var(--primary);margin-bottom:6px;}
+.info-text p{color:var(--text-light);font-size:0.95rem;margin-bottom:12px;}
+.info-pills{display:flex;flex-wrap:wrap;gap:8px;}
+.info-pill{
+  background:var(--bg-warm);border:1px solid var(--border);
+  padding:5px 12px;border-radius:20px;font-size:0.82rem;color:var(--primary-dark);font-weight:500;
+}
+
+/* SECTION TITLE */
+.section-title{
+  font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;color:var(--primary);
+  margin-bottom:18px;display:flex;align-items:center;gap:14px;
+}
+.section-title .title-line{flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent);}
+.section-title .small{font-size:0.85rem;font-weight:400;color:var(--text-light);}
+
+/* EXAM GRID */
+.exam-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;
+  margin-bottom:50px;
+}
+.exam-card{
+  background:var(--card);border-radius:16px;padding:24px;
+  border:2px solid var(--border);text-decoration:none;color:var(--text);
+  transition:all .3s;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;gap:14px;
+}
+.exam-card.available{
+  background:linear-gradient(135deg,#fff7ed,#fef3c7);
+  border-color:var(--gold);
+}
+.exam-card.available:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(245,158,11,0.25);
+  border-color:var(--accent);
+}
+.exam-card.coming{opacity:0.55;cursor:default;pointer-events:none;}
+
+.exam-card::before{
+  content:'';position:absolute;top:-30px;right:-30px;
+  width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--accent));
+  opacity:0.15;
+}
+.exam-card.coming::before{background:var(--text-mute);opacity:0.1;}
+
+.ec-head{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;}
+.ec-code{
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.05rem;
+  background:var(--primary);color:white;padding:5px 12px;border-radius:6px;letter-spacing:1px;
+}
+.exam-card.coming .ec-code{background:var(--text-mute);}
+.ec-status{
+  font-size:0.7rem;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:0.5px;
+}
+.ec-status.ready{background:#dcfce7;color:#166534;}
+.ec-status.soon{background:#f3f4f6;color:#9ca3af;}
+
+.ec-title{
+  font-family:'Noto Serif SC',serif;font-weight:700;font-size:1.15rem;color:var(--primary-dark);
+  position:relative;z-index:1;
+}
+.exam-card.coming .ec-title{color:var(--text-light);}
+.ec-meta{
+  display:flex;flex-wrap:wrap;gap:10px;font-size:0.82rem;color:var(--text-light);
+  position:relative;z-index:1;
+}
+.ec-meta-item{display:inline-flex;align-items:center;gap:4px;}
+.ec-cta{
+  margin-top:auto;padding-top:14px;border-top:1px dashed var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  font-weight:600;color:var(--primary);font-size:0.92rem;
+}
+.exam-card.coming .ec-cta{color:var(--text-mute);}
+.ec-cta .arrow{transition:transform .3s;}
+.exam-card.available:hover .ec-cta .arrow{transform:translateX(6px);}
+
+/* TIPS SECTION */
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:30px;}
+.tip{
+  background:var(--card);border-radius:14px;padding:20px;
+  border:1px solid var(--border);box-shadow:var(--shadow-sm);
+  transition:transform .2s;
+}
+.tip:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+.tip-icon{font-size:1.8rem;margin-bottom:10px;}
+.tip h3{font-family:'Noto Serif SC',serif;color:var(--primary);font-size:1.05rem;margin-bottom:6px;}
+.tip p{font-size:0.88rem;color:var(--text-light);line-height:1.6;}
+
+/* FORMAT SECTION */
+.format-card{
+  background:var(--card);border-radius:18px;padding:30px;
+  box-shadow:var(--shadow-md);border:1px solid var(--border);margin-bottom:30px;
+}
+.format-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;}
+@media(max-width:700px){.format-grid{grid-template-columns:1fr;}}
+.fmt{
+  background:var(--bg-warm);border-radius:12px;padding:18px;
+  border-left:4px solid var(--primary);
+}
+.fmt:nth-child(2){border-left-color:var(--gold);}
+.fmt:nth-child(3){border-left-color:var(--accent);}
+.fmt-cn{font-family:'Noto Serif SC',serif;font-weight:700;font-size:1.15rem;color:var(--primary-dark);}
+.fmt-fr{font-size:0.82rem;color:var(--text-light);margin-bottom:10px;}
+.fmt-q{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.4rem;color:var(--primary);}
+.fmt-meta{font-size:0.8rem;color:var(--text-light);margin-top:4px;}
+
+footer{
+  text-align:center;padding:30px 20px;
+  color:var(--text-light);font-size:0.82rem;
+}
+
+@media(max-width:700px){
+  .hero h1{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="back-link" href="../index.html">← Accueil</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <span class="hero-badge">📝 模拟考试 · MOCK EXAMS</span>
+    <h1>Examens blancs HSK 5</h1>
+    <p class="hero-sub">Entraînez-vous dans des conditions réelles avec les vrais sujets officiels du HSK 5 — audio, transcription et corrigé inclus pour chaque épreuve.</p>
+    <div class="hero-stats">
+      <div class="hs-card"><div class="hs-num" id="availCount">1</div><div class="hs-label">Examen disponible</div></div>
+      <div class="hs-card"><div class="hs-num">100</div><div class="hs-label">Q par examen</div></div>
+      <div class="hs-card"><div class="hs-num">125 min</div><div class="hs-label">Durée officielle</div></div>
+      <div class="hs-card"><div class="hs-num">180/300</div><div class="hs-label">Seuil de réussite</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- INFO PANEL -->
+  <div class="info-panel">
+    <div class="info-icon">🎯</div>
+    <div class="info-text">
+      <h2>Deux modes d'entraînement par examen</h2>
+      <p>Choisissez votre approche selon votre objectif : un examen blanc complet en conditions réelles avec chronomètre, ou une pratique libre avec correction immédiate.</p>
+      <div class="info-pills">
+        <span class="info-pill">⏱ Chronomètre 125 min</span>
+        <span class="info-pill">🎧 Audio officiel</span>
+        <span class="info-pill">📜 Transcriptions</span>
+        <span class="info-pill">✅ Corrigé immédiat</span>
+        <span class="info-pill">💾 Reprise auto</span>
+        <span class="info-pill">📊 Score par section</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMAT EXPLANATION -->
+  <div class="format-card">
+    <div class="section-title" style="margin-bottom:8px;">📋 Structure de l'examen HSK 5 <span class="title-line"></span></div>
+    <p style="color:var(--text-light);font-size:0.92rem;">Chaque examen suit le format officiel Hanban : 3 sections, 100 questions, ~125 minutes incluant 5 min pour les fiches.</p>
+    <div class="format-grid">
+      <div class="fmt">
+        <div class="fmt-cn">🎧 一、听力</div>
+        <div class="fmt-fr">Compréhension orale</div>
+        <div class="fmt-q">45 Q</div>
+        <div class="fmt-meta">~30 min · audio · 2 parties</div>
+      </div>
+      <div class="fmt">
+        <div class="fmt-cn">📖 二、阅读</div>
+        <div class="fmt-fr">Compréhension écrite</div>
+        <div class="fmt-q">45 Q</div>
+        <div class="fmt-meta">45 min · cloze + textes courts/longs</div>
+      </div>
+      <div class="fmt">
+        <div class="fmt-cn">✍ 三、书写</div>
+        <div class="fmt-fr">Expression écrite</div>
+        <div class="fmt-q">10 Q</div>
+        <div class="fmt-meta">40 min · réordonner + 2 rédactions</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AVAILABLE EXAMS -->
+  <div class="section-title">
+    ✅ Examens disponibles <span class="small">— Available now</span>
+    <span class="title-line"></span>
+  </div>
+  <div class="exam-grid" id="availableGrid"></div>
+
+  <!-- COMING SOON EXAMS -->
+  <div class="section-title">
+    ⏳ Bientôt disponibles <span class="small">— Coming soon</span>
+    <span class="title-line"></span>
+  </div>
+  <div class="exam-grid" id="comingGrid"></div>
+
+  <!-- TIPS -->
+  <div class="section-title">
+    💡 Conseils d'examen <span class="small">— Tips</span>
+    <span class="title-line"></span>
+  </div>
+  <div class="tips-grid">
+    <div class="tip">
+      <div class="tip-icon">⏱</div>
+      <h3>Gérez le temps</h3>
+      <p>~40 sec/question en lecture, 24 sec en écoute. Marquez les questions difficiles et revenez-y à la fin avec le bouton ⚑.</p>
+    </div>
+    <div class="tip">
+      <div class="tip-icon">🎧</div>
+      <h3>Écoute : un seul passage</h3>
+      <p>L'audio est joué une seule fois. Lisez les options AVANT que la question ne soit posée — la réponse arrive vite.</p>
+    </div>
+    <div class="tip">
+      <div class="tip-icon">📖</div>
+      <h3>Lecture : balayez d'abord</h3>
+      <p>Lisez d'abord les questions, puis cherchez la réponse dans le texte. Évitez de tout lire mot à mot.</p>
+    </div>
+    <div class="tip">
+      <div class="tip-icon">✍</div>
+      <h3>Rédaction : structure simple</h3>
+      <p>80 caractères = 4-5 phrases. Une intro, deux idées, une conclusion. Variez les connecteurs : 因为, 不但…而且, 虽然…但是.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  刘老师的中文课 · HSK 5 Mock Exams · Sujets officiels Hanban
+</footer>
+
+<script>
+const exams = [
+  {
+    code: "H51553D",
+    folder: "51553D",
+    available: true,
+    sessions: "Session de référence",
+    note: "100 questions · audio + corrigé"
+  },
+  // Coming soon — based on common HSK 5 paper codes
+  { code: "H51553C", folder: "51553C", available: false, sessions: "Session précédente" },
+  { code: "H51553B", folder: "51553B", available: false, sessions: "Session précédente" },
+  { code: "H51553A", folder: "51553A", available: false, sessions: "Session précédente" },
+  { code: "H51552",  folder: "51552",  available: false, sessions: "Session antérieure" },
+  { code: "H51448",  folder: "51448",  available: false, sessions: "Session antérieure" },
+  { code: "H51447",  folder: "51447",  available: false, sessions: "Session antérieure" },
+  { code: "H51333",  folder: "51333",  available: false, sessions: "Session ancienne" }
+];
+
+function renderExams(){
+  const avail = exams.filter(e=>e.available);
+  const coming = exams.filter(e=>!e.available);
+  document.getElementById("availCount").textContent = avail.length;
+
+  document.getElementById("availableGrid").innerHTML = avail.map((e,i)=>`
+    <a class="exam-card available" href="${e.folder}/index.html">
+      <div class="ec-head">
+        <span class="ec-code">${e.code}</span>
+        <span class="ec-status ready">DISPONIBLE</span>
+      </div>
+      <div class="ec-title">HSK 5 · Examen ${i+1}</div>
+      <div class="ec-meta">
+        <span class="ec-meta-item">📋 100 Q</span>
+        <span class="ec-meta-item">⏱ 125 min</span>
+        <span class="ec-meta-item">🎧 audio</span>
+      </div>
+      <div style="font-size:0.82rem;color:var(--text-light);">${e.note||e.sessions}</div>
+      <div class="ec-cta">Commencer l'examen <span class="arrow">→</span></div>
+    </a>
+  `).join("");
+
+  document.getElementById("comingGrid").innerHTML = coming.map(e=>`
+    <div class="exam-card coming">
+      <div class="ec-head">
+        <span class="ec-code">${e.code}</span>
+        <span class="ec-status soon">À VENIR</span>
+      </div>
+      <div class="ec-title">HSK 5 · ${e.sessions}</div>
+      <div class="ec-meta">
+        <span class="ec-meta-item">📋 100 Q</span>
+        <span class="ec-meta-item">⏱ 125 min</span>
+      </div>
+      <div class="ec-cta">Bientôt disponible</div>
+    </div>
+  `).join("");
+}
+
+renderExams();
+</script>
+
+</body>
+</html>
