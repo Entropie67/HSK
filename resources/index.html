@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>学习资源 — La boîte à outils du sinophile</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700;900&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root{
+  --primary:#0f766e;
+  --primary-light:#14b8a6;
+  --primary-dark:#134e4a;
+  --accent:#f59e0b;
+  --accent-light:#fbbf24;
+  --bg:#f8fafc;
+  --bg-warm:#fef9f0;
+  --card:#ffffff;
+  --text:#0f172a;
+  --text-light:#64748b;
+  --text-mute:#94a3b8;
+  --border:#e2e8f0;
+  --gold:#f59e0b;
+  --gradient-hero:linear-gradient(135deg,#134e4a 0%,#0f766e 35%,#14b8a6 70%,#f59e0b 100%);
+  --shadow-sm:0 2px 6px rgba(15,23,42,0.04);
+  --shadow-md:0 6px 24px rgba(15,23,42,0.08);
+  --shadow-lg:0 16px 48px rgba(15,23,42,0.14);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans SC',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  min-height:100vh;
+}
+
+/* ===== TOP BAR ===== */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(248,250,252,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:12px 20px;
+  display:flex;align-items:center;gap:16px;
+}
+.back-link{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--primary);text-decoration:none;font-weight:500;font-size:0.92rem;
+  padding:6px 14px;border-radius:10px;transition:background .2s;
+}
+.back-link:hover{background:var(--bg-warm);}
+.tb-title{
+  font-family:'Noto Serif SC',serif;font-weight:700;color:var(--primary-dark);
+  font-size:1.05rem;
+}
+.tb-spacer{flex:1;}
+.tb-quick{
+  display:flex;gap:8px;flex-wrap:wrap;
+}
+.tb-quick a{
+  font-size:0.78rem;text-decoration:none;color:var(--text-light);
+  padding:5px 10px;border-radius:8px;border:1px solid var(--border);
+  background:var(--card);transition:all .2s;
+}
+.tb-quick a:hover{color:var(--primary);border-color:var(--primary-light);}
+
+/* ===== HERO ===== */
+.hero{
+  background:var(--gradient-hero);
+  color:white;padding:70px 20px 90px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-30%;right:-15%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(255,255,255,0.08),transparent 70%);
+  border-radius:50%;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-1px;left:0;right:0;height:60px;
+  background:var(--bg);clip-path:ellipse(70% 100% at 50% 100%);
+}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.hero-badge{
+  display:inline-block;background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.25);padding:7px 18px;border-radius:24px;
+  font-size:0.78rem;font-weight:500;letter-spacing:1.5px;margin-bottom:20px;
+  text-transform:uppercase;
+}
+.hero h1{
+  font-family:'Noto Serif SC',serif;font-size:3.2rem;font-weight:900;
+  margin-bottom:10px;text-shadow:0 2px 12px rgba(0,0,0,0.25);
+  line-height:1.1;
+}
+.hero h1 .cn{display:block;font-size:1.4rem;font-weight:400;opacity:0.78;margin-bottom:4px;letter-spacing:4px;}
+.hero p.sub{font-size:1.15rem;opacity:0.9;font-weight:300;max-width:720px;}
+
+/* ===== CONTENT ===== */
+.wrap{max-width:1100px;margin:-50px auto 0;padding:0 20px 80px;position:relative;z-index:2;}
+
+/* ===== STAR PICK (z2h.cn) ===== */
+.star-card{
+  background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f766e 100%);
+  border-radius:24px;
+  padding:36px 40px;
+  color:white;
+  display:flex;
+  align-items:center;
+  gap:30px;
+  box-shadow:var(--shadow-lg);
+  margin-bottom:48px;
+  position:relative;
+  overflow:hidden;
+  text-decoration:none;
+  transition:transform .3s, box-shadow .3s;
+}
+.star-card:hover{transform:translateY(-3px);box-shadow:0 24px 56px rgba(15,118,110,0.35);}
+.star-card::before{
+  content:'';position:absolute;top:-40%;right:-10%;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(245,158,11,0.18),transparent 70%);
+  border-radius:50%;pointer-events:none;
+}
+.star-emoji{
+  font-size:4rem;flex-shrink:0;
+  filter:drop-shadow(0 4px 12px rgba(245,158,11,0.4));
+  position:relative;z-index:1;
+}
+.star-text{position:relative;z-index:1;flex:1;}
+.star-tag{
+  display:inline-block;
+  background:linear-gradient(135deg,#f59e0b,#ea580c);
+  padding:4px 14px;border-radius:12px;font-size:0.7rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;
+  box-shadow:0 4px 14px rgba(245,158,11,0.35);
+}
+.star-name{
+  font-family:'Noto Serif SC',serif;font-size:1.9rem;font-weight:800;
+  margin-bottom:6px;
+}
+.star-name .url{
+  display:block;font-family:'JetBrains Mono',monospace;font-size:0.85rem;
+  opacity:0.7;font-weight:500;letter-spacing:1px;margin-top:4px;
+}
+.star-desc{font-size:1rem;opacity:0.92;line-height:1.6;}
+@media(max-width:680px){
+  .star-card{flex-direction:column;text-align:center;padding:30px 24px;}
+}
+
+/* ===== SECTION ===== */
+.section{margin-bottom:54px;}
+.section-head{
+  display:flex;align-items:center;gap:16px;margin-bottom:24px;
+}
+.section-icon{
+  width:50px;height:50px;border-radius:14px;
+  background:var(--gradient-hero);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;color:white;
+  box-shadow:var(--shadow-md);
+  flex-shrink:0;
+}
+.section-titles{flex:1;}
+.section-cn{
+  font-family:'Noto Serif SC',serif;font-weight:700;
+  font-size:1.6rem;color:var(--primary-dark);
+  letter-spacing:2px;
+}
+.section-fr{
+  color:var(--text-light);font-size:0.95rem;font-weight:400;
+  margin-top:2px;
+}
+.section-line{
+  flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent);
+  min-width:40px;
+}
+
+/* ===== CARDS ===== */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+  gap:16px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  display:flex;
+  gap:14px;
+  transition:all .25s;
+  text-decoration:none;
+  color:var(--text);
+  position:relative;
+}
+.card:hover{
+  border-color:var(--primary-light);
+  box-shadow:var(--shadow-md);
+  transform:translateY(-2px);
+}
+.card-logo{
+  width:56px;height:56px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.7rem;flex-shrink:0;color:white;font-weight:700;
+  font-family:'Noto Serif SC',serif;
+  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+}
+.card-body{flex:1;min-width:0;}
+.card-name{
+  font-weight:700;color:var(--text);font-size:1.02rem;
+  margin-bottom:2px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.card-tag{
+  font-size:0.65rem;background:var(--bg-warm);color:var(--accent);
+  padding:2px 8px;border-radius:6px;font-weight:600;letter-spacing:0.5px;
+  text-transform:uppercase;
+}
+.card-tag.free{background:#dcfce7;color:#16a34a;}
+.card-tag.paid{background:#fef3c7;color:#b45309;}
+.card-tag.web{background:#dbeafe;color:#2563eb;}
+.card-tag.hsk{background:#fde2e7;color:#be185d;}
+.card-desc{
+  color:var(--text-light);font-size:0.85rem;line-height:1.5;
+  margin-top:4px;
+}
+.card-meta{
+  display:flex;gap:10px;margin-top:8px;
+  font-size:0.72rem;color:var(--text-mute);
+}
+.card-arrow{
+  position:absolute;top:14px;right:14px;
+  opacity:0;transition:all .25s;
+  color:var(--primary-light);font-size:1.1rem;
+}
+.card:hover .card-arrow{opacity:1;transform:translateX(2px);}
+
+/* Logo color variations */
+.lg-pleco{background:linear-gradient(135deg,#1e3a8a,#1d4ed8);}
+.lg-skritter{background:linear-gradient(135deg,#0891b2,#06b6d4);}
+.lg-anki{background:linear-gradient(135deg,#1e40af,#3b82f6);}
+.lg-hellocn{background:linear-gradient(135deg,#0ea5e9,#38bdf8);}
+.lg-superchinese{background:linear-gradient(135deg,#f97316,#ea580c);}
+.lg-ducn{background:linear-gradient(135deg,#dc2626,#b91c1c);}
+.lg-dongcn{background:linear-gradient(135deg,#7c2d12,#9a3412);}
+.lg-chinesepod{background:linear-gradient(135deg,#7c2d12,#dc2626);}
+.lg-lingodeer{background:linear-gradient(135deg,#fbbf24,#f59e0b);}
+.lg-mosalingua{background:linear-gradient(135deg,#dc2626,#7c1d6f);}
+.lg-italki{background:linear-gradient(135deg,#dc2626,#ef4444);}
+.lg-tandem{background:linear-gradient(135deg,#0891b2,#7c3aed);}
+.lg-supertest{background:linear-gradient(135deg,#7c3aed,#5b21b6);}
+.lg-hsk-online{background:linear-gradient(135deg,#1e40af,#1d4ed8);}
+.lg-quizlet{background:linear-gradient(135deg,#4338ca,#6366f1);}
+.lg-immersive{background:linear-gradient(135deg,#0f766e,#14b8a6);}
+.lg-chineseskill{background:linear-gradient(135deg,#0f172a,#334155);}
+.lg-woodpecker{background:linear-gradient(135deg,#dc2626,#f97316);}
+.lg-writer{background:linear-gradient(135deg,#7f1d1d,#dc2626);}
+.lg-petitsmandarins{background:linear-gradient(135deg,#0ea5e9,#0284c7);}
+.lg-tcb{background:linear-gradient(135deg,#dc2626,#7c2d12);}
+.lg-elsa{background:linear-gradient(135deg,#7c3aed,#a855f7);}
+.lg-lingopie{background:linear-gradient(135deg,#f97316,#fbbf24);}
+.lg-rosetta{background:linear-gradient(135deg,#facc15,#eab308);color:#1e293b;}
+.lg-babbel{background:linear-gradient(135deg,#f97316,#ea580c);}
+.lg-duolingo{background:linear-gradient(135deg,#22c55e,#16a34a);}
+.lg-realife{background:linear-gradient(135deg,#dc2626,#b91c1c);}
+.lg-z2h{background:linear-gradient(135deg,#f59e0b,#dc2626);}
+.lg-mdbg{background:linear-gradient(135deg,#1e40af,#1d4ed8);}
+.lg-yellowbridge{background:linear-gradient(135deg,#facc15,#f59e0b);color:#1e293b;}
+.lg-arch{background:linear-gradient(135deg,#16a34a,#0f766e);}
+.lg-purple{background:linear-gradient(135deg,#7c3aed,#5b21b6);}
+.lg-mandarinbean{background:linear-gradient(135deg,#16a34a,#15803d);}
+.lg-clozemaster{background:linear-gradient(135deg,#0891b2,#0e7490);}
+.lg-tatoeba{background:linear-gradient(135deg,#16a34a,#15803d);}
+.lg-grammar{background:linear-gradient(135deg,#0f766e,#0d9488);}
+.lg-popup{background:linear-gradient(135deg,#dc2626,#b91c1c);}
+.lg-zhongwen{background:linear-gradient(135deg,#7c2d12,#9a3412);}
+.lg-anki-web{background:linear-gradient(135deg,#1e40af,#3b82f6);}
+.lg-readibu{background:linear-gradient(135deg,#0ea5e9,#0284c7);}
+.lg-pinpin{background:linear-gradient(135deg,#a855f7,#7c3aed);}
+.lg-stroke{background:linear-gradient(135deg,#facc15,#f59e0b);color:#1e293b;}
+.lg-yt{background:linear-gradient(135deg,#dc2626,#b91c1c);}
+.lg-podcast{background:linear-gradient(135deg,#7c3aed,#5b21b6);}
+.lg-news{background:linear-gradient(135deg,#0f172a,#334155);}
+.lg-twitch{background:linear-gradient(135deg,#7c3aed,#9333ea);}
+.lg-bilibili{background:linear-gradient(135deg,#06b6d4,#0891b2);}
+.lg-youdao{background:linear-gradient(135deg,#dc2626,#ea580c);}
+
+/* ===== TIPS ===== */
+.tips{
+  background:linear-gradient(135deg,var(--bg-warm),#fef3c7);
+  border:1px solid #fde68a;
+  border-radius:18px;
+  padding:30px 32px;
+  margin-top:40px;
+}
+.tips h3{
+  font-family:'Noto Serif SC',serif;color:var(--primary-dark);
+  font-size:1.3rem;margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.tips ul{list-style:none;padding:0;}
+.tips li{
+  padding:10px 0;border-bottom:1px dashed rgba(245,158,11,0.3);
+  display:flex;gap:12px;align-items:flex-start;
+}
+.tips li:last-child{border:none;}
+.tips li strong{color:var(--primary-dark);min-width:140px;display:inline-block;}
+.tips li .em{font-size:1.2rem;flex-shrink:0;}
+
+/* ===== FOOTER ===== */
+.foot{
+  text-align:center;color:var(--text-mute);font-size:0.85rem;
+  padding:30px 20px;border-top:1px solid var(--border);
+  margin-top:40px;
+}
+
+@media(max-width:600px){
+  .hero h1{font-size:2.2rem;}
+  .hero h1 .cn{font-size:1.1rem;letter-spacing:3px;}
+  .section-cn{font-size:1.3rem;}
+  .star-name{font-size:1.5rem;}
+  .star-emoji{font-size:3rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a class="back-link" href="../index.html">← Accueil</a>
+  <span class="tb-title">学习资源</span>
+  <span class="tb-spacer"></span>
+  <div class="tb-quick">
+    <a href="#star">⭐ Z2H</a>
+    <a href="#dictionnaires">📖 Dico</a>
+    <a href="#hsk">🎯 HSK</a>
+    <a href="#apps">📱 Apps</a>
+    <a href="#lecture">📚 Lecture</a>
+    <a href="#audio">🎧 Audio</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <span class="hero-badge">🧰 La boîte à outils du sinophile</span>
+    <h1>
+      <span class="cn">学习资源</span>
+      Apprendre le chinois<br>sans se perdre.
+    </h1>
+    <p class="sub">Une sélection curatée — pas un fourre-tout. Les meilleurs sites, apps, dictionnaires et podcasts pour avancer en chinois, classés par usage. Ce que j'utilise réellement, ce qui marche vraiment.</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ⭐ STAR PICK -->
+  <a class="star-card" id="star" href="https://z2h.cn/hanzi" target="_blank" rel="noopener">
+    <div class="star-emoji">✨</div>
+    <div class="star-text">
+      <span class="star-tag">⭐ Coup de cœur</span>
+      <div class="star-name">
+        Z2H · Zero to Hanzi
+        <span class="url">z2h.cn/hanzi</span>
+      </div>
+      <p class="star-desc">L'outil le plus élégant pour décomposer les caractères chinois et comprendre comment ils sont construits. Un parcours "zéro vers hanzi" qui révèle la logique interne des sinogrammes — composants, étymologie, mnémoniques. Indispensable pour tout apprenant sérieux.</p>
+    </div>
+  </a>
+
+  <!-- 词典 / DICTIONARIES -->
+  <div class="section" id="dictionnaires">
+    <div class="section-head">
+      <div class="section-icon">📖</div>
+      <div class="section-titles">
+        <div class="section-cn">词典与查字</div>
+        <div class="section-fr">Dictionnaires &amp; recherche de caractères — la base absolue</div>
+      </div>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards">
+      <a class="card" href="https://www.pleco.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-pleco">魚</div>
+        <div class="card-body">
+          <div class="card-name">Pleco <span class="card-tag free">Gratuit+</span></div>
+          <div class="card-desc">Le dictionnaire de référence. OCR caméra, écriture du doigt, exemples de phrases, flashcards intégrées. Indispensable, point.</div>
+          <div class="card-meta">📱 iOS · Android</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.mdbg.net/chinese/dictionary" target="_blank" rel="noopener">
+        <div class="card-logo lg-mdbg">M</div>
+        <div class="card-body">
+          <div class="card-name">MDBG <span class="card-tag web">Web</span></div>
+          <div class="card-desc">Dictionnaire en ligne CC-CEDICT, tableaux de conjugaison de hanzi, listes HSK exportables. Parfait depuis le navigateur.</div>
+          <div class="card-meta">🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://youdao.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-youdao">有</div>
+        <div class="card-body">
+          <div class="card-name">Youdao 有道词典 <span class="card-tag free">Gratuit</span></div>
+          <div class="card-desc">Le dictionnaire utilisé par les Chinois eux-mêmes. Définitions plus fines, contexte natif, expressions modernes que CC-CEDICT ignore.</div>
+          <div class="card-meta">📱 iOS · Android · 🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.yellowbridge.com/chinese/dictionary.php" target="_blank" rel="noopener">
+        <div class="card-logo lg-yellowbridge">Y</div>
+        <div class="card-body">
+          <div class="card-name">YellowBridge <span class="card-tag web">Web</span></div>
+          <div class="card-desc">Décomposition de caractères, étymologie, mnémoniques visuels. Pour vraiment comprendre d'où vient un hanzi.</div>
+          <div class="card-meta">🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.archchinese.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-arch">A</div>
+        <div class="card-body">
+          <div class="card-name">Arch Chinese <span class="card-tag web">Web</span></div>
+          <div class="card-desc">Génère des feuilles d'écriture (字帖) imprimables, ordre des traits animé, fiches caractère par caractère.</div>
+          <div class="card-meta">🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- HANZI / 汉字 -->
+  <div class="section" id="hanzi">
+    <div class="section-head">
+      <div class="section-icon">字</div>
+      <div class="section-titles">
+        <div class="section-cn">汉字工具</div>
+        <div class="section-fr">Apprendre &amp; écrire les caractères chinois</div>
+      </div>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards">
+      <a class="card" href="https://z2h.cn/hanzi" target="_blank" rel="noopener">
+        <div class="card-logo lg-z2h">字</div>
+        <div class="card-body">
+          <div class="card-name">Z2H · Zero to Hanzi <span class="card-tag">⭐</span> <span class="card-tag web">Web</span></div>
+          <div class="card-desc">Le meilleur outil pour décomposer un caractère et comprendre sa logique de construction. Composants, radicaux, mnémoniques.</div>
+          <div class="card-meta">🌐 z2h.cn/hanzi</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://skritter.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-skritter">写</div>
+        <div class="card-body">
+          <div class="card-name">Skritter <span class="card-tag paid">Payant</span></div>
+          <div class="card-desc">L'app de référence pour apprendre à écrire les hanzi à la main. Reconnaissance d'écriture, SRS intégré, listes HSK.</div>
+          <div class="card-meta">📱 iOS · Android · 🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://en.writtenchinese.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-writer">写</div>
+        <div class="card-body">
+          <div class="card-name">Chinese Writer <span class="card-tag free">Gratuit</span></div>
+          <div class="card-desc">Mini-jeu d'écriture : les caractères tombent, vous devez les tracer correctement avant qu'ils n'atteignent le bas. Addictif.</div>
+          <div class="card-meta">📱 iOS · Android</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://strokeorder.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-stroke">笔</div>
+        <div class="card-body">
+          <div class="card-name">Stroke Order <span class="card-tag web">Web</span></div>
+          <div class="card-desc">Animation de l'ordre des traits pour n'importe quel caractère. À garder ouvert quand on découvre un nouveau hanzi.</div>
+          <div class="card-meta">🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- HSK -->
+  <div class="section" id="hsk">
+    <div class="section-head">
+      <div class="section-icon">🎯</div>
+      <div class="section-titles">
+        <div class="section-cn">HSK 备考</div>
+        <div class="section-fr">Préparation HSK — examens blancs et listes officielles</div>
+      </div>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards">
+      <a class="card" href="../examen/index.html">
+        <div class="card-logo lg-supertest">考</div>
+        <div class="card-body">
+          <div class="card-name">Examens blancs (ce site) <span class="card-tag hsk">HSK 5</span></div>
+          <div class="card-desc">Sujets officiels Hanban, audio inclus, mode examen ou pratique. Correction immédiate ou à la soumission.</div>
+          <div class="card-meta">🌐 Local · ce site</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.hsk.academy/" target="_blank" rel="noopener">
+        <div class="card-logo lg-hsk-online">4<br>HSK</div>
+        <div class="card-body">
+          <div class="card-name">HSK Online / Academy <span class="card-tag free">Gratuit+</span></div>
+          <div class="card-desc">Plateforme dédiée à la préparation HSK 1 → 6, fiches de vocabulaire, simulations chronométrées, flashcards.</div>
+          <div class="card-meta">📱 iOS · Android · 🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://supertest.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-supertest">C</div>
+        <div class="card-body">
+          <div class="card-name">SuperTest <span class="card-tag hsk">HSK 1-6</span></div>
+          <div class="card-desc">Banque de questions HSK, examens blancs notés, statistiques de progression détaillées. Très complet.</div>
+          <div class="card-meta">📱 iOS · Android</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.chinese-grammar.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-grammar">G</div>
+        <div class="card-body">
+          <div class="card-name">Chinese Grammar Wiki <span class="card-tag free">Gratuit</span></div>
+          <div class="card-desc">La grammaire chinoise classée par niveau HSK / par concept. La référence en ligne, gratuite et exhaustive.</div>
+          <div class="card-meta">🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- APPS DEBUTANT / INTERMEDIAIRE -->
+  <div class="section" id="apps">
+    <div class="section-head">
+      <div class="section-icon">📱</div>
+      <div class="section-titles">
+        <div class="section-cn">学习应用</div>
+        <div class="section-fr">Apps tout-en-un pour avancer (débutant → intermédiaire)</div>
+      </div>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards">
+      <a class="card" href="https://www.hellochinese.cc/" target="_blank" rel="noopener">
+        <div class="card-logo lg-hellocn">你</div>
+        <div class="card-body">
+          <div class="card-name">HelloChinese <span class="card-tag free">Gratuit+</span></div>
+          <div class="card-desc">Le meilleur Duolingo-like spécialisé chinois. Pédagogie soignée, audio natif, écriture, immersion progressive.</div>
+          <div class="card-meta">📱 iOS · Android</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.superchinese.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-superchinese">超</div>
+        <div class="card-body">
+          <div class="card-name">SuperChinese <span class="card-tag paid">Payant</span></div>
+          <div class="card-desc">Cours structurés HSK 1-6, leçons interactives avec IA conversationnelle, reconnaissance vocale fine.</div>
+          <div class="card-meta">📱 iOS · Android</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.lingodeer.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-lingodeer">L</div>
+        <div class="card-body">
+          <div class="card-name">LingoDeer <span class="card-tag paid">Payant</span></div>
+          <div class="card-desc">Approche grammaticale plus solide que Duolingo. Idéal pour ceux qui aiment comprendre la structure d'une langue.</div>
+          <div class="card-meta">📱 iOS · Android</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://immersivechinese.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-immersive">沉</div>
+        <div class="card-body">
+          <div class="card-name">Immersive Chinese <span class="card-tag free">Gratuit</span></div>
+          <div class="card-desc">Méthode immersive par phrases courtes répétées. Excellent pour habituer l'oreille au rythme du mandarin.</div>
+          <div class="card-meta">📱 iOS · Android · 🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://chineseskill.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-chineseskill">熊</div>
+        <div class="card-body">
+          <div class="card-name">ChineseSkill <span class="card-tag free">Gratuit+</span></div>
+          <div class="card-desc">App mignonne avec un panda, parcours HSK, prononciation, écriture. Bonne entrée en matière.</div>
+          <div class="card-meta">📱 iOS · Android</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.mosalingua.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-mosalingua">M</div>
+        <div class="card-body">
+          <div class="card-name">MosaLingua Chinese <span class="card-tag paid">Payant</span></div>
+          <div class="card-desc">SRS optimisé sur les mots les plus fréquents. Approche pragmatique : parler vite avec peu de mots.</div>
+          <div class="card-meta">📱 iOS · Android</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://woodpecker-learn.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-woodpecker">啄</div>
+        <div class="card-body">
+          <div class="card-name">Woodpecker <span class="card-tag free">Gratuit+</span></div>
+          <div class="card-desc">Apprendre via vidéos courtes natives sous-titrées (films, séries, vlogs). Idéal pour les apprenants visuels.</div>
+          <div class="card-meta">📱 iOS · Android</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.lespetitsmandarins.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-petitsmandarins">小</div>
+        <div class="card-body">
+          <div class="card-name">Les Petits Mandarins <span class="card-tag free">Gratuit+</span></div>
+          <div class="card-desc">App francophone, idéale pour les jeunes apprenants ou pour démarrer. Approche ludique et progressive.</div>
+          <div class="card-meta">📱 iOS · Android</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://duolingo.com/course/zh/en/" target="_blank" rel="noopener">
+        <div class="card-logo lg-duolingo">D</div>
+        <div class="card-body">
+          <div class="card-name">Duolingo <span class="card-tag free">Gratuit</span></div>
+          <div class="card-desc">Pour les courtes sessions quotidiennes et garder une streak. Pédagogie limitée pour le chinois mais pratique au début.</div>
+          <div class="card-meta">📱 iOS · Android · 🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- LECTURE / READING -->
+  <div class="section" id="lecture">
+    <div class="section-head">
+      <div class="section-icon">📚</div>
+      <div class="section-titles">
+        <div class="section-cn">阅读</div>
+        <div class="section-fr">Lecture graduée — pour passer du manuel aux vrais textes</div>
+      </div>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards">
+      <a class="card" href="https://duchinese.net/" target="_blank" rel="noopener">
+        <div class="card-logo lg-ducn">读</div>
+        <div class="card-body">
+          <div class="card-name">Du Chinese <span class="card-tag paid">Payant</span></div>
+          <div class="card-desc">Bibliothèque de textes gradués HSK 1 → 6+, audio natif, dictionnaire intégré au tap. La meilleure app de lecture, point.</div>
+          <div class="card-meta">📱 iOS · Android · 🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.dong-chinese.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-dongcn">东</div>
+        <div class="card-body">
+          <div class="card-name">Dong Chinese <span class="card-tag free">Gratuit+</span></div>
+          <div class="card-desc">Lecteur de textes avec étymologie de chaque caractère intégrée. Vidéos pédagogiques excellentes sur YouTube.</div>
+          <div class="card-meta">📱 iOS · Android · 🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://mandarinbean.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-mandarinbean">豆</div>
+        <div class="card-body">
+          <div class="card-name">Mandarin Bean <span class="card-tag free">Gratuit</span></div>
+          <div class="card-desc">Articles classés par niveau HSK avec audio + transcription. Variété de sujets : actualités, culture, sciences.</div>
+          <div class="card-meta">🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://readibu.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-readibu">书</div>
+        <div class="card-body">
+          <div class="card-name">Readibu <span class="card-tag free">Gratuit+</span></div>
+          <div class="card-desc">Lire des web-novels chinois avec dictionnaire intégré au tap. Pour ceux qui veulent dévorer de la fiction.</div>
+          <div class="card-meta">📱 iOS · Android</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.thechairmansbao.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-tcb">报</div>
+        <div class="card-body">
+          <div class="card-name">The Chairman's Bao (TCB) <span class="card-tag paid">Payant</span></div>
+          <div class="card-desc">"Le Monde" pour apprenants : actualités chinoises adaptées HSK 1 → 6, audio + exercices. Très professionnel.</div>
+          <div class="card-meta">📱 iOS · Android · 🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.clozemaster.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-clozemaster">C</div>
+        <div class="card-body">
+          <div class="card-name">Clozemaster <span class="card-tag free">Gratuit+</span></div>
+          <div class="card-desc">Apprendre le vocabulaire en contexte avec des phrases à trous. 70 000+ phrases chinoises classées par fréquence.</div>
+          <div class="card-meta">📱 iOS · Android · 🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- AUDIO / PODCASTS -->
+  <div class="section" id="audio">
+    <div class="section-head">
+      <div class="section-icon">🎧</div>
+      <div class="section-titles">
+        <div class="section-cn">听力训练</div>
+        <div class="section-fr">Podcasts &amp; vidéos — entraîner l'oreille</div>
+      </div>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards">
+      <a class="card" href="https://chinesepod.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-chinesepod">P</div>
+        <div class="card-body">
+          <div class="card-name">ChinesePod <span class="card-tag paid">Payant</span></div>
+          <div class="card-desc">La référence absolue des podcasts pour apprenants. Plus de 4 000 leçons, du débutant à l'expert. Indémodable.</div>
+          <div class="card-meta">🎧 Podcast · 🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://maayot.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-podcast">M</div>
+        <div class="card-body">
+          <div class="card-name">Maayot <span class="card-tag paid">Payant</span></div>
+          <div class="card-desc">Une histoire en chinois reçue par mail chaque jour, audio inclus, niveau adapté. La newsletter du sinophile motivé.</div>
+          <div class="card-meta">📧 Newsletter · 🎧 Audio</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.youtube.com/@MandarinCorner" target="_blank" rel="noopener">
+        <div class="card-logo lg-yt">YT</div>
+        <div class="card-body">
+          <div class="card-name">Mandarin Corner (YT) <span class="card-tag free">Gratuit</span></div>
+          <div class="card-desc">Interviews dans la rue en Chine, sous-titres chinois + pinyin + anglais. Pour entendre du vrai chinois parlé.</div>
+          <div class="card-meta">🎬 YouTube</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.youtube.com/@dianxi_xiaoge" target="_blank" rel="noopener">
+        <div class="card-logo lg-yt">YT</div>
+        <div class="card-body">
+          <div class="card-name">滇西小哥 / 李子柒 (YT) <span class="card-tag free">Gratuit</span></div>
+          <div class="card-desc">Vlogs ASMR de cuisine et vie rurale chinoise. Peu de paroles mais immersion culturelle et visuelle parfaite.</div>
+          <div class="card-meta">🎬 YouTube</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.lingopie.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-lingopie">L</div>
+        <div class="card-body">
+          <div class="card-name">Lingopie <span class="card-tag paid">Payant</span></div>
+          <div class="card-desc">Netflix-like d'apprentissage : séries chinoises avec sous-titres interactifs, dictionnaire au tap, exercices.</div>
+          <div class="card-meta">📱 iOS · Android · 🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.bilibili.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-bilibili">B</div>
+        <div class="card-body">
+          <div class="card-name">Bilibili 哔哩哔哩 <span class="card-tag free">Gratuit</span></div>
+          <div class="card-desc">Le YouTube chinois. Vlogs, gaming, cours, anime : pour s'immerger dans la production vidéo native.</div>
+          <div class="card-meta">🌐 Web · 📱 App</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- SRS / FLASHCARDS -->
+  <div class="section" id="srs">
+    <div class="section-head">
+      <div class="section-icon">🔁</div>
+      <div class="section-titles">
+        <div class="section-cn">记忆系统</div>
+        <div class="section-fr">SRS &amp; flashcards — pour fixer le vocabulaire dans le temps</div>
+      </div>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards">
+      <a class="card" href="https://apps.ankiweb.net/" target="_blank" rel="noopener">
+        <div class="card-logo lg-anki">★</div>
+        <div class="card-body">
+          <div class="card-name">Anki / AnkiDroid <span class="card-tag free">Gratuit</span></div>
+          <div class="card-desc">Le SRS open-source de référence. Ultra customisable, decks HSK existants partagés par la communauté. Courbe d'apprentissage exigeante mais imbattable.</div>
+          <div class="card-meta">📱 iOS (payant) · Android (gratuit) · 🌐 Web · 🖥 Desktop</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://quizlet.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-quizlet">Q</div>
+        <div class="card-body">
+          <div class="card-name">Quizlet <span class="card-tag free">Gratuit+</span></div>
+          <div class="card-desc">Plus visuel et accessible qu'Anki. Modes jeux, listes HSK partagées, parfait pour les sessions rapides.</div>
+          <div class="card-meta">📱 iOS · Android · 🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://tatoeba.org/zh-cn" target="_blank" rel="noopener">
+        <div class="card-logo lg-tatoeba">T</div>
+        <div class="card-body">
+          <div class="card-name">Tatoeba <span class="card-tag free">Gratuit</span></div>
+          <div class="card-desc">Base de phrases d'exemple traduites par des humains, dans toutes les langues. Source en or pour fabriquer ses propres flashcards Anki.</div>
+          <div class="card-meta">🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ÉCHANGE / TUTORS -->
+  <div class="section" id="echange">
+    <div class="section-head">
+      <div class="section-icon">💬</div>
+      <div class="section-titles">
+        <div class="section-cn">语言交换</div>
+        <div class="section-fr">Échange linguistique &amp; tuteurs natifs</div>
+      </div>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards">
+      <a class="card" href="https://www.italki.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-italki">i</div>
+        <div class="card-body">
+          <div class="card-name">italki <span class="card-tag paid">Payant</span></div>
+          <div class="card-desc">Cours 1-on-1 avec des tuteurs natifs à partir de 5-15 € l'heure. La meilleure façon de progresser à l'oral.</div>
+          <div class="card-meta">📱 iOS · Android · 🌐 Web</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.tandem.net/" target="_blank" rel="noopener">
+        <div class="card-logo lg-tandem">T</div>
+        <div class="card-body">
+          <div class="card-name">Tandem <span class="card-tag free">Gratuit+</span></div>
+          <div class="card-desc">Échange linguistique gratuit avec des Chinois apprenant le français/anglais. Chat texte, audio, vidéo.</div>
+          <div class="card-meta">📱 iOS · Android</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="https://www.elsaspeak.com/" target="_blank" rel="noopener">
+        <div class="card-logo lg-elsa">E</div>
+        <div class="card-body">
+          <div class="card-name">ELSA Speak <span class="card-tag paid">Payant</span></div>
+          <div class="card-desc">Coach IA pour la prononciation. Détection précise des erreurs phonétiques, idéal pour les tons.</div>
+          <div class="card-meta">📱 iOS · Android</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips">
+    <h3>💡 Mon stack recommandé pour HSK 5</h3>
+    <ul>
+      <li><span class="em">📖</span><span><strong>Dictionnaire :</strong> Pleco (sur le téléphone) + Z2H (sur le web pour décomposer les caractères inconnus).</span></li>
+      <li><span class="em">🔁</span><span><strong>Vocabulaire :</strong> Anki avec un deck HSK 5 + nos modules "Apprentissage Commando" sur ce site.</span></li>
+      <li><span class="em">📚</span><span><strong>Lecture quotidienne :</strong> Du Chinese (15 min/jour à votre niveau) ou The Chairman's Bao pour les actualités.</span></li>
+      <li><span class="em">🎧</span><span><strong>Écoute passive :</strong> ChinesePod sur le trajet du matin + une chaîne YouTube native (Mandarin Corner).</span></li>
+      <li><span class="em">✍</span><span><strong>Hanzi :</strong> Skritter 3×/semaine sur les caractères de la leçon en cours.</span></li>
+      <li><span class="em">🎯</span><span><strong>Préparation HSK :</strong> 1 examen blanc complet (mode examen) tous les 15 jours pour tracker la progression.</span></li>
+      <li><span class="em">💬</span><span><strong>Oral :</strong> 1 à 2 cours italki par semaine — c'est ce qui fait vraiment décoller un niveau.</span></li>
+    </ul>
+  </div>
+
+</div>
+
+<footer class="foot">
+  刘老师的中文课 · Ressources pour apprendre le chinois ·
+  <a href="../index.html" style="color:var(--primary);text-decoration:none;">← Retour à l'accueil</a>
+</footer>
+
+</body>
+</html>
