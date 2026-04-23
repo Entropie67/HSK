@@ -1030,6 +1030,243 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 16px rgba(0,0,0,0.12);
         }
+
+        /* ===== AUDIO PLAYER ===== */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: linear-gradient(135deg, #ede9fe 0%, #f5f3ff 100%);
+            border: 1px solid rgba(124, 58, 237, 0.15);
+            border-radius: 14px;
+            padding: 14px 18px;
+            margin: 0 auto 28px;
+            max-width: 560px;
+            box-shadow: 0 2px 10px rgba(91, 33, 182, 0.06);
+        }
+        .audio-player .ap-icon {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-water);
+            color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .audio-player .ap-label {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            min-width: 80px;
+        }
+        .audio-player audio {
+            flex: 1;
+            height: 36px;
+            min-width: 0;
+        }
+
+        /* ===== WORKBOOK ===== */
+        .wb-part {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .wb-part-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.15rem;
+            color: var(--primary);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .wb-part-title .wb-badge {
+            background: var(--gradient-water);
+            color: white;
+            font-size: 0.72rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: 600;
+        }
+        .wb-part-sub {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+        .wb-passage {
+            background: #faf9ff;
+            border-left: 3px solid var(--primary-light);
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            font-size: 0.98rem;
+            line-height: 1.9;
+        }
+        .wb-passage .wb-blank {
+            display: inline-block;
+            min-width: 28px;
+            border-bottom: 2px solid var(--primary-light);
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary);
+            padding: 0 4px;
+            margin: 0 2px;
+        }
+        .wb-q {
+            margin-bottom: 16px;
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .wb-q.correct {
+            background: #ecfdf5;
+            border-color: #86efac;
+        }
+        .wb-q.wrong {
+            background: #fef2f2;
+            border-color: #fca5a5;
+        }
+        .wb-q-text {
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: flex;
+            gap: 8px;
+        }
+        .wb-q-num {
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 26px; height: 26px;
+            display: inline-flex;
+            align-items: center; justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .wb-opts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 8px;
+        }
+        .wb-opt {
+            background: #fafbfc;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 0.92rem;
+            transition: all 0.15s;
+        }
+        .wb-opt:hover {
+            border-color: var(--primary-light);
+            background: #faf5ff;
+        }
+        .wb-opt.selected {
+            background: #ede9fe;
+            border-color: var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .wb-opt.show-correct {
+            background: #dcfce7;
+            border-color: var(--success);
+            color: var(--success);
+            font-weight: 600;
+        }
+        .wb-opt.show-wrong {
+            background: #fecaca;
+            border-color: var(--wrong);
+            color: var(--wrong);
+        }
+        .wb-opt.letter {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .wb-opt .wb-letter {
+            font-weight: 700;
+            color: var(--primary-light);
+            font-size: 0.82rem;
+        }
+        .wb-writing-words {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .wb-writing-words span {
+            background: #f5f3ff;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+        .wb-writing-answer {
+            background: #ecfdf5;
+            border-left: 3px solid var(--success);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-weight: 500;
+            color: var(--success);
+            margin-top: 8px;
+            display: none;
+        }
+        .wb-writing-answer.show { display: block; }
+        .wb-textarea {
+            width: 100%;
+            min-height: 100px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            background: #fafbfc;
+        }
+        .wb-textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            background: white;
+        }
+        .wb-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+        .wb-btn {
+            border: none;
+            padding: 9px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: all 0.15s;
+        }
+        .wb-btn-primary {
+            background: var(--gradient-water);
+            color: white;
+        }
+        .wb-btn-primary:hover { transform: translateY(-1px); }
+        .wb-btn-ghost {
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+        .wb-btn-ghost:hover { background: #faf5ff; }
+        .wb-score {
+            display: inline-block;
+            margin-left: 12px;
+            font-weight: 600;
+            color: var(--primary);
+        }
     </style>
 </head>
 <body>
@@ -1056,6 +1293,7 @@
         <a href="#quiz-section">测验 Quiz</a>
         <a href="#fill-quiz">填空 Exercices</a>
         <a href="#application">运用 Application</a>
+        <a href="#workbook">练习册 Workbook</a>
     </div>
 </nav>
 
@@ -1067,6 +1305,12 @@
         <h2>课文 - Texte</h2>
         <p class="section-sub">爱的细节 (662 caracteres)</p>
         <div class="section-divider"></div>
+    </div>
+
+    <div class="audio-player">
+        <div class="ap-icon">♪</div>
+        <div class="ap-label">课文 Texte</div>
+        <audio controls preload="none" src="../audio/lesson1/text.mp3"></audio>
     </div>
 
     <div class="article-illustration">
@@ -1097,6 +1341,12 @@
         <h2>生词 - Vocabulaire</h2>
         <p class="section-sub">38 mots - Cliquez pour reveler la traduction</p>
         <div class="section-divider"></div>
+    </div>
+
+    <div class="audio-player">
+        <div class="ap-icon">♪</div>
+        <div class="ap-label">生词 Vocabulaire</div>
+        <audio controls preload="none" src="../audio/lesson1/vocab.mp3"></audio>
     </div>
 
     <div class="vocab-controls">
@@ -1513,6 +1763,117 @@
     </div>
 </section>
 
+<!-- ==================== WORKBOOK ==================== -->
+<section id="workbook">
+    <div class="section-header">
+        <h2>练习册 - Workbook</h2>
+        <p class="section-sub">HSK 5 (上) 练习册 - Lesson 1 - 爱的细节</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <!-- ========== LISTENING ========== -->
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">一、听力</span>第一部分</div>
+        <div class="wb-part-sub">第1-6题：请听录音，选出正确答案。</div>
+        <div class="audio-player" style="margin-bottom: 18px;">
+            <div class="ap-icon">♪</div>
+            <div class="ap-label">听力 01-1</div>
+            <audio controls preload="none" src="../audio/lesson1/workbook-1.mp3"></audio>
+        </div>
+        <div id="wbListen1"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen1')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen1')">Réinitialiser</button>
+            <span class="wb-score" id="listen1Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">一、听力</span>第二部分</div>
+        <div class="wb-part-sub">第7-14题：请听录音，选出正确答案。</div>
+        <div class="audio-player" style="margin-bottom: 18px;">
+            <div class="ap-icon">♪</div>
+            <div class="ap-label">听力 01-2</div>
+            <audio controls preload="none" src="../audio/lesson1/workbook-2.mp3"></audio>
+        </div>
+        <div id="wbListen2"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen2')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen2')">Réinitialiser</button>
+            <span class="wb-score" id="listen2Score"></span>
+        </div>
+    </div>
+
+    <!-- ========== READING ========== -->
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第一部分</div>
+        <div class="wb-part-sub">第15-18题：阅读下面短文，选出正确答案。</div>
+        <div class="wb-passage">
+            我和丈夫<span class="wb-blank">15</span>五年了，婚后的生活一直十分幸福，从来没有为什么事红过脸。去年还刚刚生了一个小宝宝。但是，昨晚我们却大<span class="wb-blank">16</span>一架！原因是丈夫说他要换一份工作，工资更高。不过工作地点是在外地。他说他已经决定了要去。而我并不认为这是个很好的机会，工资自然高一点儿，但是要换一个完全陌生的环境；<span class="wb-blank">17</span>我们的孩子还小，他走了，我一个人又要上班，又要照顾孩子，太辛苦了。现在，这个问题<span class="wb-blank">18</span>解决，我们真的没有办法。
+        </div>
+        <div id="wbRead1"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read1')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read1')">Réinitialiser</button>
+            <span class="wb-score" id="read1Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第二部分</div>
+        <div class="wb-part-sub">第19-22题：请选出与试题内容一致的一项。</div>
+        <div id="wbRead2"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read2')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read2')">Réinitialiser</button>
+            <span class="wb-score" id="read2Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第三部分</div>
+        <div class="wb-part-sub">第23-28题：请选出正确答案。</div>
+
+        <div class="wb-passage">
+            <strong>23-25</strong><br>
+            他和妻子是同事，一个是外科主任，一个是护士长，年轻时一直在一起工作。五年前，两人同时退休，过起了幸福的退休生活。可是，前两年，他开始变得糊涂起来，直到完全痴呆：以前的同事就连他都不认识了，连儿女儿也不记得，但他认识她——一个人叫太太。别人和他开玩笑时，他就微微地对着笑，拉紧妻子的手说："跟着我！跟着我！"看见妻子的手说："当心哦！当心哦！"妻子说："我这个教授，你现在在这个样子，五五三岁的小孩子，我不骂你教教，只有拉下去和你了！"他认着孩子口嚼嘴粘着妻子说："跟着我！跟着我！"原来，妻子看着中的子子。小区口口车里来的车，她会说："别撞着我的车，手蒸不了了。"他不过是用刀的问题……
+        </div>
+        <div id="wbRead3a"></div>
+
+        <div class="wb-passage" style="margin-top: 20px;">
+            <strong>26-28</strong><br>
+            据民政部发布的2013年社会服务发展统计公报显示，2013年全国依法办理离婚手续的有350万对，比上年增长12.8%。这是自2004年以来，我国离婚率连续10年递增。从60后纠结于离婚不离，到70后的"离婚没什么大不了"，再到如今80后的"闪婚闪离"，中国人的婚姻观正在发生改变。<br><br>
+            中国的离婚率持续上升，虽然一方面说明现代人的思想观念发生了变化，更加重视爱情、重视婚姻的质量，但我们同时也不能不看到相应可能产生的另一个方面，那就是有多少人不把婚姻当回事，婚姻和家庭成为儿戏……凡此种种，婚姻大事成了小事，成了可以随意进行的游戏。
+        </div>
+        <div id="wbRead3b"></div>
+
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read3')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read3')">Réinitialiser</button>
+            <span class="wb-score" id="read3Score"></span>
+        </div>
+    </div>
+
+    <!-- ========== WRITING ========== -->
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">三、书写</span>第一部分</div>
+        <div class="wb-part-sub">第29-31题：完成句子 - Remettez les mots dans l'ordre, puis cliquez pour voir la réponse.</div>
+        <div id="wbWrite1"></div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">三、书写</span>第二部分</div>
+        <div class="wb-part-sub">第32题：写短文 - 请结合下列词语（要全部使用，顺序不分先后），写一篇80字左右的短文。</div>
+        <div class="wb-writing-words">
+            <span>等待</span><span>抱怨</span><span>对比</span><span>如何</span><span>不耐烦</span>
+        </div>
+        <textarea class="wb-textarea" id="wbEssay" placeholder="请在此处写下您的短文（约80字）..."></textarea>
+        <div style="font-size: 0.85rem; color: var(--text-light); margin-top: 6px;">
+            <span id="wbEssayCount">0</span> caractères
+        </div>
+    </div>
+</section>
+
 </main>
 
 <!-- Back to top -->
@@ -1847,6 +2208,174 @@ window.addEventListener('scroll', () => {
     document.getElementById('backToTop').style.display = window.scrollY > 500 ? 'flex' : 'none';
 });
 
+// ===== WORKBOOK DATA =====
+const wbData = {
+    listen1: [
+        {q: "1.", options: ["太累了", "太热了", "和老婆吵架了", "为老婆赶蚊子"], correct: 3},
+        {q: "2.", options: ["家", "公司", "餐厅", "钟表店"], correct: 1},
+        {q: "3.", options: ["以前同事", "中学同学", "现在是夫妻", "以前是夫妻"], correct: 3},
+        {q: "4.", options: ["感谢", "担心", "抱怨", "后悔"], correct: 2},
+        {q: "5.", options: ["手指", "肩膀", "胳膊", "脑袋"], correct: 0},
+        {q: "6.", options: ["聚会", "面试", "聊天儿", "谈生意"], correct: 1},
+    ],
+    listen2: [
+        {q: "7.", options: ["他忘了开会", "他没有戴表", "他开会迟到了", "他记错时间了"], correct: 2},
+        {q: "8.", options: ["可惜只有一个奖", "两个都应该得奖", "有一个比另一个好", "哪一个都不该得奖"], correct: 1},
+        {q: "9.", options: ["他们认识很久了", "他们可以婚后了解", "结婚后一定会有变化", "是否了解与时间没有关系"], correct: 3},
+        {q: "10.", options: ["公司里", "餐厅里", "火车上", "超市里"], correct: 2},
+        {q: "11.", options: ["恋人", "夫妻", "同事", "同学"], correct: 0},
+        {q: "12.", options: ["他有别的女朋友", "他父母知道他们的关系", "他准备带女朋友回去见父母", "他不想让父母知道他们的关系"], correct: 3},
+        {q: "13.", options: ["对方是公司的经理", "对方的生活条件不好", "对方喜欢阅读和音乐", "对方唱歌唱得很好听"], correct: 2},
+        {q: "14.", options: ["支持", "反对", "怀疑", "同情"], correct: 0},
+    ],
+    read1: [
+        {q: "15.", options: ["婚姻", "结婚", "离婚", "婚礼"], correct: 1},
+        {q: "16.", options: ["说", "喊", "叫", "吵"], correct: 3},
+        {q: "17.", options: ["不过", "然而", "而且", "否则"], correct: 2},
+        {q: "18.", options: ["如果", "如何", "比如", "例如"], correct: 1},
+    ],
+    read2: [
+        {q: "19.", passage: "前几年她全身瘫痪了，医生说她能站起来的可能性很小。别人都觉得她的丈夫会跟她离婚，她也想过要自杀。但丈夫一直鼓励她，为她不知找了多少家医院，并且几年如一日地照顾她，从不抱怨。在丈夫的爱护和努力下，她终于又站了起来。", options: ["丈夫要跟妻子离婚", "丈夫对妻子非常好", "妻子因为瘫痪自杀了", "医生的判断是错误的"], correct: 1},
+        {q: "20.", passage: "我们不应该随意评价他人的婚姻，更不能仅仅只看到别人家庭幸福亮丽。因为婚姻就像鞋，鞋子合适不合适，别人看不出来，只有自己的脚最清楚。", options: ["婚姻是否幸福，谁都很清楚", "婚姻幸福与否，谁都不清楚", "婚姻是否幸福，自己最清楚", "婚姻人人都不清楚"], correct: 2},
+        {q: "21.", passage: "他和她婚后一年多，但已经感觉不愿再生活在一起。妻子怪他没有本事，说在家里混，一个大人也不赚钱；丈夫说她总是生气，让人觉得她不可爱。两人总吵了两天，妻子说\"我后悔嫁给了你\"，丈夫说\"我也是\"，于是剩下的路只有离婚。", options: ["结婚后他们的生活很幸福", "他们结婚已经很长时间了", "他们的吵架都是因为钱", "他们的婚姻差不多了"], correct: 3},
+        {q: "22.", passage: "关于为什么要结婚，每对夫妻都有自己的理由。有人说，爱到了，就结婚吧。有人说，一个人太孤单，找个伴儿吧……不管理由是什么，总觉得，就像《围城》里说的，外面的人想进去，里面的人想出来。", options: ["人们选择结婚的原因是爱情", "有一部分婚姻的基础是爱情", "大家都觉得谈恋爱很费钱", "人人都希望拥有婚姻"], correct: 1},
+    ],
+    read3: [
+        {q: "23.", options: ["医院", "商店", "银行", "航空公司"], correct: 0},
+        {q: "24.", options: ["失去工作了", "妻子生病了", "丈夫痴呆了", "儿子生病了"], correct: 2},
+        {q: "25.", options: ["幸福的退休生活", "跟着我", "我忘了全世界", "我和妻子"], correct: 1},
+        {q: "26.", options: ["2013年的离婚率是2004年的十倍", "十年来，离婚率一直在增长", "过去的人多数不愿意离婚", "80后对离婚不再认真"], correct: 0},
+        {q: "27.", options: ["是因为金钱", "是因为吵架误会", "说明人们越来越不愿结婚", "可以从正反两个方面看待"], correct: 3},
+        {q: "28.", options: ["高兴的", "赞同的", "批评的", "后悔的"], correct: 2},
+    ],
+    write1: [
+        {q: "29.", words: ["她", "这次的", "放弃了", "居然", "机会"], answer: "她居然放弃了这次的机会。"},
+        {q: "30.", words: ["从来", "没", "他们", "吵过架", "为过", "任何事"], answer: "他们从来没为任何事吵过架。"},
+        {q: "31.", words: ["肩膀上", "我", "吧", "靠", "睡一会儿"], answer: "靠在我肩膀上睡一会儿吧。"},
+    ]
+};
+const wbState = {};
+
+function renderWbMCQ(data, containerId, prefix, splitAt) {
+    const container = document.getElementById(containerId);
+    const letters = ['A', 'B', 'C', 'D'];
+    container.innerHTML = data.map((item, i) => {
+        const idx = splitAt ? splitAt + i : i;
+        const passageHtml = item.passage ? `<div class="wb-passage">${item.passage}</div>` : '';
+        return `
+        ${passageHtml}
+        <div class="wb-q" id="${prefix}-q${idx}">
+            <div class="wb-q-text"><span class="wb-q-num">${item.q.replace('.','')}</span><span>${item.q.includes('?') ? item.q : ''}</span></div>
+            <div class="wb-opts">
+                ${item.options.map((opt, j) => `
+                    <div class="wb-opt letter" onclick="selectWbOpt('${prefix}', ${idx}, ${j})">
+                        <span class="wb-letter">${letters[j]}</span><span>${opt}</span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function selectWbOpt(prefix, qIdx, optIdx) {
+    if (!wbState[prefix]) wbState[prefix] = {};
+    if (wbState[prefix].locked) return;
+    wbState[prefix][qIdx] = optIdx;
+    const qEl = document.getElementById(`${prefix}-q${qIdx}`);
+    qEl.querySelectorAll('.wb-opt').forEach((o, i) => {
+        o.classList.toggle('selected', i === optIdx);
+    });
+}
+
+function checkWb(prefix) {
+    const dataMap = {listen1: wbData.listen1, listen2: wbData.listen2, read1: wbData.read1, read2: wbData.read2};
+    let data, containers;
+    if (prefix === 'read3') {
+        data = wbData.read3;
+        containers = ['wbRead3a', 'wbRead3b'];
+    } else {
+        data = dataMap[prefix];
+    }
+    if (!data) return;
+    if (!wbState[prefix]) wbState[prefix] = {};
+    wbState[prefix].locked = true;
+    let correct = 0;
+    data.forEach((item, i) => {
+        const qEl = document.getElementById(`${prefix}-q${i}`);
+        if (!qEl) return;
+        const opts = qEl.querySelectorAll('.wb-opt');
+        const chosen = wbState[prefix][i];
+        opts.forEach((o, j) => {
+            o.classList.remove('selected');
+            if (j === item.correct) o.classList.add('show-correct');
+            if (chosen !== undefined && j === chosen && j !== item.correct) o.classList.add('show-wrong');
+        });
+        if (chosen === item.correct) {
+            qEl.classList.add('correct');
+            correct++;
+        } else if (chosen !== undefined) {
+            qEl.classList.add('wrong');
+        }
+    });
+    document.getElementById(`${prefix}Score`).textContent = `Score : ${correct} / ${data.length}`;
+}
+
+function resetWb(prefix) {
+    const dataMap = {listen1: wbData.listen1, listen2: wbData.listen2, read1: wbData.read1, read2: wbData.read2, read3: wbData.read3};
+    const data = dataMap[prefix];
+    if (!data) return;
+    wbState[prefix] = {};
+    data.forEach((item, i) => {
+        const qEl = document.getElementById(`${prefix}-q${i}`);
+        if (!qEl) return;
+        qEl.classList.remove('correct', 'wrong');
+        qEl.querySelectorAll('.wb-opt').forEach(o => {
+            o.classList.remove('selected', 'show-correct', 'show-wrong');
+        });
+    });
+    document.getElementById(`${prefix}Score`).textContent = '';
+}
+
+function renderWbWriting() {
+    const container = document.getElementById('wbWrite1');
+    container.innerHTML = wbData.write1.map((item, i) => `
+        <div class="wb-q">
+            <div class="wb-q-text"><span class="wb-q-num">${item.q.replace('.','')}</span></div>
+            <div class="wb-writing-words">
+                ${item.words.map(w => `<span>${w}</span>`).join('')}
+            </div>
+            <div class="wb-actions">
+                <button class="wb-btn wb-btn-ghost" onclick="document.getElementById('write1-ans${i}').classList.toggle('show')">Voir la réponse</button>
+            </div>
+            <div class="wb-writing-answer" id="write1-ans${i}">→ ${item.answer}</div>
+        </div>
+    `).join('');
+}
+
+// Split read3 into two containers (23-25 in wbRead3a, 26-28 in wbRead3b)
+function renderRead3() {
+    const letters = ['A', 'B', 'C', 'D'];
+    const renderOne = (data, containerId, offset) => {
+        const c = document.getElementById(containerId);
+        c.innerHTML = data.map((item, i) => {
+            const idx = offset + i;
+            return `
+            <div class="wb-q" id="read3-q${idx}">
+                <div class="wb-q-text"><span class="wb-q-num">${item.q.replace('.','')}</span></div>
+                <div class="wb-opts">
+                    ${item.options.map((opt, j) => `
+                        <div class="wb-opt letter" onclick="selectWbOpt('read3', ${idx}, ${j})">
+                            <span class="wb-letter">${letters[j]}</span><span>${opt}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>`;
+        }).join('');
+    };
+    renderOne(wbData.read3.slice(0, 3), 'wbRead3a', 0);
+    renderOne(wbData.read3.slice(3, 6), 'wbRead3b', 3);
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
     renderVocab();
@@ -1855,6 +2384,21 @@ document.addEventListener('DOMContentLoaded', () => {
     renderQuiz(grammarQuizData, 'grammarQuizContainer', 'grammar');
     renderQuiz(compQuizData, 'compQuizContainer', 'comp');
     renderChoiceQuiz();
+
+    // Workbook
+    renderWbMCQ(wbData.listen1, 'wbListen1', 'listen1');
+    renderWbMCQ(wbData.listen2, 'wbListen2', 'listen2');
+    renderWbMCQ(wbData.read1, 'wbRead1', 'read1');
+    renderWbMCQ(wbData.read2, 'wbRead2', 'read2');
+    renderRead3();
+    renderWbWriting();
+
+    const essay = document.getElementById('wbEssay');
+    if (essay) {
+        essay.addEventListener('input', () => {
+            document.getElementById('wbEssayCount').textContent = essay.value.length;
+        });
+    }
 });
 </script>
 

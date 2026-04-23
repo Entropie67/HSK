@@ -4,6 +4,15 @@ pdf/
 # Reference materials kept locally
 intense/pdf/
 
+# Original source audio + PDF folders (large, copyrighted)
+HSK5 bookAudio/
+HSK5 workbook/
+HSK 5 lesson et grammaire pdf/
+
+# Scratch
+.tmp_pages/
+.tmp_*.py
+
 # OS / editor
 .DS_Store
 Thumbs.db

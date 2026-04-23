@@ -1030,6 +1030,47 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 16px rgba(0,0,0,0.12);
         }
+    
+
+        /* ===== AUDIO PLAYER ===== */
+        .audio-player { display: flex; align-items: center; gap: 14px; background: linear-gradient(135deg, #ede9fe 0%, #f5f3ff 100%); border: 1px solid rgba(124, 58, 237, 0.15); border-radius: 14px; padding: 14px 18px; margin: 0 auto 28px; max-width: 560px; box-shadow: 0 2px 10px rgba(91, 33, 182, 0.06); }
+        .audio-player .ap-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-water); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+        .audio-player .ap-label { font-size: 0.85rem; color: var(--primary); font-weight: 600; min-width: 80px; }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+
+        /* ===== WORKBOOK ===== */
+        .wb-part { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        .wb-part-title { font-family: 'Noto Serif SC', serif; font-size: 1.15rem; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+        .wb-part-title .wb-badge { background: var(--gradient-water); color: white; font-size: 0.72rem; padding: 3px 10px; border-radius: 20px; font-family: 'Noto Sans SC', sans-serif; font-weight: 600; }
+        .wb-part-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 16px; }
+        .wb-passage { background: #faf9ff; border-left: 3px solid var(--primary-light); padding: 14px 18px; border-radius: 8px; margin-bottom: 18px; font-size: 0.98rem; line-height: 1.9; }
+        .wb-passage .wb-blank { display: inline-block; min-width: 28px; border-bottom: 2px solid var(--primary-light); text-align: center; font-weight: 600; color: var(--primary); padding: 0 4px; margin: 0 2px; }
+        .wb-q { margin-bottom: 16px; padding: 14px; border-radius: 10px; border: 1px solid var(--border); transition: all 0.2s; }
+        .wb-q.correct { background: #ecfdf5; border-color: #86efac; }
+        .wb-q.wrong { background: #fef2f2; border-color: #fca5a5; }
+        .wb-q-text { font-weight: 500; margin-bottom: 10px; display: flex; gap: 8px; }
+        .wb-q-num { background: var(--primary); color: white; border-radius: 50%; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; flex-shrink: 0; }
+        .wb-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+        .wb-opt { background: #fafbfc; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; cursor: pointer; font-size: 0.92rem; transition: all 0.15s; }
+        .wb-opt:hover { border-color: var(--primary-light); background: #faf5ff; }
+        .wb-opt.selected { background: #ede9fe; border-color: var(--primary); color: var(--primary); font-weight: 600; }
+        .wb-opt.show-correct { background: #dcfce7; border-color: var(--success); color: var(--success); font-weight: 600; }
+        .wb-opt.show-wrong { background: #fecaca; border-color: var(--wrong); color: var(--wrong); }
+        .wb-opt.letter { display: flex; align-items: center; gap: 8px; }
+        .wb-opt .wb-letter { font-weight: 700; color: var(--primary-light); font-size: 0.82rem; }
+        .wb-writing-words { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+        .wb-writing-words span { background: #f5f3ff; border: 1px solid rgba(124, 58, 237, 0.2); padding: 6px 14px; border-radius: 20px; font-weight: 500; color: var(--primary); }
+        .wb-writing-answer { background: #ecfdf5; border-left: 3px solid var(--success); padding: 10px 14px; border-radius: 8px; font-weight: 500; color: var(--success); margin-top: 8px; display: none; }
+        .wb-writing-answer.show { display: block; }
+        .wb-textarea { width: 100%; min-height: 100px; border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-family: inherit; font-size: 1rem; resize: vertical; background: #fafbfc; }
+        .wb-textarea:focus { outline: none; border-color: var(--primary-light); background: white; }
+        .wb-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+        .wb-btn { border: none; padding: 9px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; font-family: inherit; transition: all 0.15s; }
+        .wb-btn-primary { background: var(--gradient-water); color: white; }
+        .wb-btn-primary:hover { transform: translateY(-1px); }
+        .wb-btn-ghost { background: white; color: var(--primary); border: 1px solid var(--border); }
+        .wb-btn-ghost:hover { background: #faf5ff; }
+        .wb-score { display: inline-block; margin-left: 12px; font-weight: 600; color: var(--primary); }
     </style>
 </head>
 <body>
@@ -1056,6 +1097,7 @@
         <a href="#quiz-section">测验 Quiz</a>
         <a href="#fill-quiz">填空 Exercices</a>
         <a href="#application">运用 Application</a>
+        <a href="#workbook">练习册 Workbook</a>
     </div>
 </nav>
 
@@ -1068,6 +1110,12 @@
         <p class="section-sub">留串钥匙给父母 (593 caracteres)</p>
         <div class="section-divider"></div>
     </div>
+    <div class="audio-player">
+        <div class="ap-icon">♪</div>
+        <div class="ap-label">课文 Texte</div>
+        <audio controls preload="none" src="../audio/lesson2/text.mp3"></audio>
+    </div>
+
 
     <div class="article-illustration">
         <img src="../images/lesson2.png" alt="留串钥匙给父母 - Un couple avec des clés">
@@ -1094,6 +1142,12 @@
         <p class="section-sub">39 mots - Cliquez pour reveler la traduction</p>
         <div class="section-divider"></div>
     </div>
+    <div class="audio-player">
+        <div class="ap-icon">♪</div>
+        <div class="ap-label">生词 Vocabulaire</div>
+        <audio controls preload="none" src="../audio/lesson2/vocab.mp3"></audio>
+    </div>
+
 
     <div class="vocab-controls">
         <button class="active" onclick="filterVocab('all')">Tous (39)</button>
@@ -1517,6 +1571,99 @@
     </div>
 </section>
 
+
+
+<!-- ==================== WORKBOOK ==================== -->
+<section id="workbook">
+    <div class="section-header">
+        <h2>练习册 - Workbook</h2>
+        <p class="section-sub">HSK 5 (上) 练习册 - Lesson 2 - 留串钥匙给父母</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">一、听力</span>第一部分</div>
+        <div class="wb-part-sub">第1-6题：请听录音，选出正确答案。</div>
+        <div class="audio-player" style="margin-bottom: 18px;">
+            <div class="ap-icon">♪</div>
+            <div class="ap-label">听力 02-1</div>
+            <audio controls preload="none" src="../audio/lesson2/workbook-1.mp3"></audio>
+        </div>
+        <div id="wbListen1"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen1')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen1')">Réinitialiser</button>
+            <span class="wb-score" id="listen1Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">一、听力</span>第二部分</div>
+        <div class="wb-part-sub">第7-14题：请听录音，选出正确答案。</div>
+        <div class="audio-player" style="margin-bottom: 18px;">
+            <div class="ap-icon">♪</div>
+            <div class="ap-label">听力 02-2</div>
+            <audio controls preload="none" src="../audio/lesson2/workbook-2.mp3"></audio>
+        </div>
+        <div id="wbListen2"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen2')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen2')">Réinitialiser</button>
+            <span class="wb-score" id="listen2Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第一部分</div>
+        <div class="wb-part-sub">第15-18题：阅读下面短文，选出正确答案。</div>
+        <div class="wb-passage">读小学的时候，我的钥匙丢失了。钥匙在前最<span class="wb-blank">15</span>我。我想到再也感受不到钥匙带给我的<span class="wb-blank">16</span>，我无法抑制心中的伤心，每天在学校的操场上一圈一圈地跑着，跑<span class="wb-blank">17</span>累到在地上喘气。那段痛苦的日子持续了很久，那是爸妈也不知道该怎么安慰我。有一天，妈妈带我进了商场，还不如我我说实话：她永远都不会再回来了。</div>
+        <div id="wbRead1"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read1')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read1')">Réinitialiser</button>
+            <span class="wb-score" id="read1Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第二部分</div>
+        <div class="wb-part-sub">第19-22题：请选出与试题内容一致的一项。</div>
+        <div id="wbRead2"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read2')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read2')">Réinitialiser</button>
+            <span class="wb-score" id="read2Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第三部分</div>
+        <div class="wb-part-sub">第23-28题：请选出正确答案。</div>
+        <div class="wb-passage"><strong>23-25</strong><br>传统中国家庭春节的团聚模式是"246式"：一对老夫妻和儿子、儿媳、女儿、女婿，再加上五六个孙子孙女，全家人坐在一张大桌子旁吃团圆饭。可是现代社会中，无论是在除夕的餐厅里，还是在大年初一的家里，人们经常看到一对夫妻款待老人、领着一个小孩，家庭团聚模式从"246"变成了"421"。王女士一家就是这样过的：他们两口子把双方父母都接到自己家，包饺子、吃团年饭、看春晚。按照传统习惯，春节大多是女方到男方家过年，"现在为了让爱人都能在节日里受到完全亲伦之乐，我们决定要两家合一起过年了。"</div>
+        <div class="wb-passage" style="margin-top: 20px;"><strong>26-28</strong><br>大学毕业后，我在北京的一家大公司找到了工作。全家上下喜气洋洋，我也特别高兴，即将离开家独立生活而激动。出发的日子一天天近了。临走的那天晚上，母亲做了一大桌子菜。搜肠刮肚地想着等过了再来的时候，要用自己亲手挣的工资给家里的每个人都买一份礼物：妈妈腿脚不大方便了，走路太不行，我要给她买根拐杖；爸爸喜欢下厨，我要给他买几件最好的厨具……于是，我走进房才叫妈妈想起要给我的礼物。妈妈还在收拾我的行李，一下停下手中的动作说："孩子，把你自己好好地保护好就是你给妈妈最好的礼物。"一刻，我再也忍不住，眼泪一下子涌了出来。</div>
+        <div id="wbRead3"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read3')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read3')">Réinitialiser</button>
+            <span class="wb-score" id="read3Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">三、书写</span>第一部分</div>
+        <div class="wb-part-sub">第29-31题：完成句子 - Remettez les mots dans l'ordre, puis cliquez pour voir la réponse.</div>
+        <div id="wbWrite1"></div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">三、书写</span>第二部分</div>
+        <div class="wb-part-sub">第32题：写短文 - 请结合下列词语（要全部使用，顺序不分先后），写一篇80字左右的短文。</div>
+        <div class="wb-writing-words"><span>装修</span><span>以来</span><span>卧室</span><span>想象</span><span>亮</span></div>
+        <textarea class="wb-textarea" id="wbEssay" placeholder="请在此处写下您的短文（约80字）..."></textarea>
+        <div style="font-size: 0.85rem; color: var(--text-light); margin-top: 6px;"><span id="wbEssayCount">0</span> caractères</div>
+    </div>
+</section>
+
 </main>
 
 <!-- Back to top -->
@@ -1855,7 +2002,74 @@ window.addEventListener('scroll', () => {
 });
 
 // ===== INIT =====
-document.addEventListener('DOMContentLoaded', () => {
+
+// ===== WORKBOOK DATA =====
+const wbData = {"listen1": [{"q": "1.", "options": ["家里不会太脏", "一年没回家了", "今天到收拾了", "今天到不了家"], "correct": 2}, {"q": "2.", "options": ["行李太重了", "她没带行李", "她有人帮忙", "她自己拿得动"], "correct": 3}, {"q": "3.", "options": ["身体非常好", "走路特方便", "不经常锻炼", "应该多走路"], "correct": 1}, {"q": "4.", "options": ["牛肉味道很香", "儿子出去吃饭", "丈夫出差回来", "她最爱吃牛肉"], "correct": 2}, {"q": "5.", "options": ["不想换工作", "很想换工作", "工作很开心", "快要退休了"], "correct": 0}, {"q": "6.", "options": ["小李应该告诉她", "小李没必要告诉她", "小李应该先做了再告诉", "她谁也不会告诉"], "correct": 3}], "listen2": [{"q": "7.", "options": ["支持", "同意", "反对", "宽容"], "correct": 2}, {"q": "8.", "options": ["卧室里", "床头柜上", "钢琴柜里", "妈妈不知道"], "correct": 2}, {"q": "9.", "options": ["孩子的自由", "孩子的教育", "孩子的工作", "孩子没动力"], "correct": 1}, {"q": "10.", "options": ["丈夫的爸爸", "丈夫的妈妈", "妻子的爸爸", "妻子的妈妈"], "correct": 1}, {"q": "11.", "options": ["兄弟", "夫妻", "父子", "母子"], "correct": 3}, {"q": "12.", "options": ["回自己家住", "去婆婆家住", "去自己家住", "在丈人家住"], "correct": 0}, {"q": "13.", "options": ["微笑是一种语言", "开开心店", "微笑会让人快乐", "微笑没有意义"], "correct": 2}, {"q": "14.", "options": ["父母", "客户", "服务员", "演员"], "correct": 2}], "read1": [{"q": "15.", "options": ["讨厌", "疼爱", "感动", "吸引"], "correct": 1}, {"q": "16.", "options": ["痛苦", "等待", "微笑", "温暖"], "correct": 3}, {"q": "17.", "options": ["的", "地", "着", "得"], "correct": 3}, {"q": "18.", "options": ["如何", "如果", "例如", "比如"], "correct": 0}], "read2": [{"q": "19.", "passage": "一段时间后，我和妻子准备去外地打工，新房只能上锁空着。临走那天，父亲从老家赶来送我们。父亲悄悄把我拉到一边说：\"你妈说了，你还是留一串新房的钥匙给我们，要是我和你妈什么时候想来了，就来住上几天，顺便给你们晒晒被子，打扫打扫卫生。\"", "options": ["我和妻子准备回老家", "父亲要求我们把钥匙留给他", "我们要去外地给父母看新房", "我们要求父母给我们打扫卫生"], "correct": 1}, {"q": "20.", "passage": "张英来自黑龙江。她原来是一个艺术团的歌手，去年女儿考上了北京的音乐学院附中。为了陪女儿学音乐，她辞掉了工作，来北京陪女儿读书。每天照顾女儿的生活，督促她学习。张英觉得这样做值得。", "options": ["张英不是北京人", "张英的女儿一直想当歌手", "张英的女儿在音乐学院学习", "张英觉得陪女儿做这些不值得"], "correct": 0}, {"q": "21.", "passage": "以前，夫妻俩在男方父母家过年是老规矩，但现在不少男士不愿跟妻子去丈母娘家过年了。因为现在独生子女多，如果想回男方家过年，女方的父母就过不了一个团圆年。所以一般来说，现在年轻的夫妻俩会选择轮流来，今年在我家过，明年就在你家过。", "options": ["老规矩是轮流在两家过年", "现在男士们都去女方家过年", "女方的父母让他们过不了一个团圆年", "习惯改变得很明显"], "correct": 3}, {"q": "22.", "passage": "对于很多女人来说，母女间的亲密关系是她们一生中最深、最紧密的关系。但这种关系往往并不一定意味着完美。27岁的小佳和她母亲有一种竞争关系。她从来不知道自己母亲到底在想什么。在外人眼里她们是最亲密的，她自己看却并不是这样，她说她和母亲的矛盾很明显。每次她想委婉立起一个一样的女儿。", "options": ["母女关系是最完美的", "小佳和母亲同居", "小佳和母亲有时会吵架", "母亲希望小佳独立自主"], "correct": 2}], "read3": [{"q": "23.", "options": ["一对老夫妻", "儿子和女儿", "五六个孙辈", "全家三代人"], "correct": 2}, {"q": "24.", "options": ["吃团年饭", "包饺子", "逛庙会", "放鞭炮"], "correct": 2}, {"q": "25.", "options": ["男方到女方家过年", "女方到男方家过年", "在父母身边过年", "全家到饭馆吃团年饭"], "correct": 2}, {"q": "26.", "options": ["要上大学", "要去买礼物", "他喜欢北京", "要去工作"], "correct": 1}, {"q": "27.", "options": ["带礼物回来", "照顾好自己", "学会独立生活", "买件新衣服"], "correct": 2}, {"q": "28.", "options": ["很高兴", "很伤心", "很感动", "很生气"], "correct": 2}], "write1": [{"q": "29.", "words": ["挣了", "出去", "打工", "这次", "不少钱"], "answer": "这次出去打工挣了不少钱。"}, {"q": "30.", "words": ["让", "我", "家的温暖", "妻子的微笑", "感受到"], "answer": "妻子的微笑让我感受到家的温暖。"}, {"q": "31.", "words": ["飘来", "窗外", "歌声", "一阵阵", "动听的"], "answer": "窗外飘来一阵阵动听的歌声。"}], "write2_words": ["装修", "以来", "卧室", "想象", "亮"]};
+
+
+// ===== WORKBOOK ENGINE =====
+const wbState = {};
+function renderWbMCQ(data, containerId, prefix) {
+    const container = document.getElementById(containerId);
+    const letters = ['A','B','C','D'];
+    container.innerHTML = data.map((item, i) => {
+        const passageHtml = item.passage ? `<div class="wb-passage">${item.passage}</div>` : '';
+        return `${passageHtml}<div class="wb-q" id="${prefix}-q${i}"><div class="wb-q-text"><span class="wb-q-num">${item.q.replace('.','')}</span></div><div class="wb-opts">${item.options.map((opt,j)=>`<div class="wb-opt letter" onclick="selectWbOpt('${prefix}',${i},${j})"><span class="wb-letter">${letters[j]}</span><span>${opt}</span></div>`).join('')}</div></div>`;
+    }).join('');
+}
+function selectWbOpt(prefix, qIdx, optIdx) {
+    if (!wbState[prefix]) wbState[prefix] = {};
+    if (wbState[prefix].locked) return;
+    wbState[prefix][qIdx] = optIdx;
+    const qEl = document.getElementById(`${prefix}-q${qIdx}`);
+    qEl.querySelectorAll('.wb-opt').forEach((o,i)=>o.classList.toggle('selected', i===optIdx));
+}
+function checkWbGeneric(prefix, data) {
+    if (!wbState[prefix]) wbState[prefix] = {};
+    wbState[prefix].locked = true;
+    let correct = 0;
+    data.forEach((item,i)=>{
+        const qEl = document.getElementById(`${prefix}-q${i}`);
+        if (!qEl) return;
+        const chosen = wbState[prefix][i];
+        qEl.querySelectorAll('.wb-opt').forEach((o,j)=>{
+            o.classList.remove('selected');
+            if (j===item.correct) o.classList.add('show-correct');
+            if (chosen!==undefined && j===chosen && j!==item.correct) o.classList.add('show-wrong');
+        });
+        if (chosen===item.correct) { qEl.classList.add('correct'); correct++; }
+        else if (chosen!==undefined) qEl.classList.add('wrong');
+    });
+    document.getElementById(`${prefix}Score`).textContent = `Score : ${correct} / ${data.length}`;
+}
+function resetWbGeneric(prefix, data) {
+    wbState[prefix] = {};
+    data.forEach((item,i)=>{
+        const qEl = document.getElementById(`${prefix}-q${i}`);
+        if (!qEl) return;
+        qEl.classList.remove('correct','wrong');
+        qEl.querySelectorAll('.wb-opt').forEach(o=>o.classList.remove('selected','show-correct','show-wrong'));
+    });
+    document.getElementById(`${prefix}Score`).textContent = '';
+}
+function checkWb(prefix) { checkWbGeneric(prefix, wbData[prefix]); }
+function resetWb(prefix) { resetWbGeneric(prefix, wbData[prefix]); }
+function renderWbWriting() {
+    const container = document.getElementById('wbWrite1');
+    container.innerHTML = wbData.write1.map((item,i)=>`<div class="wb-q"><div class="wb-q-text"><span class="wb-q-num">${item.q.replace('.','')}</span></div><div class="wb-writing-words">${item.words.map(w=>`<span>${w}</span>`).join('')}</div><div class="wb-actions"><button class="wb-btn wb-btn-ghost" onclick="document.getElementById('write1-ans${i}').classList.toggle('show')">Voir la réponse</button></div><div class="wb-writing-answer" id="write1-ans${i}">→ ${item.answer}</div></div>`).join('');
+}
+function initWorkbook() {
+    renderWbMCQ(wbData.listen1, 'wbListen1', 'listen1');
+    renderWbMCQ(wbData.listen2, 'wbListen2', 'listen2');
+    renderWbMCQ(wbData.read1, 'wbRead1', 'read1');
+    renderWbMCQ(wbData.read2, 'wbRead2', 'read2');
+    renderWbMCQ(wbData.read3, 'wbRead3', 'read3');
+    renderWbWriting();
+    const essay = document.getElementById('wbEssay');
+    if (essay) essay.addEventListener('input', ()=>{ document.getElementById('wbEssayCount').textContent = essay.value.length; });
+}
+
+document.addEventListener('DOMContentLoaded', () => {initWorkbook();
     renderVocab();
     updateFlashcard();
     renderQuiz(vocabQuizData, 'vocabQuizContainer', 'vocab');
