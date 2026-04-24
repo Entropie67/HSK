@@ -133,6 +133,47 @@
         .ms-arrow{font-size:2rem;color:var(--primary-light);}
         .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
         @media(max-width:768px){.hero h1{font-size:2rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}.meaning-shift{grid-template-columns:1fr;}.ms-arrow{transform:rotate(90deg);}}
+    
+
+        /* ===== AUDIO PLAYER ===== */
+        .audio-player { display: flex; align-items: center; gap: 14px; background: linear-gradient(135deg, #ede9fe 0%, #f5f3ff 100%); border: 1px solid rgba(124, 58, 237, 0.15); border-radius: 14px; padding: 14px 18px; margin: 0 auto 28px; max-width: 560px; box-shadow: 0 2px 10px rgba(91, 33, 182, 0.06); }
+        .audio-player .ap-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-water, linear-gradient(135deg, #667eea 0%, #764ba2 100%)); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+        .audio-player .ap-label { font-size: 0.85rem; color: var(--primary); font-weight: 600; min-width: 80px; }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+
+        /* ===== WORKBOOK ===== */
+        .wb-part { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        .wb-part-title { font-family: 'Noto Serif SC', serif; font-size: 1.15rem; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+        .wb-part-title .wb-badge { background: var(--gradient-water, linear-gradient(135deg, #667eea 0%, #764ba2 100%)); color: white; font-size: 0.72rem; padding: 3px 10px; border-radius: 20px; font-family: 'Noto Sans SC', sans-serif; font-weight: 600; }
+        .wb-part-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 16px; }
+        .wb-passage { background: #faf9ff; border-left: 3px solid var(--primary-light); padding: 14px 18px; border-radius: 8px; margin-bottom: 18px; font-size: 0.98rem; line-height: 1.9; }
+        .wb-passage .wb-blank { display: inline-block; min-width: 28px; border-bottom: 2px solid var(--primary-light); text-align: center; font-weight: 600; color: var(--primary); padding: 0 4px; margin: 0 2px; }
+        .wb-q { margin-bottom: 16px; padding: 14px; border-radius: 10px; border: 1px solid var(--border); transition: all 0.2s; }
+        .wb-q.correct { background: #ecfdf5; border-color: #86efac; }
+        .wb-q.wrong { background: #fef2f2; border-color: #fca5a5; }
+        .wb-q-text { font-weight: 500; margin-bottom: 10px; display: flex; gap: 8px; }
+        .wb-q-num { background: var(--primary); color: white; border-radius: 50%; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; flex-shrink: 0; }
+        .wb-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+        .wb-opt { background: #fafbfc; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; cursor: pointer; font-size: 0.92rem; transition: all 0.15s; }
+        .wb-opt:hover { border-color: var(--primary-light); background: #faf5ff; }
+        .wb-opt.selected { background: #ede9fe; border-color: var(--primary); color: var(--primary); font-weight: 600; }
+        .wb-opt.show-correct { background: #dcfce7; border-color: var(--success, #27ae60); color: var(--success, #27ae60); font-weight: 600; }
+        .wb-opt.show-wrong { background: #fecaca; border-color: var(--wrong, #e74c3c); color: var(--wrong, #e74c3c); }
+        .wb-opt.letter { display: flex; align-items: center; gap: 8px; }
+        .wb-opt .wb-letter { font-weight: 700; color: var(--primary-light); font-size: 0.82rem; }
+        .wb-writing-words { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+        .wb-writing-words span { background: #f5f3ff; border: 1px solid rgba(124, 58, 237, 0.2); padding: 6px 14px; border-radius: 20px; font-weight: 500; color: var(--primary); }
+        .wb-writing-answer { background: #ecfdf5; border-left: 3px solid var(--success, #27ae60); padding: 10px 14px; border-radius: 8px; font-weight: 500; color: var(--success, #27ae60); margin-top: 8px; display: none; }
+        .wb-writing-answer.show { display: block; }
+        .wb-textarea { width: 100%; min-height: 100px; border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-family: inherit; font-size: 1rem; resize: vertical; background: #fafbfc; }
+        .wb-textarea:focus { outline: none; border-color: var(--primary-light); background: white; }
+        .wb-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+        .wb-btn { border: none; padding: 9px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; font-family: inherit; transition: all 0.15s; }
+        .wb-btn-primary { background: var(--gradient-water, linear-gradient(135deg, #667eea 0%, #764ba2 100%)); color: white; }
+        .wb-btn-primary:hover { transform: translateY(-1px); }
+        .wb-btn-ghost { background: white; color: var(--primary); border: 1px solid var(--border); }
+        .wb-btn-ghost:hover { background: #faf5ff; }
+        .wb-score { display: inline-block; margin-left: 12px; font-weight: 600; color: var(--primary); }
     </style>
 </head>
 <body>
@@ -147,13 +188,19 @@
 </header>
 
 <nav class="sticky-nav"><div class="nav-inner"><a href="../index.html" style="font-weight:700;padding-right:20px;border-right:2px solid var(--border);color:var(--primary)!important;">← Accueil</a>
-    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a><a href="#workbook">练习册 Workbook</a>
 </div></nav>
 
 <main class="container">
 
 <section id="text">
-    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">朝三暮四 (737 caracteres)</p><div class="section-divider"></div></div>
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">朝三暮四 (737 caracteres)</p><div class="section-divider"></div>
+    <div class="audio-player">
+        <div class="ap-icon">♪</div>
+        <div class="ap-label">课文 Texte</div>
+        <audio controls preload="none" src="../audio/lesson8/text.mp3"></audio>
+    </div>
+</div>
     <div class="text-block">
         <p>成语是汉语中非常有特点的一部分词汇。成语有固定的结构，不能随便更改；意义是整体性的，不是每个字意思的简单相加，而是综合起来表达一个完整的意思。</p>
         <p>一般来说，成语的意义也是稳定的，很少发生变化，比如我们学过的"盲人摸象"和"精诚所至，金石为开"。但也有古今不同的，像我们今天要学习的"朝三暮四"。</p>
@@ -170,7 +217,13 @@
 </section>
 
 <section id="vocab">
-    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">43 mots - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">43 mots - Cliquez pour reveler</p><div class="section-divider"></div>
+    <div class="audio-player">
+        <div class="ap-icon">♪</div>
+        <div class="ap-label">生词 Vocabulaire</div>
+        <audio controls preload="none" src="../audio/lesson8/vocab.mp3"></audio>
+    </div>
+</div>
     <div class="vocab-controls">
         <button class="active" onclick="filterVocab('all')">Tous (43)</button>
         <button onclick="filterVocab('verb')">Verbes</button>
@@ -360,6 +413,99 @@
     </div>
 </section>
 
+
+
+<!-- ==================== WORKBOOK ==================== -->
+<section id="workbook">
+    <div class="section-header">
+        <h2>练习册 - Workbook</h2>
+        <p class="section-sub">HSK 5 (上) 练习册 - Lesson 8 - "朝三暮四" 的古今义</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">一、听力</span>第一部分</div>
+        <div class="wb-part-sub">第1-6题：请听录音，选出正确答案。</div>
+        <div class="audio-player" style="margin-bottom: 18px;">
+            <div class="ap-icon">♪</div>
+            <div class="ap-label">听力 08-1</div>
+            <audio controls preload="none" src="../audio/lesson8/workbook-1.mp3"></audio>
+        </div>
+        <div id="wbListen1"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen1')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen1')">Réinitialiser</button>
+            <span class="wb-score" id="listen1Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">一、听力</span>第二部分</div>
+        <div class="wb-part-sub">第7-14题：请听录音，选出正确答案。</div>
+        <div class="audio-player" style="margin-bottom: 18px;">
+            <div class="ap-icon">♪</div>
+            <div class="ap-label">听力 08-2</div>
+            <audio controls preload="none" src="../audio/lesson8/workbook-2.mp3"></audio>
+        </div>
+        <div id="wbListen2"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen2')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen2')">Réinitialiser</button>
+            <span class="wb-score" id="listen2Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第一部分</div>
+        <div class="wb-part-sub">第15-18题：阅读下面短文，选出正确答案。</div>
+        <div class="wb-passage">如果你常常在手机或电脑上跟人聊天儿的话，相信你除了输入文字，一定也用过<span class="wb-blank">15</span>。互联网时代的我们变得越来越懒，以前我们想要表达一种意思，也得<span class="wb-blank">16</span>，可能需要更长时间打好几个字，但是现在，只要轻轻地点一个<span class="wb-blank">17</span>就好了。不过，也有专业人士怀疑它的发展前景，他们<span class="wb-blank">18</span>并不认为这种方式能够一直被大范围地用下去。</div>
+        <div id="wbRead1"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read1')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read1')">Réinitialiser</button>
+            <span class="wb-score" id="read1Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第二部分</div>
+        <div class="wb-part-sub">第19-22题：请选出与试题内容一致的一项。</div>
+        <div id="wbRead2"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read2')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read2')">Réinitialiser</button>
+            <span class="wb-score" id="read2Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第三部分</div>
+        <div class="wb-part-sub">第23-28题：请选出正确答案。</div>
+        <div class="wb-passage"><strong>23-25</strong><br>就讲讲一语言的人口面言，汉语是世界上最大的语种，以汉语为母语的人有十几亿。我们平时说的汉语，其实更多时候指的是普通话。普通话在中国不同民族内进行沟通交流的通用语言，以北京语音为标准音，以北方话为基础方言，以典范的现代白话文著作为语法规范。而汉语中还包括很多方言，比如北方方言、吴方言、粤方言、闽方言、湘方言、赣方言、客家话。汉语除了产生意义上的形态变化，这是汉语和印欧语的根本区别，并由此产生了一系列其他特点。第一，同样的词，语序不同，组成的句法也可以不一样。第二，汉语词类和句法成分的关系复杂，并不对应。如名词，既可以做主语、宾语，也可以做定语、状语，在一定条件下甚至还可以做谓语。第三，音节的多少会影响语法形式。例如，有些双音节词就要求其他的双音节或者音节同一起使用，而不能用同样是单音节词，比如我们可以说"暴风骤雨"、显得很美丽"，但不能说"暴得很美丽"。</div>
+        <div class="wb-passage" style="margin-top: 20px;"><strong>26-28</strong><br>"不得要领"这个成语来源于《史记》。成语中的"要"，即"腰"，指"衣领"指。衣领，古人上衣下裳，是上衣拿着衣领，提起来可以拿着衣裳，而裳带着衣裳的部分。所以"要领"比喻人的主要意旨或态度。"不得要领"意即一般用来形容说法，写文章抓不住要点或关键。《史记》中记载了汉武帝初即位的时候，听说北方的月氏人不和匈奴人有着强烈的仇恨，他们想攻打匈奴，但得不到别国的帮助。当时，武帝正想派使匈奴。听了这话，就派了张骞作为使者，出使月氏。要到月氏去，必须经过匈奴，张骞经过月氏的时候被匈奴抓住了。匈奴的主把张骞扣留了下来，并只对他说："月氏在我们西北，你们汉人要去月氏的地方，就朝着那里去？如果我们要出使得到匈奴去，你们能让我们经过吗？"就这样，张骞被匈奴扣留了十多年。后来，匈奴放松了对张骞的监视，他终与随从们一起逃走了。在其他国家的帮助下，月氏已经之下了受侵匈奴的太子为新国王。在新的土地上定居下来。那里物产丰富，没有战争，他们已经忘记了对匈奴的仇恨。尽管这样，张骞还是想让月氏对匈奴发起反击。但张骞苦劝月氏对匈奴反击的要求，始终没能说服月氏人。他在那里停留了一年多，劝说一直都不住要法，最后他得逐悻悻而归。</div>
+        <div id="wbRead3"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read3')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read3')">Réinitialiser</button>
+            <span class="wb-score" id="read3Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">三、书写</span>第一部分</div>
+        <div class="wb-part-sub">第29-31题：完成句子 - Remettez les mots dans l'ordre, puis cliquez pour voir la réponse.</div>
+        <div id="wbWrite1"></div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">三、书写</span>第二部分</div>
+        <div class="wb-part-sub">第32题：写短文 - 请结合下列词语（要全部使用，顺序不分先后），写一篇80字左右的短文。</div>
+        <div class="wb-writing-words"><span>相处</span><span>对方</span><span>调皮</span><span>行为</span><span>似乎</span></div>
+        <textarea class="wb-textarea" id="wbEssay" placeholder="请在此处写下您的短文（约80字）..."></textarea>
+        <div style="font-size: 0.85rem; color: var(--text-light); margin-top: 6px;"><span id="wbEssayCount">0</span> caractères</div>
+    </div>
+</section>
+
 </main>
 
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
@@ -489,7 +635,74 @@ function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').inner
 function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
 
 window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
-document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+
+// ===== WORKBOOK DATA =====
+const wbData = {"listen1": [{"q": "1.", "options": ["语音", "汉字", "词汇", "语法"], "correct": 2}, {"q": "2.", "options": ["堵车了", "门口人多", "没检到票", "被人扑住了"], "correct": 1}, {"q": "3.", "options": ["双音节词词变少了", "双音节词增多了", "多音节词减少了", "多音节词增多了"], "correct": 2}, {"q": "4.", "options": ["抱怨的", "惭愧的", "放辱的", "无奈的"], "correct": 2}, {"q": "5.", "options": ["太小", "很好", "很特别", "太贵了"], "correct": 1}, {"q": "6.", "options": ["别限制他", "他要减肥", "女的在劝说", "他吃得不多"], "correct": 2}], "listen2": [{"q": "7.", "options": ["夫妻", "母子", "同事", "师生"], "correct": 2}, {"q": "8.", "options": ["主食", "蔬菜", "海鲜", "水果"], "correct": 1}, {"q": "9.", "options": ["抱怨", "委屈", "询问", "突然"], "correct": 3}, {"q": "10.", "options": ["已想过了那些办法", "已经试过这个办法", "这是最好的方式", "还需要更多时间"], "correct": 3}, {"q": "11.", "options": ["盲人摸象", "朝三暮四", "全神贯注", "相敬如宾"], "correct": 1}, {"q": "12.", "options": ["结构特点", "意义特点", "语法特点", "历史特点"], "correct": 0}, {"q": "13.", "options": ["来卖兔子兄弟的饼", "来看兔子兄弟的饼", "来帮兔子兄弟分饼", "来送给兔子兄弟饼"], "correct": 2}, {"q": "14.", "options": ["狐狸", "兔哥哥", "兔弟弟", "都没吃到"], "correct": 0}], "read1": [{"q": "15.", "options": ["表演", "表情", "表面", "表达"], "correct": 1}, {"q": "16.", "options": ["我很生气", "我觉得高兴", "我很吃惊", "我觉得开心"], "correct": 2}, {"q": "17.", "options": ["完整", "整齐", "整个", "整体"], "correct": 0}, {"q": "18.", "options": ["相信", "相似", "信的", "借字"], "correct": 3}], "read2": [{"q": "19.", "passage": "从前有位老人，他很喜欢动物，便喂养了一群猴子当宠物。相处久了，他们的关系越来越好，虽然居然可以互相表达感情，声音和行为举止了解对方的意思。虽然猴子不会说话，他们仍然可以接好地交流。", "options": ["老人把猴子当朋友", "他们通过语言互相交流", "他们的关系不太好", "他们能理解对方的意思"], "correct": 3}, {"q": "20.", "passage": "你永远是最喜欢听的故事，面到人的故事又永远在你的嘴里。结果故事从你的嘴到别人的嘴，然后再从别人的嘴到另一个人的嘴，就这样一路流传下去。另当你听到别人的讲，那是一个人的好意让故事告诉你的，那不知道是我们讲的，好不容易最后的故事都存在。因为故事讲的过程中，从未没有发生过他嘴里所叙述的那样的故事。到底是谁的嘴，原本是集体创作。", "options": ["每个人都喜欢给别人讲故事", "大家希望别人知道自己的故事", "故事在流传的过程中会有变化", "最后一起听说的是谁的故事"], "correct": 2}, {"q": "21.", "passage": "恋人之间彼此有亲昵的称呼。在中国，恋人用小动物相比，如蜂虫地称自己的心上人为\"我的鱼儿\"；有的国家以动物植物相称，如日本人称太太为\"美丽的白花\"；还有的国家用食物称呼爱人的情人，如英国人叫\"蜜糖\"、波兰人称\"饼干\"。", "options": ["蜂虫是恋人之间都不妮称", "蜜蜂是一种植物的名称", "\"美丽的白花\"是日本人用的", "\"蜜糖、饼干\"都是人名"], "correct": 2}, {"q": "22.", "passage": "强烈的需要会成为某一时期消费行为的决定性力量。但是，某一需要最终转换为消费行为还必须立于消费者个人的习惯、个性和家庭的收入水平与财产的高低，以及家庭规模与结构的特点。", "options": ["消费行为与需要无关", "消费行为与财产有关", "消费行为与家庭有关", "消费行为与收入无关"], "correct": 1}], "read3": [{"q": "23.", "options": ["北方方言", "湘方言", "普通话", "客家话"], "correct": 2}, {"q": "24.", "options": ["汉语不说\"三个学生们\"", "\"固定座位\"和\"座位固定\"不同", "可以说\"今天星期一\"", "不能说\"互相帮\""], "correct": 1}, {"q": "25.", "options": ["普通话以北京语音为标准音", "汉语属于印欧语言", "汉语词类与句法成分一一对应", "汉语是固定不变的"], "correct": 0}, {"q": "26.", "options": ["领带", "领导", "衣领", "本领"], "correct": 3}, {"q": "27.", "options": ["汉武帝在位的时候", "建立大月氏的时候", "汉武帝攻打匈奴的时候", "写《史记》的时候"], "correct": 0}, {"q": "28.", "options": ["他被抓住了", "他在匈奴过了家", "他没有找到地方", "他没有把握劝说的要点"], "correct": 3}], "write1": [{"q": "29.", "words": ["固定的", "产品", "有", "这种", "消费群体"], "answer": "这种产品有固定的消费群体。"}, {"q": "30.", "words": ["把", "完整地", "请你", "昨晚的经历", "叙述一遍"], "answer": "请你把昨晚的经历完整地叙述一遍。"}, {"q": "31.", "words": ["不", "家庭的财力", "他的需要", "满足", "能"], "answer": "家庭的财力不能满足他的需要。"}], "write2_words": ["相处", "对方", "调皮", "行为", "似乎"]};
+
+
+// ===== WORKBOOK ENGINE =====
+const wbState = {};
+function renderWbMCQ(data, containerId, prefix) {
+    const container = document.getElementById(containerId);
+    const letters = ['A','B','C','D'];
+    container.innerHTML = data.map((item, i) => {
+        const passageHtml = item.passage ? `<div class="wb-passage">${item.passage}</div>` : '';
+        return `${passageHtml}<div class="wb-q" id="${prefix}-q${i}"><div class="wb-q-text"><span class="wb-q-num">${item.q.replace('.','')}</span></div><div class="wb-opts">${item.options.map((opt,j)=>`<div class="wb-opt letter" onclick="selectWbOpt('${prefix}',${i},${j})"><span class="wb-letter">${letters[j]}</span><span>${opt}</span></div>`).join('')}</div></div>`;
+    }).join('');
+}
+function selectWbOpt(prefix, qIdx, optIdx) {
+    if (!wbState[prefix]) wbState[prefix] = {};
+    if (wbState[prefix].locked) return;
+    wbState[prefix][qIdx] = optIdx;
+    const qEl = document.getElementById(`${prefix}-q${qIdx}`);
+    qEl.querySelectorAll('.wb-opt').forEach((o,i)=>o.classList.toggle('selected', i===optIdx));
+}
+function checkWbGeneric(prefix, data) {
+    if (!wbState[prefix]) wbState[prefix] = {};
+    wbState[prefix].locked = true;
+    let correct = 0;
+    data.forEach((item,i)=>{
+        const qEl = document.getElementById(`${prefix}-q${i}`);
+        if (!qEl) return;
+        const chosen = wbState[prefix][i];
+        qEl.querySelectorAll('.wb-opt').forEach((o,j)=>{
+            o.classList.remove('selected');
+            if (j===item.correct) o.classList.add('show-correct');
+            if (chosen!==undefined && j===chosen && j!==item.correct) o.classList.add('show-wrong');
+        });
+        if (chosen===item.correct) { qEl.classList.add('correct'); correct++; }
+        else if (chosen!==undefined) qEl.classList.add('wrong');
+    });
+    document.getElementById(`${prefix}Score`).textContent = `Score : ${correct} / ${data.length}`;
+}
+function resetWbGeneric(prefix, data) {
+    wbState[prefix] = {};
+    data.forEach((item,i)=>{
+        const qEl = document.getElementById(`${prefix}-q${i}`);
+        if (!qEl) return;
+        qEl.classList.remove('correct','wrong');
+        qEl.querySelectorAll('.wb-opt').forEach(o=>o.classList.remove('selected','show-correct','show-wrong'));
+    });
+    document.getElementById(`${prefix}Score`).textContent = '';
+}
+function checkWb(prefix) { checkWbGeneric(prefix, wbData[prefix]); }
+function resetWb(prefix) { resetWbGeneric(prefix, wbData[prefix]); }
+function renderWbWriting() {
+    const container = document.getElementById('wbWrite1');
+    container.innerHTML = wbData.write1.map((item,i)=>`<div class="wb-q"><div class="wb-q-text"><span class="wb-q-num">${item.q.replace('.','')}</span></div><div class="wb-writing-words">${item.words.map(w=>`<span>${w}</span>`).join('')}</div><div class="wb-actions"><button class="wb-btn wb-btn-ghost" onclick="document.getElementById('write1-ans${i}').classList.toggle('show')">Voir la réponse</button></div><div class="wb-writing-answer" id="write1-ans${i}">→ ${item.answer}</div></div>`).join('');
+}
+function initWorkbook() {
+    renderWbMCQ(wbData.listen1, 'wbListen1', 'listen1');
+    renderWbMCQ(wbData.listen2, 'wbListen2', 'listen2');
+    renderWbMCQ(wbData.read1, 'wbRead1', 'read1');
+    renderWbMCQ(wbData.read2, 'wbRead2', 'read2');
+    renderWbMCQ(wbData.read3, 'wbRead3', 'read3');
+    renderWbWriting();
+    const essay = document.getElementById('wbEssay');
+    if (essay) essay.addEventListener('input', ()=>{ document.getElementById('wbEssayCount').textContent = essay.value.length; });
+}
+
+document.addEventListener('DOMContentLoaded',()=>{initWorkbook();renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
 </script>
 </body>
 </html>
