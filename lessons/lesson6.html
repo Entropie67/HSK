@@ -129,6 +129,47 @@
         .discussion-q:last-child{border-bottom:none;}
         .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
         @media(max-width:768px){.hero h1{font-size:2.4rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.proper-nouns-grid{grid-template-columns:1fr;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}}
+    
+
+        /* ===== AUDIO PLAYER ===== */
+        .audio-player { display: flex; align-items: center; gap: 14px; background: linear-gradient(135deg, #ede9fe 0%, #f5f3ff 100%); border: 1px solid rgba(124, 58, 237, 0.15); border-radius: 14px; padding: 14px 18px; margin: 0 auto 28px; max-width: 560px; box-shadow: 0 2px 10px rgba(91, 33, 182, 0.06); }
+        .audio-player .ap-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-water, linear-gradient(135deg, #667eea 0%, #764ba2 100%)); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+        .audio-player .ap-label { font-size: 0.85rem; color: var(--primary); font-weight: 600; min-width: 80px; }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+
+        /* ===== WORKBOOK ===== */
+        .wb-part { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        .wb-part-title { font-family: 'Noto Serif SC', serif; font-size: 1.15rem; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+        .wb-part-title .wb-badge { background: var(--gradient-water, linear-gradient(135deg, #667eea 0%, #764ba2 100%)); color: white; font-size: 0.72rem; padding: 3px 10px; border-radius: 20px; font-family: 'Noto Sans SC', sans-serif; font-weight: 600; }
+        .wb-part-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 16px; }
+        .wb-passage { background: #faf9ff; border-left: 3px solid var(--primary-light); padding: 14px 18px; border-radius: 8px; margin-bottom: 18px; font-size: 0.98rem; line-height: 1.9; }
+        .wb-passage .wb-blank { display: inline-block; min-width: 28px; border-bottom: 2px solid var(--primary-light); text-align: center; font-weight: 600; color: var(--primary); padding: 0 4px; margin: 0 2px; }
+        .wb-q { margin-bottom: 16px; padding: 14px; border-radius: 10px; border: 1px solid var(--border); transition: all 0.2s; }
+        .wb-q.correct { background: #ecfdf5; border-color: #86efac; }
+        .wb-q.wrong { background: #fef2f2; border-color: #fca5a5; }
+        .wb-q-text { font-weight: 500; margin-bottom: 10px; display: flex; gap: 8px; }
+        .wb-q-num { background: var(--primary); color: white; border-radius: 50%; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; flex-shrink: 0; }
+        .wb-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+        .wb-opt { background: #fafbfc; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; cursor: pointer; font-size: 0.92rem; transition: all 0.15s; }
+        .wb-opt:hover { border-color: var(--primary-light); background: #faf5ff; }
+        .wb-opt.selected { background: #ede9fe; border-color: var(--primary); color: var(--primary); font-weight: 600; }
+        .wb-opt.show-correct { background: #dcfce7; border-color: var(--success, #27ae60); color: var(--success, #27ae60); font-weight: 600; }
+        .wb-opt.show-wrong { background: #fecaca; border-color: var(--wrong, #e74c3c); color: var(--wrong, #e74c3c); }
+        .wb-opt.letter { display: flex; align-items: center; gap: 8px; }
+        .wb-opt .wb-letter { font-weight: 700; color: var(--primary-light); font-size: 0.82rem; }
+        .wb-writing-words { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+        .wb-writing-words span { background: #f5f3ff; border: 1px solid rgba(124, 58, 237, 0.2); padding: 6px 14px; border-radius: 20px; font-weight: 500; color: var(--primary); }
+        .wb-writing-answer { background: #ecfdf5; border-left: 3px solid var(--success, #27ae60); padding: 10px 14px; border-radius: 8px; font-weight: 500; color: var(--success, #27ae60); margin-top: 8px; display: none; }
+        .wb-writing-answer.show { display: block; }
+        .wb-textarea { width: 100%; min-height: 100px; border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-family: inherit; font-size: 1rem; resize: vertical; background: #fafbfc; }
+        .wb-textarea:focus { outline: none; border-color: var(--primary-light); background: white; }
+        .wb-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+        .wb-btn { border: none; padding: 9px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; font-family: inherit; transition: all 0.15s; }
+        .wb-btn-primary { background: var(--gradient-water, linear-gradient(135deg, #667eea 0%, #764ba2 100%)); color: white; }
+        .wb-btn-primary:hover { transform: translateY(-1px); }
+        .wb-btn-ghost { background: white; color: var(--primary); border: 1px solid var(--border); }
+        .wb-btn-ghost:hover { background: #faf5ff; }
+        .wb-score { display: inline-block; margin-left: 12px; font-weight: 600; color: var(--primary); }
     </style>
 </head>
 <body>
@@ -143,13 +184,19 @@
 </header>
 
 <nav class="sticky-nav"><div class="nav-inner"><a href="../index.html" style="font-weight:700;padding-right:20px;border-right:2px solid var(--border);color:var(--primary)!important;">← Accueil</a>
-    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a><a href="#workbook">练习册 Workbook</a>
 </div></nav>
 
 <main class="container">
 
 <section id="text">
-    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">除夕的由来 (671 caracteres)</p><div class="section-divider"></div></div>
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">除夕的由来 (671 caracteres)</p><div class="section-divider"></div>
+    <div class="audio-player">
+        <div class="ap-icon">♪</div>
+        <div class="ap-label">课文 Texte</div>
+        <audio controls preload="none" src="../audio/lesson6/text.mp3"></audio>
+    </div>
+</div>
     <div class="text-block">
         <p>在中国，人们把农历十二月三十日这一年中的最后一天叫作除夕，这一天，全家人会一起吃年夜饭，守岁。但是，人们为什么要把年三十叫作除夕呢？</p>
         <p>传说在很久以前，有个叫作"夕"的怪物，经常出来伤害百姓，百姓对其恨之入骨，但是又十分无奈。当时有个英雄叫作七郎，他英俊高大，力大无比。七郎还有一条狗，这条狗非常勇敢，无论咬住什么都不会松口。</p>
@@ -161,7 +208,13 @@
 </section>
 
 <section id="vocab">
-    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">41 mots + 2 noms propres - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">41 mots + 2 noms propres - Cliquez pour reveler</p><div class="section-divider"></div>
+    <div class="audio-player">
+        <div class="ap-icon">♪</div>
+        <div class="ap-label">生词 Vocabulaire</div>
+        <audio controls preload="none" src="../audio/lesson6/vocab.mp3"></audio>
+    </div>
+</div>
     <div class="vocab-controls">
         <button class="active" onclick="filterVocab('all')">Tous (41)</button>
         <button onclick="filterVocab('verb')">Verbes</button>
@@ -339,6 +392,99 @@
     </div>
 </section>
 
+
+
+<!-- ==================== WORKBOOK ==================== -->
+<section id="workbook">
+    <div class="section-header">
+        <h2>练习册 - Workbook</h2>
+        <p class="section-sub">HSK 5 (上) 练习册 - Lesson 6 - 除夕的由来</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">一、听力</span>第一部分</div>
+        <div class="wb-part-sub">第1-6题：请听录音，选出正确答案。</div>
+        <div class="audio-player" style="margin-bottom: 18px;">
+            <div class="ap-icon">♪</div>
+            <div class="ap-label">听力 06-1</div>
+            <audio controls preload="none" src="../audio/lesson6/workbook-1.mp3"></audio>
+        </div>
+        <div id="wbListen1"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen1')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen1')">Réinitialiser</button>
+            <span class="wb-score" id="listen1Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">一、听力</span>第二部分</div>
+        <div class="wb-part-sub">第7-14题：请听录音，选出正确答案。</div>
+        <div class="audio-player" style="margin-bottom: 18px;">
+            <div class="ap-icon">♪</div>
+            <div class="ap-label">听力 06-2</div>
+            <audio controls preload="none" src="../audio/lesson6/workbook-2.mp3"></audio>
+        </div>
+        <div id="wbListen2"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen2')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen2')">Réinitialiser</button>
+            <span class="wb-score" id="listen2Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第一部分</div>
+        <div class="wb-part-sub">第15-18题：阅读下面短文，选出正确答案。</div>
+        <div class="wb-passage">一次，奥地利著名作曲家约翰·施特劳斯去美国演出，大为轰动。他身材高大、英俊不凡，特别是他的卷曲长发，很引人注目。一位姑娘想办法得到了一束施特劳斯的头发，<span class="wb-blank">15</span>消息传开人们，纷纷要找点施特劳斯的<span class="wb-blank">16</span>。一时影响了他的演出。<span class="wb-blank">17</span>，他会不满发火吗？只见他发挥镇定，施特斯离开美国时，许多人前来送行。只见他在额前剪下一条头发交给了姑娘。其实，他早已准备了一顶皮帽子交给别人的需求，因为善事是做不完的。聪明的人懂得给可能当地"运用"自己的善心。"不同一咪是这么说别人的需求，因为善事是做不完的。聪明的人懂得给可能当地"运用"自己的善心。<span class="wb-blank">18</span>他的善心。</div>
+        <div id="wbRead1"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read1')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read1')">Réinitialiser</button>
+            <span class="wb-score" id="read1Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第二部分</div>
+        <div class="wb-part-sub">第19-22题：请选出与试题内容一致的一项。</div>
+        <div id="wbRead2"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read2')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read2')">Réinitialiser</button>
+            <span class="wb-score" id="read2Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第三部分</div>
+        <div class="wb-part-sub">第23-28题：请选出正确答案。</div>
+        <div class="wb-passage"><strong>23-25</strong><br>过去在京城区和郊区的庙会几乎都会举办庙会，在祭祀的日子里，很多人会等待庙会烧香。于是许多小商小贩纷纷赶来，在寺庙内外摆摊售货，久而久之庙会就发展为定期的集市。到了清朝，实际上已经成了民俗活动与集中贸易结合的活动形式。北京市民去感受北方文化的一种形式。北京市民去庙会不仅仅是烧香，更是集购物、娱乐、饮食为一体的综合活动，去庙会文美说"逛庙会"。厂甸，是北京市和平门外琉璃厂新华街交叉路口一带的地名。厂甸庙会历史久远，是旧文化城的众多庙会之一，厂甸的庙会不是由寺庙而起的，每年只在春节举行一次。因为它独具大年游乐的去处，规模大、京味浓、闻名全国。厂甸庙会至今已有400多年的历史，新中国成立后，厂甸的庙会公告一直举行。到20世纪60年代初期，依然红火热闹，后来停办了37年。2001年，北京市政府复厂甸庙会活动，内容包括美食、民俗活动、花灯、北京特色活动、春天桥，老天桥绝活表演、古玩字画、特价价格与许、传统玩具、风味小吃等等，形式多样，异彩纷呈。这些与旧时不同的北京非物质文化遗产厂甸庙会的一道独特风景。</div>
+        <div class="wb-passage" style="margin-top: 20px;"><strong>26-28</strong><br>壮族自古以来就是一个爱唱山歌的民族，壮族的青年男女在寻找恋人时，往往通过对歌的方式表达爱意。每到歌圩（xū）节日，年轻人会穿上节日的服装，相约来到预定地点，成群对歌。一般男青年主动唱"游览歌"，遇到比较合适的对象，就唱"见面歌"和"邀请歌"，直唱到姑娘姑娘唱"对歌"。有时，一些笨嘴的小伙子，一直唱了三四个小时结婚也没反应，要知失望离去，让姑娘唱好的青年。到女方答应，就开始唱"询问歌"，彼此互相了解，便唱"爱慕歌""交情歌"。分别时还会唱"送别歌"，歌词情编情唱，青年男女将对方的彩歌。歌坏上，除对歌外，还举行丰富多彩的游戏，游戏等文化娱乐活动。抛绣球可有：姑娘们多年的放纵地，以及深受群众喜爱的抛绣球。抛绣球时，男女相对站立，姑娘跟意中人为伍的绣球，对方如果接中意，就在绣球上系上礼物，投送给女方。碰蛋蛋子也是小伙子们手中的彩蛋碰姑娘家中的彩蛋，相约还继续举行山歌比赛，直到赢方，彩球不到姑娘对方。青年男女将这些活动当成一定感情、向心一定次数斗彩止。</div>
+        <div id="wbRead3"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read3')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read3')">Réinitialiser</button>
+            <span class="wb-score" id="read3Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">三、书写</span>第一部分</div>
+        <div class="wb-part-sub">第29-31题：完成句子 - Remettez les mots dans l'ordre, puis cliquez pour voir la réponse.</div>
+        <div id="wbWrite1"></div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">三、书写</span>第二部分</div>
+        <div class="wb-part-sub">第32题：写短文 - 请结合下列词语（要全部使用，顺序不分先后），写一篇80字左右的短文。</div>
+        <div class="wb-writing-words"><span>节日</span><span>意义</span><span>表达</span><span>风俗</span><span>纷纷</span></div>
+        <textarea class="wb-textarea" id="wbEssay" placeholder="请在此处写下您的短文（约80字）..."></textarea>
+        <div style="font-size: 0.85rem; color: var(--text-light); margin-top: 6px;"><span id="wbEssayCount">0</span> caractères</div>
+    </div>
+</section>
+
 </main>
 
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
@@ -462,7 +608,74 @@ function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').inner
 function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
 
 window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
-document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+
+// ===== WORKBOOK DATA =====
+const wbData = {"listen1": [{"q": "1.", "options": ["天快要亮了", "雨下得很大", "看完了彩虹", "雨过天晴了"], "correct": 3}, {"q": "2.", "options": ["除夕", "元旦", "大年初一", "12月31日"], "correct": 0}, {"q": "3.", "options": ["现在太热了", "院里不太安全", "要吃晚饭了", "没时间陪他"], "correct": 0}, {"q": "4.", "options": ["看着几道", "没听设过", "不感兴趣", "想不太懂"], "correct": 3}, {"q": "5.", "options": ["熬夜加班", "经常失眠", "睡得很死", "遇到困难"], "correct": 2}, {"q": "6.", "options": ["对比赛失望", "准午迟到了", "没得戒比赛", "路上迷路了"], "correct": 1}], "listen2": [{"q": "7.", "options": ["在国庆节之后", "日历上没有标", "常在公历9月", "没有固定时间"], "correct": 2}, {"q": "8.", "options": ["坚决要改", "少买一些", "买了就放", "不爱这种"], "correct": 3}, {"q": "9.", "options": ["是北方人", "喜欢肉粽", "不会包粽子", "爱吃肉粽子"], "correct": 3}, {"q": "10.", "options": ["很不理解", "表示好奇", "她对相信", "觉得有趣"], "correct": 0}, {"q": "11.", "options": ["书房", "客厅", "厨房", "卧室"], "correct": 1}, {"q": "12.", "options": ["很少看电视", "很喜欢健身", "受鹳看球赛", "个子不够大"], "correct": 0}, {"q": "13.", "options": ["时间安排合理", "充分利用时间", "多方面地学习", "从不和人聊天儿"], "correct": 1}, {"q": "14.", "options": ["喜欢散步的人", "找他帮忙的人", "爱议论别人的人", "很想增加锻炼的人"], "correct": 2}], "read1": [{"q": "15.", "options": ["过来", "起来", "下去", "出来"], "correct": 1}, {"q": "16.", "options": ["果然", "好像", "纷纷", "俗称"], "correct": 2}, {"q": "17.", "options": ["满足了人们的要求", "自己公开表示说谎", "写了一封信表达抗议", "生气地拒绝了人们的要求"], "correct": 0}, {"q": "18.", "options": ["给", "替", "向", "对"], "correct": 1}], "read2": [{"q": "19.", "passage": "传说在很久以前，有个叫作\"夕\"的怪物，经常出来伤害百姓，百姓对其恨之入骨，但是又十分无奈。当时有个英雄叫作七郎，他英俊高大，力大无比。", "options": ["\"夕\"常在天亮前出现", "百姓拿\"夕\"没有办法", "\"夕\"的出场没有响声", "\"夕\"跑得很快不易被见到"], "correct": 1}, {"q": "20.", "passage": "每年农历的五月初五，\"端\"字有\"初始\"的意思，因此\"端五\"就是\"初五\"，而\"午\"与\"五\"同音，因此\"端五\"也就渐渐变为了\"端午\"。一般认为，端午节与屈原有关。屈原是古代受国诗人，写过许多优秀的诗篇，看到国家就投江自尽。", "options": ["屈原是端午节的创始人", "屈原是在这一天战死的", "端午节的\"午\"表示第五日", "端午节是唱屈原的诗"], "correct": 1}, {"q": "21.", "passage": "\"小吃\"与正餐不同，\"小吃\"不到吃饭时间，用来暂时解馋或是饿了用来充饥的食物。北京的风味小吃历史悠久、品种繁多、用料讲究、制作精细，换用特色，百分之近乎北京的独特。可以这么说，北京大部分生意会说话铺集中上百家，人们无意中就会碰到，老北京那些谁都会说：小吃在此中吃，当然知名度超过了小吃店。", "options": ["小吃一般在正餐之后吃", "北京需吃正餐价格钱都便宜", "北京的小吃种类多，制作精美", "北京很多人都卖开过小吃店"], "correct": 2}, {"q": "22.", "passage": "秋千，据说是古代春秋时期，我国北方民族地区传入的，后来成为深受妇女、儿童喜爱的传统体育游戏。荡秋千的方法很多，有坐着，有站在板上，两手分别握绳，前后往返蹬脚。", "options": ["秋千在春秋时期流行", "开始时荡秋千只有一手握绳", "荡秋千度已成为体育活动项目", "孩子可坐在秋千的板上玩儿"], "correct": 3}], "read3": [{"q": "23.", "options": ["烧香", "看表演", "购物", "吃小吃"], "correct": 0}, {"q": "24.", "options": ["并不在寺庙举办", "规模大、全国闻名", "曾中断一段时间", "新中国成立后修办"], "correct": 3}, {"q": "25.", "options": ["影响力", "历史意义", "发展变化", "文化价值"], "correct": 2}, {"q": "26.", "options": ["游览歌", "邀请歌", "询问歌", "交情歌"], "correct": 1}, {"q": "27.", "options": ["甲村向乙村送去彩球", "甲村把赛事举好", "乙村放彩蛋欢迎", "搭游戏活动"], "correct": 1}, {"q": "28.", "options": ["活动的形式", "活动的内容", "活动的目的", "活动的时间"], "correct": 3}], "write1": [{"q": "29.", "words": ["会", "这东西", "有用处的", "以后说不定", "还"], "answer": "这东西以后说不定还会有用处的。"}, {"q": "30.", "words": ["下午", "跳舞", "整个", "他们", "都"], "answer": "整个下午，他们都在跳舞。"}, {"q": "31.", "words": ["楼房", "代替了", "方盒子", "似的", "北京原有的平房"], "answer": "方盒子似的楼房代替了北京原有的平房。"}], "write2_words": ["节日", "意义", "表达", "风俗", "纷纷"]};
+
+
+// ===== WORKBOOK ENGINE =====
+const wbState = {};
+function renderWbMCQ(data, containerId, prefix) {
+    const container = document.getElementById(containerId);
+    const letters = ['A','B','C','D'];
+    container.innerHTML = data.map((item, i) => {
+        const passageHtml = item.passage ? `<div class="wb-passage">${item.passage}</div>` : '';
+        return `${passageHtml}<div class="wb-q" id="${prefix}-q${i}"><div class="wb-q-text"><span class="wb-q-num">${item.q.replace('.','')}</span></div><div class="wb-opts">${item.options.map((opt,j)=>`<div class="wb-opt letter" onclick="selectWbOpt('${prefix}',${i},${j})"><span class="wb-letter">${letters[j]}</span><span>${opt}</span></div>`).join('')}</div></div>`;
+    }).join('');
+}
+function selectWbOpt(prefix, qIdx, optIdx) {
+    if (!wbState[prefix]) wbState[prefix] = {};
+    if (wbState[prefix].locked) return;
+    wbState[prefix][qIdx] = optIdx;
+    const qEl = document.getElementById(`${prefix}-q${qIdx}`);
+    qEl.querySelectorAll('.wb-opt').forEach((o,i)=>o.classList.toggle('selected', i===optIdx));
+}
+function checkWbGeneric(prefix, data) {
+    if (!wbState[prefix]) wbState[prefix] = {};
+    wbState[prefix].locked = true;
+    let correct = 0;
+    data.forEach((item,i)=>{
+        const qEl = document.getElementById(`${prefix}-q${i}`);
+        if (!qEl) return;
+        const chosen = wbState[prefix][i];
+        qEl.querySelectorAll('.wb-opt').forEach((o,j)=>{
+            o.classList.remove('selected');
+            if (j===item.correct) o.classList.add('show-correct');
+            if (chosen!==undefined && j===chosen && j!==item.correct) o.classList.add('show-wrong');
+        });
+        if (chosen===item.correct) { qEl.classList.add('correct'); correct++; }
+        else if (chosen!==undefined) qEl.classList.add('wrong');
+    });
+    document.getElementById(`${prefix}Score`).textContent = `Score : ${correct} / ${data.length}`;
+}
+function resetWbGeneric(prefix, data) {
+    wbState[prefix] = {};
+    data.forEach((item,i)=>{
+        const qEl = document.getElementById(`${prefix}-q${i}`);
+        if (!qEl) return;
+        qEl.classList.remove('correct','wrong');
+        qEl.querySelectorAll('.wb-opt').forEach(o=>o.classList.remove('selected','show-correct','show-wrong'));
+    });
+    document.getElementById(`${prefix}Score`).textContent = '';
+}
+function checkWb(prefix) { checkWbGeneric(prefix, wbData[prefix]); }
+function resetWb(prefix) { resetWbGeneric(prefix, wbData[prefix]); }
+function renderWbWriting() {
+    const container = document.getElementById('wbWrite1');
+    container.innerHTML = wbData.write1.map((item,i)=>`<div class="wb-q"><div class="wb-q-text"><span class="wb-q-num">${item.q.replace('.','')}</span></div><div class="wb-writing-words">${item.words.map(w=>`<span>${w}</span>`).join('')}</div><div class="wb-actions"><button class="wb-btn wb-btn-ghost" onclick="document.getElementById('write1-ans${i}').classList.toggle('show')">Voir la réponse</button></div><div class="wb-writing-answer" id="write1-ans${i}">→ ${item.answer}</div></div>`).join('');
+}
+function initWorkbook() {
+    renderWbMCQ(wbData.listen1, 'wbListen1', 'listen1');
+    renderWbMCQ(wbData.listen2, 'wbListen2', 'listen2');
+    renderWbMCQ(wbData.read1, 'wbRead1', 'read1');
+    renderWbMCQ(wbData.read2, 'wbRead2', 'read2');
+    renderWbMCQ(wbData.read3, 'wbRead3', 'read3');
+    renderWbWriting();
+    const essay = document.getElementById('wbEssay');
+    if (essay) essay.addEventListener('input', ()=>{ document.getElementById('wbEssayCount').textContent = essay.value.length; });
+}
+
+document.addEventListener('DOMContentLoaded',()=>{initWorkbook();renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
 </script>
 </body>
 </html>
