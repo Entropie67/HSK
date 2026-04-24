@@ -133,6 +133,47 @@
         .stat-item .stat-label{font-size:.85rem;color:var(--text-light);margin-top:4px;}
         .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
         @media(max-width:768px){.hero h1{font-size:2rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}.stat-box{grid-template-columns:1fr 1fr;}}
+    
+
+        /* ===== AUDIO PLAYER ===== */
+        .audio-player { display: flex; align-items: center; gap: 14px; background: linear-gradient(135deg, #ede9fe 0%, #f5f3ff 100%); border: 1px solid rgba(124, 58, 237, 0.15); border-radius: 14px; padding: 14px 18px; margin: 0 auto 28px; max-width: 560px; box-shadow: 0 2px 10px rgba(91, 33, 182, 0.06); }
+        .audio-player .ap-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-water, linear-gradient(135deg, #667eea 0%, #764ba2 100%)); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+        .audio-player .ap-label { font-size: 0.85rem; color: var(--primary); font-weight: 600; min-width: 80px; }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+
+        /* ===== WORKBOOK ===== */
+        .wb-part { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        .wb-part-title { font-family: 'Noto Serif SC', serif; font-size: 1.15rem; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+        .wb-part-title .wb-badge { background: var(--gradient-water, linear-gradient(135deg, #667eea 0%, #764ba2 100%)); color: white; font-size: 0.72rem; padding: 3px 10px; border-radius: 20px; font-family: 'Noto Sans SC', sans-serif; font-weight: 600; }
+        .wb-part-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 16px; }
+        .wb-passage { background: #faf9ff; border-left: 3px solid var(--primary-light); padding: 14px 18px; border-radius: 8px; margin-bottom: 18px; font-size: 0.98rem; line-height: 1.9; }
+        .wb-passage .wb-blank { display: inline-block; min-width: 28px; border-bottom: 2px solid var(--primary-light); text-align: center; font-weight: 600; color: var(--primary); padding: 0 4px; margin: 0 2px; }
+        .wb-q { margin-bottom: 16px; padding: 14px; border-radius: 10px; border: 1px solid var(--border); transition: all 0.2s; }
+        .wb-q.correct { background: #ecfdf5; border-color: #86efac; }
+        .wb-q.wrong { background: #fef2f2; border-color: #fca5a5; }
+        .wb-q-text { font-weight: 500; margin-bottom: 10px; display: flex; gap: 8px; }
+        .wb-q-num { background: var(--primary); color: white; border-radius: 50%; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; flex-shrink: 0; }
+        .wb-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+        .wb-opt { background: #fafbfc; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; cursor: pointer; font-size: 0.92rem; transition: all 0.15s; }
+        .wb-opt:hover { border-color: var(--primary-light); background: #faf5ff; }
+        .wb-opt.selected { background: #ede9fe; border-color: var(--primary); color: var(--primary); font-weight: 600; }
+        .wb-opt.show-correct { background: #dcfce7; border-color: var(--success, #27ae60); color: var(--success, #27ae60); font-weight: 600; }
+        .wb-opt.show-wrong { background: #fecaca; border-color: var(--wrong, #e74c3c); color: var(--wrong, #e74c3c); }
+        .wb-opt.letter { display: flex; align-items: center; gap: 8px; }
+        .wb-opt .wb-letter { font-weight: 700; color: var(--primary-light); font-size: 0.82rem; }
+        .wb-writing-words { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+        .wb-writing-words span { background: #f5f3ff; border: 1px solid rgba(124, 58, 237, 0.2); padding: 6px 14px; border-radius: 20px; font-weight: 500; color: var(--primary); }
+        .wb-writing-answer { background: #ecfdf5; border-left: 3px solid var(--success, #27ae60); padding: 10px 14px; border-radius: 8px; font-weight: 500; color: var(--success, #27ae60); margin-top: 8px; display: none; }
+        .wb-writing-answer.show { display: block; }
+        .wb-textarea { width: 100%; min-height: 100px; border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-family: inherit; font-size: 1rem; resize: vertical; background: #fafbfc; }
+        .wb-textarea:focus { outline: none; border-color: var(--primary-light); background: white; }
+        .wb-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+        .wb-btn { border: none; padding: 9px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; font-family: inherit; transition: all 0.15s; }
+        .wb-btn-primary { background: var(--gradient-water, linear-gradient(135deg, #667eea 0%, #764ba2 100%)); color: white; }
+        .wb-btn-primary:hover { transform: translateY(-1px); }
+        .wb-btn-ghost { background: white; color: var(--primary); border: 1px solid var(--border); }
+        .wb-btn-ghost:hover { background: #faf5ff; }
+        .wb-score { display: inline-block; margin-left: 12px; font-weight: 600; color: var(--primary); }
     </style>
 </head>
 <body>
@@ -147,13 +188,19 @@
 </header>
 
 <nav class="sticky-nav"><div class="nav-inner"><a href="../index.html" style="font-weight:700;padding-right:20px;border-right:2px solid var(--border);color:var(--primary)!important;">← Accueil</a>
-    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#science">科学名词</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#science">科学名词</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a><a href="#workbook">练习册 Workbook</a>
 </div></nav>
 
 <main class="container">
 
 <section id="text">
-    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">闹钟的危害 (673 caracteres)</p><div class="section-divider"></div></div>
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">闹钟的危害 (673 caracteres)</p><div class="section-divider"></div>
+    <div class="audio-player">
+        <div class="ap-icon">♪</div>
+        <div class="ap-label">课文 Texte</div>
+        <audio controls preload="none" src="../audio/lesson11/text.mp3"></audio>
+    </div>
+</div>
     <div class="stat-box" style="margin-bottom:24px;">
         <div class="stat-item"><div class="stat-val">16→24</div><div class="stat-label">Respirations/min au réveil</div></div>
         <div class="stat-item"><div class="stat-val">+10</div><div class="stat-label">Battements/min supplémentaires</div></div>
@@ -171,7 +218,13 @@
 </section>
 
 <section id="vocab">
-    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">41 mots - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">41 mots - Cliquez pour reveler</p><div class="section-divider"></div>
+    <div class="audio-player">
+        <div class="ap-icon">♪</div>
+        <div class="ap-label">生词 Vocabulaire</div>
+        <audio controls preload="none" src="../audio/lesson11/vocab.mp3"></audio>
+    </div>
+</div>
     <div class="vocab-controls">
         <button class="active" onclick="filterVocab('all')">Tous (41)</button>
         <button onclick="filterVocab('verb')">Verbes</button>
@@ -369,6 +422,99 @@
     </div>
 </section>
 
+
+
+<!-- ==================== WORKBOOK ==================== -->
+<section id="workbook">
+    <div class="section-header">
+        <h2>练习册 - Workbook</h2>
+        <p class="section-sub">HSK 5 (上) 练习册 - Lesson 11 - 闹钟的危害</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">一、听力</span>第一部分</div>
+        <div class="wb-part-sub">第1-6题：请听录音，选出正确答案。</div>
+        <div class="audio-player" style="margin-bottom: 18px;">
+            <div class="ap-icon">♪</div>
+            <div class="ap-label">听力 11-1</div>
+            <audio controls preload="none" src="../audio/lesson11/workbook-1.mp3"></audio>
+        </div>
+        <div id="wbListen1"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen1')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen1')">Réinitialiser</button>
+            <span class="wb-score" id="listen1Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">一、听力</span>第二部分</div>
+        <div class="wb-part-sub">第7-14题：请听录音，选出正确答案。</div>
+        <div class="audio-player" style="margin-bottom: 18px;">
+            <div class="ap-icon">♪</div>
+            <div class="ap-label">听力 11-2</div>
+            <audio controls preload="none" src="../audio/lesson11/workbook-2.mp3"></audio>
+        </div>
+        <div id="wbListen2"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen2')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen2')">Réinitialiser</button>
+            <span class="wb-score" id="listen2Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第一部分</div>
+        <div class="wb-part-sub">第15-18题：阅读下面短文，选出正确答案。</div>
+        <div class="wb-passage">北京的胡同经历数百年的风雨，是老北京人生活的<span class="wb-blank">15</span>，今天仍居住在市区内三分之一的人口，胡同的历史促进了胡同都留着许多有价值的生活方式。北京的胡同就像个小角落，<span class="wb-blank">16</span>数也数不清。据说，北京的胡同恰加<span class="wb-blank">17</span>在城中的每个角落，不要说你我、外地人和到北京寻找老朝胡同里的人，就是老北京人也不免一同就能说得清清楚楚。<span class="wb-blank">18</span>对那不起的胡同，如果你没有意思的意识，就算初到北京一定会让你同到这一迷宫。</div>
+        <div id="wbRead1"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read1')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read1')">Réinitialiser</button>
+            <span class="wb-score" id="read1Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第二部分</div>
+        <div class="wb-part-sub">第19-22题：请选出与试题内容一致的一项。</div>
+        <div id="wbRead2"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read2')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read2')">Réinitialiser</button>
+            <span class="wb-score" id="read2Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第三部分</div>
+        <div class="wb-part-sub">第23-28题：请选出正确答案。</div>
+        <div class="wb-passage"><strong>23-25</strong><br>在距离现在一千七百多年前，中国处于魏、蜀、吴三国鼎立的三国时代。有一天，吴国的孙权送给魏国的曹操一只大象，长九比在中原的曹操从来没有见过这种庞然大物，所以他想知道这样大移动物到底有多重？于是，他宽大动员了他们会的智慧，并说："谁有办法把这只大象的重量称出来？"有几位聪明的人都建议说："虽然有我们知道！"当场上杀死大象的办法不同，但是他们都各认为合理的议，想算清大象的身上，但是，人力根本无法定住它！他们在真本没大秤可以用！没有这么大的秤，有又要算大象的重量，怎么办？大家都一筹莫展了。就在大家走不见真正要如何的时候，人说是曹操的小儿子曹冲，突然开口说："我知道怎么称了！"他立即把几大象赶到船上，看船身沉入水中多少，在船身上做了一个记号。然后又把大象推放出船，在船下做一装上岩头；石头上船，直到船下沉到刚刚的那一条线上为止。接着，他将大家把石头大一块一块地为现在大家就知道大象大约的重量了！但在一千七百多年前的时代，曹冲的方法成应该是非常的聪明。</div>
+        <div class="wb-passage" style="margin-top: 20px;"><strong>26-28</strong><br>我们到底该工作多长时间呢？一般情况下，我问到的每一个人都会引证一些道理说服是八小时。有时间你接近每天八小时。数据似乎也证实了这一点：美国人平均每天工作 8.8小时。不少，来自美国劳动统计局的官方数据。我们最开始有一天工作八小时呢？让我们从现有的工作制开始。典型的工作日一天大约是八小时。我们是怎么提出这样的方案的？答案隐藏在工业革命的数据中。18世纪后期，当公司开始最大化起高工厂产量时，让工厂一周七天，一天 24小时运转不停成了常规。当然，为了提高效率，人们被叫工作要要意。实际上，那个时候一天工作 10 到 16 小时很正常。如起延长的工作时间并没有一直持续下去。因为，到根据，一个名叫罗伯特·欧文的人大力鼓吹的发话运动，呼吁人们重新考虑工作时间和作息式。他的口号是"八小时工作，八小时娱乐，八小时睡觉"。最早这种工作制度的是福特汽车公司。1914年，福特公司不仅将标准的工作时改成为八小时，并把将工人的工资提升了一番。让许多公司吃惊的是，福特公司工人小时数的减少，同样的工人，在同等时间内大幅度地提高了产品。而福特特公司利润通过增长也同样很巨大。这就促使其他公司也采用这种生制的做法。所以说是一个世纪以来为了提高工厂效率而采用的古老标准。</div>
+        <div id="wbRead3"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read3')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read3')">Réinitialiser</button>
+            <span class="wb-score" id="read3Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">三、书写</span>第一部分</div>
+        <div class="wb-part-sub">第29-31题：完成句子 - Remettez les mots dans l'ordre, puis cliquez pour voir la réponse.</div>
+        <div id="wbWrite1"></div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">三、书写</span>第二部分</div>
+        <div class="wb-part-sub">第32题：写短文 - 请结合下列词语（要全部使用，顺序不分先后），写一篇80字左右的短文。</div>
+        <div class="wb-writing-words"><span>失眠</span><span>精神</span><span>危害</span><span>规律</span><span>避免</span></div>
+        <textarea class="wb-textarea" id="wbEssay" placeholder="请在此处写下您的短文（约80字）..."></textarea>
+        <div style="font-size: 0.85rem; color: var(--text-light); margin-top: 6px;"><span id="wbEssayCount">0</span> caractères</div>
+    </div>
+</section>
+
 </main>
 
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
@@ -498,7 +644,74 @@ function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').inner
 function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
 
 window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
-document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+
+// ===== WORKBOOK DATA =====
+const wbData = {"listen1": [{"q": "1.", "options": ["女的来早了", "男的迟到了", "女的里的快来", "男的记错时间了"], "correct": 0}, {"q": "2.", "options": ["今天不去单位", "昨天上海了", "上班去开会了", "上班迟到了"], "correct": 2}, {"q": "3.", "options": ["改天再进行", "照常训练", "改在室内", "被迫取消"], "correct": 3}, {"q": "4.", "options": ["闹开始碗", "一直申请", "有点儿夹燥", "感动成功率了"], "correct": 1}, {"q": "5.", "options": ["安装电脑", "出去散步", "运动健身", "看电视剧"], "correct": 2}, {"q": "6.", "options": ["需要维修", "没有辐射", "需要保养", "没有问题"], "correct": 3}], "listen2": [{"q": "7.", "options": ["枕头不合适", "精神压力大", "忘了喝牛奶", "头疼睡眠不好"], "correct": 1}, {"q": "8.", "options": ["头顶", "胸骨太平", "羽毛不丰满", "肌肉不发达"], "correct": 0}, {"q": "9.", "options": ["智能手机太贵", "用不惯智能机", "只需接打电话", "几天没充电"], "correct": 3}, {"q": "10.", "options": ["去外地出差", "去参加校庆", "去参加婚礼", "去参加摄影展"], "correct": 0}, {"q": "11.", "options": ["邻居", "朋友", "夫妻", "师生"], "correct": 1}, {"q": "12.", "options": ["各大门厂都有参展", "主要展出新能源车", "展览将免费播送", "致府拾了许多优惠"], "correct": 0}, {"q": "13.", "options": ["导致孩子肥胖", "让孩子交坏朋友", "导致孩子不尊敬父母", "使孩子注意力不集中"], "correct": 0}, {"q": "14.", "options": ["课外兴趣班的重要", "造成肥胖的主要原因", "如何提高学习积极性", "保证孩子睡眠很重要"], "correct": 3}], "read1": [{"q": "15.", "options": ["象征", "标记", "反映", "表现"], "correct": 0}, {"q": "16.", "options": ["必然", "反而", "竟于", "从而"], "correct": 2}, {"q": "17.", "options": ["分布", "散布", "位于", "分别"], "correct": 0}, {"q": "18.", "options": ["既然他已经走过", "除非他就住在那里", "即使你听别人介绍过", "真想他不会迷过"], "correct": 2}], "read2": [{"q": "19.", "passage": "如果突然被闹钟叫醒，将在心理上使人产生心悸、情绪低落、感觉没睡醒等不适。如果是从深度睡眠中被突然叫醒，那么，人的短期记忆能力、计算技能都会受到影响，这些能力最多为正常状态的65%，与醉酒者相当。", "options": ["闹钟会影响人的睡眠质量", "熟睡时被闹钟叫醒人会心慌", "深度睡眠时人的记忆能力下降", "被闹钟叫醒时感觉像喝醉一样"], "correct": 0}, {"q": "20.", "passage": "流行不仅仅是一个概念，以前我们不觉得需要的东西，现在却能使我们觉得很实在在感觉到已生活，影响我们的穿着。不管是流行主导我们的消费决定流行，还是消费决定流行，如果不能避免它，就主动去接受它。", "options": ["现在，流行能影响我们的日常生活", "过去，对于流行存在着很多误解", "感流中的东西大家都感到消费", "电视模特和市场上不被接受"], "correct": 0}, {"q": "21.", "passage": "在孩子爱静，有的孩子好动，从拿起笔和纸的一刻起就表现不同，文静的孩子会安心认真地画画，好动的孩子一般都会抗拒而画。所以，基于孩子爱好的动手的意义是重大的，但随便把纸搬桃等一团或乱成绒画。", "options": ["爱静的孩子比爱动的孩子好", "好动的孩子一般都讨厌画画", "文静的孩子比好动的孩子有想象力", "画画几分钟的现在发现不同的特点"], "correct": 0}, {"q": "22.", "passage": "机器人是作为20世纪人类最伟大的发明之一，从60年代初问世以来，经历了五十多年的发展已取得长足的进步。在制造业中，工业机器人甚至已成为不可缺少的核心要素之一。世界上有近万万个工业机器人正在保障人类的生产线上。机器人的出现提升社会经济发展的速度，它的高速发展提升了社会的生产水平和人类的生活质量。", "options": ["机器人是20世纪50年代发明的", "机器人主要是被广泛应用于战争", "机器人将来必然会代替人工", "机器人的发展提高了生产、生活水平"], "correct": 3}], "read3": [{"q": "23.", "options": ["今曹操感到非常害怕", "是魏国从吴国来的", "是魏国本地没有的动物", "很童长久不中原生活"], "correct": 2}, {"q": "24.", "options": ["大臣们想到的办法都不现实", "会杀死大象", "计算不准确", "曹操很聪明"], "correct": 2}, {"q": "25.", "options": ["现在是得很麻烦", "需要把象赶下河", "是唯一的办法", "需要一堆石头"], "correct": 0}, {"q": "26.", "options": ["怀疑", "同意", "反对", "欢迎"], "correct": 1}, {"q": "27.", "options": ["生产力提高了", "企业利润下降了", "工人工资未变", "公司增加了员工"], "correct": 0}, {"q": "28.", "options": ["是欧文最先采用的", "得到政府部门的推广", "经过科学验证的", "出于提高效率的目的"], "correct": 3}], "write1": [{"q": "29.", "words": ["放慢", "享受生活", "脚步", "是为了"], "answer": "放慢脚步是为了享受生活。"}, {"q": "30.", "words": ["是", "很", "人偶尔", "正常的", "情绪低落"], "answer": "人偶尔情绪低落是很正常的。"}, {"q": "31.", "words": ["一般", "都", "持续的时间", "雷阵雨", "较短"], "answer": "雷阵雨持续的时间一般都较短。"}], "write2_words": ["失眠", "精神", "危害", "规律", "避免"]};
+
+
+// ===== WORKBOOK ENGINE =====
+const wbState = {};
+function renderWbMCQ(data, containerId, prefix) {
+    const container = document.getElementById(containerId);
+    const letters = ['A','B','C','D'];
+    container.innerHTML = data.map((item, i) => {
+        const passageHtml = item.passage ? `<div class="wb-passage">${item.passage}</div>` : '';
+        return `${passageHtml}<div class="wb-q" id="${prefix}-q${i}"><div class="wb-q-text"><span class="wb-q-num">${item.q.replace('.','')}</span></div><div class="wb-opts">${item.options.map((opt,j)=>`<div class="wb-opt letter" onclick="selectWbOpt('${prefix}',${i},${j})"><span class="wb-letter">${letters[j]}</span><span>${opt}</span></div>`).join('')}</div></div>`;
+    }).join('');
+}
+function selectWbOpt(prefix, qIdx, optIdx) {
+    if (!wbState[prefix]) wbState[prefix] = {};
+    if (wbState[prefix].locked) return;
+    wbState[prefix][qIdx] = optIdx;
+    const qEl = document.getElementById(`${prefix}-q${qIdx}`);
+    qEl.querySelectorAll('.wb-opt').forEach((o,i)=>o.classList.toggle('selected', i===optIdx));
+}
+function checkWbGeneric(prefix, data) {
+    if (!wbState[prefix]) wbState[prefix] = {};
+    wbState[prefix].locked = true;
+    let correct = 0;
+    data.forEach((item,i)=>{
+        const qEl = document.getElementById(`${prefix}-q${i}`);
+        if (!qEl) return;
+        const chosen = wbState[prefix][i];
+        qEl.querySelectorAll('.wb-opt').forEach((o,j)=>{
+            o.classList.remove('selected');
+            if (j===item.correct) o.classList.add('show-correct');
+            if (chosen!==undefined && j===chosen && j!==item.correct) o.classList.add('show-wrong');
+        });
+        if (chosen===item.correct) { qEl.classList.add('correct'); correct++; }
+        else if (chosen!==undefined) qEl.classList.add('wrong');
+    });
+    document.getElementById(`${prefix}Score`).textContent = `Score : ${correct} / ${data.length}`;
+}
+function resetWbGeneric(prefix, data) {
+    wbState[prefix] = {};
+    data.forEach((item,i)=>{
+        const qEl = document.getElementById(`${prefix}-q${i}`);
+        if (!qEl) return;
+        qEl.classList.remove('correct','wrong');
+        qEl.querySelectorAll('.wb-opt').forEach(o=>o.classList.remove('selected','show-correct','show-wrong'));
+    });
+    document.getElementById(`${prefix}Score`).textContent = '';
+}
+function checkWb(prefix) { checkWbGeneric(prefix, wbData[prefix]); }
+function resetWb(prefix) { resetWbGeneric(prefix, wbData[prefix]); }
+function renderWbWriting() {
+    const container = document.getElementById('wbWrite1');
+    container.innerHTML = wbData.write1.map((item,i)=>`<div class="wb-q"><div class="wb-q-text"><span class="wb-q-num">${item.q.replace('.','')}</span></div><div class="wb-writing-words">${item.words.map(w=>`<span>${w}</span>`).join('')}</div><div class="wb-actions"><button class="wb-btn wb-btn-ghost" onclick="document.getElementById('write1-ans${i}').classList.toggle('show')">Voir la réponse</button></div><div class="wb-writing-answer" id="write1-ans${i}">→ ${item.answer}</div></div>`).join('');
+}
+function initWorkbook() {
+    renderWbMCQ(wbData.listen1, 'wbListen1', 'listen1');
+    renderWbMCQ(wbData.listen2, 'wbListen2', 'listen2');
+    renderWbMCQ(wbData.read1, 'wbRead1', 'read1');
+    renderWbMCQ(wbData.read2, 'wbRead2', 'read2');
+    renderWbMCQ(wbData.read3, 'wbRead3', 'read3');
+    renderWbWriting();
+    const essay = document.getElementById('wbEssay');
+    if (essay) essay.addEventListener('input', ()=>{ document.getElementById('wbEssayCount').textContent = essay.value.length; });
+}
+
+document.addEventListener('DOMContentLoaded',()=>{initWorkbook();renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
 </script>
 </body>
 </html>

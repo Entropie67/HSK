@@ -128,6 +128,47 @@
         .discussion-q:last-child{border-bottom:none;}
         .back-to-top{position:fixed;bottom:20px;right:24px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:49;font-size:1.1rem;}
         @media(max-width:768px){.hero h1{font-size:2.4rem;}.vocab-grid{grid-template-columns:1fr;}.quiz-options{grid-template-columns:1fr;}.flashcard-container{width:100%;height:240px;}.proper-nouns-grid{grid-template-columns:1fr;}.quiz-score-bar{flex-direction:column;gap:10px;text-align:center;}.score-bar-visual{width:100%;margin:0;}}
+    
+
+        /* ===== AUDIO PLAYER ===== */
+        .audio-player { display: flex; align-items: center; gap: 14px; background: linear-gradient(135deg, #ede9fe 0%, #f5f3ff 100%); border: 1px solid rgba(124, 58, 237, 0.15); border-radius: 14px; padding: 14px 18px; margin: 0 auto 28px; max-width: 560px; box-shadow: 0 2px 10px rgba(91, 33, 182, 0.06); }
+        .audio-player .ap-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-water, linear-gradient(135deg, #667eea 0%, #764ba2 100%)); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+        .audio-player .ap-label { font-size: 0.85rem; color: var(--primary); font-weight: 600; min-width: 80px; }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+
+        /* ===== WORKBOOK ===== */
+        .wb-part { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        .wb-part-title { font-family: 'Noto Serif SC', serif; font-size: 1.15rem; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+        .wb-part-title .wb-badge { background: var(--gradient-water, linear-gradient(135deg, #667eea 0%, #764ba2 100%)); color: white; font-size: 0.72rem; padding: 3px 10px; border-radius: 20px; font-family: 'Noto Sans SC', sans-serif; font-weight: 600; }
+        .wb-part-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 16px; }
+        .wb-passage { background: #faf9ff; border-left: 3px solid var(--primary-light); padding: 14px 18px; border-radius: 8px; margin-bottom: 18px; font-size: 0.98rem; line-height: 1.9; }
+        .wb-passage .wb-blank { display: inline-block; min-width: 28px; border-bottom: 2px solid var(--primary-light); text-align: center; font-weight: 600; color: var(--primary); padding: 0 4px; margin: 0 2px; }
+        .wb-q { margin-bottom: 16px; padding: 14px; border-radius: 10px; border: 1px solid var(--border); transition: all 0.2s; }
+        .wb-q.correct { background: #ecfdf5; border-color: #86efac; }
+        .wb-q.wrong { background: #fef2f2; border-color: #fca5a5; }
+        .wb-q-text { font-weight: 500; margin-bottom: 10px; display: flex; gap: 8px; }
+        .wb-q-num { background: var(--primary); color: white; border-radius: 50%; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; flex-shrink: 0; }
+        .wb-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+        .wb-opt { background: #fafbfc; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; cursor: pointer; font-size: 0.92rem; transition: all 0.15s; }
+        .wb-opt:hover { border-color: var(--primary-light); background: #faf5ff; }
+        .wb-opt.selected { background: #ede9fe; border-color: var(--primary); color: var(--primary); font-weight: 600; }
+        .wb-opt.show-correct { background: #dcfce7; border-color: var(--success, #27ae60); color: var(--success, #27ae60); font-weight: 600; }
+        .wb-opt.show-wrong { background: #fecaca; border-color: var(--wrong, #e74c3c); color: var(--wrong, #e74c3c); }
+        .wb-opt.letter { display: flex; align-items: center; gap: 8px; }
+        .wb-opt .wb-letter { font-weight: 700; color: var(--primary-light); font-size: 0.82rem; }
+        .wb-writing-words { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+        .wb-writing-words span { background: #f5f3ff; border: 1px solid rgba(124, 58, 237, 0.2); padding: 6px 14px; border-radius: 20px; font-weight: 500; color: var(--primary); }
+        .wb-writing-answer { background: #ecfdf5; border-left: 3px solid var(--success, #27ae60); padding: 10px 14px; border-radius: 8px; font-weight: 500; color: var(--success, #27ae60); margin-top: 8px; display: none; }
+        .wb-writing-answer.show { display: block; }
+        .wb-textarea { width: 100%; min-height: 100px; border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-family: inherit; font-size: 1rem; resize: vertical; background: #fafbfc; }
+        .wb-textarea:focus { outline: none; border-color: var(--primary-light); background: white; }
+        .wb-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+        .wb-btn { border: none; padding: 9px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; font-family: inherit; transition: all 0.15s; }
+        .wb-btn-primary { background: var(--gradient-water, linear-gradient(135deg, #667eea 0%, #764ba2 100%)); color: white; }
+        .wb-btn-primary:hover { transform: translateY(-1px); }
+        .wb-btn-ghost { background: white; color: var(--primary); border: 1px solid var(--border); }
+        .wb-btn-ghost:hover { background: #faf5ff; }
+        .wb-score { display: inline-block; margin-left: 12px; font-weight: 600; color: var(--primary); }
     </style>
 </head>
 <body>
@@ -141,13 +182,19 @@
 </header>
 
 <nav class="sticky-nav"><div class="nav-inner"><a href="../index.html" style="font-weight:700;padding-right:20px;border-right:2px solid var(--border);color:var(--primary)!important;">← Accueil</a>
-    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a>
+    <a href="#text">课文 Texte</a><a href="#vocab">生词 Vocabulaire</a><a href="#flashcards">卡片 Flashcards</a><a href="#grammar">语法 Grammaire</a><a href="#analysis">辨析 Analyse</a><a href="#collocation">搭配 Collocations</a><a href="#quiz-section">测验 Quiz</a><a href="#fill-quiz">填空 Exercices</a><a href="#application">运用 Application</a><a href="#workbook">练习册 Workbook</a>
 </div></nav>
 
 <main class="container">
 
 <section id="text">
-    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">争论的奇迹 (560 caracteres)</p><div class="section-divider"></div></div>
+    <div class="section-header"><h2>课文 - Texte</h2><p class="section-sub">争论的奇迹 (560 caracteres)</p><div class="section-divider"></div>
+    <div class="audio-player">
+        <div class="ap-icon">♪</div>
+        <div class="ap-label">课文 Texte</div>
+        <audio controls preload="none" src="../audio/lesson10/text.mp3"></audio>
+    </div>
+</div>
     <div class="text-block">
         <p>1872年的一天，在美国加利福尼亚州的一个酒店里，斯坦福与科恩围绕"马奔跑时蹄子是否着地"进行了辩论。斯坦福认为，马奔跑得那么快，在跳起时四蹄应该都是不着地的；而科恩认为，马要是四蹄都不着地，那不是成了青蛙啦？</p>
         <p>应该是始终有一蹄着地。两人各执一词，争论得脸红脖子粗，谁也说服不了谁。于是他们就请英国摄影师麦布里奇来判断，可麦布里奇也弄不清楚。不过摄影师毕竟是摄影师，主意还是有的。他们一起来到一个操场，在一条跑道的一边等距离放上24个照相机，照相机对准跑道；在跑道另一边打24个洞，分别插进24根木棍，木棍上系着细线，细线穿过跑道，接上相机快门。</p>
@@ -159,7 +206,13 @@
 </section>
 
 <section id="vocab">
-    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">37 mots + 5 noms propres - Cliquez pour reveler</p><div class="section-divider"></div></div>
+    <div class="section-header"><h2>生词 - Vocabulaire</h2><p class="section-sub">37 mots + 5 noms propres - Cliquez pour reveler</p><div class="section-divider"></div>
+    <div class="audio-player">
+        <div class="ap-icon">♪</div>
+        <div class="ap-label">生词 Vocabulaire</div>
+        <audio controls preload="none" src="../audio/lesson10/vocab.mp3"></audio>
+    </div>
+</div>
     <div class="vocab-controls">
         <button class="active" onclick="filterVocab('all')">Tous (37)</button>
         <button onclick="filterVocab('verb')">Verbes</button>
@@ -330,6 +383,99 @@
     </div>
 </section>
 
+
+
+<!-- ==================== WORKBOOK ==================== -->
+<section id="workbook">
+    <div class="section-header">
+        <h2>练习册 - Workbook</h2>
+        <p class="section-sub">HSK 5 (上) 练习册 - Lesson 10 - 争论的奇迹</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">一、听力</span>第一部分</div>
+        <div class="wb-part-sub">第1-6题：请听录音，选出正确答案。</div>
+        <div class="audio-player" style="margin-bottom: 18px;">
+            <div class="ap-icon">♪</div>
+            <div class="ap-label">听力 10-1</div>
+            <audio controls preload="none" src="../audio/lesson10/workbook-1.mp3"></audio>
+        </div>
+        <div id="wbListen1"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen1')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen1')">Réinitialiser</button>
+            <span class="wb-score" id="listen1Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">一、听力</span>第二部分</div>
+        <div class="wb-part-sub">第7-14题：请听录音，选出正确答案。</div>
+        <div class="audio-player" style="margin-bottom: 18px;">
+            <div class="ap-icon">♪</div>
+            <div class="ap-label">听力 10-2</div>
+            <audio controls preload="none" src="../audio/lesson10/workbook-2.mp3"></audio>
+        </div>
+        <div id="wbListen2"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen2')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen2')">Réinitialiser</button>
+            <span class="wb-score" id="listen2Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第一部分</div>
+        <div class="wb-part-sub">第15-18题：阅读下面短文，选出正确答案。</div>
+        <div class="wb-passage">有一个制作眼镜的商人，名叫汉斯·李普希。一天，他的孩子们悄悄溜进他工作的房间，拿起他做好的眼镜玩儿起来。突然，一个孩子拿起两片镜 <span class="wb-blank">15</span>着，惊奇地发现远处的教堂钟楼 <span class="wb-blank">16</span>变得非常近，清楚可见。那么大，才是他叫父亲来看。父亲心生不解的念头——眼镜能穿越时空。他把两片镜放在紫管里 <span class="wb-blank">17</span>获得了一项重大发现。他发现原来把凸镜和凹镜的方凹透放在一起，远远的物体看上去就会一些近一些。一位名叫伽利略的意大利科学家听说了这种发现，便立即作出这个可用于远距离望远的工具。自伽利略于1609年制造出第一个望远镜后，科学家们陆续制造出了更大更好的望远镜。如今，正是望远镜打开了人人类仰望太空 <span class="wb-blank">18</span>大门。</div>
+        <div id="wbRead1"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read1')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read1')">Réinitialiser</button>
+            <span class="wb-score" id="read1Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第二部分</div>
+        <div class="wb-part-sub">第19-22题：请选出与试题内容一致的一项。</div>
+        <div id="wbRead2"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read2')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read2')">Réinitialiser</button>
+            <span class="wb-score" id="read2Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">二、阅读</span>第三部分</div>
+        <div class="wb-part-sub">第23-28题：请选出正确答案。</div>
+        <div class="wb-passage"><strong>23-25</strong><br>爱因斯坦出任荷兰莱顿大学特聘教授时，给学生讲的第一堂课是：成功的秘诀也。爱因斯坦拿了一盒子火柴上了讲台，从盒子里拿出一块骨牌，在桌子上像搭积木一样地搭起来。搭到二十几块时，骨牌哗的一下倒了。爱因斯坦的骨牌却要一次又一次地搭起四四五次才，平静的礼堂开始嘈嘈。但爱因斯坦然继续不理会观察骨牌情了，倒了再搭……30分钟过去了，爱因斯坦搭起的骨牌，盒子里大约有50块骨牌，终于被爱因斯坦40块搭了下来。学生一个一个不耐烦。有一名学生忍不住了。爱因斯坦终于将50块骨牌全部搭了起来。爱因斯坦面带高兴的对口的："哎！究竟成功了，有什么感想吗？""等一下，等一下，每搭一次，都有新的发现。"原来，爱因斯坦所思到了，骨牌之间的相互磁性，他误是把电磁性的骨牌两两拼起一起，就这样把他的搭在下面。通这样反复几次，终会搭稳。爱因斯坦说："成功就是不断发现问题解决问题的过程，同时还要有足够的耐心去做，以达到成功的秘诀就是：简单的事情重复做。"爱因斯坦背骨牌的学生就是后来爱因斯坦的同事，美国著名物理学家、思想家和教育家——惠勒。</div>
+        <div class="wb-passage" style="margin-top: 20px;"><strong>26-28</strong><br>茅膏菜是一种外表漂亮的矮小植物，它们长上去那么小，似乎没有什么伤害力。它们的叶子的边缘布满细小的绒毛，这些绒毛生沾着绿液体，昆虫口无防备，这种植物的叶子会出去不错的食物。不过，一旦昆虫降落在它的叶片上，叶边绒毛会突然合拢起来，将昆虫牢牢包住。很多年前，英国生物学家达尔文对这种茅膏菜很感兴趣。他想知道这种植物除了昆虫还会捕食其他的食物。于是他放了一些面小的烧羊肉在黏黏的叶子上。这种植物居然狼吞虎咽地吃了一扫而光。接着，达尔文试着给它喂小量牛奶，鸡蛋和其他用小的食物吃掉了叶子上，茅膏草对它们还是喜爱，竟然来吃不下，狼吞虎咽。食肉植物有许多种，茅膏菜只是其中的一种，还有像猪笼草、瓶子草等肉食植物的捕昆虫方法各不相同。有些植物直接了当——用它们的绒毛粘住昆虫，像猪笼草那样。用自身的绒毛的颜色引诱昆虫，由于这时候最鲜艳，昆虫多半为降落到猪笼草那艳丽可爱的花期上时，就会掉到里面去，然后滑进洞中的植物液。</div>
+        <div id="wbRead3"></div>
+        <div class="wb-actions">
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read3')">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read3')">Réinitialiser</button>
+            <span class="wb-score" id="read3Score"></span>
+        </div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">三、书写</span>第一部分</div>
+        <div class="wb-part-sub">第29-31题：完成句子 - Remettez les mots dans l'ordre, puis cliquez pour voir la réponse.</div>
+        <div id="wbWrite1"></div>
+    </div>
+
+    <div class="wb-part">
+        <div class="wb-part-title"><span class="wb-badge">三、书写</span>第二部分</div>
+        <div class="wb-part-sub">第32题：写短文 - 请结合下列词语（要全部使用，顺序不分先后），写一篇80字左右的短文。</div>
+        <div class="wb-writing-words"><span>争论</span><span>差距</span><span>成熟</span><span>逐渐</span><span>改进</span></div>
+        <textarea class="wb-textarea" id="wbEssay" placeholder="请在此处写下您的短文（约80字）..."></textarea>
+        <div style="font-size: 0.85rem; color: var(--text-light); margin-top: 6px;"><span id="wbEssayCount">0</span> caractères</div>
+    </div>
+</section>
+
 </main>
 
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
@@ -447,7 +593,74 @@ function renderChoiceQuiz(){document.getElementById('choiceQuizContainer').inner
 function answerChoice(i,ans){const qE=document.getElementById(`choice-q${i}`);if(qE.classList.contains('correct')||qE.classList.contains('wrong'))return;const d=choiceQuizData[i];qE.querySelectorAll('.quiz-option').forEach(o=>{o.classList.add('disabled');if(o.textContent===d.correct)o.classList.add('selected-correct');if(o.textContent===ans&&ans!==d.correct)o.classList.add('selected-wrong');});qE.classList.add(ans===d.correct?'correct':'wrong');document.getElementById(`choice-exp${i}`).style.display='block';}
 
 window.addEventListener('scroll',()=>{const ss=document.querySelectorAll('section'),nl=document.querySelectorAll('.nav-inner a');let cur='';ss.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});nl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`));document.getElementById('backToTop').style.display=window.scrollY>500?'flex':'none';});
-document.addEventListener('DOMContentLoaded',()=>{renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
+
+// ===== WORKBOOK DATA =====
+const wbData = {"listen1": [{"q": "1.", "options": ["马比青蛙跳得远", "不青蛙地时跑得快", "马的四周都不落地", "不会四周都不肯来"], "correct": 3}, {"q": "2.", "options": ["饭馆", "公司", "机场", "火车站"], "correct": 2}, {"q": "3.", "options": ["曾经去过美洲", "丈夫是摄影师", "儿子开影艺术", "做过婚礼主持"], "correct": 0}, {"q": "4.", "options": ["紧张不安", "非常生气", "感到自豪", "感到惭愧"], "correct": 0}, {"q": "5.", "options": ["电脑坏了", "工作很忙", "在学习电脑", "买了新电脑"], "correct": 1}, {"q": "6.", "options": ["学过英语", "爱看电视", "视力不好", "拍过电影"], "correct": 0}], "listen2": [{"q": "7.", "options": ["得过很多奖", "儿子很喜欢", "一直不被肯定", "创作时间不长"], "correct": 0}, {"q": "8.", "options": ["头顶", "脖子", "鼻子", "嘴唇"], "correct": 1}, {"q": "9.", "options": ["男的想肥胖", "漏出一个洞", "颜色变浅了", "吃饭时弄脏了"], "correct": 2}, {"q": "10.", "options": ["外公", "姐姐", "舅舅", "太太"], "correct": 1}, {"q": "11.", "options": ["爱好摄影", "不喜欢手机", "参加摄影工作", "从摄影课程"], "correct": 1}, {"q": "12.", "options": ["拿奖大重", "使用复杂", "价格太贵", "功能简单"], "correct": 0}, {"q": "13.", "options": ["染电脑病", "上辅导班的", "室外活动的", "玩儿游戏机的"], "correct": 0}, {"q": "14.", "options": ["工作负担重", "家务做不完", "反对孩子玩儿", "孩子作业太多"], "correct": 0}], "read1": [{"q": "15.", "options": ["对", "朝", "从", "向"], "correct": 1}, {"q": "16.", "options": ["突然", "忽然", "居然", "偶然"], "correct": 1}, {"q": "17.", "options": ["突然", "偶然", "冲", "都"], "correct": 3}, {"q": "18.", "options": ["通", "经", "而", "去"], "correct": 0}], "read2": [{"q": "19.", "passage": "经过艰苦的试验，电影拍摄技术逐渐改进、成熟。1895年12月28日，法国人卢米埃尔兄弟在巴黎的一个咖啡馆公众播放了短片《火车到站》，这一天后来成为电影产生的纪念日，兄弟俩也成为最早的电影导演。", "options": ["《火车到站》深受观众好评", "最早的电影是在巴黎公映的", "卢米埃尔发明了电影拍摄技术", "1895年12月28日举办了第一届电影节"], "correct": 1}, {"q": "20.", "passage": "年画是中国一种古老的民间艺术，同时也是中国社会历史、生活、信仰和风俗的反映。有趣的是，农历新年人们都会买几张年画贴在家里，差不多每家都贴年画。无门厅旁，都贴满了各种花花绿绿，这些惹者幸富的年画。", "options": ["年画主要贴在民居的大门上", "年画为新年增添了喜庆的氛围", "年画都用红纸画的，象征着吉祥", "年画反映了中国农村的社会生活"], "correct": 1}, {"q": "21.", "passage": "20世纪60年代绘有电脑制作，动画制作全部是手中一笔一画完成。一般来说，10分钟的动画要大约要7000到10000张原动画，可以想象，要像《大闹天宫》这样的工程的巨大。整个动画而画阶段现在是有重复同样的工作，41分钟的上集和72分钟的下集，仅绘制原动画就有超过15万张，倾注了电脑制作的心。", "options": ["仅靠手工绘制动画非常费时间", "《大闹天宫》的原动画大约有10000张", "创作《大闹天宫》前后花费了近两年时间", "制作动画制作全依利用电脑完成的"], "correct": 0}, {"q": "22.", "passage": "茶叶种类繁多，乌龙茶就是其中有特色鲜明的一种。据说它是因创始人为清代人苏龙而得名，又因色泽青褐而称\"青茶\"。它是一种介乎绿茶、红茶之间的半发酵茶，兼有绿茶和红茶的优点。因为发酵不充分，因此既有红茶的浓厚鲜醇，又兼有绿茶的清爽醉苦之。乌龙茶综合红绿茶芳芬的优点，而甘吸取两者长处于一身，一个\"青\"字，赢得了众多茶人的喜爱。", "options": ["青茶是乌龙茶中的一种", "绿茶是一种全发酵的茶", "红茶有清香甘醇的特色", "乌龙茶兼具绿茶和红茶的优点"], "correct": 3}], "read3": [{"q": "23.", "options": ["用骨牌盖房子", "在桌子上搭骨牌", "教学生用骨牌", "讲骨牌的游戏规则"], "correct": 1}, {"q": "24.", "options": ["爱因斯坦走出教室", "有人搭起了全部骨牌", "有学生开始不耐烦", "学生陆续离开教室"], "correct": 3}, {"q": "25.", "options": ["爱仔细观察事物", "简单的事情重复做", "要善于发现问题", "虚心听别人的建议"], "correct": 1}, {"q": "26.", "options": ["茅膏菜", "猪笼草", "食肉植物", "瓶子草"], "correct": 2}, {"q": "27.", "options": ["只吃昆虫", "发现茅膏草", "任何肉食都吃", "特别喜欢烧羊肉"], "correct": 2}, {"q": "28.", "options": ["粉末", "绒毛", "活塞板门", "底部的绒子"], "correct": 0}], "write1": [{"q": "29.", "words": ["由此", "或许", "将", "走向精彩", "你的人生"], "answer": "你的人生或许将由此走向精彩。"}, {"q": "30.", "words": ["都是", "进行的", "整个讨论", "围绕", "去留问题"], "answer": "整个讨论都是围绕去留问题进行的。"}, {"q": "31.", "words": ["始终", "表现", "得", "这位", "年轻人", "很稳定"], "answer": "这位年轻人始终表现得很稳定。"}], "write2_words": ["争论", "差距", "成熟", "逐渐", "改进"]};
+
+
+// ===== WORKBOOK ENGINE =====
+const wbState = {};
+function renderWbMCQ(data, containerId, prefix) {
+    const container = document.getElementById(containerId);
+    const letters = ['A','B','C','D'];
+    container.innerHTML = data.map((item, i) => {
+        const passageHtml = item.passage ? `<div class="wb-passage">${item.passage}</div>` : '';
+        return `${passageHtml}<div class="wb-q" id="${prefix}-q${i}"><div class="wb-q-text"><span class="wb-q-num">${item.q.replace('.','')}</span></div><div class="wb-opts">${item.options.map((opt,j)=>`<div class="wb-opt letter" onclick="selectWbOpt('${prefix}',${i},${j})"><span class="wb-letter">${letters[j]}</span><span>${opt}</span></div>`).join('')}</div></div>`;
+    }).join('');
+}
+function selectWbOpt(prefix, qIdx, optIdx) {
+    if (!wbState[prefix]) wbState[prefix] = {};
+    if (wbState[prefix].locked) return;
+    wbState[prefix][qIdx] = optIdx;
+    const qEl = document.getElementById(`${prefix}-q${qIdx}`);
+    qEl.querySelectorAll('.wb-opt').forEach((o,i)=>o.classList.toggle('selected', i===optIdx));
+}
+function checkWbGeneric(prefix, data) {
+    if (!wbState[prefix]) wbState[prefix] = {};
+    wbState[prefix].locked = true;
+    let correct = 0;
+    data.forEach((item,i)=>{
+        const qEl = document.getElementById(`${prefix}-q${i}`);
+        if (!qEl) return;
+        const chosen = wbState[prefix][i];
+        qEl.querySelectorAll('.wb-opt').forEach((o,j)=>{
+            o.classList.remove('selected');
+            if (j===item.correct) o.classList.add('show-correct');
+            if (chosen!==undefined && j===chosen && j!==item.correct) o.classList.add('show-wrong');
+        });
+        if (chosen===item.correct) { qEl.classList.add('correct'); correct++; }
+        else if (chosen!==undefined) qEl.classList.add('wrong');
+    });
+    document.getElementById(`${prefix}Score`).textContent = `Score : ${correct} / ${data.length}`;
+}
+function resetWbGeneric(prefix, data) {
+    wbState[prefix] = {};
+    data.forEach((item,i)=>{
+        const qEl = document.getElementById(`${prefix}-q${i}`);
+        if (!qEl) return;
+        qEl.classList.remove('correct','wrong');
+        qEl.querySelectorAll('.wb-opt').forEach(o=>o.classList.remove('selected','show-correct','show-wrong'));
+    });
+    document.getElementById(`${prefix}Score`).textContent = '';
+}
+function checkWb(prefix) { checkWbGeneric(prefix, wbData[prefix]); }
+function resetWb(prefix) { resetWbGeneric(prefix, wbData[prefix]); }
+function renderWbWriting() {
+    const container = document.getElementById('wbWrite1');
+    container.innerHTML = wbData.write1.map((item,i)=>`<div class="wb-q"><div class="wb-q-text"><span class="wb-q-num">${item.q.replace('.','')}</span></div><div class="wb-writing-words">${item.words.map(w=>`<span>${w}</span>`).join('')}</div><div class="wb-actions"><button class="wb-btn wb-btn-ghost" onclick="document.getElementById('write1-ans${i}').classList.toggle('show')">Voir la réponse</button></div><div class="wb-writing-answer" id="write1-ans${i}">→ ${item.answer}</div></div>`).join('');
+}
+function initWorkbook() {
+    renderWbMCQ(wbData.listen1, 'wbListen1', 'listen1');
+    renderWbMCQ(wbData.listen2, 'wbListen2', 'listen2');
+    renderWbMCQ(wbData.read1, 'wbRead1', 'read1');
+    renderWbMCQ(wbData.read2, 'wbRead2', 'read2');
+    renderWbMCQ(wbData.read3, 'wbRead3', 'read3');
+    renderWbWriting();
+    const essay = document.getElementById('wbEssay');
+    if (essay) essay.addEventListener('input', ()=>{ document.getElementById('wbEssayCount').textContent = essay.value.length; });
+}
+
+document.addEventListener('DOMContentLoaded',()=>{initWorkbook();renderVocab();updateFlashcard();renderQuiz(vocabQuizData,'vocabQuizContainer','vocab');renderQuiz(grammarQuizData,'grammarQuizContainer','grammar');renderQuiz(compQuizData,'compQuizContainer','comp');renderChoiceQuiz();});
 </script>
 </body>
 </html>
