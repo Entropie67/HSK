@@ -1736,6 +1736,149 @@
     </div>
 </section>
 
+<!-- ==================== SLIDES PRESENTATION CARD ==================== -->
+<style>
+    .slides-cta {
+        display: block;
+        margin: 50px 0 20px;
+        text-decoration: none;
+        position: relative;
+        border-radius: 22px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #0f0520 0%, #1e0a3c 25%, #5b21b6 60%, #7c3aed 90%, #f39c12 100%);
+        color: white;
+        box-shadow: 0 14px 50px rgba(91, 33, 182, 0.3);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+        border: 1px solid rgba(255,255,255,0.12);
+    }
+    .slides-cta:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 22px 65px rgba(91, 33, 182, 0.5);
+    }
+    .slides-cta::before {
+        content: '';
+        position: absolute;
+        top: -30%;
+        right: -10%;
+        width: 380px;
+        height: 380px;
+        background: radial-gradient(circle, rgba(243,156,18,0.25) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+    .slides-cta::after {
+        content: '';
+        position: absolute;
+        bottom: -40%;
+        left: -10%;
+        width: 320px;
+        height: 320px;
+        background: radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+    .slides-cta-inner {
+        position: relative;
+        z-index: 1;
+        padding: 38px 44px;
+        display: flex;
+        gap: 28px;
+        align-items: center;
+    }
+    .slides-cta-icon {
+        flex-shrink: 0;
+        width: 90px;
+        height: 90px;
+        background: rgba(255,255,255,0.14);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.6rem;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    .slides-cta-content {
+        flex: 1;
+    }
+    .slides-cta-tag {
+        display: inline-block;
+        background: rgba(243, 156, 18, 0.25);
+        border: 1px solid rgba(243, 156, 18, 0.5);
+        color: #fbd87a;
+        padding: 4px 14px;
+        border-radius: 16px;
+        font-size: 0.72rem;
+        letter-spacing: 1.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+    .slides-cta-title {
+        font-family: 'Noto Serif SC', serif;
+        font-size: 1.7rem;
+        font-weight: 900;
+        margin-bottom: 6px;
+        line-height: 1.2;
+    }
+    .slides-cta-subtitle {
+        font-size: 1rem;
+        opacity: 0.85;
+        margin-bottom: 14px;
+        font-weight: 300;
+    }
+    .slides-cta-features {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .slides-cta-features span {
+        background: rgba(255,255,255,0.14);
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 0.78rem;
+        font-weight: 500;
+    }
+    .slides-cta-arrow {
+        font-size: 2rem;
+        opacity: 0.6;
+        flex-shrink: 0;
+        transition: transform 0.3s, opacity 0.3s;
+    }
+    .slides-cta:hover .slides-cta-arrow {
+        transform: translateX(8px);
+        opacity: 1;
+    }
+    @media (max-width: 720px) {
+        .slides-cta-inner { flex-direction: column; text-align: center; padding: 30px 24px; gap: 18px; }
+        .slides-cta-features { justify-content: center; }
+        .slides-cta-title { font-size: 1.4rem; }
+        .slides-cta-arrow { display: none; }
+    }
+</style>
+
+<a class="slides-cta" href="../PPT/lesson5-slides.html">
+    <div class="slides-cta-inner">
+        <div class="slides-cta-icon">🎬</div>
+        <div class="slides-cta-content">
+            <div class="slides-cta-tag">📊 Présentation interactive</div>
+            <div class="slides-cta-title">课件 — Slides de la leçon 5</div>
+            <div class="slides-cta-subtitle">Présentation HTML/JS plein écran : 24 slides — vocabulaire, grammaire, texte et exercices</div>
+            <div class="slides-cta-features">
+                <span>🌅 Warm Up × 3</span>
+                <span>📖 Vocabulaire (47 mots)</span>
+                <span>📐 4 points de grammaire</span>
+                <span>📜 Texte en 4 parties</span>
+                <span>⌨️ Navigation clavier</span>
+                <span>⛶ Plein écran</span>
+            </div>
+        </div>
+        <div class="slides-cta-arrow">→</div>
+    </div>
+</a>
+
 </main>
 
 <!-- Back to top -->

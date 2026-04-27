@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSK 5 — Leçon 5 — 济南的泉水 (Présentation)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #5b21b6;
+            --primary-light: #7c3aed;
+            --primary-dark: #1e0a3c;
+            --accent: #c0392b;
+            --gold: #f39c12;
+            --gold-light: #fef5e7;
+            --water: #3498db;
+            --water-light: #aed6f1;
+            --bg: #0f0520;
+            --bg-slide: #ffffff;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #e8ecf1;
+            --gradient-cover: linear-gradient(135deg, #0f0520 0%, #1e0a3c 25%, #5b21b6 60%, #7c3aed 90%, #f39c12 100%);
+            --gradient-water: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #38bdf8 100%);
+            --gradient-warm: linear-gradient(135deg, #fef3c7 0%, #fed7aa 50%, #fca5a5 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* ===== STAGE ===== */
+        .stage {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ===== SLIDE ===== */
+        .slide {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: min(95vw, 1280px);
+            height: min(90vh, 720px);
+            transform: translate(-50%, -50%) scale(0.96);
+            background: var(--bg-slide);
+            border-radius: 18px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.45s ease, transform 0.45s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* ===== SLIDE CONTENT ===== */
+        .slide-body {
+            flex: 1;
+            padding: 50px 60px 40px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border);
+        }
+        .slide-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .slide-num-corner {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .slide-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+        .slide-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        /* ===== COVER SLIDE ===== */
+        .slide.cover {
+            background: var(--gradient-cover);
+            color: white;
+        }
+        .slide.cover .slide-body {
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .cover-decoration {
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(243,156,18,0.18) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .cover-decoration-2 {
+            position: absolute;
+            bottom: -25%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(52,152,219,0.18) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .cover-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: rgba(255,255,255,0.9);
+            padding: 8px 22px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        .cover-cn-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(3.5rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 18px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 1;
+        }
+        .cover-fr-title {
+            font-size: clamp(1.4rem, 2.5vw, 2rem);
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+        }
+        .cover-meta {
+            font-size: 1rem;
+            opacity: 0.7;
+            letter-spacing: 1.5px;
+            position: relative;
+            z-index: 1;
+        }
+        .cover-water-drops {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-top: 24px;
+            opacity: 0.85;
+            letter-spacing: 12px;
+            position: relative;
+            z-index: 1;
+        }
+        .presenter {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+        .presenter-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 20%;
+            border: 3px solid rgba(255,255,255,0.35);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 6px rgba(243,156,18,0.15);
+            margin-bottom: 14px;
+        }
+        .presenter-by {
+            font-size: 0.78rem;
+            letter-spacing: 3px;
+            opacity: 0.65;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+        .presenter-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: white;
+        }
+        .presenter-name .small {
+            font-size: 0.95rem;
+            opacity: 0.75;
+            font-weight: 400;
+            margin-left: 8px;
+        }
+
+        /* ===== OUTLINE ===== */
+        .outline-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            margin-top: 16px;
+        }
+        .outline-item {
+            background: linear-gradient(135deg, #f8f5ff 0%, #ede9fe 100%);
+            border: 2px solid #c4b5fd;
+            border-radius: 16px;
+            padding: 28px 30px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: transform 0.2s;
+        }
+        .outline-num {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .outline-content h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+        }
+        .outline-content p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* ===== WARM UP ===== */
+        .warmup-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            flex: 1;
+        }
+        .warmup-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .warmup-q {
+            background: var(--gold-light);
+            border-left: 5px solid var(--gold);
+            padding: 22px 26px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+        .warmup-q-cn {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .warmup-q-fr {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* ===== IMAGE PLACEHOLDER ===== */
+        .img-placeholder {
+            background: repeating-linear-gradient(
+                45deg,
+                #f3f4f6,
+                #f3f4f6 12px,
+                #e5e7eb 12px,
+                #e5e7eb 24px
+            );
+            border: 2px dashed #cbd5e1;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            min-height: 220px;
+            padding: 20px;
+            text-align: center;
+        }
+        .img-placeholder .icon {
+            font-size: 2.4rem;
+            opacity: 0.5;
+        }
+        .img-placeholder .filename {
+            font-family: 'Inter', monospace;
+            background: rgba(255,255,255,0.7);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .img-placeholder.tall { min-height: 380px; }
+
+        /* ===== WORDS GRID ===== */
+        .words-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 6px;
+        }
+        .word-card {
+            background: linear-gradient(135deg, #fefcf3 0%, #fef5e7 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 14px 16px;
+            transition: transform 0.2s;
+        }
+        .word-hz {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .word-py {
+            font-size: 0.82rem;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+        .word-fr {
+            font-size: 0.82rem;
+            color: var(--text);
+            line-height: 1.4;
+        }
+        .word-pos {
+            display: inline-block;
+            font-size: 0.65rem;
+            background: var(--primary);
+            color: white;
+            padding: 1px 7px;
+            border-radius: 8px;
+            margin-left: 4px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== GRAMMAR SLIDE ===== */
+        .grammar-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 30px;
+            flex: 1;
+        }
+        .grammar-pattern {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid var(--gold);
+            border-radius: 16px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .grammar-formula {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary-dark);
+            margin-bottom: 14px;
+            line-height: 1.3;
+        }
+        .grammar-formula .keyword {
+            color: var(--accent);
+            background: white;
+            padding: 2px 14px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .grammar-meaning {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+        .grammar-examples {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow-y: auto;
+        }
+        .grammar-ex {
+            background: #f9fafb;
+            border-left: 4px solid var(--primary);
+            padding: 14px 18px;
+            border-radius: 8px;
+        }
+        .grammar-ex-cn {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.05rem;
+            color: var(--text);
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }
+        .grammar-ex-cn .hl {
+            color: var(--accent);
+            font-weight: 700;
+            background: var(--gold-light);
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+        .grammar-ex-fr {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* ===== TEXT (story) ===== */
+        .text-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            flex: 1;
+            overflow: hidden;
+        }
+        .text-content {
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .text-content p {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text);
+            margin-bottom: 14px;
+            text-indent: 2em;
+        }
+        .text-content p .hl {
+            background: var(--gold-light);
+            padding: 0 4px;
+            border-radius: 4px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* ===== PRACTICE / HOMEWORK ===== */
+        .practice-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+            overflow-y: auto;
+        }
+        .practice-item {
+            background: #f9fafb;
+            border-left: 5px solid var(--primary);
+            border-radius: 10px;
+            padding: 16px 22px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .practice-num {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .practice-text {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.05rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .practice-text .blank {
+            display: inline-block;
+            min-width: 80px;
+            border-bottom: 2px solid var(--accent);
+            margin: 0 4px;
+        }
+
+        /* ===== TWO COLUMNS ===== */
+        .cols-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            flex: 1;
+        }
+
+        /* ===== MAP / DIAGRAM ===== */
+        .diagram-box {
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            border: 2px solid #06b6d4;
+            border-radius: 14px;
+            padding: 22px;
+            text-align: center;
+        }
+        .diagram-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.2rem;
+            color: #0e7490;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        /* ===== END ===== */
+        .slide.end {
+            background: var(--gradient-cover);
+            color: white;
+        }
+        .slide.end .slide-body {
+            justify-content: center;
+            text-align: center;
+        }
+        .end-cn {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 6rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+        .end-fr {
+            font-size: 1.5rem;
+            opacity: 0.85;
+            font-weight: 300;
+            margin-bottom: 36px;
+        }
+        .end-credit {
+            font-size: 0.95rem;
+            opacity: 0.6;
+            letter-spacing: 1.5px;
+        }
+
+        /* ===== CONTROLS ===== */
+        .controls {
+            position: fixed;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 8px 12px;
+            border-radius: 30px;
+            z-index: 100;
+        }
+        .ctrl {
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ctrl:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .ctrl.wide {
+            width: auto;
+            padding: 0 18px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .slide-counter {
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            min-width: 70px;
+            justify-content: center;
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--primary-light), var(--water));
+            z-index: 99;
+            transition: width 0.3s;
+        }
+
+        /* ===== HOME LINK ===== */
+        .home-link {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 0.85rem;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 6px 14px;
+            border-radius: 16px;
+            z-index: 100;
+            transition: color 0.2s;
+        }
+        .home-link:hover { color: white; }
+
+        /* ===== OUTLINE OVERLAY ===== */
+        .outline-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 5, 32, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        .outline-overlay.show { display: flex; }
+        .outline-overlay-inner {
+            max-width: 1100px;
+            width: 100%;
+        }
+        .outline-overlay h2 {
+            color: white;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .outline-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 10px;
+        }
+        .outline-list-item {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .outline-list-item:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .outline-list-item .num {
+            font-weight: 700;
+            color: var(--gold);
+            min-width: 28px;
+        }
+        .outline-list-item .label {
+            font-size: 0.85rem;
+            line-height: 1.3;
+        }
+        .outline-overlay .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* ===== Specific gradient backgrounds for variety ===== */
+        .slide.water-bg .slide-body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(56,189,248,0.06) 100%);
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .slide-title { font-size: 1.6rem; }
+            .slide-body { padding: 30px 22px 20px; }
+            .outline-grid { grid-template-columns: 1fr; gap: 12px; }
+            .outline-item { padding: 18px; }
+            .warmup-layout { grid-template-columns: 1fr; }
+            .words-grid { grid-template-columns: 1fr 1fr; }
+            .grammar-layout { grid-template-columns: 1fr; }
+            .text-layout { grid-template-columns: 1fr; }
+            .cols-2 { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            .slide {
+                position: relative !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                page-break-after: always;
+                box-shadow: none;
+                width: 100%;
+                height: auto;
+                min-height: 100vh;
+            }
+            .controls, .progress, .home-link { display: none; }
+            body { overflow: visible; }
+        }
+    </style>
+</head>
+<body>
+
+<a href="../lessons/lesson5.html" class="home-link">← Retour à la leçon</a>
+
+<div class="progress" id="progress" style="width:0;"></div>
+
+<div class="stage">
+
+<!-- ============== SLIDE 1 — COVER ============== -->
+<section class="slide cover active" data-title="Cover">
+    <div class="cover-decoration"></div>
+    <div class="cover-decoration-2"></div>
+    <div class="slide-body">
+        <div class="cover-badge">HSK 5 · LESSON 5 · 标准教程</div>
+        <h1 class="cover-cn-title">济南的泉水</h1>
+        <p class="cover-fr-title">Spring Water in Ji'nan</p>
+        <div class="cover-water-drops">~ ~ ~</div>
+        <div class="presenter">
+            <img class="presenter-avatar" src="张老师.png" alt="张老师">
+            <div class="presenter-by">Présentation de</div>
+            <div class="presenter-name">张老师 <span class="small">— Professeur Zhang</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== SLIDE 2 — OUTLINE ============== -->
+<section class="slide" data-title="Plan">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📋 Outline · 目录</span>
+            <span class="slide-num-corner">02 / 24</span>
+        </div>
+        <h1 class="slide-title">本课内容</h1>
+        <p class="slide-subtitle">Plan de la leçon 5</p>
+        <div class="outline-grid">
+            <div class="outline-item">
+                <div class="outline-num">01</div>
+                <div class="outline-content">
+                    <h3>Part 1 · 第一部分</h3>
+                    <p>Introduction · Vocabulaire I · Grammaire 从而 · Pratique</p>
+                </div>
+            </div>
+            <div class="outline-item">
+                <div class="outline-num">02</div>
+                <div class="outline-content">
+                    <h3>Part 2 · 第二部分</h3>
+                    <p>La légende de Bao Quan · Vocabulaire II · Grammaire 于 et 为</p>
+                </div>
+            </div>
+            <div class="outline-item">
+                <div class="outline-num">03</div>
+                <div class="outline-content">
+                    <h3>Part 3 · 第三部分</h3>
+                    <p>La géologie des sources · Vocabulaire III · Grammaire 起来</p>
+                </div>
+            </div>
+            <div class="outline-item">
+                <div class="outline-num">04</div>
+                <div class="outline-content">
+                    <h3>Texte complet · 课文</h3>
+                    <p>Lecture intégrale · Devoirs · Application</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 1 — WARM UP ============== -->
+<section class="slide" data-title="Part 1 · Warm up">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">🌅 Part 1 · Warm Up</span>
+            <span class="slide-num-corner">03 / 24</span>
+        </div>
+        <h1 class="slide-title">济南，泉城</h1>
+        <p class="slide-subtitle">Ji'nan, la ville des sources</p>
+        <div class="warmup-layout">
+            <div class="warmup-text">
+                <div class="warmup-q">
+                    <div class="warmup-q-cn">你听说过"泉城"吗？</div>
+                    <div class="warmup-q-fr">As-tu déjà entendu parler de la « ville des sources » ?</div>
+                </div>
+                <div class="warmup-q">
+                    <div class="warmup-q-cn">你的家乡有什么有名的水？</div>
+                    <div class="warmup-q-fr">Y a-t-il une eau célèbre dans ta ville natale ?</div>
+                </div>
+            </div>
+            <div class="img-placeholder tall">
+                <div class="icon">🏞️</div>
+                <div>Photo de Ji'nan / des sources</div>
+                <div class="filename">images/jinan-overview.jpg</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 1 — WORDS 1/3 ============== -->
+<section class="slide" data-title="Part 1 · Vocabulaire I">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📖 Part 1 · Words</span>
+            <span class="slide-num-corner">04 / 24</span>
+        </div>
+        <h1 class="slide-title">生词 I</h1>
+        <p class="slide-subtitle">Vocabulaire — décrire et louer</p>
+        <div class="words-grid">
+            <div class="word-card"><div class="word-hz">悠久</div><div class="word-py">yōujiǔ</div><div class="word-fr">ancien, de longue date<span class="word-pos">adj</span></div></div>
+            <div class="word-card"><div class="word-hz">文字</div><div class="word-py">wénzì</div><div class="word-fr">écriture, langue écrite<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">记载</div><div class="word-py">jìzǎi</div><div class="word-fr">consigner par écrit<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">形状</div><div class="word-py">xíngzhuàng</div><div class="word-fr">forme<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">描写</div><div class="word-py">miáoxiě</div><div class="word-fr">décrire, dépeindre<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">赞美</div><div class="word-py">zànměi</div><div class="word-fr">louer, faire l'éloge<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">诗</div><div class="word-py">shī</div><div class="word-fr">poème<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">老百姓</div><div class="word-py">lǎobǎixìng</div><div class="word-fr">gens ordinaires, civils<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">充满</div><div class="word-py">chōngmǎn</div><div class="word-fr">être rempli de<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">感激</div><div class="word-py">gǎnjī</div><div class="word-fr">être reconnaissant<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">从而</div><div class="word-py">cóng'ér</div><div class="word-fr">ainsi, par conséquent<span class="word-pos">conj</span></div></div>
+            <div class="word-card"><div class="word-hz">产生</div><div class="word-py">chǎnshēng</div><div class="word-fr">produire, engendrer<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">传说</div><div class="word-py">chuánshuō</div><div class="word-fr">légende<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">善良</div><div class="word-py">shànliáng</div><div class="word-fr">bon, bienveillant<span class="word-pos">adj</span></div></div>
+            <div class="word-card"><div class="word-hz">优美</div><div class="word-py">yōuměi</div><div class="word-fr">gracieux, beau<span class="word-pos">adj</span></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 1 — GRAMMAR 从而 ============== -->
+<section class="slide" data-title="Part 1 · Grammar 从而">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📐 Grammar · 语法</span>
+            <span class="slide-num-corner">05 / 24</span>
+        </div>
+        <h1 class="slide-title">从而 cóng'ér</h1>
+        <p class="slide-subtitle">Conjonction — exprimer la conséquence</p>
+        <div class="grammar-layout">
+            <div class="grammar-pattern">
+                <div class="grammar-formula">[ Cause ]<br>+ <span class="keyword">从而</span> +<br>[ Résultat ]</div>
+                <div class="grammar-meaning">
+                    Placée entre deux propositions :<br>
+                    la première exprime la <strong>cause</strong> ou la <strong>méthode</strong>,<br>
+                    la seconde le <strong>résultat</strong>.<br>
+                    = « ainsi, par conséquent »
+                </div>
+            </div>
+            <div class="grammar-examples">
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">老百姓喝着甜美的泉水，自然对它充满感激，<span class="hl">从而</span>产生了许多美丽传说。</div>
+                    <div class="grammar-ex-fr">Les habitants boivent l'eau, en sont reconnaissants… ainsi naissent les légendes.</div>
+                </div>
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">比赛前做好思想准备，<span class="hl">从而</span>取得比赛的成功。</div>
+                    <div class="grammar-ex-fr">Se préparer mentalement avant la compétition… et ainsi remporter la victoire.</div>
+                </div>
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">及时复习可以发现问题，<span class="hl">从而</span>取得更好的成绩。</div>
+                    <div class="grammar-ex-fr">Réviser à temps permet de repérer les problèmes… et ainsi d'obtenir de meilleurs résultats.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 1 — PRACTICE ============== -->
+<section class="slide" data-title="Part 1 · Practice">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">✏️ Practice · 练习</span>
+            <span class="slide-num-corner">06 / 24</span>
+        </div>
+        <h1 class="slide-title">Compléter avec 从而</h1>
+        <p class="slide-subtitle">Reliez la cause et la conséquence</p>
+        <div class="practice-list">
+            <div class="practice-item">
+                <div class="practice-num">1.</div>
+                <div class="practice-text">他坚持每天锻炼身体，<span class="blank"></span>身体越来越好。</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">2.</div>
+                <div class="practice-text">她努力学习汉语，<span class="blank"></span>顺利通过了HSK考试。</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">3.</div>
+                <div class="practice-text">公司提高了员工的工资，<span class="blank"></span>工作效率也提高了。</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">4.</div>
+                <div class="practice-text">政府投资了很多钱治理环境，<span class="blank"></span>空气质量明显改善了。</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 1 — HOMEWORK ============== -->
+<section class="slide" data-title="Part 1 · Homework">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📚 Homework · 作业</span>
+            <span class="slide-num-corner">07 / 24</span>
+        </div>
+        <h1 class="slide-title">家庭作业 ①</h1>
+        <p class="slide-subtitle">Devoirs partie 1 — décrire un lieu</p>
+        <div class="practice-list">
+            <div class="practice-item">
+                <div class="practice-num">1.</div>
+                <div class="practice-text"><strong>描写一处美景：</strong> Choisissez un endroit que vous trouvez beau. Décrivez sa <strong>形状</strong>, sa <strong>颜色</strong> et le sentiment qu'il vous procure (50 caractères).</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">2.</div>
+                <div class="practice-text"><strong>用"从而"造句：</strong> Écrivez 3 phrases utilisant <span class="hl">从而</span> liées à votre vie d'étudiant.</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">3.</div>
+                <div class="practice-text"><strong>查找传说：</strong> Cherchez en chinois une <strong>传说</strong> liée à l'eau ou à une montagne célèbre. Notez 5 phrases-clés.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 2 — WARM UP ============== -->
+<section class="slide" data-title="Part 2 · Warm up">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">🐉 Part 2 · Warm Up</span>
+            <span class="slide-num-corner">08 / 24</span>
+        </div>
+        <h1 class="slide-title">鲍全的传说</h1>
+        <p class="slide-subtitle">La légende de Bao Quan et du Roi Dragon</p>
+        <div class="warmup-layout">
+            <div class="warmup-text">
+                <div class="warmup-q">
+                    <div class="warmup-q-cn">你知道中国哪些龙的传说？</div>
+                    <div class="warmup-q-fr">Quelles légendes chinoises sur les dragons connais-tu ?</div>
+                </div>
+                <div class="warmup-q">
+                    <div class="warmup-q-cn">在你的国家，"龙" 代表什么？</div>
+                    <div class="warmup-q-fr">Que symbolise le « dragon » dans ton pays ?</div>
+                </div>
+            </div>
+            <div class="img-placeholder tall">
+                <div class="icon">🐲</div>
+                <div>Illustration du Roi Dragon / Bao Quan</div>
+                <div class="filename">images/dragon-king.jpg</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 2 — WORDS ============== -->
+<section class="slide" data-title="Part 2 · Vocabulaire II">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📖 Part 2 · Words</span>
+            <span class="slide-num-corner">09 / 24</span>
+        </div>
+        <h1 class="slide-title">生词 II</h1>
+        <p class="slide-subtitle">Vocabulaire — sauver, cacher, rencontrer</p>
+        <div class="words-grid">
+            <div class="word-card"><div class="word-hz">救</div><div class="word-py">jiù</div><div class="word-fr">sauver, secourir<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">晕</div><div class="word-py">yūn</div><div class="word-fr">s'évanouir<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">龙</div><div class="word-py">lóng</div><div class="word-fr">dragon<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">治(疗)</div><div class="word-py">zhì (liáo)</div><div class="word-fr">soigner, guérir<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">玉</div><div class="word-py">yù</div><div class="word-fr">jade<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">壶</div><div class="word-py">hú</div><div class="word-fr">théière, bouilloire<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">抢</div><div class="word-py">qiǎng</div><div class="word-fr">voler, arracher<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">埋</div><div class="word-py">mái</div><div class="word-fr">enterrer<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">(躲)藏</div><div class="word-py">(duǒ)cáng</div><div class="word-fr">(se) cacher<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">于</div><div class="word-py">yú</div><div class="word-fr">à, de, envers, que<span class="word-pos">prep</span></div></div>
+            <div class="word-card"><div class="word-hz">为</div><div class="word-py">wéi</div><div class="word-fr">devenir, en tant que<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">碰</div><div class="word-py">pèng</div><div class="word-fr">rencontrer, heurter<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">挡</div><div class="word-py">dǎng</div><div class="word-fr">bloquer, barrer<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">冲</div><div class="word-py">chōng</div><div class="word-fr">jaillir, foncer<span class="word-pos">v</span></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 2 — GRAMMAR 于 ============== -->
+<section class="slide" data-title="Part 2 · Grammar 于">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📐 Grammar · 语法</span>
+            <span class="slide-num-corner">10 / 24</span>
+        </div>
+        <h1 class="slide-title">于 yú</h1>
+        <p class="slide-subtitle">Préposition à valeurs multiples</p>
+        <div class="grammar-layout">
+            <div class="grammar-pattern">
+                <div class="grammar-formula"><span class="keyword">于</span></div>
+                <div class="grammar-meaning">
+                    Préposition équivalente à<br>
+                    <strong>在 / 从 / 对 / 向 / 比</strong><br>
+                    selon le contexte.<br>
+                    Très fréquente à l'écrit.
+                </div>
+            </div>
+            <div class="grammar-examples">
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">这家公司成立<span class="hl">于</span>1997年。 (= 在, temps)</div>
+                    <div class="grammar-ex-fr">Cette entreprise a été fondée en 1997.</div>
+                </div>
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">这种药主要用<span class="hl">于</span>感冒的治疗。 (= 对, domaine)</div>
+                    <div class="grammar-ex-fr">Ce médicament sert au traitement du rhume.</div>
+                </div>
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">济南的泉水来自<span class="hl">于</span>南部山区。 (= 从, lieu)</div>
+                    <div class="grammar-ex-fr">L'eau de Ji'nan provient des montagnes du sud.</div>
+                </div>
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">运动有助<span class="hl">于</span>健康。 (= 对, objet)</div>
+                    <div class="grammar-ex-fr">Le sport aide à la santé.</div>
+                </div>
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">对方的水平远远高<span class="hl">于</span>自己。 (= 比, comparaison)</div>
+                    <div class="grammar-ex-fr">Le niveau de l'autre est bien supérieur au nôtre.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 2 — GRAMMAR 为 ============== -->
+<section class="slide" data-title="Part 2 · Grammar 为">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📐 Grammar · 语法</span>
+            <span class="slide-num-corner">11 / 24</span>
+        </div>
+        <h1 class="slide-title">为 wéi</h1>
+        <p class="slide-subtitle">Devenir / en tant que</p>
+        <div class="grammar-layout">
+            <div class="grammar-pattern">
+                <div class="grammar-formula">变 / 成<br>+ <span class="keyword">为</span> + N</div>
+                <div class="grammar-meaning">
+                    <strong>Sens 1 :</strong> « devenir »<br>(= 成、成为), souvent comme complément de verbe.<br><br>
+                    <strong>Sens 2 :</strong> « en tant que, comme »<br>(= 作为、算作)
+                </div>
+            </div>
+            <div class="grammar-examples">
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">济南市区的地下岩石变<span class="hl">为</span>了火成岩。</div>
+                    <div class="grammar-ex-fr">= devenir — La roche s'est transformée en roche ignée.</div>
+                </div>
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">压力也可以变<span class="hl">为</span>动力。</div>
+                    <div class="grammar-ex-fr">= devenir — La pression peut devenir motivation.</div>
+                </div>
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">很多人会以收入多少<span class="hl">为</span>第一标准。</div>
+                    <div class="grammar-ex-fr">= en tant que — Prendre le salaire comme premier critère.</div>
+                </div>
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">没有工作的生活就不能称其<span class="hl">为</span>生活。</div>
+                    <div class="grammar-ex-fr">= appeler comme — On ne peut pas appeler ça « vivre ».</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 2 — PRACTICE ============== -->
+<section class="slide" data-title="Part 2 · Practice">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">✏️ Practice · 练习</span>
+            <span class="slide-num-corner">12 / 24</span>
+        </div>
+        <h1 class="slide-title">于 ou 为 ?</h1>
+        <p class="slide-subtitle">Choisissez la bonne préposition</p>
+        <div class="practice-list">
+            <div class="practice-item">
+                <div class="practice-num">1.</div>
+                <div class="practice-text">这本书出版<span class="blank"></span>2010年。 (于 / 为)</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">2.</div>
+                <div class="practice-text">他被评<span class="blank"></span>"年度优秀员工"。</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">3.</div>
+                <div class="practice-text">他的汉语水平高<span class="blank"></span>同班同学。</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">4.</div>
+                <div class="practice-text">努力学习是通过考试的关键，<span class="blank"></span>取得好成绩奠定了基础。 (从而)</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 2 — HOMEWORK ============== -->
+<section class="slide" data-title="Part 2 · Homework">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📚 Homework · 作业</span>
+            <span class="slide-num-corner">13 / 24</span>
+        </div>
+        <h1 class="slide-title">家庭作业 ②</h1>
+        <p class="slide-subtitle">Devoirs partie 2 — la légende</p>
+        <div class="practice-list">
+            <div class="practice-item">
+                <div class="practice-num">1.</div>
+                <div class="practice-text"><strong>résumer la légende :</strong> Racontez en 5 phrases la légende de <strong>鲍全</strong> et de la <strong>白玉壶</strong>.</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">2.</div>
+                <div class="practice-text"><strong>Une légende étrangère :</strong> Trouvez une légende célèbre de votre pays. Présentez-la en utilisant <span class="hl">于</span> (au moins 1 fois) et <span class="hl">为</span> (au moins 1 fois).</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">3.</div>
+                <div class="practice-text"><strong>Mots d'action :</strong> Écrivez une petite histoire (80 caractères) en utilisant : 救、晕、藏、抢、碰、冲.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 3 — WARM UP ============== -->
+<section class="slide" data-title="Part 3 · Warm up">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">⛰️ Part 3 · Warm Up</span>
+            <span class="slide-num-corner">14 / 24</span>
+        </div>
+        <h1 class="slide-title">为什么这么多泉？</h1>
+        <p class="slide-subtitle">Pourquoi tant de sources à Ji'nan ?</p>
+        <div class="warmup-layout">
+            <div class="warmup-text">
+                <div class="warmup-q">
+                    <div class="warmup-q-cn">水从哪里来？</div>
+                    <div class="warmup-q-fr">D'où vient l'eau ?</div>
+                </div>
+                <div class="warmup-q">
+                    <div class="warmup-q-cn">岩石和水有什么关系？</div>
+                    <div class="warmup-q-fr">Quel lien entre les roches et l'eau ?</div>
+                </div>
+                <div class="warmup-q">
+                    <div class="warmup-q-cn">"地下水" 是怎么形成的？</div>
+                    <div class="warmup-q-fr">Comment se forment les nappes phréatiques ?</div>
+                </div>
+            </div>
+            <div class="img-placeholder tall">
+                <div class="icon">🌋</div>
+                <div>Schéma géologique des sources</div>
+                <div class="filename">images/geology-diagram.jpg</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 3 — WORDS ============== -->
+<section class="slide" data-title="Part 3 · Vocabulaire III">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📖 Part 3 · Words</span>
+            <span class="slide-num-corner">15 / 24</span>
+        </div>
+        <h1 class="slide-title">生词 III</h1>
+        <p class="slide-subtitle">Vocabulaire — géologie et nature</p>
+        <div class="words-grid">
+            <div class="word-card"><div class="word-hz">如今</div><div class="word-py">rújīn</div><div class="word-fr">aujourd'hui, de nos jours<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">分布</div><div class="word-py">fēnbù</div><div class="word-fr">être réparti, distribué<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">天然</div><div class="word-py">tiānrán</div><div class="word-fr">naturel<span class="word-pos">adj</span></div></div>
+            <div class="word-card"><div class="word-hz">独特</div><div class="word-py">dútè</div><div class="word-fr">unique, distinctif<span class="word-pos">adj</span></div></div>
+            <div class="word-card"><div class="word-hz">反映</div><div class="word-py">fǎnyìng</div><div class="word-fr">refléter<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">珍珠</div><div class="word-py">zhēnzhū</div><div class="word-fr">perle<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">形成</div><div class="word-py">xíngchéng</div><div class="word-fr">former, prendre forme<span class="word-pos">v</span></div></div>
+            <div class="word-card"><div class="word-hz">广大</div><div class="word-py">guǎngdà</div><div class="word-fr">vaste, étendu<span class="word-pos">adj</span></div></div>
+            <div class="word-card"><div class="word-hz">岩石</div><div class="word-py">yánshí</div><div class="word-fr">roche<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">亿</div><div class="word-py">yì</div><div class="word-fr">cent millions<span class="word-pos">num</span></div></div>
+            <div class="word-card"><div class="word-hz">石灰岩</div><div class="word-py">shíhuīyán</div><div class="word-fr">calcaire<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">地区</div><div class="word-py">dìqū</div><div class="word-fr">région, zone<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">表面</div><div class="word-py">biǎomiàn</div><div class="word-fr">surface<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">角度</div><div class="word-py">jiǎodù</div><div class="word-fr">angle, degré<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">斜</div><div class="word-py">xié</div><div class="word-fr">oblique, incliné<span class="word-pos">adj</span></div></div>
+            <div class="word-card"><div class="word-hz">火成岩</div><div class="word-py">huǒchéngyán</div><div class="word-fr">roche ignée<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">地势</div><div class="word-py">dìshì</div><div class="word-fr">terrain, topographie<span class="word-pos">n</span></div></div>
+            <div class="word-card"><div class="word-hz">名命</div><div class="word-py">mìngmíng</div><div class="word-fr">nommer<span class="word-pos">v</span></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 3 — GRAMMAR 起来 ============== -->
+<section class="slide" data-title="Part 3 · Grammar 起来">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📐 Grammar · 语法</span>
+            <span class="slide-num-corner">16 / 24</span>
+        </div>
+        <h1 class="slide-title">起来 qǐlái</h1>
+        <p class="slide-subtitle">Compléments directionnels figurés</p>
+        <div class="grammar-layout">
+            <div class="grammar-pattern">
+                <div class="grammar-formula">V + <span class="keyword">起来</span></div>
+                <div class="grammar-meaning">
+                    <strong>Sens 1 :</strong> Indique le <strong>rassemblement</strong> d'éléments dispersés.<br><br>
+                    <strong>Sens 2 :</strong> Indique le passage de l'<strong>exposé au caché</strong>.
+                </div>
+            </div>
+            <div class="grammar-examples">
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">地下水流到这里…就<span class="hl">积蓄起来</span>，越积越多。</div>
+                    <div class="grammar-ex-fr">L'eau souterraine s'<strong>accumule</strong> (rassemblement).</div>
+                </div>
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">渔夫想，这网一<span class="hl">收起来</span>，鱼一定可以装满整条船。</div>
+                    <div class="grammar-ex-fr">Le pêcheur <strong>ramène</strong> son filet (rassemblement).</div>
+                </div>
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">刘丽知道自己做得不对，<span class="hl">躲起来</span>不敢见我。</div>
+                    <div class="grammar-ex-fr">Liu Li <strong>se cache</strong> (visible → caché).</div>
+                </div>
+                <div class="grammar-ex">
+                    <div class="grammar-ex-cn">为了不被坏人抢走，他把壶埋入地下<span class="hl">藏了起来</span>。</div>
+                    <div class="grammar-ex-fr">Il <strong>cache</strong> la théière sous terre (visible → caché).</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== PART 3 — PRACTICE ============== -->
+<section class="slide" data-title="Part 3 · Practice">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">✏️ Practice · 练习</span>
+            <span class="slide-num-corner">17 / 24</span>
+        </div>
+        <h1 class="slide-title">起来 — quel sens ?</h1>
+        <p class="slide-subtitle">Rassemblement (R) ou passage caché (C) ?</p>
+        <div class="practice-list">
+            <div class="practice-item">
+                <div class="practice-num">1.</div>
+                <div class="practice-text">同学们都站<span class="hl">起来</span>了。 → R / C ?</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">2.</div>
+                <div class="practice-text">把书都收<span class="hl">起来</span>，放进书包里。 → R / C ?</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">3.</div>
+                <div class="practice-text">他把秘密藏<span class="hl">起来</span>，不告诉任何人。 → R / C ?</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">4.</div>
+                <div class="practice-text">妈妈把照片小心地保存<span class="hl">起来</span>。 → R / C ?</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">5.</div>
+                <div class="practice-text">大家把椅子搬<span class="hl">起来</span>，准备开会。 → R / C ?</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== TEXT — PART 1 (introduction) ============== -->
+<section class="slide water-bg" data-title="Texte ① Introduction">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📜 Texte · 课文 ①</span>
+            <span class="slide-num-corner">18 / 24</span>
+        </div>
+        <h1 class="slide-title">济南的泉水</h1>
+        <p class="slide-subtitle">§1 — Une histoire vieille de 3000 ans</p>
+        <div class="text-layout">
+            <div class="text-content">
+                <p>济南的泉水，<span class="hl">历史悠久</span>，最早的文字记载可以推到三千多年前。许多文人都对它的<span class="hl">声音、颜色、形状、味道</span>进行过描写，留下了许多赞美泉水的诗文。</p>
+                <p>而济南的老百姓住在泉边，喝着这甜美的泉水，自然对它<span class="hl">充满感激之情</span>，<span class="hl">从而</span>也产生了许多关于泉水的美丽传说。</p>
+            </div>
+            <div class="img-placeholder tall">
+                <div class="icon">📜</div>
+                <div>Calligraphie / poème ancien sur l'eau</div>
+                <div class="filename">images/ancient-poem.jpg</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== TEXT — PART 2 (legend) ============== -->
+<section class="slide water-bg" data-title="Texte ② La légende">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📜 Texte · 课文 ②</span>
+            <span class="slide-num-corner">19 / 24</span>
+        </div>
+        <h1 class="slide-title">鲍全的传说</h1>
+        <p class="slide-subtitle">§2 — Le jeune médecin et le Roi Dragon</p>
+        <div class="text-layout">
+            <div class="img-placeholder tall">
+                <div class="icon">🫖</div>
+                <div>La théière de jade blanc / 白玉壶</div>
+                <div class="filename">images/jade-pot.jpg</div>
+            </div>
+            <div class="text-content">
+                <p>相传很久以前，济南城里有个善良的青年，名叫<span class="hl">鲍全</span>，他学习医术，救了很多人。一次，他在路边救了一位<span class="hl">晕倒</span>的老人，并把老人接回家照顾。</p>
+                <p>这老人其实是<span class="hl">东海龙王</span>的哥哥。通过老人的介绍，鲍全从龙王那儿求到了治病救人的<span class="hl">白玉壶</span>。为了不被坏人抢走，他把壶<span class="hl">埋入地下藏了起来</span>，于是就变成了今天有"<span class="hl">天下第一泉</span>"美名的<span class="hl">趵突泉</span>。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== TEXT — PART 3 (700 sources) ============== -->
+<section class="slide water-bg" data-title="Texte ③ 700 sources">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📜 Texte · 课文 ③</span>
+            <span class="slide-num-corner">20 / 24</span>
+        </div>
+        <h1 class="slide-title">700 多个泉</h1>
+        <p class="slide-subtitle">§3 — Plus de 700 sources naturelles</p>
+        <div class="text-layout">
+            <div class="text-content">
+                <p>如今的济南市区内，<span class="hl">分布着大大小小七百多个天然泉</span>，这在国内外城市中是极为少有的。</p>
+                <p>有如此之多的泉，名字当然也少不了。济南泉水的优美，还可从那独特的名字上反映出来，如：</p>
+                <p>· 以人名命名的<span class="hl">舜泉</span><br>· 以动物命名的<span class="hl">黑虎泉</span><br>· 以形状命名的<span class="hl">珍珠泉</span> ……</p>
+            </div>
+            <div class="img-placeholder tall">
+                <div class="icon">🗺️</div>
+                <div>Carte des sources de Ji'nan / 趵突泉、珍珠泉、黑虎泉</div>
+                <div class="filename">images/springs-map.jpg</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== TEXT — PART 4 (geology) ============== -->
+<section class="slide water-bg" data-title="Texte ④ Géologie">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📜 Texte · 课文 ④</span>
+            <span class="slide-num-corner">21 / 24</span>
+        </div>
+        <h1 class="slide-title">地下水如何形成</h1>
+        <p class="slide-subtitle">§4 — La géologie des sources</p>
+        <div class="text-layout">
+            <div class="img-placeholder tall">
+                <div class="icon">🪨</div>
+                <div>Schéma : couches de calcaire inclinées + roche ignée bloquant l'eau</div>
+                <div class="filename">images/geology-cross-section.jpg</div>
+            </div>
+            <div class="text-content">
+                <p>济南的泉水，来<span class="hl">自于</span>济南市以南的广大山区，这些山区的岩石是大约四亿年前形成的一层厚厚的<span class="hl">石灰岩</span>。</p>
+                <p>在这种石灰岩地区，陆地表面的水很容易进入地下。山区的石灰岩层，<span class="hl">以大约三十度的角度，由南向北斜</span>，因此大量的地下水向济南运动。</p>
+                <p>而济南市区的地下岩石变<span class="hl">为</span>了<span class="hl">火成岩</span>，地下水流到这里，碰到火成岩挡住了路，就<span class="hl">积蓄起来</span>，越积越多。它无处可流，就得另找出路。</p>
+                <p>济南旧城一带，地势低，地下水就<span class="hl">冲出地表</span>，形成了众多的泉水。这就是济南"<span class="hl">泉城</span>"美名得来的原因。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== HOMEWORK FINAL ============== -->
+<section class="slide" data-title="Devoirs finaux">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">📚 Final · Homework</span>
+            <span class="slide-num-corner">22 / 24</span>
+        </div>
+        <h1 class="slide-title">家庭作业 ③</h1>
+        <p class="slide-subtitle">Devoirs partie 3 — application</p>
+        <div class="practice-list">
+            <div class="practice-item">
+                <div class="practice-num">1.</div>
+                <div class="practice-text"><strong>Mini-rédaction (100字) :</strong> "<strong>水滴 (dī, drop)</strong>" — Imaginez le voyage d'une goutte d'eau dans le sous-sol de Ji'nan. Utilisez : 形成、积蓄起来、冲、于、从而.</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">2.</div>
+                <div class="practice-text"><strong>Présentation HSK :</strong> Préparez 3 minutes d'oral pour décrire votre ville natale. Utilisez le modèle des trois paragraphes : <strong>histoire / légende / géographie</strong>.</div>
+            </div>
+            <div class="practice-item">
+                <div class="practice-num">3.</div>
+                <div class="practice-text"><strong>Vocabulaire actif :</strong> Mémoriser les 47 mots de la leçon. Compléter les flashcards et le quiz sur la page leçon 5.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== APPLICATION / SUMMARY ============== -->
+<section class="slide" data-title="Récapitulatif">
+    <div class="slide-body">
+        <div class="slide-header">
+            <span class="slide-tag">🎯 Récap · 总结</span>
+            <span class="slide-num-corner">23 / 24</span>
+        </div>
+        <h1 class="slide-title">À retenir</h1>
+        <p class="slide-subtitle">Les 4 piliers de la leçon 5</p>
+        <div class="outline-grid">
+            <div class="outline-item">
+                <div class="outline-num">📖</div>
+                <div class="outline-content">
+                    <h3>47 mots</h3>
+                    <p>Décrire (描写, 形状, 优美, 独特), louer (赞美), géologie (岩石, 石灰岩, 地势)</p>
+                </div>
+            </div>
+            <div class="outline-item">
+                <div class="outline-num">📐</div>
+                <div class="outline-content">
+                    <h3>4 points de grammaire</h3>
+                    <p><strong>从而</strong> (cause→résultat) · <strong>于</strong> (préposition multi-sens) · <strong>为</strong> (devenir/comme) · <strong>V起来</strong> (rassembler/cacher)</p>
+                </div>
+            </div>
+            <div class="outline-item">
+                <div class="outline-num">🐉</div>
+                <div class="outline-content">
+                    <h3>1 légende</h3>
+                    <p>鲍全 + Roi Dragon → théière de jade → 趵突泉, source n°1 sous le ciel</p>
+                </div>
+            </div>
+            <div class="outline-item">
+                <div class="outline-num">⛰️</div>
+                <div class="outline-content">
+                    <h3>1 explication scientifique</h3>
+                    <p>石灰岩 (sud, incliné) + 火成岩 (centre) → eau bloquée → jaillit en surface = 700+ 泉</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============== END SLIDE ============== -->
+<section class="slide end" data-title="Fin">
+    <div class="cover-decoration"></div>
+    <div class="cover-decoration-2"></div>
+    <div class="slide-body">
+        <div class="end-cn">谢谢！</div>
+        <div class="end-fr">Merci · Thank you</div>
+        <div class="end-credit">HSK 5 · Lesson 5 · 济南的泉水<br>刘老师的中文课</div>
+    </div>
+</section>
+
+</div>
+
+<!-- Outline overlay -->
+<div class="outline-overlay" id="outlineOverlay">
+    <button class="close-btn" onclick="toggleOutline()">✕</button>
+    <div class="outline-overlay-inner">
+        <h2>📋 Plan complet — naviguer</h2>
+        <div class="outline-list" id="outlineList"></div>
+    </div>
+</div>
+
+<!-- Controls -->
+<div class="controls">
+    <button class="ctrl" onclick="prevSlide()" title="Précédent (←)">‹</button>
+    <button class="ctrl wide" onclick="toggleOutline()" title="Plan (O)">☰ Plan</button>
+    <span class="slide-counter"><span id="curSlide">1</span> / <span id="totalSlides">24</span></span>
+    <button class="ctrl wide" onclick="toggleFullscreen()" title="Plein écran (F)">⛶</button>
+    <button class="ctrl" onclick="nextSlide()" title="Suivant (→)">›</button>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+let cur = 0;
+
+document.getElementById('totalSlides').textContent = total;
+
+function show(idx) {
+    if (idx < 0 || idx >= total) return;
+    slides[cur].classList.remove('active');
+    cur = idx;
+    slides[cur].classList.add('active');
+    document.getElementById('curSlide').textContent = cur + 1;
+    document.getElementById('progress').style.width = `${((cur + 1) / total) * 100}%`;
+    location.hash = `#slide-${cur + 1}`;
+}
+
+function nextSlide() { if (cur < total - 1) show(cur + 1); }
+function prevSlide() { if (cur > 0) show(cur - 1); }
+
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen?.();
+    } else {
+        document.exitFullscreen?.();
+    }
+}
+
+function toggleOutline() {
+    document.getElementById('outlineOverlay').classList.toggle('show');
+}
+
+function buildOutline() {
+    const list = document.getElementById('outlineList');
+    list.innerHTML = Array.from(slides).map((s, i) => `
+        <div class="outline-list-item" onclick="show(${i}); toggleOutline();">
+            <span class="num">${String(i + 1).padStart(2, '0')}</span>
+            <span class="label">${s.dataset.title || 'Slide ' + (i + 1)}</span>
+        </div>
+    `).join('');
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide();
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+    } else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(total - 1);
+    else if (e.key === 'f' || e.key === 'F') toggleFullscreen();
+    else if (e.key === 'o' || e.key === 'O') toggleOutline();
+    else if (e.key === 'Escape') {
+        document.getElementById('outlineOverlay').classList.remove('show');
+    }
+});
+
+// Touch / swipe
+let touchStartX = 0;
+document.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+});
+document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) {
+        if (dx < 0) nextSlide();
+        else prevSlide();
+    }
+});
+
+// Hash navigation
+function fromHash() {
+    const m = location.hash.match(/#slide-(\d+)/);
+    if (m) {
+        const idx = parseInt(m[1]) - 1;
+        if (idx >= 0 && idx < total) show(idx);
+    }
+}
+
+buildOutline();
+fromHash();
+window.addEventListener('hashchange', fromHash);
+</script>
+
+</body>
+</html>

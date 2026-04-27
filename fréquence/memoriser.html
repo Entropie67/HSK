@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémoriser 316 mots — HSK 5 fréquence</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #5b21b6;
+            --primary-light: #7c3aed;
+            --primary-dark: #3b0764;
+            --accent: #c0392b;
+            --gold: #f39c12;
+            --gold-light: #fef5e7;
+            --bg: #f5f7fa;
+            --card: #ffffff;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #e8ecf1;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --gradient-hero: linear-gradient(135deg, #0f0520 0%, #1e0a3c 30%, #5b21b6 70%, #7c3aed 100%);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* HERO */
+        .hero {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 36px 20px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 40px;
+            background: var(--bg);
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+        .hero-inner {
+            max-width: 920px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.88rem;
+            margin-bottom: 16px;
+        }
+        .back-link:hover { color: white; }
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .hero p {
+            opacity: 0.8;
+            font-size: 0.98rem;
+            font-weight: 300;
+        }
+
+        /* TOOLBAR */
+        .toolbar {
+            max-width: 920px;
+            margin: -25px auto 24px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .toolbar-inner {
+            background: var(--card);
+            border-radius: 14px;
+            box-shadow: var(--shadow-lg);
+            padding: 16px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .progress-info {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        .progress-num {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+        .progress-bar {
+            width: 160px;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            transition: width 0.3s;
+        }
+
+        .mode-tabs {
+            display: flex;
+            gap: 4px;
+            background: var(--bg);
+            border-radius: 10px;
+            padding: 4px;
+        }
+        .mode-tab {
+            padding: 7px 16px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .mode-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* CONTENT */
+        .content {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        /* RANGE SELECTOR */
+        .range-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 22px;
+            justify-content: center;
+        }
+        .range-chip {
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text-light);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .range-chip:hover {
+            border-color: var(--primary-light);
+            color: var(--primary);
+        }
+        .range-chip.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* FILTER BUTTONS */
+        .filter-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 6px 12px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            font-size: 0.78rem;
+            cursor: pointer;
+            color: var(--text-light);
+            font-family: inherit;
+        }
+        .filter-btn.active {
+            background: var(--gold-light);
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* FLASHCARD */
+        .flashcard {
+            background: var(--card);
+            border-radius: 18px;
+            padding: 40px 32px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 16px;
+            min-height: 340px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            font-size: 0.78rem;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+        .card-rank {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .status-badge {
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .status-badge.known {
+            background: #dcfce7;
+            color: var(--success);
+        }
+        .status-badge.review {
+            background: #fef3c7;
+            color: #b45309;
+        }
+        .status-badge.new {
+            background: #f3f4f6;
+            color: var(--text-light);
+        }
+
+        .hanzi {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+        .pinyin {
+            font-size: 1.4rem;
+            color: var(--primary-light);
+            margin-bottom: 8px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .translation {
+            font-size: 1.15rem;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        .example-block {
+            background: var(--gold-light);
+            border-left: 4px solid var(--gold);
+            padding: 16px 18px;
+            border-radius: 10px;
+            text-align: left;
+            margin-top: auto;
+        }
+        .example-cn {
+            font-size: 1.15rem;
+            color: var(--text);
+            font-family: 'Noto Serif SC', serif;
+            margin-bottom: 6px;
+        }
+        .example-cn .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .example-tr {
+            font-size: 0.92rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        .reveal-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: auto;
+            font-family: inherit;
+            transition: transform 0.2s;
+        }
+        .reveal-btn:hover {
+            transform: translateY(-2px);
+        }
+        .hidden { display: none !important; }
+
+        /* QCM */
+        .quiz-block {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+        }
+        .quiz-question {
+            font-size: 0.92rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+        .quiz-sentence {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .quiz-blank {
+            display: inline-block;
+            min-width: 60px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-weight: 700;
+            text-align: center;
+            margin: 0 4px;
+        }
+        .quiz-translation {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .quiz-option {
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            background: var(--card);
+            cursor: pointer;
+            font-size: 1.05rem;
+            font-family: 'Noto Serif SC', serif;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .quiz-option:hover {
+            border-color: var(--primary-light);
+        }
+        .quiz-option.correct {
+            background: #dcfce7;
+            border-color: var(--success);
+            color: var(--success);
+        }
+        .quiz-option.wrong {
+            background: #fee2e2;
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+        .quiz-option:disabled { cursor: not-allowed; }
+
+        /* CONTROLS */
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .ctrl-btn {
+            padding: 14px;
+            border-radius: 12px;
+            border: 2px solid;
+            background: var(--card);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .ctrl-btn.review {
+            border-color: #fbbf24;
+            color: #b45309;
+        }
+        .ctrl-btn.review:hover {
+            background: #fef3c7;
+        }
+        .ctrl-btn.skip {
+            border-color: var(--border);
+            color: var(--text-light);
+        }
+        .ctrl-btn.skip:hover {
+            background: var(--bg);
+        }
+        .ctrl-btn.known {
+            border-color: var(--success);
+            color: var(--success);
+        }
+        .ctrl-btn.known:hover {
+            background: #dcfce7;
+        }
+
+        .nav-row {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .nav-btn {
+            padding: 10px 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: inherit;
+            color: var(--text);
+        }
+        .nav-btn:hover { border-color: var(--primary-light); color: var(--primary); }
+        .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .pos-info {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* LIST VIEW */
+        .list-search {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 14px;
+            width: 100%;
+            font-size: 0.95rem;
+            font-family: inherit;
+            margin-bottom: 16px;
+        }
+        .list-search:focus {
+            outline: none;
+            border-color: var(--primary-light);
+        }
+        .word-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+        }
+        .word-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .word-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+        .word-item.known {
+            border-left: 4px solid var(--success);
+        }
+        .word-item.review {
+            border-left: 4px solid #fbbf24;
+        }
+        .word-rank {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            font-size: 0.72rem;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+        .word-hz {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 2px;
+        }
+        .word-py {
+            font-size: 0.88rem;
+            color: var(--primary-light);
+            margin-bottom: 4px;
+        }
+        .word-fr {
+            font-size: 0.88rem;
+            color: var(--text);
+            line-height: 1.4;
+        }
+        .word-ex {
+            margin-top: 8px;
+            font-size: 0.82rem;
+            color: var(--text-light);
+            font-family: 'Noto Serif SC', serif;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 720px) {
+            .hero h1 { font-size: 1.7rem; }
+            .toolbar-inner { flex-direction: column; align-items: stretch; }
+            .progress-info { justify-content: space-between; }
+            .progress-bar { flex: 1; }
+            .hanzi { font-size: 3.6rem; }
+            .quiz-options { grid-template-columns: 1fr; }
+            .controls { grid-template-columns: 1fr; }
+            .word-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-inner">
+        <a href="index.html" class="back-link">← Retour</a>
+        <h1>Mémoriser les 316 mots</h1>
+        <p>Flashcards · Exemples chinois → français · QCM · Progression sauvegardée</p>
+    </div>
+</header>
+
+<div class="toolbar">
+    <div class="toolbar-inner">
+        <div class="progress-info">
+            <div>
+                <div class="progress-num"><span id="knownCount">0</span><span style="font-size:0.9rem; color:var(--text-light); font-weight:500;"> / <span id="totalCount">316</span></span></div>
+                <div style="font-size:0.72rem; color:var(--text-light); letter-spacing:1px;">MOTS SUS</div>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+        <div class="mode-tabs">
+            <button class="mode-tab active" data-mode="card" onclick="setMode('card')">🃏 Cartes</button>
+            <button class="mode-tab" data-mode="list" onclick="setMode('list')">📋 Liste</button>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+
+    <!-- Range selector -->
+    <div class="range-selector" id="rangeSelector"></div>
+
+    <!-- Filter (only for list view) -->
+    <div class="filter-bar hidden" id="filterBar">
+        <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">Tous</button>
+        <button class="filter-btn" data-filter="known" onclick="setFilter('known')">✅ Sus</button>
+        <button class="filter-btn" data-filter="review" onclick="setFilter('review')">🔁 À revoir</button>
+        <button class="filter-btn" data-filter="new" onclick="setFilter('new')">🆕 Nouveaux</button>
+    </div>
+
+    <!-- CARD MODE -->
+    <div id="cardMode">
+        <!-- Card -->
+        <div class="flashcard" id="flashcard">
+            <div class="card-header">
+                <span class="card-rank" id="cardRank">#1</span>
+                <span class="status-badge new" id="cardStatus">NOUVEAU</span>
+            </div>
+
+            <div class="hanzi" id="cardHanzi">—</div>
+
+            <button class="reveal-btn" id="revealBtn" onclick="revealCard()">Révéler le sens</button>
+
+            <div class="hidden" id="cardReveal">
+                <div class="pinyin" id="cardPinyin"></div>
+                <div class="translation" id="cardTranslation"></div>
+
+                <div class="example-block">
+                    <div class="example-cn" id="cardExample"></div>
+                    <div class="example-tr" id="cardExampleTr"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QCM (shows after reveal) -->
+        <div class="quiz-block hidden" id="quizBlock">
+            <div class="quiz-question">📝 Petit exercice — choisissez le bon mot</div>
+            <div class="quiz-sentence" id="quizSentence"></div>
+            <div class="quiz-translation" id="quizTranslation"></div>
+            <div class="quiz-options" id="quizOptions"></div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls hidden" id="controls">
+            <button class="ctrl-btn review" onclick="markCard('review')">🔁 À revoir</button>
+            <button class="ctrl-btn skip" onclick="markCard('skip')">⏭ Passer</button>
+            <button class="ctrl-btn known" onclick="markCard('known')">✅ Su</button>
+        </div>
+
+        <!-- Nav -->
+        <div class="nav-row">
+            <button class="nav-btn" id="prevBtn" onclick="prevCard()">← Précédent</button>
+            <span class="pos-info"><span id="cardPos">1</span> / <span id="rangeTotal">50</span></span>
+            <button class="nav-btn" id="nextBtn" onclick="nextCard()">Suivant →</button>
+        </div>
+    </div>
+
+    <!-- LIST MODE -->
+    <div id="listMode" class="hidden">
+        <input type="text" class="list-search" id="searchInput" placeholder="Rechercher (汉字, pinyin, ou français)...">
+        <div class="word-list" id="wordList"></div>
+    </div>
+
+</div>
+
+<footer>
+    HSK 5 — Vocabulaire par fréquence — 刘老师的中文课
+</footer>
+
+<script>
+// ===== DATA — 316 mots HSK 5 par fréquence =====
+const WORDS = [
+    {i:1,hz:"包括",py:"bāokuò",fr:"inclure, comprendre",ex:"会议费用包括午餐和饮料。",tr:"Le coût de la réunion inclut le déjeuner et les boissons."},
+    {i:2,hz:"表达",py:"biǎodá",fr:"exprimer",ex:"他不太会表达自己的感情。",tr:"Il ne sait pas très bien exprimer ses sentiments."},
+    {i:3,hz:"海鲜",py:"hǎixiān",fr:"fruits de mer",ex:"我对海鲜过敏，不能吃。",tr:"Je suis allergique aux fruits de mer, je ne peux pas en manger."},
+    {i:4,hz:"结帐",py:"jiézhàng",fr:"régler l'addition",ex:"服务员，请帮我们结帐。",tr:"Serveur, l'addition s'il vous plaît."},
+    {i:5,hz:"控制",py:"kòngzhì",fr:"contrôler, maîtriser",ex:"他很难控制自己的脾气。",tr:"Il a du mal à contrôler son caractère."},
+    {i:6,hz:"清淡",py:"qīngdàn",fr:"léger (cuisine), peu épicé",ex:"医生说我应该吃得清淡一点。",tr:"Le médecin dit que je devrais manger plus léger."},
+    {i:7,hz:"庆祝",py:"qìngzhù",fr:"célébrer, fêter",ex:"我们去餐厅庆祝他的生日。",tr:"Nous allons au restaurant pour fêter son anniversaire."},
+    {i:8,hz:"蔬菜",py:"shūcài",fr:"légumes",ex:"多吃新鲜蔬菜对身体好。",tr:"Manger beaucoup de légumes frais est bon pour la santé."},
+    {i:9,hz:"胃",py:"wèi",fr:"estomac",ex:"我最近胃不太舒服。",tr:"Mon estomac me dérange ces derniers temps."},
+    {i:10,hz:"消化",py:"xiāohuà",fr:"digérer",ex:"晚饭后散步有助于消化。",tr:"Une promenade après le dîner aide à la digestion."},
+    {i:11,hz:"占",py:"zhàn",fr:"occuper, représenter (proportion)",ex:"年轻人占公司员工的一半。",tr:"Les jeunes représentent la moitié des employés de l'entreprise."},
+    {i:12,hz:"代表",py:"dàibiǎo",fr:"représenter, représentant",ex:"他代表公司参加了会议。",tr:"Il a représenté l'entreprise à la réunion."},
+    {i:13,hz:"顿",py:"dùn",fr:"(spécificatif pour les repas)",ex:"我们一天吃三顿饭。",tr:"Nous prenons trois repas par jour."},
+    {i:14,hz:"岸",py:"àn",fr:"rive, berge",ex:"小船慢慢靠近了岸边。",tr:"Le petit bateau s'est lentement approché de la rive."},
+    {i:15,hz:"从而",py:"cóng'ér",fr:"ainsi, par conséquent",ex:"他努力学习，从而取得了好成绩。",tr:"Il a étudié dur et a ainsi obtenu de bons résultats."},
+    {i:16,hz:"贷款",py:"dàikuǎn",fr:"prêt, emprunter",ex:"他向银行贷款买了房子。",tr:"Il a emprunté à la banque pour acheter une maison."},
+    {i:17,hz:"幅",py:"fú",fr:"(spéc. tableaux, tissus)",ex:"墙上挂着一幅中国画。",tr:"Une peinture chinoise est accrochée au mur."},
+    {i:18,hz:"颗",py:"kē",fr:"(spéc. pour petits objets ronds)",ex:"天上有几颗星星在闪。",tr:"Quelques étoiles brillent dans le ciel."},
+    {i:19,hz:"盆",py:"pén",fr:"bassine, pot (de fleurs)",ex:"妈妈买了一盆花放在阳台上。",tr:"Maman a acheté un pot de fleurs pour le balcon."},
+    {i:20,hz:"批",py:"pī",fr:"lot, groupe (spéc.)",ex:"今天来了一批新学生。",tr:"Un nouveau groupe d'étudiants est arrivé aujourd'hui."},
+    {i:21,hz:"片",py:"piàn",fr:"tranche, morceau (spéc.)",ex:"请给我一片面包。",tr:"Donnez-moi une tranche de pain s'il vous plaît."},
+    {i:22,hz:"套",py:"tào",fr:"ensemble (spéc.)",ex:"他买了一套新家具。",tr:"Il a acheté un ensemble de meubles neufs."},
+    {i:23,hz:"要不",py:"yàobù",fr:"sinon, ou alors",ex:"快走吧，要不就要迟到了。",tr:"Dépêche-toi, sinon on va être en retard."},
+    {i:24,hz:"因而",py:"yīn'ér",fr:"par conséquent",ex:"下大雨，因而比赛取消了。",tr:"Il pleut fort, par conséquent le match est annulé."},
+    {i:25,hz:"朵",py:"duǒ",fr:"(spéc. pour fleurs, nuages)",ex:"她送了我一朵玫瑰花。",tr:"Elle m'a offert une rose."},
+    {i:26,hz:"反映",py:"fǎnyìng",fr:"refléter, signaler",ex:"这部电影反映了社会问题。",tr:"Ce film reflète des problèmes sociaux."},
+    {i:27,hz:"保持",py:"bǎochí",fr:"maintenir, garder",ex:"运动可以保持身体健康。",tr:"Le sport permet de rester en bonne santé."},
+    {i:28,hz:"发挥",py:"fāhuī",fr:"mettre en jeu, déployer",ex:"他在比赛中发挥得很好。",tr:"Il s'est bien comporté pendant la compétition."},
+    {i:29,hz:"教练",py:"jiàoliàn",fr:"entraîneur",ex:"我们的教练很严格。",tr:"Notre entraîneur est très strict."},
+    {i:30,hz:"决赛",py:"juésài",fr:"finale (sport)",ex:"中国队进入了决赛。",tr:"L'équipe chinoise est entrée en finale."},
+    {i:31,hz:"开幕式",py:"kāimùshì",fr:"cérémonie d'ouverture",ex:"奥运会的开幕式非常精彩。",tr:"La cérémonie d'ouverture des JO était spectaculaire."},
+    {i:32,hz:"力量",py:"lìliàng",fr:"force, puissance",ex:"团结就是力量。",tr:"L'union fait la force."},
+    {i:33,hz:"灵活",py:"línghuó",fr:"flexible, agile",ex:"他的头脑很灵活。",tr:"Il a un esprit très vif."},
+    {i:34,hz:"受伤",py:"shòushāng",fr:"être blessé",ex:"他踢足球时受伤了。",tr:"Il s'est blessé en jouant au foot."},
+    {i:35,hz:"挑战",py:"tiǎozhàn",fr:"défi, défier",ex:"这份工作对我是个挑战。",tr:"Ce travail est un défi pour moi."},
+    {i:36,hz:"训练",py:"xùnliàn",fr:"entraînement, entraîner",ex:"运动员每天都要训练。",tr:"Les sportifs s'entraînent tous les jours."},
+    {i:37,hz:"迅速",py:"xùnsù",fr:"rapide, prompt",ex:"他迅速地回答了问题。",tr:"Il a répondu rapidement à la question."},
+    {i:38,hz:"首",py:"shǒu",fr:"(spéc. pour poèmes, chansons)",ex:"她唱了一首中文歌。",tr:"Elle a chanté une chanson chinoise."},
+    {i:39,hz:"果然",py:"guǒrán",fr:"comme prévu, en effet",ex:"他果然没来上班。",tr:"Comme prévu, il n'est pas venu travailler."},
+    {i:40,hz:"忽然",py:"hūrán",fr:"soudain",ex:"他忽然站起来走了出去。",tr:"Il s'est soudain levé et est sorti."},
+    {i:41,hz:"保险",py:"bǎoxiǎn",fr:"assurance",ex:"开车前应该买保险。",tr:"Il faut prendre une assurance avant de conduire."},
+    {i:42,hz:"发票",py:"fāpiào",fr:"facture, reçu",ex:"请给我开一张发票。",tr:"Donnez-moi une facture s'il vous plaît."},
+    {i:43,hz:"风险",py:"fēngxiǎn",fr:"risque",ex:"投资股票有一定的风险。",tr:"Investir en bourse comporte un certain risque."},
+    {i:44,hz:"公平",py:"gōngpíng",fr:"juste, équitable",ex:"老师对每个学生都很公平。",tr:"Le professeur est juste avec chaque élève."},
+    {i:45,hz:"经营",py:"jīngyíng",fr:"gérer (entreprise)",ex:"他经营一家小餐厅。",tr:"Il gère un petit restaurant."},
+    {i:46,hz:"损失",py:"sǔnshī",fr:"perte, subir une perte",ex:"这次火灾造成了很大的损失。",tr:"Cet incendie a causé de gros dégâts."},
+    {i:47,hz:"现象",py:"xiànxiàng",fr:"phénomène",ex:"这是一个普遍的社会现象。",tr:"C'est un phénomène social courant."},
+    {i:48,hz:"效率",py:"xiàolǜ",fr:"efficacité",ex:"用电脑可以提高工作效率。",tr:"L'ordinateur permet d'améliorer l'efficacité au travail."},
+    {i:49,hz:"优势",py:"yōushì",fr:"avantage, atout",ex:"会外语是他的优势。",tr:"Parler des langues étrangères est son atout."},
+    {i:50,hz:"原则",py:"yuánzé",fr:"principe",ex:"做人要有原则。",tr:"Il faut avoir des principes dans la vie."},
+    {i:51,hz:"员工",py:"yuángōng",fr:"employé",ex:"公司有五百多名员工。",tr:"L'entreprise a plus de cinq cents employés."},
+    {i:52,hz:"装修",py:"zhuāngxiū",fr:"rénover, décorer",ex:"他们正在装修新房子。",tr:"Ils sont en train de rénover leur nouvelle maison."},
+    {i:53,hz:"及其",py:"jíqí",fr:"ainsi que, et son/ses",ex:"请介绍这家公司及其产品。",tr:"Présentez cette entreprise ainsi que ses produits."},
+    {i:54,hz:"扩大",py:"kuòdà",fr:"élargir, agrandir",ex:"公司决定扩大业务范围。",tr:"L'entreprise a décidé d'élargir son activité."},
+    {i:55,hz:"绝对",py:"juéduì",fr:"absolu, absolument",ex:"我绝对不同意他的看法。",tr:"Je ne suis absolument pas d'accord avec lui."},
+    {i:56,hz:"老板",py:"lǎobǎn",fr:"patron, boss",ex:"我们的老板对员工很好。",tr:"Notre patron est très bon avec les employés."},
+    {i:57,hz:"领导",py:"lǐngdǎo",fr:"diriger, dirigeant",ex:"他是公司的主要领导。",tr:"Il est l'un des principaux dirigeants de l'entreprise."},
+    {i:58,hz:"秘书",py:"mìshū",fr:"secrétaire",ex:"秘书帮我安排了会议。",tr:"La secrétaire m'a organisé la réunion."},
+    {i:59,hz:"软件",py:"ruǎnjiàn",fr:"logiciel",ex:"这个软件很好用。",tr:"Ce logiciel est très pratique."},
+    {i:60,hz:"下载",py:"xiàzài",fr:"télécharger",ex:"我从网上下载了一部电影。",tr:"J'ai téléchargé un film sur internet."},
+    {i:61,hz:"销售",py:"xiāoshòu",fr:"vente, vendre",ex:"她在公司负责销售。",tr:"Elle s'occupe des ventes dans l'entreprise."},
+    {i:62,hz:"宣传",py:"xuānchuán",fr:"promouvoir, publicité",ex:"他们用社交媒体宣传产品。",tr:"Ils utilisent les réseaux sociaux pour promouvoir leurs produits."},
+    {i:63,hz:"询问",py:"xúnwèn",fr:"se renseigner, demander",ex:"他向警察询问路。",tr:"Il a demandé son chemin au policier."},
+    {i:64,hz:"因素",py:"yīnsù",fr:"facteur, élément",ex:"成功有很多因素。",tr:"Il y a de nombreux facteurs au succès."},
+    {i:65,hz:"在于",py:"zàiyú",fr:"résider dans, dépendre de",ex:"成功在于坚持。",tr:"Le succès réside dans la persévérance."},
+    {i:66,hz:"群",py:"qún",fr:"groupe, troupeau (spéc.)",ex:"广场上有一群孩子在玩。",tr:"Un groupe d'enfants joue sur la place."},
+    {i:67,hz:"人民币",py:"rénmínbì",fr:"yuan, RMB",ex:"这件衣服三百块人民币。",tr:"Ce vêtement coûte trois cents yuans."},
+    {i:68,hz:"称赞",py:"chēngzàn",fr:"féliciter, faire l'éloge",ex:"老师称赞了他的作文。",tr:"Le professeur a fait l'éloge de sa rédaction."},
+    {i:69,hz:"合理",py:"hélǐ",fr:"raisonnable, rationnel",ex:"这个价格很合理。",tr:"Ce prix est très raisonnable."},
+    {i:70,hz:"乐观",py:"lèguān",fr:"optimiste",ex:"她对未来很乐观。",tr:"Elle est optimiste pour l'avenir."},
+    {i:71,hz:"满足",py:"mǎnzú",fr:"satisfaire, content",ex:"他对自己的生活很满足。",tr:"Il est satisfait de sa vie."},
+    {i:72,hz:"佩服",py:"pèifú",fr:"admirer",ex:"我很佩服他的勇气。",tr:"J'admire beaucoup son courage."},
+    {i:73,hz:"疲劳",py:"píláo",fr:"fatigue, épuisé",ex:"工作一天后我感到很疲劳。",tr:"Je me sens très fatigué après une journée de travail."},
+    {i:74,hz:"痛苦",py:"tòngkǔ",fr:"souffrance, douloureux",ex:"分手让她很痛苦。",tr:"La rupture lui a fait beaucoup de mal."},
+    {i:75,hz:"完美",py:"wánměi",fr:"parfait",ex:"没有人是完美的。",tr:"Personne n'est parfait."},
+    {i:76,hz:"遗憾",py:"yíhàn",fr:"regret, dommage",ex:"很遗憾你不能来。",tr:"C'est dommage que tu ne puisses pas venir."},
+    {i:77,hz:"信任",py:"xìnrèn",fr:"avoir confiance",ex:"我完全信任我的朋友。",tr:"J'ai entièrement confiance en mon ami."},
+    {i:78,hz:"逐渐",py:"zhújiàn",fr:"progressivement",ex:"天气逐渐变冷了。",tr:"Le temps se refroidit progressivement."},
+    {i:79,hz:"充电器",py:"chōngdiànqì",fr:"chargeur",ex:"我忘了带手机充电器。",tr:"J'ai oublié le chargeur de mon portable."},
+    {i:80,hz:"传统",py:"chuántǒng",fr:"tradition, traditionnel",ex:"春节是中国的传统节日。",tr:"La fête du printemps est une fête traditionnelle chinoise."},
+    {i:81,hz:"股票",py:"gǔpiào",fr:"action, titre boursier",ex:"他靠买股票赚了很多钱。",tr:"Il a gagné beaucoup d'argent en achetant des actions."},
+    {i:82,hz:"光盘",py:"guāngpán",fr:"CD, disque",ex:"这张光盘里有很多照片。",tr:"Il y a beaucoup de photos sur ce CD."},
+    {i:83,hz:"好奇",py:"hàoqí",fr:"curieux",ex:"孩子对什么都很好奇。",tr:"Les enfants sont curieux de tout."},
+    {i:84,hz:"面积",py:"miànjī",fr:"superficie",ex:"中国的面积非常大。",tr:"La superficie de la Chine est très grande."},
+    {i:85,hz:"年纪",py:"niánjì",fr:"âge",ex:"她年纪不大，但很成熟。",tr:"Elle n'est pas vieille, mais elle est mature."},
+    {i:86,hz:"批准",py:"pīzhǔn",fr:"approuver, autoriser",ex:"老板批准了我的请假申请。",tr:"Le patron a approuvé ma demande de congé."},
+    {i:87,hz:"手续",py:"shǒuxù",fr:"formalité, procédure",ex:"办签证的手续很复杂。",tr:"Les formalités du visa sont compliquées."},
+    {i:88,hz:"特殊",py:"tèshū",fr:"spécial, particulier",ex:"今天是个特殊的日子。",tr:"Aujourd'hui est un jour spécial."},
+    {i:89,hz:"温暖",py:"wēnnuǎn",fr:"chaud, chaleureux",ex:"春天的阳光很温暖。",tr:"Le soleil du printemps est doux."},
+    {i:90,hz:"抓",py:"zhuā",fr:"saisir, attraper",ex:"警察抓住了那个小偷。",tr:"Le policier a attrapé le voleur."},
+    {i:91,hz:"主动",py:"zhǔdòng",fr:"actif, prendre l'initiative",ex:"他主动帮助了我。",tr:"Il m'a aidé de sa propre initiative."},
+    {i:92,hz:"从前",py:"cóngqián",fr:"autrefois",ex:"从前这里是一片森林。",tr:"Autrefois, c'était une forêt ici."},
+    {i:93,hz:"等待",py:"děngdài",fr:"attendre",ex:"我们都在等待结果。",tr:"Nous attendons tous les résultats."},
+    {i:94,hz:"古代",py:"gǔdài",fr:"antiquité, époque ancienne",ex:"中国古代有很多发明。",tr:"La Chine antique a fait beaucoup d'inventions."},
+    {i:95,hz:"国庆节",py:"guóqìngjié",fr:"fête nationale",ex:"国庆节我们放七天假。",tr:"Pour la fête nationale, nous avons sept jours de congé."},
+    {i:96,hz:"目前",py:"mùqián",fr:"actuellement",ex:"目前我在北京工作。",tr:"Actuellement je travaille à Pékin."},
+    {i:97,hz:"始终",py:"shǐzhōng",fr:"du début à la fin, toujours",ex:"他始终没有放弃。",tr:"Il n'a jamais abandonné."},
+    {i:98,hz:"随时",py:"suíshí",fr:"à tout moment",ex:"有问题随时可以问我。",tr:"Tu peux me demander à tout moment si tu as des questions."},
+    {i:99,hz:"通常",py:"tōngcháng",fr:"habituellement",ex:"我通常六点起床。",tr:"D'habitude je me lève à six heures."},
+    {i:100,hz:"未来",py:"wèilái",fr:"futur, avenir",ex:"未来的世界会怎么样？",tr:"À quoi ressemblera le monde futur ?"},
+    {i:101,hz:"曾经",py:"céngjīng",fr:"jadis, autrefois",ex:"我曾经去过日本。",tr:"Je suis allé au Japon autrefois."},
+    {i:102,hz:"主任",py:"zhǔrèn",fr:"directeur, chef",ex:"王主任今天不在办公室。",tr:"Le directeur Wang n'est pas au bureau aujourd'hui."},
+    {i:103,hz:"安慰",py:"ānwèi",fr:"consoler",ex:"她哭了，朋友们都来安慰她。",tr:"Elle pleurait et ses amis sont venus la consoler."},
+    {i:104,hz:"表情",py:"biǎoqíng",fr:"expression du visage",ex:"她的表情很奇怪。",tr:"Son expression est étrange."},
+    {i:105,hz:"吵架",py:"chǎojià",fr:"se disputer",ex:"夫妻吵架是常有的事。",tr:"Les disputes entre époux sont courantes."},
+    {i:106,hz:"风格",py:"fēnggé",fr:"style",ex:"我喜欢他的写作风格。",tr:"J'aime son style d'écriture."},
+    {i:107,hz:"婚礼",py:"hūnlǐ",fr:"mariage (cérémonie)",ex:"他们的婚礼办得很热闹。",tr:"Leur mariage a été très animé."},
+    {i:108,hz:"空间",py:"kōngjiān",fr:"espace",ex:"这个房间空间很大。",tr:"Cette pièce a beaucoup d'espace."},
+    {i:109,hz:"时尚",py:"shíshàng",fr:"mode, à la mode",ex:"她总是穿得很时尚。",tr:"Elle s'habille toujours à la mode."},
+    {i:110,hz:"天空",py:"tiānkōng",fr:"ciel",ex:"今天的天空特别蓝。",tr:"Le ciel est particulièrement bleu aujourd'hui."},
+    {i:111,hz:"微笑",py:"wēixiào",fr:"sourire",ex:"她对我微笑了一下。",tr:"Elle m'a souri brièvement."},
+    {i:112,hz:"雾",py:"wù",fr:"brouillard",ex:"早上雾很大，看不清路。",tr:"Le matin il y avait beaucoup de brouillard, on ne voyait pas la route."},
+    {i:113,hz:"相似",py:"xiāngsì",fr:"similaire",ex:"这两个孩子长得很相似。",tr:"Ces deux enfants se ressemblent beaucoup."},
+    {i:114,hz:"阳台",py:"yángtái",fr:"balcon",ex:"她在阳台上种花。",tr:"Elle cultive des fleurs sur le balcon."},
+    {i:115,hz:"抱怨",py:"bàoyuàn",fr:"se plaindre",ex:"他总是抱怨工作太累。",tr:"Il se plaint toujours que le travail est trop fatigant."},
+    {i:116,hz:"超级",py:"chāojí",fr:"super",ex:"今天超级冷！",tr:"Il fait super froid aujourd'hui !"},
+    {i:117,hz:"把握",py:"bǎwò",fr:"saisir, certitude",ex:"我没有把握能通过考试。",tr:"Je ne suis pas sûr de pouvoir réussir l'examen."},
+    {i:118,hz:"从事",py:"cóngshì",fr:"exercer (un métier)",ex:"他从事教育工作多年。",tr:"Il travaille dans l'éducation depuis de nombreuses années."},
+    {i:119,hz:"精力",py:"jīnglì",fr:"énergie",ex:"我没有精力做这件事。",tr:"Je n'ai pas l'énergie pour faire ça."},
+    {i:120,hz:"人事",py:"rénshì",fr:"ressources humaines",ex:"她在人事部工作。",tr:"Elle travaille au service des ressources humaines."},
+    {i:121,hz:"实习",py:"shíxí",fr:"stage, faire un stage",ex:"我在一家公司实习了三个月。",tr:"J'ai fait un stage de trois mois dans une entreprise."},
+    {i:122,hz:"数据",py:"shùjù",fr:"données",ex:"这些数据需要分析。",tr:"Ces données doivent être analysées."},
+    {i:123,hz:"退休",py:"tuìxiū",fr:"prendre sa retraite",ex:"我父亲明年就要退休了。",tr:"Mon père prend sa retraite l'année prochaine."},
+    {i:124,hz:"显示",py:"xiǎnshì",fr:"montrer, afficher",ex:"屏幕上显示着比赛结果。",tr:"Les résultats du match s'affichent à l'écran."},
+    {i:125,hz:"优惠",py:"yōuhuì",fr:"avantageux, réduction",ex:"这家店今天有优惠活动。",tr:"Ce magasin a une promotion aujourd'hui."},
+    {i:126,hz:"制定",py:"zhìdìng",fr:"élaborer, fixer (un plan)",ex:"我们要制定一个详细的计划。",tr:"Nous devons élaborer un plan détaillé."},
+    {i:127,hz:"当心",py:"dāngxīn",fr:"faire attention",ex:"过马路要当心车辆。",tr:"Fais attention aux voitures en traversant."},
+    {i:128,hz:"兑换",py:"duìhuàn",fr:"échanger (devises)",ex:"我要把美元兑换成人民币。",tr:"Je veux échanger des dollars contre des yuans."},
+    {i:129,hz:"成长",py:"chéngzhǎng",fr:"grandir, croissance",ex:"孩子们快速地成长着。",tr:"Les enfants grandissent vite."},
+    {i:130,hz:"促进",py:"cùjìn",fr:"promouvoir, favoriser",ex:"运动可以促进健康。",tr:"Le sport favorise la santé."},
+    {i:131,hz:"地理",py:"dìlǐ",fr:"géographie",ex:"我对中国地理很感兴趣。",tr:"Je m'intéresse à la géographie chinoise."},
+    {i:132,hz:"尽力",py:"jìnlì",fr:"faire de son mieux",ex:"我会尽力帮你的。",tr:"Je ferai de mon mieux pour t'aider."},
+    {i:133,hz:"进步",py:"jìnbù",fr:"progrès, progresser",ex:"你的中文进步很快。",tr:"Ton chinois progresse rapidement."},
+    {i:134,hz:"录取",py:"lùqǔ",fr:"admettre, recruter",ex:"他被北京大学录取了。",tr:"Il a été admis à l'université de Pékin."},
+    {i:135,hz:"论文",py:"lùnwén",fr:"thèse, article",ex:"他正在写毕业论文。",tr:"Il écrit son mémoire de fin d'études."},
+    {i:136,hz:"勤奋",py:"qínfèn",fr:"travailleur, assidu",ex:"她是个勤奋的学生。",tr:"C'est une étudiante assidue."},
+    {i:137,hz:"题目",py:"tímù",fr:"sujet, titre",ex:"今天的作文题目很难。",tr:"Le sujet de rédaction d'aujourd'hui est difficile."},
+    {i:138,hz:"系",py:"xì",fr:"département (université)",ex:"她在中文系学习。",tr:"Elle étudie au département de chinois."},
+    {i:139,hz:"分手",py:"fēnshǒu",fr:"se séparer, rompre",ex:"他们去年分手了。",tr:"Ils se sont séparés l'année dernière."},
+    {i:140,hz:"或许",py:"huòxǔ",fr:"peut-être",ex:"或许明天会下雨。",tr:"Il pleuvra peut-être demain."},
+    {i:141,hz:"靠",py:"kào",fr:"s'appuyer, compter sur",ex:"他靠自己的努力成功了。",tr:"Il a réussi par ses propres efforts."},
+    {i:142,hz:"办理",py:"bànlǐ",fr:"effectuer (formalités)",ex:"我去银行办理了一些手续。",tr:"Je suis allé à la banque effectuer des démarches."},
+    {i:143,hz:"包裹",py:"bāoguǒ",fr:"colis",ex:"我收到了一个包裹。",tr:"J'ai reçu un colis."},
+    {i:144,hz:"地区",py:"dìqū",fr:"région, zone",ex:"这个地区的气候很干燥。",tr:"Le climat de cette région est très sec."},
+    {i:145,hz:"根本",py:"gēnběn",fr:"fondamental, du tout",ex:"我根本不知道这件事。",tr:"Je ne suis absolument pas au courant."},
+    {i:146,hz:"工厂",py:"gōngchǎng",fr:"usine",ex:"这家工厂生产汽车。",tr:"Cette usine produit des voitures."},
+    {i:147,hz:"企业",py:"qǐyè",fr:"entreprise",ex:"他在一家大企业工作。",tr:"Il travaille dans une grande entreprise."},
+    {i:148,hz:"似乎",py:"sìhū",fr:"il semble que",ex:"他似乎不太高兴。",tr:"Il a l'air pas très content."},
+    {i:149,hz:"宿舍",py:"sùshè",fr:"dortoir",ex:"我们的宿舍很干净。",tr:"Notre dortoir est très propre."},
+    {i:150,hz:"兔子",py:"tùzi",fr:"lapin",ex:"小女孩养了一只兔子。",tr:"La petite fille a un lapin."},
+    {i:151,hz:"位置",py:"wèizhì",fr:"position, place",ex:"请告诉我餐厅的位置。",tr:"Indiquez-moi l'emplacement du restaurant."},
+    {i:152,hz:"一旦",py:"yídàn",fr:"une fois que, dès que",ex:"一旦决定了就不要后悔。",tr:"Une fois que tu as décidé, ne regrette pas."},
+    {i:153,hz:"假设",py:"jiǎshè",fr:"supposer",ex:"假设你是老板，你会怎么做？",tr:"Supposons que tu sois le patron, que ferais-tu ?"},
+    {i:154,hz:"尽快",py:"jǐnkuài",fr:"dès que possible",ex:"请尽快回复我。",tr:"Réponds-moi dès que possible."},
+    {i:155,hz:"保存",py:"bǎocún",fr:"conserver, sauvegarder",ex:"请把文件保存好。",tr:"Sauvegarde bien le fichier."},
+    {i:156,hz:"发达",py:"fādá",fr:"développé, prospère",ex:"上海是个非常发达的城市。",tr:"Shanghai est une ville très développée."},
+    {i:157,hz:"改善",py:"gǎishàn",fr:"améliorer",ex:"政府努力改善人民的生活。",tr:"Le gouvernement s'efforce d'améliorer la vie des gens."},
+    {i:158,hz:"个人",py:"gèrén",fr:"personne, personnel",ex:"这只是我个人的看法。",tr:"Ce n'est que mon avis personnel."},
+    {i:159,hz:"合作",py:"hézuò",fr:"coopérer, coopération",ex:"两家公司决定合作。",tr:"Les deux entreprises ont décidé de coopérer."},
+    {i:160,hz:"利用",py:"lìyòng",fr:"utiliser, profiter de",ex:"我利用周末学中文。",tr:"Je profite du week-end pour apprendre le chinois."},
+    {i:161,hz:"临时",py:"línshí",fr:"temporaire, provisoire",ex:"这是一个临时的工作。",tr:"C'est un travail temporaire."},
+    {i:162,hz:"时期",py:"shíqī",fr:"période, époque",ex:"那是一段困难的时期。",tr:"C'était une période difficile."},
+    {i:163,hz:"消费",py:"xiāofèi",fr:"consommer, consommation",ex:"年轻人的消费观念变了。",tr:"La conception de la consommation des jeunes a changé."},
+    {i:164,hz:"中旬",py:"zhōngxún",fr:"milieu d'un mois",ex:"我们三月中旬开会。",tr:"Nous avons réunion mi-mars."},
+    {i:165,hz:"难免",py:"nánmiǎn",fr:"difficile à éviter",ex:"工作中难免会出错。",tr:"Il est difficile d'éviter les erreurs au travail."},
+    {i:166,hz:"时差",py:"shíchā",fr:"décalage horaire",ex:"中国和法国有六小时时差。",tr:"Il y a six heures de décalage entre la Chine et la France."},
+    {i:167,hz:"部门",py:"bùmén",fr:"département",ex:"这件事属于哪个部门？",tr:"De quel département cela relève-t-il ?"},
+    {i:168,hz:"采访",py:"cǎifǎng",fr:"interviewer",ex:"记者采访了那位演员。",tr:"Le journaliste a interviewé cet acteur."},
+    {i:169,hz:"辞职",py:"cízhí",fr:"démissionner",ex:"他打算下个月辞职。",tr:"Il compte démissionner le mois prochain."},
+    {i:170,hz:"简历",py:"jiǎnlì",fr:"CV",ex:"请把简历发到我的邮箱。",tr:"Envoyez votre CV à mon email."},
+    {i:171,hz:"名片",py:"míngpiàn",fr:"carte de visite",ex:"这是我的名片。",tr:"Voici ma carte de visite."},
+    {i:172,hz:"人员",py:"rényuán",fr:"personnel, membre",ex:"工作人员都很热情。",tr:"Le personnel est très accueillant."},
+    {i:173,hz:"设备",py:"shèbèi",fr:"équipement",ex:"医院的设备很先进。",tr:"L'équipement de l'hôpital est très avancé."},
+    {i:174,hz:"生产",py:"shēngchǎn",fr:"produire, production",ex:"这家工厂生产手机。",tr:"Cette usine produit des téléphones."},
+    {i:175,hz:"宴会",py:"yànhuì",fr:"banquet",ex:"晚上有一个重要的宴会。",tr:"Il y a un banquet important ce soir."},
+    {i:176,hz:"预订",py:"yùdìng",fr:"réserver",ex:"我已经预订了酒店。",tr:"J'ai déjà réservé l'hôtel."},
+    {i:177,hz:"随身",py:"suíshēn",fr:"sur soi, à portée",ex:"请带好随身物品。",tr:"Veuillez emporter vos affaires personnelles."},
+    {i:178,hz:"随手",py:"suíshǒu",fr:"machinalement, en passant",ex:"她随手关上了门。",tr:"Elle a fermé la porte machinalement."},
+    {i:179,hz:"避免",py:"bìmiǎn",fr:"éviter",ex:"我们要避免犯同样的错误。",tr:"Il faut éviter de faire la même erreur."},
+    {i:180,hz:"博物馆",py:"bówùguǎn",fr:"musée",ex:"故宫博物馆非常有名。",tr:"Le musée de la Cité interdite est très célèbre."},
+    {i:181,hz:"不要紧",py:"búyàojǐn",fr:"ce n'est pas grave",ex:"没关系，不要紧的。",tr:"Pas de problème, ce n'est pas grave."},
+    {i:182,hz:"打喷嚏",py:"dǎ pēntì",fr:"éternuer",ex:"我感冒了，一直打喷嚏。",tr:"J'ai pris froid, j'éternue sans arrêt."},
+    {i:183,hz:"导致",py:"dǎozhì",fr:"causer, entraîner",ex:"压力大会导致失眠。",tr:"Le stress peut causer des insomnies."},
+    {i:184,hz:"缓解",py:"huǎnjiě",fr:"soulager, atténuer",ex:"这种药能缓解头痛。",tr:"Ce médicament soulage les maux de tête."},
+    {i:185,hz:"毛病",py:"máobìng",fr:"défaut, problème",ex:"我的电脑出毛病了。",tr:"Mon ordinateur a un problème."},
+    {i:186,hz:"失眠",py:"shīmián",fr:"insomnie",ex:"最近我经常失眠。",tr:"Récemment je souffre souvent d'insomnie."},
+    {i:187,hz:"手术",py:"shǒushù",fr:"opération chirurgicale",ex:"他下周要做手术。",tr:"Il doit subir une opération la semaine prochaine."},
+    {i:188,hz:"营养",py:"yíngyǎng",fr:"nutrition",ex:"水果含有丰富的营养。",tr:"Les fruits contiennent beaucoup de nutriments."},
+    {i:189,hz:"着凉",py:"zháoliáng",fr:"prendre froid",ex:"穿暖和点，别着凉了。",tr:"Habille-toi chaudement, ne prends pas froid."},
+    {i:190,hz:"位于",py:"wèiyú",fr:"être situé à",ex:"中国位于亚洲东部。",tr:"La Chine est située à l'est de l'Asie."},
+    {i:191,hz:"勿",py:"wù",fr:"ne pas (formel)",ex:"请勿吸烟。",tr:"Ne pas fumer, s'il vous plaît."},
+    {i:192,hz:"单位",py:"dānwèi",fr:"unité de travail",ex:"你在哪个单位工作？",tr:"Dans quelle structure travaillez-vous ?"},
+    {i:193,hz:"挡",py:"dǎng",fr:"bloquer, gêner",ex:"那棵树挡住了我的视线。",tr:"Cet arbre bloque ma vue."},
+    {i:194,hz:"到达",py:"dàodá",fr:"arriver",ex:"飞机准时到达了北京。",tr:"L'avion est arrivé à Pékin à l'heure."},
+    {i:195,hz:"对方",py:"duìfāng",fr:"l'autre partie",ex:"对方还没回复我。",tr:"L'autre partie ne m'a pas encore répondu."},
+    {i:196,hz:"嘉宾",py:"jiābīn",fr:"invité d'honneur",ex:"今晚我们邀请了几位嘉宾。",tr:"Nous avons invité plusieurs invités d'honneur ce soir."},
+    {i:197,hz:"某",py:"mǒu",fr:"certain, un certain",ex:"某天他突然出现了。",tr:"Un certain jour il est apparu soudainement."},
+    {i:198,hz:"人才",py:"réncái",fr:"talent (personne talentueuse)",ex:"公司需要更多的人才。",tr:"L'entreprise a besoin de plus de talents."},
+    {i:199,hz:"人类",py:"rénlèi",fr:"humanité",ex:"科技改变了人类的生活。",tr:"La technologie a changé la vie de l'humanité."},
+    {i:200,hz:"人物",py:"rénwù",fr:"personnage, figure",ex:"他是一位历史人物。",tr:"C'est un personnage historique."},
+    {i:201,hz:"主人",py:"zhǔrén",fr:"hôte, maître",ex:"主人很热情地招待客人。",tr:"L'hôte a accueilli ses invités avec chaleur."},
+    {i:202,hz:"一律",py:"yílǜ",fr:"sans exception",ex:"所有学生一律参加考试。",tr:"Tous les élèves passent l'examen sans exception."},
+    {i:203,hz:"一再",py:"yízài",fr:"à plusieurs reprises",ex:"他一再向我道歉。",tr:"Il s'est excusé à plusieurs reprises auprès de moi."},
+    {i:204,hz:"程度",py:"chéngdù",fr:"degré, niveau",ex:"她的中文程度很高。",tr:"Son niveau de chinois est très élevé."},
+    {i:205,hz:"充分",py:"chōngfèn",fr:"plein, suffisant",ex:"我们要做充分的准备。",tr:"Nous devons bien nous préparer."},
+    {i:206,hz:"缺乏",py:"quēfá",fr:"manquer de",ex:"他缺乏工作经验。",tr:"Il manque d'expérience professionnelle."},
+    {i:207,hz:"善良",py:"shànliáng",fr:"bon, gentil",ex:"她是个善良的女孩。",tr:"C'est une fille au cœur pur."},
+    {i:208,hz:"显得",py:"xiǎnde",fr:"paraître, sembler",ex:"她今天显得很高兴。",tr:"Elle a l'air très heureuse aujourd'hui."},
+    {i:209,hz:"现实",py:"xiànshí",fr:"réalité, réaliste",ex:"我们要面对现实。",tr:"Nous devons faire face à la réalité."},
+    {i:210,hz:"主持",py:"zhǔchí",fr:"présider, animer",ex:"他主持了今天的会议。",tr:"Il a présidé la réunion d'aujourd'hui."},
+    {i:211,hz:"属于",py:"shǔyú",fr:"appartenir à",ex:"这本书属于图书馆。",tr:"Ce livre appartient à la bibliothèque."},
+    {i:212,hz:"在乎",py:"zàihu",fr:"se soucier de",ex:"我不在乎别人怎么说。",tr:"Je me moque de ce que disent les autres."},
+    {i:213,hz:"冲",py:"chōng",fr:"se précipiter, rincer",ex:"他冲进了房间。",tr:"Il s'est précipité dans la pièce."},
+    {i:214,hz:"观点",py:"guāndiǎn",fr:"point de vue",ex:"我同意你的观点。",tr:"Je suis d'accord avec ton point de vue."},
+    {i:215,hz:"广泛",py:"guǎngfàn",fr:"large, étendu",ex:"他的兴趣很广泛。",tr:"Il a des intérêts très variés."},
+    {i:216,hz:"伸",py:"shēn",fr:"étendre, tendre",ex:"他伸手拿了一本书。",tr:"Il a tendu la main pour prendre un livre."},
+    {i:217,hz:"深刻",py:"shēnkè",fr:"profond",ex:"这部电影给我留下了深刻印象。",tr:"Ce film m'a laissé une impression profonde."},
+    {i:218,hz:"石头",py:"shítou",fr:"pierre",ex:"路上有一块大石头。",tr:"Il y a une grosse pierre sur la route."},
+    {i:219,hz:"心里",py:"xīnlǐ",fr:"dans le cœur, intérieurement",ex:"我心里很难过。",tr:"Je suis très triste intérieurement."},
+    {i:220,hz:"行动",py:"xíngdòng",fr:"action, agir",ex:"光说不行，要行动。",tr:"Parler ne suffit pas, il faut agir."},
+    {i:221,hz:"形成",py:"xíngchéng",fr:"se former, former",ex:"这个习惯是慢慢形成的。",tr:"Cette habitude s'est formée progressivement."},
+    {i:222,hz:"达到",py:"dádào",fr:"atteindre",ex:"我终于达到了目标。",tr:"J'ai enfin atteint mon objectif."},
+    {i:223,hz:"喊",py:"hǎn",fr:"crier",ex:"他大声喊了我的名字。",tr:"Il a crié mon nom à haute voix."},
+    {i:224,hz:"话题",py:"huàtí",fr:"sujet de conversation",ex:"我们换个话题吧。",tr:"Changeons de sujet."},
+    {i:225,hz:"矛盾",py:"máodùn",fr:"contradiction, conflit",ex:"他们之间有点矛盾。",tr:"Il y a un peu de tension entre eux."},
+    {i:226,hz:"收获",py:"shōuhuò",fr:"récolte, gain",ex:"这次旅行收获很大。",tr:"Ce voyage a été très enrichissant."},
+    {i:227,hz:"虚心",py:"xūxīn",fr:"modeste, humble",ex:"我们要虚心地接受批评。",tr:"Il faut accepter humblement les critiques."},
+    {i:228,hz:"寻找",py:"xúnzhǎo",fr:"chercher",ex:"他在寻找一份新工作。",tr:"Il cherche un nouveau travail."},
+    {i:229,hz:"摇",py:"yáo",fr:"secouer, agiter",ex:"她摇了摇头。",tr:"Elle a secoué la tête."},
+    {i:230,hz:"依然",py:"yīrán",fr:"encore, toujours",ex:"他依然很爱她。",tr:"Il l'aime toujours."},
+    {i:231,hz:"摆",py:"bǎi",fr:"placer, disposer",ex:"她把书摆在桌子上。",tr:"Elle a posé les livres sur la table."},
+    {i:232,hz:"独立",py:"dúlì",fr:"indépendant",ex:"他经济上很独立。",tr:"Il est financièrement indépendant."},
+    {i:233,hz:"对待",py:"duìdài",fr:"traiter (qqn)",ex:"他对待朋友很真诚。",tr:"Il traite ses amis avec sincérité."},
+    {i:234,hz:"基本",py:"jīběn",fr:"fondamental, basique",ex:"这是基本的礼貌。",tr:"C'est de la politesse de base."},
+    {i:235,hz:"集中",py:"jízhōng",fr:"se concentrer",ex:"上课要集中注意力。",tr:"Il faut se concentrer en cours."},
+    {i:236,hz:"记录",py:"jìlù",fr:"noter, enregistrer",ex:"请记录会议的内容。",tr:"Notez le contenu de la réunion s'il vous plaît."},
+    {i:237,hz:"家庭",py:"jiātíng",fr:"famille",ex:"她有一个幸福的家庭。",tr:"Elle a une famille heureuse."},
+    {i:238,hz:"明显",py:"míngxiǎn",fr:"évident",ex:"他的进步很明显。",tr:"Ses progrès sont évidents."},
+    {i:239,hz:"培养",py:"péiyǎng",fr:"cultiver, former",ex:"父母要培养孩子的兴趣。",tr:"Les parents doivent cultiver les intérêts de leurs enfants."},
+    {i:240,hz:"思想",py:"sīxiǎng",fr:"pensée, idée",ex:"他的思想很开放。",tr:"Sa pensée est très ouverte."},
+    {i:241,hz:"勇气",py:"yǒngqì",fr:"courage",ex:"我没有勇气告诉她真相。",tr:"Je n'ai pas le courage de lui dire la vérité."},
+    {i:242,hz:"反复",py:"fǎnfù",fr:"à plusieurs reprises",ex:"老师反复强调这个问题。",tr:"Le professeur a souligné cette question à plusieurs reprises."},
+    {i:243,hz:"方案",py:"fāng'àn",fr:"plan, projet",ex:"我们需要一个新方案。",tr:"Nous avons besoin d'un nouveau plan."},
+    {i:244,hz:"分析",py:"fēnxī",fr:"analyser",ex:"专家分析了市场情况。",tr:"Les experts ont analysé la situation du marché."},
+    {i:245,hz:"教训",py:"jiàoxun",fr:"leçon, morale",ex:"这次失败是个教训。",tr:"Cet échec est une leçon."},
+    {i:246,hz:"接触",py:"jiēchù",fr:"entrer en contact",ex:"我很少接触这种人。",tr:"Je rencontre rarement ce genre de personnes."},
+    {i:247,hz:"突出",py:"tūchū",fr:"remarquable",ex:"他的成绩很突出。",tr:"Ses résultats sont remarquables."},
+    {i:248,hz:"推荐",py:"tuījiàn",fr:"recommander",ex:"我推荐你看这本书。",tr:"Je te recommande de lire ce livre."},
+    {i:249,hz:"责备",py:"zébèi",fr:"reprocher, blâmer",ex:"妈妈责备孩子不好好学习。",tr:"La mère a reproché à son enfant de ne pas bien étudier."},
+    {i:250,hz:"掌握",py:"zhǎngwò",fr:"maîtriser",ex:"他完全掌握了这门技术。",tr:"Il maîtrise totalement cette technique."},
+    {i:251,hz:"不如",py:"bùrú",fr:"moins bien que",ex:"我的中文不如他好。",tr:"Mon chinois est moins bon que le sien."},
+    {i:252,hz:"不足",py:"bùzú",fr:"insuffisant",ex:"我经验不足。",tr:"Je manque d'expérience."},
+    {i:253,hz:"捡",py:"jiǎn",fr:"ramasser",ex:"他在路上捡到一个钱包。",tr:"Il a ramassé un portefeuille dans la rue."},
+    {i:254,hz:"巨大",py:"jùdà",fr:"énorme",ex:"这是一个巨大的成就。",tr:"C'est une réalisation énorme."},
+    {i:255,hz:"具体",py:"jùtǐ",fr:"concret, précis",ex:"请说得具体一些。",tr:"Soyez plus précis s'il vous plaît."},
+    {i:256,hz:"争取",py:"zhēngqǔ",fr:"lutter pour, obtenir",ex:"我们要争取更多的机会。",tr:"Nous devons saisir plus d'opportunités."},
+    {i:257,hz:"指导",py:"zhǐdǎo",fr:"guider, diriger",ex:"老师指导我们写论文。",tr:"Le professeur nous guide pour rédiger notre mémoire."},
+    {i:258,hz:"差别",py:"chābié",fr:"différence",ex:"两者没有什么差别。",tr:"Il n'y a aucune différence entre les deux."},
+    {i:259,hz:"产品",py:"chǎnpǐn",fr:"produit",ex:"这家公司的产品很有名。",tr:"Les produits de cette entreprise sont célèbres."},
+    {i:260,hz:"观察",py:"guānchá",fr:"observer",ex:"科学家观察了这种现象。",tr:"Les scientifiques ont observé ce phénomène."},
+    {i:261,hz:"全面",py:"quánmiàn",fr:"complet, global",ex:"我们要全面考虑这个问题。",tr:"Il faut considérer cette question globalement."},
+    {i:262,hz:"确定",py:"quèdìng",fr:"confirmer, sûr",ex:"我还不能确定时间。",tr:"Je ne peux pas encore confirmer l'horaire."},
+    {i:263,hz:"食物",py:"shíwù",fr:"nourriture",ex:"中国食物很丰富。",tr:"La nourriture chinoise est très variée."},
+    {i:264,hz:"稳定",py:"wěndìng",fr:"stable",ex:"他的工作很稳定。",tr:"Son travail est très stable."},
+    {i:265,hz:"项",py:"xiàng",fr:"point, élément (spéc.)",ex:"这项任务很重要。",tr:"Cette tâche est très importante."},
+    {i:266,hz:"智慧",py:"zhìhuì",fr:"sagesse",ex:"他充满了智慧。",tr:"Il est plein de sagesse."},
+    {i:267,hz:"则",py:"zé",fr:"alors, règle",ex:"如果下雨，则比赛取消。",tr:"S'il pleut, alors le match est annulé."},
+    {i:268,hz:"称",py:"chēng",fr:"appeler, peser",ex:"大家都称他为老师。",tr:"Tout le monde l'appelle « professeur »."},
+    {i:269,hz:"沟通",py:"gōutōng",fr:"communiquer",ex:"我们要多沟通。",tr:"Nous devons davantage communiquer."},
+    {i:270,hz:"合同",py:"hétong",fr:"contrat",ex:"我们签了一份合同。",tr:"Nous avons signé un contrat."},
+    {i:271,hz:"价值",py:"jiàzhí",fr:"valeur",ex:"这本书很有价值。",tr:"Ce livre a beaucoup de valeur."},
+    {i:272,hz:"角度",py:"jiǎodù",fr:"angle, perspective",ex:"从我的角度看，这是对的。",tr:"De mon point de vue, c'est juste."},
+    {i:273,hz:"细节",py:"xìjié",fr:"détail",ex:"请注意细节。",tr:"Faites attention aux détails."},
+    {i:274,hz:"犹豫",py:"yóuyù",fr:"hésiter",ex:"她犹豫了一会儿才回答。",tr:"Elle a hésité un instant avant de répondre."},
+    {i:275,hz:"糟糕",py:"zāogāo",fr:"terrible, catastrophique",ex:"糟糕，我忘带钥匙了！",tr:"Mince, j'ai oublié mes clés !"},
+    {i:276,hz:"涨",py:"zhǎng",fr:"monter (prix, eau)",ex:"今年房价涨了不少。",tr:"Le prix de l'immobilier a beaucoup monté cette année."},
+    {i:277,hz:"道理",py:"dàolǐ",fr:"raison, principe",ex:"你说得很有道理。",tr:"Ce que tu dis est très juste."},
+    {i:278,hz:"发表",py:"fābiǎo",fr:"publier, prononcer",ex:"他发表了一篇文章。",tr:"Il a publié un article."},
+    {i:279,hz:"服装",py:"fúzhuāng",fr:"vêtement, costume",ex:"这家服装店很时尚。",tr:"Cette boutique de vêtements est très à la mode."},
+    {i:280,hz:"情绪",py:"qíngxù",fr:"humeur, émotion",ex:"他今天情绪不太好。",tr:"Il n'est pas de très bonne humeur aujourd'hui."},
+    {i:281,hz:"取消",py:"qǔxiāo",fr:"annuler",ex:"航班被取消了。",tr:"Le vol a été annulé."},
+    {i:282,hz:"善于",py:"shànyú",fr:"être doué pour",ex:"她善于和人沟通。",tr:"Elle est douée pour communiquer avec les gens."},
+    {i:283,hz:"文件",py:"wénjiàn",fr:"document, fichier",ex:"请把文件给我。",tr:"Donne-moi le document s'il te plaît."},
+    {i:284,hz:"享受",py:"xiǎngshòu",fr:"profiter de",ex:"我很享受这个假期。",tr:"Je profite bien de ces vacances."},
+    {i:285,hz:"珍惜",py:"zhēnxī",fr:"chérir, apprécier",ex:"我们要珍惜时间。",tr:"Nous devons chérir le temps."},
+    {i:286,hz:"便",py:"biàn",fr:"alors, donc (formel)",ex:"看完书便睡觉。",tr:"Une fois le livre fini, je vais dormir."},
+    {i:287,hz:"表现",py:"biǎoxiàn",fr:"comportement, performance",ex:"他在工作中表现很好。",tr:"Il a de bonnes performances au travail."},
+    {i:288,hz:"不断",py:"bùduàn",fr:"sans cesse",ex:"科技在不断进步。",tr:"La technologie progresse sans cesse."},
+    {i:289,hz:"出席",py:"chūxí",fr:"assister à, être présent",ex:"总经理也出席了会议。",tr:"Le directeur général a aussi assisté à la réunion."},
+    {i:290,hz:"处理",py:"chǔlǐ",fr:"traiter, régler",ex:"这件事我会处理。",tr:"Je vais m'occuper de cette affaire."},
+    {i:291,hz:"反应",py:"fǎnyìng",fr:"réaction",ex:"他的反应很快。",tr:"Sa réaction est très rapide."},
+    {i:292,hz:"规模",py:"guīmó",fr:"échelle, ampleur",ex:"这家公司规模很大。",tr:"Cette entreprise est de grande envergure."},
+    {i:293,hz:"目标",py:"mùbiāo",fr:"but, objectif",ex:"我的目标是通过HSK 5。",tr:"Mon objectif est de réussir le HSK 5."},
+    {i:294,hz:"思考",py:"sīkǎo",fr:"réfléchir",ex:"请认真思考这个问题。",tr:"Réfléchis sérieusement à cette question."},
+    {i:295,hz:"项目",py:"xiàngmù",fr:"projet",ex:"这个项目很重要。",tr:"Ce projet est très important."},
+    {i:296,hz:"充满",py:"chōngmǎn",fr:"être plein de",ex:"她对生活充满希望。",tr:"Elle est pleine d'espoir pour la vie."},
+    {i:297,hz:"出色",py:"chūsè",fr:"remarquable, brillant",ex:"她的表演非常出色。",tr:"Sa performance est remarquable."},
+    {i:298,hz:"创造",py:"chuàngzào",fr:"créer",ex:"他创造了一个新纪录。",tr:"Il a établi un nouveau record."},
+    {i:299,hz:"过敏",py:"guòmǐn",fr:"allergie",ex:"我对花粉过敏。",tr:"Je suis allergique au pollen."},
+    {i:300,hz:"人生",py:"rénshēng",fr:"vie",ex:"人生充满了机会。",tr:"La vie est pleine d'opportunités."},
+    {i:301,hz:"如何",py:"rúhé",fr:"comment",ex:"我们应该如何解决这个问题？",tr:"Comment devons-nous résoudre ce problème ?"},
+    {i:302,hz:"设计",py:"shèjì",fr:"concevoir, design",ex:"她设计了一件漂亮的衣服。",tr:"Elle a conçu un beau vêtement."},
+    {i:303,hz:"欣赏",py:"xīnshǎng",fr:"apprécier, admirer",ex:"我很欣赏她的才华。",tr:"J'admire beaucoup son talent."},
+    {i:304,hz:"修改",py:"xiūgǎi",fr:"modifier, corriger",ex:"老师让我修改作文。",tr:"Le professeur m'a demandé de corriger ma rédaction."},
+    {i:305,hz:"装",py:"zhuāng",fr:"installer, faire semblant",ex:"他装作不认识我。",tr:"Il a fait semblant de ne pas me connaître."},
+    {i:306,hz:"产生",py:"chǎnshēng",fr:"produire, engendrer",ex:"这件事产生了很大的影响。",tr:"Cet événement a eu un grand impact."},
+    {i:307,hz:"调整",py:"tiáozhěng",fr:"ajuster",ex:"我们需要调整计划。",tr:"Nous devons ajuster le plan."},
+    {i:308,hz:"忽视",py:"hūshì",fr:"négliger, ignorer",ex:"不要忽视小细节。",tr:"Ne néglige pas les petits détails."},
+    {i:309,hz:"面对",py:"miànduì",fr:"faire face à",ex:"我们必须面对困难。",tr:"Nous devons faire face aux difficultés."},
+    {i:310,hz:"失去",py:"shīqù",fr:"perdre",ex:"他失去了工作。",tr:"Il a perdu son emploi."},
+    {i:311,hz:"实现",py:"shíxiàn",fr:"réaliser, concrétiser",ex:"他实现了自己的梦想。",tr:"Il a réalisé son rêve."},
+    {i:312,hz:"所",py:"suǒ",fr:"lieu (spéc., particule)",ex:"这是我所知道的全部。",tr:"C'est tout ce que je sais."},
+    {i:313,hz:"投资",py:"tóuzī",fr:"investir, investissement",ex:"他投资了不少钱。",tr:"Il a investi beaucoup d'argent."},
+    {i:314,hz:"意义",py:"yìyì",fr:"sens, signification",ex:"这件事有重要的意义。",tr:"Cet événement a une signification importante."},
+    {i:315,hz:"运气",py:"yùnqi",fr:"chance",ex:"祝你好运气！",tr:"Bonne chance à toi !"},
+    {i:316,hz:"造成",py:"zàochéng",fr:"causer, provoquer",ex:"暴雨造成了交通堵塞。",tr:"L'orage a causé des embouteillages."}
+];
+
+// ===== STATE =====
+const RANGE_SIZE = 50;
+const TOTAL = WORDS.length;
+const STORAGE_KEY = 'hsk5-freq-progress-v1';
+
+let state = {
+    rangeStart: 1,
+    rangeEnd: 50,
+    currentIdx: 1, // 1-based global index
+    mode: 'card',
+    filter: 'all',
+    progress: {} // {wordIdx: 'known'|'review'}
+};
+
+// ===== STORAGE =====
+function loadProgress() {
+    try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) state.progress = JSON.parse(saved);
+    } catch(e) {}
+}
+function saveProgress() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.progress));
+}
+
+// ===== INIT RANGE BUTTONS =====
+function buildRanges() {
+    const ranges = [];
+    for (let s = 1; s <= TOTAL; s += RANGE_SIZE) {
+        const e = Math.min(s + RANGE_SIZE - 1, TOTAL);
+        ranges.push({s, e});
+    }
+    const sel = document.getElementById('rangeSelector');
+    sel.innerHTML = ranges.map(r =>
+        `<button class="range-chip${r.s === state.rangeStart ? ' active' : ''}" onclick="setRange(${r.s}, ${r.e})">${r.s}–${r.e}</button>`
+    ).join('') + `<button class="range-chip" onclick="setRange(1, ${TOTAL})">Tous</button>`;
+}
+
+function setRange(s, e) {
+    state.rangeStart = s;
+    state.rangeEnd = e;
+    state.currentIdx = s;
+    document.querySelectorAll('.range-chip').forEach(c => c.classList.remove('active'));
+    event.target.classList.add('active');
+    if (state.mode === 'card') showCard();
+    else renderList();
+}
+
+// ===== MODE =====
+function setMode(m) {
+    state.mode = m;
+    document.querySelectorAll('.mode-tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.mode === m);
+    });
+    if (m === 'card') {
+        document.getElementById('cardMode').classList.remove('hidden');
+        document.getElementById('listMode').classList.add('hidden');
+        document.getElementById('filterBar').classList.add('hidden');
+        showCard();
+    } else {
+        document.getElementById('cardMode').classList.add('hidden');
+        document.getElementById('listMode').classList.remove('hidden');
+        document.getElementById('filterBar').classList.remove('hidden');
+        renderList();
+    }
+}
+
+// ===== FILTER (list mode) =====
+function setFilter(f) {
+    state.filter = f;
+    document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.filter === f);
+    });
+    renderList();
+}
+
+// ===== CARD =====
+function getCurrentWord() {
+    return WORDS[state.currentIdx - 1];
+}
+
+function showCard() {
+    const w = getCurrentWord();
+    document.getElementById('cardRank').textContent = `#${w.i}`;
+    document.getElementById('cardHanzi').textContent = w.hz;
+    document.getElementById('cardPinyin').textContent = w.py;
+    document.getElementById('cardTranslation').textContent = w.fr;
+    // Highlight target word in example
+    const exHtml = w.ex.replace(w.hz, `<span class="highlight">${w.hz}</span>`);
+    document.getElementById('cardExample').innerHTML = exHtml;
+    document.getElementById('cardExampleTr').textContent = w.tr;
+
+    // Status
+    const stat = state.progress[w.i];
+    const badge = document.getElementById('cardStatus');
+    if (stat === 'known') { badge.textContent = '✅ SU'; badge.className = 'status-badge known'; }
+    else if (stat === 'review') { badge.textContent = '🔁 À REVOIR'; badge.className = 'status-badge review'; }
+    else { badge.textContent = 'NOUVEAU'; badge.className = 'status-badge new'; }
+
+    // Reset reveal
+    document.getElementById('revealBtn').classList.remove('hidden');
+    document.getElementById('cardReveal').classList.add('hidden');
+    document.getElementById('quizBlock').classList.add('hidden');
+    document.getElementById('controls').classList.add('hidden');
+
+    // Position info
+    const posInRange = w.i - state.rangeStart + 1;
+    const rangeTotal = state.rangeEnd - state.rangeStart + 1;
+    document.getElementById('cardPos').textContent = posInRange;
+    document.getElementById('rangeTotal').textContent = rangeTotal;
+    document.getElementById('prevBtn').disabled = w.i <= state.rangeStart;
+    document.getElementById('nextBtn').disabled = w.i >= state.rangeEnd;
+
+    updateProgress();
+}
+
+function revealCard() {
+    document.getElementById('revealBtn').classList.add('hidden');
+    document.getElementById('cardReveal').classList.remove('hidden');
+    buildQuiz();
+    document.getElementById('quizBlock').classList.remove('hidden');
+    document.getElementById('controls').classList.remove('hidden');
+}
+
+// ===== QUIZ =====
+function buildQuiz() {
+    const w = getCurrentWord();
+    // Sentence with blank
+    const blank = `<span class="quiz-blank">＿＿</span>`;
+    const blanked = w.ex.replace(w.hz, blank);
+    document.getElementById('quizSentence').innerHTML = blanked;
+    document.getElementById('quizTranslation').textContent = w.tr;
+
+    // Build options: correct + 3 distractors from same range (or random if not enough)
+    const pool = WORDS.filter(x => x.i !== w.i && x.i >= state.rangeStart && x.i <= state.rangeEnd);
+    const distractors = shuffle(pool).slice(0, 3);
+    if (distractors.length < 3) {
+        // pad with random from full list
+        const extras = shuffle(WORDS.filter(x => x.i !== w.i && !distractors.find(d => d.i === x.i)));
+        while (distractors.length < 3) distractors.push(extras.shift());
+    }
+    const options = shuffle([w, ...distractors]);
+    const optHtml = options.map(o =>
+        `<button class="quiz-option" onclick="answerQuiz(this, ${o.i === w.i})">${o.hz}</button>`
+    ).join('');
+    document.getElementById('quizOptions').innerHTML = optHtml;
+}
+
+function answerQuiz(btn, correct) {
+    const all = document.querySelectorAll('.quiz-option');
+    all.forEach(b => b.disabled = true);
+    if (correct) {
+        btn.classList.add('correct');
+    } else {
+        btn.classList.add('wrong');
+        // also highlight correct
+        const w = getCurrentWord();
+        all.forEach(b => { if (b.textContent === w.hz) b.classList.add('correct'); });
+    }
+}
+
+function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+// ===== MARK / NAV =====
+function markCard(status) {
+    const w = getCurrentWord();
+    if (status === 'skip') {
+        delete state.progress[w.i];
+    } else {
+        state.progress[w.i] = status;
+    }
+    saveProgress();
+    nextCard();
+}
+
+function nextCard() {
+    if (state.currentIdx < state.rangeEnd) {
+        state.currentIdx++;
+        showCard();
+    }
+}
+function prevCard() {
+    if (state.currentIdx > state.rangeStart) {
+        state.currentIdx--;
+        showCard();
+    }
+}
+
+// ===== PROGRESS =====
+function updateProgress() {
+    const known = Object.values(state.progress).filter(v => v === 'known').length;
+    document.getElementById('knownCount').textContent = known;
+    document.getElementById('totalCount').textContent = TOTAL;
+    document.getElementById('progressFill').style.width = `${(known / TOTAL) * 100}%`;
+}
+
+// ===== LIST =====
+function renderList() {
+    const search = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
+    const list = WORDS.filter(w => {
+        if (w.i < state.rangeStart || w.i > state.rangeEnd) return false;
+        const stat = state.progress[w.i] || 'new';
+        if (state.filter === 'known' && stat !== 'known') return false;
+        if (state.filter === 'review' && stat !== 'review') return false;
+        if (state.filter === 'new' && stat !== 'new') return false;
+        if (search) {
+            const hay = `${w.hz} ${w.py} ${w.fr}`.toLowerCase();
+            if (!hay.includes(search)) return false;
+        }
+        return true;
+    });
+
+    const container = document.getElementById('wordList');
+    if (list.length === 0) {
+        container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--text-light);">Aucun résultat</div>';
+        return;
+    }
+    container.innerHTML = list.map(w => {
+        const stat = state.progress[w.i];
+        const cls = stat === 'known' ? 'known' : stat === 'review' ? 'review' : '';
+        return `
+            <div class="word-item ${cls}" onclick="jumpToCard(${w.i})">
+                <div class="word-rank">#${w.i}</div>
+                <div class="word-hz">${w.hz}</div>
+                <div class="word-py">${w.py}</div>
+                <div class="word-fr">${w.fr}</div>
+                <div class="word-ex">${w.ex} <em style="color:var(--text-light); font-style:italic;">— ${w.tr}</em></div>
+            </div>
+        `;
+    }).join('');
+    updateProgress();
+}
+
+function jumpToCard(i) {
+    state.currentIdx = i;
+    // Adjust range to include this index
+    const rangeIdx = Math.floor((i - 1) / RANGE_SIZE);
+    state.rangeStart = rangeIdx * RANGE_SIZE + 1;
+    state.rangeEnd = Math.min(state.rangeStart + RANGE_SIZE - 1, TOTAL);
+    setMode('card');
+    buildRanges();
+}
+
+// ===== KEYBOARD =====
+document.addEventListener('keydown', (e) => {
+    if (state.mode !== 'card') return;
+    if (e.target.tagName === 'INPUT') return;
+    if (e.key === 'ArrowRight') nextCard();
+    else if (e.key === 'ArrowLeft') prevCard();
+    else if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        if (!document.getElementById('revealBtn').classList.contains('hidden')) revealCard();
+    } else if (e.key === '1') markCard('review');
+    else if (e.key === '2') markCard('skip');
+    else if (e.key === '3') markCard('known');
+});
+
+// ===== INIT =====
+loadProgress();
+buildRanges();
+showCard();
+updateProgress();
+
+document.getElementById('searchInput').addEventListener('input', renderList);
+</script>
+
+</body>
+</html>

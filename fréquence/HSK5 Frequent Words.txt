@@ -1,0 +1,318 @@
+#separator:tab
+#html:true
+包括	bāokuò – to include
+表达	biǎodá – to express
+海鲜	hǎixiān – seafood
+结帐	jiézhàng – to settle the bill
+控制	kòngzhì – to control
+清淡	qīngdàn – light (of food); mild
+庆祝	qìngzhù – to celebrate
+蔬菜	shūcài – vegetables
+胃	wèi – stomach
+消化	xiāohuà – to digest
+占	zhàn – to occupy; to take up
+代表	dàibiǎo – to represent; representative
+顿	dùn – measure word for meals / pauses
+岸	àn – shore; bank
+从而	cóng’ér – thus; thereby
+贷款	dàikuǎn – loan; to lend
+幅	fú – measure word for paintings / cloth
+颗	kē – measure word for small things (seeds, pearls, teeth)
+盆	pén – basin; flower pot
+批	pī – batch; group
+片	piàn – slice; piece
+套	tào – set; cover
+要不	yàobù – otherwise; or else
+因而	yīn’ér – therefore; as a result
+朵	duǒ – measure word for flowers / clouds
+反映	fǎnyìng – to reflect; reflection
+保持	bǎochí – to maintain; to keep
+发挥	fāhuī – to bring into play; to give full play to
+教练	jiàoliàn – coach; instructor
+决赛	juésài – final (of a competition)
+开幕式	kāimùshì – opening ceremony
+力量	lìliàng – strength; power
+灵活	línghuó – flexible; agile
+受伤	shòushāng – to be injured
+挑战	tiǎozhàn – challenge; to challenge
+训练	xùnliàn – training; to train
+迅速	xùnsù – rapid; speedy
+首	shǒu – head; first (measure word for poems/songs)
+果然	guǒrán – as expected; sure enough
+忽然	hūrán – suddenly
+保险	bǎoxiǎn – insurance
+发票	fāpiào – receipt; invoice
+风险	fēngxiǎn – risk; danger
+公平	gōngpíng – fair; just
+经营	jīngyíng – to manage; to operate (business)
+损失	sǔnshī – loss; to lose
+现象	xiànxiàng – phenomenon; appearance
+效率	xiàolǜ – efficiency
+优势	yōushì – advantage; superiority
+原则	yuánzé – principle
+员工	yuángōng – employee; staff
+装修	zhuāngxiū – to renovate; to decorate
+及其	jíqí – and its; as well as
+扩大	kuòdà – to expand; to enlarge
+绝对	juéduì – absolute; definitely
+老板	lǎobǎn – boss; shop owner
+领导	lǐngdǎo – leader; leadership
+秘书	mìshū – secretary
+软件	ruǎnjiàn – software
+下载	xiàzài – to download
+销售	xiāoshòu – to sell; sales
+宣传	xuānchuán – to promote; publicity
+询问	xúnwèn – to inquire; to ask
+因素	yīnsù – factor; element
+在于	zàiyú – to lie in; depend on
+群	qún – group; crowd; herd
+人民币	rénmínbì – RMB; Chinese currency
+称赞	chēngzàn – to praise; to commend
+合理	hélǐ – reasonable; rational
+乐观	lèguān – optimistic
+满足	mǎnzú – to satisfy; satisfaction
+佩服	pèifú – to admire; admiration
+疲劳	píláo – fatigue; tired
+痛苦	tòngkǔ – pain; suffering
+完美	wánměi – perfect
+遗憾	yíhàn – regret; pity
+信任	xìnrèn – to trust
+逐渐	zhújiàn – gradually
+充电器	chōngdiànqì – charger
+传统	chuántǒng – tradition; traditional
+股票	gǔpiào – stock; share
+光盘	guāngpán – CD; disc
+好奇	hàoqí – curious
+面积	miànjī – area (of a surface)
+年纪	niánjì – age
+批准	pīzhǔn – to approve; to authorize
+手续	shǒuxù – procedure; formalities
+特殊	tèshū – special; particular
+温暖	wēnnuǎn – warm; warmth
+抓	zhuā – to grab; to catch
+主动	zhǔdòng – initiative; active
+从前	cóngqián – formerly; in the past
+等待	děngdài – to wait; to await
+古代	gǔdài – ancient times
+国庆节	guóqìngjié – National Day
+目前	mùqián – at present; currently
+始终	shǐzhōng – from beginning to end; always
+随时	suíshí – at any time
+通常	tōngcháng – usually; generally
+未来	wèilái – future
+曾经	céngjīng – once; formerly
+主任	zhǔrèn – director; head
+安慰	ānwèi – to comfort; console
+表情	biǎoqíng – facial expression
+吵架	chǎojià – to quarrel; to argue
+风格	fēnggé – style; manner
+婚礼	hūnlǐ – wedding
+空间	kōngjiān – space; room
+时尚	shíshàng – fashion; trendy
+天空	tiānkōng – sky
+微笑	wēixiào – to smile; smile
+雾	wù – fog
+相似	xiāngsì – similar; alike
+阳台	yángtái – balcony
+抱怨	bàoyuàn – to complain
+超级	chāojí – super; ultra
+把握	bǎwò – to grasp; to seize
+从事	cóngshì – to engage in; to be in (a profession)
+精力	jīnglì – energy; vigor
+人事	rénshì – human resources; personnel matters
+实习	shíxí – internship; to intern
+数据	shùjù – data; statistics
+退休	tuìxiū – retirement; to retire
+显示	xiǎnshì – to show; to display
+优惠	yōuhuì – preferential; discount
+制定	zhìdìng – to formulate; to draw up
+当心	dāngxīn – to take care; watch out
+兑换	duìhuàn – to exchange; convert (currency)
+成长	chéngzhǎng – to grow; growth
+促进	cùjìn – to promote; to advance
+地理	dìlǐ – geography
+尽力	jìnlì – to do one’s best
+进步	jìnbù – progress; to advance
+录取	lùqǔ – to admit; to enroll (students)
+论文	lùnwén – thesis; paper
+勤奋	qínfèn – diligent; hardworking
+题目	tímù – topic; subject
+系	xì – department; faculty
+分手	fēnshǒu – to break up (relationship)
+或许	huòxǔ – perhaps; maybe
+靠	kào – to lean on; to rely on
+办理	bànlǐ – to handle; to deal with
+包裹	bāoguǒ – parcel; package
+地区	dìqū – region; area
+根本	gēnběn – fundamental; simply (often used with “not”)
+工厂	gōngchǎng – factory
+企业	qǐyè – enterprise; business
+似乎	sìhū – it seems; as if
+宿舍	sùshè – dormitory
+兔子	tùzi – rabbit
+位置	wèizhì – position; location
+一旦	yídàn – once; in case (something happens)
+假设	jiǎshè – to suppose; assumption
+尽快	jǐnkuài – as soon as possible
+保存	bǎocún – to preserve; to save
+发达	fādá – developed; prosperous
+改善	gǎishàn – to improve
+个人	gèrén – individual; personal
+合作	hézuò – to cooperate; cooperation
+利用	lìyòng – to make use of
+临时	línshí – temporary
+时期	shíqī – period; time
+消费	xiāofèi – to consume; consumption
+中旬	zhōngxún – middle ten days of a month
+难免	nánmiǎn – hard to avoid
+时差	shíchā – time difference (jet lag)
+部门	bùmén – department; branch
+采访	cǎifǎng – to interview; to cover (news)
+辞职	cízhí – to resign
+简历	jiǎnlì – résumé; CV
+名片	míngpiàn – business card
+人员	rényuán – personnel; staff
+设备	shèbèi – equipment; facilities
+生产	shēngchǎn – to produce; production
+宴会	yànhuì – banquet; feast
+预订	yùdìng – to book; to reserve
+随身	suíshēn – to carry with oneself
+随手	suíshǒu – conveniently; without extra effort
+避免	bìmiǎn – to avoid
+博物馆	bówùguǎn – museum
+不要紧	búyàojǐn – it doesn’t matter; never mind
+打喷嚏	dǎ pēntì – to sneeze
+导致	dǎozhì – to cause; to lead to
+缓解	huǎnjiě – to alleviate; to ease
+毛病	máobìng – defect; trouble; illness
+失眠	shīmián – insomnia
+手术	shǒushù – surgery; operation
+营养	yíngyǎng – nutrition; nourishment
+着凉	zháoliáng – to catch a cold
+位于	wèiyú – to be located at
+勿	wù – do not (literary/formal)
+单位	dānwèi – work unit; organization
+挡	dǎng – to block; to hinder
+到达	dàodá – to arrive
+对方	duìfāng – the other party; counterpart
+嘉宾	jiābīn – honored guest
+某	mǒu – certain; some
+人才	réncái – talent; skilled person
+人类	rénlèi – humankind; humanity
+人物	rénwù – figure; character
+主人	zhǔrén – host; master
+一律	yílǜ – all; without exception
+一再	yízài – repeatedly; again and again
+程度	chéngdù – degree; extent
+充分	chōngfèn – full; fully
+缺乏	quēfá – to lack; shortage
+善良	shànliáng – kind; good-natured
+显得	xiǎnde – to appear (to be); seem
+现实	xiànshí – reality; practical
+主持	zhǔchí – to host; to preside over
+属于	shǔyú – to belong to
+在乎	zàihu – to care about
+冲	chōng – to rush; to dash; to flush
+观点	guāndiǎn – point of view
+广泛	guǎngfàn – wide-ranging; extensive
+伸	shēn – to stretch; to extend
+深刻	shēnkè – profound; deep
+石头	shítou – stone; rock
+心里	xīnlǐ – in one’s heart; mental
+行动	xíngdòng – action; to act
+形成	xíngchéng – to form; take shape
+达到	dádào – to reach; to achieve
+喊	hǎn – to shout; to call
+话题	huàtí – topic; subject
+矛盾	máodùn – contradiction; conflict
+收获	shōuhuò – harvest; gain
+虚心	xūxīn – modest; open-minded
+寻找	xúnzhǎo – to seek; to look for
+摇	yáo – to shake; to rock
+依然	yīrán – still; as before
+摆	bǎi – to put; to arrange; to wave
+独立	dúlì – independent; independence
+对待	duìdài – to treat; to handle
+基本	jīběn – basic; fundamental
+集中	jízhōng – to concentrate; to focus
+记录	jìlù – to record; record
+家庭	jiātíng – family; household
+明显	míngxiǎn – obvious; clear
+培养	péiyǎng – to cultivate; to foster
+思想	sīxiǎng – thought; idea
+勇气	yǒngqì – courage
+反复	fǎnfù – repeatedly; again and again
+方案	fāng’àn – plan; scheme
+分析	fēnxī – to analyze; analysis
+教训	jiàoxun – lesson; moral
+接触	jiēchù – to contact; to come into contact with
+突出	tūchū – outstanding; prominent
+推荐	tuījiàn – to recommend
+责备	zébèi – to blame; to criticize
+掌握	zhǎngwò – to grasp; to master
+不如	bùrú – not as good as; inferior to
+不足	bùzú – insufficient; not enough
+捡	jiǎn – to pick up; to collect
+巨大	jùdà – huge; enormous
+具体	jùtǐ – concrete; specific
+争取	zhēngqǔ – to strive for; to fight for
+指导	zhǐdǎo – to guide; to give guidance
+差别	chābié – difference; distinction
+产品	chǎnpǐn – product
+观察	guānchá – to observe; observation
+全面	quánmiàn – comprehensive; all-around
+确定	quèdìng – to confirm; to determine
+食物	shíwù – food
+稳定	wěndìng – stable; stability
+项	xiàng – item; measure word for projects/tasks
+智慧	zhìhuì – wisdom
+则	zé – standard; rule; (conjunction) then
+称	chēng – to call; to name; to weigh
+沟通	gōutōng – to communicate
+合同	hétong – contract; agreement
+价值	jiàzhí – value; worth
+角度	jiǎodù – angle; perspective
+细节	xìjié – detail
+犹豫	yóuyù – to hesitate
+糟糕	zāogāo – terrible; bad
+涨	zhǎng – to rise (prices, water level)
+道理	dàolǐ – principle; reason
+发表	fābiǎo – to publish; to issue
+服装	fúzhuāng – clothing; costume
+情绪	qíngxù – mood; emotion
+取消	qǔxiāo – to cancel
+善于	shànyú – be good at; skilled in
+文件	wénjiàn – document; file
+享受	xiǎngshòu – to enjoy
+珍惜	zhēnxī – to cherish; to treasure
+便	biàn – then; in that case; convenient
+表现	biǎoxiàn – to show; to perform
+不断	bùduàn – continuous; unceasing
+出席	chūxí – to attend; to be present
+处理	chǔlǐ – to handle; to deal with
+反应	fǎnyìng – response; to react
+规模	guīmó – scale; scope
+目标	mùbiāo – target; goal
+思考	sīkǎo – to think deeply; to reflect
+项目	xiàngmù – project; item
+充满	chōngmǎn – to be full of
+出色	chūsè – outstanding; remarkable
+创造	chuàngzào – to create; creation
+过敏	guòmǐn – allergy; to be allergic
+人生	rénshēng – life
+如何	rúhé – how; in what way
+设计	shèjì – to design; design
+欣赏	xīnshǎng – to appreciate; to enjoy
+修改	xiūgǎi – to amend; to revise
+装	zhuāng – to load; to pack; to install; to pretend
+产生	chǎnshēng – to produce; to generate
+调整	tiáozhěng – to adjust; to regulate
+忽视	hūshì – to neglect; to ignore
+面对	miànduì – to face; to confront
+失去	shīqù – to lose
+实现	shíxiàn – to realize; to achieve
+所	suǒ – place; (used as a marker before verbs in passive voice)
+投资	tóuzī – to invest; investment
+意义	yìyì – meaning; significance
+运气	yùnqi – luck; fortune
+造成	zàochéng – to cause; to create (a result)

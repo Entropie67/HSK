@@ -465,6 +465,78 @@
             margin-bottom: 12px;
         }
 
+        /* ===== FREQUENCY CARD ===== */
+        .frequency-card {
+            background: linear-gradient(135deg, #1e0a3c 0%, #5b21b6 45%, #f39c12 100%);
+            border: 2px solid rgba(243, 156, 18, 0.4);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .frequency-card::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(243,156,18,0.18), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .frequency-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(91, 33, 182, 0.4);
+            border-color: rgba(243, 156, 18, 0.6);
+        }
+        .frequency-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+        .frequency-info { position: relative; z-index: 1; }
+        .frequency-info h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+        .frequency-info p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .frequency-stats {
+            display: flex;
+            gap: 18px;
+            font-size: 0.8rem;
+            opacity: 0.95;
+            flex-wrap: wrap;
+        }
+        .frequency-stats span {
+            background: rgba(255,255,255,0.18);
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
         .resources-card {
             background: linear-gradient(135deg, #0f766e 0%, #14b8a6 50%, #f59e0b 100%);
             border: 2px solid rgba(20, 184, 166, 0.4);
@@ -589,6 +661,8 @@
             .exam-card { flex-direction: column; text-align: center; }
             .commando-card { flex-direction: column; text-align: center; }
             .commando-stats { justify-content: center; flex-wrap: wrap; }
+            .frequency-card { flex-direction: column; text-align: center; }
+            .frequency-stats { justify-content: center; flex-wrap: wrap; }
             .resources-card { flex-direction: column; text-align: center; }
             .resources-stats { justify-content: center; flex-wrap: wrap; }
             .stats-bar { gap: 10px; }
@@ -713,6 +787,27 @@
         </a>
     </div>
 
+    <!-- Frequency Vocabulary Section -->
+    <div class="exam-section">
+        <div class="section-title">
+            高频词汇 <span style="font-size:0.9rem; font-weight:400; color:var(--text-light);" data-i18n="sectionFrequency"></span>
+            <span class="title-line"></span>
+        </div>
+
+        <a class="frequency-card" href="fréquence/index.html">
+            <div class="frequency-icon">📊</div>
+            <div class="frequency-info">
+                <h3 data-i18n="frequencyTitle"></h3>
+                <p data-i18n="frequencyDesc"></p>
+                <div class="frequency-stats">
+                    <span data-i18n="frequencyStat1"></span>
+                    <span data-i18n="frequencyStat2"></span>
+                    <span data-i18n="frequencyStat3"></span>
+                </div>
+            </div>
+        </a>
+    </div>
+
     <!-- Resources Section -->
     <div class="exam-section">
         <div class="section-title">
@@ -760,6 +855,12 @@ const translations = {
         commandoStat1: "📅 14 days",
         commandoStat2: "📝 350 words",
         commandoStat3: "🔄 Spiral review",
+        sectionFrequency: "Vocabulary by frequency",
+        frequencyTitle: "HSK 5 — High-frequency vocabulary",
+        frequencyDesc: "The 316 most frequent HSK 5 words — interactive flashcards, contextual examples, multiple-choice exercises, and progress saved locally.",
+        frequencyStat1: "📊 316 words",
+        frequencyStat2: "💬 316 examples",
+        frequencyStat3: "✅ QCM exercises",
         sectionResources: "Resources & Tools",
         resourcesTitle: "The sinophile's toolbox",
         resourcesDesc: "Apps, dictionaries, podcasts, reading sites, hanzi writing tools… a curated selection of the best free and paid resources for learning Chinese.",
@@ -787,6 +888,12 @@ const translations = {
         commandoStat1: "📅 14 jours",
         commandoStat2: "📝 350 mots",
         commandoStat3: "🔄 Reprise en spirale",
+        sectionFrequency: "Vocabulaire par fréquence",
+        frequencyTitle: "HSK 5 — Vocabulaire haute fréquence",
+        frequencyDesc: "Les 316 mots HSK 5 les plus fréquents — flashcards interactives, exemples contextualisés, exercices QCM et progression sauvegardée localement.",
+        frequencyStat1: "📊 316 mots",
+        frequencyStat2: "💬 316 exemples",
+        frequencyStat3: "✅ Exercices QCM",
         sectionResources: "Ressources & Outils",
         resourcesTitle: "La boîte à outils du sinophile",
         resourcesDesc: "Apps, dictionnaires, podcasts, sites de lecture, outils d'écriture des hanzi… une sélection curatée des meilleures ressources gratuites et payantes pour apprendre le chinois.",
