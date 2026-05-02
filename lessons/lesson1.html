@@ -1006,6 +1006,46 @@
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
+        /* ===== LANG TOGGLE ===== */
+        .lang-toggle {
+            position: fixed;
+            top: 14px;
+            right: 14px;
+            z-index: 200;
+            display: inline-flex;
+            background: rgba(255,255,255,0.95);
+            border: 1px solid rgba(124,58,237,0.25);
+            border-radius: 999px;
+            padding: 3px;
+            box-shadow: 0 4px 18px rgba(91,33,182,0.18);
+            backdrop-filter: blur(8px);
+            user-select: none;
+        }
+
+        .lang-toggle button {
+            border: none;
+            background: transparent;
+            padding: 6px 14px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+            transition: all 0.2s;
+        }
+
+        .lang-toggle button.active {
+            background: var(--gradient-water);
+            color: white;
+            box-shadow: 0 2px 8px rgba(102,126,234,0.4);
+        }
+
+        @media (max-width: 768px) {
+            .lang-toggle { top: 10px; right: 10px; }
+            .lang-toggle button { padding: 5px 11px; font-size: 0.72rem; }
+        }
+
         /* ===== BACK TO TOP ===== */
         .back-to-top {
             position: fixed;
@@ -1271,29 +1311,35 @@
 </head>
 <body>
 
+<!-- LANG TOGGLE -->
+<div class="lang-toggle" role="group" aria-label="Language">
+    <button type="button" data-lang="en" onclick="setLang('en')">EN</button>
+    <button type="button" data-lang="fr" class="active" onclick="setLang('fr')">FR</button>
+</div>
+
 <!-- HERO -->
 <header class="hero">
     <div class="hero-content">
         <div class="lesson-badge">HSK 5 - STANDARD COURSE</div>
         <h1>爱的细节</h1>
-        <p class="subtitle">Details of Love - Lesson 1</p>
+        <p class="subtitle" data-en="Details of Love - Lesson 1">Details of Love - Lesson 1</p>
         <div class="water-drops">~ ~ ~</div>
     </div>
 </header>
 
 <!-- NAVIGATION -->
 <nav class="sticky-nav">
-    <div class="nav-inner"><a href="../index.html" style="font-weight:700;padding-right:20px;border-right:2px solid var(--border);color:var(--primary)!important;">← Accueil</a>
-        <a href="#text">课文 Texte</a>
-        <a href="#vocab">生词 Vocabulaire</a>
-        <a href="#flashcards">卡片 Flashcards</a>
-        <a href="#grammar">语法 Grammaire</a>
-        <a href="#analysis">辨析 Analyse</a>
-        <a href="#collocation">搭配 Collocations</a>
-        <a href="#quiz-section">测验 Quiz</a>
-        <a href="#fill-quiz">填空 Exercices</a>
-        <a href="#application">运用 Application</a>
-        <a href="#workbook">练习册 Workbook</a>
+    <div class="nav-inner"><a href="../index.html" style="font-weight:700;padding-right:20px;border-right:2px solid var(--border);color:var(--primary)!important;" data-en="← Home">← Accueil</a>
+        <a href="#text" data-en="课文 Text">课文 Texte</a>
+        <a href="#vocab" data-en="生词 Vocabulary">生词 Vocabulaire</a>
+        <a href="#flashcards" data-en="卡片 Flashcards">卡片 Flashcards</a>
+        <a href="#grammar" data-en="语法 Grammar">语法 Grammaire</a>
+        <a href="#analysis" data-en="辨析 Analysis">辨析 Analyse</a>
+        <a href="#collocation" data-en="搭配 Collocations">搭配 Collocations</a>
+        <a href="#quiz-section" data-en="测验 Quiz">测验 Quiz</a>
+        <a href="#fill-quiz" data-en="填空 Exercises">填空 Exercices</a>
+        <a href="#application" data-en="运用 Application">运用 Application</a>
+        <a href="#workbook" data-en="练习册 Workbook">练习册 Workbook</a>
     </div>
 </nav>
 
@@ -1302,8 +1348,8 @@
 <!-- ==================== TEXT ==================== -->
 <section id="text">
     <div class="section-header">
-        <h2>课文 - Texte</h2>
-        <p class="section-sub">爱的细节 (662 caracteres)</p>
+        <h2 data-en="课文 - Text">课文 - Texte</h2>
+        <p class="section-sub" data-en="爱的细节 (662 characters)">爱的细节 (662 caracteres)</p>
         <div class="section-divider"></div>
     </div>
 
@@ -1338,8 +1384,8 @@
 <!-- ==================== VOCABULARY ==================== -->
 <section id="vocab">
     <div class="section-header">
-        <h2>生词 - Vocabulaire</h2>
-        <p class="section-sub">38 mots - Cliquez pour reveler la traduction</p>
+        <h2 data-en="生词 - Vocabulary">生词 - Vocabulaire</h2>
+        <p class="section-sub" data-en="38 words - Click to reveal the translation">38 mots - Cliquez pour reveler la traduction</p>
         <div class="section-divider"></div>
     </div>
 
@@ -1350,13 +1396,13 @@
     </div>
 
     <div class="vocab-controls">
-        <button class="active" onclick="filterVocab('all')">Tous (38)</button>
-        <button onclick="filterVocab('verb')">Verbes</button>
-        <button onclick="filterVocab('noun')">Noms</button>
-        <button onclick="filterVocab('adj')">Adjectifs</button>
-        <button onclick="filterVocab('other')">Autres</button>
-        <button onclick="revealAll()">Tout reveler</button>
-        <button onclick="hideAll()">Tout cacher</button>
+        <button class="active" onclick="filterVocab('all')" data-en="All (38)">Tous (38)</button>
+        <button onclick="filterVocab('verb')" data-en="Verbs">Verbes</button>
+        <button onclick="filterVocab('noun')" data-en="Nouns">Noms</button>
+        <button onclick="filterVocab('adj')" data-en="Adjectives">Adjectifs</button>
+        <button onclick="filterVocab('other')" data-en="Others">Autres</button>
+        <button onclick="revealAll()" data-en="Reveal all">Tout reveler</button>
+        <button onclick="hideAll()" data-en="Hide all">Tout cacher</button>
     </div>
 
     <div class="vocab-grid" id="vocabGrid">
@@ -1367,8 +1413,8 @@
 <!-- ==================== FLASHCARDS ==================== -->
 <section id="flashcards">
     <div class="section-header">
-        <h2>卡片 - Flashcards</h2>
-        <p class="section-sub">Cliquez pour retourner la carte</p>
+        <h2 data-en="卡片 - Flashcards">卡片 - Flashcards</h2>
+        <p class="section-sub" data-en="Click to flip the card">Cliquez pour retourner la carte</p>
         <div class="section-divider"></div>
     </div>
 
@@ -1379,7 +1425,7 @@
                 <div class="flashcard-front">
                     <div class="fc-hanzi" id="fcHanzi">细节</div>
                     <div class="fc-pinyin" id="fcPinyin">xìjié</div>
-                    <div class="fc-hint">cliquez pour voir la traduction</div>
+                    <div class="fc-hint" data-en="click to see the translation">cliquez pour voir la traduction</div>
                 </div>
                 <div class="flashcard-back">
                     <div class="fc-meaning" id="fcMeaning">detail</div>
@@ -1388,9 +1434,9 @@
             </div>
         </div>
         <div class="fc-controls">
-            <button class="fc-btn-prev" onclick="prevCard()">Precedent</button>
-            <button class="fc-btn-shuffle" onclick="shuffleCards()">Melanger</button>
-            <button class="fc-btn-next" onclick="nextCard()">Suivant</button>
+            <button class="fc-btn-prev" onclick="prevCard()" data-en="Previous">Precedent</button>
+            <button class="fc-btn-shuffle" onclick="shuffleCards()" data-en="Shuffle">Melanger</button>
+            <button class="fc-btn-next" onclick="nextCard()" data-en="Next">Suivant</button>
         </div>
     </div>
 </section>
@@ -1398,8 +1444,8 @@
 <!-- ==================== GRAMMAR ==================== -->
 <section id="grammar">
     <div class="section-header">
-        <h2>语法 - Grammaire</h2>
-        <p class="section-sub">3 points de grammaire essentiels</p>
+        <h2 data-en="语法 - Grammar">语法 - Grammaire</h2>
+        <p class="section-sub" data-en="3 essential grammar points">3 points de grammaire essentiels</p>
         <div class="section-divider"></div>
     </div>
 
@@ -1413,16 +1459,16 @@
             </div>
         </div>
         <div class="grammar-body">
-            <div class="grammar-rule">
+            <div class="grammar-rule" data-en="<strong>Interrogative pronoun</strong>, equivalent to 怎么 but more formal/written. Can also be used at the end of a sentence to ask for an opinion or about a situation.">
                 <strong>Pronom interrogatif</strong>, equivalent a 怎么 mais plus formel/ecrit. Peut aussi etre utilise en fin de phrase pour demander un avis ou une situation.
             </div>
             <div class="grammar-example">
                 <div class="ex-cn">评委叫第一对夫妻说说他俩是<span class="ex-highlight">如何</span>恩爱的。</div>
-                <div class="ex-note">Les juges demandent au premier couple comment ils s'aiment</div>
+                <div class="ex-note" data-en="The judges ask the first couple how they love each other">Les juges demandent au premier couple comment ils s'aiment</div>
             </div>
             <div class="grammar-example">
                 <div class="ex-cn">最近身体<span class="ex-highlight">如何</span>？</div>
-                <div class="ex-note">Comment va votre sante recemment ? (demande d'avis/situation)</div>
+                <div class="ex-note" data-en="How is your health lately? (asking about situation/opinion)">Comment va votre sante recemment ? (demande d'avis/situation)</div>
             </div>
         </div>
     </div>
@@ -1437,20 +1483,20 @@
             </div>
         </div>
         <div class="grammar-body">
-            <div class="grammar-rule">
+            <div class="grammar-rule" data-en="<strong>Verb</strong> with several meanings: 1. To lean on (靠着/在...) 2. To rely on, depend on 3. To be near">
                 <strong>Verbe</strong> avec plusieurs sens : 1. S'appuyer sur (靠着/在...) 2. Compter sur, dependre de 3. Etre pres de
             </div>
             <div class="grammar-example">
                 <div class="ex-cn">男人的头<span class="ex-highlight">靠</span>在女人的肩膀上。</div>
-                <div class="ex-note">= s'appuyer sur - La tete de l'homme repose sur l'epaule de la femme</div>
+                <div class="ex-note" data-en="= to lean on - The man's head rests on the woman's shoulder">= s'appuyer sur - La tete de l'homme repose sur l'epaule de la femme</div>
             </div>
             <div class="grammar-example">
                 <div class="ex-cn">在家<span class="ex-highlight">靠</span>父母，出门<span class="ex-highlight">靠</span>朋友。</div>
-                <div class="ex-note">= compter sur - A la maison on compte sur les parents, dehors sur les amis</div>
+                <div class="ex-note" data-en="= to rely on - At home rely on parents, away from home rely on friends">= compter sur - A la maison on compte sur les parents, dehors sur les amis</div>
             </div>
             <div class="grammar-example">
                 <div class="ex-cn">我的座位是<span class="ex-highlight">靠</span>窗的座位。</div>
-                <div class="ex-note">= etre pres de - Ma place est pres de la fenetre</div>
+                <div class="ex-note" data-en="= to be near - My seat is the one near the window">= etre pres de - Ma place est pres de la fenetre</div>
             </div>
         </div>
     </div>
@@ -1465,16 +1511,16 @@
             </div>
         </div>
         <div class="grammar-body">
-            <div class="grammar-rule">
+            <div class="grammar-rule" data-en="<strong>Adverb</strong> expressing surprise or the unexpected. Indicates that something is contrary to expectations.">
                 <strong>Adverbe</strong> indiquant la surprise ou l'inattendu. Exprime que quelque chose est contraire aux attentes.
             </div>
             <div class="grammar-example">
                 <div class="ex-cn">这么简单的题，你<span class="ex-highlight">居然</span>也不会做？</div>
-                <div class="ex-note">Un exercice si simple, et tu ne sais meme pas le faire ?</div>
+                <div class="ex-note" data-en="Such a simple problem, and you can't even do it?">Un exercice si simple, et tu ne sais meme pas le faire ?</div>
             </div>
             <div class="grammar-example">
                 <div class="ex-cn">这个女人为了不影响丈夫睡觉，<span class="ex-highlight">居然</span>放弃这次机会！</div>
-                <div class="ex-note">Cette femme a meme renonce a cette occasion pour ne pas deranger son mari !</div>
+                <div class="ex-note" data-en="This woman actually gave up this opportunity just to avoid disturbing her husband's sleep!">Cette femme a meme renonce a cette occasion pour ne pas deranger son mari !</div>
             </div>
         </div>
     </div>
@@ -1483,7 +1529,7 @@
 <!-- ==================== WORD ANALYSIS ==================== -->
 <section id="analysis">
     <div class="section-header">
-        <h2>词语辨析 - Analyse comparative</h2>
+        <h2 data-en="词语辨析 - Comparative analysis">词语辨析 - Analyse comparative</h2>
         <p class="section-sub">如何 vs 怎么</p>
         <div class="section-divider"></div>
     </div>
@@ -1499,21 +1545,21 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="label-cell">Points communs</td>
-                    <td colspan="2" style="text-align:center;">Pronoms interrogatifs. Tous deux servent a interroger sur la maniere/methode.</td>
+                    <td class="label-cell" data-en="Common points">Points communs</td>
+                    <td colspan="2" style="text-align:center;" data-en="Interrogative pronouns. Both are used to ask about manner/method.">Pronoms interrogatifs. Tous deux servent a interroger sur la maniere/methode.</td>
                 </tr>
                 <tr>
-                    <td class="label-cell" rowspan="3">Differences</td>
-                    <td>1. Plus ecrit, plus formel.<br><em>评委叫第一对夫妻说说他俩是如何恩爱的。</em></td>
-                    <td>1. Plus oral, plus familier.<br><em>你怎么去学校？</em></td>
+                    <td class="label-cell" rowspan="3" data-en="Differences">Differences</td>
+                    <td data-en="1. More written, more formal.<br><em>评委叫第一对夫妻说说他俩是如何恩爱的。</em>">1. Plus ecrit, plus formel.<br><em>评委叫第一对夫妻说说他俩是如何恩爱的。</em></td>
+                    <td data-en="1. More oral, more colloquial.<br><em>你怎么去学校？</em>">1. Plus oral, plus familier.<br><em>你怎么去学校？</em></td>
                 </tr>
                 <tr>
-                    <td>2. Ne peut pas interroger sur la raison.</td>
-                    <td>2. Peut interroger sur la raison.<br><em>今天怎么这么冷？</em></td>
+                    <td data-en="2. Cannot ask about reason.">2. Ne peut pas interroger sur la raison.</td>
+                    <td data-en="2. Can ask about reason.<br><em>今天怎么这么冷？</em>">2. Peut interroger sur la raison.<br><em>今天怎么这么冷？</em></td>
                 </tr>
                 <tr>
-                    <td>3. Peut etre utilise en fin de phrase pour demander une situation/un avis.<br><em>最近身体如何？</em></td>
-                    <td>3. Peut etre utilise en debut de phrase pour exprimer la surprise.<br><em>怎么，你不认识我了？！</em></td>
+                    <td data-en="3. Can be used at the end of a sentence to ask about a situation/opinion.<br><em>最近身体如何？</em>">3. Peut etre utilise en fin de phrase pour demander une situation/un avis.<br><em>最近身体如何？</em></td>
+                    <td data-en="3. Can be used at the start of a sentence to express surprise.<br><em>怎么，你不认识我了？！</em>">3. Peut etre utilise en debut de phrase pour exprimer la surprise.<br><em>怎么，你不认识我了？！</em></td>
                 </tr>
             </tbody>
         </table>
@@ -1523,14 +1569,14 @@
 <!-- ==================== COLLOCATION ==================== -->
 <section id="collocation">
     <div class="section-header">
-        <h2>词语搭配 - Collocations</h2>
-        <p class="section-sub">Combinaisons essentielles de la lecon</p>
+        <h2 data-en="词语搭配 - Word collocations">词语搭配 - Collocations</h2>
+        <p class="section-sub" data-en="Essential combinations from the lesson">Combinaisons essentielles de la lecon</p>
         <div class="section-divider"></div>
     </div>
 
     <div class="card">
         <div class="colloc-section">
-            <div class="colloc-label verb">动词 + 宾语 (Verbe + Objet)</div>
+            <div class="colloc-label verb" data-en="动词 + 宾语 (Verb + Object)">动词 + 宾语 (Verbe + Objet)</div>
             <div class="colloc-row">
                 <span class="colloc-word">抱怨</span>
                 <span class="colloc-plus">+</span>
@@ -1553,7 +1599,7 @@
         </div>
 
         <div class="colloc-section">
-            <div class="colloc-label attr">定语 + 中心语 (Attribut + Nom)</div>
+            <div class="colloc-label attr" data-en="定语 + 中心语 (Attributive + Noun)">定语 + 中心语 (Attribut + Nom)</div>
             <div class="colloc-row">
                 <span class="colloc-word">电影/小说/生活 的</span>
                 <span class="colloc-plus">+</span>
@@ -1573,7 +1619,7 @@
         </div>
 
         <div class="colloc-section">
-            <div class="colloc-label adv">状语 + 中心语 (Adverbe + Verbe)</div>
+            <div class="colloc-label adv" data-en="状语 + 中心语 (Adverb + Verb)">状语 + 中心语 (Adverbe + Verbe)</div>
             <div class="colloc-row">
                 <span class="colloc-word">简单/详细 地</span>
                 <span class="colloc-plus">+</span>
@@ -1591,7 +1637,7 @@
         </div>
 
         <div class="colloc-section">
-            <div class="colloc-label comp">中心语 + 补语 (Verbe + Complement)</div>
+            <div class="colloc-label comp" data-en="中心语 + 补语 (Verb + Complement)">中心语 + 补语 (Verbe + Complement)</div>
             <div class="colloc-row">
                 <span class="colloc-word">伸</span>
                 <span class="colloc-plus">+</span>
@@ -1613,7 +1659,7 @@
         </div>
 
         <div class="colloc-section">
-            <div class="colloc-label quant">数量词 + 名词 (Classificateur)</div>
+            <div class="colloc-label quant" data-en="数量词 + 名词 (Classifier)">数量词 + 名词 (Classificateur)</div>
             <div class="colloc-row">
                 <span class="colloc-word">一项</span>
                 <span class="colloc-plus">+</span>
@@ -1635,16 +1681,16 @@
 <!-- ==================== QUIZ ==================== -->
 <section id="quiz-section">
     <div class="section-header">
-        <h2>测验 - Quiz</h2>
-        <p class="section-sub">Testez vos connaissances sur la lecon</p>
+        <h2 data-en="测验 - Quiz">测验 - Quiz</h2>
+        <p class="section-sub" data-en="Test your knowledge of the lesson">Testez vos connaissances sur la lecon</p>
         <div class="section-divider"></div>
     </div>
 
     <!-- Tabs -->
     <div class="tab-bar">
-        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz')">Vocabulaire</button>
-        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz')">Grammaire</button>
-        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz')">Comprehension</button>
+        <button class="tab-btn active" onclick="switchQuizTab('vocab-quiz', this)" data-en="Vocabulary">Vocabulaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('grammar-quiz', this)" data-en="Grammar">Grammaire</button>
+        <button class="tab-btn" onclick="switchQuizTab('comprehension-quiz', this)" data-en="Comprehension">Comprehension</button>
     </div>
 
     <!-- Vocab Quiz -->
@@ -1652,7 +1698,7 @@
         <div class="quiz-score-bar">
             <div class="score-display" id="vocabScore">0 / 0</div>
             <div class="score-bar-visual"><div class="score-bar-fill" id="vocabScoreBar"></div></div>
-            <button class="quiz-reset-btn" onclick="resetQuiz('vocab')">Recommencer</button>
+            <button class="quiz-reset-btn" onclick="resetQuiz('vocab')" data-en="Restart">Recommencer</button>
         </div>
         <div id="vocabQuizContainer"></div>
     </div>
@@ -1662,7 +1708,7 @@
         <div class="quiz-score-bar">
             <div class="score-display" id="grammarScore">0 / 0</div>
             <div class="score-bar-visual"><div class="score-bar-fill" id="grammarScoreBar"></div></div>
-            <button class="quiz-reset-btn" onclick="resetQuiz('grammar')">Recommencer</button>
+            <button class="quiz-reset-btn" onclick="resetQuiz('grammar')" data-en="Restart">Recommencer</button>
         </div>
         <div id="grammarQuizContainer"></div>
     </div>
@@ -1672,7 +1718,7 @@
         <div class="quiz-score-bar">
             <div class="score-display" id="compScore">0 / 0</div>
             <div class="score-bar-visual"><div class="score-bar-fill" id="compScoreBar"></div></div>
-            <button class="quiz-reset-btn" onclick="resetQuiz('comp')">Recommencer</button>
+            <button class="quiz-reset-btn" onclick="resetQuiz('comp')" data-en="Restart">Recommencer</button>
         </div>
         <div id="compQuizContainer"></div>
     </div>
@@ -1681,13 +1727,13 @@
 <!-- ==================== FILL-IN QUIZ ==================== -->
 <section id="fill-quiz">
     <div class="section-header">
-        <h2>填空练习 - Exercices a trous</h2>
-        <p class="section-sub">Choisissez le mot correct pour completer les phrases</p>
+        <h2 data-en="填空练习 - Fill-in exercises">填空练习 - Exercices a trous</h2>
+        <p class="section-sub" data-en="Choose the correct word to complete the sentences">Choisissez le mot correct pour completer les phrases</p>
         <div class="section-divider"></div>
     </div>
 
     <div class="card" id="fillExercise">
-        <h3>Choisissez parmi : 催、递、喊、项、爱护、抱怨、等待</h3>
+        <h3 data-en="Choose from: 催、递、喊、项、爱护、抱怨、等待">Choisissez parmi : 催、递、喊、项、爱护、抱怨、等待</h3>
         <div class="fill-options" id="fillOptions">
             <span class="fill-chip" data-word="爱护" onclick="selectFillWord(this)">爱护</span>
             <span class="fill-chip" data-word="项" onclick="selectFillWord(this)">项</span>
@@ -1724,14 +1770,14 @@
             </div>
         </div>
         <div style="text-align: center; margin-top: 16px;">
-            <button onclick="checkFillAnswers()" style="padding: 10px 30px; background: var(--primary-light); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 0.95rem; font-weight: 600;">Verifier les reponses</button>
-            <button onclick="resetFill()" style="padding: 10px 30px; background: white; border: 2px solid var(--border); border-radius: 25px; cursor: pointer; font-size: 0.95rem; margin-left: 10px;">Recommencer</button>
+            <button onclick="checkFillAnswers()" style="padding: 10px 30px; background: var(--primary-light); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 0.95rem; font-weight: 600;" data-en="Check answers">Verifier les reponses</button>
+            <button onclick="resetFill()" style="padding: 10px 30px; background: white; border: 2px solid var(--border); border-radius: 25px; cursor: pointer; font-size: 0.95rem; margin-left: 10px;" data-en="Restart">Recommencer</button>
         </div>
     </div>
 
     <!-- Choice quiz -->
     <div class="card">
-        <h3>Choisissez entre : 如何 vs 怎么 / 耐心 vs 耐烦 / 吵 vs 吵架 / 居然 vs 仍然</h3>
+        <h3 data-en="Choose between: 如何 vs 怎么 / 耐心 vs 耐烦 / 吵 vs 吵架 / 居然 vs 仍然">Choisissez entre : 如何 vs 怎么 / 耐心 vs 耐烦 / 吵 vs 吵架 / 居然 vs 仍然</h3>
         <div id="choiceQuizContainer"></div>
     </div>
 </section>
@@ -1739,27 +1785,27 @@
 <!-- ==================== APPLICATION ==================== -->
 <section id="application">
     <div class="section-header">
-        <h2>运用 - Application</h2>
-        <p class="section-sub">Contexte et discussion</p>
+        <h2 data-en="运用 - Application">运用 - Application</h2>
+        <p class="section-sub" data-en="Context and discussion">Contexte et discussion</p>
         <div class="section-divider"></div>
     </div>
 
     <div class="app-box">
-        <h4>背景分析 - Contexte</h4>
+        <h4 data-en="背景分析 - Context">背景分析 - Contexte</h4>
         <p style="line-height: 2;">在这个世界上，人和人之间会有各种各样的关系，比如同学关系、同事关系、邻居关系等，而人际关系中最亲密的一种关系，应该是夫妻关系了。无论是中国人还是外国人，都很重视自己的婚姻。有人认为夫妻之间最重要的是恩爱，有人说是诚实，也有人说是关爱和理解。</p>
     </div>
 
     <div class="app-box">
         <h4>话题讨论 - Discussion : 理想的夫妻关系是什么样的？</h4>
-        <div class="discussion-q">1. 本文提到的三对夫妻中，哪对夫妻给你留下的印象最深？<br><em>Parmi les trois couples mentionnes dans le texte, lequel vous a le plus marque ?</em></div>
-        <div class="discussion-q">2. 这对夫妻的什么地方让你感动？为什么？<br><em>Qu'est-ce qui vous a touche chez ce couple ? Pourquoi ?</em></div>
-        <div class="discussion-q">3. 你认为理想的夫妻关系应该是什么样的？<br><em>Selon vous, a quoi devrait ressembler une relation de couple ideale ?</em></div>
+        <div class="discussion-q" data-en='1. 本文提到的三对夫妻中，哪对夫妻给你留下的印象最深？<br><em>Among the three couples mentioned in the text, which one made the strongest impression on you?</em>'>1. 本文提到的三对夫妻中，哪对夫妻给你留下的印象最深？<br><em>Parmi les trois couples mentionnes dans le texte, lequel vous a le plus marque ?</em></div>
+        <div class="discussion-q" data-en='2. 这对夫妻的什么地方让你感动？为什么？<br><em>What touched you about this couple? Why?</em>'>2. 这对夫妻的什么地方让你感动？为什么？<br><em>Qu'est-ce qui vous a touche chez ce couple ? Pourquoi ?</em></div>
+        <div class="discussion-q" data-en='3. 你认为理想的夫妻关系应该是什么样的？<br><em>In your opinion, what should an ideal couple relationship look like?</em>'>3. 你认为理想的夫妻关系应该是什么样的？<br><em>Selon vous, a quoi devrait ressembler une relation de couple ideale ?</em></div>
     </div>
 
     <div class="app-box">
-        <h4>命题写作 - Sujet d'ecriture</h4>
+        <h4 data-en="命题写作 - Writing topic">命题写作 - Sujet d'ecriture</h4>
         <p>请以"理想的夫妻关系"为题写一段话。尽量用上本课所学的生词，字数不少于100字。</p>
-        <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 8px;"><em>Ecrivez un paragraphe intitule "La relation de couple ideale" en utilisant le vocabulaire de la lecon. Minimum 100 caracteres.</em></p>
+        <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 8px;" data-en='<em>Write a paragraph titled "The ideal couple relationship" using the vocabulary from the lesson. Minimum 100 characters.</em>'><em>Ecrivez un paragraphe intitule "La relation de couple ideale" en utilisant le vocabulaire de la lecon. Minimum 100 caracteres.</em></p>
     </div>
 </section>
 
@@ -1884,6 +1930,23 @@
 </footer>
 
 <script>
+// ===== I18N STATE =====
+let currentLang = (typeof localStorage !== 'undefined' && localStorage.getItem('hsk5LessonLang')) || 'fr';
+
+const I18N_STRINGS = {
+    fr: {
+        clickToSee: 'Cliquez pour voir...',
+        clickHint: 'cliquez pour voir la traduction',
+        answerLabel: 'Reponse'
+    },
+    en: {
+        clickToSee: 'Click to reveal...',
+        clickHint: 'click to see the translation',
+        answerLabel: 'Answer'
+    }
+};
+function t(key) { return (I18N_STRINGS[currentLang] || I18N_STRINGS.fr)[key]; }
+
 // ===== VOCABULARY DATA =====
 const vocabData = [
     {id:1, hanzi:"细节", pinyin:"xìjié", pos:"n.", meaning:"detail", meaningEn:"detail", cat:"noun"},
@@ -1927,6 +1990,8 @@ const vocabData = [
 ];
 
 // ===== RENDER VOCABULARY =====
+function vocabMeaning(v) { return currentLang === 'en' ? (v.meaningEn || v.meaning) : v.meaning; }
+
 function renderVocab(filter = 'all') {
     const grid = document.getElementById('vocabGrid');
     const filtered = filter === 'all' ? vocabData : vocabData.filter(v => v.cat === filter);
@@ -1936,8 +2001,8 @@ function renderVocab(filter = 'all') {
             <div class="hanzi">${v.hanzi}</div>
             <div class="pinyin">${v.pinyin}</div>
             <span class="pos">${v.pos}</span>
-            <div class="meaning-placeholder">Cliquez pour voir...</div>
-            <div class="meaning-hidden">${v.meaning}</div>
+            <div class="meaning-placeholder">${t('clickToSee')}</div>
+            <div class="meaning-hidden">${vocabMeaning(v)}</div>
         </div>
     `).join('');
 }
@@ -1964,7 +2029,7 @@ function updateFlashcard() {
     const v = vocabData[fcOrder[fcIndex]];
     document.getElementById('fcHanzi').textContent = v.hanzi;
     document.getElementById('fcPinyin').textContent = v.pinyin;
-    document.getElementById('fcMeaning').textContent = v.meaning;
+    document.getElementById('fcMeaning').textContent = vocabMeaning(v);
     document.getElementById('fcPos').textContent = v.pos;
     document.getElementById('fcCurrent').textContent = fcIndex + 1;
     document.getElementById('fcTotal').textContent = fcOrder.length;
@@ -1996,46 +2061,49 @@ function shuffleCards() {
 
 // ===== QUIZ DATA =====
 const vocabQuizData = [
-    {q: "细节 signifie :", options: ["Resume", "Detail", "Resultat", "Exemple"], correct: 1},
-    {q: "Quel mot signifie 'se plaindre' ?", options: ["爱护", "抱怨", "催", "叙述"], correct: 1},
-    {q: "恩爱 veut dire :", options: ["Amical", "Amoureux (entre epoux)", "Respectueux", "Jaloux"], correct: 1},
-    {q: "瘫痪 signifie :", options: ["Etre fatigue", "Etre paralyse", "Etre malade", "Etre blesse"], correct: 1},
-    {q: "Comment dit-on 'epaule' en chinois ?", options: ["脑袋", "手指", "肩膀", "脖子"], correct: 2},
-    {q: "居然 est un adverbe qui exprime :", options: ["La certitude", "L'inattendu, la surprise", "La frequence", "La duree"], correct: 1},
-    {q: "Quel mot signifie 'tendre, passer' ?", options: ["伸", "递", "喊", "催"], correct: 1},
-    {q: "婚姻 veut dire :", options: ["Famille", "Amour", "Mariage", "Relation"], correct: 2},
-    {q: "Que signifie 蚊子 ?", options: ["Mouche", "Araignee", "Moustique", "Fourmi"], correct: 2},
-    {q: "靠 signifie :", options: ["S'appuyer contre", "Frapper", "Pousser", "Tirer"], correct: 0},
+    {q: "细节 signifie :", qEn: "细节 means:", options: ["Resume", "Detail", "Resultat", "Exemple"], optionsEn: ["Summary", "Detail", "Result", "Example"], correct: 1},
+    {q: "Quel mot signifie 'se plaindre' ?", qEn: "Which word means 'to complain'?", options: ["爱护", "抱怨", "催", "叙述"], correct: 1},
+    {q: "恩爱 veut dire :", qEn: "恩爱 means:", options: ["Amical", "Amoureux (entre epoux)", "Respectueux", "Jaloux"], optionsEn: ["Friendly", "Loving (between spouses)", "Respectful", "Jealous"], correct: 1},
+    {q: "瘫痪 signifie :", qEn: "瘫痪 means:", options: ["Etre fatigue", "Etre paralyse", "Etre malade", "Etre blesse"], optionsEn: ["To be tired", "To be paralyzed", "To be sick", "To be injured"], correct: 1},
+    {q: "Comment dit-on 'epaule' en chinois ?", qEn: "How do you say 'shoulder' in Chinese?", options: ["脑袋", "手指", "肩膀", "脖子"], correct: 2},
+    {q: "居然 est un adverbe qui exprime :", qEn: "居然 is an adverb expressing:", options: ["La certitude", "L'inattendu, la surprise", "La frequence", "La duree"], optionsEn: ["Certainty", "The unexpected, surprise", "Frequency", "Duration"], correct: 1},
+    {q: "Quel mot signifie 'tendre, passer' ?", qEn: "Which word means 'to hand over, pass'?", options: ["伸", "递", "喊", "催"], correct: 1},
+    {q: "婚姻 veut dire :", qEn: "婚姻 means:", options: ["Famille", "Amour", "Mariage", "Relation"], optionsEn: ["Family", "Love", "Marriage", "Relationship"], correct: 2},
+    {q: "Que signifie 蚊子 ?", qEn: "What does 蚊子 mean?", options: ["Mouche", "Araignee", "Moustique", "Fourmi"], optionsEn: ["Fly", "Spider", "Mosquito", "Ant"], correct: 2},
+    {q: "靠 signifie :", qEn: "靠 means:", options: ["S'appuyer contre", "Frapper", "Pousser", "Tirer"], optionsEn: ["To lean against", "To hit", "To push", "To pull"], correct: 0},
 ];
 
 const grammarQuizData = [
-    {q: "如何 est equivalent a quel mot en chinois oral ?", options: ["什么", "怎么", "哪里", "为什么"], correct: 1},
-    {q: "Dans '男人的头靠在女人的肩膀上', 靠 signifie :", options: ["Compter sur", "S'appuyer sur", "Etre pres de", "Pousser"], correct: 1},
-    {q: "居然 exprime :", options: ["Une consequence logique", "Un resultat attendu", "Quelque chose d'inattendu", "Une condition"], correct: 2},
-    {q: "如何 peut etre utilise en fin de phrase pour :", options: ["Exprimer la surprise", "Demander un avis/une situation", "Exprimer la colere", "Donner un ordre"], correct: 1},
-    {q: "'在家靠父母，出门靠朋友' - 靠 signifie ici :", options: ["S'appuyer physiquement", "Compter sur, dependre de", "Etre pres de", "S'asseoir a cote de"], correct: 1},
-    {q: "Quelle phrase utilise correctement 居然 ?", options: ["他居然每天去上班。", "这么简单的题，你居然也不会做？", "我居然吃了早饭。", "她居然是我的朋友。"], correct: 1},
+    {q: "如何 est equivalent a quel mot en chinois oral ?", qEn: "如何 is equivalent to which word in spoken Chinese?", options: ["什么", "怎么", "哪里", "为什么"], correct: 1},
+    {q: "Dans '男人的头靠在女人的肩膀上', 靠 signifie :", qEn: "In '男人的头靠在女人的肩膀上', 靠 means:", options: ["Compter sur", "S'appuyer sur", "Etre pres de", "Pousser"], optionsEn: ["To rely on", "To lean on", "To be near", "To push"], correct: 1},
+    {q: "居然 exprime :", qEn: "居然 expresses:", options: ["Une consequence logique", "Un resultat attendu", "Quelque chose d'inattendu", "Une condition"], optionsEn: ["A logical consequence", "An expected result", "Something unexpected", "A condition"], correct: 2},
+    {q: "如何 peut etre utilise en fin de phrase pour :", qEn: "如何 can be used at the end of a sentence to:", options: ["Exprimer la surprise", "Demander un avis/une situation", "Exprimer la colere", "Donner un ordre"], optionsEn: ["Express surprise", "Ask for an opinion/about a situation", "Express anger", "Give an order"], correct: 1},
+    {q: "'在家靠父母，出门靠朋友' - 靠 signifie ici :", qEn: "'在家靠父母，出门靠朋友' - here 靠 means:", options: ["S'appuyer physiquement", "Compter sur, dependre de", "Etre pres de", "S'asseoir a cote de"], optionsEn: ["To lean physically", "To rely on, depend on", "To be near", "To sit next to"], correct: 1},
+    {q: "Quelle phrase utilise correctement 居然 ?", qEn: "Which sentence uses 居然 correctly?", options: ["他居然每天去上班。", "这么简单的题，你居然也不会做？", "我居然吃了早饭。", "她居然是我的朋友。"], correct: 1},
 ];
 
 const compQuizData = [
-    {q: "Que veut selectionner la station de radio ?", options: ["Le meilleur chanteur", "Le couple le plus amoureux", "La famille la plus grande", "Le mari le plus gentil"], correct: 1},
-    {q: "Combien de couples sont preselectionnes ?", options: ["2 couples", "3 couples", "4 couples", "5 couples"], correct: 1},
-    {q: "Qu'est-il arrive a la femme du premier couple ?", options: ["Elle a perdu son travail", "Elle etait paralysee", "Elle a eu un accident de voiture", "Elle etait malade du coeur"], correct: 1},
-    {q: "Comment le deuxieme couple decrit-il leur relation ?", options: ["Ils se disputent souvent", "Ils ne se sont jamais disputes en 10+ ans", "Ils voyagent beaucoup ensemble", "Ils travaillent ensemble"], correct: 1},
-    {q: "Que fait la femme du troisieme couple quand les juges arrivent ?", options: ["Elle les salue", "Elle ecrit un mot pour ne pas reveiller son mari", "Elle part", "Elle pleure"], correct: 1},
-    {q: "Pourquoi le mari du troisieme couple n'a-t-il pas dormi ?", options: ["Il travaillait", "Il chassait les moustiques pour sa femme", "Il regardait la television", "Il preparait le concours"], correct: 1},
-    {q: "Combien de prix supplementaires la station de radio a-t-elle ajoutes ?", options: ["1 prix", "2 prix", "3 prix", "Aucun"], correct: 1},
-    {q: "Quel couple a remporte le prix du 'couple le plus amoureux' ?", options: ["Le premier couple", "Le deuxieme couple", "Le troisieme couple", "Aucun couple"], correct: 2},
+    {q: "Que veut selectionner la station de radio ?", qEn: "What does the radio station want to select?", options: ["Le meilleur chanteur", "Le couple le plus amoureux", "La famille la plus grande", "Le mari le plus gentil"], optionsEn: ["The best singer", "The most loving couple", "The biggest family", "The kindest husband"], correct: 1},
+    {q: "Combien de couples sont preselectionnes ?", qEn: "How many couples are shortlisted?", options: ["2 couples", "3 couples", "4 couples", "5 couples"], correct: 1},
+    {q: "Qu'est-il arrive a la femme du premier couple ?", qEn: "What happened to the wife of the first couple?", options: ["Elle a perdu son travail", "Elle etait paralysee", "Elle a eu un accident de voiture", "Elle etait malade du coeur"], optionsEn: ["She lost her job", "She was paralyzed", "She had a car accident", "She had a heart disease"], correct: 1},
+    {q: "Comment le deuxieme couple decrit-il leur relation ?", qEn: "How does the second couple describe their relationship?", options: ["Ils se disputent souvent", "Ils ne se sont jamais disputes en 10+ ans", "Ils voyagent beaucoup ensemble", "Ils travaillent ensemble"], optionsEn: ["They argue often", "They never argued in 10+ years", "They travel a lot together", "They work together"], correct: 1},
+    {q: "Que fait la femme du troisieme couple quand les juges arrivent ?", qEn: "What does the wife of the third couple do when the judges arrive?", options: ["Elle les salue", "Elle ecrit un mot pour ne pas reveiller son mari", "Elle part", "Elle pleure"], optionsEn: ["She greets them", "She writes a note so as not to wake her husband", "She leaves", "She cries"], correct: 1},
+    {q: "Pourquoi le mari du troisieme couple n'a-t-il pas dormi ?", qEn: "Why didn't the husband of the third couple sleep?", options: ["Il travaillait", "Il chassait les moustiques pour sa femme", "Il regardait la television", "Il preparait le concours"], optionsEn: ["He was working", "He was chasing mosquitoes for his wife", "He was watching TV", "He was preparing for the contest"], correct: 1},
+    {q: "Combien de prix supplementaires la station de radio a-t-elle ajoutes ?", qEn: "How many extra prizes did the radio station add?", options: ["1 prix", "2 prix", "3 prix", "Aucun"], optionsEn: ["1 prize", "2 prizes", "3 prizes", "None"], correct: 1},
+    {q: "Quel couple a remporte le prix du 'couple le plus amoureux' ?", qEn: "Which couple won the 'most loving couple' prize?", options: ["Le premier couple", "Le deuxieme couple", "Le troisieme couple", "Aucun couple"], optionsEn: ["The first couple", "The second couple", "The third couple", "No couple"], correct: 2},
 ];
+
+function localizedQ(item) { return currentLang === 'en' && item.qEn ? item.qEn : item.q; }
+function localizedOptions(item) { return currentLang === 'en' && item.optionsEn ? item.optionsEn : item.options; }
 
 // ===== RENDER QUIZZES =====
 function renderQuiz(data, containerId, prefix) {
     const container = document.getElementById(containerId);
     container.innerHTML = data.map((q, i) => `
         <div class="quiz-question" id="${prefix}-q${i}">
-            <div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${q.q}</div>
+            <div class="quiz-q-text"><span class="quiz-q-num">${i+1}</span>${localizedQ(q)}</div>
             <div class="quiz-options">
-                ${q.options.map((opt, j) => `
+                ${localizedOptions(q).map((opt, j) => `
                     <div class="quiz-option" onclick="answerQuiz('${prefix}', ${i}, ${j})">${opt}</div>
                 `).join('')}
             </div>
@@ -2090,10 +2158,10 @@ function resetQuiz(prefix) {
     renderQuiz(getQuizData(prefix), containerId, prefix);
 }
 
-function switchQuizTab(tabId) {
+function switchQuizTab(tabId, btn) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-    event.target.classList.add('active');
+    (btn || event.target).classList.add('active');
     document.getElementById(tabId).classList.add('active');
 }
 
@@ -2130,7 +2198,7 @@ function checkFillAnswers() {
             blank.style.borderColor = 'var(--wrong)';
             blank.style.background = '#fecaca';
             blank.style.color = 'var(--wrong)';
-            blank.title = `Reponse : ${answer}`;
+            blank.title = `${t('answerLabel')} : ${answer}`;
         }
     });
 }
@@ -2153,10 +2221,10 @@ function resetFill() {
 
 // ===== CHOICE QUIZ =====
 const choiceQuizData = [
-    {q: "你的病都好了吗？现在感觉___？", a: "如何", b: "怎么", correct: "如何", explain: "如何 en fin de phrase pour demander une situation/un avis"},
-    {q: "电视里广告太多让观众感到很不___。", a: "耐心", b: "耐烦", correct: "耐烦", explain: "不耐烦 est l'expression correcte (impatient)"},
-    {q: "这儿太___了，我们换个地方吧。", a: "吵", b: "吵架", correct: "吵", explain: "吵 comme adjectif signifie 'bruyant'"},
-    {q: "他这么年轻，没想到___是一位著名的作家。", a: "居然", b: "仍然", correct: "居然", explain: "居然 exprime la surprise face a l'inattendu"},
+    {q: "你的病都好了吗？现在感觉___？", a: "如何", b: "怎么", correct: "如何", explain: "如何 en fin de phrase pour demander une situation/un avis", explainEn: "如何 at the end of a sentence to ask about a situation/opinion"},
+    {q: "电视里广告太多让观众感到很不___。", a: "耐心", b: "耐烦", correct: "耐烦", explain: "不耐烦 est l'expression correcte (impatient)", explainEn: "不耐烦 is the correct expression (impatient)"},
+    {q: "这儿太___了，我们换个地方吧。", a: "吵", b: "吵架", correct: "吵", explain: "吵 comme adjectif signifie 'bruyant'", explainEn: "吵 as an adjective means 'noisy'"},
+    {q: "他这么年轻，没想到___是一位著名的作家。", a: "居然", b: "仍然", correct: "居然", explain: "居然 exprime la surprise face a l'inattendu", explainEn: "居然 expresses surprise at the unexpected"},
 ];
 
 function renderChoiceQuiz() {
@@ -2168,7 +2236,7 @@ function renderChoiceQuiz() {
                 <div class="quiz-option" onclick="answerChoice(${i}, '${q.a}')">${q.a}</div>
                 <div class="quiz-option" onclick="answerChoice(${i}, '${q.b}')">${q.b}</div>
             </div>
-            <div class="quiz-explanation" id="choice-exp${i}">${q.explain}</div>
+            <div class="quiz-explanation" id="choice-exp${i}">${currentLang === 'en' && q.explainEn ? q.explainEn : q.explain}</div>
         </div>
     `).join('');
 }
@@ -2376,8 +2444,51 @@ function renderRead3() {
     renderOne(wbData.read3.slice(3, 6), 'wbRead3b', 3);
 }
 
+// ===== LANG SWITCH =====
+function applyStaticLang() {
+    document.querySelectorAll('[data-en]').forEach(el => {
+        if (!el.hasAttribute('data-fr')) {
+            el.setAttribute('data-fr', el.innerHTML);
+        }
+        el.innerHTML = currentLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-fr');
+    });
+    document.documentElement.setAttribute('lang', currentLang === 'en' ? 'en' : 'fr');
+    document.querySelectorAll('.lang-toggle button').forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === currentLang);
+    });
+}
+
+function rerenderDynamic() {
+    const activeFilterBtn = document.querySelector('.vocab-controls button.active');
+    const filterMatch = activeFilterBtn ? (activeFilterBtn.getAttribute('onclick') || '').match(/filterVocab\('([^']+)'\)/) : null;
+    const currentFilter = filterMatch ? filterMatch[1] : 'all';
+    renderVocab(currentFilter);
+    document.querySelectorAll('.vocab-card').forEach(c => c.classList.add('revealed'));
+    document.querySelectorAll('.vocab-card').forEach(c => c.classList.remove('revealed'));
+    updateFlashcard();
+    renderQuiz(vocabQuizData, 'vocabQuizContainer', 'vocab');
+    renderQuiz(grammarQuizData, 'grammarQuizContainer', 'grammar');
+    renderQuiz(compQuizData, 'compQuizContainer', 'comp');
+    renderChoiceQuiz();
+    quizState.vocab = {score:0, answered:0, total: quizState.vocab.total};
+    quizState.grammar = {score:0, answered:0, total: quizState.grammar.total};
+    quizState.comp = {score:0, answered:0, total: quizState.comp.total};
+    updateScore('vocab');
+    updateScore('grammar');
+    updateScore('comp');
+}
+
+function setLang(lang) {
+    if (lang !== 'en' && lang !== 'fr') return;
+    currentLang = lang;
+    try { localStorage.setItem('hsk5LessonLang', lang); } catch (e) {}
+    applyStaticLang();
+    rerenderDynamic();
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
+    applyStaticLang();
     renderVocab();
     updateFlashcard();
     renderQuiz(vocabQuizData, 'vocabQuizContainer', 'vocab');
