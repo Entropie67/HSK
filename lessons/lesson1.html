@@ -1828,8 +1828,8 @@
         </div>
         <div id="wbListen1"></div>
         <div class="wb-actions">
-            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen1')">Vérifier</button>
-            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen1')">Réinitialiser</button>
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen1')" data-en="Check">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen1')" data-en="Reset">Réinitialiser</button>
             <span class="wb-score" id="listen1Score"></span>
         </div>
     </div>
@@ -1844,8 +1844,8 @@
         </div>
         <div id="wbListen2"></div>
         <div class="wb-actions">
-            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen2')">Vérifier</button>
-            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen2')">Réinitialiser</button>
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('listen2')" data-en="Check">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('listen2')" data-en="Reset">Réinitialiser</button>
             <span class="wb-score" id="listen2Score"></span>
         </div>
     </div>
@@ -1859,8 +1859,8 @@
         </div>
         <div id="wbRead1"></div>
         <div class="wb-actions">
-            <button class="wb-btn wb-btn-primary" onclick="checkWb('read1')">Vérifier</button>
-            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read1')">Réinitialiser</button>
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read1')" data-en="Check">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read1')" data-en="Reset">Réinitialiser</button>
             <span class="wb-score" id="read1Score"></span>
         </div>
     </div>
@@ -1870,8 +1870,8 @@
         <div class="wb-part-sub">第19-22题：请选出与试题内容一致的一项。</div>
         <div id="wbRead2"></div>
         <div class="wb-actions">
-            <button class="wb-btn wb-btn-primary" onclick="checkWb('read2')">Vérifier</button>
-            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read2')">Réinitialiser</button>
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read2')" data-en="Check">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read2')" data-en="Reset">Réinitialiser</button>
             <span class="wb-score" id="read2Score"></span>
         </div>
     </div>
@@ -1894,8 +1894,8 @@
         <div id="wbRead3b"></div>
 
         <div class="wb-actions">
-            <button class="wb-btn wb-btn-primary" onclick="checkWb('read3')">Vérifier</button>
-            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read3')">Réinitialiser</button>
+            <button class="wb-btn wb-btn-primary" onclick="checkWb('read3')" data-en="Check">Vérifier</button>
+            <button class="wb-btn wb-btn-ghost" onclick="resetWb('read3')" data-en="Reset">Réinitialiser</button>
             <span class="wb-score" id="read3Score"></span>
         </div>
     </div>
@@ -1903,7 +1903,7 @@
     <!-- ========== WRITING ========== -->
     <div class="wb-part">
         <div class="wb-part-title"><span class="wb-badge">三、书写</span>第一部分</div>
-        <div class="wb-part-sub">第29-31题：完成句子 - Remettez les mots dans l'ordre, puis cliquez pour voir la réponse.</div>
+        <div class="wb-part-sub" data-en="第29-31题：完成句子 - Reorder the words, then click to see the answer.">第29-31题：完成句子 - Remettez les mots dans l'ordre, puis cliquez pour voir la réponse.</div>
         <div id="wbWrite1"></div>
     </div>
 
@@ -1915,7 +1915,7 @@
         </div>
         <textarea class="wb-textarea" id="wbEssay" placeholder="请在此处写下您的短文（约80字）..."></textarea>
         <div style="font-size: 0.85rem; color: var(--text-light); margin-top: 6px;">
-            <span id="wbEssayCount">0</span> caractères
+            <span id="wbEssayCount">0</span> <span data-en="characters">caractères</span>
         </div>
     </div>
 </section>
@@ -1937,12 +1937,16 @@ const I18N_STRINGS = {
     fr: {
         clickToSee: 'Cliquez pour voir...',
         clickHint: 'cliquez pour voir la traduction',
-        answerLabel: 'Reponse'
+        answerLabel: 'Reponse',
+        seeAnswer: 'Voir la réponse',
+        score: 'Score'
     },
     en: {
         clickToSee: 'Click to reveal...',
         clickHint: 'click to see the translation',
-        answerLabel: 'Answer'
+        answerLabel: 'Answer',
+        seeAnswer: 'See the answer',
+        score: 'Score'
     }
 };
 function t(key) { return (I18N_STRINGS[currentLang] || I18N_STRINGS.fr)[key]; }
@@ -2385,7 +2389,7 @@ function checkWb(prefix) {
             qEl.classList.add('wrong');
         }
     });
-    document.getElementById(`${prefix}Score`).textContent = `Score : ${correct} / ${data.length}`;
+    document.getElementById(`${prefix}Score`).textContent = `${t('score')} : ${correct} / ${data.length}`;
 }
 
 function resetWb(prefix) {
@@ -2413,7 +2417,7 @@ function renderWbWriting() {
                 ${item.words.map(w => `<span>${w}</span>`).join('')}
             </div>
             <div class="wb-actions">
-                <button class="wb-btn wb-btn-ghost" onclick="document.getElementById('write1-ans${i}').classList.toggle('show')">Voir la réponse</button>
+                <button class="wb-btn wb-btn-ghost" onclick="document.getElementById('write1-ans${i}').classList.toggle('show')">${t('seeAnswer')}</button>
             </div>
             <div class="wb-writing-answer" id="write1-ans${i}">→ ${item.answer}</div>
         </div>
@@ -2476,6 +2480,7 @@ function rerenderDynamic() {
     updateScore('vocab');
     updateScore('grammar');
     updateScore('comp');
+    if (typeof renderWbWriting === 'function') renderWbWriting();
 }
 
 function setLang(lang) {
